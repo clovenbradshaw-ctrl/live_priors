@@ -1,0 +1,8 @@
+Title: ResKV: Reconstructing Omitted Attention Contributions for Fixed-Budget KV Cache Compression
+Authors: Yuhang Zhan, Lisi Chen, Shuo Shang
+Published: 2026-07-31T16:16:45Z
+Categories: cs.CL
+URL: http://arxiv.org/abs/2607.29591v1
+
+Abstract:
+KV cache compression is essential for efficient long-context inference. Existing eviction methods permanently discard unselected tokens and consequently remove their aggregate contribution to attention. Merging-based alternatives preserve more information but can perturb retained keys and values that should remain exact. We observe that the information omitted by cache eviction can be formulated as residual statistics in both the numerator and denominator of softmax attention. Based on this observation, we propose ResKV, which divides a fixed KV budget into an exact main cache and a compact residual cache that reconstructs the contribution of omitted tokens. ResKV lets main-cache tokens and residual entries participate in the same softmax normalization, so residual entries restore both attention numerator and denominator mass rather than acting as a post-hoc correction. A construction-time validation proxy determines residual allocation for each layer and KV head, while a decode-time dynamic gate adjusts residual contributions for individual queries. Comprehensive evaluations on LongBench and RULER, covering query-aware and query-agnostic settings, multiple backbones, cache budgets, and representative compression baselines, demonstrate broad improvements under the same retained KV budget while preserving the practical efficiency of compressed decoding, including peak memory usage and long-context decode throughput.
