@@ -4,28 +4,85 @@ A living corpus of source texts, organized by the 17 categories from [`eoPriors/
 
 This repo **pulls** the sources — not just catalogs them. Texts are stored as documents with fetch scripts for every API-accessible source.
 
+**Every document carries at least 600 words.** A prior you cannot measure structure against is
+not a prior; see [The 600-word floor](#the-600-word-floor) below.
+
 ## What's Here
+
+2,044 documents. The largest section is government and legal, which holds official texts
+published by institutions in 28 jurisdictions.
 
 | Directory | Content |
 |---|---|
-| `01-literature-books/gutenberg/` | 23 texts (Shakespeare, Pride & Prejudice, Moby Dick, Frankenstein, etc.) |
-| `02-encyclopedic/wikipedia/` | 70+ articles across philosophy, science, history, literature |
-| `06-government-legal/federal-register/` | 10 recent Federal Register documents |
-| `09-source-code/` | 20 repos (Linux, SQLite, CPython, Rust, Go, TypeScript, etc.) |
-| `10-audio-music/` | Metadata catalog across 16 categories (200+ items) |
-| `14-holy-texts/` | Tanakh (43), Quran (4+114), SBLGNT (109), Nestle1904 (31) |
+| `01-literature-books/` | 43 complete works (Gutenberg + GITenberg) |
+| `02-encyclopedic/` | 54 articles (Wikipedia, 1911 Britannica) |
+| `05-academic-papers/open-access-books/` | 94 chapters from open-licensed scholarly books |
+| `06-government-legal/world-legislation/` | **449 statutes and codes from 28 jurisdictions** |
+| `06-government-legal/un-udhr/` | **516 translations of the Universal Declaration of Human Rights** |
+| `06-government-legal/world-factbook/` | **255 CIA World Factbook country profiles** |
+| `09-source-code/` | 20 repos: source, licences and upstream documentation |
+| `14-holy-texts/` | 492 files — whole books of the Tanakh, Greek NT, Qur'an and Pali canon |
 | `15-western-canon/folger-shakespeare/` | Bulk text + XML + 15 individual plays |
 
-See [`SOURCES.md`](SOURCES.md) for the complete catalog of ~120 sources with pull status.
+See [`SOURCES.md`](SOURCES.md) for the complete catalog with pull status, and
+[`06-government-legal/ATTRIBUTION.md`](06-government-legal/ATTRIBUTION.md) for the rights notice
+each publishing institution requires.
+
+## Government & Legal
+
+`06-government-legal/` holds 1,220 documents from institutions around the world:
+
+- **National legislation** — Andorra, Argentina, Austria, Belgium, Chile, Colombia, Czechia,
+  European Union, Finland, France, Germany, Greece, Italy, Latvia, Liechtenstein, Luxembourg,
+  Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Spain, Sweden, Switzerland,
+  United Kingdom, United States, Uruguay. Each file keeps the publisher's YAML frontmatter:
+  official source URL, publishing department, publication date, in-force status.
+- **UN Universal Declaration of Human Rights** in 516 languages, as encoded by OHCHR.
+- **CIA World Factbook** country and region profiles, rendered from JSON to prose.
+
+Rights vary by publisher. Official legal texts are outside copyright in most of these
+jurisdictions (Germany §5 UrhG, US 17 USC §105, Poland, Czechia, Sweden, Switzerland and
+others). The UK (OGL v3.0), EU (CC BY 4.0), France (Etalab v2.0) and Spain publish under open
+licences that require attribution, and those notices are carried in `ATTRIBUTION.md`.
+
+Converted Markdown is not the authentic legal instrument — only the text published in the
+issuing institution's official gazette is authoritative.
+
+## The 600-word floor
+
+`scripts/enforce-min-words.mjs` is the corpus quality gate:
+
+```bash
+node scripts/enforce-min-words.mjs           # audit: what is under the floor
+node scripts/enforce-min-words.mjs --prune   # delete it, and record what went
+node scripts/enforce-min-words.mjs --min 800 # a different floor
+```
+
+The pass that introduced the floor removed 886 fragments — museum accession records, arXiv
+abstracts, single scripture verses, one-paragraph gazette notices — and replaced them with the
+whole works they were fragments of: complete books of the Tanakh rather than verses, complete
+novels rather than excerpts, statutes rather than summaries. Media metadata, which is
+legitimately short per item, was folded into one catalogue document per collection by
+`scripts/consolidate-media-catalogs.mjs` rather than discarded.
+
+Word counting is script-aware, so Chinese, Japanese, Korean and Thai documents are measured by
+codepoint rather than split on spaces. `manifests/min-words-audit.json` records every removal.
 
 ## Running the Fetchers
 
 ```bash
-# Fetch everything automatable
+# Fetch everything automatable, then build catalogues and enforce the floor
 node scripts/run-all.mjs
 
 # Fetch specific sources
 node scripts/run-all.mjs --only gutenberg sefaria quran
+
+# World legislation, UDHR and Factbook (optionally a subset of jurisdictions)
+node scripts/fetch-world-government.mjs
+node scripts/fetch-world-government.mjs --jurisdictions de,fr,uk
+
+# Whole books, works and chapters that replaced the pruned fragments
+node scripts/fetch-replacements.mjs --only scripture
 
 # Download actual media files
 node scripts/download-archive-media.mjs --category classical-music --limit 5
@@ -43,6 +100,9 @@ live_priors/
 ```
 
 The `livePriorsTree()` function exposes the directory structure for browsing. `readLivePrior(relPath)` reads file contents by relative path. eochat never ingests these files directly — it reads them on demand when a user navigates to them in the Priors tab.
+
+Directory layout is unchanged by the government expansion — `world-legislation/` adds one
+subfolder per jurisdiction, which browses the same way as any other source subfolder.
 
 **Two-layer consumption model:**
 - **eoPriors/priors/** — JSON artifacts (corpus-prior.json, coref/*.json) ingested into the engine's priors pool via `priors-source.js`

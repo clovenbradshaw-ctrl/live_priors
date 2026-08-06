@@ -24,6 +24,8 @@ const SCRIPTS = [
   { name: 'wikinews', file: 'fetch-wikinews.mjs', desc: 'Wikinews (CC BY 2.5)' },
   { name: 'eu-press', file: 'fetch-eu-press.mjs', desc: 'EU Commission press (CC BY 4.0)' },
   { name: 'government', file: 'fetch-government.mjs', desc: 'US gov/legal docs' },
+  { name: 'world-government', file: 'fetch-world-government.mjs', desc: 'World legislation + UN UDHR + World Factbook' },
+  { name: 'replacements', file: 'fetch-replacements.mjs', desc: 'Whole books, works, chapters and project docs' },
   { name: 'govinfo', file: 'fetch-govinfo.mjs', desc: 'GovInfo + SEC EDGAR' },
   { name: 'shakespeare', file: 'fetch-shakespeare.mjs', desc: 'Shakespeare (Folger/Gutenberg)' },
   { name: 'code-repos', file: 'fetch-code-repos.mjs', desc: 'Open source code repos' },
@@ -85,6 +87,21 @@ async function main() {
 
     // Brief pause between fetchers
     await new Promise(r => setTimeout(r, 1000));
+  }
+
+  // The corpus floor is part of the build, not an afterthought: fold the media
+  // metadata into catalogues, then drop anything still under MIN_WORDS.
+  for (const step of ['consolidate-media-catalogs.mjs', 'enforce-min-words.mjs']) {
+    const args = step === 'enforce-min-words.mjs' ? ' --prune' : '';
+    console.log(`\n${'='.repeat(60)}\n  ${step}\n${'='.repeat(60)}\n`);
+    try {
+      execSync(`node "${path.join(SCRIPTS_DIR, step)}"${args}`, {
+        stdio: 'inherit',
+        cwd: path.join(__dirname, '..'),
+      });
+    } catch (e) {
+      console.log(`\n  FAILED: ${step} (${e.message})`);
+    }
   }
 
   console.log('\n\n=== All fetchers complete ===');
