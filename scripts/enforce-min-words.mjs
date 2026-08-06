@@ -1,0 +1,140 @@
+#!/usr/bin/env node
+// Corpus quality gate: every prior must carry at least MIN_WORDS (600) words.
+//
+// A one-paragraph Federal Register abstract, a museum accession record and a
+// two-verse scripture fragment all used to sit in this corpus alongside full
+// books. They are not priors in any useful sense: there is not enough text in
+// them to measure structure against, and they skew every corpus-wide statistic
+// toward noise. This script finds them and, with --prune, removes them.
+//
+//   node scripts/enforce-min-words.mjs            # report only
+//   node scripts/enforce-min-words.mjs --prune    # report and delete
+//   node scripts/enforce-min-words.mjs --min 800  # different floor
+//
+// Word counting is script-aware: see countWords() in lib/corpus-util.mjs. A
+// naive whitespace split scores Chinese, Japanese and Thai texts near zero and
+// would delete perfectly good documents.
+
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
+import { wordsIn, MIN_WORDS } from './lib/corpus-util.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.join(__dirname, '..');
+const AUDIT_FILE = path.join(ROOT, 'manifests', 'min-words-audit.json');
+
+// Corpus documents live in the numbered category directories. Everything else
+// in the repository — fetchers, manifests, the library — is not a prior.
+const CORPUS_DIR = /^\d\d-/;
+// Files this repository authors about the corpus, as opposed to documents it
+// collected. Upstream READMEs and LICENSEs under 09-source-code/ are collected
+// documents and are deliberately not excluded here.
+const NOT_A_DOCUMENT = /(^|\/)(ATTRIBUTION\.md|[a-z0-9-]*manifest\.json)$/i;
+
+function corpusFiles() {
+  // Freshly fetched documents are not committed yet, so tracked files alone
+  // would under-report the corpus. --others adds them; --exclude-standard keeps
+  // .gitignore'd build output out.
+  const listing = execSync('git ls-files --cached --others --exclude-standard', {
+    cwd: ROOT,
+    encoding: 'utf8',
+    maxBuffer: 1 << 28,
+  });
+  return listing
+    .split('\n')
+    .filter(Boolean)
+    .filter(f => CORPUS_DIR.test(f) && !NOT_A_DOCUMENT.test(f));
+}
+
+function measure(files) {
+  const rows = [];
+  for (const f of files) {
+    const abs = path.join(ROOT, f);
+    let text;
+    try {
+      text = fs.readFileSync(abs, 'utf8');
+    } catch {
+      continue;
+    }
+    rows.push({ file: f, words: wordsIn(text, f), bytes: text.length });
+  }
+  return rows;
+}
+
+function groupOf(file) {
+  const parts = file.split('/');
+  return parts.slice(0, Math.min(2, parts.length - 1)).join('/') || parts[0];
+}
+
+function main() {
+  const argv = process.argv.slice(2);
+  const prune = argv.includes('--prune');
+  const minIdx = argv.indexOf('--min');
+  const floor = minIdx >= 0 ? Number(argv[minIdx + 1]) : MIN_WORDS;
+
+  const rows = measure(corpusFiles());
+  const short = rows.filter(r => r.words < floor);
+
+  const byGroup = new Map();
+  for (const r of rows) {
+    const g = byGroup.get(groupOf(r.file)) || { total: 0, short: 0 };
+    g.total++;
+    if (r.words < floor) g.short++;
+    byGroup.set(groupOf(r.file), g);
+  }
+
+  console.log(`=== Corpus word-count audit (floor: ${floor} words) ===\n`);
+  console.log('GROUP'.padEnd(38) + 'FILES'.padStart(7) + 'UNDER'.padStart(8));
+  for (const [g, v] of [...byGroup].sort((a, b) => b[1].short - a[1].short)) {
+    if (!v.short && !prune) continue;
+    console.log(g.padEnd(38) + String(v.total).padStart(7) + String(v.short).padStart(8));
+  }
+  console.log(`\n${rows.length} documents, ${short.length} below the floor.`);
+
+  if (!prune) {
+    if (short.length) console.log('\nRe-run with --prune to remove them.');
+    return;
+  }
+
+  for (const r of short) fs.rmSync(path.join(ROOT, r.file), { force: true });
+  // Remove directories the prune emptied, walking up so that a category whose
+  // every leaf went (05-academic-papers/arxiv/*) does not leave husks behind.
+  for (const start of new Set(short.map(r => path.dirname(r.file)))) {
+    let dir = start;
+    // Stop before the top-level category directory: an empty category still
+    // documents that the category exists and is unfetched.
+    while (dir.includes('/')) {
+      const abs = path.join(ROOT, dir);
+      try {
+        if (fs.readdirSync(abs).length > 0) break;
+        fs.rmdirSync(abs);
+      } catch {
+        break;
+      }
+      dir = path.dirname(dir);
+    }
+  }
+
+  fs.mkdirSync(path.dirname(AUDIT_FILE), { recursive: true });
+  fs.writeFileSync(
+    AUDIT_FILE,
+    JSON.stringify(
+      {
+        floor,
+        pruned_at: new Date().toISOString(),
+        documents_before: rows.length,
+        documents_pruned: short.length,
+        documents_after: rows.length - short.length,
+        pruned: short.sort((a, b) => a.file.localeCompare(b.file)),
+      },
+      null,
+      2,
+    ),
+    'utf8',
+  );
+  console.log(`Pruned ${short.length} documents. Audit written to ${path.relative(ROOT, AUDIT_FILE)}.`);
+}
+
+main();

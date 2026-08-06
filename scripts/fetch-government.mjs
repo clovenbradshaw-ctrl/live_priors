@@ -2,10 +2,16 @@
 // Fetch US government and legal documents (all public domain)
 // Sources: Federal Register, CourtListener, GovInfo, Chronicling America
 // Status: Public domain (federal works)
+//
+// Every document written here must clear the corpus word floor (MIN_WORDS).
+// This fetcher used to save one-paragraph Federal Register abstracts, which are
+// too thin to be priors; enforce-min-words.mjs deleted all nine of them. The
+// floor is applied at the point of writing so they cannot come back.
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { wordsIn, MIN_WORDS } from './lib/corpus-util.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BASE_DIR = path.join(__dirname, '..', '06-government-legal');
@@ -62,23 +68,19 @@ async function fetchFederalRegister(limit = 20) {
 
         if (isBlockPage(stripped)) {
           console.log(`    Blocked (CAPTCHA gate)`);
-        } else if (stripped.length > 100) {
+        } else if (wordsIn(stripped) >= MIN_WORDS) {
           text = stripped;
           contentType = 'full_text';
+        } else {
+          console.log(`    Full text is ${wordsIn(stripped)} words, below the ${MIN_WORDS}-word floor`);
         }
       }
     } catch (e) {
       console.log(`    Error fetching text: ${e.message}`);
     }
-    // The full-text page can be blocked while the plain JSON API — where
-    // `abstract` comes from — is not. A real abstract is a worse substitute
-    // than the full document, but a much better one than the CAPTCHA gate's
-    // prose, which is what got saved here before this fetcher checked.
-    if (!text && doc.abstract && doc.abstract.length > 100) {
-      text = doc.abstract;
-      contentType = 'abstract';
-      console.log(`    Using abstract (full text blocked)`);
-    }
+    // The abstract used to be saved as a fallback when the full-text page was
+    // blocked. An abstract is a few hundred characters and never clears the
+    // floor, so there is no fallback any more: no full text, no document.
     if (text) {
       const file = path.join(outputDir, `fr_${doc.id || doc.document_number}.txt`);
       fs.writeFileSync(file, text, 'utf8');
@@ -128,7 +130,7 @@ async function fetchCourtListener(limit = 10) {
           .replace(/\s+/g, ' ')
           .trim();
 
-        if (text.length > 100) {
+        if (wordsIn(text) >= MIN_WORDS) {
           const file = path.join(outputDir, `scotus_${cluster.id}.txt`);
           fs.writeFileSync(file, text, 'utf8');
           entry.file = path.relative(path.join(__dirname, '..'), file);
@@ -185,7 +187,7 @@ async function fetchLOC(limit = 10) {
               if (contentRes.ok) {
                 const content = await contentRes.text();
                 const text = content.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-                if (text.length > 100) {
+                if (wordsIn(text) >= MIN_WORDS) {
                   const file = path.join(outputDir, `bill_${bill.congress}_${bill.type}${bill.number}.txt`);
                   fs.writeFileSync(file, text, 'utf8');
                   entry.file = path.relative(path.join(__dirname, '..'), file);
@@ -237,7 +239,7 @@ async function fetchChroniclingAmerica(limit = 5) {
         const ocrRes = await fetch(ocrUrl);
         if (ocrRes.ok) {
           const text = await ocrRes.text();
-          if (text.length > 100) {
+          if (wordsIn(text) >= MIN_WORDS) {
             const file = path.join(outputDir, `news_${item.id || Date.now()}.txt`);
             fs.writeFileSync(file, text, 'utf8');
             entry.file = path.relative(path.join(__dirname, '..'), file);
