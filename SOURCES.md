@@ -26,7 +26,7 @@ are not mistaken for empty documents.
 | 6. Government/Legal | 6 | ✅ **1,220 documents** | 449 statutes from 28 jurisdictions, 516 UDHR translations, 255 World Factbook profiles |
 | 7. Images/Media | 4 | ✅ 2 collection catalogues | NASA (185 items) and Met Museum (140 items) folded into catalogue documents |
 | 8. News | 4 | ⚠️ 1 document | Wikinews items were under the floor; wikinews.org is not reachable to refetch |
-| 9. Source Code | 20 | ✅ 55 files across 20 repos | Source files, licences and substantive upstream documentation |
+| 9. Source Code | 31 | ✅ 89 files across 31 repos | Two tiers: 20 landmark repos + 11 security-audited repos at pinned commits, all vetted (see `09-source-code/VETTING.md`) |
 | 10. Audio/Music | 5 | ✅ 13 collection catalogues | Per-item metadata folded into catalogues; 2 collections were too thin even consolidated |
 | 11. Multi-language | 6 | ✅ 32 texts | Gutenberg non-English + Wikipedia in 16 languages |
 | 12. Non-Western Music | 5 | ✅ Great 78 catalogue | Other sources not yet pulled |
@@ -36,7 +36,7 @@ are not mistaken for empty documents.
 | 16. Organic/Community | 10 | ⬜ | Ganjoor, StoryWeaver, African Storybook not yet scripted |
 | 17. Formal Algebraic | 11 | ⬜ | All catalogued, none fetched (PDFs/images/specialized formats) |
 
-**Total:** 2,044 documents, all at or above the 600-word floor.
+**Total:** 2,078 documents, all at or above the 600-word floor.
 
 ## Fetched Content Details
 
@@ -96,9 +96,25 @@ record.
 
 ### 9. Source Code
 
-20 repos with source files, licences, and substantive upstream documentation: kernel coding
-style and patch-submission process, the CPython tutorial and data model reference, PostgreSQL
-subsystem READMEs, the Flask and FastAPI tutorials, the ripgrep guide, and more.
+Two tiers, indexed in [`09-source-code/README.md`](09-source-code/README.md):
+
+- **Landmark tier** — 20 repos with source files, licences, and substantive upstream
+  documentation: kernel coding style and patch-submission process, the CPython tutorial and
+  data model reference, PostgreSQL subsystem READMEs, the Flask and FastAPI tutorials, the
+  ripgrep guide, and more. Fetched from branch heads (unpinned) on 2026-08-03.
+- **Audited tier** — 11 repos chosen because their security posture is externally documented
+  (published third-party audits, formal verification, or a continuous audit process): curl,
+  git, OpenSSL, OpenSSH, libsodium, wireguard-go, Kubernetes, s2n-tls, Bitcoin Core, Apache
+  httpd, libsignal. Fetched at **pinned commits** with per-file sha256 recorded in
+  `manifests/audited-code-manifest.json`; each directory carries a `PROVENANCE.md` with the
+  security review record and citations.
+
+The whole section is vetted mechanically by `scripts/vet-source-code.mjs` — trojan-source
+bidi controls (CVE-2021-42574), invisible codepoints, credential-shaped strings, private-key
+material, binary smuggling, and checksum verification against the pinned manifest — with the
+generated record in [`09-source-code/VETTING.md`](09-source-code/VETTING.md) and full results
+in `manifests/source-code-vetting.json`. Findings are adjudicated in the open, never deleted.
+Nothing in this corpus is executed; these files are read as documents.
 
 ## Running the fetchers
 
