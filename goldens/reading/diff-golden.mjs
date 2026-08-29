@@ -24,7 +24,11 @@ const FOLD = path.join(LP_ROOT, "..", "the-fold");
 const spans = await import(path.join(EOREADER7, "native/adapters/text/spans.js"));
 const { stripContainer } = await import(path.join(FOLD, "source.js"));
 
-const organs = await loadOrgans();
+// DR4/DR5 (DERIVED-RULES.md): both opt-in, both default false in
+// loadOrgans() so the corpus-wide sweep is untouched — this driver turns
+// them on to measure whether they actually close the gaps they were built
+// for, against the same hand-rolled goldens that named those gaps.
+const organs = await loadOrgans({ phrasalPredicates: true, nounPhraseSubjects: true });
 const toks = (t) => String(t ?? "").toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter((w) => w.length > 1);
 const overlap = (a, b) => { const B = new Set(toks(b)); return toks(a).filter((w) => B.has(w)).length; };
 
