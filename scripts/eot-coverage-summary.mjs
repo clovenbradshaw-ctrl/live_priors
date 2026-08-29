@@ -40,7 +40,7 @@ function main() {
 
   for (const abs of sidecars) {
     const rel = path.relative(LP_ROOT, abs);
-    const category = rel.split("/")[0];
+    const category = rel.includes("/") ? rel.split("/")[0] : "(repo root)";
     byCategory[category] ??= { total: 0, clean: 0, empty: 0, gapped_script: 0, gapped_self_verify: 0, heard: 0 };
     byCategory[category].total += 1;
 
