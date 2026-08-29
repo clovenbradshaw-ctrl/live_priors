@@ -98,3 +98,50 @@ concrete, scoped, evidence-backed next steps rather than open questions.
 numbers above reproduce from the repo alone). Nothing on disk was written
 by the measurement itself — the 2,208 committed sidecars are untouched,
 still the old-recipe baseline.
+
+## Follow-up — the newline-crossing cost is closed at the source
+
+The section above named the fix as "the single highest-leverage next
+move." It landed in `eoreader7` (native/adapters/text/relations.js
+`collapseWs`, READING-SPEC.md S30) and was re-measured against this exact
+corpus with the identical driver, no other change:
+
+| structural signature | before | after |
+|---|---|---|
+| containsNewline | 1,669 edges (5.01%) | **0** |
+| midWordGlue | 626 (1.88%) | 626 (1.88%) — unchanged |
+| subjectStartsPronoun | 2,776 (8.33%) | 2,776 (8.33%) — unchanged |
+| total edges | 33,476 | 33,476 — unchanged |
+| density | 0.2177 | 0.2177 — unchanged |
+| subject token histogram | `{1:8389, 2:10291, 3:4326, 4-6:6376, 7-10:2483, 11+:1442}` | byte-identical |
+| register-level density (all rows) | — | byte-identical |
+
+**The fix is surgical, confirmed rather than assumed.** Every other
+number — edge count, density, both remaining structural signatures,
+every register row, the whole subject-token distribution DR4 produces —
+is byte-identical before and after. `collapseWs` changes how a captured
+span's text is REPORTED (a hard-wrap `\n` collapses to a space); it does
+not change which bytes are matched, so nothing about extraction recall or
+register behavior moved. `containsNewline` is not merely reduced — it is
+exactly zero, confirming the representation defect (not a sampling
+artifact of it) is closed.
+
+**What this does NOT settle, and this repo's own disclosure governs
+here.** `eoreader7`'s own READING-SPEC.md S30 states the underlying
+assumption plainly: internal span whitespace never carrying content is a
+prose-register regularity, not a logical necessity, and names this
+repo's own `10-audio-music`/`15-western-canon` (verse) and
+`09-source-code` registers as the ones where it has NOT been checked —
+this at-scale run confirms the fix is safe in aggregate (nothing broke
+corpus-wide) but does not confirm it is correct on a line-break-sensitive
+register specifically, since `containsNewline` reads zero everywhere,
+including those registers, without distinguishing "correctly collapsed"
+from "collapsed something that mattered." Whether whitespace-collapsing
+should be gated behind a register-level prior (the same open question
+this file's own register-density table above already raised) remains
+open, not resolved by this measurement.
+
+Files: `scripts/dr45-at-scale-before-collapsews.json` (the pre-fix
+snapshot, preserved for this exact comparison) + `scripts/dr45-at-scale.json`
+(re-run against the fixed relations.js, overwritten in place — this file's
+own numbers above are the after state).
