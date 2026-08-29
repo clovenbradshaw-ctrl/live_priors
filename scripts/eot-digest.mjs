@@ -206,6 +206,14 @@ async function digestOne(organs, spec) {
   const identity = spec.kind === "text-gutenberg" ? organs.declaredIdentity(spec.slug, raw) : null;
 
   const sentences = spans.splitSentences(excerpt);
+  // Whether the surface layer can see this material's script AT ALL, asked
+  // BEFORE its counts are read — eoreader7 native surfaces.js::scriptCoverage
+  // (S24). Every candidate-surface filter in that organ reads capitalisation,
+  // so on a caseless script the count it returns is about whatever cased
+  // debris sits in the file, never about the material's own language. This
+  // digest's first run reported exactly such counts for Hebrew, Korean and
+  // Farsi with nothing marking them; the gap is now carried per source.
+  const script = surfaces.scriptCoverage(sentences);
   const surfaceEvidence = surfaces.extractSurfaces(sentences);
   const { events } = surfaces.discoverReferents(surfaceEvidence, {});
   const referentIds = new Set(events.map((e) => e.referent_id));
@@ -249,6 +257,16 @@ async function digestOne(organs, spec) {
       classifyConnector: "omitted — POSPrior fixture (UD_English-EWT build) not present in this environment",
       verbForms: "omitted — opt-in only, undecided default per the-fold CLAUDE.md",
       createLemmatizer: "omitted — opt-in only, undecided default per the-fold CLAUDE.md",
+    },
+    // What fraction of this material's own writing the surface layer could
+    // see, and the typed gap when the answer is "little or none". Sits ABOVE
+    // `reading` deliberately: a surface count read without this is the exact
+    // silent failure it exists to close.
+    script: {
+      casedLetters: script.casedLetters,
+      caselessLetters: script.caselessLetters,
+      casedShare: script.casedShare,
+      gap: script.gap,
     },
     reading: {
       sentences: sentences.length,
@@ -343,8 +361,13 @@ async function runBatch() {
       edgesFound: out.reading.edgesFound, heard: out.admission.heard,
       turnedAway: out.admission.turnedAway,
       spanSelfVerifyRate: out.spanSelfVerification.passRate,
+      casedShare: out.script.casedShare,
+      scriptGap: out.script.gap?.reason ?? null,
     });
-    console.log(`${spec.slug}: ${out.reading.sentences} sentences, ${out.reading.distinctReferents} referents, ${out.reading.edgesFound} edges found, ${out.admission.heard} heard, spans ${out.spanSelfVerification.ok}/${out.spanSelfVerification.checked} -> ${outPath}`);
+    const gapNote = out.script.gap
+      ? `  [${out.script.gap.reason}: only ${(out.script.casedShare * 100).toFixed(1)}% of letters carry case]`
+      : "";
+    console.log(`${spec.slug}: ${out.reading.sentences} sentences, ${out.reading.distinctReferents} referents, ${out.reading.edgesFound} edges found, ${out.admission.heard} heard, spans ${out.spanSelfVerification.ok}/${out.spanSelfVerification.checked}${gapNote} -> ${outPath}`);
   }
   fs.writeFileSync(path.join(DIGEST_DIR, "index.json"), JSON.stringify({ schema: "EOTDigestIndex@1", generatedAt: new Date().toISOString(), sources: index }, null, 1));
   console.log(`\nwrote ${index.length} digests + index.json to ${DIGEST_DIR}`);

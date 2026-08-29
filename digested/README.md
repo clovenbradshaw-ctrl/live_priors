@@ -94,64 +94,78 @@ that file's own imported `GRAINS` ordering, so the export is
 
 ## What was actually found, per axis
 
-### Language and script — a real, three-tier finding, not a guess
+### Language and script — two different failures, now told apart
 
-`surfaces.js`'s referent-candidate detector gates on Unicode case:
-`CAP_TOKEN = /^[\p{Lu}][\p{L}'']*$/u`, `LOWER_TOKEN` the lowercase mirror
-(checked directly in `eoreader7/native/adapters/text/surfaces.js`). Six
-languages were picked to test this — two cased-Latin, one cased-non-Latin,
-three genuinely uncased — and the result is not the flat "case scripts
-work, uncased scripts don't" a reader might expect from that fact alone:
+An earlier version of this document ran these together and got one of them
+wrong. They are separate layers, they fail for separate reasons, and only one
+of them is about script at all.
 
-1. **Cased Latin, real content (fr).** 54 surfaces over 50 sentences, 5
-   referents, 84 edges — genuine French subjects and objects ("amour —du→
-   savoir", "Au cours —du→ temps"). Reading is real. The connectors are
-   often prepositions rather than verbs (`extractRelations`'s clause
-   matching is English-SVO-shaped, not universal), so the *shape* of a
-   French edge is frequently loose — disclosed, not hidden by the count.
+**Layer 1 — the surface/referent layer, which reads capitalisation.** Every
+candidate-surface filter in `surfaces.js` reads case: `CAP_TOKEN`/
+`LOWER_TOKEN`, the sentence-initial exclusion, the all-caps typography rules,
+and `capitalisationIsSignificant`'s binomial. On a script with no case, none
+of them can fire — the organ is not degraded, it is structurally inert, and
+every count it returns is about whatever cased debris happens to sit in the
+file.
 
-2. **Cased non-Latin, genuinely foreign prose (el).** Greek has real
-   Unicode case, so `CAP_TOKEN` *can* fire — and still: 1 edge from 81
-   sentences, and that edge is `The Death —of→ Socrates`, an **English**
-   image caption ("Αρχείο:David - The Death of Socrates.jpg") riding in
-   the raw file, not a sentence of the Greek article itself. Case alone
-   does not make this pipeline read a language — `discoverRelationVocab`'s
-   own anchor vocabulary and closed classes (negation, determiners) are
-   English, so genuinely Greek prose offers it nothing to anchor on, and
-   only incidental English fragments surface.
+This layer works on **any bicameral script, not just Latin**. Greek reads
+genuinely well: 169 candidate surfaces, 5 referents, and the top surfaces are
+real Greek proper nouns — `Παπανούτσος`, `Μιλήσιος`, `Αθηναίος`, `Νόηση`.
+(An earlier draft of this file claimed Greek "surfaces almost nothing
+genuine." That was wrong, and it was wrong because it read Greek's *edge*
+count and attributed it to the surface layer. Greek's surface layer is fine.)
 
-3. **Uncased scripts (he, ko, fa).** Hebrew and Korean collapse almost to
-   nothing — 6 and 15 surfaces over 79 and 129 sentences — confirming the
-   Unicode-category fact directly: neither script has a single `\p{Lu}` or
-   `\p{Ll}` character, so `CAP_TOKEN`/`LOWER_TOKEN` are structurally inert
-   on them. What little surfaces is, again, English residue: `"Internet
-   Encyclopedia —of→ Philosophy..."`, `"The School —of→ Athens\" by
-   Raffaello Sanzio..."` (he); a garbled, first-letter-eaten citation,
-   `"enny Teichmann —and→ Katherine C"` (ko, from "Jenny Teichmann"). Farsi
-   surfaces more (42, vs. Hebrew's 6 and Korean's 15) because more Latin-
-   script citation debris happens to sit in that particular article, not
-   because Farsi script itself is being read — its own folded edges are
-   the same English caption/citation shape (`"Avicenna Portrait —on→
-   Silver Vase..."`), plus one case where a garbled English/numeric
-   citation swept up a long, genuine run of real Farsi prose as its
-   "object" — a span-selection failure, not evidence the clause was read.
+It fails on **caseless** scripts, and it used to fail silently. Hebrew
+returned 6 surfaces from 79 sentences; Korean 15 from 129 — small, plausible,
+and entirely false. The six Hebrew "surfaces" were `School`, `Athens`,
+`Raffaello`, `Internet`: an English image caption, never the article.
 
-4. **Cased Latin, agglutinative morphology (tr).** 178 surfaces, 17
-   referents — real per-language detection is working — but the *edges*
-   are a mix of genuine (garbled) Turkish and plain English citation debris
-   side by side: `"Afrika —demografisiafrikalı→ insanlar tarafından
-   yapılan"` (a real Turkish sentence, but the "verb" is a run-on
-   agglutinated span the English-clause-boundary heuristic could not
-   segment) next to `"0739136682 Philosophy —in→ an African Place]"` (an
-   ISBN plus a citation title). Referent-level reading is real; clause-
-   level extraction is not reliable on this language's syntax.
+**This is now a typed gap, not a silent number** — `scriptCoverage` in
+eoreader7 native `surfaces.js` (spec entry S24), carried on every digest
+under `script` and echoed in `index.json`:
 
-**The honest summary:** this pipeline's identity layer generalizes exactly
-as far as Unicode's own `Lu`/`Ll` categories reach, and no further — its
-relation-extraction layer additionally needs the material's own clause
-shape to resemble English SVO, which French mostly does, Turkish partly
-does, and nothing else tested here does at all. Neither limit was fixed;
-both are named so the next reader does not have to re-measure them.
+| material | cased letters | gap |
+|---|---|---|
+| French, Turkish, Greek, English | 100% | none |
+| Korean | 16.8% | `script_mostly_without_case` |
+| Farsi | 12.7% | `script_mostly_without_case` |
+| Hebrew | 3.5% | `script_mostly_without_case` |
+
+The giver for the distinction is the Unicode Character Database's own
+`General_Category`: `\p{Cased_Letter}` is exactly the set of letters that
+have case. It is looked up per character, not a list of scripts maintained
+anywhere. Both boundaries are structural rather than dials — zero cased
+letters means the mechanism cannot fire at all; caseless letters in the
+majority means most of the material is invisible to it.
+
+**What this deliberately does NOT do is make those scripts readable.**
+`surfaces.js`'s own header records that a blanket algorithmic generalisation
+across scripts was tried and *reverted*, because a silent claim of
+cross-script generality is a worse failure than a disclosed narrow scope.
+Inventing a caseless substitute for capitalisation — recurrence, n-gram
+salience, position — would be that same reverted move under a new name, and
+would need a giver and an invariance fixture per script to be admissible.
+So the instrument reports the boundary instead of crossing it, which is what
+its own tier discipline already requires: *a missing prior produces a gap,
+never a guessed number.*
+
+**Layer 2 — the relation/edge layer, which is English-shaped.** This is the
+failure Greek actually has, and it is not about script. `extractRelations`
+matches an English SVO clause shape and `discoverRelationVocab` anchors its
+candidate verbs on capitalised surfaces. French mostly survives it (84
+edges, though its connectors are frequently prepositions rather than verbs —
+"amour —du→ savoir"). Turkish partly survives it, with real Turkish subjects
+whose "verb" is an agglutinated run the English clause-boundary heuristic
+cannot segment ("Afrika —demografisiafrikalı→ insanlar tarafından yapılan").
+Greek does not survive it at all: 169 good surfaces, 5 good referents, and
+**1** edge — an English image caption. Nothing in this pass fixes that; it
+would need a real per-language grammar prior with its own giver, and naming
+it is the honest stopping point.
+
+**The summary, in one line each.** The surface layer generalises exactly as
+far as Unicode's own case property reaches, and now *says so* where it does
+not. The relation layer generalises about as far as English clause shape
+reaches, and does not yet say so.
 
 ### Catalogs — a boilerplate field 98.5% of one file's own bytes
 
