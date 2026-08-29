@@ -11,6 +11,16 @@ the excerpt that was read, and every offered assertion turned away, named
 why. `folded` alongside it is that log's current projection — the fastest
 way for a person to see what it says without replaying the log by hand.
 
+**Standing policy governs what is in here.** `../POLICIES.md` (LP1–LP5) is
+the law for this directory: a source is immutable and never replaced by a
+reading (LP1); a reading is Talmud — anchored, attributed, append-only,
+defeasible — and grows by a gate rather than a cap (LP2); a reading's
+addresses must resolve in the source's own coordinates, **and today's do
+not** (LP3, measured); what the priors app may and may not do with a reading
+(LP4); and why recipe identity is the prerequisite for making this directory
+genuinely append-only (LP5). Read it before changing how anything here is
+produced or consumed.
+
 Reproduce with `node scripts/eot-digest.mjs` from this repo, checked out as
 a sibling of `../the-fold` and `../eoreader7` (see **Organs**, below, for
 exactly what those two supply).
