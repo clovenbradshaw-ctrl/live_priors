@@ -149,7 +149,7 @@ function repoState(dir) {
 // such — never silently presented as the whole work.
 const EXCERPT_CHARS = 8000;
 
-async function loadOrgans() {
+async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = false } = {}) {
   const spans = await import(path.join(NATIVE, "adapters/text/spans.js"));
   const surfaces = await import(path.join(NATIVE, "adapters/text/surfaces.js"));
   const relations = await import(path.join(NATIVE, "adapters/text/relations.js"));
@@ -243,6 +243,17 @@ async function loadOrgans() {
     // byte-identical prior behaviour (checked at hypergraph.js's own
     // `organs.posPriorFor ? organs.posPriorFor() : null`).
     posPriorFor: posPriorLoaded ? () => posPrior : null,
+    // Both default false, threaded straight from this function's own
+    // caller-declared `opts` — see this file's own header for what they are
+    // (DR4/DR5, live_priors/goldens/reading/DERIVED-RULES.md) and hypergraph.js's
+    // own `makeRelationReader` header for the backward-compatibility contract
+    // (native relations.js's own AUXILIARY_VERBS/DEFINITE_DETERMINERS/etc.
+    // defaults apply — nothing further injected here). The corpus-wide sweep
+    // (this file's own `main`, below) omits both, so every already-digested
+    // sidecar's shape is untouched; `diff-golden.mjs` opts in explicitly to
+    // measure DR4/DR5 against the hand-rolled goldens.
+    phrasalPredicates,
+    nounPhraseSubjects,
   });
   // taskLog.js exports GRAIN_RANK directly (native/kernel/task-log.js,
   // eoreader7 S23) — hyperlexicon.js reads it to name the Figure grain
