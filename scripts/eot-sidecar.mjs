@@ -105,6 +105,25 @@ function verifyExcerptSpan(excerpt, s) {
 // SAME normalisation to the raw slice (rather than bare string equality) is
 // spans-normalise.test.js's own lesson — a span straddling an embedded CRLF
 // legitimately still carries \r\n in the raw file.
+//
+// A SECOND transformation happens downstream of this check, worth naming
+// so a future reader re-verifying a PERSISTED span does not repeat the
+// confusion investigating this once cost: `hyperlexicon.js::admit`'s own
+// span mapping collapses internal whitespace (`text.replace(/\s+/g, "
+// ").trim()`) — because `pushSentence` (eoreader7 native's spans.js) only
+// `.trim()`s a sentence's own text and never reflows an embedded line
+// wrap, a long sentence crossing a raw line break (e.g. Les Misérables'
+// own "...as\r\nMademoiselle...") still carries that literal newline
+// through hypergraph.js's own extraction, all the way to THIS check —
+// which is exactly right, since `s.text` here and `reslice` below are
+// BOTH pre-collapse and directly comparable. Only the text hl.admit()
+// later PERSISTS has already had that newline collapsed to a space —
+// checked once by hand and confirmed CORRECT (not a bug: the collapse is
+// deterministic and applied identically on both sides at admission time,
+// so equal pre-collapse strings stay equal after it), but a reader
+// diffing a committed sidecar's OWN stored text against a bare raw slice
+// must collapse whitespace on the raw side first, or a real, byte-correct
+// address will look like a mismatch that never happened.
 function verifyRawSpan(raw, bodyOffset, toRaw, s) {
   const rawStart = bodyOffset + toRaw(s.start);
   const rawEnd = bodyOffset + toRaw(s.end);
@@ -134,7 +153,20 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
     catch (err) { existing = { corrupt: true, error: String(err?.message ?? err) }; }
   }
 
-  const { text: body, offset: bodyOffset } = stripContainer(raw);
+  const { text: rawBody, offset: containerOffset } = stripContainer(raw);
+  // A table of contents (or other short-unterminated-line front matter) can
+  // outrun a flat excerpt window entirely — task #9's own adversarial audit,
+  // the specimen it was built and verified against is a Gutenberg-mirrored
+  // Les Misérables whose TOC runs to ~char 21,600, past this driver's own
+  // 8000-char window, extracting zero edges from a book that has hundreds.
+  // Detected on the STRIPPED body (a container's own front matter is a
+  // separate, already-handled concern) and folded straight into `bodyOffset`
+  // so every downstream raw-coordinate composition (verifyRawSpan, the
+  // sidecar's own addresses) needs no second offset to track.
+  const frontMatter = spans.detectFrontMatterRun(rawBody);
+  const frontMatterSkip = frontMatter.detected ? frontMatter.skipTo : 0;
+  const bodyOffset = containerOffset + frontMatterSkip;
+  const body = rawBody.slice(frontMatterSkip);
   const { text: blanked, blankedChars } = blankCatalogLines(body);
   const excerptWindow = blanked.slice(0, excerptChars);
   // blankCatalogLines pads a whole "collection:..." line to SPACES, so a
@@ -249,6 +281,7 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
     recipe: { id: recipeIdValue, descriptor: recipe },
     excerpting: {
       fullChars: raw.length, bodyOffset, bodyChars: body.length,
+      frontMatterSkipped: frontMatter.detected ? { chars: frontMatterSkip, runLength: frontMatter.runLength } : undefined,
       catalogBlankedChars: blankedChars || undefined,
       catalogDominated: catalogDominated || undefined,
       excerptChars: excerpt.length, truncated,
@@ -262,6 +295,29 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
       examined: report.examined ?? null,
       edgesFound: rawEdges.length,
       extractionError: report.error ?? null,
+      // hypergraph.js::relationsFor's own vocabulary.candidates (task #9's
+      // adversarial audit, the SBLGNT — Greek New Testament critical-
+      // apparatus format — specimen): how many tokens discoverRelationVocab
+      // NOMINATED as candidate verbs, before any recurrence floor. Verified
+      // empirically before shipping, not assumed: under THIS recipe's own
+      // configuration (MIN_SURFACES_PER_VERB=1, no posPrior/classifyConnector
+      // injected), every nominated candidate clears the floor by
+      // construction, so `candidates === vocabulary.verbs` ALWAYS here — the
+      // field alone does not distinguish "genuinely nothing to hear" from
+      // "heard something, none of it cleared a floor" under this specific
+      // recipe (it does for a caller using a stricter floor or a real
+      // posPrior — see hypergraph-vocabulary-candidates.test.mjs's own
+      // divergence case). Surfaced anyway for transparency; the actual
+      // distinguishing signal for THIS pipeline is `contentWithoutRelations`
+      // below, built from fields this sidecar already carried.
+      vocabulary: report.vocabulary ?? null,
+      // The genuine disclosure task #9 was chasing: real linguistic content
+      // (a surface or a referent) was found, but the relation tier heard
+      // nothing — an apparatus/table/record-block shape, not silence. This
+      // is what tells a reader "SBLGNT-shaped" apart from "this document is
+      // actually empty," using fields already computed above rather than a
+      // new mechanism.
+      contentWithoutRelations: (events.length > 0 || (Array.isArray(surfaceEvidence) && surfaceEvidence.length > 0)) && rawEdges.length === 0,
     },
     spanSelfVerification: {
       excerptChecked, excerptOk,
