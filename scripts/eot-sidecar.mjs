@@ -447,7 +447,7 @@ function shouldSkip(relPath) {
   // sidecar has no business existing beside the corpus's own scripts,
   // manifests, or its own record of prior readings.
   const first = relPath.split("/")[0];
-  if (["scripts", "manifests", "digested", "derived-priors", "src", ".git", "node_modules"].includes(first)) return true;
+  if (["scripts", "manifests", "digested", "derived-priors", "goldens", "src", ".git", "node_modules"].includes(first)) return true;
   if (relPath.endsWith(".eot.json")) return true;
   return false;
 }
