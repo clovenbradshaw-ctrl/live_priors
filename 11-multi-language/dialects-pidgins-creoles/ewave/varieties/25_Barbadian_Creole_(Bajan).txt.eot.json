@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 18842,
   "bodyOffset": 0,
   "bodyChars": 18842,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 4,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 32,
-  "extractionError": null
+  "edgesFound": 23,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 17
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 23,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 33,
-  "excerptOk": 33,
-  "rawChecked": 33,
-  "rawOk": 33,
+  "excerptChecked": 23,
+  "excerptOk": 23,
+  "rawChecked": 23,
+  "rawOk": 23,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 32,
-  "heard": 32,
+  "offered": 23,
+  "heard": 23,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "subject": "typically developed",
-    "verb": "in",
-    "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#51-317",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "eWAVE variety ID: 25 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,7 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "its native|speakers|was normally very limited",
+    "task_id": "native speakers|was|normally very limited",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,19 +128,43 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "its native speakers was normally very limited",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "was normally very limited",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#458-532",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
       "text": "English), while exposure to its native speakers was normally very limited."
-     },
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "witnesses": [
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
+    ],
+    "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#533-727",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
@@ -166,7 +191,7 @@
     "verb": "is",
     "object": "a contemporary nation state that won its independence from Britain in 1966",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -195,7 +220,7 @@
     "verb": "is",
     "object": "English",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -205,35 +230,6 @@
      }
     ],
     "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "an english|related|creole",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "an English related Creole",
-    "subject": "an English",
-    "verb": "related",
-    "object": "Creole",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#1087-1317",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "While the official language of this country is English, the population also speaks an English related Creole, Bajan, arising from a particular language contact situation of slavery and bonded servitude, under British colonization."
-     }
-    ],
-    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -253,7 +249,7 @@
     "verb": "is",
     "object": "unique amongst languages in the Anglophone Caribbean territories",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -262,36 +258,7 @@
       "text": "Bajan is unique amongst languages in the Anglophone Caribbean territories, because its creole affiliations have been questioned."
      }
     ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "materials cited|by|its chapter contributor(s):",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "materials cited by its chapter contributor(s):",
-    "subject": "materials cited",
-    "verb": "by",
-    "object": "its chapter contributor(s):",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#1448-1673",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "ILLUSTRATIVE EXAMPLE SENTENCES ---------------------------------------------------------------------- eWAVE records 95 example sentence(s) for this variety, drawn from the source materials cited by its chapter contributor(s):"
-     }
-    ],
-    "seq": 7,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -311,7 +278,7 @@
     "verb": "iz",
     "object": "Liisa tudee?",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -320,7 +287,7 @@
       "text": "[referring to a car] \"How iz Liisa tudee?"
      }
     ],
-    "seq": 8,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -340,7 +307,7 @@
     "verb": "got",
     "object": "to gi di kasheer yu money first",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -349,65 +316,7 @@
       "text": "\"Yu got to gi di kasheer yu money first.\""
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "wunna|in|see de tiicher waitin fo wunna to stop taakin?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Wunna in see de tiicher waitin fo wunna to stop taakin?\"",
-    "subject": "Wunna",
-    "verb": "in",
-    "object": "see de tiicher waitin fo wunna to stop taakin?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#2062-2119",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "\"Wunna in see de tiicher waitin fo wunna to stop taakin?\""
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "grow up|in|st james",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "grow up in St James",
-    "subject": "grow up",
-    "verb": "in",
-    "object": "St James",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#2147-2206",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "\"sheeps; mices\" \"Mai mudda and dem grow up in St James.\""
-     }
-    ],
-    "seq": 11,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -427,7 +336,7 @@
     "verb": "got",
     "object": "di cold",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -436,7 +345,7 @@
       "text": "\"mi and mai posse\" \"mother-in laws; attorney-generals\" \"He got di cold.\""
      }
     ],
-    "seq": 12,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -456,7 +365,7 @@
     "verb": "was",
     "object": "as good as dead",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -465,7 +374,7 @@
       "text": "\"He told my muh dear-aunt not to worry, the Affie Cumberbatch was as good as dead.\""
      }
     ],
-    "seq": 13,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -485,7 +394,7 @@
     "verb": "got",
     "object": "one boy dey dat gun drive he mad",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -494,7 +403,7 @@
       "text": "-- allsopp1996 \"He got one boy dey dat gun drive he mad.\""
      }
     ],
-    "seq": 14,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -514,7 +423,7 @@
     "verb": "is",
     "object": "hers",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -523,7 +432,7 @@
       "text": "\"The house over yonder is hers.\""
      }
     ],
-    "seq": 15,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -543,7 +452,7 @@
     "verb": "is",
     "object": "the most ugliest man I eva see",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -552,7 +461,7 @@
       "text": "[Proximal / distal] \"Margaret child fo' John 'Margaret's child is John's child'\" \"di man house\" \"di farmer cow\" \"He is my fada brudda\" \"He is the most ugliest man I eva see.\""
      }
     ],
-    "seq": 16,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -572,7 +481,7 @@
     "verb": "is",
     "object": "the beautifulest of them all",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -581,7 +490,7 @@
       "text": "\"She is the beautifulest of them all.\""
      }
     ],
-    "seq": 17,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -601,7 +510,7 @@
     "verb": "is",
     "object": "the most happy I have seen her",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -610,7 +519,7 @@
       "text": "\"This is the most happy I have seen her.\""
      }
     ],
-    "seq": 18,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -630,7 +539,7 @@
     "verb": "was",
     "object": "a child",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -639,36 +548,7 @@
       "text": "I does be vex when he come home late\" \"I know she since she was a child.\""
      }
     ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "would be|in|america by then",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "would be in America by then",
-    "subject": "would be",
-    "verb": "in",
-    "object": "America by then",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#3332-3364",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "\"I would be in America by then.\""
-     }
-    ],
-    "seq": 20,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -688,7 +568,7 @@
     "verb": "was",
     "object": "you",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -697,36 +577,7 @@
       "text": "\"If I was you, I would try out for the team.\""
      }
     ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "many people|in|this minibus",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "many people in this minibus",
-    "subject": "many people",
-    "verb": "in",
-    "object": "this minibus",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#3944-3986",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "\"There's too many people in this minibus.\""
-     }
-    ],
-    "seq": 22,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -746,7 +597,7 @@
     "verb": "was",
     "object": "absent that day but he was at work",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -755,36 +606,7 @@
       "text": "\"You was absent that day but he was at work.\""
      }
     ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dat live|in|the states…",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dat live in the States…",
-    "subject": "dat live",
-    "verb": "in",
-    "object": "the States…",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#4143-4180",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "\"My dawhter dat live in the States….\""
-     }
-    ],
-    "seq": 24,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -804,7 +626,7 @@
     "verb": "is",
     "object": "my neighbour",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -813,36 +635,7 @@
       "text": "\"The woman whe own de shop is my neighbour.\""
      }
     ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "taking de|child|for to register he at de clinic",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "taking de child for to register he at de clinic",
-    "subject": "taking de",
-    "verb": "child",
-    "object": "for to register he at de clinic",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#4498-4550",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "\"I taking de child for to register he at de clinic.\""
-     }
-    ],
-    "seq": 26,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -862,7 +655,7 @@
     "verb": "is",
     "object": "more in it than what you expect",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -871,7 +664,7 @@
       "text": "\"There is more in it than what you expect.\""
      }
     ],
-    "seq": 27,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -891,7 +684,7 @@
     "verb": "got",
     "object": "too much cars pun de road",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -900,7 +693,7 @@
       "text": "\"Barbados got too much cars pun de road.\""
      }
     ],
-    "seq": 28,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -920,7 +713,7 @@
     "verb": "is",
     "object": "what I realise",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -929,36 +722,7 @@
       "text": "\"Dem looking trouble is what I realise.\""
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you|in|gone work today?",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "You in gone work today?",
-    "subject": "You",
-    "verb": "in",
-    "object": "gone work today?",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#5253-5277",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-      "text": "\"You in gone work today?"
-     }
-    ],
-    "seq": 30,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -978,7 +742,7 @@
     "verb": "is",
     "object": "money",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -987,12 +751,12 @@
       "text": "\"The most ting he want is money.\""
      }
     ],
-    "seq": 31,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 32,
+  "nextSeq": 23,
   "admits": [
    "NUL",
    "SEG",
@@ -1012,7 +776,7 @@
    "verb": "was",
    "object": "as good as dead",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1023,28 +787,12 @@
    ]
   },
   {
-   "id": "an english|related|creole",
-   "subject": "an English",
-   "verb": "related",
-   "object": "Creole",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#1087-1317",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "While the official language of this country is English, the population also speaks an English related Creole, Bajan, arising from a particular language contact situation of slavery and bonded servitude, under British colonization."
-    }
-   ]
-  },
-  {
    "id": "bajan|is|unique amongst languages in the anglophone caribbean territories",
    "subject": "Bajan",
    "verb": "is",
    "object": "unique amongst languages in the Anglophone Caribbean territories",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1060,7 +808,7 @@
    "verb": "got",
    "object": "too much cars pun de road",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1076,7 +824,7 @@
    "verb": "is",
    "object": "a contemporary nation state that won its independence from Britain in 1966",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1087,28 +835,12 @@
    ]
   },
   {
-   "id": "dat live|in|the states…",
-   "subject": "dat live",
-   "verb": "in",
-   "object": "the States…",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#4143-4180",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "\"My dawhter dat live in the States….\""
-    }
-   ]
-  },
-  {
    "id": "de shop|is|my neighbour",
    "subject": "de shop",
    "verb": "is",
    "object": "my neighbour",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1119,28 +851,12 @@
    ]
   },
   {
-   "id": "grow up|in|st james",
-   "subject": "grow up",
-   "verb": "in",
-   "object": "St James",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#2147-2206",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "\"sheeps; mices\" \"Mai mudda and dem grow up in St James.\""
-    }
-   ]
-  },
-  {
    "id": "he want|is|money",
    "subject": "he want",
    "verb": "is",
    "object": "money",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1156,7 +872,7 @@
    "verb": "got",
    "object": "di cold",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1172,7 +888,7 @@
    "verb": "got",
    "object": "one boy dey dat gun drive he mad",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1188,7 +904,7 @@
    "verb": "is",
    "object": "the most ugliest man I eva see",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1204,7 +920,7 @@
    "verb": "iz",
    "object": "Liisa tudee?",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1220,7 +936,7 @@
    "verb": "was",
    "object": "you",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1231,33 +947,12 @@
    ]
   },
   {
-   "id": "its native|speakers|was normally very limited",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "was normally very limited",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#458-532",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "English), while exposure to its native speakers was normally very limited."
-    },
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#533-727",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
-    }
-   ]
-  },
-  {
    "id": "looking trouble|is|what i realise",
    "subject": "looking trouble",
    "verb": "is",
    "object": "what I realise",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1268,34 +963,34 @@
    ]
   },
   {
-   "id": "many people|in|this minibus",
-   "subject": "many people",
-   "verb": "in",
-   "object": "this minibus",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#3944-3986",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#458-532",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "\"There's too many people in this minibus.\""
+     "text": "English), while exposure to its native speakers was normally very limited."
     }
    ]
   },
   {
-   "id": "materials cited|by|its chapter contributor(s):",
-   "subject": "materials cited",
-   "verb": "by",
-   "object": "its chapter contributor(s):",
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+   "subject": "of English",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#1448-1673",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#533-727",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "ILLUSTRATIVE EXAMPLE SENTENCES ---------------------------------------------------------------------- eWAVE records 95 example sentence(s) for this variety, drawn from the source materials cited by its chapter contributor(s):"
+     "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
     }
    ]
   },
@@ -1305,7 +1000,7 @@
    "verb": "is",
    "object": "hers",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1321,7 +1016,7 @@
    "verb": "is",
    "object": "the beautifulest of them all",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1337,7 +1032,7 @@
    "verb": "was",
    "object": "a child",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1348,28 +1043,12 @@
    ]
   },
   {
-   "id": "taking de|child|for to register he at de clinic",
-   "subject": "taking de",
-   "verb": "child",
-   "object": "for to register he at de clinic",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#4498-4550",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "\"I taking de child for to register he at de clinic.\""
-    }
-   ]
-  },
-  {
    "id": "there|is|more in it than what you expect",
    "subject": "There",
    "verb": "is",
    "object": "more in it than what you expect",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1385,7 +1064,7 @@
    "verb": "was",
    "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1401,7 +1080,7 @@
    "verb": "is",
    "object": "English",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1417,7 +1096,7 @@
    "verb": "is",
    "object": "the most happy I have seen her",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1428,76 +1107,12 @@
    ]
   },
   {
-   "id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-   "subject": "typically developed",
-   "verb": "in",
-   "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#51-317",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "eWAVE variety ID: 25 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-    }
-   ]
-  },
-  {
-   "id": "would be|in|america by then",
-   "subject": "would be",
-   "verb": "in",
-   "object": "America by then",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#3332-3364",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "\"I would be in America by then.\""
-    }
-   ]
-  },
-  {
-   "id": "wunna|in|see de tiicher waitin fo wunna to stop taakin?\"",
-   "subject": "Wunna",
-   "verb": "in",
-   "object": "see de tiicher waitin fo wunna to stop taakin?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#2062-2119",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "\"Wunna in see de tiicher waitin fo wunna to stop taakin?\""
-    }
-   ]
-  },
-  {
-   "id": "you|in|gone work today?",
-   "subject": "You",
-   "verb": "in",
-   "object": "gone work today?",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt#5253-5277",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt",
-     "text": "\"You in gone work today?"
-    }
-   ]
-  },
-  {
    "id": "you|was|absent that day but he was at work",
    "subject": "You",
    "verb": "was",
    "object": "absent that day but he was at work",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1513,7 +1128,7 @@
    "verb": "got",
    "object": "to gi di kasheer yu money first",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/25_Barbadian_Creole_(Bajan).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1525,7 +1140,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:21.704Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:27.345Z"
  }
 }

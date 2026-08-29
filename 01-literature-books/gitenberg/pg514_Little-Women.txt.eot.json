@@ -12,21 +12,39 @@
   }
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 1053433,
   "bodyOffset": 609,
   "bodyChars": 1033801,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 7785,
   "truncated": true
  },
@@ -42,63 +60,39 @@
   "referentEvents": 8,
   "distinctReferents": 8,
   "examined": true,
-  "edgesFound": 49,
+  "edgesFound": 24,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 28,
+   "verbs": 17,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 28
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 24,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 50,
-  "excerptOk": 50,
-  "rawChecked": 50,
-  "rawOk": 50,
+  "excerptChecked": 24,
+  "excerptOk": 24,
+  "rawChecked": 24,
+  "rawOk": 24,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 49,
-  "heard": 49,
+  "offered": 24,
+  "heard": 24,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "be christmas|without|any presents",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be Christmas without any presents",
-    "subject": "be Christmas",
-    "verb": "without",
-    "object": "any presents",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#2268-2352",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"Christmas won't be Christmas without any presents,\" grumbled Jo, lying on the rug."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "we've|got|father and mother",
@@ -115,7 +109,7 @@
     "verb": "got",
     "object": "Father and Mother",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -124,7 +118,7 @@
       "text": "\"We've got Father and Mother, and each other,\" said Beth contentedly from her corner."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -144,7 +138,7 @@
     "verb": "contentedly",
     "object": "from her corner",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -153,7 +147,7 @@
       "text": "\"We've got Father and Mother, and each other,\" said Beth contentedly from her corner."
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -173,7 +167,7 @@
     "verb": "said",
     "object": "sadly",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -182,7 +176,7 @@
       "text": "The four young faces on which the firelight shone brightened at the cheerful words, but darkened again as Jo said sadly, \"We haven't got Father, and shall not have him for a long time.\""
      }
     ],
-    "seq": 3,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -202,7 +196,7 @@
     "verb": "got",
     "object": "Father",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -211,36 +205,7 @@
       "text": "The four young faces on which the firelight shone brightened at the cheerful words, but darkened again as Jo said sadly, \"We haven't got Father, and shall not have him for a long time.\""
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "him for|a|long time",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "him for a long time",
-    "subject": "him for",
-    "verb": "a",
-    "object": "long time",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#2676-2863",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "The four young faces on which the firelight shone brightened at the cheerful words, but darkened again as Jo said sadly, \"We haven't got Father, and shall not have him for a long time.\""
-     }
-    ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -260,7 +225,7 @@
     "verb": "say",
     "object": "\"perhaps never",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -269,36 +234,7 @@
       "text": "She didn't say \"perhaps never,\" but each silently added it, thinking of Father far away, where the fighting was."
      }
     ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "spoke for|a|minute",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "spoke for a minute",
-    "subject": "spoke for",
-    "verb": "a",
-    "object": "minute",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#2982-3280",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "Nobody spoke for a minute; then Meg said in an altered tone, \"You know the reason Mother proposed not having any presents this Christmas was because it is going to be a hard winter for everyone; and she thinks we ought not to spend money for pleasure, when our men are suffering so in the army."
-     }
-    ],
-    "seq": 7,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -318,7 +254,7 @@
     "verb": "said",
     "object": "in an altered tone",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -327,7 +263,7 @@
       "text": "Nobody spoke for a minute; then Meg said in an altered tone, \"You know the reason Mother proposed not having any presents this Christmas was because it is going to be a hard winter for everyone; and she thinks we ought not to spend money for pleasure, when our men are suffering so in the army."
      }
     ],
-    "seq": 8,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -347,7 +283,7 @@
     "verb": "was",
     "object": "because it is going to be a hard winter for everyone",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -356,7 +292,7 @@
       "text": "Nobody spoke for a minute; then Meg said in an altered tone, \"You know the reason Mother proposed not having any presents this Christmas was because it is going to be a hard winter for everyone; and she thinks we ought not to spend money for pleasure, when our men are suffering so in the army."
      }
     ],
-    "seq": 9,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -376,7 +312,7 @@
     "verb": "would",
     "object": "do any good",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -385,7 +321,7 @@
       "text": "\"But I don't think the little we should spend would do any good."
      }
     ],
-    "seq": 10,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -405,7 +341,7 @@
     "verb": "got",
     "object": "a dollar",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -414,36 +350,7 @@
       "text": "We've each got a dollar, and the army wouldn't be much helped by our giving that."
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from mother|or|you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "from Mother or you",
-    "subject": "from Mother",
-    "verb": "or",
-    "object": "you",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#3637-3742",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "I agree not to expect anything from Mother or you, but I do want to buy _Undine and Sintran_ for myself."
-     }
-    ],
-    "seq": 12,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -463,7 +370,7 @@
     "verb": "wanted",
     "object": "it so long",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -472,13 +379,13 @@
       "text": "I've wanted it so long,\" said Jo, who was a bookworm."
      }
     ],
-    "seq": 13,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "who was|a|bookworm",
+    "task_id": "who|was|a bookworm",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -488,11 +395,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "who was a bookworm",
-    "subject": "who was",
-    "verb": "a",
-    "object": "bookworm",
+    "subject": "who",
+    "verb": "was",
+    "object": "a bookworm",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -501,70 +408,7 @@
       "text": "I've wanted it so long,\" said Jo, who was a bookworm."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with|a|little sigh",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "with a little sigh",
-    "subject": "with",
-    "verb": "a",
-    "object": "little sigh",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#3802-3932",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"I planned to spend mine in new music,\" said Beth, with a little sigh, which no one heard but the hearth brush and kettle-holder."
-     },
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4882-4964",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "And Beth looked at her rough hands with a sigh that any one could hear that time."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shall get|a|nice box of faber's drawing pencils",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "shall get a nice box of Faber's drawing pencils",
-    "subject": "shall get",
-    "verb": "a",
-    "object": "nice box of Faber's drawing pencils",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#3936-4029",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"I shall get a nice box of Faber's drawing pencils; I really need them,\" said Amy decidedly."
-     }
-    ],
-    "seq": 16,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -584,7 +428,7 @@
     "verb": "say",
     "object": "anything about our money",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -593,94 +437,7 @@
       "text": "\"Mother didn't say anything about our money, and she won't wish us to give up everything."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "i'm|sure|we work hard enough to earn it",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "I'm sure we work hard enough to earn it",
-    "subject": "I'm",
-    "verb": "sure",
-    "object": "we work hard enough to earn it",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4125-4288",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "Let's each buy what we want, and have a little fun; I'm sure we work hard enough to earn it,\" cried Jo, examining the heels of her shoes in a gentlemanly manner."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shoes in|a|gentlemanly manner",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "shoes in a gentlemanly manner",
-    "subject": "shoes in",
-    "verb": "a",
-    "object": "gentlemanly manner",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4125-4288",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "Let's each buy what we want, and have a little fun; I'm sure we work hard enough to earn it,\" cried Jo, examining the heels of her shoes in a gentlemanly manner."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "those tiresome|children|nearly all day",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "those tiresome children nearly all day",
-    "subject": "those tiresome",
-    "verb": "children",
-    "object": "nearly all day",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4292-4441",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"I know I do--teaching those tiresome children nearly all day, when I'm longing to enjoy myself at home,\" began Meg, in the complaining tone again."
-     }
-    ],
-    "seq": 20,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -700,7 +457,7 @@
     "verb": "longing",
     "object": "to enjoy myself at home",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -709,94 +466,7 @@
       "text": "\"I know I do--teaching those tiresome children nearly all day, when I'm longing to enjoy myself at home,\" began Meg, in the complaining tone again."
      }
     ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "half such|a|hard time as i do",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "half such a hard time as I do",
-    "subject": "half such",
-    "verb": "a",
-    "object": "hard time as I do",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4445-4501",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"You don't have half such a hard time as I do,\" said Jo."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hours with|a|nervous",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hours with a nervous",
-    "subject": "hours with",
-    "verb": "a",
-    "object": "nervous",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4502-4689",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"How would you like to be shut up for hours with a nervous, fussy old lady, who keeps you trotting, is never satisfied, and worries you till you're ready to fly out the window or cry?\""
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the window|or|cry?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the window or cry?\"",
-    "subject": "the window",
-    "verb": "or",
-    "object": "cry?\"",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4502-4689",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"How would you like to be shut up for hours with a nervous, fussy old lady, who keeps you trotting, is never satisfied, and worries you till you're ready to fly out the window or cry?\""
-     }
-    ],
-    "seq": 24,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -816,7 +486,7 @@
     "verb": "is",
     "object": "the worst work in the world",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -825,7 +495,7 @@
       "text": "\"It's naughty to fret, but I do think washing dishes and keeping things tidy is the worst work in the world."
      }
     ],
-    "seq": 25,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -845,7 +515,7 @@
     "verb": "say",
     "object": "so",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -854,7 +524,7 @@
       "text": "\"If you mean libel, I'd say so, and not talk about labels, as if Papa was a pickle bottle,\" advised Jo, laughing."
      }
     ],
-    "seq": 26,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -874,7 +544,7 @@
     "verb": "was",
     "object": "a pickle bottle",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -883,7 +553,7 @@
       "text": "\"If you mean libel, I'd say so, and not talk about labels, as if Papa was a pickle bottle,\" advised Jo, laughing."
      }
     ],
-    "seq": 27,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -903,7 +573,7 @@
     "verb": "lost",
     "object": "when we were little",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -912,36 +582,7 @@
       "text": "Don't you wish we had the money Papa lost when we were little, Jo?"
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and are|a|pretty jolly set",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and are a pretty jolly set",
-    "subject": "and are",
-    "verb": "a",
-    "object": "pretty jolly set",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#5940-6043",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "For though we do have to work, we make fun of ourselves, and are a pretty jolly set, as Jo would say.\""
-     }
-    ],
-    "seq": 29,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -961,7 +602,7 @@
     "verb": "would",
     "object": "say",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -970,7 +611,7 @@
       "text": "For though we do have to work, we make fun of ourselves, and are a pretty jolly set, as Jo would say.\""
      }
     ],
-    "seq": 30,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -990,7 +631,7 @@
     "verb": "does",
     "object": "use such slang words!\"",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -999,152 +640,7 @@
       "text": "\"Jo does use such slang words!\""
      }
     ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "jo|immediately|sat up",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Jo immediately sat up",
-    "subject": "Jo",
-    "verb": "immediately",
-    "object": "sat up",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6160-6235",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "Jo immediately sat up, put her hands in her pockets, and began to whistle."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with\nsuch|a|funny face that both sharp voices softened to a laugh",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "with\nsuch a funny face that both sharp voices softened to a laugh",
-    "subject": "with\nsuch",
-    "verb": "a",
-    "object": "funny face that both sharp voices softened to a laugh",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6378-6549",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"Birds in their little nests agree,\" sang Beth, the peacemaker, with such a funny face that both sharp voices softened to a laugh, and the \"pecking\" ended for that time."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you were|a|little girl",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "you were a little girl",
-    "subject": "you were",
-    "verb": "a",
-    "object": "little girl",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6743-6894",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "It didn't matter so much when you were a little girl, but now you are so tall, and turn up your hair, you should remember that you are a young lady.\""
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you are|a|young lady",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "you are a young lady",
-    "subject": "you are",
-    "verb": "a",
-    "object": "young lady",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6743-6894",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "It didn't matter so much when you were a little girl, but now you are so tall, and turn up your hair, you should remember that you are a young lady.\""
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shaking down|a|chestnut mane",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "shaking down a chestnut mane",
-    "subject": "shaking down",
-    "verb": "a",
-    "object": "chestnut mane",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6910-7060",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "And if turning up my hair makes me one, I'll wear it in two tails till I'm twenty,\" cried Jo, pulling off her net, and shaking down a chestnut mane."
-     }
-    ],
-    "seq": 36,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1164,7 +660,7 @@
     "verb": "got",
     "object": "to grow up",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1173,7 +669,7 @@
       "text": "\"I hate to think I've got to grow up, and be Miss March, and wear long gowns, and look as prim as a China Aster!"
      }
     ],
-    "seq": 37,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1193,7 +689,7 @@
     "verb": "wear",
     "object": "long gowns",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1202,94 +698,7 @@
       "text": "\"I hate to think I've got to grow up, and be Miss March, and wear long gowns, and look as prim as a China Aster!"
      }
     ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prim as|a|china aster!",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "prim as a China Aster!",
-    "subject": "prim as",
-    "verb": "a",
-    "object": "China Aster!",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#7062-7175",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"I hate to think I've got to grow up, and be Miss March, and wear long gowns, and look as prim as a China Aster!"
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "to be|a|girl",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "to be a girl",
-    "subject": "to be",
-    "verb": "a",
-    "object": "girl",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#7177-7262",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "It's bad enough to be a girl, anyway, when I like boy's games and work and manners!"
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not being|a|boy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not being a boy",
-    "subject": "not being",
-    "verb": "a",
-    "object": "boy",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#7264-7318",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "I can't get over my disappointment in not being a boy."
-     }
-    ],
-    "seq": 41,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1309,7 +718,7 @@
     "verb": "dying",
     "object": "to go and fight with Papa",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1318,36 +727,7 @@
       "text": "And it's worse than ever now, for I'm dying to go and fight with Papa."
      }
     ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "like|a|poky old woman!\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "like a poky old woman!\"",
-    "subject": "like",
-    "verb": "a",
-    "object": "poky old woman!\"",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#7392-7451",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "And I can only stay home and knit, like a poky old woman!\""
-     }
-    ],
-    "seq": 43,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1367,7 +747,7 @@
     "verb": "is",
     "object": "a tomboy and Amy a goose",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1376,36 +756,7 @@
       "text": "\"If Jo is a tomboy and Amy a goose, what am I, please?\""
      }
     ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you're|a|dear",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "You're a dear",
-    "subject": "You're",
-    "verb": "a",
-    "object": "dear",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#8279-8407",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "\"You're a dear, and nothing else,\" answered Meg warmly, and no one contradicted her, for the 'Mouse' was the pet of the family."
-     }
-    ],
-    "seq": 45,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1425,7 +776,7 @@
     "verb": "was",
     "object": "the pet of the family",
     "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1434,70 +785,12 @@
       "text": "\"You're a dear, and nothing else,\" answered Meg warmly, and no one contradicted her, for the 'Mouse' was the pet of the family."
      }
     ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "give them|a|little sketch of the four sisters",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "give them a little sketch of the four sisters",
-    "subject": "give them",
-    "verb": "a",
-    "object": "little sketch of the four sisters",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#8411-8609",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "As young readers like to know 'how people look', we will take this moment to give them a little sketch of the four sisters, who sat knitting away in the twilight, while the December snow fell quie"
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the december|snow|fell quie",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the December snow fell quie",
-    "subject": "the December",
-    "verb": "snow",
-    "object": "fell quie",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#8411-8609",
-      "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-      "text": "As young readers like to know 'how people look', we will take this moment to give them a little sketch of the four sisters, who sat knitting away in the twilight, while the December snow fell quie"
-     }
-    ],
-    "seq": 48,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 49,
+  "nextSeq": 24,
   "admits": [
    "NUL",
    "SEG",
@@ -1512,28 +805,12 @@
  },
  "folded": [
   {
-   "id": "and are|a|pretty jolly set",
-   "subject": "and are",
-   "verb": "a",
-   "object": "pretty jolly set",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#5940-6043",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "For though we do have to work, we make fun of ourselves, and are a pretty jolly set, as Jo would say.\""
-    }
-   ]
-  },
-  {
    "id": "and|wear|long gowns",
    "subject": "and",
    "verb": "wear",
    "object": "long gowns",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1549,7 +826,7 @@
    "verb": "said",
    "object": "sadly",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1565,7 +842,7 @@
    "verb": "would",
    "object": "say",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1576,28 +853,12 @@
    ]
   },
   {
-   "id": "be christmas|without|any presents",
-   "subject": "be Christmas",
-   "verb": "without",
-   "object": "any presents",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#2268-2352",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"Christmas won't be Christmas without any presents,\" grumbled Jo, lying on the rug."
-    }
-   ]
-  },
-  {
    "id": "for i'm|dying|to go and fight with papa",
    "subject": "for I'm",
    "verb": "dying",
    "object": "to go and fight with Papa",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1608,92 +869,12 @@
    ]
   },
   {
-   "id": "from mother|or|you",
-   "subject": "from Mother",
-   "verb": "or",
-   "object": "you",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#3637-3742",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "I agree not to expect anything from Mother or you, but I do want to buy _Undine and Sintran_ for myself."
-    }
-   ]
-  },
-  {
-   "id": "give them|a|little sketch of the four sisters",
-   "subject": "give them",
-   "verb": "a",
-   "object": "little sketch of the four sisters",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#8411-8609",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "As young readers like to know 'how people look', we will take this moment to give them a little sketch of the four sisters, who sat knitting away in the twilight, while the December snow fell quie"
-    }
-   ]
-  },
-  {
-   "id": "half such|a|hard time as i do",
-   "subject": "half such",
-   "verb": "a",
-   "object": "hard time as I do",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4445-4501",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"You don't have half such a hard time as I do,\" said Jo."
-    }
-   ]
-  },
-  {
-   "id": "him for|a|long time",
-   "subject": "him for",
-   "verb": "a",
-   "object": "long time",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#2676-2863",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "The four young faces on which the firelight shone brightened at the cheerful words, but darkened again as Jo said sadly, \"We haven't got Father, and shall not have him for a long time.\""
-    }
-   ]
-  },
-  {
-   "id": "hours with|a|nervous",
-   "subject": "hours with",
-   "verb": "a",
-   "object": "nervous",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4502-4689",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"How would you like to be shut up for hours with a nervous, fussy old lady, who keeps you trotting, is never satisfied, and worries you till you're ready to fly out the window or cry?\""
-    }
-   ]
-  },
-  {
    "id": "i'd|say|so",
    "subject": "I'd",
    "verb": "say",
    "object": "so",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1704,28 +885,12 @@
    ]
   },
   {
-   "id": "i'm|sure|we work hard enough to earn it",
-   "subject": "I'm",
-   "verb": "sure",
-   "object": "we work hard enough to earn it",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4125-4288",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "Let's each buy what we want, and have a little fun; I'm sure we work hard enough to earn it,\" cried Jo, examining the heels of her shoes in a gentlemanly manner."
-    }
-   ]
-  },
-  {
    "id": "i've|wanted|it so long",
    "subject": "I've",
    "verb": "wanted",
    "object": "it so long",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1741,7 +906,7 @@
    "verb": "is",
    "object": "a tomboy and Amy a goose",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1757,7 +922,7 @@
    "verb": "was",
    "object": "a pickle bottle",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1773,7 +938,7 @@
    "verb": "does",
    "object": "use such slang words!\"",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1784,44 +949,12 @@
    ]
   },
   {
-   "id": "jo|immediately|sat up",
-   "subject": "Jo",
-   "verb": "immediately",
-   "object": "sat up",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6160-6235",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "Jo immediately sat up, put her hands in her pockets, and began to whistle."
-    }
-   ]
-  },
-  {
-   "id": "like|a|poky old woman!\"",
-   "subject": "like",
-   "verb": "a",
-   "object": "poky old woman!\"",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#7392-7451",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "And I can only stay home and knit, like a poky old woman!\""
-    }
-   ]
-  },
-  {
    "id": "money\npapa|lost|when we were little",
    "subject": "money\nPapa",
    "verb": "lost",
    "object": "when we were little",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1837,7 +970,7 @@
    "verb": "say",
    "object": "anything about our money",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1848,44 +981,12 @@
    ]
   },
   {
-   "id": "not being|a|boy",
-   "subject": "not being",
-   "verb": "a",
-   "object": "boy",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#7264-7318",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "I can't get over my disappointment in not being a boy."
-    }
-   ]
-  },
-  {
-   "id": "prim as|a|china aster!",
-   "subject": "prim as",
-   "verb": "a",
-   "object": "China Aster!",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#7062-7175",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"I hate to think I've got to grow up, and be Miss March, and wear long gowns, and look as prim as a China Aster!"
-    }
-   ]
-  },
-  {
    "id": "said beth|contentedly|from her corner",
    "subject": "said Beth",
    "verb": "contentedly",
    "object": "from her corner",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1896,44 +997,12 @@
    ]
   },
   {
-   "id": "shaking down|a|chestnut mane",
-   "subject": "shaking down",
-   "verb": "a",
-   "object": "chestnut mane",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6910-7060",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "And if turning up my hair makes me one, I'll wear it in two tails till I'm twenty,\" cried Jo, pulling off her net, and shaking down a chestnut mane."
-    }
-   ]
-  },
-  {
-   "id": "shall get|a|nice box of faber's drawing pencils",
-   "subject": "shall get",
-   "verb": "a",
-   "object": "nice box of Faber's drawing pencils",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#3936-4029",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"I shall get a nice box of Faber's drawing pencils; I really need them,\" said Amy decidedly."
-    }
-   ]
-  },
-  {
    "id": "she didn't|say|\"perhaps never",
    "subject": "She didn't",
    "verb": "say",
    "object": "\"perhaps never",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1944,28 +1013,12 @@
    ]
   },
   {
-   "id": "shoes in|a|gentlemanly manner",
-   "subject": "shoes in",
-   "verb": "a",
-   "object": "gentlemanly manner",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4125-4288",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "Let's each buy what we want, and have a little fun; I'm sure we work hard enough to earn it,\" cried Jo, examining the heels of her shoes in a gentlemanly manner."
-    }
-   ]
-  },
-  {
    "id": "should spend|would|do any good",
    "subject": "should spend",
    "verb": "would",
    "object": "do any good",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1976,28 +1029,12 @@
    ]
   },
   {
-   "id": "spoke for|a|minute",
-   "subject": "spoke for",
-   "verb": "a",
-   "object": "minute",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#2982-3280",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "Nobody spoke for a minute; then Meg said in an altered tone, \"You know the reason Mother proposed not having any presents this Christmas was because it is going to be a hard winter for everyone; and she thinks we ought not to spend money for pleasure, when our men are suffering so in the army."
-    }
-   ]
-  },
-  {
    "id": "the 'mouse'|was|the pet of the family",
    "subject": "the 'Mouse'",
    "verb": "was",
    "object": "the pet of the family",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2008,44 +1045,12 @@
    ]
   },
   {
-   "id": "the december|snow|fell quie",
-   "subject": "the December",
-   "verb": "snow",
-   "object": "fell quie",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#8411-8609",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "As young readers like to know 'how people look', we will take this moment to give them a little sketch of the four sisters, who sat knitting away in the twilight, while the December snow fell quie"
-    }
-   ]
-  },
-  {
-   "id": "the window|or|cry?\"",
-   "subject": "the window",
-   "verb": "or",
-   "object": "cry?\"",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4502-4689",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"How would you like to be shut up for hours with a nervous, fussy old lady, who keeps you trotting, is never satisfied, and worries you till you're ready to fly out the window or cry?\""
-    }
-   ]
-  },
-  {
    "id": "then meg|said|in an altered tone",
    "subject": "then Meg",
    "verb": "said",
    "object": "in an altered tone",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2061,7 +1066,7 @@
    "verb": "is",
    "object": "the worst work in the world",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2077,7 +1082,7 @@
    "verb": "got",
    "object": "to grow up",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2093,7 +1098,7 @@
    "verb": "was",
    "object": "because it is going to be a hard winter for everyone",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2104,44 +1109,12 @@
    ]
   },
   {
-   "id": "those tiresome|children|nearly all day",
-   "subject": "those tiresome",
-   "verb": "children",
-   "object": "nearly all day",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4292-4441",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"I know I do--teaching those tiresome children nearly all day, when I'm longing to enjoy myself at home,\" began Meg, in the complaining tone again."
-    }
-   ]
-  },
-  {
-   "id": "to be|a|girl",
-   "subject": "to be",
-   "verb": "a",
-   "object": "girl",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#7177-7262",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "It's bad enough to be a girl, anyway, when I like boy's games and work and manners!"
-    }
-   ]
-  },
-  {
    "id": "we haven't|got|father",
    "subject": "We haven't",
    "verb": "got",
    "object": "Father",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2157,7 +1130,7 @@
    "verb": "got",
    "object": "a dollar",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2173,7 +1146,7 @@
    "verb": "got",
    "object": "Father and Mother",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2189,7 +1162,7 @@
    "verb": "longing",
    "object": "to enjoy myself at home",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2200,12 +1173,12 @@
    ]
   },
   {
-   "id": "who was|a|bookworm",
-   "subject": "who was",
-   "verb": "a",
-   "object": "bookworm",
+   "id": "who|was|a bookworm",
+   "subject": "who",
+   "verb": "was",
+   "object": "a bookworm",
    "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg514_Little-Women.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2214,95 +1187,10 @@
      "text": "I've wanted it so long,\" said Jo, who was a bookworm."
     }
    ]
-  },
-  {
-   "id": "with\nsuch|a|funny face that both sharp voices softened to a laugh",
-   "subject": "with\nsuch",
-   "verb": "a",
-   "object": "funny face that both sharp voices softened to a laugh",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6378-6549",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"Birds in their little nests agree,\" sang Beth, the peacemaker, with such a funny face that both sharp voices softened to a laugh, and the \"pecking\" ended for that time."
-    }
-   ]
-  },
-  {
-   "id": "with|a|little sigh",
-   "subject": "with",
-   "verb": "a",
-   "object": "little sigh",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#3802-3932",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"I planned to spend mine in new music,\" said Beth, with a little sigh, which no one heard but the hearth brush and kettle-holder."
-    },
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#4882-4964",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "And Beth looked at her rough hands with a sigh that any one could hear that time."
-    }
-   ]
-  },
-  {
-   "id": "you are|a|young lady",
-   "subject": "you are",
-   "verb": "a",
-   "object": "young lady",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6743-6894",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "It didn't matter so much when you were a little girl, but now you are so tall, and turn up your hair, you should remember that you are a young lady.\""
-    }
-   ]
-  },
-  {
-   "id": "you were|a|little girl",
-   "subject": "you were",
-   "verb": "a",
-   "object": "little girl",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#6743-6894",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "It didn't matter so much when you were a little girl, but now you are so tall, and turn up your hair, you should remember that you are a young lady.\""
-    }
-   ]
-  },
-  {
-   "id": "you're|a|dear",
-   "subject": "You're",
-   "verb": "a",
-   "object": "dear",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg514_Little-Women.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg514_Little-Women.txt#8279-8407",
-     "ref": "01-literature-books/gitenberg/pg514_Little-Women.txt",
-     "text": "\"You're a dear, and nothing else,\" answered Meg warmly, and no one contradicted her, for the 'Mouse' was the pet of the family."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:23.727Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:09.196Z"
  }
 }

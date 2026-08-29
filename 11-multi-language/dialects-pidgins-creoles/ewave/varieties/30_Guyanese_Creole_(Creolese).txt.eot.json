@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 15528,
   "bodyOffset": 0,
   "bodyChars": 15528,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 11,
   "distinctReferents": 10,
   "examined": true,
-  "edgesFound": 15,
-  "extractionError": null
+  "edgesFound": 6,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 13
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 6,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 15,
-  "excerptOk": 15,
-  "rawChecked": 15,
-  "rawOk": 15,
+  "excerptChecked": 6,
+  "excerptOk": 6,
+  "rawChecked": 6,
+  "rawOk": 6,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 15,
-  "heard": 15,
+  "offered": 6,
+  "heard": 6,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "subject": "typically developed",
-    "verb": "in",
-    "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#55-321",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "eWAVE variety ID: 30 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,7 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "its native|speakers|was normally very limited",
+    "task_id": "native speakers|was|normally very limited",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,12 +128,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "its native speakers was normally very limited",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "was normally very limited",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,13 +142,13 @@
       "text": "English), while exposure to its native speakers was normally very limited."
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the proportion|of|native (and l2) speakers of english was rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -156,12 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
-    "subject": "the proportion",
-    "verb": "of",
-    "object": "native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,7 +171,7 @@
       "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
      }
     ],
-    "seq": 3,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +191,7 @@
     "verb": "have",
     "object": "become the native language of the majority of the population",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,123 +200,7 @@
       "text": "Many creoles have become the native language of the majority of the population."
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "its native|speakers|as creolese",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "its native speakers as Creolese",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "as Creolese",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#877-1220",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Guyanese Creole, more commonly referred to by its native speakers as Creolese, is the mother tongue of the majority of the over 700, 000 inhabitants of the Republic of Guyana on the north-east shoulder of South America."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mother tongue|of|the majority of the over 700",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mother tongue of the majority of the over 700",
-    "subject": "mother tongue",
-    "verb": "of",
-    "object": "the majority of the over 700",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#877-1220",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Guyanese Creole, more commonly referred to by its native speakers as Creolese, is the mother tongue of the majority of the over 700, 000 inhabitants of the Republic of Guyana on the north-east shoulder of South America."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "000 inhabitants|of|the republic of guyana on the north-east shoulder of south america",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "000 inhabitants of the Republic of Guyana on the north-east shoulder of South America",
-    "subject": "000 inhabitants",
-    "verb": "of",
-    "object": "the Republic of Guyana on the north-east shoulder of South America",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#877-1220",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Guyanese Creole, more commonly referred to by its native speakers as Creolese, is the mother tongue of the majority of the over 700, 000 inhabitants of the Republic of Guyana on the north-east shoulder of South America."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "who live|in|the diaspora communities worldwide",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "who live in the diaspora communities worldwide",
-    "subject": "who live",
-    "verb": "in",
-    "object": "the diaspora communities worldwide",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#1398-1516",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "Additionally, it is spoken by several hundred thousand other Guyanese, who live in the diaspora communities worldwide."
-     }
-    ],
-    "seq": 8,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -335,7 +220,7 @@
     "verb": "has",
     "object": "a high degree of variability",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -344,13 +229,13 @@
       "text": "This language variety has a high degree of variability, primarily caused by ongoing contact with its major contributing lexifier, English."
      }
     ],
-    "seq": 9,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "yoruba|and|dutch",
+    "task_id": "and rickford|have|previously described this language variety as existing on a continuum which has conservative or basilectal guyanese creole on one end and acrolectal standard guyanese english on the other end",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -359,41 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Yoruba and Dutch",
-    "subject": "Yoruba",
-    "verb": "and",
-    "object": "Dutch",
+    "description": "and Rickford have previously described this language variety as existing on a continuum which has conservative or basilectal Guyanese Creole on one end and acrolectal Standard Guyanese English on the other end",
+    "subject": "and Rickford",
+    "verb": "have",
+    "object": "previously described this language variety as existing on a continuum which has conservative or basilectal Guyanese Creole on one end and acrolectal Standard Guyanese English on the other end",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#1656-1768",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "Other contributing languages include Arawak (Lokono), Carib (Karina), Bhojpuri, Akan, Kikongo, Yoruba and Dutch."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as bickerton|and|rickford (1987) have previously described this language variety as existing on a continuum which has conservative or basilectal guyanese creole on one end and acrolectal standard guyanese english on the other end",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as Bickerton and Rickford (1987) have previously described this language variety as existing on a continuum which has conservative or basilectal Guyanese Creole on one end and acrolectal Standard Guyanese English on the other end",
-    "subject": "as Bickerton",
-    "verb": "and",
-    "object": "Rickford (1987) have previously described this language variety as existing on a continuum which has conservative or basilectal Guyanese Creole on one end and acrolectal Standard Guyanese English on the other end",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,99 +258,12 @@
       "text": "Linguists such as Bickerton (1975) and Rickford (1987) have previously described this language variety as existing on a continuum which has conservative or basilectal Guyanese Creole on one end and acrolectal Standard Guyanese English on the other end."
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "number distinctions|in|personal pronouns than simply singular vs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "number distinctions in personal pronouns than simply singular vs",
-    "subject": "number distinctions",
-    "verb": "in",
-    "object": "personal pronouns than simply singular vs",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#4632-5032",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [D] Distinct forms for inclusive/exclusive first person non-singular [D] More number distinctions in personal pronouns than simply singular vs."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "deletion|of|it in non-referential it is-constructions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Deletion of it in non-referential it is-constructions",
-    "subject": "Deletion",
-    "verb": "of",
-    "object": "it in non-referential it is-constructions",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#5033-5567",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "plural [D] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [D] Singular it for plural they in anaphoric use [D] Object pronoun drop [B] Subject pronoun drop: referential pronouns [D] Subject pronoun drop: dummy pronouns [?] Insertion of it where StE favours zero [A] Deletion of it in referential it is-constructions [A] Deletion of it in non-referential it is-constructions"
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "omission|of|genitive suffix",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Omission of genitive suffix",
-    "subject": "Omission",
-    "verb": "of",
-    "object": "genitive suffix",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#5571-7864",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-      "text": "NOUN PHRASE [D] Regularization of plural formation: extension of -s to StE irregular plurals [D] Regularization of plural formation: phonological regularization [D] Plural marking via preposed elements [A] Plural marking via postposed elements [A] Associative plural marked by postposed and them/them all/dem [X] Associative plural marked by other elements [X] Group plurals [A] Different count/mass noun distinctions resulting in use of plural for StE singular [D] Absence of plural marking only after quantifiers [D] Plural marking generally optional : for nouns with human referents [D] Plural marking generally optional: for nouns with non-human referents [D] Double determiners [D] Use of definite article where StE has indefinite article [A] Use of indefinite article where StE has definite article [D] Use of zero article where StE has definite article [A] Use of zero article where StE has indefinite article [D] Use of definite article where StE favours zero [D] Use of indefinite article where StE favours zero [A] Indefinite article one/wan [D] Demonstratives for definite articles [A] Them instead of demonstrative those [B] Yon/yonder indicating remoteness [A] Proximal and distal demonstratives with ʼhereʼ and ʼthereʼ [D] No number distinction in demonstratives [D] Group genitives [D] Existential construction to express possessive [B] Phrases with for + noun to express possession: for-phrase following possessed NP [B] Phrases with for + noun to express possession: for-phrase preceding possessed NP [D] Postnominal phrases with bilong/blong/long/blo to express possession [A] Omission of genitive suffix; possession expressed through bare juxtaposition of nouns [B] Double comparatives and superlatives [B] Regularized comparison strategies: extension of synthetic marking [B] Regularized comparison strategies: extension of analytic marking [D] Much as comparative marker [D] As/to as comparative markers [D] Comparatives and superlatives of participles [D] Comparative marking only with than [D] Comparative marking with more…and [D] Zero marking of degree [D] Attributive adjectival modifiers follow head noun"
-     }
-    ],
-    "seq": 14,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 15,
+  "nextSeq": 6,
   "admits": [
    "NUL",
    "SEG",
@@ -509,28 +278,12 @@
  },
  "folded": [
   {
-   "id": "000 inhabitants|of|the republic of guyana on the north-east shoulder of south america",
-   "subject": "000 inhabitants",
-   "verb": "of",
-   "object": "the Republic of Guyana on the north-east shoulder of South America",
+   "id": "and rickford|have|previously described this language variety as existing on a continuum which has conservative or basilectal guyanese creole on one end and acrolectal standard guyanese english on the other end",
+   "subject": "and Rickford",
+   "verb": "have",
+   "object": "previously described this language variety as existing on a continuum which has conservative or basilectal Guyanese Creole on one end and acrolectal Standard Guyanese English on the other end",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#877-1220",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Guyanese Creole, more commonly referred to by its native speakers as Creolese, is the mother tongue of the majority of the over 700, 000 inhabitants of the Republic of Guyana on the north-east shoulder of South America."
-    }
-   ]
-  },
-  {
-   "id": "as bickerton|and|rickford (1987) have previously described this language variety as existing on a continuum which has conservative or basilectal guyanese creole on one end and acrolectal standard guyanese english on the other end",
-   "subject": "as Bickerton",
-   "verb": "and",
-   "object": "Rickford (1987) have previously described this language variety as existing on a continuum which has conservative or basilectal Guyanese Creole on one end and acrolectal Standard Guyanese English on the other end",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -541,60 +294,12 @@
    ]
   },
   {
-   "id": "deletion|of|it in non-referential it is-constructions",
-   "subject": "Deletion",
-   "verb": "of",
-   "object": "it in non-referential it is-constructions",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#5033-5567",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "plural [D] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [D] Singular it for plural they in anaphoric use [D] Object pronoun drop [B] Subject pronoun drop: referential pronouns [D] Subject pronoun drop: dummy pronouns [?] Insertion of it where StE favours zero [A] Deletion of it in referential it is-constructions [A] Deletion of it in non-referential it is-constructions"
-    }
-   ]
-  },
-  {
-   "id": "its native|speakers|as creolese",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "as Creolese",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#877-1220",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Guyanese Creole, more commonly referred to by its native speakers as Creolese, is the mother tongue of the majority of the over 700, 000 inhabitants of the Republic of Guyana on the north-east shoulder of South America."
-    }
-   ]
-  },
-  {
-   "id": "its native|speakers|was normally very limited",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "was normally very limited",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#462-536",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "English), while exposure to its native speakers was normally very limited."
-    }
-   ]
-  },
-  {
    "id": "language variety|has|a high degree of variability",
    "subject": "language variety",
    "verb": "has",
    "object": "a high degree of variability",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -610,7 +315,7 @@
    "verb": "have",
    "object": "become the native language of the majority of the population",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -621,60 +326,28 @@
    ]
   },
   {
-   "id": "mother tongue|of|the majority of the over 700",
-   "subject": "mother tongue",
-   "verb": "of",
-   "object": "the majority of the over 700",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#877-1220",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#462-536",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Guyanese Creole, more commonly referred to by its native speakers as Creolese, is the mother tongue of the majority of the over 700, 000 inhabitants of the Republic of Guyana on the north-east shoulder of South America."
+     "text": "English), while exposure to its native speakers was normally very limited."
     }
    ]
   },
   {
-   "id": "number distinctions|in|personal pronouns than simply singular vs",
-   "subject": "number distinctions",
-   "verb": "in",
-   "object": "personal pronouns than simply singular vs",
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+   "subject": "of English",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#4632-5032",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [D] Distinct forms for inclusive/exclusive first person non-singular [D] More number distinctions in personal pronouns than simply singular vs."
-    }
-   ]
-  },
-  {
-   "id": "omission|of|genitive suffix",
-   "subject": "Omission",
-   "verb": "of",
-   "object": "genitive suffix",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#5571-7864",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "NOUN PHRASE [D] Regularization of plural formation: extension of -s to StE irregular plurals [D] Regularization of plural formation: phonological regularization [D] Plural marking via preposed elements [A] Plural marking via postposed elements [A] Associative plural marked by postposed and them/them all/dem [X] Associative plural marked by other elements [X] Group plurals [A] Different count/mass noun distinctions resulting in use of plural for StE singular [D] Absence of plural marking only after quantifiers [D] Plural marking generally optional : for nouns with human referents [D] Plural marking generally optional: for nouns with non-human referents [D] Double determiners [D] Use of definite article where StE has indefinite article [A] Use of indefinite article where StE has definite article [D] Use of zero article where StE has definite article [A] Use of zero article where StE has indefinite article [D] Use of definite article where StE favours zero [D] Use of indefinite article where StE favours zero [A] Indefinite article one/wan [D] Demonstratives for definite articles [A] Them instead of demonstrative those [B] Yon/yonder indicating remoteness [A] Proximal and distal demonstratives with ʼhereʼ and ʼthereʼ [D] No number distinction in demonstratives [D] Group genitives [D] Existential construction to express possessive [B] Phrases with for + noun to express possession: for-phrase following possessed NP [B] Phrases with for + noun to express possession: for-phrase preceding possessed NP [D] Postnominal phrases with bilong/blong/long/blo to express possession [A] Omission of genitive suffix; possession expressed through bare juxtaposition of nouns [B] Double comparatives and superlatives [B] Regularized comparison strategies: extension of synthetic marking [B] Regularized comparison strategies: extension of analytic marking [D] Much as comparative marker [D] As/to as comparative markers [D] Comparatives and superlatives of participles [D] Comparative marking only with than [D] Comparative marking with more…and [D] Zero marking of degree [D] Attributive adjectival modifiers follow head noun"
-    }
-   ]
-  },
-  {
-   "id": "the proportion|of|native (and l2) speakers of english was rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
-   "subject": "the proportion",
-   "verb": "of",
-   "object": "native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -690,7 +363,7 @@
    "verb": "was",
    "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -699,58 +372,10 @@
      "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
     }
    ]
-  },
-  {
-   "id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-   "subject": "typically developed",
-   "verb": "in",
-   "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#55-321",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "eWAVE variety ID: 30 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-    }
-   ]
-  },
-  {
-   "id": "who live|in|the diaspora communities worldwide",
-   "subject": "who live",
-   "verb": "in",
-   "object": "the diaspora communities worldwide",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#1398-1516",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "Additionally, it is spoken by several hundred thousand other Guyanese, who live in the diaspora communities worldwide."
-    }
-   ]
-  },
-  {
-   "id": "yoruba|and|dutch",
-   "subject": "Yoruba",
-   "verb": "and",
-   "object": "Dutch",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt#1656-1768",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/30_Guyanese_Creole_(Creolese).txt",
-     "text": "Other contributing languages include Arawak (Lokono), Carib (Karina), Bhojpuri, Akan, Kikongo, Yoruba and Dutch."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:22.240Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:27.682Z"
  }
 }

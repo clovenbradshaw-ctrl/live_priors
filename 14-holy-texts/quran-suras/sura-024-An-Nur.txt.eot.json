@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 38672,
   "bodyOffset": 0,
   "bodyChars": 38672,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 12,
   "distinctReferents": 10,
   "examined": true,
-  "edgesFound": 23,
-  "extractionError": null
+  "edgesFound": 12,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 26,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 38
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 12,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 23,
-  "excerptOk": 23,
-  "rawChecked": 23,
-  "rawOk": 23,
+  "excerptChecked": 12,
+  "excerptOk": 12,
+  "rawChecked": 12,
+  "rawOk": 12,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 23,
-  "heard": 23,
+  "offered": 12,
+  "heard": 12,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "almumineena",
     "object": "The [unmarried] woman or [unmarried] man found guilty of sexual intercourse - lash each one of them with a hundred lashes",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -103,7 +133,7 @@
     "verb": "be",
     "object": "taken by pity for them in the religion of Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -113,35 +143,6 @@
      }
     ],
     "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "should believe|in|allah and the last day",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "should believe in Allah and the Last Day",
-    "subject": "should believe",
-    "verb": "in",
-    "object": "Allah and the Last Day",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#202-1277",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "[24:1] سُورَةٌ أَنزَلۡنَٰهَا وَفَرَضۡنَٰهَا وَأَنزَلۡنَا فِيهَآ ءَايَٰتِۭ بَيِّنَٰتٖ لَّعَلَّكُمۡ تَذَكَّرُونَ Sooratun anzalnaha wafaradnaha waanzalna feeha ayatin bayyinatin laAAallakum tathakkaroona [This is] a surah which We have sent down and made [that within it] obligatory and revealed therein verses of clear evidence that you might remember [24:2] ٱلزَّانِيَةُ وَٱلزَّانِي فَٱجۡلِدُواْ كُلَّ وَٰحِدٖ مِّنۡهُمَا مِاْئَةَ جَلۡدَةٖۖ وَلَا تَأۡخُذۡكُم بِهِمَا رَأۡفَةٞ فِي دِينِ ٱللَّهِ إِن كُنتُمۡ تُؤۡمِنُونَ بِٱللَّهِ وَٱلۡيَوۡمِ ٱلۡأٓخِرِۖ وَلۡيَشۡهَدۡ عَذَابَهُمَا طَآئِفَةٞ مِّنَ ٱلۡمُؤۡمِنِينَ Alzzaniyatu waalzzanee faijlidoo kulla wahidin minhuma miata jaldatin wala takhuthkum bihima rafatun fee deeni Allahi in kuntum tuminoona biAllahi waalyawmi alakhiri walyashhad AAathabahuma taifatun mina almumineena The [unmarried] woman or [unmarried] man found guilty of sexual intercourse - lash each one of them with a hundred lashes, and do not be taken by pity for them in the religion of Allah, if you should believe in Allah and the Last Day."
-     }
-    ],
-    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -161,132 +162,45 @@
     "verb": "almumineena",
     "object": "The fornicator does not marry except a [female] fornicator or polytheist",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#1278-2355",
       "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
       "text": "And let a group of the believers witness their punishment [24:3] ٱلزَّانِي لَا يَنكِحُ إِلَّا زَانِيَةً أَوۡ مُشۡرِكَةٗ وَٱلزَّانِيَةُ لَا يَنكِحُهَآ إِلَّا زَانٍ أَوۡ مُشۡرِكٞۚ وَحُرِّمَ ذَٰلِكَ عَلَى ٱلۡمُؤۡمِنِينَ Alzzanee la yankihu illa zaniyatan aw mushrikatan waalzzaniyatu la yankihuha illa zanin aw mushrikun wahurrima thalika AAala almumineena The fornicator does not marry except a [female] fornicator or polytheist, and none marries her except a fornicator or a polytheist, and that has been made unlawful to the believers [24:4] وَٱلَّذِينَ يَرۡمُونَ ٱلۡمُحۡصَنَٰتِ ثُمَّ لَمۡ يَأۡتُواْ بِأَرۡبَعَةِ شُهَدَآءَ فَٱجۡلِدُوهُمۡ ثَمَٰنِينَ جَلۡدَةٗ وَلَا تَقۡبَلُواْ لَهُمۡ شَهَٰدَةً أَبَدٗاۚ وَأُوْلَـٰٓئِكَ هُمُ ٱلۡفَٰسِقُونَ Waallatheena yarmoona almuhsanati thumma lam yatoo biarbaAAati shuhadaa faijlidoohum thamaneena jaldatan wala taqbaloo lahum shahadatan abadan waolaika humu alfasiqoona And those who accuse chaste women and then do not produce four witnesses - lash them with eighty lashes and do not accept from them testimony ever after."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and|have|no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by allah that indeed",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed",
+    "subject": "and",
+    "verb": "have",
+    "object": "no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed",
+    "witnesses": [
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#2356-4305",
+      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
+      "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
      }
     ],
     "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "humu alfasiqoona|and|those who accuse chaste women and then do not produce four witnesses - lash them with eighty lashes and do not accept from them testimony ever after",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "humu alfasiqoona and those who accuse chaste women and then do not produce four witnesses - lash them with eighty lashes and do not accept from them testimony ever after",
-    "subject": "humu alfasiqoona",
-    "verb": "and",
-    "object": "those who accuse chaste women and then do not produce four witnesses - lash them with eighty lashes and do not accept from them testimony ever after",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#1278-2355",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "And let a group of the believers witness their punishment [24:3] ٱلزَّانِي لَا يَنكِحُ إِلَّا زَانِيَةً أَوۡ مُشۡرِكَةٗ وَٱلزَّانِيَةُ لَا يَنكِحُهَآ إِلَّا زَانٍ أَوۡ مُشۡرِكٞۚ وَحُرِّمَ ذَٰلِكَ عَلَى ٱلۡمُؤۡمِنِينَ Alzzanee la yankihu illa zaniyatan aw mushrikatan waalzzaniyatu la yankihuha illa zanin aw mushrikun wahurrima thalika AAala almumineena The fornicator does not marry except a [female] fornicator or polytheist, and none marries her except a fornicator or a polytheist, and that has been made unlawful to the believers [24:4] وَٱلَّذِينَ يَرۡمُونَ ٱلۡمُحۡصَنَٰتِ ثُمَّ لَمۡ يَأۡتُواْ بِأَرۡبَعَةِ شُهَدَآءَ فَٱجۡلِدُوهُمۡ ثَمَٰنِينَ جَلۡدَةٗ وَلَا تَقۡبَلُواْ لَهُمۡ شَهَٰدَةً أَبَدٗاۚ وَأُوْلَـٰٓئِكَ هُمُ ٱلۡفَٰسِقُونَ Waallatheena yarmoona almuhsanati thumma lam yatoo biarbaAAati shuhadaa faijlidoohum thamaneena jaldatan wala taqbaloo lahum shahadatan abadan waolaika humu alfasiqoona And those who accuse chaste women and then do not produce four witnesses - lash them with eighty lashes and do not accept from them testimony ever after."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "repent thereafter|and|reform",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "repent thereafter and reform",
-    "subject": "repent thereafter",
-    "verb": "and",
-    "object": "reform",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#2356-4305",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lamina alssadiqeena|and|those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by allah that indeed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lamina alssadiqeena and those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed",
-    "subject": "lamina alssadiqeena",
-    "verb": "and",
-    "object": "those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#2356-4305",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alkathibeena\n    but|it|will prevent punishment from her if she gives four testimonies [swearing] by allah that indeed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alkathibeena\n    But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed",
-    "subject": "alkathibeena\n    But",
-    "verb": "it",
-    "object": "will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#2356-4305",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
-     }
-    ],
-    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +220,7 @@
     "verb": "hakeemun",
     "object": "And if not for the favor of Allah upon you and His mercy",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,36 +229,7 @@
       "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not think|it|bad for you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not think it bad for you",
-    "subject": "not think",
-    "verb": "it",
-    "object": "bad for you",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#4872-4927",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "Do not think it bad for you; rather it is good for you."
-     }
-    ],
-    "seq": 9,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -364,7 +249,7 @@
     "verb": "is",
     "object": "good for you",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,7 +258,7 @@
       "text": "Do not think it bad for you; rather it is good for you."
      }
     ],
-    "seq": 10,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +278,7 @@
     "verb": "is",
     "object": "what [punishment] he has earned from the sin",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,65 +287,7 @@
       "text": "For every person among them is what [punishment] he has earned from the sin, and he who took upon himself the greater portion thereof - for him is a great punishment [24:12] لَّوۡلَآ إِذۡ سَمِعۡتُمُوهُ ظَنَّ ٱلۡمُؤۡمِنُونَ وَٱلۡمُؤۡمِنَٰتُ بِأَنفُسِهِمۡ خَيۡرٗا وَقَالُواْ هَٰذَآ إِفۡكٞ مُّبِينٞ Lawla ith samiAAtumoohu thanna almuminoona waalmuminatu bianfusihim khayran waqaloo hatha ifkun mubeenun Why, when you heard it, did not the believing men and believing women think good of one another and say, \"This is an obvious falsehood [24:13] لَّوۡلَا جَآءُو عَلَيۡهِ بِأَرۡبَعَةِ شُهَدَآءَۚ فَإِذۡ لَمۡ يَأۡتُواْ بِٱلشُّهَدَآءِ فَأُوْلَـٰٓئِكَ عِندَ ٱللَّهِ هُمُ ٱلۡكَٰذِبُونَ Lawla jaoo AAalayhi biarbaAAati shuhadaa faith lam yatoo bialshshuhadai faolaika AAinda Allahi humu alkathiboona Why did they [who slandered] not produce for it four witnesses?"
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "believing men|and|believing women think good of one another and say",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "believing men and believing women think good of one another and say",
-    "subject": "believing men",
-    "verb": "and",
-    "object": "believing women think good of one another and say",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#4928-5804",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "For every person among them is what [punishment] he has earned from the sin, and he who took upon himself the greater portion thereof - for him is a great punishment [24:12] لَّوۡلَآ إِذۡ سَمِعۡتُمُوهُ ظَنَّ ٱلۡمُؤۡمِنُونَ وَٱلۡمُؤۡمِنَٰتُ بِأَنفُسِهِمۡ خَيۡرٗا وَقَالُواْ هَٰذَآ إِفۡكٞ مُّبِينٞ Lawla ith samiAAtumoohu thanna almuminoona waalmuminatu bianfusihim khayran waqaloo hatha ifkun mubeenun Why, when you heard it, did not the believing men and believing women think good of one another and say, \"This is an obvious falsehood [24:13] لَّوۡلَا جَآءُو عَلَيۡهِ بِأَرۡبَعَةِ شُهَدَآءَۚ فَإِذۡ لَمۡ يَأۡتُواْ بِٱلشُّهَدَآءِ فَأُوْلَـٰٓئِكَ عِندَ ٱللَّهِ هُمُ ٱلۡكَٰذِبُونَ Lawla jaoo AAalayhi biarbaAAati shuhadaa faith lam yatoo bialshshuhadai faolaika AAinda Allahi humu alkathiboona Why did they [who slandered] not produce for it four witnesses?"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "produce for|it|four witnesses?",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "produce for it four witnesses?",
-    "subject": "produce for",
-    "verb": "it",
-    "object": "four witnesses?",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#4928-5804",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "For every person among them is what [punishment] he has earned from the sin, and he who took upon himself the greater portion thereof - for him is a great punishment [24:12] لَّوۡلَآ إِذۡ سَمِعۡتُمُوهُ ظَنَّ ٱلۡمُؤۡمِنُونَ وَٱلۡمُؤۡمِنَٰتُ بِأَنفُسِهِمۡ خَيۡرٗا وَقَالُواْ هَٰذَآ إِفۡكٞ مُّبِينٞ Lawla ith samiAAtumoohu thanna almuminoona waalmuminatu bianfusihim khayran waqaloo hatha ifkun mubeenun Why, when you heard it, did not the believing men and believing women think good of one another and say, \"This is an obvious falsehood [24:13] لَّوۡلَا جَآءُو عَلَيۡهِ بِأَرۡبَعَةِ شُهَدَآءَۚ فَإِذۡ لَمۡ يَأۡتُواْ بِٱلشُّهَدَآءِ فَأُوْلَـٰٓئِكَ عِندَ ٱللَّهِ هُمُ ٱلۡكَٰذِبُونَ Lawla jaoo AAalayhi biarbaAAati shuhadaa faith lam yatoo bialshshuhadai faolaika AAinda Allahi humu alkathiboona Why did they [who slandered] not produce for it four witnesses?"
-     }
-    ],
-    "seq": 13,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -480,7 +307,7 @@
     "verb": "is",
     "object": "they",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -489,123 +316,7 @@
       "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the sight|of|allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the sight of Allah",
-    "subject": "the sight",
-    "verb": "of",
-    "object": "Allah",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#5805-7185",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "aaathabun aaatheemun|and|if it had not been for the favor of allah upon you and his mercy in this world and the hereafter",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "AAathabun AAatheemun and if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter",
-    "subject": "AAathabun AAatheemun",
-    "verb": "and",
-    "object": "if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#5805-7185",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you received|it|with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was",
-    "subject": "you received",
-    "verb": "it",
-    "object": "with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#5805-7185",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "buhtanun aaatheemun|and|why",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "buhtanun AAatheemun and why",
-    "subject": "buhtanun AAatheemun",
-    "verb": "and",
-    "object": "why",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#5805-7185",
-      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-      "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
-     }
-    ],
-    "seq": 18,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -625,7 +336,7 @@
     "verb": "is",
     "object": "not for us to speak of this",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -634,7 +345,7 @@
       "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
      }
     ],
-    "seq": 19,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -654,7 +365,7 @@
     "verb": "warns",
     "object": "you against returning to the likes of this [conduct]",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -663,7 +374,7 @@
       "text": "Exalted are You, [O Allah]; this is a great slander [24:17] يَعِظُكُمُ ٱللَّهُ أَن تَعُودُواْ لِمِثۡلِهِۦٓ أَبَدًا إِن كُنتُم مُّؤۡمِنِينَ YaAAithukumu Allahu an taAAoodoo limithlihi abadan in kuntum mumineena Allah warns you against returning to the likes of this [conduct], ever, if you should be believers [24:18] وَيُبَيِّنُ ٱللَّهُ لَكُمُ ٱلۡأٓيَٰتِۚ وَٱللَّهُ عَلِيمٌ حَكِيمٌ Wayubayyinu Allahu lakumu alayati waAllahu AAaleemun hakeemun And Allah makes clear to you the verses, and Allah is Knowing and Wise [24:19] إِنَّ ٱلَّذِينَ يُحِبُّونَ أَن تَشِيعَ ٱلۡفَٰحِشَةُ فِي ٱلَّذِينَ ءَامَنُواْ لَهُمۡ عَذَابٌ أَلِيمٞ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِۚ وَٱللَّهُ يَعۡلَمُ وَأَنتُمۡ لَا تَعۡلَمُونَ Inna allatheena yuhibboona an tasheeAAa alfahishatu fee allatheena amanoo lahum AAathabun aleemu"
      }
     ],
-    "seq": 20,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -683,7 +394,7 @@
     "verb": "hakeemun",
     "object": "And Allah makes clear to you the verses",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -692,7 +403,7 @@
       "text": "Exalted are You, [O Allah]; this is a great slander [24:17] يَعِظُكُمُ ٱللَّهُ أَن تَعُودُواْ لِمِثۡلِهِۦٓ أَبَدًا إِن كُنتُم مُّؤۡمِنِينَ YaAAithukumu Allahu an taAAoodoo limithlihi abadan in kuntum mumineena Allah warns you against returning to the likes of this [conduct], ever, if you should be believers [24:18] وَيُبَيِّنُ ٱللَّهُ لَكُمُ ٱلۡأٓيَٰتِۚ وَٱللَّهُ عَلِيمٌ حَكِيمٌ Wayubayyinu Allahu lakumu alayati waAllahu AAaleemun hakeemun And Allah makes clear to you the verses, and Allah is Knowing and Wise [24:19] إِنَّ ٱلَّذِينَ يُحِبُّونَ أَن تَشِيعَ ٱلۡفَٰحِشَةُ فِي ٱلَّذِينَ ءَامَنُواْ لَهُمۡ عَذَابٌ أَلِيمٞ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِۚ وَٱللَّهُ يَعۡلَمُ وَأَنتُمۡ لَا تَعۡلَمُونَ Inna allatheena yuhibboona an tasheeAAa alfahishatu fee allatheena amanoo lahum AAathabun aleemu"
      }
     ],
-    "seq": 21,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -712,7 +423,7 @@
     "verb": "allatheena",
     "object": "yuhibboona an tasheeAAa alfahishatu fee allatheena amanoo lahum AAathabun aleemu",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -721,12 +432,12 @@
       "text": "Exalted are You, [O Allah]; this is a great slander [24:17] يَعِظُكُمُ ٱللَّهُ أَن تَعُودُواْ لِمِثۡلِهِۦٓ أَبَدًا إِن كُنتُم مُّؤۡمِنِينَ YaAAithukumu Allahu an taAAoodoo limithlihi abadan in kuntum mumineena Allah warns you against returning to the likes of this [conduct], ever, if you should be believers [24:18] وَيُبَيِّنُ ٱللَّهُ لَكُمُ ٱلۡأٓيَٰتِۚ وَٱللَّهُ عَلِيمٌ حَكِيمٌ Wayubayyinu Allahu lakumu alayati waAllahu AAaleemun hakeemun And Allah makes clear to you the verses, and Allah is Knowing and Wise [24:19] إِنَّ ٱلَّذِينَ يُحِبُّونَ أَن تَشِيعَ ٱلۡفَٰحِشَةُ فِي ٱلَّذِينَ ءَامَنُواْ لَهُمۡ عَذَابٌ أَلِيمٞ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِۚ وَٱللَّهُ يَعۡلَمُ وَأَنتُمۡ لَا تَعۡلَمُونَ Inna allatheena yuhibboona an tasheeAAa alfahishatu fee allatheena amanoo lahum AAathabun aleemu"
      }
     ],
-    "seq": 22,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 23,
+  "nextSeq": 12,
   "admits": [
    "NUL",
    "SEG",
@@ -741,44 +452,12 @@
  },
  "folded": [
   {
-   "id": "aaathabun aaatheemun|and|if it had not been for the favor of allah upon you and his mercy in this world and the hereafter",
-   "subject": "AAathabun AAatheemun",
-   "verb": "and",
-   "object": "if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#5805-7185",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
-    }
-   ]
-  },
-  {
-   "id": "alkathibeena\n    but|it|will prevent punishment from her if she gives four testimonies [swearing] by allah that indeed",
-   "subject": "alkathibeena\n    But",
-   "verb": "it",
-   "object": "will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#2356-4305",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
-    }
-   ]
-  },
-  {
    "id": "allaha tawwabun|hakeemun|and if not for the favor of allah upon you and his mercy",
    "subject": "Allaha tawwabun",
    "verb": "hakeemun",
    "object": "And if not for the favor of Allah upon you and His mercy",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -794,7 +473,7 @@
    "verb": "is",
    "object": "what [punishment] he has earned from the sin",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -805,34 +484,18 @@
    ]
   },
   {
-   "id": "believing men|and|believing women think good of one another and say",
-   "subject": "believing men",
-   "verb": "and",
-   "object": "believing women think good of one another and say",
+   "id": "and|have|no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by allah that indeed",
+   "subject": "and",
+   "verb": "have",
+   "object": "no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#4928-5804",
+     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#2356-4305",
      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "For every person among them is what [punishment] he has earned from the sin, and he who took upon himself the greater portion thereof - for him is a great punishment [24:12] لَّوۡلَآ إِذۡ سَمِعۡتُمُوهُ ظَنَّ ٱلۡمُؤۡمِنُونَ وَٱلۡمُؤۡمِنَٰتُ بِأَنفُسِهِمۡ خَيۡرٗا وَقَالُواْ هَٰذَآ إِفۡكٞ مُّبِينٞ Lawla ith samiAAtumoohu thanna almuminoona waalmuminatu bianfusihim khayran waqaloo hatha ifkun mubeenun Why, when you heard it, did not the believing men and believing women think good of one another and say, \"This is an obvious falsehood [24:13] لَّوۡلَا جَآءُو عَلَيۡهِ بِأَرۡبَعَةِ شُهَدَآءَۚ فَإِذۡ لَمۡ يَأۡتُواْ بِٱلشُّهَدَآءِ فَأُوْلَـٰٓئِكَ عِندَ ٱللَّهِ هُمُ ٱلۡكَٰذِبُونَ Lawla jaoo AAalayhi biarbaAAati shuhadaa faith lam yatoo bialshshuhadai faolaika AAinda Allahi humu alkathiboona Why did they [who slandered] not produce for it four witnesses?"
-    }
-   ]
-  },
-  {
-   "id": "buhtanun aaatheemun|and|why",
-   "subject": "buhtanun AAatheemun",
-   "verb": "and",
-   "object": "why",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#5805-7185",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
+     "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
     }
    ]
   },
@@ -842,7 +505,7 @@
    "verb": "be",
    "object": "taken by pity for them in the religion of Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -853,28 +516,12 @@
    ]
   },
   {
-   "id": "humu alfasiqoona|and|those who accuse chaste women and then do not produce four witnesses - lash them with eighty lashes and do not accept from them testimony ever after",
-   "subject": "humu alfasiqoona",
-   "verb": "and",
-   "object": "those who accuse chaste women and then do not produce four witnesses - lash them with eighty lashes and do not accept from them testimony ever after",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#1278-2355",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "And let a group of the believers witness their punishment [24:3] ٱلزَّانِي لَا يَنكِحُ إِلَّا زَانِيَةً أَوۡ مُشۡرِكَةٗ وَٱلزَّانِيَةُ لَا يَنكِحُهَآ إِلَّا زَانٍ أَوۡ مُشۡرِكٞۚ وَحُرِّمَ ذَٰلِكَ عَلَى ٱلۡمُؤۡمِنِينَ Alzzanee la yankihu illa zaniyatan aw mushrikatan waalzzaniyatu la yankihuha illa zanin aw mushrikun wahurrima thalika AAala almumineena The fornicator does not marry except a [female] fornicator or polytheist, and none marries her except a fornicator or a polytheist, and that has been made unlawful to the believers [24:4] وَٱلَّذِينَ يَرۡمُونَ ٱلۡمُحۡصَنَٰتِ ثُمَّ لَمۡ يَأۡتُواْ بِأَرۡبَعَةِ شُهَدَآءَ فَٱجۡلِدُوهُمۡ ثَمَٰنِينَ جَلۡدَةٗ وَلَا تَقۡبَلُواْ لَهُمۡ شَهَٰدَةً أَبَدٗاۚ وَأُوْلَـٰٓئِكَ هُمُ ٱلۡفَٰسِقُونَ Waallatheena yarmoona almuhsanati thumma lam yatoo biarbaAAati shuhadaa faijlidoohum thamaneena jaldatan wala taqbaloo lahum shahadatan abadan waolaika humu alfasiqoona And those who accuse chaste women and then do not produce four witnesses - lash them with eighty lashes and do not accept from them testimony ever after."
-    }
-   ]
-  },
-  {
    "id": "inna|allatheena|yuhibboona an tasheeaaa alfahishatu fee allatheena amanoo lahum aaathabun aleemu",
    "subject": "Inna",
    "verb": "allatheena",
    "object": "yuhibboona an tasheeAAa alfahishatu fee allatheena amanoo lahum AAathabun aleemu",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -890,7 +537,7 @@
    "verb": "is",
    "object": "not for us to speak of this",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -901,28 +548,12 @@
    ]
   },
   {
-   "id": "lamina alssadiqeena|and|those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by allah that indeed",
-   "subject": "lamina alssadiqeena",
-   "verb": "and",
-   "object": "those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#2356-4305",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
-    }
-   ]
-  },
-  {
    "id": "mumineena\n    allah|warns|you against returning to the likes of this [conduct]",
    "subject": "mumineena\n    Allah",
    "verb": "warns",
    "object": "you against returning to the likes of this [conduct]",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -933,82 +564,18 @@
    ]
   },
   {
-   "id": "not think|it|bad for you",
-   "subject": "not think",
-   "verb": "it",
-   "object": "bad for you",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#4872-4927",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "Do not think it bad for you; rather it is good for you."
-    }
-   ]
-  },
-  {
-   "id": "produce for|it|four witnesses?",
-   "subject": "produce for",
-   "verb": "it",
-   "object": "four witnesses?",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#4928-5804",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "For every person among them is what [punishment] he has earned from the sin, and he who took upon himself the greater portion thereof - for him is a great punishment [24:12] لَّوۡلَآ إِذۡ سَمِعۡتُمُوهُ ظَنَّ ٱلۡمُؤۡمِنُونَ وَٱلۡمُؤۡمِنَٰتُ بِأَنفُسِهِمۡ خَيۡرٗا وَقَالُواْ هَٰذَآ إِفۡكٞ مُّبِينٞ Lawla ith samiAAtumoohu thanna almuminoona waalmuminatu bianfusihim khayran waqaloo hatha ifkun mubeenun Why, when you heard it, did not the believing men and believing women think good of one another and say, \"This is an obvious falsehood [24:13] لَّوۡلَا جَآءُو عَلَيۡهِ بِأَرۡبَعَةِ شُهَدَآءَۚ فَإِذۡ لَمۡ يَأۡتُواْ بِٱلشُّهَدَآءِ فَأُوْلَـٰٓئِكَ عِندَ ٱللَّهِ هُمُ ٱلۡكَٰذِبُونَ Lawla jaoo AAalayhi biarbaAAati shuhadaa faith lam yatoo bialshshuhadai faolaika AAinda Allahi humu alkathiboona Why did they [who slandered] not produce for it four witnesses?"
-    }
-   ]
-  },
-  {
    "id": "rather it|is|good for you",
    "subject": "rather it",
    "verb": "is",
    "object": "good for you",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#4872-4927",
      "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
      "text": "Do not think it bad for you; rather it is good for you."
-    }
-   ]
-  },
-  {
-   "id": "repent thereafter|and|reform",
-   "subject": "repent thereafter",
-   "verb": "and",
-   "object": "reform",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#2356-4305",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "And those are the defiantly disobedient [24:5] إِلَّا ٱلَّذِينَ تَابُواْ مِنۢ بَعۡدِ ذَٰلِكَ وَأَصۡلَحُواْ فَإِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ Illa allatheena taboo min baAAdi thalika waaslahoo fainna Allaha ghafoorun raheemun Except for those who repent thereafter and reform, for indeed, Allah is Forgiving and Merciful [24:6] وَٱلَّذِينَ يَرۡمُونَ أَزۡوَٰجَهُمۡ وَلَمۡ يَكُن لَّهُمۡ شُهَدَآءُ إِلَّآ أَنفُسُهُمۡ فَشَهَٰدَةُ أَحَدِهِمۡ أَرۡبَعُ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلصَّـٰدِقِينَ Waallatheena yarmoona azwajahum walam yakun lahum shuhadao illa anfusuhum fashahadatu ahadihim arbaAAu shahadatin biAllahi innahu lamina alssadiqeena And those who accuse their wives [of adultery] and have no witnesses except themselves - then the witness of one of them [shall be] four testimonies [swearing] by Allah that indeed, he is of the truthful [24:7] وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ Waalkhamisatu anna laAAnata Allahi AAalayhi in kana mina alkathibeena And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars [24:8] وَيَدۡرَؤُاْ عَنۡهَا ٱلۡعَذَابَ أَن تَشۡهَدَ أَرۡبَعَ شَهَٰدَٰتِۭ بِٱللَّهِ إِنَّهُۥ لَمِنَ ٱلۡكَٰذِبِينَ Wayadrao AAanha alAAathaba an tashhada arbaAAa shahadatin biAllahi innahu lamina alkathibeena But it will prevent punishment from her if she gives four testimonies [swearing] by Allah that indeed, he is of the liars [24:9] وَٱلۡخَٰمِسَةَ أَنَّ غَضَبَ ٱللَّهِ عَلَيۡهَآ إِن كَانَ مِنَ ٱلصَّـٰدِقِينَ Waalkhamisata anna ghadaba Allahi AAalayha in kana mina alssadiqeena And the fifth [oath will be] that the wrath of Allah be upon her if he was of the truthful [24:10] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ وَأَنَّ ٱللَّهَ تَوَّابٌ حَكِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu waanna Allaha tawwabun hakeemun And if not for the favor of Allah upon you and His mercy..."
-    }
-   ]
-  },
-  {
-   "id": "should believe|in|allah and the last day",
-   "subject": "should believe",
-   "verb": "in",
-   "object": "Allah and the Last Day",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#202-1277",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "[24:1] سُورَةٌ أَنزَلۡنَٰهَا وَفَرَضۡنَٰهَا وَأَنزَلۡنَا فِيهَآ ءَايَٰتِۭ بَيِّنَٰتٖ لَّعَلَّكُمۡ تَذَكَّرُونَ Sooratun anzalnaha wafaradnaha waanzalna feeha ayatin bayyinatin laAAallakum tathakkaroona [This is] a surah which We have sent down and made [that within it] obligatory and revealed therein verses of clear evidence that you might remember [24:2] ٱلزَّانِيَةُ وَٱلزَّانِي فَٱجۡلِدُواْ كُلَّ وَٰحِدٖ مِّنۡهُمَا مِاْئَةَ جَلۡدَةٖۖ وَلَا تَأۡخُذۡكُم بِهِمَا رَأۡفَةٞ فِي دِينِ ٱللَّهِ إِن كُنتُمۡ تُؤۡمِنُونَ بِٱللَّهِ وَٱلۡيَوۡمِ ٱلۡأٓخِرِۖ وَلۡيَشۡهَدۡ عَذَابَهُمَا طَآئِفَةٞ مِّنَ ٱلۡمُؤۡمِنِينَ Alzzaniyatu waalzzanee faijlidoo kulla wahidin minhuma miata jaldatin wala takhuthkum bihima rafatun fee deeni Allahi in kuntum tuminoona biAllahi waalyawmi alakhiri walyashhad AAathabahuma taifatun mina almumineena The [unmarried] woman or [unmarried] man found guilty of sexual intercourse - lash each one of them with a hundred lashes, and do not be taken by pity for them in the religion of Allah, if you should believe in Allah and the Last Day."
     }
    ]
   },
@@ -1018,7 +585,7 @@
    "verb": "almumineena",
    "object": "The [unmarried] woman or [unmarried] man found guilty of sexual intercourse - lash each one of them with a hundred lashes",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1034,7 +601,7 @@
    "verb": "almumineena",
    "object": "The fornicator does not marry except a [female] fornicator or polytheist",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1045,28 +612,12 @@
    ]
   },
   {
-   "id": "the sight|of|allah",
-   "subject": "the sight",
-   "verb": "of",
-   "object": "Allah",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#5805-7185",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
-    }
-   ]
-  },
-  {
    "id": "then it|is|they",
    "subject": "then it",
    "verb": "is",
    "object": "they",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1082,7 +633,7 @@
    "verb": "hakeemun",
    "object": "And Allah makes clear to you the verses",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1091,26 +642,10 @@
      "text": "Exalted are You, [O Allah]; this is a great slander [24:17] يَعِظُكُمُ ٱللَّهُ أَن تَعُودُواْ لِمِثۡلِهِۦٓ أَبَدًا إِن كُنتُم مُّؤۡمِنِينَ YaAAithukumu Allahu an taAAoodoo limithlihi abadan in kuntum mumineena Allah warns you against returning to the likes of this [conduct], ever, if you should be believers [24:18] وَيُبَيِّنُ ٱللَّهُ لَكُمُ ٱلۡأٓيَٰتِۚ وَٱللَّهُ عَلِيمٌ حَكِيمٌ Wayubayyinu Allahu lakumu alayati waAllahu AAaleemun hakeemun And Allah makes clear to you the verses, and Allah is Knowing and Wise [24:19] إِنَّ ٱلَّذِينَ يُحِبُّونَ أَن تَشِيعَ ٱلۡفَٰحِشَةُ فِي ٱلَّذِينَ ءَامَنُواْ لَهُمۡ عَذَابٌ أَلِيمٞ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِۚ وَٱللَّهُ يَعۡلَمُ وَأَنتُمۡ لَا تَعۡلَمُونَ Inna allatheena yuhibboona an tasheeAAa alfahishatu fee allatheena amanoo lahum AAathabun aleemu"
     }
    ]
-  },
-  {
-   "id": "you received|it|with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was",
-   "subject": "you received",
-   "verb": "it",
-   "object": "with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-024-An-Nur.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-024-An-Nur.txt#5805-7185",
-     "ref": "14-holy-texts/quran-suras/sura-024-An-Nur.txt",
-     "text": "And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars [24:14] وَلَوۡلَا فَضۡلُ ٱللَّهِ عَلَيۡكُمۡ وَرَحۡمَتُهُۥ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِ لَمَسَّكُمۡ فِي مَآ أَفَضۡتُمۡ فِيهِ عَذَابٌ عَظِيمٌ Walawla fadlu Allahi AAalaykum warahmatuhu fee alddunya waalakhirati lamassakum fee ma afadtum feehi AAathabun AAatheemun And if it had not been for the favor of Allah upon you and His mercy in this world and the Hereafter, you would have been touched for that [lie] in which you were involved by a great punishment [24:15] إِذۡ تَلَقَّوۡنَهُۥ بِأَلۡسِنَتِكُمۡ وَتَقُولُونَ بِأَفۡوَاهِكُم مَّا لَيۡسَ لَكُم بِهِۦ عِلۡمٞ وَتَحۡسَبُونَهُۥ هَيِّنٗا وَهُوَ عِندَ ٱللَّهِ عَظِيمٞ Ith talaqqawnahu bialsinatikum wataqooloona biafwahikum ma laysa lakum bihi AAilmun watahsaboonahu hayyinan wahuwa AAinda Allahi AAatheemun When you received it with your tongues and said with your mouths that of which you had no knowledge and thought it was insignificant while it was, in the sight of Allah, tremendous [24:16] وَلَوۡلَآ إِذۡ سَمِعۡتُمُوهُ قُلۡتُم مَّا يَكُونُ لَنَآ أَن نَّتَكَلَّمَ بِهَٰذَا سُبۡحَٰنَكَ هَٰذَا بُهۡتَٰنٌ عَظِيمٞ Walawla ith samiAAtumoohu qultum ma yakoonu lana an natakallama bihatha subhanaka hatha buhtanun AAatheemun And why, when you heard it, did you not say, \"It is not for us to speak of this."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:44.090Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:44.447Z"
  }
 }

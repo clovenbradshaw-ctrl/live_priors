@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 20889,
   "bodyOffset": 0,
   "bodyChars": 20889,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 14,
   "distinctReferents": 13,
   "examined": true,
-  "edgesFound": 42,
-  "extractionError": null
+  "edgesFound": 15,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 18,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 31
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 15,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 44,
-  "excerptOk": 44,
-  "rawChecked": 44,
-  "rawOk": 44,
+  "excerptChecked": 15,
+  "excerptOk": 15,
+  "rawChecked": 15,
+  "rawOk": 15,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 42,
-  "heard": 42,
+  "offered": 15,
+  "heard": 15,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "background\n    polynesians|from|tahiti were probably the first people to settle rarotonga -- the largest of the cook islands -- around a",
+    "task_id": "from tahiti|were|probably the first people to settle rarotonga -- the largest of the cook islands -- around a",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Background\n    Polynesians from Tahiti were probably the first people to settle Rarotonga -- the largest of the Cook Islands -- around A",
-    "subject": "Background\n    Polynesians",
-    "verb": "from",
-    "object": "Tahiti were probably the first people to settle Rarotonga -- the largest of the Cook Islands -- around A",
+    "description": "from Tahiti were probably the first people to settle Rarotonga -- the largest of the Cook Islands -- around A",
+    "subject": "from Tahiti",
+    "verb": "were",
+    "object": "probably the first people to settle Rarotonga -- the largest of the Cook Islands -- around A",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "samoans|and|tongans also settled in rarotonga",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Samoans and Tongans also settled in Rarotonga",
-    "subject": "Samoans",
-    "verb": "and",
-    "object": "Tongans also settled in Rarotonga",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#295-439",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "Over time, Samoans and Tongans also settled in Rarotonga, and Rarotongans voyaged to the northern Cook Islands, settling Manihiki and Rakahanga."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "voyaged",
     "object": "to the northern Cook Islands",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,13 +142,13 @@
       "text": "Over time, Samoans and Tongans also settled in Rarotonga, and Rarotongans voyaged to the northern Cook Islands, settling Manihiki and Rakahanga."
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "settling manihiki|and|rakahanga",
+    "task_id": "cook islands|were|settled directly from samoa",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -156,41 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "settling Manihiki and Rakahanga",
-    "subject": "settling Manihiki",
-    "verb": "and",
-    "object": "Rakahanga",
+    "description": "Cook Islands were settled directly from Samoa",
+    "subject": "Cook Islands",
+    "verb": "were",
+    "object": "settled directly from Samoa",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#295-439",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "Over time, Samoans and Tongans also settled in Rarotonga, and Rarotongans voyaged to the northern Cook Islands, settling Manihiki and Rakahanga."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "pukapuka|and|penrhyn in the northern cook islands were settled directly from samoa",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Pukapuka and Penrhyn in the northern Cook Islands were settled directly from Samoa",
-    "subject": "Pukapuka",
-    "verb": "and",
-    "object": "Penrhyn in the northern Cook Islands were settled directly from Samoa",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,65 +171,7 @@
       "text": "Pukapuka and Penrhyn in the northern Cook Islands were settled directly from Samoa."
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prior|to|european contact",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Prior to European contact",
-    "subject": "Prior",
-    "verb": "to",
-    "object": "European contact",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#524-702",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "Prior to European contact, there was considerable travel and trade between inhabitants of the different islands and atolls, but they were not united in a single political entity."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "considerable travel|and|trade between inhabitants of the different islands and atolls",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "considerable travel and trade between inhabitants of the different islands and atolls",
-    "subject": "considerable travel",
-    "verb": "and",
-    "object": "trade between inhabitants of the different islands and atolls",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#524-702",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "Prior to European contact, there was considerable travel and trade between inhabitants of the different islands and atolls, but they were not united in a single political entity."
-     }
-    ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -277,7 +191,7 @@
     "verb": "were",
     "object": "not united in a single political entity",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -286,7 +200,7 @@
       "text": "Prior to European contact, there was considerable travel and trade between inhabitants of the different islands and atolls, but they were not united in a single political entity."
      }
     ],
-    "seq": 7,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +220,7 @@
     "verb": "were",
     "object": "the first Europeans to spot the northern Cook Islands in 1595",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,36 +229,7 @@
       "text": "Spanish navigators were the first Europeans to spot the northern Cook Islands in 1595, followed by the first landing in 1606, but no further European contact occurred until the 1760s."
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "first landing|in|1606",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "first landing in 1606",
-    "subject": "first landing",
-    "verb": "in",
-    "object": "1606",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#703-886",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "Spanish navigators were the first Europeans to spot the northern Cook Islands in 1595, followed by the first landing in 1606, but no further European contact occurred until the 1760s."
-     }
-    ],
-    "seq": 9,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -364,7 +249,7 @@
     "verb": "contact",
     "object": "occurred until the 1760s",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,7 +258,7 @@
       "text": "Spanish navigators were the first Europeans to spot the northern Cook Islands in 1595, followed by the first landing in 1606, but no further European contact occurred until the 1760s."
      }
     ],
-    "seq": 10,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +278,7 @@
     "verb": "explorer",
     "object": "James COOK spotted Manuae in the southern Cook Islands",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,7 +287,7 @@
       "text": "In 1773, British explorer James COOK spotted Manuae in the southern Cook Islands, and Russian mapmakers named the islands after COOK in the 1820s."
      }
     ],
-    "seq": 11,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -422,7 +307,7 @@
     "verb": "mapmakers",
     "object": "named the islands after COOK in the 1820s",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,7 +316,7 @@
       "text": "In 1773, British explorer James COOK spotted Manuae in the southern Cook Islands, and Russian mapmakers named the islands after COOK in the 1820s."
      }
     ],
-    "seq": 12,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +336,7 @@
     "verb": "would",
     "object": "militarily occupy the islands as it did in Tahiti",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,7 +345,7 @@
       "text": "<br><br>Fearing France would militarily occupy the islands as it did in Tahiti, Rarotongans asked the UK for protectorate status in the 1840s and 1860s, a request the UK ignored."
      }
     ],
-    "seq": 13,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -480,7 +365,7 @@
     "verb": "asked",
     "object": "the UK for protectorate status in the 1840s and 1860s",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -489,65 +374,7 @@
       "text": "<br><br>Fearing France would militarily occupy the islands as it did in Tahiti, Rarotongans asked the UK for protectorate status in the 1840s and 1860s, a request the UK ignored."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "makea takau|of|rarotonga formally petitioned for protectorate status",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "MAKEA TAKAU of Rarotonga formally petitioned for protectorate status",
-    "subject": "MAKEA TAKAU",
-    "verb": "of",
-    "object": "Rarotonga formally petitioned for protectorate status",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1213-1333",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "In 1888, Queen MAKEA TAKAU of Rarotonga formally petitioned for protectorate status, to which the UK reluctantly agreed."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the uk|reluctantly|agreed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the UK reluctantly agreed",
-    "subject": "the UK",
-    "verb": "reluctantly",
-    "object": "agreed",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1213-1333",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "In 1888, Queen MAKEA TAKAU of Rarotonga formally petitioned for protectorate status, to which the UK reluctantly agreed."
-     }
-    ],
-    "seq": 16,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -567,7 +394,7 @@
     "verb": "placed",
     "object": "Rarotonga and the rest of the islands in the New Zealand Colony",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -576,65 +403,7 @@
       "text": "In 1901, the UK placed Rarotonga and the rest of the islands in the New Zealand Colony, and in 1915, the Cook Islands Act organized the islands into one political entity."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|in|1915",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and in 1915",
-    "subject": "and",
-    "verb": "in",
-    "object": "1915",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1334-1504",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "In 1901, the UK placed Rarotonga and the rest of the islands in the New Zealand Colony, and in 1915, the Cook Islands Act organized the islands into one political entity."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "islands act|organized|the islands into one political entity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Islands Act organized the islands into one political entity",
-    "subject": "Islands Act",
-    "verb": "organized",
-    "object": "the islands into one political entity",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1334-1504",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "In 1901, the UK placed Rarotonga and the rest of the islands in the New Zealand Colony, and in 1915, the Cook Islands Act organized the islands into one political entity."
-     }
-    ],
-    "seq": 19,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -654,7 +423,7 @@
     "verb": "granted",
     "object": "the Cook Islands self-governing status",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -663,7 +432,7 @@
       "text": "It remained a protectorate until 1965, when New Zealand granted the Cook Islands self-governing status."
      }
     ],
-    "seq": 20,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -683,7 +452,7 @@
     "verb": "has",
     "object": "a great deal of local autonomy and is an independent member of international organizations",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -692,65 +461,7 @@
       "text": "The Cook Islands has a great deal of local autonomy and is an independent member of international organizations, but it is in free association with New Zealand, which is responsible for its defense and foreign affairs."
      }
     ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it is|in|free association with new zealand",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "it is in free association with New Zealand",
-    "subject": "it is",
-    "verb": "in",
-    "object": "free association with New Zealand",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1609-1827",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "The Cook Islands has a great deal of local autonomy and is an independent member of international organizations, but it is in free association with New Zealand, which is responsible for its defense and foreign affairs."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is responsible|for|its defense and foreign affairs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is responsible for its defense and foreign affairs",
-    "subject": "is responsible",
-    "verb": "for",
-    "object": "its defense and foreign affairs",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1609-1827",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "The Cook Islands has a great deal of local autonomy and is an independent member of international organizations, but it is in free association with New Zealand, which is responsible for its defense and foreign affairs."
-     }
-    ],
-    "seq": 23,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -770,7 +481,7 @@
     "verb": "recognized",
     "object": "the Cook Islands as a sovereign and independent state",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -779,278 +490,7 @@
       "text": "In September 2023, the US recognized the Cook Islands as a sovereign and independent state."
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "group|of|islands in the south pacific ocean",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "group of islands in the South Pacific Ocean",
-    "subject": "group",
-    "verb": "of",
-    "object": "islands in the South Pacific Ocean",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1935-2050",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Location Oceania, group of islands in the South Pacific Ocean, about halfway between Hawaii and New Zealand"
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between hawaii|and|new zealand",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between Hawaii and New Zealand",
-    "subject": "between Hawaii",
-    "verb": "and",
-    "object": "New Zealand",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1935-2050",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Location Oceania, group of islands in the South Pacific Ocean, about halfway between Hawaii and New Zealand"
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the size|of|washington",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the size of Washington",
-    "subject": "the size",
-    "verb": "of",
-    "object": "Washington",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2217-2282",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Area - comparative 1.3 times the size of Washington, D.C."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "nm or|to|the edge of the continental margin",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "nm or to the edge of the continental margin",
-    "subject": "nm or",
-    "verb": "to",
-    "object": "the edge of the continental margin",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2351-2516",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Maritime claims territorial sea: 12 nm exclusive economic zone: 200 nm continental shelf: 200 nm or to the edge of the continental margin"
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dry season|from|april to november and a more humid season from december to march",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dry season from April to November and a more humid season from December to March",
-    "subject": "dry season",
-    "verb": "from",
-    "object": "April to November and a more humid season from December to March",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2518-2660",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Climate tropical oceanic; moderated by trade winds; a dry season from April to November and a more humid season from December to March"
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "coral atolls|in|north",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "coral atolls in north",
-    "subject": "coral atolls",
-    "verb": "in",
-    "object": "north",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2662-2737",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Terrain low coral atolls in north; volcanic, hilly islands in south"
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hilly islands|in|south",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hilly islands in south",
-    "subject": "hilly islands",
-    "verb": "in",
-    "object": "south",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2662-2737",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Terrain low coral atolls in north; volcanic, hilly islands in south"
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "distribution\n    most|of|the population is found on the island of rarotonga",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "distribution\n    most of the population is found on the island of Rarotonga",
-    "subject": "distribution\n    most",
-    "verb": "of",
-    "object": "the population is found on the island of Rarotonga",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3254-3344",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Population distribution most of the population is found on the island of Rarotonga"
-     },
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3409-3675",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Geography - note the northern Cook Islands are seven low-lying, sparsely populated, coral atolls; the southern Cook Islands, where most of the population lives, consist of eight elevated, fertile, volcanic isles, including the largest, Rarotonga, at 67 sq km"
-     },
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#5339-5429",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Population distribution most of the population is found on the island of Rarotonga"
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "november|to|march)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "November to March)",
-    "subject": "November",
-    "verb": "to",
-    "object": "March)",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3346-3407",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Natural hazards tropical cyclones (November to March)"
-     }
-    ],
-    "seq": 33,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1070,7 +510,7 @@
     "verb": "are",
     "object": "seven low-lying",
     "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1079,215 +519,12 @@
       "text": "### Geography - note the northern Cook Islands are seven low-lying, sparsely populated, coral atolls; the southern Cook Islands, where most of the population lives, consist of eight elevated, fertile, volcanic isles, including the largest, Rarotonga, at 67 sq km"
      }
     ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "consist|of|eight elevated",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "consist of eight elevated",
-    "subject": "consist",
-    "verb": "of",
-    "object": "eight elevated",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3409-3675",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Geography - note the northern Cook Islands are seven low-lying, sparsely populated, coral atolls; the southern Cook Islands, where most of the population lives, consist of eight elevated, fertile, volcanic isles, including the largest, Rarotonga, at 67 sq km"
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3677-3698",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shares sum|to|more than 100% because some respondents gave more than one answer on the census",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "shares sum to more than 100% because some respondents gave more than one answer on the census",
-    "subject": "shares sum",
-    "verb": "to",
-    "object": "more than 100% because some respondents gave more than one answer on the census",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#4061-4308",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Languages English (official) 86.4%, Cook Islands Maori (Rarotongan) (official) 76.2%, other 8.3% (2011 est.) note: <strong>note:</strong> shares sum to more than 100% because some respondents gave more than one answer on the census"
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "assemblies|of|god 3",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Assemblies of God 3",
-    "subject": "Assemblies",
-    "verb": "of",
-    "object": "God 3",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#4310-4578",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Religions Protestant 55% (Cook Islands Christian Church 43.1%, Seventh Day Adventist 8.3%, Assemblies of God 3.6%), Roman Catholic 16.7%, Church of Jesus Christ 3.9%, Jehovah's Witness 2.2%, Apostolic Church 2.1%, other 4.5%, none/unspecified 15.6% (2021 est.)"
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "church|of|jesus christ 3",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Church of Jesus Christ 3",
-    "subject": "Church",
-    "verb": "of",
-    "object": "Jesus Christ 3",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#4310-4578",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Religions Protestant 55% (Cook Islands Christian Church 43.1%, Seventh Day Adventist 8.3%, Assemblies of God 3.6%), Roman Catholic 16.7%, Church of Jesus Christ 3.9%, Jehovah's Witness 2.2%, Apostolic Church 2.1%, other 4.5%, none/unspecified 15.6% (2021 est.)"
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "annual rate|of|change (2020-25 est",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "annual rate of change (2020-25 est",
-    "subject": "annual rate",
-    "verb": "of",
-    "object": "change (2020-25 est",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#5431-5579",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Urbanization urban population: 76.2% of total population (2023) rate of urbanization: 0.52% annual rate of change (2020-25 est.)"
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "97 liters|of|pure alcohol (2019 est",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "97 liters of pure alcohol (2019 est",
-    "subject": "97 liters",
-    "verb": "of",
-    "object": "pure alcohol (2019 est",
-    "witnesses": [
-     "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#7137-7453",
-      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-      "text": "### Alcohol consumption per capita total: 12.97 liters of pure alcohol (2019 est.) beer: 3.62 liters of pure alcohol (2019 est.) wine: 2.28 liters of pure alcohol (2019 est.) spirits: 7.07 liters of pure alcohol (2019 est.) other alcohols: 0 liters of pure alcohol (2019 est.)"
-     }
-    ],
-    "seq": 41,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 42,
+  "nextSeq": 15,
   "admits": [
    "NUL",
    "SEG",
@@ -1302,28 +539,12 @@
  },
  "folded": [
   {
-   "id": "97 liters|of|pure alcohol (2019 est",
-   "subject": "97 liters",
-   "verb": "of",
-   "object": "pure alcohol (2019 est",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#7137-7453",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Alcohol consumption per capita total: 12.97 liters of pure alcohol (2019 est.) beer: 3.62 liters of pure alcohol (2019 est.) wine: 2.28 liters of pure alcohol (2019 est.) spirits: 7.07 liters of pure alcohol (2019 est.) other alcohols: 0 liters of pure alcohol (2019 est.)"
-    }
-   ]
-  },
-  {
    "id": "and rarotongans|voyaged|to the northern cook islands",
    "subject": "and Rarotongans",
    "verb": "voyaged",
    "object": "to the northern Cook Islands",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1339,7 +560,7 @@
    "verb": "mapmakers",
    "object": "named the islands after COOK in the 1820s",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1350,92 +571,12 @@
    ]
   },
   {
-   "id": "and|in|1915",
-   "subject": "and",
-   "verb": "in",
-   "object": "1915",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1334-1504",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "In 1901, the UK placed Rarotonga and the rest of the islands in the New Zealand Colony, and in 1915, the Cook Islands Act organized the islands into one political entity."
-    }
-   ]
-  },
-  {
-   "id": "annual rate|of|change (2020-25 est",
-   "subject": "annual rate",
-   "verb": "of",
-   "object": "change (2020-25 est",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#5431-5579",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Urbanization urban population: 76.2% of total population (2023) rate of urbanization: 0.52% annual rate of change (2020-25 est.)"
-    }
-   ]
-  },
-  {
-   "id": "assemblies|of|god 3",
-   "subject": "Assemblies",
-   "verb": "of",
-   "object": "God 3",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#4310-4578",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Religions Protestant 55% (Cook Islands Christian Church 43.1%, Seventh Day Adventist 8.3%, Assemblies of God 3.6%), Roman Catholic 16.7%, Church of Jesus Christ 3.9%, Jehovah's Witness 2.2%, Apostolic Church 2.1%, other 4.5%, none/unspecified 15.6% (2021 est.)"
-    }
-   ]
-  },
-  {
-   "id": "background\n    polynesians|from|tahiti were probably the first people to settle rarotonga -- the largest of the cook islands -- around a",
-   "subject": "Background\n    Polynesians",
-   "verb": "from",
-   "object": "Tahiti were probably the first people to settle Rarotonga -- the largest of the Cook Islands -- around A",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#146-294",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Background Polynesians from Tahiti were probably the first people to settle Rarotonga -- the largest of the Cook Islands -- around A.D. 900."
-    }
-   ]
-  },
-  {
-   "id": "between hawaii|and|new zealand",
-   "subject": "between Hawaii",
-   "verb": "and",
-   "object": "New Zealand",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1935-2050",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Location Oceania, group of islands in the South Pacific Ocean, about halfway between Hawaii and New Zealand"
-    }
-   ]
-  },
-  {
    "id": "british|explorer|james cook spotted manuae in the southern cook islands",
    "subject": "British",
    "verb": "explorer",
    "object": "James COOK spotted Manuae in the southern Cook Islands",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1451,61 +592,13 @@
    "verb": "were",
    "object": "not united in a single political entity",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#524-702",
      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
      "text": "Prior to European contact, there was considerable travel and trade between inhabitants of the different islands and atolls, but they were not united in a single political entity."
-    }
-   ]
-  },
-  {
-   "id": "church|of|jesus christ 3",
-   "subject": "Church",
-   "verb": "of",
-   "object": "Jesus Christ 3",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#4310-4578",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Religions Protestant 55% (Cook Islands Christian Church 43.1%, Seventh Day Adventist 8.3%, Assemblies of God 3.6%), Roman Catholic 16.7%, Church of Jesus Christ 3.9%, Jehovah's Witness 2.2%, Apostolic Church 2.1%, other 4.5%, none/unspecified 15.6% (2021 est.)"
-    }
-   ]
-  },
-  {
-   "id": "considerable travel|and|trade between inhabitants of the different islands and atolls",
-   "subject": "considerable travel",
-   "verb": "and",
-   "object": "trade between inhabitants of the different islands and atolls",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#524-702",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "Prior to European contact, there was considerable travel and trade between inhabitants of the different islands and atolls, but they were not united in a single political entity."
-    }
-   ]
-  },
-  {
-   "id": "consist|of|eight elevated",
-   "subject": "consist",
-   "verb": "of",
-   "object": "eight elevated",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3409-3675",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Geography - note the northern Cook Islands are seven low-lying, sparsely populated, coral atolls; the southern Cook Islands, where most of the population lives, consist of eight elevated, fertile, volcanic isles, including the largest, Rarotonga, at 67 sq km"
     }
    ]
   },
@@ -1515,7 +608,7 @@
    "verb": "are",
    "object": "seven low-lying",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1531,7 +624,7 @@
    "verb": "has",
    "object": "a great deal of local autonomy and is an independent member of international organizations",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1542,294 +635,12 @@
    ]
   },
   {
-   "id": "coral atolls|in|north",
-   "subject": "coral atolls",
-   "verb": "in",
-   "object": "north",
+   "id": "cook islands|were|settled directly from samoa",
+   "subject": "Cook Islands",
+   "verb": "were",
+   "object": "settled directly from Samoa",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2662-2737",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Terrain low coral atolls in north; volcanic, hilly islands in south"
-    }
-   ]
-  },
-  {
-   "id": "distribution\n    most|of|the population is found on the island of rarotonga",
-   "subject": "distribution\n    most",
-   "verb": "of",
-   "object": "the population is found on the island of Rarotonga",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3254-3344",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Population distribution most of the population is found on the island of Rarotonga"
-    },
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3409-3675",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Geography - note the northern Cook Islands are seven low-lying, sparsely populated, coral atolls; the southern Cook Islands, where most of the population lives, consist of eight elevated, fertile, volcanic isles, including the largest, Rarotonga, at 67 sq km"
-    },
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#5339-5429",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Population distribution most of the population is found on the island of Rarotonga"
-    }
-   ]
-  },
-  {
-   "id": "dry season|from|april to november and a more humid season from december to march",
-   "subject": "dry season",
-   "verb": "from",
-   "object": "April to November and a more humid season from December to March",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2518-2660",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Climate tropical oceanic; moderated by trade winds; a dry season from April to November and a more humid season from December to March"
-    }
-   ]
-  },
-  {
-   "id": "fearing france|would|militarily occupy the islands as it did in tahiti",
-   "subject": "Fearing France",
-   "verb": "would",
-   "object": "militarily occupy the islands as it did in Tahiti",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1034-1212",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "<br><br>Fearing France would militarily occupy the islands as it did in Tahiti, Rarotongans asked the UK for protectorate status in the 1840s and 1860s, a request the UK ignored."
-    }
-   ]
-  },
-  {
-   "id": "first landing|in|1606",
-   "subject": "first landing",
-   "verb": "in",
-   "object": "1606",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#703-886",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "Spanish navigators were the first Europeans to spot the northern Cook Islands in 1595, followed by the first landing in 1606, but no further European contact occurred until the 1760s."
-    }
-   ]
-  },
-  {
-   "id": "further european|contact|occurred until the 1760s",
-   "subject": "further European",
-   "verb": "contact",
-   "object": "occurred until the 1760s",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#703-886",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "Spanish navigators were the first Europeans to spot the northern Cook Islands in 1595, followed by the first landing in 1606, but no further European contact occurred until the 1760s."
-    }
-   ]
-  },
-  {
-   "id": "group|of|islands in the south pacific ocean",
-   "subject": "group",
-   "verb": "of",
-   "object": "islands in the South Pacific Ocean",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1935-2050",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Location Oceania, group of islands in the South Pacific Ocean, about halfway between Hawaii and New Zealand"
-    }
-   ]
-  },
-  {
-   "id": "hilly islands|in|south",
-   "subject": "hilly islands",
-   "verb": "in",
-   "object": "south",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2662-2737",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Terrain low coral atolls in north; volcanic, hilly islands in south"
-    }
-   ]
-  },
-  {
-   "id": "is responsible|for|its defense and foreign affairs",
-   "subject": "is responsible",
-   "verb": "for",
-   "object": "its defense and foreign affairs",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1609-1827",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "The Cook Islands has a great deal of local autonomy and is an independent member of international organizations, but it is in free association with New Zealand, which is responsible for its defense and foreign affairs."
-    }
-   ]
-  },
-  {
-   "id": "islands act|organized|the islands into one political entity",
-   "subject": "Islands Act",
-   "verb": "organized",
-   "object": "the islands into one political entity",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1334-1504",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "In 1901, the UK placed Rarotonga and the rest of the islands in the New Zealand Colony, and in 1915, the Cook Islands Act organized the islands into one political entity."
-    }
-   ]
-  },
-  {
-   "id": "it is|in|free association with new zealand",
-   "subject": "it is",
-   "verb": "in",
-   "object": "free association with New Zealand",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1609-1827",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "The Cook Islands has a great deal of local autonomy and is an independent member of international organizations, but it is in free association with New Zealand, which is responsible for its defense and foreign affairs."
-    }
-   ]
-  },
-  {
-   "id": "makea takau|of|rarotonga formally petitioned for protectorate status",
-   "subject": "MAKEA TAKAU",
-   "verb": "of",
-   "object": "Rarotonga formally petitioned for protectorate status",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1213-1333",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "In 1888, Queen MAKEA TAKAU of Rarotonga formally petitioned for protectorate status, to which the UK reluctantly agreed."
-    }
-   ]
-  },
-  {
-   "id": "new zealand|granted|the cook islands self-governing status",
-   "subject": "New Zealand",
-   "verb": "granted",
-   "object": "the Cook Islands self-governing status",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1505-1608",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "It remained a protectorate until 1965, when New Zealand granted the Cook Islands self-governing status."
-    }
-   ]
-  },
-  {
-   "id": "nm or|to|the edge of the continental margin",
-   "subject": "nm or",
-   "verb": "to",
-   "object": "the edge of the continental margin",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2351-2516",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Maritime claims territorial sea: 12 nm exclusive economic zone: 200 nm continental shelf: 200 nm or to the edge of the continental margin"
-    }
-   ]
-  },
-  {
-   "id": "november|to|march)",
-   "subject": "November",
-   "verb": "to",
-   "object": "March)",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3346-3407",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Natural hazards tropical cyclones (November to March)"
-    }
-   ]
-  },
-  {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#3677-3698",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
-   "id": "prior|to|european contact",
-   "subject": "Prior",
-   "verb": "to",
-   "object": "European contact",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#524-702",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "Prior to European contact, there was considerable travel and trade between inhabitants of the different islands and atolls, but they were not united in a single political entity."
-    }
-   ]
-  },
-  {
-   "id": "pukapuka|and|penrhyn in the northern cook islands were settled directly from samoa",
-   "subject": "Pukapuka",
-   "verb": "and",
-   "object": "Penrhyn in the northern Cook Islands were settled directly from Samoa",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1840,12 +651,12 @@
    ]
   },
   {
-   "id": "rarotongans|asked|the uk for protectorate status in the 1840s and 1860s",
-   "subject": "Rarotongans",
-   "verb": "asked",
-   "object": "the UK for protectorate status in the 1840s and 1860s",
+   "id": "fearing france|would|militarily occupy the islands as it did in tahiti",
+   "subject": "Fearing France",
+   "verb": "would",
+   "object": "militarily occupy the islands as it did in Tahiti",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1856,60 +667,28 @@
    ]
   },
   {
-   "id": "samoans|and|tongans also settled in rarotonga",
-   "subject": "Samoans",
-   "verb": "and",
-   "object": "Tongans also settled in Rarotonga",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#295-439",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "Over time, Samoans and Tongans also settled in Rarotonga, and Rarotongans voyaged to the northern Cook Islands, settling Manihiki and Rakahanga."
-    }
-   ]
-  },
-  {
-   "id": "settling manihiki|and|rakahanga",
-   "subject": "settling Manihiki",
-   "verb": "and",
-   "object": "Rakahanga",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#295-439",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "Over time, Samoans and Tongans also settled in Rarotonga, and Rarotongans voyaged to the northern Cook Islands, settling Manihiki and Rakahanga."
-    }
-   ]
-  },
-  {
-   "id": "shares sum|to|more than 100% because some respondents gave more than one answer on the census",
-   "subject": "shares sum",
-   "verb": "to",
-   "object": "more than 100% because some respondents gave more than one answer on the census",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#4061-4308",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Languages English (official) 86.4%, Cook Islands Maori (Rarotongan) (official) 76.2%, other 8.3% (2011 est.) note: <strong>note:</strong> shares sum to more than 100% because some respondents gave more than one answer on the census"
-    }
-   ]
-  },
-  {
-   "id": "spanish navigators|were|the first europeans to spot the northern cook islands in 1595",
-   "subject": "Spanish navigators",
+   "id": "from tahiti|were|probably the first people to settle rarotonga -- the largest of the cook islands -- around a",
+   "subject": "from Tahiti",
    "verb": "were",
-   "object": "the first Europeans to spot the northern Cook Islands in 1595",
+   "object": "probably the first people to settle Rarotonga -- the largest of the Cook Islands -- around A",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#146-294",
+     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
+     "text": "### Background Polynesians from Tahiti were probably the first people to settle Rarotonga -- the largest of the Cook Islands -- around A.D. 900."
+    }
+   ]
+  },
+  {
+   "id": "further european|contact|occurred until the 1760s",
+   "subject": "further European",
+   "verb": "contact",
+   "object": "occurred until the 1760s",
+   "witnesses": [
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1920,18 +699,50 @@
    ]
   },
   {
-   "id": "the size|of|washington",
-   "subject": "the size",
-   "verb": "of",
-   "object": "Washington",
+   "id": "new zealand|granted|the cook islands self-governing status",
+   "subject": "New Zealand",
+   "verb": "granted",
+   "object": "the Cook Islands self-governing status",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#2217-2282",
+     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1505-1608",
      "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "### Area - comparative 1.3 times the size of Washington, D.C."
+     "text": "It remained a protectorate until 1965, when New Zealand granted the Cook Islands self-governing status."
+    }
+   ]
+  },
+  {
+   "id": "rarotongans|asked|the uk for protectorate status in the 1840s and 1860s",
+   "subject": "Rarotongans",
+   "verb": "asked",
+   "object": "the UK for protectorate status in the 1840s and 1860s",
+   "witnesses": [
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1034-1212",
+     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
+     "text": "<br><br>Fearing France would militarily occupy the islands as it did in Tahiti, Rarotongans asked the UK for protectorate status in the 1840s and 1860s, a request the UK ignored."
+    }
+   ]
+  },
+  {
+   "id": "spanish navigators|were|the first europeans to spot the northern cook islands in 1595",
+   "subject": "Spanish navigators",
+   "verb": "were",
+   "object": "the first Europeans to spot the northern Cook Islands in 1595",
+   "witnesses": [
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#703-886",
+     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
+     "text": "Spanish navigators were the first Europeans to spot the northern Cook Islands in 1595, followed by the first landing in 1606, but no further European contact occurred until the 1760s."
     }
    ]
   },
@@ -1941,7 +752,7 @@
    "verb": "placed",
    "object": "Rarotonga and the rest of the islands in the New Zealand Colony",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1952,28 +763,12 @@
    ]
   },
   {
-   "id": "the uk|reluctantly|agreed",
-   "subject": "the UK",
-   "verb": "reluctantly",
-   "object": "agreed",
-   "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/australia-oceania_cw.txt#1213-1333",
-     "ref": "06-government-legal/world-factbook/australia-oceania_cw.txt",
-     "text": "In 1888, Queen MAKEA TAKAU of Rarotonga formally petitioned for protectorate status, to which the UK reluctantly agreed."
-    }
-   ]
-  },
-  {
    "id": "the us|recognized|the cook islands as a sovereign and independent state",
    "subject": "the US",
    "verb": "recognized",
    "object": "the Cook Islands as a sovereign and independent state",
    "witnesses": [
-    "06-government-legal/world-factbook/australia-oceania_cw.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/australia-oceania_cw.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1985,7 +780,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:29.455Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:57.862Z"
  }
 }

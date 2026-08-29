@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 75144,
   "bodyOffset": 0,
   "bodyChars": 75144,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 12,
   "distinctReferents": 10,
   "examined": true,
-  "edgesFound": 51,
-  "extractionError": null
+  "edgesFound": 25,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 12,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 21
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 25,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 65,
-  "excerptOk": 65,
-  "rawChecked": 65,
-  "rawOk": 65,
+  "excerptChecked": 28,
+  "excerptOk": 28,
+  "rawChecked": 28,
+  "rawOk": 28,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 51,
-  "heard": 51,
+  "offered": 25,
+  "heard": 25,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "one time|the|buddha was staying near rājagaha",
+    "task_id": "the buddha|was|staying near rājagaha",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "one time the Buddha was staying near Rājagaha",
-    "subject": "one time",
-    "verb": "the",
-    "object": "Buddha was staying near Rājagaha",
+    "description": "the Buddha was staying near Rājagaha",
+    "subject": "the Buddha",
+    "verb": "was",
+    "object": "staying near Rājagaha",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "on|the|vulture’s peak mountain",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "on the Vulture’s Peak Mountain",
-    "subject": "on",
-    "verb": "the",
-    "object": "Vulture’s Peak Mountain",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#367-448",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "kho",
     "object": "pañcasikho gandhabbaputto abhikkantāya rattiyā abhikkantavaṇṇo kevalakappaṁ gijjhakūṭaṁ pabbataṁ obhāsetvā yena bhagavā tenupasaṅkami",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,100 +142,13 @@
       "text": "Atha kho pañcasikho gandhabbaputto abhikkantāya rattiyā abhikkantavaṇṇo kevalakappaṁ gijjhakūṭaṁ pabbataṁ obhāsetvā yena bhagavā tenupasaṅkami; upasaṅkamitvā bhagavantaṁ abhivādetvā ekamantaṁ aṭṭhāsi."
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "lighting up|the|entire vulture’s peak",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lighting up the entire Vulture’s Peak",
-    "subject": "lighting up",
-    "verb": "the",
-    "object": "entire Vulture’s Peak",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#650-978",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Ekamantaṁ ṭhito kho pañcasikho gandhabbaputto bhagavantaṁ etadavoca: Then, late at night, the centaur Pañcasikha, lighting up the entire Vulture’s Peak, went up to the Buddha, bowed, stood to one side, and said to him, “yaṁ kho me, bhante, devānaṁ tāvatiṁsānaṁ sammukhā sutaṁ sammukhā paṭiggahitaṁ, ārocemi taṁ bhagavato”ti."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "went up|to|the buddha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "went up to the Buddha",
-    "subject": "went up",
-    "verb": "to",
-    "object": "the Buddha",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#650-978",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Ekamantaṁ ṭhito kho pañcasikho gandhabbaputto bhagavantaṁ etadavoca: Then, late at night, the centaur Pañcasikha, lighting up the entire Vulture’s Peak, went up to the Buddha, bowed, stood to one side, and said to him, “yaṁ kho me, bhante, devānaṁ tāvatiṁsānaṁ sammukhā sutaṁ sammukhā paṭiggahitaṁ, ārocemi taṁ bhagavato”ti."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "stood|to|one side",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "stood to one side",
-    "subject": "stood",
-    "verb": "to",
-    "object": "one side",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#650-978",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Ekamantaṁ ṭhito kho pañcasikho gandhabbaputto bhagavantaṁ etadavoca: Then, late at night, the centaur Pañcasikha, lighting up the entire Vulture’s Peak, went up to the Buddha, bowed, stood to one side, and said to him, “yaṁ kho me, bhante, devānaṁ tāvatiṁsānaṁ sammukhā sutaṁ sammukhā paṭiggahitaṁ, ārocemi taṁ bhagavato”ti."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and said|to|him",
+    "task_id": "and|said|to him",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -244,11 +158,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "and said to him",
-    "subject": "and said",
-    "verb": "to",
-    "object": "him",
+    "subject": "and",
+    "verb": "said",
+    "object": "to him",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,7 +171,7 @@
       "text": "Ekamantaṁ ṭhito kho pañcasikho gandhabbaputto bhagavantaṁ etadavoca: Then, late at night, the centaur Pañcasikha, lighting up the entire Vulture’s Peak, went up to the Buddha, bowed, stood to one side, and said to him, “yaṁ kho me, bhante, devānaṁ tāvatiṁsānaṁ sammukhā sutaṁ sammukhā paṭiggahitaṁ, ārocemi taṁ bhagavato”ti."
      }
     ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -277,7 +191,7 @@
     "verb": "kho",
     "object": "me",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -286,65 +200,7 @@
       "text": "Ekamantaṁ ṭhito kho pañcasikho gandhabbaputto bhagavantaṁ etadavoca: Then, late at night, the centaur Pañcasikha, lighting up the entire Vulture’s Peak, went up to the Buddha, bowed, stood to one side, and said to him, “yaṁ kho me, bhante, devānaṁ tāvatiṁsānaṁ sammukhā sutaṁ sammukhā paṭiggahitaṁ, ārocemi taṁ bhagavato”ti."
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tell you|of|what i heard and learned directly from the gods of the thirty-three",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "tell you of what I heard and learned directly from the gods of the thirty-three",
-    "subject": "tell you",
-    "verb": "of",
-    "object": "what I heard and learned directly from the gods of the thirty-three",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#983-1078",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "“Sir, I would tell you of what I heard and learned directly from the gods of the thirty-three.”"
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "said|the|buddha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "said the Buddha",
-    "subject": "said",
-    "verb": "the",
-    "object": "Buddha",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#1130-1169",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "“Tell me, Pañcasikha,” said the Buddha."
-     }
-    ],
-    "seq": 9,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -364,7 +220,7 @@
     "verb": "kho",
     "object": "pana so bhagavā sekhānañceva paṭipannānaṁ khīṇāsavānañca vusitavataṁ",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,7 +229,7 @@
       "text": "Laddhasahāyo kho pana so bhagavā sekhānañceva paṭipannānaṁ khīṇāsavānañca vusitavataṁ."
      }
     ],
-    "seq": 10,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +249,7 @@
     "verb": "has",
     "object": "gained companions",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,7 +258,7 @@
       "text": "Also, the Buddha has gained companions, both trainees who are practicing, and those with defilements ended who have completed their journey."
      }
     ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -422,7 +278,7 @@
     "verb": "is",
     "object": "committed to the joy of solitude",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,75 +287,7 @@
       "text": "The Buddha is committed to the joy of solitude, but doesn’t send them away."
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "so committed|to|the joy of solitude",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "so committed to the joy of solitude",
-    "subject": "so committed",
-    "verb": "to",
-    "object": "the joy of solitude",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#1666-1767",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "I don’t see any Teacher, past or present, so committed to the joy of solitude, apart from the Buddha."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "apart from|the|buddha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "apart from the Buddha",
-    "subject": "apart from",
-    "verb": "the",
-    "object": "Buddha",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#1666-1767",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "I don’t see any Teacher, past or present, so committed to the joy of solitude, apart from the Buddha."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#2121-2229",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "I don’t see any Teacher, past or present, who so practices in line with the teaching, apart from the Buddha."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#2690-2786",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "I don’t see any Teacher, past or present, who has achieved these things, apart from the Buddha.’"
-     }
-    ],
-    "seq": 14,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -519,7 +307,7 @@
     "verb": "kho",
     "object": "pana so bhagavā tathākārī",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -528,7 +316,7 @@
       "text": "Yathāvādī kho pana so bhagavā tathākārī, yathākārī tathāvādī, iti yathāvādī tathākārī, yathākārī tathāvādī."
      }
     ],
-    "seq": 15,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -548,7 +336,7 @@
     "verb": "does",
     "object": "as he says",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -557,7 +345,7 @@
       "text": "Also, the Buddha does as he says, and says as he does, thus: he does as he says, and says as he does."
      }
     ],
-    "seq": 16,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -577,7 +365,7 @@
     "verb": "does",
     "object": "as he says",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -586,36 +374,7 @@
       "text": "Also, the Buddha does as he says, and says as he does, thus: he does as he says, and says as he does."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "so practices|in|line with the teaching",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "so practices in line with the teaching",
-    "subject": "so practices",
-    "verb": "in",
-    "object": "line with the teaching",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#2121-2229",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "I don’t see any Teacher, past or present, who so practices in line with the teaching, apart from the Buddha."
-     }
-    ],
-    "seq": 18,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -635,7 +394,7 @@
     "verb": "kho",
     "object": "pana so bhagavā vigatakathaṅkatho pariyositasaṅkappo ajjhāsayaṁ ādibrahmacariyaṁ",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -644,7 +403,7 @@
       "text": "Tiṇṇavicikiccho kho pana so bhagavā vigatakathaṅkatho pariyositasaṅkappo ajjhāsayaṁ ādibrahmacariyaṁ."
      }
     ],
-    "seq": 19,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -664,7 +423,7 @@
     "verb": "has",
     "object": "gone beyond doubt and got rid of indecision",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -673,7 +432,7 @@
       "text": "Also, the Buddha has gone beyond doubt and got rid of indecision."
      }
     ],
-    "seq": 20,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -693,7 +452,7 @@
     "verb": "has",
     "object": "achieved all he wished for regarding the fundamental goal of the spiritual life",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -702,7 +461,7 @@
       "text": "He has achieved all he wished for regarding the fundamental goal of the spiritual life."
      }
     ],
-    "seq": 21,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -722,7 +481,7 @@
     "verb": "has",
     "object": "achieved these things",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -731,13 +490,13 @@
       "text": "I don’t see any Teacher, past or present, who has achieved these things, apart from the Buddha.’"
      }
     ],
-    "seq": 22,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "these are|the|eight genuine praises of the buddha proffered by sakka",
+    "task_id": "the buddha|proffered|by sakka",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -746,12 +505,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "These are the eight genuine praises of the Buddha proffered by Sakka",
-    "subject": "These are",
-    "verb": "the",
-    "object": "eight genuine praises of the Buddha proffered by Sakka",
+    "description": "the Buddha proffered by Sakka",
+    "subject": "the Buddha",
+    "verb": "proffered",
+    "object": "by Sakka",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -760,65 +519,7 @@
       "text": "These are the eight genuine praises of the Buddha proffered by Sakka."
      }
     ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the gods|of|the thirty-three became even more uplifted and overjoyed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the gods of the thirty-three became even more uplifted and overjoyed",
-    "subject": "the gods",
-    "verb": "of",
-    "object": "the thirty-three became even more uplifted and overjoyed",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#3104-3187",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Hearing them, the gods of the thirty-three became even more uplifted and overjoyed."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then some|gods|thought",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Then some gods thought",
-    "subject": "Then some",
-    "verb": "gods",
-    "object": "thought",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#3188-3351",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Tatra, bhante, ekacce devā evamāhaṁsu: Then some gods thought, ‘aho vata, mārisā, cattāro sammāsambuddhā loke uppajjeyyuṁ dhammañca deseyyuṁ yathariva bhagavā."
-     }
-    ],
-    "seq": 25,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -838,7 +539,7 @@
     "verb": "might",
     "object": "arise in the world and teach the Dhamma",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -852,41 +553,7 @@
       "text": "or two fully awakened Buddhas might arise in the world and teach the Dhamma, just like the Blessed One!"
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "just like|the|blessed one!",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "just like the Blessed One!",
-    "subject": "just like",
-    "verb": "the",
-    "object": "Blessed One!",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#3356-3466",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "‘If only four fully awakened Buddhas might arise in the world and teach the Dhamma, just like the Blessed One!"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#4240-4343",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "or two fully awakened Buddhas might arise in the world and teach the Dhamma, just like the Blessed One!"
-     }
-    ],
-    "seq": 27,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -906,7 +573,7 @@
     "verb": "be",
     "object": "for the welfare and happiness of the people",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -925,153 +592,7 @@
       "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "out|of|sympathy for the world",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "out of sympathy for the world",
-    "subject": "out",
-    "verb": "of",
-    "object": "sympathy for the world",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#3566-3716",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#4443-4593",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#5291-5441",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "for|the|benefit",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "for the benefit",
-    "subject": "for",
-    "verb": "the",
-    "object": "benefit",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#3566-3716",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#4443-4593",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#5291-5441",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and happiness|of|gods and humans!’",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and happiness of gods and humans!’",
-    "subject": "and happiness",
-    "verb": "of",
-    "object": "gods and humans!’",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#3566-3716",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#4443-4593",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#5291-5441",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "other|gods|thought",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Other gods thought",
-    "subject": "Other",
-    "verb": "gods",
-    "object": "thought",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#3717-3901",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Ekacce devā evamāhaṁsu: Other gods thought, ‘tiṭṭhantu, mārisā, cattāro sammāsambuddhā, aho vata, mārisā, tayo sammāsambuddhā loke uppajjeyyuṁ dhammañca deseyyuṁ yathariva bhagavā."
-     }
-    ],
-    "seq": 32,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1091,7 +612,7 @@
     "verb": "said",
     "object": "this",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1100,7 +621,7 @@
       "text": "Evaṁ vutte, bhante, sakko devānamindo deve tāvatiṁse etadavoca: When they said this, Sakka said, aṭṭhaṁsu samhi āsaneti."
      }
     ],
-    "seq": 33,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1120,7 +641,7 @@
     "verb": "kho",
     "object": "etaṁ",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1129,7 +650,7 @@
       "text": "‘aṭṭhānaṁ kho etaṁ, mārisā, anavakāso, yaṁ ekissā lokadhātuyā dve arahanto sammāsambuddhā apubbaṁ acarimaṁ uppajjeyyuṁ, netaṁ ṭhānaṁ vijjati."
      }
     ],
-    "seq": 34,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1149,7 +670,7 @@
     "verb": "is",
     "object": "impossible",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1158,36 +679,7 @@
       "text": "‘It is impossible, gentlemen, for two perfected ones, fully awakened Buddhas to arise in the same solar system at the same time."
      }
     ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "awakened buddhas|to|arise in the same solar system at the same time",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "awakened Buddhas to arise in the same solar system at the same time",
-    "subject": "awakened Buddhas",
-    "verb": "to",
-    "object": "arise in the same solar system at the same time",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#4900-5028",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "‘It is impossible, gentlemen, for two perfected ones, fully awakened Buddhas to arise in the same solar system at the same time."
-     }
-    ],
-    "seq": 36,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1207,7 +699,7 @@
     "verb": "be",
     "object": "healthy and well",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1216,13 +708,13 @@
       "text": "May that Blessed One be healthy and well, and remain with us for a long time!"
      }
     ],
-    "seq": 37,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "then the|gods|of the thirty-three",
+    "task_id": "which they|were|seated together in the hall of clear right",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1231,46 +723,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Then the gods of the thirty-three",
-    "subject": "Then the",
-    "verb": "gods",
-    "object": "of the thirty-three",
+    "description": "which they were seated together in the Hall of Clear Right",
+    "subject": "which they",
+    "verb": "were",
+    "object": "seated together in the Hall of Clear Right",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#5642-5848",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Then the gods of the thirty-three, having considered and deliberated on the matter for which they were seated together in the Hall of Clear Right, advised and instructed the four great kings on the subject."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#7191-7453",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "On Sanaṅkumāra Atha kho, bhante, devā tāvatiṁsā yathāsakesu āsanesu nisīdiṁsu: Then the gods of the thirty-three sat in their own seats, saying, Seyyathāpi, bhante, so vaṇṇo viggaho mānusaṁ viggahaṁ atirocati; as a golden statue outshines the human form."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "deliberated on|the|matter for which they were seated together in the hall of clear right",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "deliberated on the matter for which they were seated together in the Hall of Clear Right",
-    "subject": "deliberated on",
-    "verb": "the",
-    "object": "matter for which they were seated together in the Hall of Clear Right",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1279,36 +737,7 @@
       "text": "Then the gods of the thirty-three, having considered and deliberated on the matter for which they were seated together in the Hall of Clear Right, advised and instructed the four great kings on the subject."
      }
     ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and instructed|the|four great kings on the subject",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and instructed the four great kings on the subject",
-    "subject": "and instructed",
-    "verb": "the",
-    "object": "four great kings on the subject",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#5642-5848",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Then the gods of the thirty-three, having considered and deliberated on the matter for which they were seated together in the Hall of Clear Right, advised and instructed the four great kings on the subject."
-     }
-    ],
-    "seq": 40,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1328,7 +757,7 @@
     "verb": "were",
     "object": "instructed",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1337,157 +766,7 @@
       "text": "Te vuttavākyā rājāno, The Kings were instructed, paṭiggayhānusāsaniṁ; and heeded good advice."
      }
     ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then in|the|northern quarter a magnificent light arose and radiance appeared",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Then in the northern quarter a magnificent light arose and radiance appeared",
-    "subject": "Then in",
-    "verb": "the",
-    "object": "northern quarter a magnificent light arose and radiance appeared",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#6299-6410",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Then in the northern quarter a magnificent light arose and radiance appeared, surpassing the glory of the gods."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "surpassing|the|glory of the gods",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "surpassing the glory of the gods",
-    "subject": "surpassing",
-    "verb": "the",
-    "object": "glory of the gods",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#6299-6410",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Then in the northern quarter a magnificent light arose and radiance appeared, surpassing the glory of the gods."
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lord|of|gods",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lord of gods",
-    "subject": "lord",
-    "verb": "of",
-    "object": "gods",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#6411-6741",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Atha kho, bhante, sakko devānamindo deve tāvatiṁse āmantesi: Then Sakka, lord of gods, addressed the gods of the thirty-three, ‘yathā kho, mārisā, nimittāni dissanti, uḷāro āloko sañjāyati, obhāso pātubhavati, brahmā pātubhavissati; ‘As indicated by the signs—light arising and radiance appearing—the Divinity will appear."
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "addressed the|gods|of the thirty-three",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "addressed the gods of the thirty-three",
-    "subject": "addressed the",
-    "verb": "gods",
-    "object": "of the thirty-three",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#6411-6741",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Atha kho, bhante, sakko devānamindo deve tāvatiṁse āmantesi: Then Sakka, lord of gods, addressed the gods of the thirty-three, ‘yathā kho, mārisā, nimittāni dissanti, uḷāro āloko sañjāyati, obhāso pātubhavati, brahmā pātubhavissati; ‘As indicated by the signs—light arising and radiance appearing—the Divinity will appear."
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "indicated by|the|signs—light arising and radiance appearing—the divinity will appear",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "indicated by the signs—light arising and radiance appearing—the Divinity will appear",
-    "subject": "indicated by",
-    "verb": "the",
-    "object": "signs—light arising and radiance appearing—the Divinity will appear",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#6411-6741",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Atha kho, bhante, sakko devānamindo deve tāvatiṁse āmantesi: Then Sakka, lord of gods, addressed the gods of the thirty-three, ‘yathā kho, mārisā, nimittāni dissanti, uḷāro āloko sañjāyati, obhāso pātubhavati, brahmā pātubhavissati; ‘As indicated by the signs—light arising and radiance appearing—the Divinity will appear."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#6938-7045",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "Yathā nimittā dissanti, As indicated by the signs, brahmā pātubhavissati; the Divinity will appear."
-     }
-    ],
-    "seq": 46,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1507,7 +786,7 @@
     "verb": "is",
     "object": "the harbinger for the appearance of the Divinity",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1516,13 +795,13 @@
       "text": "For this is the harbinger for the appearance of the Divinity, namely light arising and radiance appearing.’"
      }
     ],
-    "seq": 47,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "statue outshines|the|human form",
+    "task_id": "divinity sanaṅkumāra|appears|to the gods of the thirty-three",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1531,41 +810,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "statue outshines the human form",
-    "subject": "statue outshines",
-    "verb": "the",
-    "object": "human form",
+    "description": "divinity Sanaṅkumāra appears to the gods of the thirty-three",
+    "subject": "divinity Sanaṅkumāra",
+    "verb": "appears",
+    "object": "to the gods of the thirty-three",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#7191-7453",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "On Sanaṅkumāra Atha kho, bhante, devā tāvatiṁsā yathāsakesu āsanesu nisīdiṁsu: Then the gods of the thirty-three sat in their own seats, saying, Seyyathāpi, bhante, so vaṇṇo viggaho mānusaṁ viggahaṁ atirocati; as a golden statue outshines the human form."
-     }
-    ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "when|the|divinity sanaṅkumāra appears to the gods of the thirty-three",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "When the divinity Sanaṅkumāra appears to the gods of the thirty-three",
-    "subject": "When",
-    "verb": "the",
-    "object": "divinity Sanaṅkumāra appears to the gods of the thirty-three",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1574,41 +824,12 @@
       "text": "When the divinity Sanaṅkumāra appears to the gods of the thirty-three, not a single god in that assembly greets him by bowing down or rising up or inviting him to a seat."
      }
     ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "single god|in|that assembly greets him by bowing down or rising up or inviting him to a seat",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "single god in that assembly greets him by bowing down or rising up or inviting him to a seat",
-    "subject": "single god",
-    "verb": "in",
-    "object": "that assembly greets him by bowing down or rising up or inviting him to a seat",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn19.txt#7732-7902",
-      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-      "text": "When the divinity Sanaṅkumāra appears to the gods of the thirty-three, not a single god in that assembly greets him by bowing down or rising up or inviting him to a seat."
-     }
-    ],
-    "seq": 50,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 51,
+  "nextSeq": 25,
   "admits": [
    "NUL",
    "SEG",
@@ -1623,70 +844,12 @@
  },
  "folded": [
   {
-   "id": "addressed the|gods|of the thirty-three",
-   "subject": "addressed the",
-   "verb": "gods",
-   "object": "of the thirty-three",
+   "id": "and|said|to him",
+   "subject": "and",
+   "verb": "said",
+   "object": "to him",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#6411-6741",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Atha kho, bhante, sakko devānamindo deve tāvatiṁse āmantesi: Then Sakka, lord of gods, addressed the gods of the thirty-three, ‘yathā kho, mārisā, nimittāni dissanti, uḷāro āloko sañjāyati, obhāso pātubhavati, brahmā pātubhavissati; ‘As indicated by the signs—light arising and radiance appearing—the Divinity will appear."
-    }
-   ]
-  },
-  {
-   "id": "and happiness|of|gods and humans!’",
-   "subject": "and happiness",
-   "verb": "of",
-   "object": "gods and humans!’",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#3566-3716",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#4443-4593",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#5291-5441",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    }
-   ]
-  },
-  {
-   "id": "and instructed|the|four great kings on the subject",
-   "subject": "and instructed",
-   "verb": "the",
-   "object": "four great kings on the subject",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#5642-5848",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Then the gods of the thirty-three, having considered and deliberated on the matter for which they were seated together in the Hall of Clear Right, advised and instructed the four great kings on the subject."
-    }
-   ]
-  },
-  {
-   "id": "and said|to|him",
-   "subject": "and said",
-   "verb": "to",
-   "object": "him",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1697,38 +860,12 @@
    ]
   },
   {
-   "id": "apart from|the|buddha",
-   "subject": "apart from",
-   "verb": "the",
-   "object": "Buddha",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#1666-1767",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "I don’t see any Teacher, past or present, so committed to the joy of solitude, apart from the Buddha."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#2121-2229",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "I don’t see any Teacher, past or present, who so practices in line with the teaching, apart from the Buddha."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#2690-2786",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "I don’t see any Teacher, past or present, who has achieved these things, apart from the Buddha.’"
-    }
-   ]
-  },
-  {
    "id": "atha|kho|pañcasikho gandhabbaputto abhikkantāya rattiyā abhikkantavaṇṇo kevalakappaṁ gijjhakūṭaṁ pabbataṁ obhāsetvā yena bhagavā tenupasaṅkami",
    "subject": "Atha",
    "verb": "kho",
    "object": "pañcasikho gandhabbaputto abhikkantāya rattiyā abhikkantavaṇṇo kevalakappaṁ gijjhakūṭaṁ pabbataṁ obhāsetvā yena bhagavā tenupasaṅkami",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1744,7 +881,7 @@
    "verb": "kho",
    "object": "etaṁ",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1760,7 +897,7 @@
    "verb": "might",
    "object": "arise in the world and teach the Dhamma",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1776,28 +913,12 @@
    ]
   },
   {
-   "id": "awakened buddhas|to|arise in the same solar system at the same time",
-   "subject": "awakened Buddhas",
-   "verb": "to",
-   "object": "arise in the same solar system at the same time",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#4900-5028",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "‘It is impossible, gentlemen, for two perfected ones, fully awakened Buddhas to arise in the same solar system at the same time."
-    }
-   ]
-  },
-  {
    "id": "blessed one|be|healthy and well",
    "subject": "Blessed One",
    "verb": "be",
    "object": "healthy and well",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1808,18 +929,18 @@
    ]
   },
   {
-   "id": "deliberated on|the|matter for which they were seated together in the hall of clear right",
-   "subject": "deliberated on",
-   "verb": "the",
-   "object": "matter for which they were seated together in the Hall of Clear Right",
+   "id": "divinity sanaṅkumāra|appears|to the gods of the thirty-three",
+   "subject": "divinity Sanaṅkumāra",
+   "verb": "appears",
+   "object": "to the gods of the thirty-three",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#5642-5848",
+     "at": "14-holy-texts/pali-suttas/dn19.txt#7732-7902",
      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Then the gods of the thirty-three, having considered and deliberated on the matter for which they were seated together in the Hall of Clear Right, advised and instructed the four great kings on the subject."
+     "text": "When the divinity Sanaṅkumāra appears to the gods of the thirty-three, not a single god in that assembly greets him by bowing down or rising up or inviting him to a seat."
     }
    ]
   },
@@ -1829,7 +950,7 @@
    "verb": "is",
    "object": "the harbinger for the appearance of the Divinity",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1840,38 +961,12 @@
    ]
   },
   {
-   "id": "for|the|benefit",
-   "subject": "for",
-   "verb": "the",
-   "object": "benefit",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#3566-3716",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#4443-4593",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#5291-5441",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    }
-   ]
-  },
-  {
    "id": "he|does|as he says",
    "subject": "he",
    "verb": "does",
    "object": "as he says",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1887,7 +982,7 @@
    "verb": "has",
    "object": "achieved all he wished for regarding the fundamental goal of the spiritual life",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1898,33 +993,12 @@
    ]
   },
   {
-   "id": "indicated by|the|signs—light arising and radiance appearing—the divinity will appear",
-   "subject": "indicated by",
-   "verb": "the",
-   "object": "signs—light arising and radiance appearing—the Divinity will appear",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#6411-6741",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Atha kho, bhante, sakko devānamindo deve tāvatiṁse āmantesi: Then Sakka, lord of gods, addressed the gods of the thirty-three, ‘yathā kho, mārisā, nimittāni dissanti, uḷāro āloko sañjāyati, obhāso pātubhavati, brahmā pātubhavissati; ‘As indicated by the signs—light arising and radiance appearing—the Divinity will appear."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#6938-7045",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Yathā nimittā dissanti, As indicated by the signs, brahmā pātubhavissati; the Divinity will appear."
-    }
-   ]
-  },
-  {
    "id": "it|is|impossible",
    "subject": "It",
    "verb": "is",
    "object": "impossible",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1935,33 +1009,12 @@
    ]
   },
   {
-   "id": "just like|the|blessed one!",
-   "subject": "just like",
-   "verb": "the",
-   "object": "Blessed One!",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#3356-3466",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "‘If only four fully awakened Buddhas might arise in the world and teach the Dhamma, just like the Blessed One!"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#4240-4343",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "or two fully awakened Buddhas might arise in the world and teach the Dhamma, just like the Blessed One!"
-    }
-   ]
-  },
-  {
    "id": "laddhasahāyo|kho|pana so bhagavā sekhānañceva paṭipannānaṁ khīṇāsavānañca vusitavataṁ",
    "subject": "Laddhasahāyo",
    "verb": "kho",
    "object": "pana so bhagavā sekhānañceva paṭipannānaṁ khīṇāsavānañca vusitavataṁ",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1972,246 +1025,12 @@
    ]
   },
   {
-   "id": "lighting up|the|entire vulture’s peak",
-   "subject": "lighting up",
-   "verb": "the",
-   "object": "entire Vulture’s Peak",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#650-978",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Ekamantaṁ ṭhito kho pañcasikho gandhabbaputto bhagavantaṁ etadavoca: Then, late at night, the centaur Pañcasikha, lighting up the entire Vulture’s Peak, went up to the Buddha, bowed, stood to one side, and said to him, “yaṁ kho me, bhante, devānaṁ tāvatiṁsānaṁ sammukhā sutaṁ sammukhā paṭiggahitaṁ, ārocemi taṁ bhagavato”ti."
-    }
-   ]
-  },
-  {
-   "id": "lord|of|gods",
-   "subject": "lord",
-   "verb": "of",
-   "object": "gods",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#6411-6741",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Atha kho, bhante, sakko devānamindo deve tāvatiṁse āmantesi: Then Sakka, lord of gods, addressed the gods of the thirty-three, ‘yathā kho, mārisā, nimittāni dissanti, uḷāro āloko sañjāyati, obhāso pātubhavati, brahmā pātubhavissati; ‘As indicated by the signs—light arising and radiance appearing—the Divinity will appear."
-    }
-   ]
-  },
-  {
-   "id": "on|the|vulture’s peak mountain",
-   "subject": "on",
-   "verb": "the",
-   "object": "Vulture’s Peak Mountain",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#367-448",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain."
-    }
-   ]
-  },
-  {
-   "id": "one time|the|buddha was staying near rājagaha",
-   "subject": "one time",
-   "verb": "the",
-   "object": "Buddha was staying near Rājagaha",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#367-448",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain."
-    }
-   ]
-  },
-  {
-   "id": "other|gods|thought",
-   "subject": "Other",
-   "verb": "gods",
-   "object": "thought",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#3717-3901",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Ekacce devā evamāhaṁsu: Other gods thought, ‘tiṭṭhantu, mārisā, cattāro sammāsambuddhā, aho vata, mārisā, tayo sammāsambuddhā loke uppajjeyyuṁ dhammañca deseyyuṁ yathariva bhagavā."
-    }
-   ]
-  },
-  {
-   "id": "out|of|sympathy for the world",
-   "subject": "out",
-   "verb": "of",
-   "object": "sympathy for the world",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#3566-3716",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#4443-4593",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#5291-5441",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "That would be for the welfare and happiness of the people, out of sympathy for the world, for the benefit, welfare, and happiness of gods and humans!’"
-    }
-   ]
-  },
-  {
-   "id": "said|the|buddha",
-   "subject": "said",
-   "verb": "the",
-   "object": "Buddha",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#1130-1169",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "“Tell me, Pañcasikha,” said the Buddha."
-    }
-   ]
-  },
-  {
-   "id": "single god|in|that assembly greets him by bowing down or rising up or inviting him to a seat",
-   "subject": "single god",
-   "verb": "in",
-   "object": "that assembly greets him by bowing down or rising up or inviting him to a seat",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#7732-7902",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "When the divinity Sanaṅkumāra appears to the gods of the thirty-three, not a single god in that assembly greets him by bowing down or rising up or inviting him to a seat."
-    }
-   ]
-  },
-  {
-   "id": "so committed|to|the joy of solitude",
-   "subject": "so committed",
-   "verb": "to",
-   "object": "the joy of solitude",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#1666-1767",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "I don’t see any Teacher, past or present, so committed to the joy of solitude, apart from the Buddha."
-    }
-   ]
-  },
-  {
-   "id": "so practices|in|line with the teaching",
-   "subject": "so practices",
-   "verb": "in",
-   "object": "line with the teaching",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#2121-2229",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "I don’t see any Teacher, past or present, who so practices in line with the teaching, apart from the Buddha."
-    }
-   ]
-  },
-  {
-   "id": "statue outshines|the|human form",
-   "subject": "statue outshines",
-   "verb": "the",
-   "object": "human form",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#7191-7453",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "On Sanaṅkumāra Atha kho, bhante, devā tāvatiṁsā yathāsakesu āsanesu nisīdiṁsu: Then the gods of the thirty-three sat in their own seats, saying, Seyyathāpi, bhante, so vaṇṇo viggaho mānusaṁ viggahaṁ atirocati; as a golden statue outshines the human form."
-    }
-   ]
-  },
-  {
-   "id": "stood|to|one side",
-   "subject": "stood",
-   "verb": "to",
-   "object": "one side",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#650-978",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Ekamantaṁ ṭhito kho pañcasikho gandhabbaputto bhagavantaṁ etadavoca: Then, late at night, the centaur Pañcasikha, lighting up the entire Vulture’s Peak, went up to the Buddha, bowed, stood to one side, and said to him, “yaṁ kho me, bhante, devānaṁ tāvatiṁsānaṁ sammukhā sutaṁ sammukhā paṭiggahitaṁ, ārocemi taṁ bhagavato”ti."
-    }
-   ]
-  },
-  {
-   "id": "surpassing|the|glory of the gods",
-   "subject": "surpassing",
-   "verb": "the",
-   "object": "glory of the gods",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#6299-6410",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Then in the northern quarter a magnificent light arose and radiance appeared, surpassing the glory of the gods."
-    }
-   ]
-  },
-  {
-   "id": "tell you|of|what i heard and learned directly from the gods of the thirty-three",
-   "subject": "tell you",
-   "verb": "of",
-   "object": "what I heard and learned directly from the gods of the thirty-three",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#983-1078",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "“Sir, I would tell you of what I heard and learned directly from the gods of the thirty-three.”"
-    }
-   ]
-  },
-  {
    "id": "that would|be|for the welfare and happiness of the people",
    "subject": "That would",
    "verb": "be",
    "object": "for the welfare and happiness of the people",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2237,7 +1056,7 @@
    "verb": "does",
    "object": "as he says",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2253,7 +1072,7 @@
    "verb": "has",
    "object": "gained companions",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2269,7 +1088,7 @@
    "verb": "has",
    "object": "gone beyond doubt and got rid of indecision",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2285,7 +1104,7 @@
    "verb": "is",
    "object": "committed to the joy of solitude",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2296,97 +1115,12 @@
    ]
   },
   {
-   "id": "the gods|of|the thirty-three became even more uplifted and overjoyed",
-   "subject": "the gods",
-   "verb": "of",
-   "object": "the thirty-three became even more uplifted and overjoyed",
+   "id": "the buddha|proffered|by sakka",
+   "subject": "the Buddha",
+   "verb": "proffered",
+   "object": "by Sakka",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#3104-3187",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Hearing them, the gods of the thirty-three became even more uplifted and overjoyed."
-    }
-   ]
-  },
-  {
-   "id": "the kings|were|instructed",
-   "subject": "The Kings",
-   "verb": "were",
-   "object": "instructed",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#6029-6130",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Te vuttavākyā rājāno, The Kings were instructed, paṭiggayhānusāsaniṁ; and heeded good advice."
-    }
-   ]
-  },
-  {
-   "id": "then in|the|northern quarter a magnificent light arose and radiance appeared",
-   "subject": "Then in",
-   "verb": "the",
-   "object": "northern quarter a magnificent light arose and radiance appeared",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#6299-6410",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Then in the northern quarter a magnificent light arose and radiance appeared, surpassing the glory of the gods."
-    }
-   ]
-  },
-  {
-   "id": "then some|gods|thought",
-   "subject": "Then some",
-   "verb": "gods",
-   "object": "thought",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#3188-3351",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Tatra, bhante, ekacce devā evamāhaṁsu: Then some gods thought, ‘aho vata, mārisā, cattāro sammāsambuddhā loke uppajjeyyuṁ dhammañca deseyyuṁ yathariva bhagavā."
-    }
-   ]
-  },
-  {
-   "id": "then the|gods|of the thirty-three",
-   "subject": "Then the",
-   "verb": "gods",
-   "object": "of the thirty-three",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#5642-5848",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Then the gods of the thirty-three, having considered and deliberated on the matter for which they were seated together in the Hall of Clear Right, advised and instructed the four great kings on the subject."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#7191-7453",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "On Sanaṅkumāra Atha kho, bhante, devā tāvatiṁsā yathāsakesu āsanesu nisīdiṁsu: Then the gods of the thirty-three sat in their own seats, saying, Seyyathāpi, bhante, so vaṇṇo viggaho mānusaṁ viggahaṁ atirocati; as a golden statue outshines the human form."
-    }
-   ]
-  },
-  {
-   "id": "these are|the|eight genuine praises of the buddha proffered by sakka",
-   "subject": "These are",
-   "verb": "the",
-   "object": "eight genuine praises of the Buddha proffered by Sakka",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2397,12 +1131,44 @@
    ]
   },
   {
+   "id": "the buddha|was|staying near rājagaha",
+   "subject": "the Buddha",
+   "verb": "was",
+   "object": "staying near Rājagaha",
+   "witnesses": [
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/pali-suttas/dn19.txt#367-448",
+     "ref": "14-holy-texts/pali-suttas/dn19.txt",
+     "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain."
+    }
+   ]
+  },
+  {
+   "id": "the kings|were|instructed",
+   "subject": "The Kings",
+   "verb": "were",
+   "object": "instructed",
+   "witnesses": [
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/pali-suttas/dn19.txt#6029-6130",
+     "ref": "14-holy-texts/pali-suttas/dn19.txt",
+     "text": "Te vuttavākyā rājāno, The Kings were instructed, paṭiggayhānusāsaniṁ; and heeded good advice."
+    }
+   ]
+  },
+  {
    "id": "tiṇṇavicikiccho|kho|pana so bhagavā vigatakathaṅkatho pariyositasaṅkappo ajjhāsayaṁ ādibrahmacariyaṁ",
    "subject": "Tiṇṇavicikiccho",
    "verb": "kho",
    "object": "pana so bhagavā vigatakathaṅkatho pariyositasaṅkappo ajjhāsayaṁ ādibrahmacariyaṁ",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2413,28 +1179,12 @@
    ]
   },
   {
-   "id": "went up|to|the buddha",
-   "subject": "went up",
-   "verb": "to",
-   "object": "the Buddha",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#650-978",
-     "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "Ekamantaṁ ṭhito kho pañcasikho gandhabbaputto bhagavantaṁ etadavoca: Then, late at night, the centaur Pañcasikha, lighting up the entire Vulture’s Peak, went up to the Buddha, bowed, stood to one side, and said to him, “yaṁ kho me, bhante, devānaṁ tāvatiṁsānaṁ sammukhā sutaṁ sammukhā paṭiggahitaṁ, ārocemi taṁ bhagavato”ti."
-    }
-   ]
-  },
-  {
    "id": "when they|said|this",
    "subject": "When they",
    "verb": "said",
    "object": "this",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2445,18 +1195,18 @@
    ]
   },
   {
-   "id": "when|the|divinity sanaṅkumāra appears to the gods of the thirty-three",
-   "subject": "When",
-   "verb": "the",
-   "object": "divinity Sanaṅkumāra appears to the gods of the thirty-three",
+   "id": "which they|were|seated together in the hall of clear right",
+   "subject": "which they",
+   "verb": "were",
+   "object": "seated together in the Hall of Clear Right",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/pali-suttas/dn19.txt#7732-7902",
+     "at": "14-holy-texts/pali-suttas/dn19.txt#5642-5848",
      "ref": "14-holy-texts/pali-suttas/dn19.txt",
-     "text": "When the divinity Sanaṅkumāra appears to the gods of the thirty-three, not a single god in that assembly greets him by bowing down or rising up or inviting him to a seat."
+     "text": "Then the gods of the thirty-three, having considered and deliberated on the matter for which they were seated together in the Hall of Clear Right, advised and instructed the four great kings on the subject."
     }
    ]
   },
@@ -2466,7 +1216,7 @@
    "verb": "has",
    "object": "achieved these things",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2482,7 +1232,7 @@
    "verb": "kho",
    "object": "me",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2498,7 +1248,7 @@
    "verb": "kho",
    "object": "pana so bhagavā tathākārī",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn19.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn19.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2510,7 +1260,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:32.320Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:34.629Z"
  }
 }

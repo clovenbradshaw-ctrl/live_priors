@@ -2,26 +2,44 @@
  "schema": "EOTReading@1",
  "source": {
   "path": "POLICIES.md",
-  "sha256": "f5aaa002b31eb6cae9ffafb0499bbc1e892d09160850197d6a8d6cf68a070625",
-  "bytes": 15854,
+  "sha256": "f1b25c4d79e98931999c267cd0729e11e8324a23f6add63fbc34216659e995ad",
+  "bytes": 21357,
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
-  "fullChars": 15854,
+  "fullChars": 21357,
   "bodyOffset": 0,
-  "bodyChars": 15854,
+  "bodyChars": 21357,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 5,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 49,
-  "extractionError": null
+  "edgesFound": 33,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 11
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 33,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 50,
-  "excerptOk": 50,
-  "rawChecked": 50,
-  "rawOk": 50,
+  "excerptChecked": 34,
+  "excerptOk": 34,
+  "rawChecked": 34,
+  "rawOk": 34,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 49,
-  "heard": 49,
+  "offered": 33,
+  "heard": 33,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "this corpus|and|the readings taken of it**",
+    "task_id": "this|corpus|and the readings taken of it**",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -70,11 +100,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "this corpus and the readings taken of it**",
-    "subject": "this corpus",
-    "verb": "and",
-    "object": "the readings taken of it**",
+    "subject": "this",
+    "verb": "corpus",
+    "object": "and the readings taken of it**",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was decided|and|why",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was decided and why",
-    "subject": "was decided",
-    "verb": "and",
-    "object": "why",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#305-569",
-      "ref": "POLICIES.md",
-      "text": "The discipline is the one the sibling repos already hold: **amendments append, they do not rewrite.** A later pass that changes a decision adds a dated amendment under the entry it changes and leaves the original standing as the record of what was decided and why."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "is",
     "object": "never deleted",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,36 +142,7 @@
       "text": "A number is never reused and an entry is never deleted."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "this file|and|a sibling disagree: eoreader7's `reading-spec",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "this file and a sibling disagree: eoreader7's `READING-SPEC",
-    "subject": "this file",
-    "verb": "and",
-    "object": "a sibling disagree: eoreader7's `READING-SPEC",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#627-947",
-      "ref": "POLICIES.md",
-      "text": "Where this file and a sibling disagree: eoreader7's `READING-SPEC.md` governs how the engine's organs read; the-fold's `POLICIES.md` governs the workbench that consumes them; this file governs **what a corpus owes a reading, and what a reading owes a corpus.** On the mechanics of any organ named here, the sibling wins."
-     }
-    ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +162,7 @@
     "verb": "is",
     "object": "the Torah: immutable",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,7 +171,7 @@
       "text": "## LP1 — The source is the Torah: immutable, native, and never replaced by a reading"
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +191,7 @@
     "verb": "is",
     "object": "*\"Living corpus of source texts",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,7 +200,7 @@
       "text": "This repository's own description is *\"Living corpus of source texts.\"* The source texts **are** the product."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +220,7 @@
     "verb": "is",
     "object": "kept in the format it was received in",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,65 +229,7 @@
       "text": "**The rule.** A source is kept in the format it was received in."
      }
     ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "normalise|it|in place",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "normalise it in place",
-    "subject": "normalise",
-    "verb": "it",
-    "object": "in place",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#1303-1475",
-      "ref": "POLICIES.md",
-      "text": "No reading, index, digest, or derived artifact may edit a source, normalise it in place, re-encode it, reorder it, or stand in for it when a consumer asks for the document."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "reading of|it|come out better",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "reading of it come out better",
-    "subject": "reading of",
-    "verb": "it",
-    "object": "come out better",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#1476-1597",
-      "ref": "POLICIES.md",
-      "text": "A source changes only when it is re-fetched or corrected **as a source** — never to make a reading of it come out better."
-     }
-    ],
-    "seq": 8,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -335,7 +249,7 @@
     "verb": "is",
     "object": "stated rather than assumed",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -344,36 +258,7 @@
       "text": "**Why it is stated rather than assumed.** The pressure to violate it is real and specific: readings are easier to take against normalised text."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is real|and|specific: readings are easier to take against normalised text",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is real and specific: readings are easier to take against normalised text",
-    "subject": "is real",
-    "verb": "and",
-    "object": "specific: readings are easier to take against normalised text",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#1599-1742",
-      "ref": "POLICIES.md",
-      "text": "**Why it is stated rather than assumed.** The pressure to violate it is real and specific: readings are easier to take against normalised text."
-     }
-    ],
-    "seq": 10,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +278,7 @@
     "verb": "is",
     "object": "correct **as a transform applied on the way to a reading**",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,123 +287,7 @@
       "text": "The digest driver already normalises line endings, strips Gutenberg containers, and drops catalogue boilerplate before reading — and every one of those is correct **as a transform applied on the way to a reading**, and would be a corpus-integrity failure if written back to the file."
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "licence headers|and|the archive",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "licence headers and the Archive",
-    "subject": "licence headers",
-    "verb": "and",
-    "object": "the Archive",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#2027-2147",
-      "ref": "POLICIES.md",
-      "text": "The corpus keeps the CRLFs, the licence headers and the Archive.org favourites tags, because they are what was received."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "here so|it|stays true",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "here so it stays true",
-    "subject": "here so",
-    "verb": "it",
-    "object": "stays true",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#2149-2299",
-      "ref": "POLICIES.md",
-      "text": "**Already true, pinned here so it stays true.** `/api/priors/doc` (the-fold's `explore-server.mjs:1354`) reads the file off disk and serves its bytes."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "no reading|and|no index",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "no reading and no index",
-    "subject": "no reading",
-    "verb": "and",
-    "object": "no index",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#2300-2336",
-      "ref": "POLICIES.md",
-      "text": "It consults no reading and no index."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "correct shape|and|lp4 makes it a rule rather than an accident",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "correct shape and LP4 makes it a rule rather than an accident",
-    "subject": "correct shape",
-    "verb": "and",
-    "object": "LP4 makes it a rule rather than an accident",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#2337-2411",
-      "ref": "POLICIES.md",
-      "text": "That is the correct shape and LP4 makes it a rule rather than an accident."
-     }
-    ],
-    "seq": 15,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -538,7 +307,7 @@
     "verb": "is",
     "object": "not evidence about it",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -547,7 +316,7 @@
       "text": "**The corollary that has already cost something.** If a source is what was received, then what a path *claims* about a source is not evidence about it."
      }
     ],
-    "seq": 16,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -567,7 +336,7 @@
     "verb": "is",
     "object": "not a source",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -576,7 +345,7 @@
       "text": "**A label is not a source, and the corpus is the bytes.**"
      }
     ],
-    "seq": 17,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -596,7 +365,7 @@
     "verb": "is",
     "object": "Talmud: commentary",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -605,7 +374,7 @@
       "text": "## LP2 — A reading is Talmud: commentary, anchored, attributed, append-only"
      }
     ],
-    "seq": 18,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -625,7 +394,7 @@
     "verb": "is",
     "object": "not a summary of a source",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -639,36 +408,7 @@
       "text": "**Consequence, stated plainly:** the reading is not a cache."
      }
     ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the source|and|the reader who produced it",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the source and the reader who produced it",
-    "subject": "the source",
-    "verb": "and",
-    "object": "the reader who produced it",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#3094-3358",
-      "ref": "POLICIES.md",
-      "text": "It is **a record of an encounter with it by a named reader** — and it relates to the source the way commentary relates to a fixed text: it accumulates, it never overwrites, and every layer can be traced to both a locus in the source and the reader who produced it."
-     }
-    ],
-    "seq": 20,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -688,7 +428,7 @@
     "verb": "is",
     "object": "not a size limit",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -697,7 +437,7 @@
       "text": "**What keeps commentary from becoming sprawl is not a size limit.** It is two properties, and they are the two this corpus's readings must hold:"
      }
     ],
-    "seq": 21,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -717,7 +457,7 @@
     "verb": "is",
     "object": "two properties",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -726,36 +466,7 @@
       "text": "**What keeps commentary from becoming sprawl is not a size limit.** It is two properties, and they are the two this corpus's readings must hold:"
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "attach to|and|does not land",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "attach to and does not land",
-    "subject": "attach to",
-    "verb": "and",
-    "object": "does not land",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#3592-3691",
-      "ref": "POLICIES.md",
-      "text": "An increment that cannot produce a verifying address has nothing to attach to and does not land."
-     }
-    ],
-    "seq": 23,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -775,7 +486,7 @@
     "verb": "is",
     "object": "`PROPOSE`",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -784,7 +495,7 @@
       "text": "`hyperlexicon.js::hear` already implements exactly this: first sighting is `PROPOSE`, a later sighting of the same assertion is `SUPERSEDE`, and its own comment (line 128) states the invariant — *\"Witnesses and spans UNION, never replace: a merge that overwrote them\"* would lose precisely what makes the record worth keeping."
      }
     ],
-    "seq": 24,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -804,7 +515,7 @@
     "verb": "is",
     "object": "`SUPERSEDE`",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -813,36 +524,7 @@
       "text": "`hyperlexicon.js::hear` already implements exactly this: first sighting is `PROPOSE`, a later sighting of the same assertion is `SUPERSEDE`, and its own comment (line 128) states the invariant — *\"Witnesses and spans UNION, never replace: a merge that overwrote them\"* would lose precisely what makes the record worth keeping."
      }
     ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "witnesses|and|spans union",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Witnesses and spans UNION",
-    "subject": "Witnesses",
-    "verb": "and",
-    "object": "spans UNION",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#4068-4406",
-      "ref": "POLICIES.md",
-      "text": "`hyperlexicon.js::hear` already implements exactly this: first sighting is `PROPOSE`, a later sighting of the same assertion is `SUPERSEDE`, and its own comment (line 128) states the invariant — *\"Witnesses and spans UNION, never replace: a merge that overwrote them\"* would lose precisely what makes the record worth keeping."
-     }
-    ],
-    "seq": 26,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -862,7 +544,7 @@
     "verb": "should",
     "object": "a reading grow?",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -871,7 +553,7 @@
       "text": "**How much should a reading grow?"
      }
     ],
-    "seq": 27,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -891,7 +573,7 @@
     "verb": "is",
     "object": "not a size question",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -900,7 +582,7 @@
       "text": "It is not a size question.** The bound is a gate, not a cap:"
      }
     ],
-    "seq": 28,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -920,7 +602,7 @@
     "verb": "is",
     "object": "a gate",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -929,65 +611,7 @@
       "text": "It is not a size question.** The bound is a gate, not a cap:"
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "real bytes|and|> (b) names the recipe that produced it",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "real bytes and > (b) names the recipe that produced it",
-    "subject": "real bytes",
-    "verb": "and",
-    "object": "> (b) names the recipe that produced it",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#4751-4869",
-      "ref": "POLICIES.md",
-      "text": "> An increment may land if and only if it (a) resolves against real bytes and > (b) names the recipe that produced it."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "artist\nonce|and|nothing recurs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "artist\nonce and nothing recurs",
-    "subject": "artist\nonce",
-    "verb": "and",
-    "object": "nothing recurs",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#4993-5387",
-      "ref": "POLICIES.md",
-      "text": "Growth is therefore bounded by *the source's own extent × the number of distinct recipes ever run against it*, and it is self-limiting in the way that matters: **a recipe that hears nothing appends nothing.** The measured case is already on record — `classical-music-catalog` yields zero edges against 33 sentences, because its fifteen items each name a distinct artist once and nothing recurs."
-     }
-    ],
-    "seq": 31,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1007,7 +631,7 @@
     "verb": "is",
     "object": "one line long and correct",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1016,7 +640,7 @@
       "text": "That reading is one line long and correct."
      }
     ],
-    "seq": 32,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1036,7 +660,7 @@
     "verb": "is",
     "object": "conceded",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1045,7 +669,7 @@
       "text": "**A refuted reading is conceded, never deleted.** The vocabulary exists: `RETRACT` in the task log, and `concedeEvaluation`/REC for \"this ground is conceded.\""
      }
     ],
-    "seq": 33,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1065,7 +689,7 @@
     "verb": "is",
     "object": "conceded",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1074,7 +698,7 @@
       "text": "**A refuted reading is conceded, never deleted.** The vocabulary exists: `RETRACT` in the task log, and `concedeEvaluation`/REC for \"this ground is conceded.\""
      }
     ],
-    "seq": 34,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1094,7 +718,7 @@
     "verb": "preserves",
     "object": "a rejected opinion rather than erasing it",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1103,7 +727,7 @@
       "text": "A bad pass goes on the record as refuted, in the same way the Talmud preserves a rejected opinion rather than erasing it."
      }
     ],
-    "seq": 35,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1123,7 +747,7 @@
     "verb": "is",
     "object": "part of what the record is for",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1132,7 +756,7 @@
       "text": "The record of having been wrong is part of what the record is for."
      }
     ],
-    "seq": 36,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1152,7 +776,7 @@
     "verb": "is",
     "object": "regenerated when the code changes",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1161,7 +785,7 @@
       "text": "A cache is regenerated when the code changes; a record is appended to."
      }
     ],
-    "seq": 37,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1181,7 +805,7 @@
     "verb": "is",
     "object": "appended to",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1190,7 +814,7 @@
       "text": "A cache is regenerated when the code changes; a record is appended to."
      }
     ],
-    "seq": 38,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1210,7 +834,7 @@
     "verb": "is",
     "object": "*written* like a cache (`eot-digest",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1219,7 +843,7 @@
       "text": "Today's digest is *written* like a cache (`eot-digest.mjs:234` creates a fresh log per run; `:356` overwrites the file) and *typed* like a record."
      }
     ],
-    "seq": 39,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1239,7 +863,7 @@
     "verb": "is",
     "object": "real and unresolved — see LP5 for the prerequisite that must land first",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1248,7 +872,7 @@
       "text": "That inconsistency is real and unresolved — see LP5 for the prerequisite that must land first."
      }
     ],
-    "seq": 40,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1268,7 +892,7 @@
     "verb": "is",
     "object": "only an address if it resolves in the source's own coordinates — and today's readings do not",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1277,7 +901,7 @@
       "text": "## LP3 — An address is only an address if it resolves in the source's own coordinates — and today's readings do not"
      }
     ],
-    "seq": 41,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1297,7 +921,7 @@
     "verb": "is",
     "object": "`gutenberg-non-en/de-path/pg67098#196-256`:",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1306,7 +930,7 @@
       "text": "Its address is `gutenberg-non-en/de-path/pg67098#196-256`:"
      }
     ],
-    "seq": 42,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -1326,7 +950,7 @@
     "verb": "is",
     "object": "**1165**",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1335,65 +959,7 @@
       "text": "The span's true offset in the source file is **1165**; the address records **196**."
      }
     ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "crlf|pairs|before that point (42) = 994`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "CRLF pairs before that point (42) = 994`",
-    "subject": "CRLF",
-    "verb": "pairs",
-    "object": "before that point (42) = 994`",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#6708-6853",
-      "ref": "POLICIES.md",
-      "text": "The recorded correction does not reconcile it — `bodyOffset (952) + CRLF pairs before that point (42) = 994`, against an actual drift of **969**."
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "changing|and|not recorded at all** — 3",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "changing and not recorded at all** — 3",
-    "subject": "changing",
-    "verb": "and",
-    "object": "not recorded at all** — 3",
-    "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "POLICIES.md#6855-7161",
-      "ref": "POLICIES.md",
-      "text": "**Why.** `excerptOf` applies three transforms before anything is addressed: `stripContainer` (offset recorded), `stripCatalogBoilerplate` (recorded only as a total character count, not as positions), and `normaliseNewlines` (**length-changing and not recorded at all** — 3,654 CRLF pairs in this one file)."
-     }
-    ],
-    "seq": 45,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1413,7 +979,7 @@
     "verb": "is",
     "object": "not invertible from what is written down",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1422,7 +988,7 @@
       "text": "The composition is not invertible from what is written down."
      }
     ],
-    "seq": 46,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -1442,7 +1008,7 @@
     "verb": "is",
     "object": "not currently a matter of taste",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1451,7 +1017,7 @@
       "text": "The question of whether the Torah should live inside the Talmud is not currently a matter of taste."
      }
     ],
-    "seq": 47,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -1471,7 +1037,7 @@
     "verb": "is",
     "object": "commentary on a private copy of a fragment of it",
     "witnesses": [
-     "POLICIES.md@b2de25493ccfe8e8"
+     "POLICIES.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1480,12 +1046,12 @@
       "text": "**\"The reading links through to the source\" is aspirational, not true.** A reading that cannot point at the text it comments on is not commentary on that text; it is commentary on a private copy of a fragment of it."
      }
     ],
-    "seq": 48,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 49,
+  "nextSeq": 33,
   "admits": [
    "NUL",
    "SEG",
@@ -1505,7 +1071,7 @@
    "verb": "is",
    "object": "regenerated when the code changes",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1521,7 +1087,7 @@
    "verb": "is",
    "object": "not a source",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1537,7 +1103,7 @@
    "verb": "is",
    "object": "not a summary of a source",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1558,7 +1124,7 @@
    "verb": "is",
    "object": "Talmud: commentary",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1574,7 +1140,7 @@
    "verb": "is",
    "object": "appended to",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1590,7 +1156,7 @@
    "verb": "is",
    "object": "kept in the format it was received in",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1606,7 +1172,7 @@
    "verb": "is",
    "object": "not evidence about it",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1622,7 +1188,7 @@
    "verb": "is",
    "object": "never deleted",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1638,7 +1204,7 @@
    "verb": "is",
    "object": "only an address if it resolves in the source's own coordinates — and today's readings do not",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1649,44 +1215,12 @@
    ]
   },
   {
-   "id": "artist\nonce|and|nothing recurs",
-   "subject": "artist\nonce",
-   "verb": "and",
-   "object": "nothing recurs",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#4993-5387",
-     "ref": "POLICIES.md",
-     "text": "Growth is therefore bounded by *the source's own extent × the number of distinct recipes ever run against it*, and it is self-limiting in the way that matters: **a recipe that hears nothing appends nothing.** The measured case is already on record — `classical-music-catalog` yields zero edges against 33 sentences, because its fifteen items each name a distinct artist once and nothing recurs."
-    }
-   ]
-  },
-  {
-   "id": "attach to|and|does not land",
-   "subject": "attach to",
-   "verb": "and",
-   "object": "does not land",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#3592-3691",
-     "ref": "POLICIES.md",
-     "text": "An increment that cannot produce a verifying address has nothing to attach to and does not land."
-    }
-   ]
-  },
-  {
    "id": "becoming sprawl|is|not a size limit",
    "subject": "becoming sprawl",
    "verb": "is",
    "object": "not a size limit",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1702,7 +1236,7 @@
    "verb": "is",
    "object": "part of what the record is for",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1713,60 +1247,12 @@
    ]
   },
   {
-   "id": "changing|and|not recorded at all** — 3",
-   "subject": "changing",
-   "verb": "and",
-   "object": "not recorded at all** — 3",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#6855-7161",
-     "ref": "POLICIES.md",
-     "text": "**Why.** `excerptOf` applies three transforms before anything is addressed: `stripContainer` (offset recorded), `stripCatalogBoilerplate` (recorded only as a total character count, not as positions), and `normaliseNewlines` (**length-changing and not recorded at all** — 3,654 CRLF pairs in this one file)."
-    }
-   ]
-  },
-  {
-   "id": "correct shape|and|lp4 makes it a rule rather than an accident",
-   "subject": "correct shape",
-   "verb": "and",
-   "object": "LP4 makes it a rule rather than an accident",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#2337-2411",
-     "ref": "POLICIES.md",
-     "text": "That is the correct shape and LP4 makes it a rule rather than an accident."
-    }
-   ]
-  },
-  {
-   "id": "crlf|pairs|before that point (42) = 994`",
-   "subject": "CRLF",
-   "verb": "pairs",
-   "object": "before that point (42) = 994`",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#6708-6853",
-     "ref": "POLICIES.md",
-     "text": "The recorded correction does not reconcile it — `bodyOffset (952) + CRLF pairs before that point (42) = 994`, against an actual drift of **969**."
-    }
-   ]
-  },
-  {
    "id": "first sighting|is|`propose`",
    "subject": "first sighting",
    "verb": "is",
    "object": "`PROPOSE`",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1777,28 +1263,12 @@
    ]
   },
   {
-   "id": "here so|it|stays true",
-   "subject": "here so",
-   "verb": "it",
-   "object": "stays true",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#2149-2299",
-     "ref": "POLICIES.md",
-     "text": "**Already true, pinned here so it stays true.** `/api/priors/doc` (the-fold's `explore-server.mjs:1354`) reads the file off disk and serves its bytes."
-    }
-   ]
-  },
-  {
    "id": "how much|should|a reading grow?",
    "subject": "How much",
    "verb": "should",
    "object": "a reading grow?",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1809,28 +1279,12 @@
    ]
   },
   {
-   "id": "is real|and|specific: readings are easier to take against normalised text",
-   "subject": "is real",
-   "verb": "and",
-   "object": "specific: readings are easier to take against normalised text",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#1599-1742",
-     "ref": "POLICIES.md",
-     "text": "**Why it is stated rather than assumed.** The pressure to violate it is real and specific: readings are easier to take against normalised text."
-    }
-   ]
-  },
-  {
    "id": "it|is|commentary on a private copy of a fragment of it",
    "subject": "it",
    "verb": "is",
    "object": "commentary on a private copy of a fragment of it",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1846,7 +1300,7 @@
    "verb": "is",
    "object": "not a size question",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1862,7 +1316,7 @@
    "verb": "is",
    "object": "two properties",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1878,7 +1332,7 @@
    "verb": "is",
    "object": "`gutenberg-non-en/de-path/pg67098#196-256`:",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1889,60 +1343,12 @@
    ]
   },
   {
-   "id": "licence headers|and|the archive",
-   "subject": "licence headers",
-   "verb": "and",
-   "object": "the Archive",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#2027-2147",
-     "ref": "POLICIES.md",
-     "text": "The corpus keeps the CRLFs, the licence headers and the Archive.org favourites tags, because they are what was received."
-    }
-   ]
-  },
-  {
-   "id": "no reading|and|no index",
-   "subject": "no reading",
-   "verb": "and",
-   "object": "no index",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#2300-2336",
-     "ref": "POLICIES.md",
-     "text": "It consults no reading and no index."
-    }
-   ]
-  },
-  {
-   "id": "normalise|it|in place",
-   "subject": "normalise",
-   "verb": "it",
-   "object": "in place",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#1303-1475",
-     "ref": "POLICIES.md",
-     "text": "No reading, index, digest, or derived artifact may edit a source, normalise it in place, re-encode it, reorder it, or stand in for it when a consumer asks for the document."
-    }
-   ]
-  },
-  {
    "id": "of those|is|correct **as a transform applied on the way to a reading**",
    "subject": "of those",
    "verb": "is",
    "object": "correct **as a transform applied on the way to a reading**",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1958,7 +1364,7 @@
    "verb": "is",
    "object": "*\"Living corpus of source texts",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1969,44 +1375,12 @@
    ]
   },
   {
-   "id": "reading of|it|come out better",
-   "subject": "reading of",
-   "verb": "it",
-   "object": "come out better",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#1476-1597",
-     "ref": "POLICIES.md",
-     "text": "A source changes only when it is re-fetched or corrected **as a source** — never to make a reading of it come out better."
-    }
-   ]
-  },
-  {
-   "id": "real bytes|and|> (b) names the recipe that produced it",
-   "subject": "real bytes",
-   "verb": "and",
-   "object": "> (b) names the recipe that produced it",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#4751-4869",
-     "ref": "POLICIES.md",
-     "text": "> An increment may land if and only if it (a) resolves against real bytes and > (b) names the recipe that produced it."
-    }
-   ]
-  },
-  {
    "id": "refuted reading|is|conceded",
    "subject": "refuted reading",
    "verb": "is",
    "object": "conceded",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2022,7 +1396,7 @@
    "verb": "is",
    "object": "`SUPERSEDE`",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2038,7 +1412,7 @@
    "verb": "is",
    "object": "**1165**",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2054,7 +1428,7 @@
    "verb": "is",
    "object": "real and unresolved — see LP5 for the prerequisite that must land first",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2070,7 +1444,7 @@
    "verb": "is",
    "object": "one line long and correct",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2086,7 +1460,7 @@
    "verb": "is",
    "object": "not currently a matter of taste",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2102,7 +1476,7 @@
    "verb": "preserves",
    "object": "a rejected opinion rather than erasing it",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2118,7 +1492,7 @@
    "verb": "is",
    "object": "a gate",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2134,7 +1508,7 @@
    "verb": "is",
    "object": "not invertible from what is written down",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2145,28 +1519,12 @@
    ]
   },
   {
-   "id": "the source|and|the reader who produced it",
-   "subject": "the source",
-   "verb": "and",
-   "object": "the reader who produced it",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#3094-3358",
-     "ref": "POLICIES.md",
-     "text": "It is **a record of an encounter with it by a named reader** — and it relates to the source the way commentary relates to a fixed text: it accumulates, it never overwrites, and every layer can be traced to both a locus in the source and the reader who produced it."
-    }
-   ]
-  },
-  {
    "id": "the source|is|the torah: immutable",
    "subject": "The source",
    "verb": "is",
    "object": "the Torah: immutable",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2177,44 +1535,12 @@
    ]
   },
   {
-   "id": "this corpus|and|the readings taken of it**",
-   "subject": "this corpus",
-   "verb": "and",
-   "object": "the readings taken of it**",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#35-149",
-     "ref": "POLICIES.md",
-     "text": "Standing decisions about **this corpus and the readings taken of it**, each with the evidence that established it."
-    }
-   ]
-  },
-  {
-   "id": "this file|and|a sibling disagree: eoreader7's `reading-spec",
-   "subject": "this file",
-   "verb": "and",
-   "object": "a sibling disagree: eoreader7's `READING-SPEC",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#627-947",
-     "ref": "POLICIES.md",
-     "text": "Where this file and a sibling disagree: eoreader7's `READING-SPEC.md` governs how the engine's organs read; the-fold's `POLICIES.md` governs the workbench that consumes them; this file governs **what a corpus owes a reading, and what a reading owes a corpus.** On the mechanics of any organ named here, the sibling wins."
-    }
-   ]
-  },
-  {
    "id": "this ground|is|conceded",
    "subject": "this ground",
    "verb": "is",
    "object": "conceded",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2225,12 +1551,28 @@
    ]
   },
   {
+   "id": "this|corpus|and the readings taken of it**",
+   "subject": "this",
+   "verb": "corpus",
+   "object": "and the readings taken of it**",
+   "witnesses": [
+    "POLICIES.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "POLICIES.md#35-149",
+     "ref": "POLICIES.md",
+     "text": "Standing decisions about **this corpus and the readings taken of it**, each with the evidence that established it."
+    }
+   ]
+  },
+  {
    "id": "today's digest|is|*written* like a cache (`eot-digest",
    "subject": "Today's digest",
    "verb": "is",
    "object": "*written* like a cache (`eot-digest",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2241,28 +1583,12 @@
    ]
   },
   {
-   "id": "was decided|and|why",
-   "subject": "was decided",
-   "verb": "and",
-   "object": "why",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#305-569",
-     "ref": "POLICIES.md",
-     "text": "The discipline is the one the sibling repos already hold: **amendments append, they do not rewrite.** A later pass that changes a decision adds a dated amendment under the entry it changes and leaves the original standing as the record of what was decided and why."
-    }
-   ]
-  },
-  {
    "id": "why it|is|stated rather than assumed",
    "subject": "Why it",
    "verb": "is",
    "object": "stated rather than assumed",
    "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
+    "POLICIES.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2271,26 +1597,10 @@
      "text": "**Why it is stated rather than assumed.** The pressure to violate it is real and specific: readings are easier to take against normalised text."
     }
    ]
-  },
-  {
-   "id": "witnesses|and|spans union",
-   "subject": "Witnesses",
-   "verb": "and",
-   "object": "spans UNION",
-   "witnesses": [
-    "POLICIES.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "POLICIES.md#4068-4406",
-     "ref": "POLICIES.md",
-     "text": "`hyperlexicon.js::hear` already implements exactly this: first sighting is `PROPOSE`, a later sighting of the same assertion is `SUPERSEDE`, and its own comment (line 128) states the invariant — *\"Witnesses and spans UNION, never replace: a merge that overwrote them\"* would lose precisely what makes the record worth keeping."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:13:03.573Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:59.020Z"
  }
 }

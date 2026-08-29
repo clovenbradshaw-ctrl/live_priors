@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 19196,
   "bodyOffset": 0,
   "bodyChars": 19196,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 5,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 16,
-  "extractionError": null
+  "edgesFound": 12,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 7,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 13
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 12,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 17,
-  "excerptOk": 17,
-  "rawChecked": 17,
-  "rawOk": 17,
+  "excerptChecked": 12,
+  "excerptOk": 12,
+  "rawChecked": 12,
+  "rawOk": 12,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 16,
-  "heard": 16,
+  "offered": 12,
+  "heard": 12,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "english|speakers|acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "English speakers acquired some variety of English",
-    "subject": "English",
-    "verb": "speakers",
-    "object": "acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#33-299",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-      "text": "eWAVE variety ID: 29 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,7 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "its native|speakers|was normally very limited",
+    "task_id": "native speakers|was|normally very limited",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,19 +128,43 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "its native speakers was normally very limited",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "was normally very limited",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#440-514",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
       "text": "English), while exposure to its native speakers was normally very limited."
-     },
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "witnesses": [
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
+    ],
+    "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#515-709",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
@@ -152,7 +177,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "central american|region|has been subjected to multiethnic and multilingual influences over the last centuries",
+    "task_id": "central america|reflects|the tumultuous conflicts that opposed spain and england between the 17th and the 19th centuries",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -161,70 +186,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Central American region has been subjected to multiethnic and multilingual influences over the last centuries",
-    "subject": "Central American",
-    "verb": "region",
-    "object": "has been subjected to multiethnic and multilingual influences over the last centuries",
+    "description": "Central America reflects the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries",
+    "subject": "Central America",
+    "verb": "reflects",
+    "object": "the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#873-1168",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The Central American region has been subjected to multiethnic and multilingual influences over the last centuries, starting with Spanish rule in the 15th and 16th century."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with spanish|rule|in the 15th and 16th century",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "with Spanish rule in the 15th and 16th century",
-    "subject": "with Spanish",
-    "verb": "rule",
-    "object": "in the 15th and 16th century",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#873-1168",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The Central American region has been subjected to multiethnic and multilingual influences over the last centuries, starting with Spanish rule in the 15th and 16th century."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of english|speakers|in central america reflects the tumultuous conflicts that opposed spain and england between the 17th and the 19th centuries",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of English speakers in Central America reflects the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries",
-    "subject": "of English",
-    "verb": "speakers",
-    "object": "in Central America reflects the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -233,65 +200,7 @@
       "text": "The location of English speakers in Central America reflects the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries, as well as some later traces of labor immigration."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the caribbean|coast|of central america",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Caribbean coast of Central America",
-    "subject": "the Caribbean",
-    "verb": "coast",
-    "object": "of Central America",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#1378-1548",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-      "text": "All English-speaking regions are located on the Caribbean coast of Central America, and except for Belize, they are all part of overwhelmingly Spanish-speaking republics."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "some groups|and|a widely-used lingua franca and second language for most others",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "some groups and a widely-used lingua franca and second language for most others",
-    "subject": "some groups",
-    "verb": "and",
-    "object": "a widely-used lingua franca and second language for most others",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#1549-1701",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-      "text": "In multiethnic Belize, an English-based creole is the mother tongue for some groups and a widely-used lingua franca and second language for most others."
-     }
-    ],
-    "seq": 7,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -311,7 +220,7 @@
     "verb": "wan",
     "object": "taym",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -320,7 +229,7 @@
       "text": "\"Yu no pas dat ting ataal\" \"Reyn kum fos\" \"dat da we a layk wid a, en i gat gud tu mi rayt\" \"dat da we a layk wid a, en i gat gud tu mi rayt\" \"Wi me de luk fu rowp wan taym, mi en Riko\" \"i yuztu fayn\" \"Di rowp wan tay op ina i own sɛf\" \"Da aysbaks fu i\" \"FI UNU: Da fi unu\" [unu is 2Pl] \"hu unu me go da trip fu?\""
      }
     ],
-    "seq": 8,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -340,7 +249,7 @@
     "verb": "wan",
     "object": "big pleys layk kastam foni fu yu",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -349,7 +258,7 @@
       "text": "\"Dem bway, dem gal\" \"yu so∫elayz yu fayn it meks fo beta wokin rile∫en∫ip\" \"a no wan big pleys layk kastam foni fu yu, bika di staf tu big\" \"a no wan big pleys layk kastam foni fu yu, bika di staf tu big\" \"Yu hia dat naw, yu haf tu chek awt da sawn.\""
      }
     ],
-    "seq": 9,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -369,7 +278,7 @@
     "verb": "wan",
     "object": "man-de",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -378,7 +287,7 @@
       "text": "\"if yu me ga wan man-de, da SG-de, yeah i da sutin els\" \"Dog pa fi dem pap da wan big dog\" \"fi-Jan hows\" \"suppose for argument sake, nowadays dey have a project\" \"when di Argonaut –da tourist, what was runnin\" \"[DE= hab."
      }
     ],
-    "seq": 10,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -398,7 +307,7 @@
     "verb": "wan",
     "object": "man-de",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -412,7 +321,7 @@
       "text": "\"if yu me ga wan man-de, da SG-de, yeah i da sutin els\" \"Dat da we dey me de do repair pan, we dei neva do good.\""
      }
     ],
-    "seq": 11,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -432,7 +341,7 @@
     "verb": "wan",
     "object": "man-de",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -451,7 +360,7 @@
       "text": "A neva fayn no fot wid di man, man\" \"Wi see a up da top, an wi run lef a\" [lef is unmarked for 'leave/go'] \"if yu me ga wan man-de, da SG-de, yeah i da sutin els\" \"Gal woka dem da di one we give da problem.\""
      }
     ],
-    "seq": 12,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -471,7 +380,7 @@
     "verb": "wan",
     "object": "de ya\"  [DE is a locative verb",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -480,7 +389,7 @@
       "text": "[DA in copula position, but more likely to be focus markers] \"Wan naysa wan de ya\" [DE is a locative verb, not the copula 'be'] \"Dem girl dey steady go run go tell, run go tell o-tell pan dis girl\" \"A neva fayn no fot wid di man.\""
      }
     ],
-    "seq": 13,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -500,7 +409,7 @@
     "verb": "wan",
     "object": "big pleys layk kastam foni fu yu",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -514,7 +423,7 @@
       "text": "\"a no wan big pleys layk kastam foni fu yu, bika di staf tu big\" \"Dey will come an tell us what dey afta.\""
      }
     ],
-    "seq": 14,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -534,7 +443,7 @@
     "verb": "mos",
     "object": "happen dat ina Len",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -543,12 +452,12 @@
       "text": "\"When i mos happen dat ina Len, den when Len(t) mos, beca da den bad ting happen.\""
      }
     ],
-    "seq": 15,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 16,
+  "nextSeq": 12,
   "admits": [
    "NUL",
    "SEG",
@@ -568,7 +477,7 @@
    "verb": "wan",
    "object": "big pleys layk kastam foni fu yu",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -584,34 +493,18 @@
    ]
   },
   {
-   "id": "central american|region|has been subjected to multiethnic and multilingual influences over the last centuries",
-   "subject": "Central American",
-   "verb": "region",
-   "object": "has been subjected to multiethnic and multilingual influences over the last centuries",
+   "id": "central america|reflects|the tumultuous conflicts that opposed spain and england between the 17th and the 19th centuries",
+   "subject": "Central America",
+   "verb": "reflects",
+   "object": "the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#873-1168",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#1169-1377",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The Central American region has been subjected to multiethnic and multilingual influences over the last centuries, starting with Spanish rule in the 15th and 16th century."
-    }
-   ]
-  },
-  {
-   "id": "english|speakers|acquired some variety of english",
-   "subject": "English",
-   "verb": "speakers",
-   "object": "acquired some variety of English",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#33-299",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-     "text": "eWAVE variety ID: 29 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
+     "text": "The location of English speakers in Central America reflects the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries, as well as some later traces of labor immigration."
     }
    ]
   },
@@ -621,7 +514,7 @@
    "verb": "wan",
    "object": "taym",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -632,33 +525,12 @@
    ]
   },
   {
-   "id": "its native|speakers|was normally very limited",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "was normally very limited",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#440-514",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-     "text": "English), while exposure to its native speakers was normally very limited."
-    },
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#515-709",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-     "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
-    }
-   ]
-  },
-  {
    "id": "me ga|wan|man-de",
    "subject": "me ga",
    "verb": "wan",
    "object": "man-de",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -679,50 +551,34 @@
    ]
   },
   {
-   "id": "of english|speakers|in central america reflects the tumultuous conflicts that opposed spain and england between the 17th and the 19th centuries",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
+   "witnesses": [
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#440-514",
+     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
+     "text": "English), while exposure to its native speakers was normally very limited."
+    }
+   ]
+  },
+  {
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
    "subject": "of English",
-   "verb": "speakers",
-   "object": "in Central America reflects the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#1169-1377",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#515-709",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-     "text": "The location of English speakers in Central America reflects the tumultuous conflicts that opposed Spain and England between the 17th and the 19th centuries, as well as some later traces of labor immigration."
-    }
-   ]
-  },
-  {
-   "id": "some groups|and|a widely-used lingua franca and second language for most others",
-   "subject": "some groups",
-   "verb": "and",
-   "object": "a widely-used lingua franca and second language for most others",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#1549-1701",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-     "text": "In multiethnic Belize, an English-based creole is the mother tongue for some groups and a widely-used lingua franca and second language for most others."
-    }
-   ]
-  },
-  {
-   "id": "the caribbean|coast|of central america",
-   "subject": "the Caribbean",
-   "verb": "coast",
-   "object": "of Central America",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#1378-1548",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-     "text": "All English-speaking regions are located on the Caribbean coast of Central America, and except for Belize, they are all part of overwhelmingly Spanish-speaking republics."
+     "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
     }
    ]
   },
@@ -732,7 +588,7 @@
    "verb": "was",
    "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -748,7 +604,7 @@
    "verb": "wan",
    "object": "de ya\"  [DE is a locative verb",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -764,7 +620,7 @@
    "verb": "mos",
    "object": "happen dat ina Len",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -773,26 +629,10 @@
      "text": "\"When i mos happen dat ina Len, den when Len(t) mos, beca da den bad ting happen.\""
     }
    ]
-  },
-  {
-   "id": "with spanish|rule|in the 15th and 16th century",
-   "subject": "with Spanish",
-   "verb": "rule",
-   "object": "in the 15th and 16th century",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt#873-1168",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/29_Belizean_Creole.txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The Central American region has been subjected to multiethnic and multilingual influences over the last centuries, starting with Spanish rule in the 15th and 16th century."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:22.091Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:27.598Z"
  }
 }

@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 7495,
   "bodyOffset": 0,
   "bodyChars": 7495,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 7495,
   "truncated": false
  },
@@ -37,21 +55,33 @@
   "referentEvents": 6,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 54,
-  "extractionError": null
+  "edgesFound": 29,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 14,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 20
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 29,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 58,
-  "excerptOk": 58,
-  "rawChecked": 58,
-  "rawOk": 58,
+  "excerptChecked": 30,
+  "excerptOk": 30,
+  "rawChecked": 30,
+  "rawOk": 30,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 54,
-  "heard": 54,
+  "offered": 29,
+  "heard": 29,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "française",
     "object": "comprend l'Littératureensemble des œuvres écrites ou orales par des écrivains de nationalité française ou de Françaislangue française",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -89,7 +119,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "écrites par|des|citoyens français qui écrivent dans des langues de france telles que le basque",
+    "task_id": "citoyens français|qui|écrivent dans des langues de france telles que le basque",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -98,23 +128,18 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "écrites par des citoyens français qui écrivent dans des langues de France telles que le basque",
-    "subject": "écrites par",
-    "verb": "des",
-    "object": "citoyens français qui écrivent dans des langues de France telles que le basque",
+    "description": "citoyens français qui écrivent dans des langues de France telles que le basque",
+    "subject": "citoyens français",
+    "verb": "qui",
+    "object": "écrivent dans des langues de France telles que le basque",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#160-314",
       "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
       "text": "Elle peut également se référer aux littératures écrites par des citoyens français qui écrivent dans des langues de France telles que le basque, le breton…"
-     },
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3151-3496",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Le réalisme magique se distingue en ce début de , porté par des auteurs tels que Marie NDiaye, Véronique Ovaldé ou Sylvie Germain La notion de minimalisme ou de roman ludique : « Au cours des années 1980, le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)."
      }
     ],
     "seq": 1,
@@ -137,7 +162,7 @@
     "verb": "en",
     "object": "langue française par les personnes d'autres pays tels que la Belgique",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -147,35 +172,6 @@
      }
     ],
     "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la littérature|de|langue françaiselittérature francophone iii)2006-12-310039-294410",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la Littérature de langue françaiselittérature francophone III)2006-12-310039-294410",
-    "subject": "la Littérature",
-    "verb": "de",
-    "object": "langue françaiselittérature francophone III)2006-12-310039-294410",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#467-667",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "se réfère à la Littérature de langue françaiselittérature francophone III)2006-12-310039-294410.4000/studifrancesi.27073https://journals.openedition.org/studifrancesi/27073tocto1n12023-05-25542–547}}."
-     }
-    ],
-    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -195,7 +191,7 @@
     "verb": "en",
     "object": "ancien français au Moyen Âge et se perpétue aujourd'hui",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -204,65 +200,7 @@
       "text": "Son histoire commence en ancien français au Moyen Âge et se perpétue aujourd'hui."
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "histoire|de|la littérature française",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Histoire de la littérature française",
-    "subject": "Histoire",
-    "verb": "de",
-    "object": "la littérature française",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#753-789",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Histoire de la littérature française"
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "est possible|de|distinguer quelques types :",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "est possible de distinguer quelques types :",
-    "subject": "est possible",
-    "verb": "de",
-    "object": "distinguer quelques types :",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#878-959",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "1+2.jpgvignette\":0\"> pourtant il nous est possible de distinguer quelques types :"
-     }
-    ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -282,7 +220,7 @@
     "verb": "qui",
     "object": "ne serait ni « une biographie",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -296,13 +234,13 @@
       "text": "D'autre part une autofiction qui s'inscrirait « dans une réflexion générale sur [...] la construction identitaire de l’écrivain contemporain dans son rapport à l’écriture et aux médias."
      }
     ],
-    "seq": 7,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "dessous|de|la littérature",
+    "task_id": "l’écrivain contemporain|dans|son rapport à l’écriture et aux médias",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -311,70 +249,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "dessous de la littérature",
-    "subject": "dessous",
-    "verb": "de",
-    "object": "la littérature",
+    "description": "l’écrivain contemporain dans son rapport à l’écriture et aux médias",
+    "subject": "l’écrivain contemporain",
+    "verb": "dans",
+    "object": "son rapport à l’écriture et aux médias",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#962-1190",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "D'une part une autofiction qui ne serait ni « une biographie, ni un roman naturellement [qui est] au-dessous de la littérature, [...] quelque part entre la littérature, la sociologie et l’histoire » représentée par Annie Ernaux."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la sociologie|et|l’histoire » représentée par annie ernaux",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la sociologie et l’histoire » représentée par Annie Ernaux",
-    "subject": "la sociologie",
-    "verb": "et",
-    "object": "l’histoire » représentée par Annie Ernaux",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#962-1190",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "D'une part une autofiction qui ne serait ni « une biographie, ni un roman naturellement [qui est] au-dessous de la littérature, [...] quelque part entre la littérature, la sociologie et l’histoire » représentée par Annie Ernaux."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "construction identitaire|de|l’écrivain contemporain dans son rapport à l’écriture et aux médias",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "construction identitaire de l’écrivain contemporain dans son rapport à l’écriture et aux médias",
-    "subject": "construction identitaire",
-    "verb": "de",
-    "object": "l’écrivain contemporain dans son rapport à l’écriture et aux médias",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -383,7 +263,7 @@
       "text": "D'autre part une autofiction qui s'inscrirait « dans une réflexion générale sur [...] la construction identitaire de l’écrivain contemporain dans son rapport à l’écriture et aux médias."
      }
     ],
-    "seq": 10,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -403,7 +283,7 @@
     "verb": "qui",
     "object": "se définit comme une \"praticienne de l'autofiction\" considérant que « la mise en écriture modifie le réel",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -412,7 +292,7 @@
       "text": "» Cette autofiction plus formelle est représentée par Chloé Delaume qui se définit comme une \"praticienne de l'autofiction\" considérant que « la mise en écriture modifie le réel."
      }
     ],
-    "seq": 11,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -432,7 +312,7 @@
     "verb": "dans",
     "object": "l'autofiction « une assertion qui se dit feinte et qui dans le même temps se dit sérieuse »",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -441,13 +321,13 @@
       "text": "» Quant à Marie Darrieussecq, elle voit dans l'autofiction « une assertion qui se dit feinte et qui dans le même temps se dit sérieuse »."
      }
     ],
-    "seq": 12,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "est vrai|et|met en garde le lecteur contre une adhésion à cette croyance",
+    "task_id": "et met|en|garde le lecteur contre une adhésion à cette croyance",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -456,12 +336,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "est vrai et met en garde le lecteur contre une adhésion à cette croyance",
-    "subject": "est vrai",
-    "verb": "et",
-    "object": "met en garde le lecteur contre une adhésion à cette croyance",
+    "description": "et met en garde le lecteur contre une adhésion à cette croyance",
+    "subject": "et met",
+    "verb": "en",
+    "object": "garde le lecteur contre une adhésion à cette croyance",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -470,36 +350,7 @@
       "text": "« Autrement dit, l'auteur d'autofiction tout à la fois affirme que ce qu'il raconte est vrai et met en garde le lecteur contre une adhésion à cette croyance."
      }
     ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "les éléments|du|récit pivotent entre valeur factuelle et valeur fictive",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "les éléments du récit pivotent entre valeur factuelle et valeur fictive",
-    "subject": "les éléments",
-    "verb": "du",
-    "object": "récit pivotent entre valeur factuelle et valeur fictive",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#1853-1992",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Dès lors, tous les éléments du récit pivotent entre valeur factuelle et valeur fictive, sans que le lecteur puisse trancher entre les deux."
-     }
-    ],
-    "seq": 14,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -519,7 +370,7 @@
     "verb": "en",
     "object": "mutation",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -528,123 +379,7 @@
       "text": "Le réalisme fictionnel, dans un monde en mutation, continue à tenir fermement sa place ; il est un moyen de comprendre les enjeux d’aujourd’hui."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "un moyen|de|comprendre les enjeux d’aujourd’hui",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "un moyen de comprendre les enjeux d’aujourd’hui",
-    "subject": "un moyen",
-    "verb": "de",
-    "object": "comprendre les enjeux d’aujourd’hui",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2143-2289",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Le réalisme fictionnel, dans un monde en mutation, continue à tenir fermement sa place ; il est un moyen de comprendre les enjeux d’aujourd’hui."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "offrant ainsi|des|perspectives sur la mémoire collective",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Offrant ainsi des perspectives sur la mémoire collective",
-    "subject": "Offrant ainsi",
-    "verb": "des",
-    "object": "perspectives sur la mémoire collective",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2290-2506",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Offrant ainsi des perspectives sur la mémoire collective, et revisitant l'histoire avec un regard critique : par exemple L'Ordre du jour (récit)L'Ordre du jour, d'Éric Vuillard, explique les coulisses de l'Anschluss."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "exemple l'ordre|du|jour (récit)l'ordre du jour",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "exemple L'Ordre du jour (récit)L'Ordre du jour",
-    "subject": "exemple L'Ordre",
-    "verb": "du",
-    "object": "jour (récit)L'Ordre du jour",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2290-2506",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Offrant ainsi des perspectives sur la mémoire collective, et revisitant l'histoire avec un regard critique : par exemple L'Ordre du jour (récit)L'Ordre du jour, d'Éric Vuillard, explique les coulisses de l'Anschluss."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "les coulisses|de|l'anschluss",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "les coulisses de l'Anschluss",
-    "subject": "les coulisses",
-    "verb": "de",
-    "object": "l'Anschluss",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2290-2506",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Offrant ainsi des perspectives sur la mémoire collective, et revisitant l'histoire avec un regard critique : par exemple L'Ordre du jour (récit)L'Ordre du jour, d'Éric Vuillard, explique les coulisses de l'Anschluss."
-     }
-    ],
-    "seq": 19,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -664,7 +399,7 @@
     "verb": "êtes",
     "object": "l’amour malheureux du Führer]  de Jean-Noël Orengo",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -673,13 +408,13 @@
       "text": "[https://www.grasset.fr/livre/vous-etes-lamour-malheureux-du-fuhrer-9782246831372/ Vous êtes l’amour malheureux du Führer] de Jean-Noël Orengo, étudie aussi l’ambiguïté du personnage d’Albert Speer, l’architecte préféré d’Hitler."
      }
     ],
-    "seq": 20,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "aussi l’ambiguïté|du|personnage d’albert speer",
+    "task_id": "philippe jaenada|explorent|également des faits divers du passé",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -688,41 +423,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "aussi l’ambiguïté du personnage d’Albert Speer",
-    "subject": "aussi l’ambiguïté",
-    "verb": "du",
-    "object": "personnage d’Albert Speer",
+    "description": "Philippe Jaenada explorent également des faits divers du passé",
+    "subject": "Philippe Jaenada",
+    "verb": "explorent",
+    "object": "également des faits divers du passé",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2507-2737",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "[https://www.grasset.fr/livre/vous-etes-lamour-malheureux-du-fuhrer-9782246831372/ Vous êtes l’amour malheureux du Führer] de Jean-Noël Orengo, étudie aussi l’ambiguïté du personnage d’Albert Speer, l’architecte préféré d’Hitler."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "les œuvres|de|philippe jaenada explorent également des faits divers du passé",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Les œuvres de Philippe Jaenada explorent également des faits divers du passé",
-    "subject": "Les œuvres",
-    "verb": "de",
-    "object": "Philippe Jaenada explorent également des faits divers du passé",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -731,36 +437,7 @@
       "text": "Les œuvres de Philippe Jaenada explorent également des faits divers du passé, re-contextualisant des éléments historiques à la lumière contemporaine."
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "contextualisant|des|éléments historiques à la lumière contemporaine",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "contextualisant des éléments historiques à la lumière contemporaine",
-    "subject": "contextualisant",
-    "verb": "des",
-    "object": "éléments historiques à la lumière contemporaine",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2738-2887",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Les œuvres de Philippe Jaenada explorent également des faits divers du passé, re-contextualisant des éléments historiques à la lumière contemporaine."
-     }
-    ],
-    "seq": 23,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -780,7 +457,7 @@
     "verb": "promenades",
     "object": "à Petrópolis de Belinda Cannone interroge la mort de Stefan Zweig",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -789,13 +466,13 @@
       "text": "Comme Dernières promenades à Petrópolis de Belinda Cannone interroge la mort de Stefan Zweig, et Salone (roman)Salone (prix Senghor 2013) de Laurent LD Bonnet s'empare de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société."
      }
     ],
-    "seq": 24,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "salone|de|laurent ld bonnet s'empare de l'histoire de la sierra léone pour aborder le thème universel du délitement d'une société",
+    "task_id": "ld bonnet|s'empare|de l'histoire de la sierra léone pour aborder le thème universel du délitement d'une société",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -804,12 +481,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Salone de Laurent LD Bonnet s'empare de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société",
-    "subject": "Salone",
-    "verb": "de",
-    "object": "Laurent LD Bonnet s'empare de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société",
+    "description": "LD Bonnet s'empare de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société",
+    "subject": "LD Bonnet",
+    "verb": "s'empare",
+    "object": "de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -818,7 +495,7 @@
       "text": "Comme Dernières promenades à Petrópolis de Belinda Cannone interroge la mort de Stefan Zweig, et Salone (roman)Salone (prix Senghor 2013) de Laurent LD Bonnet s'empare de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société."
      }
     ],
-    "seq": 25,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -838,7 +515,7 @@
     "verb": "en",
     "object": "ce début de",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -847,13 +524,13 @@
       "text": "Le réalisme magique se distingue en ce début de , porté par des auteurs tels que Marie NDiaye, Véronique Ovaldé ou Sylvie Germain La notion de minimalisme ou de roman ludique : « Au cours des années 1980, le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)."
      }
     ],
-    "seq": 26,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "la notion|de|minimalisme ou de roman ludique : « au cours des années 1980",
+    "task_id": "rapidement répandu|pour|désigner des auteurs ayant en partage un héritage (le nouveau roman)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -862,51 +539,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "La notion de minimalisme ou de roman ludique : « Au cours des années 1980",
-    "subject": "La notion",
-    "verb": "de",
-    "object": "minimalisme ou de roman ludique : « Au cours des années 1980",
+    "description": "rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)",
+    "subject": "rapidement répandu",
+    "verb": "pour",
+    "object": "désigner des auteurs ayant en partage un héritage (le Nouveau Roman)",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3151-3496",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Le réalisme magique se distingue en ce début de , porté par des auteurs tels que Marie NDiaye, Véronique Ovaldé ou Sylvie Germain La notion de minimalisme ou de roman ludique : « Au cours des années 1980, le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)."
-     },
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-     },
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#5195-5485",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Cette notion de minimalisme positif est contestée par une partie de la profession notamment Pierre Jourde : « réunir les auteurs du même type que Delerm en une sorte d’école, bref ériger cela en phénomène littéraire revient à encourager le développement actuel de la littérature de confort."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "le terme|de|minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le nouveau roman)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)",
-    "subject": "le terme",
-    "verb": "de",
-    "object": "minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -915,7 +553,7 @@
       "text": "Le réalisme magique se distingue en ce début de , porté par des auteurs tels que Marie NDiaye, Véronique Ovaldé ou Sylvie Germain La notion de minimalisme ou de roman ludique : « Au cours des années 1980, le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)."
      }
     ],
-    "seq": 28,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -935,7 +573,7 @@
     "verb": "d'écrivains",
     "object": "regroupés aujourd'hui autour des Les Éditions de MinuitÉditions de Minuit dont Jean Echenoz",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -944,13 +582,13 @@
       "text": "» Toute une génération d'écrivains regroupés aujourd'hui autour des Les Éditions de MinuitÉditions de Minuit dont Jean Echenoz, Jean-Philippe Toussaint, Laurent Mauvignier ou Éric ChevillardEric Chevillard."
      }
     ],
-    "seq": 29,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "si l'idée|de|minimalisme est encore débattue",
+    "task_id": "roman ludique|pour|regrouper ces auteurs",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -959,128 +597,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "si l'idée de minimalisme est encore débattue",
-    "subject": "si l'idée",
-    "verb": "de",
-    "object": "minimalisme est encore débattue",
+    "description": "Roman ludique pour regrouper ces auteurs",
+    "subject": "Roman ludique",
+    "verb": "pour",
+    "object": "regrouper ces auteurs",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sans illusion|du|monde »",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sans illusion du monde »",
-    "subject": "sans illusion",
-    "verb": "du",
-    "object": "monde »",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "présence accrue|du|ludique",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "présence accrue du ludique",
-    "subject": "présence accrue",
-    "verb": "du",
-    "object": "ludique",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "à distance|de|l’incongru et une manière de prendre le mot au mot",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "à distance de l’incongru et une manière de prendre le mot au mot",
-    "subject": "à distance",
-    "verb": "de",
-    "object": "l’incongru et une manière de prendre le mot au mot",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la dénomination|de|roman ludique pour regrouper ces auteurs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la dénomination de Roman ludique pour regrouper ces auteurs",
-    "subject": "la dénomination",
-    "verb": "de",
-    "object": "Roman ludique pour regrouper ces auteurs",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1089,13 +611,13 @@
       "text": "Des caractéristiques, communes, qui ont poussé Olivier Bessard-Banquy à proposer la dénomination de Roman ludique pour regrouper ces auteurs, l'occasion de séparer minimalisme et littérature ludique : « Le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu."
      }
     ],
-    "seq": 34,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "l'occasion|de|séparer minimalisme et littérature ludique : « le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu",
+    "task_id": "jeu est|en|effet chez eux bien plus marqué que la tentation du peu",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1104,12 +626,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "l'occasion de séparer minimalisme et littérature ludique : « Le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu",
-    "subject": "l'occasion",
-    "verb": "de",
-    "object": "séparer minimalisme et littérature ludique : « Le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu",
+    "description": "jeu est en effet chez eux bien plus marqué que la tentation du peu",
+    "subject": "jeu est",
+    "verb": "en",
+    "object": "effet chez eux bien plus marqué que la tentation du peu",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1118,13 +640,13 @@
       "text": "Des caractéristiques, communes, qui ont poussé Olivier Bessard-Banquy à proposer la dénomination de Roman ludique pour regrouper ces auteurs, l'occasion de séparer minimalisme et littérature ludique : « Le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu."
      }
     ],
-    "seq": 35,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "pourquoi l’étiquette|du|minimalisme  doit être réservée à des ouvrages de peu",
+    "task_id": "tout|en|fondant spontanément une éthique holistique du banal",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1133,128 +655,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "pourquoi l’étiquette du minimalisme  doit être réservée à des ouvrages de peu",
-    "subject": "pourquoi l’étiquette",
-    "verb": "du",
-    "object": "minimalisme  doit être réservée à des ouvrages de peu",
+    "description": "tout en fondant spontanément une éthique holistique du banal",
+    "subject": "tout",
+    "verb": "en",
+    "object": "fondant spontanément une éthique holistique du banal",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4322-4460",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "[…] C’est pourquoi l’étiquette du minimalisme doit être réservée à des ouvrages de peu, revendiquant à l’évidence une indigence absolue »"
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "l'hypothèse|du|minimalisme positif : notion créée par rémi bertrand",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "L'hypothèse du minimalisme positif : notion créée par Rémi Bertrand",
-    "subject": "L'hypothèse",
-    "verb": "du",
-    "object": "minimalisme positif : notion créée par Rémi Bertrand",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4462-4655",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "L'hypothèse du minimalisme positif : notion créée par Rémi Bertrand, dans son essai Philippe Delerm et le minimalisme positif, désigne une « littérature articulée sur le bonheur au quotidien »."
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "philippe delerm|et|le minimalisme positif",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Philippe Delerm et le minimalisme positif",
-    "subject": "Philippe Delerm",
-    "verb": "et",
-    "object": "le minimalisme positif",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4462-4655",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "L'hypothèse du minimalisme positif : notion créée par Rémi Bertrand, dans son essai Philippe Delerm et le minimalisme positif, désigne une « littérature articulée sur le bonheur au quotidien »."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "une vision|de|l’écriture et de la vie apparaît",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Une vision de l’écriture et de la vie apparaît",
-    "subject": "Une vision",
-    "verb": "de",
-    "object": "l’écriture et de la vie apparaît",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4656-4733",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Une vision de l’écriture et de la vie apparaît, dès lors, de façon cohérente."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "il s’agit|de|« préciser les conditions de possibilité d’une écriture du quotidien »",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Il s’agit de « préciser les conditions de possibilité d’une écriture du quotidien »",
-    "subject": "Il s’agit",
-    "verb": "de",
-    "object": "« préciser les conditions de possibilité d’une écriture du quotidien »",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1263,65 +669,7 @@
       "text": "Il s’agit de « préciser les conditions de possibilité d’une écriture du quotidien », de débarrasser « le quotidien et le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal ; et ce, dans « une forme brève »."
      }
     ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "le quotidien|et|le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "le quotidien et le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal",
-    "subject": "le quotidien",
-    "verb": "et",
-    "object": "le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4734-4988",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Il s’agit de « préciser les conditions de possibilité d’une écriture du quotidien », de débarrasser « le quotidien et le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal ; et ce, dans « une forme brève »."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cette bannière|du|minimalisme positif",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "cette bannière du minimalisme positif",
-    "subject": "cette bannière",
-    "verb": "du",
-    "object": "minimalisme positif",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4989-5194",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Sous cette bannière du minimalisme positif, Bertrand rassemble plusieurs auteurs : Philippe Delerm, Christian BobinBobin, Jean-Pierre Ostende, Pierre Michon, Visage, tous « chantres des plaisirs simples »."
-     }
-    ],
-    "seq": 42,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1341,7 +689,7 @@
     "verb": "rassemble",
     "object": "plusieurs auteurs : Philippe Delerm",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1350,13 +698,13 @@
       "text": "Sous cette bannière du minimalisme positif, Bertrand rassemble plusieurs auteurs : Philippe Delerm, Christian BobinBobin, Jean-Pierre Ostende, Pierre Michon, Visage, tous « chantres des plaisirs simples »."
      }
     ],
-    "seq": 43,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "chantres|des|plaisirs simples »",
+    "task_id": "que delerm|en|une sorte d’école",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1365,21 +713,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "chantres des plaisirs simples »",
-    "subject": "chantres",
-    "verb": "des",
-    "object": "plaisirs simples »",
+    "description": "que Delerm en une sorte d’école",
+    "subject": "que Delerm",
+    "verb": "en",
+    "object": "une sorte d’école",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4989-5194",
+      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#5195-5485",
       "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Sous cette bannière du minimalisme positif, Bertrand rassemble plusieurs auteurs : Philippe Delerm, Christian BobinBobin, Jean-Pierre Ostende, Pierre Michon, Visage, tous « chantres des plaisirs simples »."
+      "text": "Cette notion de minimalisme positif est contestée par une partie de la profession notamment Pierre Jourde : « réunir les auteurs du même type que Delerm en une sorte d’école, bref ériger cela en phénomène littéraire revient à encourager le développement actuel de la littérature de confort."
      }
     ],
-    "seq": 44,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1399,7 +747,7 @@
     "verb": "en",
     "object": "phénomène littéraire revient à encourager le développement actuel de la littérature de confort",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1408,7 +756,7 @@
       "text": "Cette notion de minimalisme positif est contestée par une partie de la profession notamment Pierre Jourde : « réunir les auteurs du même type que Delerm en une sorte d’école, bref ériger cela en phénomène littéraire revient à encourager le développement actuel de la littérature de confort."
      }
     ],
-    "seq": 45,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1428,7 +776,7 @@
     "verb": "en",
     "object": "Françaislangue française se retrouve dans de nombreux pays sur plusieurs continents",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1437,13 +785,13 @@
       "text": "La littérature écrite en Françaislangue française se retrouve dans de nombreux pays sur plusieurs continents."
      }
     ],
-    "seq": 46,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "islam|et|orient dans la littérature française",
+    "task_id": "et orient|dans|la littérature française",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1452,12 +800,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Islam et Orient dans la littérature française",
-    "subject": "Islam",
-    "verb": "et",
-    "object": "Orient dans la littérature française",
+    "description": "et Orient dans la littérature française",
+    "subject": "et Orient",
+    "verb": "dans",
+    "object": "la littérature française",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1466,36 +814,7 @@
       "text": "Islam et Orient dans la littérature française"
      }
     ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "one thousand|and|one nights17",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "One Thousand and One Nights17",
-    "subject": "One Thousand",
-    "verb": "and",
-    "object": "One Nights17",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#5677-6440",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Fichier:One Thousand and One Nights17.jpgvignette\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"center\" \"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"Histoire_litt%C3%A9raire_de_la_France&oldid=203301897"
-     }
-    ],
-    "seq": 48,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1515,7 +834,7 @@
     "verb": "d'écrivains",
     "object": "de langue française par année de naissance",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1524,7 +843,7 @@
       "text": "Littérature Liste de mouvements littéraires Liste d'écrivains de langue française par année de naissance, Liste alphabétique d'écrivains de langue française :Catégorie:Écrivain français par genreÉcrivains français par genre, dont :Catégorie:Épistolier françaisépistoliers, :Catégorie:Essayiste françaisessayistes, :Catégorie:Nouvelliste françaisnouvellistes| Liste des prix littéraires français :Catégorie:Revue littéraire francophoneRevues littéraires francophones Histoire littéraire de la France Langues régionales ou minoritaires en France, Littératures de langues régionales Littérature alsacienne, BasquesLittérature_et_bertsolaribasque, Littérature béarnaise et gasconnebéarnaise et gasconne, Littérature bretonnebretonne, Littérature franciquefrancique, Littérature occitaneoccitane, Littérature provençaleprovençale Littérature belge, Littérature suissesuisse, :Catégorie:Littérature canadienne francophonecanadienne Francophonie"
      }
     ],
-    "seq": 49,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1544,7 +863,7 @@
     "verb": "française",
     "object": ":Catégorie:Écrivain français par genreÉcrivains français par genre",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1553,7 +872,7 @@
       "text": "Littérature Liste de mouvements littéraires Liste d'écrivains de langue française par année de naissance, Liste alphabétique d'écrivains de langue française :Catégorie:Écrivain français par genreÉcrivains français par genre, dont :Catégorie:Épistolier françaisépistoliers, :Catégorie:Essayiste françaisessayistes, :Catégorie:Nouvelliste françaisnouvellistes| Liste des prix littéraires français :Catégorie:Revue littéraire francophoneRevues littéraires francophones Histoire littéraire de la France Langues régionales ou minoritaires en France, Littératures de langues régionales Littérature alsacienne, BasquesLittérature_et_bertsolaribasque, Littérature béarnaise et gasconnebéarnaise et gasconne, Littérature bretonnebretonne, Littérature franciquefrancique, Littérature occitaneoccitane, Littérature provençaleprovençale Littérature belge, Littérature suissesuisse, :Catégorie:Littérature canadienne francophonecanadienne Francophonie"
      }
     ],
-    "seq": 50,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1573,7 +892,7 @@
     "verb": "en",
     "object": "France",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1582,36 +901,7 @@
       "text": "Littérature Liste de mouvements littéraires Liste d'écrivains de langue française par année de naissance, Liste alphabétique d'écrivains de langue française :Catégorie:Écrivain français par genreÉcrivains français par genre, dont :Catégorie:Épistolier françaisépistoliers, :Catégorie:Essayiste françaisessayistes, :Catégorie:Nouvelliste françaisnouvellistes| Liste des prix littéraires français :Catégorie:Revue littéraire francophoneRevues littéraires francophones Histoire littéraire de la France Langues régionales ou minoritaires en France, Littératures de langues régionales Littérature alsacienne, BasquesLittérature_et_bertsolaribasque, Littérature béarnaise et gasconnebéarnaise et gasconne, Littérature bretonnebretonne, Littérature franciquefrancique, Littérature occitaneoccitane, Littérature provençaleprovençale Littérature belge, Littérature suissesuisse, :Catégorie:Littérature canadienne francophonecanadienne Francophonie"
      }
     ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "littérature béarnaise|et|gasconnebéarnaise et gasconne",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Littérature béarnaise et gasconnebéarnaise et gasconne",
-    "subject": "Littérature béarnaise",
-    "verb": "et",
-    "object": "gasconnebéarnaise et gasconne",
-    "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#6463-7411",
-      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-      "text": "Littérature Liste de mouvements littéraires Liste d'écrivains de langue française par année de naissance, Liste alphabétique d'écrivains de langue française :Catégorie:Écrivain français par genreÉcrivains français par genre, dont :Catégorie:Épistolier françaisépistoliers, :Catégorie:Essayiste françaisessayistes, :Catégorie:Nouvelliste françaisnouvellistes| Liste des prix littéraires français :Catégorie:Revue littéraire francophoneRevues littéraires francophones Histoire littéraire de la France Langues régionales ou minoritaires en France, Littératures de langues régionales Littérature alsacienne, BasquesLittérature_et_bertsolaribasque, Littérature béarnaise et gasconnebéarnaise et gasconne, Littérature bretonnebretonne, Littérature franciquefrancique, Littérature occitaneoccitane, Littérature provençaleprovençale Littérature belge, Littérature suissesuisse, :Catégorie:Littérature canadienne francophonecanadienne Francophonie"
-     }
-    ],
-    "seq": 52,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1631,7 +921,7 @@
     "verb": "française",
     "object": "Catégorie:Littérature européenne",
     "witnesses": [
-     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+     "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1640,12 +930,12 @@
       "text": "Catégorie:Littérature française Catégorie:Littérature européenne"
      }
     ],
-    "seq": 53,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 54,
+  "nextSeq": 29,
   "admits": [
    "NUL",
    "SEG",
@@ -1660,76 +950,12 @@
  },
  "folded": [
   {
-   "id": "à distance|de|l’incongru et une manière de prendre le mot au mot",
-   "subject": "à distance",
-   "verb": "de",
-   "object": "l’incongru et une manière de prendre le mot au mot",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-    }
-   ]
-  },
-  {
-   "id": "aussi l’ambiguïté|du|personnage d’albert speer",
-   "subject": "aussi l’ambiguïté",
-   "verb": "du",
-   "object": "personnage d’Albert Speer",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2507-2737",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "[https://www.grasset.fr/livre/vous-etes-lamour-malheureux-du-fuhrer-9782246831372/ Vous êtes l’amour malheureux du Führer] de Jean-Noël Orengo, étudie aussi l’ambiguïté du personnage d’Albert Speer, l’architecte préféré d’Hitler."
-    }
-   ]
-  },
-  {
    "id": "bertrand|rassemble|plusieurs auteurs : philippe delerm",
    "subject": "Bertrand",
    "verb": "rassemble",
    "object": "plusieurs auteurs : Philippe Delerm",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4989-5194",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Sous cette bannière du minimalisme positif, Bertrand rassemble plusieurs auteurs : Philippe Delerm, Christian BobinBobin, Jean-Pierre Ostende, Pierre Michon, Visage, tous « chantres des plaisirs simples »."
-    }
-   ]
-  },
-  {
-   "id": "cette bannière|du|minimalisme positif",
-   "subject": "cette bannière",
-   "verb": "du",
-   "object": "minimalisme positif",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4989-5194",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Sous cette bannière du minimalisme positif, Bertrand rassemble plusieurs auteurs : Philippe Delerm, Christian BobinBobin, Jean-Pierre Ostende, Pierre Michon, Visage, tous « chantres des plaisirs simples »."
-    }
-   ]
-  },
-  {
-   "id": "chantres|des|plaisirs simples »",
-   "subject": "chantres",
-   "verb": "des",
-   "object": "plaisirs simples »",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1745,7 +971,7 @@
    "verb": "qui",
    "object": "se définit comme une \"praticienne de l'autofiction\" considérant que « la mise en écriture modifie le réel",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1756,12 +982,28 @@
    ]
   },
   {
+   "id": "citoyens français|qui|écrivent dans des langues de france telles que le basque",
+   "subject": "citoyens français",
+   "verb": "qui",
+   "object": "écrivent dans des langues de France telles que le basque",
+   "witnesses": [
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#160-314",
+     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
+     "text": "Elle peut également se référer aux littératures écrites par des citoyens français qui écrivent dans des langues de France telles que le basque, le breton…"
+    }
+   ]
+  },
+  {
    "id": "comme dernières|promenades|à petrópolis de belinda cannone interroge la mort de stefan zweig",
    "subject": "Comme Dernières",
    "verb": "promenades",
    "object": "à Petrópolis de Belinda Cannone interroge la mort de Stefan Zweig",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1772,44 +1014,12 @@
    ]
   },
   {
-   "id": "construction identitaire|de|l’écrivain contemporain dans son rapport à l’écriture et aux médias",
-   "subject": "construction identitaire",
-   "verb": "de",
-   "object": "l’écrivain contemporain dans son rapport à l’écriture et aux médias",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#1192-1377",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "D'autre part une autofiction qui s'inscrirait « dans une réflexion générale sur [...] la construction identitaire de l’écrivain contemporain dans son rapport à l’écriture et aux médias."
-    }
-   ]
-  },
-  {
-   "id": "contextualisant|des|éléments historiques à la lumière contemporaine",
-   "subject": "contextualisant",
-   "verb": "des",
-   "object": "éléments historiques à la lumière contemporaine",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2738-2887",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Les œuvres de Philippe Jaenada explorent également des faits divers du passé, re-contextualisant des éléments historiques à la lumière contemporaine."
-    }
-   ]
-  },
-  {
    "id": "de langue|française|:catégorie:écrivain français par genreécrivains français par genre",
    "subject": "de langue",
    "verb": "française",
    "object": ":Catégorie:Écrivain français par genreÉcrivains français par genre",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1820,49 +1030,12 @@
    ]
   },
   {
-   "id": "dessous|de|la littérature",
-   "subject": "dessous",
-   "verb": "de",
-   "object": "la littérature",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#962-1190",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "D'une part une autofiction qui ne serait ni « une biographie, ni un roman naturellement [qui est] au-dessous de la littérature, [...] quelque part entre la littérature, la sociologie et l’histoire » représentée par Annie Ernaux."
-    }
-   ]
-  },
-  {
-   "id": "écrites par|des|citoyens français qui écrivent dans des langues de france telles que le basque",
-   "subject": "écrites par",
-   "verb": "des",
-   "object": "citoyens français qui écrivent dans des langues de France telles que le basque",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#160-314",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Elle peut également se référer aux littératures écrites par des citoyens français qui écrivent dans des langues de France telles que le basque, le breton…"
-    },
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3151-3496",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Le réalisme magique se distingue en ce début de , porté par des auteurs tels que Marie NDiaye, Véronique Ovaldé ou Sylvie Germain La notion de minimalisme ou de roman ludique : « Au cours des années 1980, le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)."
-    }
-   ]
-  },
-  {
    "id": "elle voit|dans|l'autofiction « une assertion qui se dit feinte et qui dans le même temps se dit sérieuse »",
    "subject": "elle voit",
    "verb": "dans",
    "object": "l'autofiction « une assertion qui se dit feinte et qui dans le même temps se dit sérieuse »",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1878,7 +1051,7 @@
    "verb": "en",
    "object": "phénomène littéraire revient à encourager le développement actuel de la littérature de confort",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1889,28 +1062,12 @@
    ]
   },
   {
-   "id": "est possible|de|distinguer quelques types :",
-   "subject": "est possible",
-   "verb": "de",
-   "object": "distinguer quelques types :",
+   "id": "et met|en|garde le lecteur contre une adhésion à cette croyance",
+   "subject": "et met",
+   "verb": "en",
+   "object": "garde le lecteur contre une adhésion à cette croyance",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#878-959",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "1+2.jpgvignette\":0\"> pourtant il nous est possible de distinguer quelques types :"
-    }
-   ]
-  },
-  {
-   "id": "est vrai|et|met en garde le lecteur contre une adhésion à cette croyance",
-   "subject": "est vrai",
-   "verb": "et",
-   "object": "met en garde le lecteur contre une adhésion à cette croyance",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1921,76 +1078,12 @@
    ]
   },
   {
-   "id": "exemple l'ordre|du|jour (récit)l'ordre du jour",
-   "subject": "exemple L'Ordre",
-   "verb": "du",
-   "object": "jour (récit)L'Ordre du jour",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2290-2506",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Offrant ainsi des perspectives sur la mémoire collective, et revisitant l'histoire avec un regard critique : par exemple L'Ordre du jour (récit)L'Ordre du jour, d'Éric Vuillard, explique les coulisses de l'Anschluss."
-    }
-   ]
-  },
-  {
-   "id": "histoire commence|en|ancien français au moyen âge et se perpétue aujourd'hui",
-   "subject": "histoire commence",
-   "verb": "en",
-   "object": "ancien français au Moyen Âge et se perpétue aujourd'hui",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#669-750",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Son histoire commence en ancien français au Moyen Âge et se perpétue aujourd'hui."
-    }
-   ]
-  },
-  {
-   "id": "histoire|de|la littérature française",
-   "subject": "Histoire",
-   "verb": "de",
+   "id": "et orient|dans|la littérature française",
+   "subject": "et Orient",
+   "verb": "dans",
    "object": "la littérature française",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#753-789",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Histoire de la littérature française"
-    }
-   ]
-  },
-  {
-   "id": "il s’agit|de|« préciser les conditions de possibilité d’une écriture du quotidien »",
-   "subject": "Il s’agit",
-   "verb": "de",
-   "object": "« préciser les conditions de possibilité d’une écriture du quotidien »",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4734-4988",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Il s’agit de « préciser les conditions de possibilité d’une écriture du quotidien », de débarrasser « le quotidien et le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal ; et ce, dans « une forme brève »."
-    }
-   ]
-  },
-  {
-   "id": "islam|et|orient dans la littérature française",
-   "subject": "Islam",
-   "verb": "et",
-   "object": "Orient dans la littérature française",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2001,28 +1094,28 @@
    ]
   },
   {
-   "id": "l'hypothèse|du|minimalisme positif : notion créée par rémi bertrand",
-   "subject": "L'hypothèse",
-   "verb": "du",
-   "object": "minimalisme positif : notion créée par Rémi Bertrand",
+   "id": "histoire commence|en|ancien français au moyen âge et se perpétue aujourd'hui",
+   "subject": "histoire commence",
+   "verb": "en",
+   "object": "ancien français au Moyen Âge et se perpétue aujourd'hui",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4462-4655",
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#669-750",
      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "L'hypothèse du minimalisme positif : notion créée par Rémi Bertrand, dans son essai Philippe Delerm et le minimalisme positif, désigne une « littérature articulée sur le bonheur au quotidien »."
+     "text": "Son histoire commence en ancien français au Moyen Âge et se perpétue aujourd'hui."
     }
    ]
   },
   {
-   "id": "l'occasion|de|séparer minimalisme et littérature ludique : « le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu",
-   "subject": "l'occasion",
-   "verb": "de",
-   "object": "séparer minimalisme et littérature ludique : « Le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu",
+   "id": "jeu est|en|effet chez eux bien plus marqué que la tentation du peu",
+   "subject": "jeu est",
+   "verb": "en",
+   "object": "effet chez eux bien plus marqué que la tentation du peu",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2033,34 +1126,18 @@
    ]
   },
   {
-   "id": "la dénomination|de|roman ludique pour regrouper ces auteurs",
-   "subject": "la dénomination",
-   "verb": "de",
-   "object": "Roman ludique pour regrouper ces auteurs",
+   "id": "l’écrivain contemporain|dans|son rapport à l’écriture et aux médias",
+   "subject": "l’écrivain contemporain",
+   "verb": "dans",
+   "object": "son rapport à l’écriture et aux médias",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4040-4321",
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#1192-1377",
      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Des caractéristiques, communes, qui ont poussé Olivier Bessard-Banquy à proposer la dénomination de Roman ludique pour regrouper ces auteurs, l'occasion de séparer minimalisme et littérature ludique : « Le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu."
-    }
-   ]
-  },
-  {
-   "id": "la littérature|de|langue françaiselittérature francophone iii)2006-12-310039-294410",
-   "subject": "la Littérature",
-   "verb": "de",
-   "object": "langue françaiselittérature francophone III)2006-12-310039-294410",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#467-667",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "se réfère à la Littérature de langue françaiselittérature francophone III)2006-12-310039-294410.4000/studifrancesi.27073https://journals.openedition.org/studifrancesi/27073tocto1n12023-05-25542–547}}."
+     "text": "D'autre part une autofiction qui s'inscrirait « dans une réflexion générale sur [...] la construction identitaire de l’écrivain contemporain dans son rapport à l’écriture et aux médias."
     }
    ]
   },
@@ -2070,7 +1147,7 @@
    "verb": "française",
    "object": "comprend l'Littératureensemble des œuvres écrites ou orales par des écrivains de nationalité française ou de Françaislangue française",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2081,124 +1158,18 @@
    ]
   },
   {
-   "id": "la notion|de|minimalisme ou de roman ludique : « au cours des années 1980",
-   "subject": "La notion",
-   "verb": "de",
-   "object": "minimalisme ou de roman ludique : « Au cours des années 1980",
+   "id": "ld bonnet|s'empare|de l'histoire de la sierra léone pour aborder le thème universel du délitement d'une société",
+   "subject": "LD Bonnet",
+   "verb": "s'empare",
+   "object": "de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3151-3496",
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2888-3149",
      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Le réalisme magique se distingue en ce début de , porté par des auteurs tels que Marie NDiaye, Véronique Ovaldé ou Sylvie Germain La notion de minimalisme ou de roman ludique : « Au cours des années 1980, le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)."
-    },
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-    },
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#5195-5485",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Cette notion de minimalisme positif est contestée par une partie de la profession notamment Pierre Jourde : « réunir les auteurs du même type que Delerm en une sorte d’école, bref ériger cela en phénomène littéraire revient à encourager le développement actuel de la littérature de confort."
-    }
-   ]
-  },
-  {
-   "id": "la sociologie|et|l’histoire » représentée par annie ernaux",
-   "subject": "la sociologie",
-   "verb": "et",
-   "object": "l’histoire » représentée par Annie Ernaux",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#962-1190",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "D'une part une autofiction qui ne serait ni « une biographie, ni un roman naturellement [qui est] au-dessous de la littérature, [...] quelque part entre la littérature, la sociologie et l’histoire » représentée par Annie Ernaux."
-    }
-   ]
-  },
-  {
-   "id": "le quotidien|et|le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal",
-   "subject": "le quotidien",
-   "verb": "et",
-   "object": "le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4734-4988",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Il s’agit de « préciser les conditions de possibilité d’une écriture du quotidien », de débarrasser « le quotidien et le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal ; et ce, dans « une forme brève »."
-    }
-   ]
-  },
-  {
-   "id": "le terme|de|minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le nouveau roman)",
-   "subject": "le terme",
-   "verb": "de",
-   "object": "minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3151-3496",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Le réalisme magique se distingue en ce début de , porté par des auteurs tels que Marie NDiaye, Véronique Ovaldé ou Sylvie Germain La notion de minimalisme ou de roman ludique : « Au cours des années 1980, le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)."
-    }
-   ]
-  },
-  {
-   "id": "les coulisses|de|l'anschluss",
-   "subject": "les coulisses",
-   "verb": "de",
-   "object": "l'Anschluss",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2290-2506",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Offrant ainsi des perspectives sur la mémoire collective, et revisitant l'histoire avec un regard critique : par exemple L'Ordre du jour (récit)L'Ordre du jour, d'Éric Vuillard, explique les coulisses de l'Anschluss."
-    }
-   ]
-  },
-  {
-   "id": "les éléments|du|récit pivotent entre valeur factuelle et valeur fictive",
-   "subject": "les éléments",
-   "verb": "du",
-   "object": "récit pivotent entre valeur factuelle et valeur fictive",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#1853-1992",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Dès lors, tous les éléments du récit pivotent entre valeur factuelle et valeur fictive, sans que le lecteur puisse trancher entre les deux."
-    }
-   ]
-  },
-  {
-   "id": "les œuvres|de|philippe jaenada explorent également des faits divers du passé",
-   "subject": "Les œuvres",
-   "verb": "de",
-   "object": "Philippe Jaenada explorent également des faits divers du passé",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2738-2887",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Les œuvres de Philippe Jaenada explorent également des faits divers du passé, re-contextualisant des éléments historiques à la lumière contemporaine."
+     "text": "Comme Dernières promenades à Petrópolis de Belinda Cannone interroge la mort de Stefan Zweig, et Salone (roman)Salone (prix Senghor 2013) de Laurent LD Bonnet s'empare de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société."
     }
    ]
   },
@@ -2208,23 +1179,7 @@
    "verb": "d'écrivains",
    "object": "de langue française par année de naissance",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#6463-7411",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Littérature Liste de mouvements littéraires Liste d'écrivains de langue française par année de naissance, Liste alphabétique d'écrivains de langue française :Catégorie:Écrivain français par genreÉcrivains français par genre, dont :Catégorie:Épistolier françaisépistoliers, :Catégorie:Essayiste françaisessayistes, :Catégorie:Nouvelliste françaisnouvellistes| Liste des prix littéraires français :Catégorie:Revue littéraire francophoneRevues littéraires francophones Histoire littéraire de la France Langues régionales ou minoritaires en France, Littératures de langues régionales Littérature alsacienne, BasquesLittérature_et_bertsolaribasque, Littérature béarnaise et gasconnebéarnaise et gasconne, Littérature bretonnebretonne, Littérature franciquefrancique, Littérature occitaneoccitane, Littérature provençaleprovençale Littérature belge, Littérature suissesuisse, :Catégorie:Littérature canadienne francophonecanadienne Francophonie"
-    }
-   ]
-  },
-  {
-   "id": "littérature béarnaise|et|gasconnebéarnaise et gasconne",
-   "subject": "Littérature béarnaise",
-   "verb": "et",
-   "object": "gasconnebéarnaise et gasconne",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2240,7 +1195,7 @@
    "verb": "en",
    "object": "Françaislangue française se retrouve dans de nombreux pays sur plusieurs continents",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2256,7 +1211,7 @@
    "verb": "en",
    "object": "langue française par les personnes d'autres pays tels que la Belgique",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2272,7 +1227,7 @@
    "verb": "française",
    "object": "Catégorie:Littérature européenne",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2283,44 +1238,12 @@
    ]
   },
   {
-   "id": "offrant ainsi|des|perspectives sur la mémoire collective",
-   "subject": "Offrant ainsi",
-   "verb": "des",
-   "object": "perspectives sur la mémoire collective",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2290-2506",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Offrant ainsi des perspectives sur la mémoire collective, et revisitant l'histoire avec un regard critique : par exemple L'Ordre du jour (récit)L'Ordre du jour, d'Éric Vuillard, explique les coulisses de l'Anschluss."
-    }
-   ]
-  },
-  {
-   "id": "one thousand|and|one nights17",
-   "subject": "One Thousand",
-   "verb": "and",
-   "object": "One Nights17",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#5677-6440",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Fichier:One Thousand and One Nights17.jpgvignette\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"background:white; color:black; font-size:100%\" align=center\"center\" \"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"\"center\"Histoire_litt%C3%A9raire_de_la_France&oldid=203301897"
-    }
-   ]
-  },
-  {
    "id": "ou minoritaires|en|france",
    "subject": "ou minoritaires",
    "verb": "en",
    "object": "France",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2331,92 +1254,44 @@
    ]
   },
   {
-   "id": "philippe delerm|et|le minimalisme positif",
-   "subject": "Philippe Delerm",
-   "verb": "et",
-   "object": "le minimalisme positif",
+   "id": "philippe jaenada|explorent|également des faits divers du passé",
+   "subject": "Philippe Jaenada",
+   "verb": "explorent",
+   "object": "également des faits divers du passé",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4462-4655",
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2738-2887",
      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "L'hypothèse du minimalisme positif : notion créée par Rémi Bertrand, dans son essai Philippe Delerm et le minimalisme positif, désigne une « littérature articulée sur le bonheur au quotidien »."
+     "text": "Les œuvres de Philippe Jaenada explorent également des faits divers du passé, re-contextualisant des éléments historiques à la lumière contemporaine."
     }
    ]
   },
   {
-   "id": "pourquoi l’étiquette|du|minimalisme  doit être réservée à des ouvrages de peu",
-   "subject": "pourquoi l’étiquette",
-   "verb": "du",
-   "object": "minimalisme  doit être réservée à des ouvrages de peu",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4322-4460",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "[…] C’est pourquoi l’étiquette du minimalisme doit être réservée à des ouvrages de peu, revendiquant à l’évidence une indigence absolue »"
-    }
-   ]
-  },
-  {
-   "id": "présence accrue|du|ludique",
-   "subject": "présence accrue",
-   "verb": "du",
-   "object": "ludique",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-    }
-   ]
-  },
-  {
-   "id": "salone|de|laurent ld bonnet s'empare de l'histoire de la sierra léone pour aborder le thème universel du délitement d'une société",
-   "subject": "Salone",
-   "verb": "de",
-   "object": "Laurent LD Bonnet s'empare de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2888-3149",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Comme Dernières promenades à Petrópolis de Belinda Cannone interroge la mort de Stefan Zweig, et Salone (roman)Salone (prix Senghor 2013) de Laurent LD Bonnet s'empare de l'histoire de la Sierra Léone pour aborder le thème universel du délitement d'une société."
-    }
-   ]
-  },
-  {
-   "id": "sans illusion|du|monde »",
-   "subject": "sans illusion",
-   "verb": "du",
-   "object": "monde »",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
-    }
-   ]
-  },
-  {
-   "id": "se distingue|en|ce début de",
-   "subject": "se distingue",
+   "id": "que delerm|en|une sorte d’école",
+   "subject": "que Delerm",
    "verb": "en",
-   "object": "ce début de",
+   "object": "une sorte d’école",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#5195-5485",
+     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
+     "text": "Cette notion de minimalisme positif est contestée par une partie de la profession notamment Pierre Jourde : « réunir les auteurs du même type que Delerm en une sorte d’école, bref ériger cela en phénomène littéraire revient à encourager le développement actuel de la littérature de confort."
+    }
+   ]
+  },
+  {
+   "id": "rapidement répandu|pour|désigner des auteurs ayant en partage un héritage (le nouveau roman)",
+   "subject": "rapidement répandu",
+   "verb": "pour",
+   "object": "désigner des auteurs ayant en partage un héritage (le Nouveau Roman)",
+   "witnesses": [
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2427,18 +1302,50 @@
    ]
   },
   {
-   "id": "si l'idée|de|minimalisme est encore débattue",
-   "subject": "si l'idée",
-   "verb": "de",
-   "object": "minimalisme est encore débattue",
+   "id": "roman ludique|pour|regrouper ces auteurs",
+   "subject": "Roman ludique",
+   "verb": "pour",
+   "object": "regrouper ces auteurs",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3704-4039",
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4040-4321",
      "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Même si l'idée de minimalisme est encore débattue, la notion de minimalisme se caractérise, selon Marc Dambre, par un « jeu citationnel », un « réenchantement sans illusion du monde », la « recherche d’un nouvel ordre narratif », la présence accrue du ludique, une mise à distance de l’incongru et une manière de prendre le mot au mot."
+     "text": "Des caractéristiques, communes, qui ont poussé Olivier Bessard-Banquy à proposer la dénomination de Roman ludique pour regrouper ces auteurs, l'occasion de séparer minimalisme et littérature ludique : « Le goût du jeu est en effet chez eux bien plus marqué que la tentation du peu."
+    }
+   ]
+  },
+  {
+   "id": "se distingue|en|ce début de",
+   "subject": "se distingue",
+   "verb": "en",
+   "object": "ce début de",
+   "witnesses": [
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#3151-3496",
+     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
+     "text": "Le réalisme magique se distingue en ce début de , porté par des auteurs tels que Marie NDiaye, Véronique Ovaldé ou Sylvie Germain La notion de minimalisme ou de roman ludique : « Au cours des années 1980, le terme de minimalisme est apparu puis s’est rapidement répandu pour désigner des auteurs ayant en partage un héritage (le Nouveau Roman)."
+    }
+   ]
+  },
+  {
+   "id": "tout|en|fondant spontanément une éthique holistique du banal",
+   "subject": "tout",
+   "verb": "en",
+   "object": "fondant spontanément une éthique holistique du banal",
+   "witnesses": [
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4734-4988",
+     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
+     "text": "Il s’agit de « préciser les conditions de possibilité d’une écriture du quotidien », de débarrasser « le quotidien et le bonheur des oripeaux de l’espérance » tout en fondant spontanément une éthique holistique du banal ; et ce, dans « une forme brève »."
     }
    ]
   },
@@ -2448,23 +1355,7 @@
    "verb": "en",
    "object": "mutation",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#2143-2289",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Le réalisme fictionnel, dans un monde en mutation, continue à tenir fermement sa place ; il est un moyen de comprendre les enjeux d’aujourd’hui."
-    }
-   ]
-  },
-  {
-   "id": "un moyen|de|comprendre les enjeux d’aujourd’hui",
-   "subject": "un moyen",
-   "verb": "de",
-   "object": "comprendre les enjeux d’aujourd’hui",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2480,7 +1371,7 @@
    "verb": "qui",
    "object": "ne serait ni « une biographie",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2501,7 +1392,7 @@
    "verb": "d'écrivains",
    "object": "regroupés aujourd'hui autour des Les Éditions de MinuitÉditions de Minuit dont Jean Echenoz",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2512,28 +1403,12 @@
    ]
   },
   {
-   "id": "une vision|de|l’écriture et de la vie apparaît",
-   "subject": "Une vision",
-   "verb": "de",
-   "object": "l’écriture et de la vie apparaît",
-   "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt#4656-4733",
-     "ref": "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt",
-     "text": "Une vision de l’écriture et de la vie apparaît, dès lors, de façon cohérente."
-    }
-   ]
-  },
-  {
    "id": "vous|êtes|l’amour malheureux du führer]  de jean-noël orengo",
    "subject": "Vous",
    "verb": "êtes",
    "object": "l’amour malheureux du Führer]  de Jean-Noël Orengo",
    "witnesses": [
-    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@b2de25493ccfe8e8"
+    "11-multi-language/wikipedia-lang/fr/Litt_rature_fran_aise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2545,7 +1420,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:29.407Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:32.160Z"
  }
 }

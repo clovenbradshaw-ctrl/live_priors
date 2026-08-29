@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 15240,
   "bodyOffset": 0,
   "bodyChars": 15240,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 6,
   "distinctReferents": 6,
   "examined": true,
-  "edgesFound": 15,
-  "extractionError": null
+  "edgesFound": 9,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 12,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 20
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 9,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 16,
-  "excerptOk": 16,
-  "rawChecked": 16,
-  "rawOk": 16,
+  "excerptChecked": 9,
+  "excerptOk": 9,
+  "rawChecked": 9,
+  "rawOk": 9,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 15,
-  "heard": 15,
+  "offered": 9,
+  "heard": 9,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "subject": "typically developed",
-    "verb": "in",
-    "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#43-309",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-      "text": "eWAVE variety ID: 63 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,7 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "its native|speakers|was normally very limited",
+    "task_id": "native speakers|was|normally very limited",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,19 +128,43 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "its native speakers was normally very limited",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "was normally very limited",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#450-524",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
       "text": "English), while exposure to its native speakers was normally very limited."
-     },
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "witnesses": [
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
+    ],
+    "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#525-719",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
@@ -166,7 +191,7 @@
     "verb": "belongs",
     "object": "to the varieties of restructured English spoken in Australia",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -176,64 +201,6 @@
      }
     ],
     "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "variety arose|in|the torres strait islands",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "variety arose in the Torres Strait Islands",
-    "subject": "variety arose",
-    "verb": "in",
-    "object": "the Torres Strait Islands",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#1116-1268",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-      "text": "The variety arose in the Torres Strait Islands, following the arrival of large numbers of Europeans, South Sea Islanders, Papua New Guineans and others."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "new guineans|and|others",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "New Guineans and others",
-    "subject": "New Guineans",
-    "verb": "and",
-    "object": "others",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#1116-1268",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-      "text": "The variety arose in the Torres Strait Islands, following the arrival of large numbers of Europeans, South Sea Islanders, Papua New Guineans and others."
-     }
-    ],
-    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -253,7 +220,7 @@
     "verb": "came",
     "object": "to be used as a lingua franca and started to creolise by the 1890s",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -262,7 +229,7 @@
       "text": "Pacific Pidgin English came to be used as a lingua franca and started to creolise by the 1890s."
      }
     ],
-    "seq": 6,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -282,7 +249,7 @@
     "verb": "was",
     "object": "useful but also because many considered it to be English",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -291,7 +258,7 @@
       "text": "The creole then spread throughout the islands, not only because it was useful but also because many considered it to be English."
      }
     ],
-    "seq": 7,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -311,7 +278,7 @@
     "verb": "is",
     "object": "spoken in the Torres Strait Islands between Cape York and Papua New Guinea",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -320,7 +287,7 @@
       "text": "Today Torres Strait Creole is spoken in the Torres Strait Islands between Cape York and Papua New Guinea, and along the north coast of the Queensland mainland."
      }
     ],
-    "seq": 8,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -340,7 +307,7 @@
     "verb": "has",
     "object": "around 3",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -349,123 +316,7 @@
       "text": "It has around 3,000 native speakers and up to 12,000 second language speakers."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "000 native|speakers|and up to 12",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "000 native speakers and up to 12",
-    "subject": "000 native",
-    "verb": "speakers",
-    "object": "and up to 12",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#1654-1732",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-      "text": "It has around 3,000 native speakers and up to 12,000 second language speakers."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "distinction|between|emphatic vs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Distinction between emphatic vs",
-    "subject": "Distinction",
-    "verb": "between",
-    "object": "emphatic vs",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#2313-5279",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-      "text": "PRONOUNS [?] She/her used for inanimate referents [?] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [A] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [?] Me instead of I in coordinate subjects [?] Myself/meself instead of I in coordinate subjects [?] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [D] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [?] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [D] Subject pronoun forms as (modifying) possessive pronouns: first person plural [D] Subject pronoun forms as (modifying) possessive pronouns: third person singular [D] Subject pronoun forms as (modifying) possessive pronouns: third person plural [B] You as (modifying) possessive pronoun [D] Second person pronoun forms other than you as (modifying) possessive pronoun [B] Object pronoun forms as (modifying) possessive pronouns: third person singular [?] Object pronoun forms as (modifying) possessive pronouns: third person plural [?] Object pronoun forms as (modifying) possessive pronouns: first person singular [D] Object pronoun forms as (modifying) possessive pronouns: first person plural [?] Use of us + NP in subject function [?] Use of us in object function with singular referent [D] Non-coordinated subject pronoun forms in object function [B] Non-coordinated object pronoun forms in subject function [?] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [A] Distinct forms for inclusive/exclusive first person non-singular [A] More number distinctions in personal pronouns than simply singular vs. plural [A] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [?] Singular it for plural they in anaphoric use [?] Object pronoun drop [A] Subject pronoun drop: referential pronouns [?] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [D] Deletion of it in referential it is-constructions [D] Deletion of it in non-referential it is-constructions"
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "number distinctions|in|personal pronouns than simply singular vs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "number distinctions in personal pronouns than simply singular vs",
-    "subject": "number distinctions",
-    "verb": "in",
-    "object": "personal pronouns than simply singular vs",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#2313-5279",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-      "text": "PRONOUNS [?] She/her used for inanimate referents [?] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [A] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [?] Me instead of I in coordinate subjects [?] Myself/meself instead of I in coordinate subjects [?] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [D] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [?] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [D] Subject pronoun forms as (modifying) possessive pronouns: first person plural [D] Subject pronoun forms as (modifying) possessive pronouns: third person singular [D] Subject pronoun forms as (modifying) possessive pronouns: third person plural [B] You as (modifying) possessive pronoun [D] Second person pronoun forms other than you as (modifying) possessive pronoun [B] Object pronoun forms as (modifying) possessive pronouns: third person singular [?] Object pronoun forms as (modifying) possessive pronouns: third person plural [?] Object pronoun forms as (modifying) possessive pronouns: first person singular [D] Object pronoun forms as (modifying) possessive pronouns: first person plural [?] Use of us + NP in subject function [?] Use of us in object function with singular referent [D] Non-coordinated subject pronoun forms in object function [B] Non-coordinated object pronoun forms in subject function [?] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [A] Distinct forms for inclusive/exclusive first person non-singular [A] More number distinctions in personal pronouns than simply singular vs. plural [A] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [?] Singular it for plural they in anaphoric use [?] Object pronoun drop [A] Subject pronoun drop: referential pronouns [?] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [D] Deletion of it in referential it is-constructions [D] Deletion of it in non-referential it is-constructions"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of it|in|non-referential it is-constructions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of it in non-referential it is-constructions",
-    "subject": "of it",
-    "verb": "in",
-    "object": "non-referential it is-constructions",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#2313-5279",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-      "text": "PRONOUNS [?] She/her used for inanimate referents [?] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [A] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [?] Me instead of I in coordinate subjects [?] Myself/meself instead of I in coordinate subjects [?] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [D] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [?] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [D] Subject pronoun forms as (modifying) possessive pronouns: first person plural [D] Subject pronoun forms as (modifying) possessive pronouns: third person singular [D] Subject pronoun forms as (modifying) possessive pronouns: third person plural [B] You as (modifying) possessive pronoun [D] Second person pronoun forms other than you as (modifying) possessive pronoun [B] Object pronoun forms as (modifying) possessive pronouns: third person singular [?] Object pronoun forms as (modifying) possessive pronouns: third person plural [?] Object pronoun forms as (modifying) possessive pronouns: first person singular [D] Object pronoun forms as (modifying) possessive pronouns: first person plural [?] Use of us + NP in subject function [?] Use of us in object function with singular referent [D] Non-coordinated subject pronoun forms in object function [B] Non-coordinated object pronoun forms in subject function [?] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [A] Distinct forms for inclusive/exclusive first person non-singular [A] More number distinctions in personal pronouns than simply singular vs. plural [A] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [?] Singular it for plural they in anaphoric use [?] Object pronoun drop [A] Subject pronoun drop: referential pronouns [?] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [D] Deletion of it in referential it is-constructions [D] Deletion of it in non-referential it is-constructions"
-     }
-    ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -485,7 +336,7 @@
     "verb": "adjectival",
     "object": "modifiers follow head noun",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -494,12 +345,12 @@
       "text": "NOUN PHRASE [D] Regularization of plural formation: extension of -s to StE irregular plurals [D] Regularization of plural formation: phonological regularization [A] Plural marking via preposed elements [?] Plural marking via postposed elements [D] Associative plural marked by postposed and them/them all/dem [?] Associative plural marked by other elements [X] Group plurals [X] Different count/mass noun distinctions resulting in use of plural for StE singular [X] Absence of plural marking only after quantifiers [A] Plural marking generally optional : for nouns with human referents [A] Plural marking generally optional: for nouns with non-human referents [D] Double determiners [?] Use of definite article where StE has indefinite article [?] Use of indefinite article where StE has definite article [A] Use of zero article where StE has definite article [A] Use of zero article where StE has indefinite article [B] Use of definite article where StE favours zero [B] Use of indefinite article where StE favours zero [A] Indefinite article one/wan [A] Demonstratives for definite articles [A] Them instead of demonstrative those [D] Yon/yonder indicating remoteness [B] Proximal and distal demonstratives with ʼhereʼ and ʼthereʼ [?] No number distinction in demonstratives [D] Group genitives [D] Existential construction to express possessive [A] Phrases with for + noun to express possession: for-phrase following possessed NP [A] Phrases with for + noun to express possession: for-phrase preceding possessed NP [A] Postnominal phrases with bilong/blong/long/blo to express possession [A] Omission of genitive suffix; possession expressed through bare juxtaposition of nouns [D] Double comparatives and superlatives [D] Regularized comparison strategies: extension of synthetic marking [D] Regularized comparison strategies: extension of analytic marking [D] Much as comparative marker [D] As/to as comparative markers [D] Comparatives and superlatives of participles [D] Comparative marking only with than [D] Comparative marking with more…and [D] Zero marking of degree [?] Attributive adjectival modifiers follow head noun"
      }
     ],
-    "seq": 14,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 15,
+  "nextSeq": 9,
   "admits": [
    "NUL",
    "SEG",
@@ -514,28 +365,12 @@
  },
  "folded": [
   {
-   "id": "000 native|speakers|and up to 12",
-   "subject": "000 native",
-   "verb": "speakers",
-   "object": "and up to 12",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#1654-1732",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-     "text": "It has around 3,000 native speakers and up to 12,000 second language speakers."
-    }
-   ]
-  },
-  {
    "id": "attributive|adjectival|modifiers follow head noun",
    "subject": "Attributive",
    "verb": "adjectival",
    "object": "modifiers follow head noun",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -551,7 +386,7 @@
    "verb": "was",
    "object": "useful but also because many considered it to be English",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -562,28 +397,12 @@
    ]
   },
   {
-   "id": "distinction|between|emphatic vs",
-   "subject": "Distinction",
-   "verb": "between",
-   "object": "emphatic vs",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#2313-5279",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-     "text": "PRONOUNS [?] She/her used for inanimate referents [?] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [A] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [?] Me instead of I in coordinate subjects [?] Myself/meself instead of I in coordinate subjects [?] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [D] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [?] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [D] Subject pronoun forms as (modifying) possessive pronouns: first person plural [D] Subject pronoun forms as (modifying) possessive pronouns: third person singular [D] Subject pronoun forms as (modifying) possessive pronouns: third person plural [B] You as (modifying) possessive pronoun [D] Second person pronoun forms other than you as (modifying) possessive pronoun [B] Object pronoun forms as (modifying) possessive pronouns: third person singular [?] Object pronoun forms as (modifying) possessive pronouns: third person plural [?] Object pronoun forms as (modifying) possessive pronouns: first person singular [D] Object pronoun forms as (modifying) possessive pronouns: first person plural [?] Use of us + NP in subject function [?] Use of us in object function with singular referent [D] Non-coordinated subject pronoun forms in object function [B] Non-coordinated object pronoun forms in subject function [?] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [A] Distinct forms for inclusive/exclusive first person non-singular [A] More number distinctions in personal pronouns than simply singular vs. plural [A] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [?] Singular it for plural they in anaphoric use [?] Object pronoun drop [A] Subject pronoun drop: referential pronouns [?] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [D] Deletion of it in referential it is-constructions [D] Deletion of it in non-referential it is-constructions"
-    }
-   ]
-  },
-  {
    "id": "it|has|around 3",
    "subject": "It",
    "verb": "has",
    "object": "around 3",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -594,71 +413,34 @@
    ]
   },
   {
-   "id": "its native|speakers|was normally very limited",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "was normally very limited",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#450-524",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
      "text": "English), while exposure to its native speakers was normally very limited."
-    },
+    }
+   ]
+  },
+  {
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+   "subject": "of English",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+   "witnesses": [
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
+   ],
+   "spans": [
     {
      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#525-719",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
      "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
-    }
-   ]
-  },
-  {
-   "id": "new guineans|and|others",
-   "subject": "New Guineans",
-   "verb": "and",
-   "object": "others",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#1116-1268",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-     "text": "The variety arose in the Torres Strait Islands, following the arrival of large numbers of Europeans, South Sea Islanders, Papua New Guineans and others."
-    }
-   ]
-  },
-  {
-   "id": "number distinctions|in|personal pronouns than simply singular vs",
-   "subject": "number distinctions",
-   "verb": "in",
-   "object": "personal pronouns than simply singular vs",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#2313-5279",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-     "text": "PRONOUNS [?] She/her used for inanimate referents [?] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [A] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [?] Me instead of I in coordinate subjects [?] Myself/meself instead of I in coordinate subjects [?] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [D] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [?] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [D] Subject pronoun forms as (modifying) possessive pronouns: first person plural [D] Subject pronoun forms as (modifying) possessive pronouns: third person singular [D] Subject pronoun forms as (modifying) possessive pronouns: third person plural [B] You as (modifying) possessive pronoun [D] Second person pronoun forms other than you as (modifying) possessive pronoun [B] Object pronoun forms as (modifying) possessive pronouns: third person singular [?] Object pronoun forms as (modifying) possessive pronouns: third person plural [?] Object pronoun forms as (modifying) possessive pronouns: first person singular [D] Object pronoun forms as (modifying) possessive pronouns: first person plural [?] Use of us + NP in subject function [?] Use of us in object function with singular referent [D] Non-coordinated subject pronoun forms in object function [B] Non-coordinated object pronoun forms in subject function [?] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [A] Distinct forms for inclusive/exclusive first person non-singular [A] More number distinctions in personal pronouns than simply singular vs. plural [A] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [?] Singular it for plural they in anaphoric use [?] Object pronoun drop [A] Subject pronoun drop: referential pronouns [?] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [D] Deletion of it in referential it is-constructions [D] Deletion of it in non-referential it is-constructions"
-    }
-   ]
-  },
-  {
-   "id": "of it|in|non-referential it is-constructions",
-   "subject": "of it",
-   "verb": "in",
-   "object": "non-referential it is-constructions",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#2313-5279",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-     "text": "PRONOUNS [?] She/her used for inanimate referents [?] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [A] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [?] Me instead of I in coordinate subjects [?] Myself/meself instead of I in coordinate subjects [?] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [D] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [?] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [D] Subject pronoun forms as (modifying) possessive pronouns: first person plural [D] Subject pronoun forms as (modifying) possessive pronouns: third person singular [D] Subject pronoun forms as (modifying) possessive pronouns: third person plural [B] You as (modifying) possessive pronoun [D] Second person pronoun forms other than you as (modifying) possessive pronoun [B] Object pronoun forms as (modifying) possessive pronouns: third person singular [?] Object pronoun forms as (modifying) possessive pronouns: third person plural [?] Object pronoun forms as (modifying) possessive pronouns: first person singular [D] Object pronoun forms as (modifying) possessive pronouns: first person plural [?] Use of us + NP in subject function [?] Use of us in object function with singular referent [D] Non-coordinated subject pronoun forms in object function [B] Non-coordinated object pronoun forms in subject function [?] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [A] Distinct forms for inclusive/exclusive first person non-singular [A] More number distinctions in personal pronouns than simply singular vs. plural [A] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [?] Singular it for plural they in anaphoric use [?] Object pronoun drop [A] Subject pronoun drop: referential pronouns [?] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [D] Deletion of it in referential it is-constructions [D] Deletion of it in non-referential it is-constructions"
     }
    ]
   },
@@ -668,7 +450,7 @@
    "verb": "came",
    "object": "to be used as a lingua franca and started to creolise by the 1890s",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -684,7 +466,7 @@
    "verb": "belongs",
    "object": "to the varieties of restructured English spoken in Australia",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -700,7 +482,7 @@
    "verb": "is",
    "object": "spoken in the Torres Strait Islands between Cape York and Papua New Guinea",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -716,7 +498,7 @@
    "verb": "was",
    "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -725,42 +507,10 @@
      "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
     }
    ]
-  },
-  {
-   "id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-   "subject": "typically developed",
-   "verb": "in",
-   "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#43-309",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-     "text": "eWAVE variety ID: 63 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-    }
-   ]
-  },
-  {
-   "id": "variety arose|in|the torres strait islands",
-   "subject": "variety arose",
-   "verb": "in",
-   "object": "the Torres Strait Islands",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt#1116-1268",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/63_Torres_Strait_Creole.txt",
-     "text": "The variety arose in the Torres Strait Islands, following the arrival of large numbers of Europeans, South Sea Islanders, Papua New Guineans and others."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:23.707Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:28.625Z"
  }
 }

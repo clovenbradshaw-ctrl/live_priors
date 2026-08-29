@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 17377,
   "bodyOffset": 0,
   "bodyChars": 17377,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 6,
   "distinctReferents": 6,
   "examined": true,
-  "edgesFound": 18,
-  "extractionError": null
+  "edgesFound": 12,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 10,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 18
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 12,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 19,
-  "excerptOk": 19,
-  "rawChecked": 19,
-  "rawOk": 19,
+  "excerptChecked": 12,
+  "excerptOk": 12,
+  "rawChecked": 12,
+  "rawOk": 12,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 18,
-  "heard": 18,
+  "offered": 12,
+  "heard": 12,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "contact varieties|that|typically developed in settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "contact varieties that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "subject": "contact varieties",
-    "verb": "that",
-    "object": "typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#15-281",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-      "text": "eWAVE variety ID: 33 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,7 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "its native|speakers|was normally very limited",
+    "task_id": "native speakers|was|normally very limited",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,19 +128,43 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "its native speakers was normally very limited",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "was normally very limited",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#422-496",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
       "text": "English), while exposure to its native speakers was normally very limited."
-     },
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "witnesses": [
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
+    ],
+    "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#497-691",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
@@ -166,7 +191,7 @@
     "verb": "is",
     "object": "one of the English-lexifier creole languages spoken in Suriname and French Guyana",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -195,7 +220,7 @@
     "verb": "is",
     "object": "known which could fulfil the role of overall direct precursor to these languages",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -224,7 +249,7 @@
     "verb": "settlers",
     "object": "came to Suriname in 1651",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -234,35 +259,6 @@
      }
     ],
     "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "country again|in|1675",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "country again in 1675",
-    "subject": "country again",
-    "verb": "in",
-    "object": "1675",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#1215-1341",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-      "text": "The first English settlers came to Suriname in 1651, but the vast majority of them had already left the country again in 1675."
-     }
-    ],
-    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -282,7 +278,7 @@
     "verb": "are",
     "object": "from 1707",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -291,13 +287,13 @@
       "text": "The first records of Sranan are from 1707."
      }
     ],
-    "seq": 7,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "from english|and|is often referred to as a ‘radical’ creole",
+    "task_id": "english and|is|often referred to as a ‘radical’ creole",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -306,12 +302,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "from English and is often referred to as a ‘radical’ creole",
-    "subject": "from English",
-    "verb": "and",
-    "object": "is often referred to as a ‘radical’ creole",
+    "description": "English and is often referred to as a ‘radical’ creole",
+    "subject": "English and",
+    "verb": "is",
+    "object": "often referred to as a ‘radical’ creole",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -320,7 +316,7 @@
       "text": "The language diverges to a considerable extent from English and is often referred to as a ‘radical’ creole."
      }
     ],
-    "seq": 8,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -340,7 +336,7 @@
     "verb": "used",
     "object": "to be the language of the coastal plantations and of the capital",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -349,7 +345,7 @@
       "text": "Sranan used to be the language of the coastal plantations and of the capital, Paramaribo."
      }
     ],
-    "seq": 9,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -369,7 +365,7 @@
     "verb": "is",
     "object": "used both as a first language and as a lingua franca throughout the country",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -378,7 +374,7 @@
       "text": "Today it is used both as a first language and as a lingua franca throughout the country."
      }
     ],
-    "seq": 10,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -398,7 +394,7 @@
     "verb": "can",
     "object": "be used as an inclusive 'we' in contrast to unu as exclusive 'we'",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -407,152 +403,7 @@
       "text": "\"unu\" \"Wi\" [Wi can be used as an inclusive 'we' in contrast to unu as exclusive 'we'.] -- sil2003 \"a buku 'the book'; den buku 'the books'\" \"A kosokoso teki mi.\""
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a man|di|mi nanga en ben e taki",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "A man di mi nanga en ben e taki",
-    "subject": "A man",
-    "verb": "di",
-    "object": "mi nanga en ben e taki",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#3248-3301",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-      "text": "\"A pikin breiti\" \"A man di mi nanga en ben e taki.\""
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "furu sumter|di|mi no  sabi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "furu Sumter di mi no  sabi",
-    "subject": "furu Sumter",
-    "verb": "di",
-    "object": "mi no  sabi",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#3427-3466",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-      "text": "\"Yu abi furu Sumter di mi no sabi.\""
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "winford|tape|01a",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Winford tape 01A",
-    "subject": "Winford",
-    "verb": "tape",
-    "object": "01A",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#3518-3619",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-      "text": "\"Wan suma o tyari wan tjapsoi gi en satra\" [Winford tape 01A, line 06] \"A bedi de na a kamra ini.\""
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "number distinctions|in|personal pronouns than simply singular vs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "number distinctions in personal pronouns than simply singular vs",
-    "subject": "number distinctions",
-    "verb": "in",
-    "object": "personal pronouns than simply singular vs",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#6481-6881",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-      "text": "non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [B] Distinct forms for inclusive/exclusive first person non-singular [D] More number distinctions in personal pronouns than simply singular vs."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of it|in|non-referential it is-constructions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of it in non-referential it is-constructions",
-    "subject": "of it",
-    "verb": "in",
-    "object": "non-referential it is-constructions",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#6882-7416",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-      "text": "plural [D] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [D] Singular it for plural they in anaphoric use [D] Object pronoun drop [D] Subject pronoun drop: referential pronouns [D] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [D] Deletion of it in referential it is-constructions [X] Deletion of it in non-referential it is-constructions"
-     }
-    ],
-    "seq": 16,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -572,7 +423,7 @@
     "verb": "plural",
     "object": "marking genera",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -581,12 +432,12 @@
       "text": "NOUN PHRASE [D] Regularization of plural formation: extension of -s to StE irregular plurals [D] Regularization of plural formation: phonological regularization [A] Plural marking via preposed elements [?] Plural marking via postposed elements [?] Associative plural marked by postposed and them/them all/dem [D] Associative plural marked by other elements [D] Group plurals [D] Different count/mass noun distinctions resulting in use of plural for StE singular [D] Absence of plural marking only after quantifiers [X] Plural marking genera"
      }
     ],
-    "seq": 17,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 18,
+  "nextSeq": 12,
   "admits": [
    "NUL",
    "SEG",
@@ -601,28 +452,12 @@
  },
  "folded": [
   {
-   "id": "a man|di|mi nanga en ben e taki",
-   "subject": "A man",
-   "verb": "di",
-   "object": "mi nanga en ben e taki",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#3248-3301",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-     "text": "\"A pikin breiti\" \"A man di mi nanga en ben e taki.\""
-    }
-   ]
-  },
-  {
    "id": "after quantifiers|plural|marking genera",
    "subject": "after quantifiers",
    "verb": "plural",
    "object": "marking genera",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -638,7 +473,7 @@
    "verb": "is",
    "object": "known which could fulfil the role of overall direct precursor to these languages",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -649,60 +484,12 @@
    ]
   },
   {
-   "id": "contact varieties|that|typically developed in settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-   "subject": "contact varieties",
-   "verb": "that",
-   "object": "typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
+   "id": "english and|is|often referred to as a ‘radical’ creole",
+   "subject": "English and",
+   "verb": "is",
+   "object": "often referred to as a ‘radical’ creole",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#15-281",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-     "text": "eWAVE variety ID: 33 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-    }
-   ]
-  },
-  {
-   "id": "country again|in|1675",
-   "subject": "country again",
-   "verb": "in",
-   "object": "1675",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#1215-1341",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-     "text": "The first English settlers came to Suriname in 1651, but the vast majority of them had already left the country again in 1675."
-    }
-   ]
-  },
-  {
-   "id": "first english|settlers|came to suriname in 1651",
-   "subject": "first English",
-   "verb": "settlers",
-   "object": "came to Suriname in 1651",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#1215-1341",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-     "text": "The first English settlers came to Suriname in 1651, but the vast majority of them had already left the country again in 1675."
-    }
-   ]
-  },
-  {
-   "id": "from english|and|is often referred to as a ‘radical’ creole",
-   "subject": "from English",
-   "verb": "and",
-   "object": "is often referred to as a ‘radical’ creole",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -713,71 +500,50 @@
    ]
   },
   {
-   "id": "furu sumter|di|mi no  sabi",
-   "subject": "furu Sumter",
-   "verb": "di",
-   "object": "mi no  sabi",
+   "id": "first english|settlers|came to suriname in 1651",
+   "subject": "first English",
+   "verb": "settlers",
+   "object": "came to Suriname in 1651",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#3427-3466",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#1215-1341",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-     "text": "\"Yu abi furu Sumter di mi no sabi.\""
+     "text": "The first English settlers came to Suriname in 1651, but the vast majority of them had already left the country again in 1675."
     }
    ]
   },
   {
-   "id": "its native|speakers|was normally very limited",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "was normally very limited",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#422-496",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
      "text": "English), while exposure to its native speakers was normally very limited."
-    },
+    }
+   ]
+  },
+  {
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+   "subject": "of English",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+   "witnesses": [
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
+   ],
+   "spans": [
     {
      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#497-691",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
      "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
-    }
-   ]
-  },
-  {
-   "id": "number distinctions|in|personal pronouns than simply singular vs",
-   "subject": "number distinctions",
-   "verb": "in",
-   "object": "personal pronouns than simply singular vs",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#6481-6881",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-     "text": "non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [B] Distinct forms for inclusive/exclusive first person non-singular [D] More number distinctions in personal pronouns than simply singular vs."
-    }
-   ]
-  },
-  {
-   "id": "of it|in|non-referential it is-constructions",
-   "subject": "of it",
-   "verb": "in",
-   "object": "non-referential it is-constructions",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#6882-7416",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-     "text": "plural [D] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [D] Singular it for plural they in anaphoric use [D] Object pronoun drop [D] Subject pronoun drop: referential pronouns [D] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [D] Deletion of it in referential it is-constructions [X] Deletion of it in non-referential it is-constructions"
     }
    ]
   },
@@ -787,7 +553,7 @@
    "verb": "are",
    "object": "from 1707",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -803,7 +569,7 @@
    "verb": "is",
    "object": "one of the English-lexifier creole languages spoken in Suriname and French Guyana",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -819,7 +585,7 @@
    "verb": "used",
    "object": "to be the language of the coastal plantations and of the capital",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -835,7 +601,7 @@
    "verb": "was",
    "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -851,7 +617,7 @@
    "verb": "is",
    "object": "used both as a first language and as a lingua franca throughout the country",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -867,7 +633,7 @@
    "verb": "can",
    "object": "be used as an inclusive 'we' in contrast to unu as exclusive 'we'",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -876,26 +642,10 @@
      "text": "\"unu\" \"Wi\" [Wi can be used as an inclusive 'we' in contrast to unu as exclusive 'we'.] -- sil2003 \"a buku 'the book'; den buku 'the books'\" \"A kosokoso teki mi.\""
     }
    ]
-  },
-  {
-   "id": "winford|tape|01a",
-   "subject": "Winford",
-   "verb": "tape",
-   "object": "01A",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt#3518-3619",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/33_Sranan.txt",
-     "text": "\"Wan suma o tyari wan tjapsoi gi en satra\" [Winford tape 01A, line 06] \"A bedi de na a kamra ini.\""
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:22.559Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:27.862Z"
  }
 }

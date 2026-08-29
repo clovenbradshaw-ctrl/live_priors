@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 50213,
   "bodyOffset": 0,
   "bodyChars": 50213,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 10,
   "distinctReferents": 10,
   "examined": true,
-  "edgesFound": 24,
-  "extractionError": null
+  "edgesFound": 8,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 32,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 45
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 8,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 24,
-  "excerptOk": 24,
-  "rawChecked": 24,
-  "rawOk": 24,
+  "excerptChecked": 8,
+  "excerptOk": 8,
+  "rawChecked": 8,
+  "rawOk": 8,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 24,
-  "heard": 24,
+  "offered": 8,
+  "heard": 8,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "this qur'an|although|you were",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "this Qur'an although you were",
-    "subject": "this Qur'an",
-    "verb": "although",
-    "object": "you were",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#312-1800",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "These are the verses of the clear Book [12:2] إِنَّآ أَنزَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna anzalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have sent it down as an Arabic Qur'an that you might understand [12:3] نَحۡنُ نَقُصُّ عَلَيۡكَ أَحۡسَنَ ٱلۡقَصَصِ بِمَآ أَوۡحَيۡنَآ إِلَيۡكَ هَٰذَا ٱلۡقُرۡءَانَ وَإِن كُنتَ مِن قَبۡلِهِۦ لَمِنَ ٱلۡغَٰفِلِينَ Nahnu naqussu AAalayka ahsana alqasasi bima awhayna ilayka hatha alqurana wain kunta min qablihi lamina alghafileena We relate to you, [O Muhammad], the best of stories in what We have revealed to you of this Qur'an although you were, before it, among the unaware [12:4] إِذۡ قَالَ يُوسُفُ لِأَبِيهِ يَـٰٓأَبَتِ إِنِّي رَأَيۡتُ أَحَدَ عَشَرَ كَوۡكَبٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ رَأَيۡتُهُمۡ لِي سَٰجِدِينَ Ith qala yoosufu liabeehi ya abati innee raaytu ahada AAashara kawkaban waalshshamsa waalqamara raaytuhum lee sajideena [Of these stories mention] when Joseph said to his father, \"O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me [12:5] قَالَ يَٰبُنَيَّ لَا تَقۡصُصۡ رُءۡيَاكَ عَلَىٰٓ إِخۡوَتِكَ فَيَكِيدُواْ لَكَ كَيۡدًاۖ إِنَّ ٱلشَّيۡطَٰنَ لِلۡإِنسَٰنِ عَدُوّٞ مُّبِينٞ Qala ya bunayya la taqsus ruyaka AAala ikhwatika fayakeedoo laka kaydan inna alshshaytana lilinsani AAaduwwun mubeenun He said, \"O my son, do not relate your vision to your brothers or they will contrive against you a plan."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "when joseph|said|to his father",
@@ -103,7 +104,7 @@
     "verb": "said",
     "object": "to his father",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,36 +113,7 @@
       "text": "These are the verses of the clear Book [12:2] إِنَّآ أَنزَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna anzalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have sent it down as an Arabic Qur'an that you might understand [12:3] نَحۡنُ نَقُصُّ عَلَيۡكَ أَحۡسَنَ ٱلۡقَصَصِ بِمَآ أَوۡحَيۡنَآ إِلَيۡكَ هَٰذَا ٱلۡقُرۡءَانَ وَإِن كُنتَ مِن قَبۡلِهِۦ لَمِنَ ٱلۡغَٰفِلِينَ Nahnu naqussu AAalayka ahsana alqasasi bima awhayna ilayka hatha alqurana wain kunta min qablihi lamina alghafileena We relate to you, [O Muhammad], the best of stories in what We have revealed to you of this Qur'an although you were, before it, among the unaware [12:4] إِذۡ قَالَ يُوسُفُ لِأَبِيهِ يَـٰٓأَبَتِ إِنِّي رَأَيۡتُ أَحَدَ عَشَرَ كَوۡكَبٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ رَأَيۡتُهُمۡ لِي سَٰجِدِينَ Ith qala yoosufu liabeehi ya abati innee raaytu ahada AAashara kawkaban waalshshamsa waalqamara raaytuhum lee sajideena [Of these stories mention] when Joseph said to his father, \"O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me [12:5] قَالَ يَٰبُنَيَّ لَا تَقۡصُصۡ رُءۡيَاكَ عَلَىٰٓ إِخۡوَتِكَ فَيَكِيدُواْ لَكَ كَيۡدًاۖ إِنَّ ٱلشَّيۡطَٰنَ لِلۡإِنسَٰنِ عَدُوّٞ مُّبِينٞ Qala ya bunayya la taqsus ruyaka AAala ikhwatika fayakeedoo laka kaydan inna alshshaytana lilinsani AAaduwwun mubeenun He said, \"O my son, do not relate your vision to your brothers or they will contrive against you a plan."
      }
     ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "eleven stars|and|the sun and the moon",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "eleven stars and the sun and the moon",
-    "subject": "eleven stars",
-    "verb": "and",
-    "object": "the sun and the moon",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#312-1800",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "These are the verses of the clear Book [12:2] إِنَّآ أَنزَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna anzalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have sent it down as an Arabic Qur'an that you might understand [12:3] نَحۡنُ نَقُصُّ عَلَيۡكَ أَحۡسَنَ ٱلۡقَصَصِ بِمَآ أَوۡحَيۡنَآ إِلَيۡكَ هَٰذَا ٱلۡقُرۡءَانَ وَإِن كُنتَ مِن قَبۡلِهِۦ لَمِنَ ٱلۡغَٰفِلِينَ Nahnu naqussu AAalayka ahsana alqasasi bima awhayna ilayka hatha alqurana wain kunta min qablihi lamina alghafileena We relate to you, [O Muhammad], the best of stories in what We have revealed to you of this Qur'an although you were, before it, among the unaware [12:4] إِذۡ قَالَ يُوسُفُ لِأَبِيهِ يَـٰٓأَبَتِ إِنِّي رَأَيۡتُ أَحَدَ عَشَرَ كَوۡكَبٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ رَأَيۡتُهُمۡ لِي سَٰجِدِينَ Ith qala yoosufu liabeehi ya abati innee raaytu ahada AAashara kawkaban waalshshamsa waalqamara raaytuhum lee sajideena [Of these stories mention] when Joseph said to his father, \"O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me [12:5] قَالَ يَٰبُنَيَّ لَا تَقۡصُصۡ رُءۡيَاكَ عَلَىٰٓ إِخۡوَتِكَ فَيَكِيدُواْ لَكَ كَيۡدًاۖ إِنَّ ٱلشَّيۡطَٰنَ لِلۡإِنسَٰنِ عَدُوّٞ مُّبِينٞ Qala ya bunayya la taqsus ruyaka AAala ikhwatika fayakeedoo laka kaydan inna alshshaytana lilinsani AAaduwwun mubeenun He said, \"O my son, do not relate your vision to your brothers or they will contrive against you a plan."
-     }
-    ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -161,7 +133,7 @@
     "verb": "mubeenun",
     "object": "He said",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,36 +142,7 @@
       "text": "These are the verses of the clear Book [12:2] إِنَّآ أَنزَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna anzalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have sent it down as an Arabic Qur'an that you might understand [12:3] نَحۡنُ نَقُصُّ عَلَيۡكَ أَحۡسَنَ ٱلۡقَصَصِ بِمَآ أَوۡحَيۡنَآ إِلَيۡكَ هَٰذَا ٱلۡقُرۡءَانَ وَإِن كُنتَ مِن قَبۡلِهِۦ لَمِنَ ٱلۡغَٰفِلِينَ Nahnu naqussu AAalayka ahsana alqasasi bima awhayna ilayka hatha alqurana wain kunta min qablihi lamina alghafileena We relate to you, [O Muhammad], the best of stories in what We have revealed to you of this Qur'an although you were, before it, among the unaware [12:4] إِذۡ قَالَ يُوسُفُ لِأَبِيهِ يَـٰٓأَبَتِ إِنِّي رَأَيۡتُ أَحَدَ عَشَرَ كَوۡكَبٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ رَأَيۡتُهُمۡ لِي سَٰجِدِينَ Ith qala yoosufu liabeehi ya abati innee raaytu ahada AAashara kawkaban waalshshamsa waalqamara raaytuhum lee sajideena [Of these stories mention] when Joseph said to his father, \"O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me [12:5] قَالَ يَٰبُنَيَّ لَا تَقۡصُصۡ رُءۡيَاكَ عَلَىٰٓ إِخۡوَتِكَ فَيَكِيدُواْ لَكَ كَيۡدًاۖ إِنَّ ٱلشَّيۡطَٰنَ لِلۡإِنسَٰنِ عَدُوّٞ مُّبِينٞ Qala ya bunayya la taqsus ruyaka AAala ikhwatika fayakeedoo laka kaydan inna alshshaytana lilinsani AAaduwwun mubeenun He said, \"O my son, do not relate your vision to your brothers or they will contrive against you a plan."
      }
     ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "your brothers|or|they will contrive against you a plan",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "your brothers or they will contrive against you a plan",
-    "subject": "your brothers",
-    "verb": "or",
-    "object": "they will contrive against you a plan",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#312-1800",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "These are the verses of the clear Book [12:2] إِنَّآ أَنزَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna anzalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have sent it down as an Arabic Qur'an that you might understand [12:3] نَحۡنُ نَقُصُّ عَلَيۡكَ أَحۡسَنَ ٱلۡقَصَصِ بِمَآ أَوۡحَيۡنَآ إِلَيۡكَ هَٰذَا ٱلۡقُرۡءَانَ وَإِن كُنتَ مِن قَبۡلِهِۦ لَمِنَ ٱلۡغَٰفِلِينَ Nahnu naqussu AAalayka ahsana alqasasi bima awhayna ilayka hatha alqurana wain kunta min qablihi lamina alghafileena We relate to you, [O Muhammad], the best of stories in what We have revealed to you of this Qur'an although you were, before it, among the unaware [12:4] إِذۡ قَالَ يُوسُفُ لِأَبِيهِ يَـٰٓأَبَتِ إِنِّي رَأَيۡتُ أَحَدَ عَشَرَ كَوۡكَبٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ رَأَيۡتُهُمۡ لِي سَٰجِدِينَ Ith qala yoosufu liabeehi ya abati innee raaytu ahada AAashara kawkaban waalshshamsa waalqamara raaytuhum lee sajideena [Of these stories mention] when Joseph said to his father, \"O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me [12:5] قَالَ يَٰبُنَيَّ لَا تَقۡصُصۡ رُءۡيَاكَ عَلَىٰٓ إِخۡوَتِكَ فَيَكِيدُواْ لَكَ كَيۡدًاۖ إِنَّ ٱلشَّيۡطَٰنَ لِلۡإِنسَٰنِ عَدُوّٞ مُّبِينٞ Qala ya bunayya la taqsus ruyaka AAala ikhwatika fayakeedoo laka kaydan inna alshshaytana lilinsani AAaduwwun mubeenun He said, \"O my son, do not relate your vision to your brothers or they will contrive against you a plan."
-     }
-    ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +162,7 @@
     "verb": "hakeemun",
     "object": "And thus will your Lord choose you and teach you the interpretation of narratives and complete His favor upon you and upon the family of Jacob",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,94 +171,7 @@
       "text": "Indeed Satan, to man, is a manifest enemy [12:6] وَكَذَٰلِكَ يَجۡتَبِيكَ رَبُّكَ وَيُعَلِّمُكَ مِن تَأۡوِيلِ ٱلۡأَحَادِيثِ وَيُتِمُّ نِعۡمَتَهُۥ عَلَيۡكَ وَعَلَىٰٓ ءَالِ يَعۡقُوبَ كَمَآ أَتَمَّهَا عَلَىٰٓ أَبَوَيۡكَ مِن قَبۡلُ إِبۡرَٰهِيمَ وَإِسۡحَٰقَۚ إِنَّ رَبَّكَ عَلِيمٌ حَكِيمٞ Wakathalika yajtabeeka rabbuka wayuAAallimuka min taweeli alahadeethi wayutimmu niAAmatahu AAalayka waAAala ali yaAAqooba kama atammaha AAala abawayka min qablu ibraheema waishaqa inna rabbaka AAaleemun hakeemun And thus will your Lord choose you and teach you the interpretation of narratives and complete His favor upon you and upon the family of Jacob, as He completed it upon your fathers before, Abraham and Isaac."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "abraham|and|isaac",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Abraham and Isaac",
-    "subject": "Abraham",
-    "verb": "and",
-    "object": "Isaac",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#1801-2512",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "Indeed Satan, to man, is a manifest enemy [12:6] وَكَذَٰلِكَ يَجۡتَبِيكَ رَبُّكَ وَيُعَلِّمُكَ مِن تَأۡوِيلِ ٱلۡأَحَادِيثِ وَيُتِمُّ نِعۡمَتَهُۥ عَلَيۡكَ وَعَلَىٰٓ ءَالِ يَعۡقُوبَ كَمَآ أَتَمَّهَا عَلَىٰٓ أَبَوَيۡكَ مِن قَبۡلُ إِبۡرَٰهِيمَ وَإِسۡحَٰقَۚ إِنَّ رَبَّكَ عَلِيمٌ حَكِيمٞ Wakathalika yajtabeeka rabbuka wayuAAallimuka min taweeli alahadeethi wayutimmu niAAmatahu AAalayka waAAala ali yaAAqooba kama atammaha AAala abawayka min qablu ibraheema waishaqa inna rabbaka AAaleemun hakeemun And thus will your Lord choose you and teach you the interpretation of narratives and complete His favor upon you and upon the family of Jacob, as He completed it upon your fathers before, Abraham and Isaac."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "joseph|and|his brother are more beloved to our father than we",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Joseph and his brother are more beloved to our father than we",
-    "subject": "Joseph",
-    "verb": "and",
-    "object": "his brother are more beloved to our father than we",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#2513-3104",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "Indeed, your Lord is Knowing and Wise [12:7] ۞لَّقَدۡ كَانَ فِي يُوسُفَ وَإِخۡوَتِهِۦٓ ءَايَٰتٞ لِّلسَّآئِلِينَ Laqad kana fee yoosufa waikhwatihi ayatun lilssaileena Certainly were there in Joseph and his brothers signs for those who ask [12:8] إِذۡ قَالُواْ لَيُوسُفُ وَأَخُوهُ أَحَبُّ إِلَىٰٓ أَبِينَا مِنَّا وَنَحۡنُ عُصۡبَةٌ إِنَّ أَبَانَا لَفِي ضَلَٰلٖ مُّبِينٍ Ith qaloo layoosufu waakhoohu ahabbu ila abeena minna wanahnu AAusbatun inna abana lafee dalalin mubeenin When they said, \"Joseph and his brother are more beloved to our father than we, while we are a clan."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kill joseph|or|cast him out to [another] land",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Kill Joseph or cast him out to [another] land",
-    "subject": "Kill Joseph",
-    "verb": "or",
-    "object": "cast him out to [another] land",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#3105-4468",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
-     }
-    ],
-    "seq": 8,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -335,7 +191,7 @@
     "verb": "said",
     "object": "a speaker among them",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -344,94 +200,7 @@
       "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kill joseph|but|throw him into the bottom of the well",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "kill Joseph but throw him into the bottom of the well",
-    "subject": "kill Joseph",
-    "verb": "but",
-    "object": "throw him into the bottom of the well",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#3105-4468",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "entrust us|with|joseph while indeed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "entrust us with Joseph while indeed",
-    "subject": "entrust us",
-    "verb": "with",
-    "object": "Joseph while indeed",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#3105-4468",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lahafithoona\n    send|him|with us tomorrow that he may eat well and play",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lahafithoona\n    Send him with us tomorrow that he may eat well and play",
-    "subject": "lahafithoona\n    Send",
-    "verb": "him",
-    "object": "with us tomorrow that he may eat well and play",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#3105-4468",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
-     }
-    ],
-    "seq": 12,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +220,7 @@
     "verb": "ghafiloona",
     "object": "[Jacob] said",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,94 +229,7 @@
       "text": "And indeed, we will be his guardians [12:13] قَالَ إِنِّي لَيَحۡزُنُنِيٓ أَن تَذۡهَبُواْ بِهِۦ وَأَخَافُ أَن يَأۡكُلَهُ ٱلذِّئۡبُ وَأَنتُمۡ عَنۡهُ غَٰفِلُونَ Qala innee layahzununee an thathhaboo bihi waakhafu an yakulahu alththibu waantum AAanhu ghafiloona [Jacob] said, \"Indeed, it saddens me that you should take him, and I fear that a wolf would eat him while you are of him unaware [12:14] قَالُواْ لَئِنۡ أَكَلَهُ ٱلذِّئۡبُ وَنَحۡنُ عُصۡبَةٌ إِنَّآ إِذٗا لَّخَٰسِرُونَ Qaloo lain akalahu alththibu wanahnu AAusbatun inna ithan lakhasiroona They said, \"If a wolf should eat him while we are a [strong] clan, indeed, we would then be losers [12:15] فَلَمَّا ذَهَبُواْ بِهِۦ وَأَجۡمَعُوٓاْ أَن يَجۡعَلُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّۚ وَأَوۡحَيۡنَآ إِلَيۡهِ لَتُنَبِّئَنَّهُم بِأَمۡرِهِمۡ هَٰذَا وَهُمۡ لَا يَشۡعُرُونَ Falamma thahaboo bihi waajmaAAoo an yajAAaloohu fee ghayabati aljubbi waawhayna ilayhi latunabiannahum biamrihim hatha wahum la yashAAuroona So when they took him [out] and agreed to put him into the bottom of the well..."
      }
     ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "saddens me|that|you should take him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "saddens me that you should take him",
-    "subject": "saddens me",
-    "verb": "that",
-    "object": "you should take him",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#4469-5533",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "And indeed, we will be his guardians [12:13] قَالَ إِنِّي لَيَحۡزُنُنِيٓ أَن تَذۡهَبُواْ بِهِۦ وَأَخَافُ أَن يَأۡكُلَهُ ٱلذِّئۡبُ وَأَنتُمۡ عَنۡهُ غَٰفِلُونَ Qala innee layahzununee an thathhaboo bihi waakhafu an yakulahu alththibu waantum AAanhu ghafiloona [Jacob] said, \"Indeed, it saddens me that you should take him, and I fear that a wolf would eat him while you are of him unaware [12:14] قَالُواْ لَئِنۡ أَكَلَهُ ٱلذِّئۡبُ وَنَحۡنُ عُصۡبَةٌ إِنَّآ إِذٗا لَّخَٰسِرُونَ Qaloo lain akalahu alththibu wanahnu AAusbatun inna ithan lakhasiroona They said, \"If a wolf should eat him while we are a [strong] clan, indeed, we would then be losers [12:15] فَلَمَّا ذَهَبُواْ بِهِۦ وَأَجۡمَعُوٓاْ أَن يَجۡعَلُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّۚ وَأَوۡحَيۡنَآ إِلَيۡهِ لَتُنَبِّئَنَّهُم بِأَمۡرِهِمۡ هَٰذَا وَهُمۡ لَا يَشۡعُرُونَ Falamma thahaboo bihi waajmaAAoo an yajAAaloohu fee ghayabati aljubbi waawhayna ilayhi latunabiannahum biamrihim hatha wahum la yashAAuroona So when they took him [out] and agreed to put him into the bottom of the well..."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "should eat|him|while we are a [strong] clan",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "should eat him while we are a [strong] clan",
-    "subject": "should eat",
-    "verb": "him",
-    "object": "while we are a [strong] clan",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#4469-5533",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "And indeed, we will be his guardians [12:13] قَالَ إِنِّي لَيَحۡزُنُنِيٓ أَن تَذۡهَبُواْ بِهِۦ وَأَخَافُ أَن يَأۡكُلَهُ ٱلذِّئۡبُ وَأَنتُمۡ عَنۡهُ غَٰفِلُونَ Qala innee layahzununee an thathhaboo bihi waakhafu an yakulahu alththibu waantum AAanhu ghafiloona [Jacob] said, \"Indeed, it saddens me that you should take him, and I fear that a wolf would eat him while you are of him unaware [12:14] قَالُواْ لَئِنۡ أَكَلَهُ ٱلذِّئۡبُ وَنَحۡنُ عُصۡبَةٌ إِنَّآ إِذٗا لَّخَٰسِرُونَ Qaloo lain akalahu alththibu wanahnu AAusbatun inna ithan lakhasiroona They said, \"If a wolf should eat him while we are a [strong] clan, indeed, we would then be losers [12:15] فَلَمَّا ذَهَبُواْ بِهِۦ وَأَجۡمَعُوٓاْ أَن يَجۡعَلُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّۚ وَأَوۡحَيۡنَآ إِلَيۡهِ لَتُنَبِّئَنَّهُم بِأَمۡرِهِمۡ هَٰذَا وَهُمۡ لَا يَشۡعُرُونَ Falamma thahaboo bihi waajmaAAoo an yajAAaloohu fee ghayabati aljubbi waawhayna ilayhi latunabiannahum biamrihim hatha wahum la yashAAuroona So when they took him [out] and agreed to put him into the bottom of the well..."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they took|him|[out] and agreed to put him into the bottom of the well",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "they took him [out] and agreed to put him into the bottom of the well",
-    "subject": "they took",
-    "verb": "him",
-    "object": "[out] and agreed to put him into the bottom of the well",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#4469-5533",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "And indeed, we will be his guardians [12:13] قَالَ إِنِّي لَيَحۡزُنُنِيٓ أَن تَذۡهَبُواْ بِهِۦ وَأَخَافُ أَن يَأۡكُلَهُ ٱلذِّئۡبُ وَأَنتُمۡ عَنۡهُ غَٰفِلُونَ Qala innee layahzununee an thathhaboo bihi waakhafu an yakulahu alththibu waantum AAanhu ghafiloona [Jacob] said, \"Indeed, it saddens me that you should take him, and I fear that a wolf would eat him while you are of him unaware [12:14] قَالُواْ لَئِنۡ أَكَلَهُ ٱلذِّئۡبُ وَنَحۡنُ عُصۡبَةٌ إِنَّآ إِذٗا لَّخَٰسِرُونَ Qaloo lain akalahu alththibu wanahnu AAusbatun inna ithan lakhasiroona They said, \"If a wolf should eat him while we are a [strong] clan, indeed, we would then be losers [12:15] فَلَمَّا ذَهَبُواْ بِهِۦ وَأَجۡمَعُوٓاْ أَن يَجۡعَلُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّۚ وَأَوۡحَيۡنَآ إِلَيۡهِ لَتُنَبِّئَنَّهُم بِأَمۡرِهِمۡ هَٰذَا وَهُمۡ لَا يَشۡعُرُونَ Falamma thahaboo bihi waajmaAAoo an yajAAaloohu fee ghayabati aljubbi waawhayna ilayhi latunabiannahum biamrihim hatha wahum la yashAAuroona So when they took him [out] and agreed to put him into the bottom of the well..."
-     }
-    ],
-    "seq": 16,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -567,7 +249,7 @@
     "verb": "yabkoona",
     "object": "And they came to their father at night",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -576,65 +258,7 @@
       "text": "But We inspired to him, \"You will surely inform them [someday] about this affair of theirs while they do not perceive [your identity] [12:16] وَجَآءُوٓ أَبَاهُمۡ عِشَآءٗ يَبۡكُونَ Wajaoo abahum AAishaan yabkoona And they came to their father at night, weeping [12:17] قَالُواْ يَـٰٓأَبَانَآ إِنَّا ذَهَبۡنَا نَسۡتَبِقُ وَتَرَكۡنَا يُوسُفَ عِندَ مَتَٰعِنَا فَأَكَلَهُ ٱلذِّئۡبُۖ وَمَآ أَنتَ بِمُؤۡمِنٖ لَّنَا وَلَوۡ كُنَّا صَٰدِقِينَ Qaloo ya abana inna thahabna nastabiqu watarakna yoosufa AAinda mataAAina faakalahu alththibu wama anta bimuminin lana walaw kunna sadiqeena They said, \"O our father, indeed we went racing each other and left Joseph with our possessions, and a wolf ate him."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "each other|and|left joseph with our possessions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "each other and left Joseph with our possessions",
-    "subject": "each other",
-    "verb": "and",
-    "object": "left Joseph with our possessions",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#5534-6244",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "But We inspired to him, \"You will surely inform them [someday] about this affair of theirs while they do not perceive [your identity] [12:16] وَجَآءُوٓ أَبَاهُمۡ عِشَآءٗ يَبۡكُونَ Wajaoo abahum AAishaan yabkoona And they came to their father at night, weeping [12:17] قَالُواْ يَـٰٓأَبَانَآ إِنَّا ذَهَبۡنَا نَسۡتَبِقُ وَتَرَكۡنَا يُوسُفَ عِندَ مَتَٰعِنَا فَأَكَلَهُ ٱلذِّئۡبُۖ وَمَآ أَنتَ بِمُؤۡمِنٖ لَّنَا وَلَوۡ كُنَّا صَٰدِقِينَ Qaloo ya abana inna thahabna nastabiqu watarakna yoosufa AAinda mataAAina faakalahu alththibu wama anta bimuminin lana walaw kunna sadiqeena They said, \"O our father, indeed we went racing each other and left Joseph with our possessions, and a wolf ate him."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ma tasifoona|and|they brought upon his shirt false blood",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ma tasifoona and they brought upon his shirt false blood",
-    "subject": "ma tasifoona",
-    "verb": "and",
-    "object": "they brought upon his shirt false blood",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#6245-6655",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "But you would not believe us, even if we were truthful [12:18] وَجَآءُو عَلَىٰ قَمِيصِهِۦ بِدَمٖ كَذِبٖۚ قَالَ بَلۡ سَوَّلَتۡ لَكُمۡ أَنفُسُكُمۡ أَمۡرٗاۖ فَصَبۡرٞ جَمِيلٞۖ وَٱللَّهُ ٱلۡمُسۡتَعَانُ عَلَىٰ مَا تَصِفُونَ Wajaoo AAala qameesihi bidamin kathibin qala bal sawwalat lakum anfusukum amran fasabrun jameelun waAllahu almustaAAanu AAala ma tasifoona And they brought upon his shirt false blood."
-     }
-    ],
-    "seq": 19,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -654,7 +278,7 @@
     "verb": "is",
     "object": "most fitting",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -663,36 +287,7 @@
       "text": "[Jacob] said, \"Rather, your souls have enticed you to something, so patience is most fitting."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bima yaaamaloona|and|there came a company of travelers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "bima yaAAmaloona and there came a company of travelers",
-    "subject": "bima yaAAmaloona",
-    "verb": "and",
-    "object": "there came a company of travelers",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#6750-7243",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "And Allah is the one sought for help against that which you describe [12:19] وَجَآءَتۡ سَيَّارَةٞ فَأَرۡسَلُواْ وَارِدَهُمۡ فَأَدۡلَىٰ دَلۡوَهُۥۖ قَالَ يَٰبُشۡرَىٰ هَٰذَا غُلَٰمٞۚ وَأَسَرُّوهُ بِضَٰعَةٗۚ وَٱللَّهُ عَلِيمُۢ بِمَا يَعۡمَلُونَ Wajaat sayyaratun faarsaloo waridahum faadla dalwahu qala ya bushra hatha ghulamun waasarroohu bidaAAatan waAllahu AAaleemun bima yaAAmaloona And there came a company of travelers; then they sent their water drawer, and he let down his bucket."
-     }
-    ],
-    "seq": 21,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -712,7 +307,7 @@
     "verb": "is",
     "object": "a boy",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -721,41 +316,12 @@
       "text": "Here is a boy.\""
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mina alzzahideena|and|they sold him for a reduced price - a few dirhams - and they were",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mina alzzahideena and they sold him for a reduced price - a few dirhams - and they were",
-    "subject": "mina alzzahideena",
-    "verb": "and",
-    "object": "they sold him for a reduced price - a few dirhams - and they were",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#7281-8000",
-      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-      "text": "And they concealed him, [taking him] as merchandise; and Allah was knowing of what they did [12:20] وَشَرَوۡهُ بِثَمَنِۭ بَخۡسٖ دَرَٰهِمَ مَعۡدُودَةٖ وَكَانُواْ فِيهِ مِنَ ٱلزَّـٰهِدِينَ Washarawhu bithamanin bakhsin darahima maAAdoodatin wakanoo feehi mina alzzahideena And they sold him for a reduced price - a few dirhams - and they were, concerning him, of those content with little [12:21] وَقَالَ ٱلَّذِي ٱشۡتَرَىٰهُ مِن مِّصۡرَ لِٱمۡرَأَتِهِۦٓ أَكۡرِمِي مَثۡوَىٰهُ عَسَىٰٓ أَن يَنفَعَنَآ أَوۡ نَتَّخِذَهُۥ وَلَدٗاۚ وَكَذَٰلِكَ مَكَّنَّا لِيُوسُفَ فِي ٱلۡأَرۡضِ وَلِنُعَلِّمَهُۥ مِن تَأۡوِيلِ ٱلۡأَحَادِيثِۚ وَٱللَّهُ غَالِبٌ عَلَىٰٓ أَمۡرِهِۦ وَلَٰكِنَّ أَكۡثَرَ ٱلنَّاسِ لَا يَعۡلَمُونَ Waqala alla"
-     }
-    ],
-    "seq": 23,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 24,
+  "nextSeq": 8,
   "admits": [
    "NUL",
    "SEG",
@@ -775,93 +341,13 @@
    "verb": "yabkoona",
    "object": "And they came to their father at night",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#5534-6244",
      "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
      "text": "But We inspired to him, \"You will surely inform them [someday] about this affair of theirs while they do not perceive [your identity] [12:16] وَجَآءُوٓ أَبَاهُمۡ عِشَآءٗ يَبۡكُونَ Wajaoo abahum AAishaan yabkoona And they came to their father at night, weeping [12:17] قَالُواْ يَـٰٓأَبَانَآ إِنَّا ذَهَبۡنَا نَسۡتَبِقُ وَتَرَكۡنَا يُوسُفَ عِندَ مَتَٰعِنَا فَأَكَلَهُ ٱلذِّئۡبُۖ وَمَآ أَنتَ بِمُؤۡمِنٖ لَّنَا وَلَوۡ كُنَّا صَٰدِقِينَ Qaloo ya abana inna thahabna nastabiqu watarakna yoosufa AAinda mataAAina faakalahu alththibu wama anta bimuminin lana walaw kunna sadiqeena They said, \"O our father, indeed we went racing each other and left Joseph with our possessions, and a wolf ate him."
-    }
-   ]
-  },
-  {
-   "id": "abraham|and|isaac",
-   "subject": "Abraham",
-   "verb": "and",
-   "object": "Isaac",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#1801-2512",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "Indeed Satan, to man, is a manifest enemy [12:6] وَكَذَٰلِكَ يَجۡتَبِيكَ رَبُّكَ وَيُعَلِّمُكَ مِن تَأۡوِيلِ ٱلۡأَحَادِيثِ وَيُتِمُّ نِعۡمَتَهُۥ عَلَيۡكَ وَعَلَىٰٓ ءَالِ يَعۡقُوبَ كَمَآ أَتَمَّهَا عَلَىٰٓ أَبَوَيۡكَ مِن قَبۡلُ إِبۡرَٰهِيمَ وَإِسۡحَٰقَۚ إِنَّ رَبَّكَ عَلِيمٌ حَكِيمٞ Wakathalika yajtabeeka rabbuka wayuAAallimuka min taweeli alahadeethi wayutimmu niAAmatahu AAalayka waAAala ali yaAAqooba kama atammaha AAala abawayka min qablu ibraheema waishaqa inna rabbaka AAaleemun hakeemun And thus will your Lord choose you and teach you the interpretation of narratives and complete His favor upon you and upon the family of Jacob, as He completed it upon your fathers before, Abraham and Isaac."
-    }
-   ]
-  },
-  {
-   "id": "bima yaaamaloona|and|there came a company of travelers",
-   "subject": "bima yaAAmaloona",
-   "verb": "and",
-   "object": "there came a company of travelers",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#6750-7243",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "And Allah is the one sought for help against that which you describe [12:19] وَجَآءَتۡ سَيَّارَةٞ فَأَرۡسَلُواْ وَارِدَهُمۡ فَأَدۡلَىٰ دَلۡوَهُۥۖ قَالَ يَٰبُشۡرَىٰ هَٰذَا غُلَٰمٞۚ وَأَسَرُّوهُ بِضَٰعَةٗۚ وَٱللَّهُ عَلِيمُۢ بِمَا يَعۡمَلُونَ Wajaat sayyaratun faarsaloo waridahum faadla dalwahu qala ya bushra hatha ghulamun waasarroohu bidaAAatan waAllahu AAaleemun bima yaAAmaloona And there came a company of travelers; then they sent their water drawer, and he let down his bucket."
-    }
-   ]
-  },
-  {
-   "id": "each other|and|left joseph with our possessions",
-   "subject": "each other",
-   "verb": "and",
-   "object": "left Joseph with our possessions",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#5534-6244",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "But We inspired to him, \"You will surely inform them [someday] about this affair of theirs while they do not perceive [your identity] [12:16] وَجَآءُوٓ أَبَاهُمۡ عِشَآءٗ يَبۡكُونَ Wajaoo abahum AAishaan yabkoona And they came to their father at night, weeping [12:17] قَالُواْ يَـٰٓأَبَانَآ إِنَّا ذَهَبۡنَا نَسۡتَبِقُ وَتَرَكۡنَا يُوسُفَ عِندَ مَتَٰعِنَا فَأَكَلَهُ ٱلذِّئۡبُۖ وَمَآ أَنتَ بِمُؤۡمِنٖ لَّنَا وَلَوۡ كُنَّا صَٰدِقِينَ Qaloo ya abana inna thahabna nastabiqu watarakna yoosufa AAinda mataAAina faakalahu alththibu wama anta bimuminin lana walaw kunna sadiqeena They said, \"O our father, indeed we went racing each other and left Joseph with our possessions, and a wolf ate him."
-    }
-   ]
-  },
-  {
-   "id": "eleven stars|and|the sun and the moon",
-   "subject": "eleven stars",
-   "verb": "and",
-   "object": "the sun and the moon",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#312-1800",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "These are the verses of the clear Book [12:2] إِنَّآ أَنزَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna anzalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have sent it down as an Arabic Qur'an that you might understand [12:3] نَحۡنُ نَقُصُّ عَلَيۡكَ أَحۡسَنَ ٱلۡقَصَصِ بِمَآ أَوۡحَيۡنَآ إِلَيۡكَ هَٰذَا ٱلۡقُرۡءَانَ وَإِن كُنتَ مِن قَبۡلِهِۦ لَمِنَ ٱلۡغَٰفِلِينَ Nahnu naqussu AAalayka ahsana alqasasi bima awhayna ilayka hatha alqurana wain kunta min qablihi lamina alghafileena We relate to you, [O Muhammad], the best of stories in what We have revealed to you of this Qur'an although you were, before it, among the unaware [12:4] إِذۡ قَالَ يُوسُفُ لِأَبِيهِ يَـٰٓأَبَتِ إِنِّي رَأَيۡتُ أَحَدَ عَشَرَ كَوۡكَبٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ رَأَيۡتُهُمۡ لِي سَٰجِدِينَ Ith qala yoosufu liabeehi ya abati innee raaytu ahada AAashara kawkaban waalshshamsa waalqamara raaytuhum lee sajideena [Of these stories mention] when Joseph said to his father, \"O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me [12:5] قَالَ يَٰبُنَيَّ لَا تَقۡصُصۡ رُءۡيَاكَ عَلَىٰٓ إِخۡوَتِكَ فَيَكِيدُواْ لَكَ كَيۡدًاۖ إِنَّ ٱلشَّيۡطَٰنَ لِلۡإِنسَٰنِ عَدُوّٞ مُّبِينٞ Qala ya bunayya la taqsus ruyaka AAala ikhwatika fayakeedoo laka kaydan inna alshshaytana lilinsani AAaduwwun mubeenun He said, \"O my son, do not relate your vision to your brothers or they will contrive against you a plan."
-    }
-   ]
-  },
-  {
-   "id": "entrust us|with|joseph while indeed",
-   "subject": "entrust us",
-   "verb": "with",
-   "object": "Joseph while indeed",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#3105-4468",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
     }
    ]
   },
@@ -871,7 +357,7 @@
    "verb": "is",
    "object": "a boy",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -882,76 +368,12 @@
    ]
   },
   {
-   "id": "joseph|and|his brother are more beloved to our father than we",
-   "subject": "Joseph",
-   "verb": "and",
-   "object": "his brother are more beloved to our father than we",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#2513-3104",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "Indeed, your Lord is Knowing and Wise [12:7] ۞لَّقَدۡ كَانَ فِي يُوسُفَ وَإِخۡوَتِهِۦٓ ءَايَٰتٞ لِّلسَّآئِلِينَ Laqad kana fee yoosufa waikhwatihi ayatun lilssaileena Certainly were there in Joseph and his brothers signs for those who ask [12:8] إِذۡ قَالُواْ لَيُوسُفُ وَأَخُوهُ أَحَبُّ إِلَىٰٓ أَبِينَا مِنَّا وَنَحۡنُ عُصۡبَةٌ إِنَّ أَبَانَا لَفِي ضَلَٰلٖ مُّبِينٍ Ith qaloo layoosufu waakhoohu ahabbu ila abeena minna wanahnu AAusbatun inna abana lafee dalalin mubeenin When they said, \"Joseph and his brother are more beloved to our father than we, while we are a clan."
-    }
-   ]
-  },
-  {
-   "id": "kill joseph|but|throw him into the bottom of the well",
-   "subject": "kill Joseph",
-   "verb": "but",
-   "object": "throw him into the bottom of the well",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#3105-4468",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
-    }
-   ]
-  },
-  {
-   "id": "kill joseph|or|cast him out to [another] land",
-   "subject": "Kill Joseph",
-   "verb": "or",
-   "object": "cast him out to [another] land",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#3105-4468",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
-    }
-   ]
-  },
-  {
    "id": "kuntum faaaileena|said|a speaker among them",
    "subject": "kuntum faAAileena",
    "verb": "said",
    "object": "a speaker among them",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#3105-4468",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "Indeed, our father is in clear error [12:9] ٱقۡتُلُواْ يُوسُفَ أَوِ ٱطۡرَحُوهُ أَرۡضٗا يَخۡلُ لَكُمۡ وَجۡهُ أَبِيكُمۡ وَتَكُونُواْ مِنۢ بَعۡدِهِۦ قَوۡمٗا صَٰلِحِينَ Oqtuloo yoosufa awi itrahoohu ardan yakhlu lakum wajhu abeekum watakoonoo min baAAdihi qawman saliheena Kill Joseph or cast him out to [another] land; the countenance of your father will [then] be only for you, and you will be after that a righteous people [12:10] قَالَ قَآئِلٞ مِّنۡهُمۡ لَا تَقۡتُلُواْ يُوسُفَ وَأَلۡقُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّ يَلۡتَقِطۡهُ بَعۡضُ ٱلسَّيَّارَةِ إِن كُنتُمۡ فَٰعِلِينَ Qala qailun minhum la taqtuloo yoosufa waalqoohu fee ghayabati aljubbi yaltaqithu baAAdu alssayyarati in kuntum faAAileena Said a speaker among them, \"Do not kill Joseph but throw him into the bottom of the well; some travelers will pick him up - if you would do [something] [12:11] قَالُواْ يَـٰٓأَبَانَا مَا لَكَ لَا تَأۡمَ۬نَّا عَلَىٰ يُوسُفَ وَإِنَّا لَهُۥ لَنَٰصِحُونَ Qaloo ya abana ma laka la tamanna AAala yoosufa wainna lahu lanasihoona They said, \"O our father, why do you not entrust us with Joseph while indeed, we are to him sincere counselors [12:12] أَرۡسِلۡهُ مَعَنَا غَدٗا يَرۡتَعۡ وَيَلۡعَبۡ وَإِنَّا لَهُۥ لَحَٰفِظُونَ Arsilhu maAAana ghadan yartaAA wayalAAab wainna lahu lahafithoona Send him with us tomorrow that he may eat well and play."
-    }
-   ]
-  },
-  {
-   "id": "lahafithoona\n    send|him|with us tomorrow that he may eat well and play",
-   "subject": "lahafithoona\n    Send",
-   "verb": "him",
-   "object": "with us tomorrow that he may eat well and play",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -967,7 +389,7 @@
    "verb": "mubeenun",
    "object": "He said",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -978,44 +400,12 @@
    ]
   },
   {
-   "id": "ma tasifoona|and|they brought upon his shirt false blood",
-   "subject": "ma tasifoona",
-   "verb": "and",
-   "object": "they brought upon his shirt false blood",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#6245-6655",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "But you would not believe us, even if we were truthful [12:18] وَجَآءُو عَلَىٰ قَمِيصِهِۦ بِدَمٖ كَذِبٖۚ قَالَ بَلۡ سَوَّلَتۡ لَكُمۡ أَنفُسُكُمۡ أَمۡرٗاۖ فَصَبۡرٞ جَمِيلٞۖ وَٱللَّهُ ٱلۡمُسۡتَعَانُ عَلَىٰ مَا تَصِفُونَ Wajaoo AAala qameesihi bidamin kathibin qala bal sawwalat lakum anfusukum amran fasabrun jameelun waAllahu almustaAAanu AAala ma tasifoona And they brought upon his shirt false blood."
-    }
-   ]
-  },
-  {
-   "id": "mina alzzahideena|and|they sold him for a reduced price - a few dirhams - and they were",
-   "subject": "mina alzzahideena",
-   "verb": "and",
-   "object": "they sold him for a reduced price - a few dirhams - and they were",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#7281-8000",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "And they concealed him, [taking him] as merchandise; and Allah was knowing of what they did [12:20] وَشَرَوۡهُ بِثَمَنِۭ بَخۡسٖ دَرَٰهِمَ مَعۡدُودَةٖ وَكَانُواْ فِيهِ مِنَ ٱلزَّـٰهِدِينَ Washarawhu bithamanin bakhsin darahima maAAdoodatin wakanoo feehi mina alzzahideena And they sold him for a reduced price - a few dirhams - and they were, concerning him, of those content with little [12:21] وَقَالَ ٱلَّذِي ٱشۡتَرَىٰهُ مِن مِّصۡرَ لِٱمۡرَأَتِهِۦٓ أَكۡرِمِي مَثۡوَىٰهُ عَسَىٰٓ أَن يَنفَعَنَآ أَوۡ نَتَّخِذَهُۥ وَلَدٗاۚ وَكَذَٰلِكَ مَكَّنَّا لِيُوسُفَ فِي ٱلۡأَرۡضِ وَلِنُعَلِّمَهُۥ مِن تَأۡوِيلِ ٱلۡأَحَادِيثِۚ وَٱللَّهُ غَالِبٌ عَلَىٰٓ أَمۡرِهِۦ وَلَٰكِنَّ أَكۡثَرَ ٱلنَّاسِ لَا يَعۡلَمُونَ Waqala alla"
-    }
-   ]
-  },
-  {
    "id": "rabbaka aaaleemun|hakeemun|and thus will your lord choose you and teach you the interpretation of narratives and complete his favor upon you and upon the family of jacob",
    "subject": "rabbaka AAaleemun",
    "verb": "hakeemun",
    "object": "And thus will your Lord choose you and teach you the interpretation of narratives and complete His favor upon you and upon the family of Jacob",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1026,44 +416,12 @@
    ]
   },
   {
-   "id": "saddens me|that|you should take him",
-   "subject": "saddens me",
-   "verb": "that",
-   "object": "you should take him",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#4469-5533",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "And indeed, we will be his guardians [12:13] قَالَ إِنِّي لَيَحۡزُنُنِيٓ أَن تَذۡهَبُواْ بِهِۦ وَأَخَافُ أَن يَأۡكُلَهُ ٱلذِّئۡبُ وَأَنتُمۡ عَنۡهُ غَٰفِلُونَ Qala innee layahzununee an thathhaboo bihi waakhafu an yakulahu alththibu waantum AAanhu ghafiloona [Jacob] said, \"Indeed, it saddens me that you should take him, and I fear that a wolf would eat him while you are of him unaware [12:14] قَالُواْ لَئِنۡ أَكَلَهُ ٱلذِّئۡبُ وَنَحۡنُ عُصۡبَةٌ إِنَّآ إِذٗا لَّخَٰسِرُونَ Qaloo lain akalahu alththibu wanahnu AAusbatun inna ithan lakhasiroona They said, \"If a wolf should eat him while we are a [strong] clan, indeed, we would then be losers [12:15] فَلَمَّا ذَهَبُواْ بِهِۦ وَأَجۡمَعُوٓاْ أَن يَجۡعَلُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّۚ وَأَوۡحَيۡنَآ إِلَيۡهِ لَتُنَبِّئَنَّهُم بِأَمۡرِهِمۡ هَٰذَا وَهُمۡ لَا يَشۡعُرُونَ Falamma thahaboo bihi waajmaAAoo an yajAAaloohu fee ghayabati aljubbi waawhayna ilayhi latunabiannahum biamrihim hatha wahum la yashAAuroona So when they took him [out] and agreed to put him into the bottom of the well..."
-    }
-   ]
-  },
-  {
-   "id": "should eat|him|while we are a [strong] clan",
-   "subject": "should eat",
-   "verb": "him",
-   "object": "while we are a [strong] clan",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#4469-5533",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "And indeed, we will be his guardians [12:13] قَالَ إِنِّي لَيَحۡزُنُنِيٓ أَن تَذۡهَبُواْ بِهِۦ وَأَخَافُ أَن يَأۡكُلَهُ ٱلذِّئۡبُ وَأَنتُمۡ عَنۡهُ غَٰفِلُونَ Qala innee layahzununee an thathhaboo bihi waakhafu an yakulahu alththibu waantum AAanhu ghafiloona [Jacob] said, \"Indeed, it saddens me that you should take him, and I fear that a wolf would eat him while you are of him unaware [12:14] قَالُواْ لَئِنۡ أَكَلَهُ ٱلذِّئۡبُ وَنَحۡنُ عُصۡبَةٌ إِنَّآ إِذٗا لَّخَٰسِرُونَ Qaloo lain akalahu alththibu wanahnu AAusbatun inna ithan lakhasiroona They said, \"If a wolf should eat him while we are a [strong] clan, indeed, we would then be losers [12:15] فَلَمَّا ذَهَبُواْ بِهِۦ وَأَجۡمَعُوٓاْ أَن يَجۡعَلُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّۚ وَأَوۡحَيۡنَآ إِلَيۡهِ لَتُنَبِّئَنَّهُم بِأَمۡرِهِمۡ هَٰذَا وَهُمۡ لَا يَشۡعُرُونَ Falamma thahaboo bihi waajmaAAoo an yajAAaloohu fee ghayabati aljubbi waawhayna ilayhi latunabiannahum biamrihim hatha wahum la yashAAuroona So when they took him [out] and agreed to put him into the bottom of the well..."
-    }
-   ]
-  },
-  {
    "id": "so patience|is|most fitting",
    "subject": "so patience",
    "verb": "is",
    "object": "most fitting",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1074,44 +432,12 @@
    ]
   },
   {
-   "id": "they took|him|[out] and agreed to put him into the bottom of the well",
-   "subject": "they took",
-   "verb": "him",
-   "object": "[out] and agreed to put him into the bottom of the well",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#4469-5533",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "And indeed, we will be his guardians [12:13] قَالَ إِنِّي لَيَحۡزُنُنِيٓ أَن تَذۡهَبُواْ بِهِۦ وَأَخَافُ أَن يَأۡكُلَهُ ٱلذِّئۡبُ وَأَنتُمۡ عَنۡهُ غَٰفِلُونَ Qala innee layahzununee an thathhaboo bihi waakhafu an yakulahu alththibu waantum AAanhu ghafiloona [Jacob] said, \"Indeed, it saddens me that you should take him, and I fear that a wolf would eat him while you are of him unaware [12:14] قَالُواْ لَئِنۡ أَكَلَهُ ٱلذِّئۡبُ وَنَحۡنُ عُصۡبَةٌ إِنَّآ إِذٗا لَّخَٰسِرُونَ Qaloo lain akalahu alththibu wanahnu AAusbatun inna ithan lakhasiroona They said, \"If a wolf should eat him while we are a [strong] clan, indeed, we would then be losers [12:15] فَلَمَّا ذَهَبُواْ بِهِۦ وَأَجۡمَعُوٓاْ أَن يَجۡعَلُوهُ فِي غَيَٰبَتِ ٱلۡجُبِّۚ وَأَوۡحَيۡنَآ إِلَيۡهِ لَتُنَبِّئَنَّهُم بِأَمۡرِهِمۡ هَٰذَا وَهُمۡ لَا يَشۡعُرُونَ Falamma thahaboo bihi waajmaAAoo an yajAAaloohu fee ghayabati aljubbi waawhayna ilayhi latunabiannahum biamrihim hatha wahum la yashAAuroona So when they took him [out] and agreed to put him into the bottom of the well..."
-    }
-   ]
-  },
-  {
-   "id": "this qur'an|although|you were",
-   "subject": "this Qur'an",
-   "verb": "although",
-   "object": "you were",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#312-1800",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "These are the verses of the clear Book [12:2] إِنَّآ أَنزَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna anzalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have sent it down as an Arabic Qur'an that you might understand [12:3] نَحۡنُ نَقُصُّ عَلَيۡكَ أَحۡسَنَ ٱلۡقَصَصِ بِمَآ أَوۡحَيۡنَآ إِلَيۡكَ هَٰذَا ٱلۡقُرۡءَانَ وَإِن كُنتَ مِن قَبۡلِهِۦ لَمِنَ ٱلۡغَٰفِلِينَ Nahnu naqussu AAalayka ahsana alqasasi bima awhayna ilayka hatha alqurana wain kunta min qablihi lamina alghafileena We relate to you, [O Muhammad], the best of stories in what We have revealed to you of this Qur'an although you were, before it, among the unaware [12:4] إِذۡ قَالَ يُوسُفُ لِأَبِيهِ يَـٰٓأَبَتِ إِنِّي رَأَيۡتُ أَحَدَ عَشَرَ كَوۡكَبٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ رَأَيۡتُهُمۡ لِي سَٰجِدِينَ Ith qala yoosufu liabeehi ya abati innee raaytu ahada AAashara kawkaban waalshshamsa waalqamara raaytuhum lee sajideena [Of these stories mention] when Joseph said to his father, \"O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me [12:5] قَالَ يَٰبُنَيَّ لَا تَقۡصُصۡ رُءۡيَاكَ عَلَىٰٓ إِخۡوَتِكَ فَيَكِيدُواْ لَكَ كَيۡدًاۖ إِنَّ ٱلشَّيۡطَٰنَ لِلۡإِنسَٰنِ عَدُوّٞ مُّبِينٞ Qala ya bunayya la taqsus ruyaka AAala ikhwatika fayakeedoo laka kaydan inna alshshaytana lilinsani AAaduwwun mubeenun He said, \"O my son, do not relate your vision to your brothers or they will contrive against you a plan."
-    }
-   ]
-  },
-  {
    "id": "waantum aaanhu|ghafiloona|[jacob] said",
    "subject": "waantum AAanhu",
    "verb": "ghafiloona",
    "object": "[Jacob] said",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1127,23 +453,7 @@
    "verb": "said",
    "object": "to his father",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-012-Yusuf.txt#312-1800",
-     "ref": "14-holy-texts/quran-suras/sura-012-Yusuf.txt",
-     "text": "These are the verses of the clear Book [12:2] إِنَّآ أَنزَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna anzalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have sent it down as an Arabic Qur'an that you might understand [12:3] نَحۡنُ نَقُصُّ عَلَيۡكَ أَحۡسَنَ ٱلۡقَصَصِ بِمَآ أَوۡحَيۡنَآ إِلَيۡكَ هَٰذَا ٱلۡقُرۡءَانَ وَإِن كُنتَ مِن قَبۡلِهِۦ لَمِنَ ٱلۡغَٰفِلِينَ Nahnu naqussu AAalayka ahsana alqasasi bima awhayna ilayka hatha alqurana wain kunta min qablihi lamina alghafileena We relate to you, [O Muhammad], the best of stories in what We have revealed to you of this Qur'an although you were, before it, among the unaware [12:4] إِذۡ قَالَ يُوسُفُ لِأَبِيهِ يَـٰٓأَبَتِ إِنِّي رَأَيۡتُ أَحَدَ عَشَرَ كَوۡكَبٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ رَأَيۡتُهُمۡ لِي سَٰجِدِينَ Ith qala yoosufu liabeehi ya abati innee raaytu ahada AAashara kawkaban waalshshamsa waalqamara raaytuhum lee sajideena [Of these stories mention] when Joseph said to his father, \"O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me [12:5] قَالَ يَٰبُنَيَّ لَا تَقۡصُصۡ رُءۡيَاكَ عَلَىٰٓ إِخۡوَتِكَ فَيَكِيدُواْ لَكَ كَيۡدًاۖ إِنَّ ٱلشَّيۡطَٰنَ لِلۡإِنسَٰنِ عَدُوّٞ مُّبِينٞ Qala ya bunayya la taqsus ruyaka AAala ikhwatika fayakeedoo laka kaydan inna alshshaytana lilinsani AAaduwwun mubeenun He said, \"O my son, do not relate your vision to your brothers or they will contrive against you a plan."
-    }
-   ]
-  },
-  {
-   "id": "your brothers|or|they will contrive against you a plan",
-   "subject": "your brothers",
-   "verb": "or",
-   "object": "they will contrive against you a plan",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-012-Yusuf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1155,7 +465,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:42.878Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:43.329Z"
  }
 }

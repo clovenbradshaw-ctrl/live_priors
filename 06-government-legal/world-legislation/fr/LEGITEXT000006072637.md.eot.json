@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 7257,
   "bodyOffset": 0,
   "bodyChars": 7257,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 7257,
   "truncated": false
  },
@@ -37,56 +55,39 @@
   "referentEvents": 1,
   "distinctReferents": 1,
   "examined": true,
-  "edgesFound": 36,
-  "extractionError": null
+  "edgesFound": 23,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 2,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 3
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 23,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 44,
-  "excerptOk": 44,
-  "rawChecked": 44,
-  "rawOk": 44,
+  "excerptChecked": 32,
+  "excerptOk": 32,
+  "rawChecked": 32,
+  "rawOk": 32,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 36,
-  "heard": 36,
+  "offered": 23,
+  "heard": 23,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "la famille|et|de l'aide sociale",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la famille et de l'aide sociale",
-    "subject": "la famille",
-    "verb": "et",
-    "object": "de l'aide sociale",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#0-314",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "--- title: \"Code de la famille et de l'aide sociale\" identifier: \"LEGITEXT000006072637\" country: \"fr\" rank: \"code\" publication_date: \"1956-01-24\" last_updated: \"2019-12-30\" status: \"in_force\" source: \"https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006072637\" --- # Code de la famille et de l'aide sociale"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "aide|sociale|aux familles",
@@ -103,7 +104,7 @@
     "verb": "sociale",
     "object": "aux familles",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -117,6 +118,11 @@
       "text": "Section 1 : Aide sociale aux familles dont les ressources sont insuffisantes"
      },
      {
+      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2304-2520",
+      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
+      "text": "La décision est valable au plus pour une année, à l'expiration de laquelle la commission d'admission examine d'office la situation du bénéficiaire et décide s'il y a lieu de lui maintenir l'aide sociale à la famille."
+     },
+     {
       "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2522-2794",
       "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
       "text": "Si le titulaire des allocations d'aide sociale à la famille les emploie à d'autres fins que l'amélioration des conditions de vie du foyer, l'entretien et l'éducation des enfants, il peut être procédé à l'institution d'une tutelle dans les conditions prévues à l'article L."
@@ -127,7 +133,7 @@
       "text": "Chapitre V : Aide sociale aux personnes agées"
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -147,7 +153,7 @@
     "verb": "à",
     "object": "sa charge deux enfants de nationalité française ou qui auront acquis définitivement cette nationalité par application des dispositions des articles 52 et suivants de l'ordonnance du 19 octobre 1945 portant code de la nationalité française",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -156,7 +162,7 @@
       "text": "Tout chef de famille ayant à sa charge deux enfants de nationalité française ou qui auront acquis définitivement cette nationalité par application des dispositions des articles 52 et suivants de l'ordonnance du 19 octobre 1945 portant code de la nationalité française, peut, s'il ne dispose pas de ressources suffisantes pour les élever, recevoir, au titre de ses enfants à charge, l'aide sociale à la famille,"
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -176,7 +182,7 @@
     "verb": "à",
     "object": "charge",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -185,7 +191,7 @@
       "text": "Tout chef de famille ayant à sa charge deux enfants de nationalité française ou qui auront acquis définitivement cette nationalité par application des dispositions des articles 52 et suivants de l'ordonnance du 19 octobre 1945 portant code de la nationalité française, peut, s'il ne dispose pas de ressources suffisantes pour les élever, recevoir, au titre de ses enfants à charge, l'aide sociale à la famille,"
      }
     ],
-    "seq": 3,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -205,7 +211,7 @@
     "verb": "à",
     "object": "la famille",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -229,7 +235,7 @@
       "text": "Dans les mêmes départements, les chefs de famille qui sont en mesure de justifier de l'impossibilité d'exercer une activité professionnelle, les veuves ou les femmes seules assumant la charge de leurs enfants peuvent cumuler, sans limitation, le bénéfice de l'aide à la famille et de l'une quelconque desdites prestations."
      }
     ],
-    "seq": 4,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -249,7 +255,7 @@
     "verb": "à",
     "object": "cette allocation",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -258,7 +264,7 @@
       "text": "Pour ouvrir droit à cette allocation, les enfants doivent remplir les conditions d'âge visées à l'article 10 de la loi du 22 août 1946 (code de la sécurité sociale Art."
      }
     ],
-    "seq": 5,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -278,7 +284,7 @@
     "verb": "à",
     "object": "l'article 10 de la loi du 22 août 1946 (code de la sécurité sociale Art",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -292,7 +298,7 @@
       "text": "Les personnes âgées visées à l'article L."
      }
     ],
-    "seq": 6,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -312,7 +318,7 @@
     "verb": "à",
     "object": "quatorze ans)",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -321,7 +327,7 @@
       "text": "Pour les enfants d'âge scolaire (six à quatorze ans), l'admission à l'aide sociale à la famille est subordonnée à la présentation soit d'un certificat de scolarité ou d'un certificat de l'inspecteur primaire attestant que l'enfant est instruit dans sa famille, soit d'un certificat médical attestant qu'il ne peut fréquenter régulièrement, pour cause de maladie, un établissement d'enseignement."
      }
     ],
-    "seq": 7,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -341,7 +347,7 @@
     "verb": "à",
     "object": "l'aide sociale à la famille est subordonnée à la présentation soit d'un certificat de scolarité ou d'un certificat de l'inspecteur primaire attestant que l'enfant est instruit dans sa famille",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -350,7 +356,7 @@
       "text": "Pour les enfants d'âge scolaire (six à quatorze ans), l'admission à l'aide sociale à la famille est subordonnée à la présentation soit d'un certificat de scolarité ou d'un certificat de l'inspecteur primaire attestant que l'enfant est instruit dans sa famille, soit d'un certificat médical attestant qu'il ne peut fréquenter régulièrement, pour cause de maladie, un établissement d'enseignement."
      }
     ],
-    "seq": 8,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -370,7 +376,7 @@
     "verb": "à",
     "object": "la production d'un certificat attestant que l'enfant est présenté régulièrement à la consultation de protection maternelle et infantile",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -379,123 +385,7 @@
       "text": "Pour les enfants de moins de six ans, l'admission sera subordonnée à la production d'un certificat attestant que l'enfant est présenté régulièrement à la consultation de protection maternelle et infantile, selon les règles fixées par le règlement départemental."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la famille|et|des ressources dont elle dispose",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la famille et des ressources dont elle dispose",
-    "subject": "la famille",
-    "verb": "et",
-    "object": "des ressources dont elle dispose",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#1866-1996",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "Le montant des allocations est déterminé compte tenu de la situation matérielle de la famille et des ressources dont elle dispose."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "des allocations|et|les voies de recours sont réglées dans les conditions déterminées par le chapitre 1er du présent titre",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "des allocations et les voies de recours sont réglées dans les conditions déterminées par le chapitre 1er du présent titre",
-    "subject": "des allocations",
-    "verb": "et",
-    "object": "les voies de recours sont réglées dans les conditions déterminées par le chapitre 1er du présent titre",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2156-2302",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "L'admission au bénéfice des allocations et les voies de recours sont réglées dans les conditions déterminées par le chapitre 1er du présent titre."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "du bénéficiaire|et|décide s'il y a lieu de lui maintenir l'aide sociale à la famille",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "du bénéficiaire et décide s'il y a lieu de lui maintenir l'aide sociale à la famille",
-    "subject": "du bénéficiaire",
-    "verb": "et",
-    "object": "décide s'il y a lieu de lui maintenir l'aide sociale à la famille",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2304-2520",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "La décision est valable au plus pour une année, à l'expiration de laquelle la commission d'admission examine d'office la situation du bénéficiaire et décide s'il y a lieu de lui maintenir l'aide sociale à la famille."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "l'entretien|et|l'éducation des enfants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "l'entretien et l'éducation des enfants",
-    "subject": "l'entretien",
-    "verb": "et",
-    "object": "l'éducation des enfants",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2522-2794",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "Si le titulaire des allocations d'aide sociale à la famille les emploie à d'autres fins que l'amélioration des conditions de vie du foyer, l'entretien et l'éducation des enfants, il peut être procédé à l'institution d'une tutelle dans les conditions prévues à l'article L."
-     }
-    ],
-    "seq": 13,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -515,7 +405,7 @@
     "verb": "à",
     "object": "l'institution d'une tutelle dans les conditions prévues à l'article L",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -524,36 +414,7 @@
       "text": "Si le titulaire des allocations d'aide sociale à la famille les emploie à d'autres fins que l'amélioration des conditions de vie du foyer, l'entretien et l'éducation des enfants, il peut être procédé à l'institution d'une tutelle dans les conditions prévues à l'article L."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "activité professionnelle|et|des veuves ou des femmes seules qui assument la charge de leurs enfants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "activité professionnelle et des veuves ou des femmes seules qui assument la charge de leurs enfants",
-    "subject": "activité professionnelle",
-    "verb": "et",
-    "object": "des veuves ou des femmes seules qui assument la charge de leurs enfants",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#3355-3757",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "Le cumul demeure cependant autorisé sans limite en faveur des chefs de famille qui sont en mesure de justifier de l'impossibilité d'exercer une activité professionnelle et des veuves ou des femmes seules qui assument la charge de leurs enfants, lorsque les enfants ouvrent droit au bénéfice des prestations familiales dans les conditions fixées à l'article 10 de la loi du 22 août 1946 modifiée (CSS L."
-     }
-    ],
-    "seq": 15,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -573,7 +434,7 @@
     "verb": "à",
     "object": "l'article 10 de la loi du 22 août 1946 modifiée (CSS L",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -582,7 +443,7 @@
       "text": "Le cumul demeure cependant autorisé sans limite en faveur des chefs de famille qui sont en mesure de justifier de l'impossibilité d'exercer une activité professionnelle et des veuves ou des femmes seules qui assument la charge de leurs enfants, lorsque les enfants ouvrent droit au bénéfice des prestations familiales dans les conditions fixées à l'article 10 de la loi du 22 août 1946 modifiée (CSS L."
      }
     ],
-    "seq": 16,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -602,7 +463,7 @@
     "verb": "à",
     "object": "l'enfance prévues à l'article 53 (1)",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -611,65 +472,7 @@
       "text": "542-1) sans pouvoir prétendre en raison de leur âge aux allocations mensuelles d'assistance à l'enfance prévues à l'article 53 (1)."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la martinique|et|de la réunion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la Martinique et de la Réunion",
-    "subject": "la Martinique",
-    "verb": "et",
-    "object": "de la Réunion",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#3891-4394",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "Dans les départements de la Guadeloupe, de la Guyane, de la Martinique et de la Réunion, compte tenu des dispositions régissant actuellement les allocations familiales, les allocations d'aide à la famille pourront se cumuler avec les majorations pour enfants attribuées par l'Etat, les collectivités publiques ou, le cas échéant, avec les allocations familiales, dans la limite du montant des allocations familiales déterminées en fonction de la résidence du chef de famille et du nombre de ses enfants."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "de famille|et|du nombre de ses enfants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "de famille et du nombre de ses enfants",
-    "subject": "de famille",
-    "verb": "et",
-    "object": "du nombre de ses enfants",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#3891-4394",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "Dans les départements de la Guadeloupe, de la Guyane, de la Martinique et de la Réunion, compte tenu des dispositions régissant actuellement les allocations familiales, les allocations d'aide à la famille pourront se cumuler avec les majorations pour enfants attribuées par l'Etat, les collectivités publiques ou, le cas échéant, avec les allocations familiales, dans la limite du montant des allocations familiales déterminées en fonction de la résidence du chef de famille et du nombre de ses enfants."
-     }
-    ],
-    "seq": 19,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -689,7 +492,7 @@
     "verb": "à",
     "object": "domicile",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -698,7 +501,7 @@
       "text": "Section 1 : Aide à domicile"
      }
     ],
-    "seq": 20,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -718,7 +521,7 @@
     "verb": "à",
     "object": "compenser une partie de leur loyer peut être accordée aux personnes âgées dont les ressources sont inférieures à un plafond fixé par décret",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -727,7 +530,7 @@
       "text": "Une allocation destinée à compenser une partie de leur loyer peut être accordée aux personnes âgées dont les ressources sont inférieures à un plafond fixé par décret."
      }
     ],
-    "seq": 21,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -747,7 +550,7 @@
     "verb": "à",
     "object": "un plafond qui sera fixé par décret peuvent obtenir",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -756,7 +559,7 @@
       "text": "113-1 ne disposant pas de ressources supérieures à un plafond qui sera fixé par décret peuvent obtenir, outre les allocations prévues à l'article L."
      }
     ],
-    "seq": 22,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -776,7 +579,7 @@
     "verb": "à",
     "object": "l'article L",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -790,7 +593,7 @@
       "text": "Mention des autorisations prévues à l'article 219 doit être portée sur une liste spéciale déposée dans chaque préfecture."
      }
     ],
-    "seq": 23,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -810,7 +613,7 @@
     "verb": "sociale",
     "object": "d'économiquement faibles",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -819,7 +622,7 @@
       "text": "231-1, la carte sociale d'économiquement faibles."
      }
     ],
-    "seq": 24,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -839,7 +642,7 @@
     "verb": "à",
     "object": "titre total ou partiel",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -848,13 +651,13 @@
       "text": "A l'inscription sur la liste d'aide médicale à titre total ou partiel, compte tenu des régimes d'indemnisation ou d'assurances sociales dont bénéficie déjà l'intéressé et de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation ;"
      }
     ],
-    "seq": 25,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "déjà l'intéressé|et|de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation",
+    "task_id": "chaque année|à|bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -863,70 +666,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "déjà l'intéressé et de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation",
-    "subject": "déjà l'intéressé",
-    "verb": "et",
-    "object": "de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation",
+    "description": "chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
+    "subject": "chaque année",
+    "verb": "à",
+    "object": "bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#5367-5629",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "A l'inscription sur la liste d'aide médicale à titre total ou partiel, compte tenu des régimes d'indemnisation ou d'assurances sociales dont bénéficie déjà l'intéressé et de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation ;"
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "3|et|l",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "3 et L",
-    "subject": "3",
-    "verb": "et",
-    "object": "L",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#5684-5695",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "231-3 et L."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "voyage aller|et|retour chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "voyage aller et retour chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
-    "subject": "voyage aller",
-    "verb": "et",
-    "object": "retour chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -935,7 +680,7 @@
       "text": "A un voyage aller et retour chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés, quelle que soit la distance parcourue."
      }
     ],
-    "seq": 28,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -955,7 +700,7 @@
     "verb": "sociale",
     "object": "en matière de logement",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -964,36 +709,7 @@
       "text": "Chapitre VIII : Mesures d'aide sociale en matière de logement, d'hébergement et de réadaptation sociale"
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "d'hébergement|et|de réadaptation sociale",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "d'hébergement et de réadaptation sociale",
-    "subject": "d'hébergement",
-    "verb": "et",
-    "object": "de réadaptation sociale",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#6169-6272",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "Chapitre VIII : Mesures d'aide sociale en matière de logement, d'hébergement et de réadaptation sociale"
-     }
-    ],
-    "seq": 30,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1013,7 +729,7 @@
     "verb": "à",
     "object": "un plafond fixé par décret peuvent bénéficier de l'allocation prévue à l'article 161 du Code de la famille et de l'aide sociale",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1022,65 +738,7 @@
       "text": "Les personnes dont les ressources sont inférieures à un plafond fixé par décret peuvent bénéficier de l'allocation prévue à l'article 161 du Code de la famille et de l'aide sociale."
      }
     ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "d'assistantes|et|d'auxiliaires de service social",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "d'assistantes et d'auxiliaires de service social",
-    "subject": "d'assistantes",
-    "verb": "et",
-    "object": "d'auxiliaires de service social",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#6500-6602",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "Chapitre Ier : Exercice des professions d'assistants, d'assistantes et d'auxiliaires de service social"
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "santé publique|et|de la population",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Santé publique et de la Population",
-    "subject": "Santé publique",
-    "verb": "et",
-    "object": "de la Population",
-    "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#6617-6947",
-      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-      "text": "Il est dérogé aux dispositions de l'article précédent en faveur des assistantes, assistants ou auxiliaires sociaux qui, exerçant depuis le 1er janvier 1941, ont été autorisés, par le ministre de la Santé publique et de la Population, à continuer définitivement à exercer leurs fonctions après avoir subi un examen de récupération."
-     }
-    ],
-    "seq": 33,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1100,7 +758,7 @@
     "verb": "à",
     "object": "exercer leurs fonctions après avoir subi un examen de récupération",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1109,7 +767,7 @@
       "text": "Il est dérogé aux dispositions de l'article précédent en faveur des assistantes, assistants ou auxiliaires sociaux qui, exerçant depuis le 1er janvier 1941, ont été autorisés, par le ministre de la Santé publique et de la Population, à continuer définitivement à exercer leurs fonctions après avoir subi un examen de récupération."
      }
     ],
-    "seq": 34,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1129,7 +787,7 @@
     "verb": "à",
     "object": "l'article 219 ci-dessus ne peuvent exercer leurs activités que sous le contrôle d'assistants ou d'assistantes sociales diplômés",
     "witnesses": [
-     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1138,12 +796,12 @@
       "text": "Les auxiliaires mentionnés à l'article 219 ci-dessus ne peuvent exercer leurs activités que sous le contrôle d'assistants ou d'assistantes sociales diplômés."
      }
     ],
-    "seq": 35,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 36,
+  "nextSeq": 23,
   "admits": [
    "NUL",
    "SEG",
@@ -1158,44 +816,12 @@
  },
  "folded": [
   {
-   "id": "3|et|l",
-   "subject": "3",
-   "verb": "et",
-   "object": "L",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#5684-5695",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "231-3 et L."
-    }
-   ]
-  },
-  {
-   "id": "activité professionnelle|et|des veuves ou des femmes seules qui assument la charge de leurs enfants",
-   "subject": "activité professionnelle",
-   "verb": "et",
-   "object": "des veuves ou des femmes seules qui assument la charge de leurs enfants",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#3355-3757",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "Le cumul demeure cependant autorisé sans limite en faveur des chefs de famille qui sont en mesure de justifier de l'impossibilité d'exercer une activité professionnelle et des veuves ou des femmes seules qui assument la charge de leurs enfants, lorsque les enfants ouvrent droit au bénéfice des prestations familiales dans les conditions fixées à l'article 10 de la loi du 22 août 1946 modifiée (CSS L."
-    }
-   ]
-  },
-  {
    "id": "aide|à|domicile",
    "subject": "Aide",
    "verb": "à",
    "object": "domicile",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1211,7 +837,7 @@
    "verb": "sociale",
    "object": "aux familles",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1223,6 +849,11 @@
      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#383-459",
      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
      "text": "Section 1 : Aide sociale aux familles dont les ressources sont insuffisantes"
+    },
+    {
+     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2304-2520",
+     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
+     "text": "La décision est valable au plus pour une année, à l'expiration de laquelle la commission d'admission examine d'office la situation du bénéficiaire et décide s'il y a lieu de lui maintenir l'aide sociale à la famille."
     },
     {
      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2522-2794",
@@ -1242,7 +873,7 @@
    "verb": "à",
    "object": "compenser une partie de leur loyer peut être accordée aux personnes âgées dont les ressources sont inférieures à un plafond fixé par décret",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1258,7 +889,7 @@
    "verb": "à",
    "object": "l'article L",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1279,7 +910,7 @@
    "verb": "à",
    "object": "l'article 219 ci-dessus ne peuvent exercer leurs activités que sous le contrôle d'assistants ou d'assistantes sociales diplômés",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1290,12 +921,28 @@
    ]
   },
   {
+   "id": "chaque année|à|bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
+   "subject": "chaque année",
+   "verb": "à",
+   "object": "bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
+   "witnesses": [
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#5798-6001",
+     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
+     "text": "A un voyage aller et retour chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés, quelle que soit la distance parcourue."
+    }
+   ]
+  },
+  {
    "id": "conditions fixées|à|l'article 10 de la loi du 22 août 1946 modifiée (css l",
    "subject": "conditions fixées",
    "verb": "à",
    "object": "l'article 10 de la loi du 22 août 1946 modifiée (CSS L",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1311,7 +958,7 @@
    "verb": "à",
    "object": "exercer leurs fonctions après avoir subi un examen de récupération",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1327,7 +974,7 @@
    "verb": "à",
    "object": "l'article 10 de la loi du 22 août 1946 (code de la sécurité sociale Art",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1348,109 +995,13 @@
    "verb": "à",
    "object": "titre total ou partiel",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#5367-5629",
      "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
      "text": "A l'inscription sur la liste d'aide médicale à titre total ou partiel, compte tenu des régimes d'indemnisation ou d'assurances sociales dont bénéficie déjà l'intéressé et de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation ;"
-    }
-   ]
-  },
-  {
-   "id": "d'assistantes|et|d'auxiliaires de service social",
-   "subject": "d'assistantes",
-   "verb": "et",
-   "object": "d'auxiliaires de service social",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#6500-6602",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "Chapitre Ier : Exercice des professions d'assistants, d'assistantes et d'auxiliaires de service social"
-    }
-   ]
-  },
-  {
-   "id": "d'hébergement|et|de réadaptation sociale",
-   "subject": "d'hébergement",
-   "verb": "et",
-   "object": "de réadaptation sociale",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#6169-6272",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "Chapitre VIII : Mesures d'aide sociale en matière de logement, d'hébergement et de réadaptation sociale"
-    }
-   ]
-  },
-  {
-   "id": "de famille|et|du nombre de ses enfants",
-   "subject": "de famille",
-   "verb": "et",
-   "object": "du nombre de ses enfants",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#3891-4394",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "Dans les départements de la Guadeloupe, de la Guyane, de la Martinique et de la Réunion, compte tenu des dispositions régissant actuellement les allocations familiales, les allocations d'aide à la famille pourront se cumuler avec les majorations pour enfants attribuées par l'Etat, les collectivités publiques ou, le cas échéant, avec les allocations familiales, dans la limite du montant des allocations familiales déterminées en fonction de la résidence du chef de famille et du nombre de ses enfants."
-    }
-   ]
-  },
-  {
-   "id": "déjà l'intéressé|et|de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation",
-   "subject": "déjà l'intéressé",
-   "verb": "et",
-   "object": "de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#5367-5629",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "A l'inscription sur la liste d'aide médicale à titre total ou partiel, compte tenu des régimes d'indemnisation ou d'assurances sociales dont bénéficie déjà l'intéressé et de l'aide qui lui est due au titre d'une créance alimentaire ou de toute autre obligation ;"
-    }
-   ]
-  },
-  {
-   "id": "des allocations|et|les voies de recours sont réglées dans les conditions déterminées par le chapitre 1er du présent titre",
-   "subject": "des allocations",
-   "verb": "et",
-   "object": "les voies de recours sont réglées dans les conditions déterminées par le chapitre 1er du présent titre",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2156-2302",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "L'admission au bénéfice des allocations et les voies de recours sont réglées dans les conditions déterminées par le chapitre 1er du présent titre."
-    }
-   ]
-  },
-  {
-   "id": "du bénéficiaire|et|décide s'il y a lieu de lui maintenir l'aide sociale à la famille",
-   "subject": "du bénéficiaire",
-   "verb": "et",
-   "object": "décide s'il y a lieu de lui maintenir l'aide sociale à la famille",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2304-2520",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "La décision est valable au plus pour une année, à l'expiration de laquelle la commission d'admission examine d'office la situation du bénéficiaire et décide s'il y a lieu de lui maintenir l'aide sociale à la famille."
     }
    ]
   },
@@ -1460,7 +1011,7 @@
    "verb": "à",
    "object": "l'institution d'une tutelle dans les conditions prévues à l'article L",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1476,7 +1027,7 @@
    "verb": "à",
    "object": "sa charge deux enfants de nationalité française ou qui auront acquis définitivement cette nationalité par application des dispositions des articles 52 et suivants de l'ordonnance du 19 octobre 1945 portant code de la nationalité française",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1492,7 +1043,7 @@
    "verb": "à",
    "object": "l'aide sociale à la famille est subordonnée à la présentation soit d'un certificat de scolarité ou d'un certificat de l'inspecteur primaire attestant que l'enfant est instruit dans sa famille",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1508,7 +1059,7 @@
    "verb": "à",
    "object": "la famille",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1534,28 +1085,12 @@
    ]
   },
   {
-   "id": "l'entretien|et|l'éducation des enfants",
-   "subject": "l'entretien",
-   "verb": "et",
-   "object": "l'éducation des enfants",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#2522-2794",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "Si le titulaire des allocations d'aide sociale à la famille les emploie à d'autres fins que l'amélioration des conditions de vie du foyer, l'entretien et l'éducation des enfants, il peut être procédé à l'institution d'une tutelle dans les conditions prévues à l'article L."
-    }
-   ]
-  },
-  {
    "id": "la carte|sociale|d'économiquement faibles",
    "subject": "la carte",
    "verb": "sociale",
    "object": "d'économiquement faibles",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1566,60 +1101,12 @@
    ]
   },
   {
-   "id": "la famille|et|de l'aide sociale",
-   "subject": "la famille",
-   "verb": "et",
-   "object": "de l'aide sociale",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#0-314",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "--- title: \"Code de la famille et de l'aide sociale\" identifier: \"LEGITEXT000006072637\" country: \"fr\" rank: \"code\" publication_date: \"1956-01-24\" last_updated: \"2019-12-30\" status: \"in_force\" source: \"https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006072637\" --- # Code de la famille et de l'aide sociale"
-    }
-   ]
-  },
-  {
-   "id": "la famille|et|des ressources dont elle dispose",
-   "subject": "la famille",
-   "verb": "et",
-   "object": "des ressources dont elle dispose",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#1866-1996",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "Le montant des allocations est déterminé compte tenu de la situation matérielle de la famille et des ressources dont elle dispose."
-    }
-   ]
-  },
-  {
-   "id": "la martinique|et|de la réunion",
-   "subject": "la Martinique",
-   "verb": "et",
-   "object": "de la Réunion",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#3891-4394",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "Dans les départements de la Guadeloupe, de la Guyane, de la Martinique et de la Réunion, compte tenu des dispositions régissant actuellement les allocations familiales, les allocations d'aide à la famille pourront se cumuler avec les majorations pour enfants attribuées par l'Etat, les collectivités publiques ou, le cas échéant, avec les allocations familiales, dans la limite du montant des allocations familiales déterminées en fonction de la résidence du chef de famille et du nombre de ses enfants."
-    }
-   ]
-  },
-  {
    "id": "mensuelles d'assistance|à|l'enfance prévues à l'article 53 (1)",
    "subject": "mensuelles d'assistance",
    "verb": "à",
    "object": "l'enfance prévues à l'article 53 (1)",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1635,7 +1122,7 @@
    "verb": "sociale",
    "object": "en matière de logement",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1651,7 +1138,7 @@
    "verb": "à",
    "object": "cette allocation",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1667,7 +1154,7 @@
    "verb": "à",
    "object": "un plafond qui sera fixé par décret peuvent obtenir",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1678,28 +1165,12 @@
    ]
   },
   {
-   "id": "santé publique|et|de la population",
-   "subject": "Santé publique",
-   "verb": "et",
-   "object": "de la Population",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#6617-6947",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "Il est dérogé aux dispositions de l'article précédent en faveur des assistantes, assistants ou auxiliaires sociaux qui, exerçant depuis le 1er janvier 1941, ont été autorisés, par le ministre de la Santé publique et de la Population, à continuer définitivement à exercer leurs fonctions après avoir subi un examen de récupération."
-    }
-   ]
-  },
-  {
    "id": "sera subordonnée|à|la production d'un certificat attestant que l'enfant est présenté régulièrement à la consultation de protection maternelle et infantile",
    "subject": "sera subordonnée",
    "verb": "à",
    "object": "la production d'un certificat attestant que l'enfant est présenté régulièrement à la consultation de protection maternelle et infantile",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1715,7 +1186,7 @@
    "verb": "à",
    "object": "charge",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1731,7 +1202,7 @@
    "verb": "à",
    "object": "quatorze ans)",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1747,7 +1218,7 @@
    "verb": "à",
    "object": "un plafond fixé par décret peuvent bénéficier de l'allocation prévue à l'article 161 du Code de la famille et de l'aide sociale",
    "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1756,26 +1227,10 @@
      "text": "Les personnes dont les ressources sont inférieures à un plafond fixé par décret peuvent bénéficier de l'allocation prévue à l'article 161 du Code de la famille et de l'aide sociale."
     }
    ]
-  },
-  {
-   "id": "voyage aller|et|retour chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
-   "subject": "voyage aller",
-   "verb": "et",
-   "object": "retour chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés",
-   "witnesses": [
-    "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md#5798-6001",
-     "ref": "06-government-legal/world-legislation/fr/LEGITEXT000006072637.md",
-     "text": "A un voyage aller et retour chaque année à bord de services de transport ferroviaire domestique de voyageurs au tarif et pour la durée de validité des congés payés, quelle que soit la distance parcourue."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:32.233Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:48.103Z"
  }
 }

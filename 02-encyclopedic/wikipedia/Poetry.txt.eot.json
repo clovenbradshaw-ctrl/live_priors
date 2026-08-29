@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 48286,
   "bodyOffset": 0,
   "bodyChars": 48286,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,28 +55,33 @@
   "referentEvents": 11,
   "distinctReferents": 9,
   "examined": true,
-  "edgesFound": 81,
+  "edgesFound": 40,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 37,
+   "verbs": 23,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 37
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 40,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 81,
-  "excerptOk": 81,
-  "rawChecked": 81,
-  "rawOk": 81,
+  "excerptChecked": 41,
+  "excerptOk": 41,
+  "rawChecked": 41,
+  "rawOk": 41,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 81,
-  "heard": 81,
+  "offered": 40,
+  "heard": 40,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -81,7 +104,7 @@
     "verb": "poem",
     "object": "(EP)\"Goody",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -110,7 +133,7 @@
     "verb": "epic",
     "object": "poem",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -125,7 +148,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "the epic|of|gilgamesh",
+    "task_id": "the|epic|of gilgamesh",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -134,12 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the Epic of Gilgamesh",
-    "subject": "the Epic",
-    "verb": "of",
-    "object": "Gilgamesh",
+    "description": "the epic of Gilgamesh",
+    "subject": "the",
+    "verb": "epic",
+    "object": "of Gilgamesh",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -149,64 +172,6 @@
      }
     ],
     "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dates from|the|3rd millenniumbce in sumer (in mesopotamia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dates from the 3rd millenniumBCE in Sumer (in Mesopotamia",
-    "subject": "dates from",
-    "verb": "the",
-    "object": "3rd millenniumBCE in Sumer (in Mesopotamia",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#38-246",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "The oldest surviving epic poem, the Epic of Gilgamesh, dates from the 3rd millenniumBCE in Sumer (in Mesopotamia, present-day Iraq), and was written in cuneiform script on clay tablets and, later, on papyrus."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cuneiform script|on|clay tablets and",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "cuneiform script on clay tablets and",
-    "subject": "cuneiform script",
-    "verb": "on",
-    "object": "clay tablets and",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#38-246",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "The oldest surviving epic poem, the Epic of Gilgamesh, dates from the 3rd millenniumBCE in Sumer (in Mesopotamia, present-day Iraq), and was written in cuneiform script on clay tablets and, later, on papyrus."
-     }
-    ],
-    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -226,7 +191,7 @@
     "verb": "2461istanbul",
     "object": "tablet 2461",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -235,13 +200,13 @@
       "text": "The Istanbul 2461Istanbul tablet 2461, dating to 2000BCE, describes an annual rite in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity; some have labelled it the world's oldest love poem."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "dating|to|2000bce",
+    "task_id": "king hieros|gamossymbolically|married and mated with the goddess inanna to ensure fertility and prosperity",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -250,12 +215,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "dating to 2000BCE",
-    "subject": "dating",
-    "verb": "to",
-    "object": "2000BCE",
+    "description": "king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity",
+    "subject": "king Hieros",
+    "verb": "gamossymbolically",
+    "object": "married and mated with the goddess Inanna to ensure fertility and prosperity",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -264,13 +229,13 @@
       "text": "The Istanbul 2461Istanbul tablet 2461, dating to 2000BCE, describes an annual rite in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity; some have labelled it the world's oldest love poem."
      }
     ],
-    "seq": 6,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "in which|the|king hieros gamossymbolically married and mated with the goddess inanna to ensure fertility and prosperity",
+    "task_id": "of egyptian|epic|poetry is story of sinuhethe story of sinuhe (c",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -279,70 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity",
-    "subject": "in which",
-    "verb": "the",
-    "object": "king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity",
+    "description": "of Egyptian epic poetry is Story of SinuheThe Story of Sinuhe (c",
+    "subject": "of Egyptian",
+    "verb": "epic",
+    "object": "poetry is Story of SinuheThe Story of Sinuhe (c",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#247-502",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "The Istanbul 2461Istanbul tablet 2461, dating to 2000BCE, describes an annual rite in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity; some have labelled it the world's oldest love poem."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "labelled it|the|world's oldest love poem",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "labelled it the world's oldest love poem",
-    "subject": "labelled it",
-    "verb": "the",
-    "object": "world's oldest love poem",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#247-502",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "The Istanbul 2461Istanbul tablet 2461, dating to 2000BCE, describes an annual rite in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity; some have labelled it the world's oldest love poem."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "an example|of|egyptian epic poetry is story of sinuhethe story of sinuhe (c",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "An example of Egyptian epic poetry is Story of SinuheThe Story of Sinuhe (c",
-    "subject": "An example",
-    "verb": "of",
-    "object": "Egyptian epic poetry is Story of SinuheThe Story of Sinuhe (c",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -351,13 +258,13 @@
       "text": "An example of Egyptian epic poetry is Story of SinuheThe Story of Sinuhe (c."
      }
     ],
-    "seq": 9,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "epics includes|the|greek iliad and the odyssey",
+    "task_id": "the indian|epic|poetryindian epics",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -366,12 +273,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "epics includes the Greek Iliad and the Odyssey",
-    "subject": "epics includes",
-    "verb": "the",
-    "object": "Greek Iliad and the Odyssey",
+    "description": "the Indian epic poetryIndian epics",
+    "subject": "the Indian",
+    "verb": "epic",
+    "object": "poetryIndian epics",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -380,152 +287,7 @@
       "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "persian avestan|books|(the yasna)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Persian Avestan books (the Yasna)",
-    "subject": "Persian Avestan",
-    "verb": "books",
-    "object": "(the Yasna)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ancient romeroman|national|epic",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Ancient RomeRoman national epic",
-    "subject": "Ancient RomeRoman",
-    "verb": "national",
-    "object": "epic",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between 29|and|19 bce)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between 29 and 19 BCE)",
-    "subject": "between 29",
-    "verb": "and",
-    "object": "19 BCE)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|the|indian epic poetryindian epics",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the Indian epic poetryIndian epics",
-    "subject": "and",
-    "verb": "the",
-    "object": "Indian epic poetryIndian epics",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the ramayana|and|the mahabharata",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Ramayana and the Mahabharata",
-    "subject": "the Ramayana",
-    "verb": "and",
-    "object": "the Mahabharata",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
-     }
-    ],
-    "seq": 15,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -545,7 +307,7 @@
     "verb": "poetry",
     "object": "appears to have been composed in poetic form as an aid to memorization and oral transmission in ancient societies",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -554,13 +316,13 @@
       "text": "Epic poetry appears to have been composed in poetic form as an aid to memorization and oral transmission in ancient societies.."
      }
     ],
-    "seq": 16,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "other forms|of|poetry",
+    "task_id": "classic of|poetry|(shijing)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -569,99 +331,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Other forms of poetry",
-    "subject": "Other forms",
-    "verb": "of",
-    "object": "poetry",
+    "description": "Classic of poetry (Shijing)",
+    "subject": "Classic of",
+    "verb": "poetry",
+    "object": "(Shijing)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#982-1223",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Other forms of poetry, including such ancient collections of religious hymns as the Indian Sanskrit-language Rigveda, the Avestan Gatha (Zoroaster)Gathas, the Hurrian songs, and the Hebrew Psalms, possibly developed directly from folk songs."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ancient collections|of|religious hymns as the indian sanskrit-language rigveda",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ancient collections of religious hymns as the Indian Sanskrit-language Rigveda",
-    "subject": "ancient collections",
-    "verb": "of",
-    "object": "religious hymns as the Indian Sanskrit-language Rigveda",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#982-1223",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Other forms of poetry, including such ancient collections of religious hymns as the Indian Sanskrit-language Rigveda, the Avestan Gatha (Zoroaster)Gathas, the Hurrian songs, and the Hebrew Psalms, possibly developed directly from folk songs."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|the|hebrew psalms",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the Hebrew Psalms",
-    "subject": "and",
-    "verb": "the",
-    "object": "Hebrew Psalms",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#982-1223",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Other forms of poetry, including such ancient collections of religious hymns as the Indian Sanskrit-language Rigveda, the Avestan Gatha (Zoroaster)Gathas, the Hurrian songs, and the Hebrew Psalms, possibly developed directly from folk songs."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "entries in|the|oldest extant collection of chinese poetry",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "entries in the oldest extant collection of Chinese poetry",
-    "subject": "entries in",
-    "verb": "the",
-    "object": "oldest extant collection of Chinese poetry",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -670,13 +345,13 @@
       "text": "The earliest entries in the oldest extant collection of Chinese poetry, the Classic of Poetry (Shijing), were initially lyrics."
      }
     ],
-    "seq": 20,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the classic|of|poetry (shijing)",
+    "task_id": "confucius and|is|considered to be one of the official four books and five classicsconfucian classics",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -685,41 +360,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the Classic of Poetry (Shijing)",
-    "subject": "the Classic",
-    "verb": "of",
-    "object": "Poetry (Shijing)",
+    "description": "Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics",
+    "subject": "Confucius and",
+    "verb": "is",
+    "object": "considered to be one of the official Four Books and Five ClassicsConfucian classics",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#1224-1351",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "The earliest entries in the oldest extant collection of Chinese poetry, the Classic of Poetry (Shijing), were initially lyrics."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "its collection|of|poems and folk songs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "its collection of poems and folk songs",
-    "subject": "its collection",
-    "verb": "of",
-    "object": "poems and folk songs",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -728,13 +374,13 @@
       "text": "The Shijing, with its collection of poems and folk songs, was heavily valued by the philosopher Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics."
      }
     ],
-    "seq": 22,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "valued by|the|philosopher confucius and is considered to be one of the official four books and five classicsconfucian classics",
+    "task_id": "what makes|poetry|distinctive as a form",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -743,70 +389,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "valued by the philosopher Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics",
-    "subject": "valued by",
-    "verb": "the",
-    "object": "philosopher Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics",
+    "description": "what makes poetry distinctive as a form",
+    "subject": "what makes",
+    "verb": "poetry",
+    "object": "distinctive as a form",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#1352-1549",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "The Shijing, with its collection of poems and folk songs, was heavily valued by the philosopher Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "his remarks|on|the subject have become an invaluable source in music theorychinaancient music theory",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "His remarks on the subject have become an invaluable source in Music theoryChinaancient music theory",
-    "subject": "His remarks",
-    "verb": "on",
-    "object": "the subject have become an invaluable source in Music theoryChinaancient music theory",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#1550-1651",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "His remarks on the subject have become an invaluable source in Music theoryChinaancient music theory."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the efforts|of|ancient thinkers to determine what makes poetry distinctive as a form",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form",
-    "subject": "The efforts",
-    "verb": "of",
-    "object": "ancient thinkers to determine what makes poetry distinctive as a form",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -815,7 +403,7 @@
       "text": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form, and what distinguishes good poetry from bad, resulted in \"poetics\"—the study of the aesthetics of poetry."
      }
     ],
-    "seq": 25,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -835,7 +423,7 @@
     "verb": "poetry",
     "object": "from bad",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -844,123 +432,7 @@
       "text": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form, and what distinguishes good poetry from bad, resulted in \"poetics\"—the study of the aesthetics of poetry."
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the study|of|the aesthetics of poetry",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the study of the aesthetics of poetry",
-    "subject": "the study",
-    "verb": "of",
-    "object": "the aesthetics of poetry",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#1653-1844",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form, and what distinguishes good poetry from bad, resulted in \"poetics\"—the study of the aesthetics of poetry."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "china's through|the|shijing",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "China's through the Shijing",
-    "subject": "China's through",
-    "verb": "the",
-    "object": "Shijing",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#1845-1987",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Some ancient societies, such as China's through the Shijing, developed canons of poetic works that had ritual as well as aesthetic importance."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "developed canons|of|poetic works that had ritual as well as aesthetic importance",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "developed canons of poetic works that had ritual as well as aesthetic importance",
-    "subject": "developed canons",
-    "verb": "of",
-    "object": "poetic works that had ritual as well as aesthetic importance",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#1845-1987",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Some ancient societies, such as China's through the Shijing, developed canons of poetic works that had ritual as well as aesthetic importance."
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have struggled|to|find a definition that could encompass formal differences as great as those between chaucer's the canterbury talescanterbury tales and matsuo bashō's oku no hosomichi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "have struggled to find a definition that could encompass formal differences as great as those between Chaucer's The Canterbury TalesCanterbury Tales and Matsuo Bashō's Oku no Hosomichi",
-    "subject": "have struggled",
-    "verb": "to",
-    "object": "find a definition that could encompass formal differences as great as those between Chaucer's The Canterbury TalesCanterbury Tales and Matsuo Bashō's Oku no Hosomichi",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#1988-2321",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "More recently, thinkers have struggled to find a definition that could encompass formal differences as great as those between Chaucer's The Canterbury TalesCanterbury Tales and Matsuo Bashō's Oku no Hosomichi, as well as differences in content spanning Hebrew BibleTanakh Biblical poetryreligious poetry, love poetry, and rappingrap."
-     }
-    ],
-    "seq": 30,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -980,7 +452,7 @@
     "verb": "poetryreligious",
     "object": "poetry",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -989,13 +461,13 @@
       "text": "More recently, thinkers have struggled to find a definition that could encompass formal differences as great as those between Chaucer's The Canterbury TalesCanterbury Tales and Matsuo Bashō's Oku no Hosomichi, as well as differences in content spanning Hebrew BibleTanakh Biblical poetryreligious poetry, love poetry, and rappingrap."
      }
     ],
-    "seq": 31,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "earliest examples|of|stressed poetry had been thought to be works composed by romanos the melodist (fl",
+    "task_id": "of stressed|poetry|had been thought to be works composed by romanos the melodist (fl",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1004,12 +476,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "earliest examples of stressed poetry had been thought to be works composed by Romanos the Melodist (fl",
-    "subject": "earliest examples",
-    "verb": "of",
-    "object": "stressed poetry had been thought to be works composed by Romanos the Melodist (fl",
+    "description": "of stressed poetry had been thought to be works composed by Romanos the Melodist (fl",
+    "subject": "of stressed",
+    "verb": "poetry",
+    "object": "had been thought to be works composed by Romanos the Melodist (fl",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1018,7 +490,7 @@
       "text": "Until recently, the earliest examples of stressed poetry had been thought to be works composed by Romanos the Melodist (fl."
      }
     ],
-    "seq": 32,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1038,7 +510,7 @@
     "verb": "writes",
     "object": "that an inscribed Greek poem predated Romanos' stressed poetry",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1047,13 +519,13 @@
       "text": "However, Tim Whitmarsh writes that an inscribed Greek poem predated Romanos' stressed poetry."
      }
     ],
-    "seq": 33,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "iambic pentameter|and|dactylic hexameter were later used by a number of poets",
+    "task_id": "pentameter and|dactylic|hexameter were later used by a number of poets",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1062,56 +534,32 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Iambic pentameter and dactylic hexameter were later used by a number of poets",
-    "subject": "Iambic pentameter",
-    "verb": "and",
-    "object": "dactylic hexameter were later used by a number of poets",
+    "description": "pentameter and dactylic hexameter were later used by a number of poets",
+    "subject": "pentameter and",
+    "verb": "dactylic",
+    "object": "hexameter were later used by a number of poets",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "02-encyclopedic/wikipedia/Poetry.txt#2662-2860",
       "ref": "02-encyclopedic/wikipedia/Poetry.txt",
       "text": "Ancient Orient Museum, Istanbul.jpg\"greek\"> Iambic pentameter and dactylic hexameter were later used by a number of poets, including William Shakespeare and Henry Wadsworth Longfellow, respectively."
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "william shakespeare|and|henry wadsworth longfellow",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "William Shakespeare and Henry Wadsworth Longfellow",
-    "subject": "William Shakespeare",
-    "verb": "and",
-    "object": "Henry Wadsworth Longfellow",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
+     },
      {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#2662-2860",
+      "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
       "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Ancient Orient Museum, Istanbul.jpg\"greek\"> Iambic pentameter and dactylic hexameter were later used by a number of poets, including William Shakespeare and Henry Wadsworth Longfellow, respectively."
+      "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
      }
     ],
-    "seq": 35,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "usually used|to|end dactylic hexameter)",
+    "task_id": "usually|used|to end dactylic hexameter)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1121,11 +569,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "usually used to end dactylic hexameter)",
-    "subject": "usually used",
-    "verb": "to",
-    "object": "end dactylic hexameter)",
+    "subject": "usually",
+    "verb": "used",
+    "object": "to end dactylic hexameter)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1134,7 +582,7 @@
       "text": ": Roman bust, based on Greek original]] Iamb (poetry)iamb – one unstressed syllable followed by a stressed syllable (e.g. des-cribe, in-clude, re-tract) trocheeone stressed syllable followed by an unstressed syllable (e.g. pic-ture, flow-er) dactyl (poetry)dactyl – one stressed syllable followed by two unstressed syllables (e.g. an-no-tate, sim-i-lar) anapaesttwo unstressed syllables followed by one stressed syllable (e.g. com-pre-hend) spondeetwo stressed syllables together (e.g. heart-beat, four-teen) pyrrhictwo unstressed syllables together (rare, usually used to end dactylic hexameter)"
      }
     ],
-    "seq": 36,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1154,7 +602,7 @@
     "verb": "are",
     "object": "a wide range of names for other types of feet",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1163,65 +611,7 @@
       "text": "There are a wide range of names for other types of feet, right up to a choriamb, a four syllable metric foot with a stressed syllable followed by two unstressed syllables and closing with a stressed syllable."
      }
     ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "right up|to|a choriamb",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "right up to a choriamb",
-    "subject": "right up",
-    "verb": "to",
-    "object": "a choriamb",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#3512-3720",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "There are a wide range of names for other types of feet, right up to a choriamb, a four syllable metric foot with a stressed syllable followed by two unstressed syllables and closing with a stressed syllable."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "unstressed syllables|and|closing with a stressed syllable",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "unstressed syllables and closing with a stressed syllable",
-    "subject": "unstressed syllables",
-    "verb": "and",
-    "object": "closing with a stressed syllable",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#3512-3720",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "There are a wide range of names for other types of feet, right up to a choriamb, a four syllable metric foot with a stressed syllable followed by two unstressed syllables and closing with a stressed syllable."
-     }
-    ],
-    "seq": 39,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1241,7 +631,7 @@
     "verb": "is",
     "object": "derived from some ancient Greek literatureGreek and Latin poetry",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1250,13 +640,13 @@
       "text": "The choriamb is derived from some ancient Greek literatureGreek and Latin poetry."
      }
     ],
-    "seq": 40,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "vowel length|or|intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter",
+    "task_id": "length or|intonation|(linguistics)intonation rather than or in addition to syllabic accents in determining meter",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1265,12 +655,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "vowel length or Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter",
-    "subject": "vowel length",
-    "verb": "or",
-    "object": "Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter",
+    "description": "length or intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter",
+    "subject": "length or",
+    "verb": "intonation",
+    "object": "(linguistics)intonation rather than or in addition to syllabic accents in determining meter",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1279,13 +669,13 @@
       "text": "Languages which use vowel length or Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter, such as Metre (poetry)Ottoman TurkishOttoman Turkish or Vedic meterVedic, often have concepts similar to the iamb and dactyl to describe common combinations of long and short sounds."
      }
     ],
-    "seq": 41,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "turkishottoman turkish|or|vedic metervedic",
+    "task_id": "of feet|has|a certain \"feel",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1294,70 +684,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "TurkishOttoman Turkish or Vedic meterVedic",
-    "subject": "TurkishOttoman Turkish",
-    "verb": "or",
-    "object": "Vedic meterVedic",
+    "description": "of feet has a certain \"feel",
+    "subject": "of feet",
+    "verb": "has",
+    "object": "a certain \"feel",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#3803-4125",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Languages which use vowel length or Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter, such as Metre (poetry)Ottoman TurkishOttoman Turkish or Vedic meterVedic, often have concepts similar to the iamb and dactyl to describe common combinations of long and short sounds."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "concepts similar|to|the iamb and dactyl to describe common combinations of long and short sounds",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "concepts similar to the iamb and dactyl to describe common combinations of long and short sounds",
-    "subject": "concepts similar",
-    "verb": "to",
-    "object": "the iamb and dactyl to describe common combinations of long and short sounds",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#3803-4125",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Languages which use vowel length or Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter, such as Metre (poetry)Ottoman TurkishOttoman Turkish or Vedic meterVedic, often have concepts similar to the iamb and dactyl to describe common combinations of long and short sounds."
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "each|of|these types of feet has a certain \"feel",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Each of these types of feet has a certain \"feel",
-    "subject": "Each",
-    "verb": "of",
-    "object": "these types of feet has a certain \"feel",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1366,152 +698,7 @@
       "text": "Each of these types of feet has a certain \"feel,\" whether alone or in combination with other feet."
      }
     ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "whether alone|or|in combination with other feet",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "whether alone or in combination with other feet",
-    "subject": "whether alone",
-    "verb": "or",
-    "object": "in combination with other feet",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#4127-4225",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Each of these types of feet has a certain \"feel,\" whether alone or in combination with other feet."
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|the|most natural form of rhythm in the english language",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is the most natural form of rhythm in the English language",
-    "subject": "is",
-    "verb": "the",
-    "object": "most natural form of rhythm in the English language",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#4226-4358",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "The iamb, for example, is the most natural form of rhythm in the English language, and generally produces a subtle but stable verse."
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "often show|the|basic or fundamental pattern underlying a verse",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "often show the basic or fundamental pattern underlying a verse",
-    "subject": "often show",
-    "verb": "the",
-    "object": "basic or fundamental pattern underlying a verse",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#4359-4581",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Scanning meter can often show the basic or fundamental pattern underlying a verse, but does not show the varying degrees of stress (linguistics)stress, as well as the differing pitches and vowel lengthlengths of syllables."
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not show|the|varying degrees of stress (linguistics)stress",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not show the varying degrees of stress (linguistics)stress",
-    "subject": "not show",
-    "verb": "the",
-    "object": "varying degrees of stress (linguistics)stress",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#4359-4581",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Scanning meter can often show the basic or fundamental pattern underlying a verse, but does not show the varying degrees of stress (linguistics)stress, as well as the differing pitches and vowel lengthlengths of syllables."
-     }
-    ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "well as|the|differing pitches and vowel lengthlengths of syllables",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "well as the differing pitches and vowel lengthlengths of syllables",
-    "subject": "well as",
-    "verb": "the",
-    "object": "differing pitches and vowel lengthlengths of syllables",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#4359-4581",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Scanning meter can often show the basic or fundamental pattern underlying a verse, but does not show the varying degrees of stress (linguistics)stress, as well as the differing pitches and vowel lengthlengths of syllables."
-     }
-    ],
-    "seq": 49,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1531,7 +718,7 @@
     "verb": "is",
     "object": "debate over how useful a multiplicity of different \"feet\" is in describing meter",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1540,7 +727,7 @@
       "text": "There is debate over how useful a multiplicity of different \"feet\" is in describing meter."
      }
     ],
-    "seq": 50,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1560,7 +747,7 @@
     "verb": "has",
     "object": "argued that while dactyls are important in classical verse",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1569,7 +756,7 @@
       "text": "For example, Robert Pinsky has argued that while dactyls are important in classical verse, English dactylic verse uses dactyls very irregularly and can be better described based on patterns of iambs and anapests, feet which he considers natural to the language."
      }
     ],
-    "seq": 51,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1589,7 +776,7 @@
     "verb": "verse",
     "object": "uses dactyls very irregularly and can be better described based on patterns of iambs and anapests",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1598,36 +785,7 @@
       "text": "For example, Robert Pinsky has argued that while dactyls are important in classical verse, English dactylic verse uses dactyls very irregularly and can be better described based on patterns of iambs and anapests, feet which he considers natural to the language."
      }
     ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "considers natural|to|the language",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "considers natural to the language",
-    "subject": "considers natural",
-    "verb": "to",
-    "object": "the language",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#4674-4935",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "For example, Robert Pinsky has argued that while dactyls are important in classical verse, English dactylic verse uses dactyls very irregularly and can be better described based on patterns of iambs and anapests, feet which he considers natural to the language."
-     }
-    ],
-    "seq": 53,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1647,7 +805,7 @@
     "verb": "is",
     "object": "significantly more complex than the basic scanned meter described above",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1656,36 +814,7 @@
       "text": "Actual rhythm is significantly more complex than the basic scanned meter described above, and many scholars have sought to develop systems that would scan such complexity."
      }
     ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have sought|to|develop systems that would scan such complexity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "have sought to develop systems that would scan such complexity",
-    "subject": "have sought",
-    "verb": "to",
-    "object": "develop systems that would scan such complexity",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#4936-5107",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Actual rhythm is significantly more complex than the basic scanned meter described above, and many scholars have sought to develop systems that would scan such complexity."
-     }
-    ],
-    "seq": 55,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1705,7 +834,7 @@
     "verb": "noted",
     "object": "that overlaid on top of the regular pattern of stressed and unstressed syllables in a line of verse was a separate pattern of accents resulting from the natural pitch of the spoken words",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1714,13 +843,13 @@
       "text": "Vladimir Nabokov noted that overlaid on top of the regular pattern of stressed and unstressed syllables in a line of verse was a separate pattern of accents resulting from the natural pitch of the spoken words, and suggested that the term \"scud\" be used to distinguish an unaccented stress from an accented stress."
      }
     ],
-    "seq": 56,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "suggested that|the|term \"scud\" be used to distinguish an unaccented stress from an accented stress",
+    "task_id": "be|used|to distinguish an unaccented stress from an accented stress",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1729,12 +858,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "suggested that the term \"scud\" be used to distinguish an unaccented stress from an accented stress",
-    "subject": "suggested that",
-    "verb": "the",
-    "object": "term \"scud\" be used to distinguish an unaccented stress from an accented stress",
+    "description": "be used to distinguish an unaccented stress from an accented stress",
+    "subject": "be",
+    "verb": "used",
+    "object": "to distinguish an unaccented stress from an accented stress",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1743,7 +872,7 @@
       "text": "Vladimir Nabokov noted that overlaid on top of the regular pattern of stressed and unstressed syllables in a line of verse was a separate pattern of accents resulting from the natural pitch of the spoken words, and suggested that the term \"scud\" be used to distinguish an unaccented stress from an accented stress."
      }
     ],
-    "seq": 57,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1763,7 +892,7 @@
     "verb": "is",
     "object": "organized according to Sanskrit prosodychhandas",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1772,7 +901,7 @@
       "text": "Sanskrit poetry is organized according to Sanskrit prosodychhandas, which are manifold and continue to influence several South Asian languages' poetry."
      }
     ],
-    "seq": 58,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1792,7 +921,7 @@
     "verb": "are",
     "object": "manifold and continue to influence several South Asian languages' poetry",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1801,13 +930,13 @@
       "text": "Sanskrit poetry is organized according to Sanskrit prosodychhandas, which are manifold and continue to influence several South Asian languages' poetry."
      }
     ],
-    "seq": 59,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "'s|the|hunting of the snark (1876) is mainly in anapestic tetrameter",
+    "task_id": "the snark|is|mainly in anapestic tetrameter",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1816,12 +945,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "'s the Hunting of the Snark (1876) is mainly in anapestic tetrameter",
-    "subject": "'s",
-    "verb": "the",
-    "object": "Hunting of the Snark (1876) is mainly in anapestic tetrameter",
+    "description": "the Snark is mainly in anapestic tetrameter",
+    "subject": "the Snark",
+    "verb": "is",
+    "object": "mainly in anapestic tetrameter",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1830,13 +959,13 @@
       "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
      }
     ],
-    "seq": 60,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "different traditions|and|genres of poetry tend to use different meters",
+    "task_id": "genres of|poetry|tend to use different meters",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1845,12 +974,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Different traditions and genres of poetry tend to use different meters",
-    "subject": "Different traditions",
-    "verb": "and",
-    "object": "genres of poetry tend to use different meters",
+    "description": "genres of poetry tend to use different meters",
+    "subject": "genres of",
+    "verb": "poetry",
+    "object": "tend to use different meters",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1859,13 +988,13 @@
       "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
      }
     ],
-    "seq": 61,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "ranging from|the|shakespearean iambic pentameter and the homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
+    "task_id": "the shakespearean|iambic|pentameter and the homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1874,12 +1003,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
-    "subject": "ranging from",
-    "verb": "the",
-    "object": "Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
+    "description": "the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
+    "subject": "the Shakespearean",
+    "verb": "iambic",
+    "object": "pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1888,13 +1017,13 @@
       "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
      }
     ],
-    "seq": 62,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "a number|of|variations to the established meter are common",
+    "task_id": "established meter|are|common",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1903,12 +1032,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "a number of variations to the established meter are common",
-    "subject": "a number",
-    "verb": "of",
-    "object": "variations to the established meter are common",
+    "description": "established meter are common",
+    "subject": "established meter",
+    "verb": "are",
+    "object": "common",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1917,94 +1046,7 @@
       "text": "However, a number of variations to the established meter are common, both to provide emphasis or attention to a given foot or line and to avoid boring repetition."
      }
     ],
-    "seq": 63,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "both|to|provide emphasis or attention to a given foot or line and to avoid boring repetition",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "both to provide emphasis or attention to a given foot or line and to avoid boring repetition",
-    "subject": "both",
-    "verb": "to",
-    "object": "provide emphasis or attention to a given foot or line and to avoid boring repetition",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#5881-6043",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "However, a number of variations to the established meter are common, both to provide emphasis or attention to a given foot or line and to avoid boring repetition."
-     }
-    ],
-    "seq": 64,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in place|of|a foot or stress)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in place of a foot or stress)",
-    "subject": "in place",
-    "verb": "of",
-    "object": "a foot or stress)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#6044-6324",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "For example, the stress in a foot may be inverted, a caesura (or pause) may be added (sometimes in place of a foot or stress), or the final foot in a line may be given a Meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop."
-     }
-    ],
-    "seq": 65,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "or|the|final foot in a line may be given a meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "or the final foot in a line may be given a Meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop",
-    "subject": "or",
-    "verb": "the",
-    "object": "final foot in a line may be given a Meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#6044-6324",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "For example, the stress in a foot may be inverted, a caesura (or pause) may be added (sometimes in place of a foot or stress), or the final foot in a line may be given a Meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop."
-     }
-    ],
-    "seq": 66,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
@@ -2024,7 +1066,7 @@
     "verb": "iambic",
     "object": "pentameter) tend to be fairly regular",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2033,7 +1075,7 @@
       "text": "Some patterns (such as iambic pentameter) tend to be fairly regular, while other patterns, such as dactylic hexameter, tend to be highly irregular."
      }
     ],
-    "seq": 67,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -2053,7 +1095,7 @@
     "verb": "dactylic",
     "object": "hexameter",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2062,36 +1104,7 @@
       "text": "Some patterns (such as iambic pentameter) tend to be fairly regular, while other patterns, such as dactylic hexameter, tend to be highly irregular."
      }
     ],
-    "seq": 68,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tend|to|be highly irregular",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "tend to be highly irregular",
-    "subject": "tend",
-    "verb": "to",
-    "object": "be highly irregular",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#6325-6472",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "Some patterns (such as iambic pentameter) tend to be fairly regular, while other patterns, such as dactylic hexameter, tend to be highly irregular."
-     }
-    ],
-    "seq": 69,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
@@ -2111,7 +1124,7 @@
     "verb": "will",
     "object": "generally reflect a regularity in the use of accents to reinforce the meter",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2120,152 +1133,7 @@
       "text": "In addition, different patterns often develop distinctively in different languages, so that, for example, iambic tetrameter in Russian will generally reflect a regularity in the use of accents to reinforce the meter, which does not occur, or occurs to a much lesser extent, in English."
      }
     ],
-    "seq": 70,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "or occurs|to|a much lesser extent",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "or occurs to a much lesser extent",
-    "subject": "or occurs",
-    "verb": "to",
-    "object": "a much lesser extent",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#6511-6796",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "In addition, different patterns often develop distinctively in different languages, so that, for example, iambic tetrameter in Russian will generally reflect a regularity in the use of accents to reinforce the meter, which does not occur, or occurs to a much lesser extent, in English."
-     }
-    ],
-    "seq": 71,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "notable examples|of|poets and poems who use them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "notable examples of poets and poems who use them",
-    "subject": "notable examples",
-    "verb": "of",
-    "object": "poets and poems who use them",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
-     }
-    ],
-    "seq": 72,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "iambic pentameter|dactylic|hexameter (homer",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Iambic pentameter dactylic hexameter (Homer",
-    "subject": "Iambic pentameter",
-    "verb": "dactylic",
-    "object": "hexameter (Homer",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
-     }
-    ],
-    "seq": 73,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the song|of|hiawatha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The Song of Hiawatha",
-    "subject": "The Song",
-    "verb": "of",
-    "object": "Hiawatha",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
-     }
-    ],
-    "seq": 74,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the finnish|national|epic",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Finnish national epic",
-    "subject": "the Finnish",
-    "verb": "national",
-    "object": "epic",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
-     }
-    ],
-    "seq": 75,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    },
@@ -2285,7 +1153,7 @@
     "verb": "poem",
     "object": "Beowulf is in alliterative Verse (poetry)verse",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2294,13 +1162,13 @@
       "text": "epic poem Beowulf is in alliterative Verse (poetry)verse.]] Rhyme, alliteration, assonance and Literary consonanceconsonance are ways of creating repetitive patterns of sound."
      }
     ],
-    "seq": 76,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "assonance|and|literary consonanceconsonance are ways of creating repetitive patterns of sound",
+    "task_id": "and literary|consonanceconsonance|are ways of creating repetitive patterns of sound",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2309,12 +1177,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "assonance and Literary consonanceconsonance are ways of creating repetitive patterns of sound",
-    "subject": "assonance",
-    "verb": "and",
-    "object": "Literary consonanceconsonance are ways of creating repetitive patterns of sound",
+    "description": "and Literary consonanceconsonance are ways of creating repetitive patterns of sound",
+    "subject": "and Literary",
+    "verb": "consonanceconsonance",
+    "object": "are ways of creating repetitive patterns of sound",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2323,7 +1191,7 @@
       "text": "epic poem Beowulf is in alliterative Verse (poetry)verse.]] Rhyme, alliteration, assonance and Literary consonanceconsonance are ways of creating repetitive patterns of sound."
      }
     ],
-    "seq": 77,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    },
@@ -2343,7 +1211,7 @@
     "verb": "used",
     "object": "as an independent structural element in a poem",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2352,36 +1220,7 @@
       "text": "They may be used as an independent structural element in a poem, to reinforce rhythmic patterns, or as an ornamental element."
      }
     ],
-    "seq": 78,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "separate from|the|repetitive sound patterns created",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "separate from the repetitive sound patterns created",
-    "subject": "separate from",
-    "verb": "the",
-    "object": "repetitive sound patterns created",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Poetry.txt#7799-7881",
-      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-      "text": "They can also carry a meaning separate from the repetitive sound patterns created."
-     }
-    ],
-    "seq": 79,
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    },
@@ -2401,7 +1240,7 @@
     "verb": "used",
     "object": "heavy alliteration to mock Old English verse and to paint a character as archaic",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2410,12 +1249,12 @@
       "text": "For example, Chaucer used heavy alliteration to mock Old English verse and to paint a character as archaic."
      }
     ],
-    "seq": 80,
+    "seq": 39,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 81,
+  "nextSeq": 40,
   "admits": [
    "NUL",
    "SEG",
@@ -2430,44 +1269,12 @@
  },
  "folded": [
   {
-   "id": "'s|the|hunting of the snark (1876) is mainly in anapestic tetrameter",
-   "subject": "'s",
-   "verb": "the",
-   "object": "Hunting of the Snark (1876) is mainly in anapestic tetrameter",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#5596-5880",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
-    }
-   ]
-  },
-  {
-   "id": "a number|of|variations to the established meter are common",
-   "subject": "a number",
-   "verb": "of",
-   "object": "variations to the established meter are common",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#5881-6043",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "However, a number of variations to the established meter are common, both to provide emphasis or attention to a given foot or line and to avoid boring repetition."
-    }
-   ]
-  },
-  {
    "id": "actual rhythm|is|significantly more complex than the basic scanned meter described above",
    "subject": "Actual rhythm",
    "verb": "is",
    "object": "significantly more complex than the basic scanned meter described above",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2478,92 +1285,12 @@
    ]
   },
   {
-   "id": "an example|of|egyptian epic poetry is story of sinuhethe story of sinuhe (c",
-   "subject": "An example",
-   "verb": "of",
-   "object": "Egyptian epic poetry is Story of SinuheThe Story of Sinuhe (c",
+   "id": "and literary|consonanceconsonance|are ways of creating repetitive patterns of sound",
+   "subject": "and Literary",
+   "verb": "consonanceconsonance",
+   "object": "are ways of creating repetitive patterns of sound",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#503-579",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "An example of Egyptian epic poetry is Story of SinuheThe Story of Sinuhe (c."
-    }
-   ]
-  },
-  {
-   "id": "ancient collections|of|religious hymns as the indian sanskrit-language rigveda",
-   "subject": "ancient collections",
-   "verb": "of",
-   "object": "religious hymns as the Indian Sanskrit-language Rigveda",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#982-1223",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Other forms of poetry, including such ancient collections of religious hymns as the Indian Sanskrit-language Rigveda, the Avestan Gatha (Zoroaster)Gathas, the Hurrian songs, and the Hebrew Psalms, possibly developed directly from folk songs."
-    }
-   ]
-  },
-  {
-   "id": "ancient romeroman|national|epic",
-   "subject": "Ancient RomeRoman",
-   "verb": "national",
-   "object": "epic",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
-    }
-   ]
-  },
-  {
-   "id": "and|the|hebrew psalms",
-   "subject": "and",
-   "verb": "the",
-   "object": "Hebrew Psalms",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#982-1223",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Other forms of poetry, including such ancient collections of religious hymns as the Indian Sanskrit-language Rigveda, the Avestan Gatha (Zoroaster)Gathas, the Hurrian songs, and the Hebrew Psalms, possibly developed directly from folk songs."
-    }
-   ]
-  },
-  {
-   "id": "and|the|indian epic poetryindian epics",
-   "subject": "and",
-   "verb": "the",
-   "object": "Indian epic poetryIndian epics",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
-    }
-   ]
-  },
-  {
-   "id": "assonance|and|literary consonanceconsonance are ways of creating repetitive patterns of sound",
-   "subject": "assonance",
-   "verb": "and",
-   "object": "Literary consonanceconsonance are ways of creating repetitive patterns of sound",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2574,18 +1301,18 @@
    ]
   },
   {
-   "id": "between 29|and|19 bce)",
-   "subject": "between 29",
-   "verb": "and",
-   "object": "19 BCE)",
+   "id": "be|used|to distinguish an unaccented stress from an accented stress",
+   "subject": "be",
+   "verb": "used",
+   "object": "to distinguish an unaccented stress from an accented stress",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#5108-5422",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
+     "text": "Vladimir Nabokov noted that overlaid on top of the regular pattern of stressed and unstressed syllables in a line of verse was a separate pattern of accents resulting from the natural pitch of the spoken words, and suggested that the term \"scud\" be used to distinguish an unaccented stress from an accented stress."
     }
    ]
   },
@@ -2595,7 +1322,7 @@
    "verb": "poetryreligious",
    "object": "poetry",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2606,28 +1333,12 @@
    ]
   },
   {
-   "id": "both|to|provide emphasis or attention to a given foot or line and to avoid boring repetition",
-   "subject": "both",
-   "verb": "to",
-   "object": "provide emphasis or attention to a given foot or line and to avoid boring repetition",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#5881-6043",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "However, a number of variations to the established meter are common, both to provide emphasis or attention to a given foot or line and to avoid boring repetition."
-    }
-   ]
-  },
-  {
    "id": "chaucer|used|heavy alliteration to mock old english verse and to paint a character as archaic",
    "subject": "Chaucer",
    "verb": "used",
    "object": "heavy alliteration to mock Old English verse and to paint a character as archaic",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2638,204 +1349,12 @@
    ]
   },
   {
-   "id": "china's through|the|shijing",
-   "subject": "China's through",
-   "verb": "the",
-   "object": "Shijing",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1845-1987",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Some ancient societies, such as China's through the Shijing, developed canons of poetic works that had ritual as well as aesthetic importance."
-    }
-   ]
-  },
-  {
-   "id": "concepts similar|to|the iamb and dactyl to describe common combinations of long and short sounds",
-   "subject": "concepts similar",
-   "verb": "to",
-   "object": "the iamb and dactyl to describe common combinations of long and short sounds",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#3803-4125",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Languages which use vowel length or Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter, such as Metre (poetry)Ottoman TurkishOttoman Turkish or Vedic meterVedic, often have concepts similar to the iamb and dactyl to describe common combinations of long and short sounds."
-    }
-   ]
-  },
-  {
-   "id": "considers natural|to|the language",
-   "subject": "considers natural",
-   "verb": "to",
-   "object": "the language",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4674-4935",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "For example, Robert Pinsky has argued that while dactyls are important in classical verse, English dactylic verse uses dactyls very irregularly and can be better described based on patterns of iambs and anapests, feet which he considers natural to the language."
-    }
-   ]
-  },
-  {
-   "id": "cuneiform script|on|clay tablets and",
-   "subject": "cuneiform script",
-   "verb": "on",
-   "object": "clay tablets and",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#38-246",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The oldest surviving epic poem, the Epic of Gilgamesh, dates from the 3rd millenniumBCE in Sumer (in Mesopotamia, present-day Iraq), and was written in cuneiform script on clay tablets and, later, on papyrus."
-    }
-   ]
-  },
-  {
-   "id": "dates from|the|3rd millenniumbce in sumer (in mesopotamia",
-   "subject": "dates from",
-   "verb": "the",
-   "object": "3rd millenniumBCE in Sumer (in Mesopotamia",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#38-246",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The oldest surviving epic poem, the Epic of Gilgamesh, dates from the 3rd millenniumBCE in Sumer (in Mesopotamia, present-day Iraq), and was written in cuneiform script on clay tablets and, later, on papyrus."
-    }
-   ]
-  },
-  {
-   "id": "dating|to|2000bce",
-   "subject": "dating",
-   "verb": "to",
-   "object": "2000BCE",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#247-502",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The Istanbul 2461Istanbul tablet 2461, dating to 2000BCE, describes an annual rite in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity; some have labelled it the world's oldest love poem."
-    }
-   ]
-  },
-  {
-   "id": "developed canons|of|poetic works that had ritual as well as aesthetic importance",
-   "subject": "developed canons",
-   "verb": "of",
-   "object": "poetic works that had ritual as well as aesthetic importance",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1845-1987",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Some ancient societies, such as China's through the Shijing, developed canons of poetic works that had ritual as well as aesthetic importance."
-    }
-   ]
-  },
-  {
-   "id": "different traditions|and|genres of poetry tend to use different meters",
-   "subject": "Different traditions",
-   "verb": "and",
-   "object": "genres of poetry tend to use different meters",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#5596-5880",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
-    }
-   ]
-  },
-  {
-   "id": "distinguishes good|poetry|from bad",
-   "subject": "distinguishes good",
+   "id": "classic of|poetry|(shijing)",
+   "subject": "Classic of",
    "verb": "poetry",
-   "object": "from bad",
+   "object": "(Shijing)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1653-1844",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form, and what distinguishes good poetry from bad, resulted in \"poetics\"—the study of the aesthetics of poetry."
-    }
-   ]
-  },
-  {
-   "id": "each|of|these types of feet has a certain \"feel",
-   "subject": "Each",
-   "verb": "of",
-   "object": "these types of feet has a certain \"feel",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4127-4225",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Each of these types of feet has a certain \"feel,\" whether alone or in combination with other feet."
-    }
-   ]
-  },
-  {
-   "id": "earliest examples|of|stressed poetry had been thought to be works composed by romanos the melodist (fl",
-   "subject": "earliest examples",
-   "verb": "of",
-   "object": "stressed poetry had been thought to be works composed by Romanos the Melodist (fl",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#2323-2446",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Until recently, the earliest examples of stressed poetry had been thought to be works composed by Romanos the Melodist (fl."
-    }
-   ]
-  },
-  {
-   "id": "english dactylic|verse|uses dactyls very irregularly and can be better described based on patterns of iambs and anapests",
-   "subject": "English dactylic",
-   "verb": "verse",
-   "object": "uses dactyls very irregularly and can be better described based on patterns of iambs and anapests",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4674-4935",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "For example, Robert Pinsky has argued that while dactyls are important in classical verse, English dactylic verse uses dactyls very irregularly and can be better described based on patterns of iambs and anapests, feet which he considers natural to the language."
-    }
-   ]
-  },
-  {
-   "id": "entries in|the|oldest extant collection of chinese poetry",
-   "subject": "entries in",
-   "verb": "the",
-   "object": "oldest extant collection of Chinese poetry",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2846,12 +1365,60 @@
    ]
   },
   {
+   "id": "confucius and|is|considered to be one of the official four books and five classicsconfucian classics",
+   "subject": "Confucius and",
+   "verb": "is",
+   "object": "considered to be one of the official Four Books and Five ClassicsConfucian classics",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#1352-1549",
+     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
+     "text": "The Shijing, with its collection of poems and folk songs, was heavily valued by the philosopher Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics."
+    }
+   ]
+  },
+  {
+   "id": "distinguishes good|poetry|from bad",
+   "subject": "distinguishes good",
+   "verb": "poetry",
+   "object": "from bad",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#1653-1844",
+     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
+     "text": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form, and what distinguishes good poetry from bad, resulted in \"poetics\"—the study of the aesthetics of poetry."
+    }
+   ]
+  },
+  {
+   "id": "english dactylic|verse|uses dactyls very irregularly and can be better described based on patterns of iambs and anapests",
+   "subject": "English dactylic",
+   "verb": "verse",
+   "object": "uses dactyls very irregularly and can be better described based on patterns of iambs and anapests",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#4674-4935",
+     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
+     "text": "For example, Robert Pinsky has argued that while dactyls are important in classical verse, English dactylic verse uses dactyls very irregularly and can be better described based on patterns of iambs and anapests, feet which he considers natural to the language."
+    }
+   ]
+  },
+  {
    "id": "epic|poem|beowulf is in alliterative verse (poetry)verse",
    "subject": "epic",
    "verb": "poem",
    "object": "Beowulf is in alliterative Verse (poetry)verse",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2867,7 +1434,7 @@
    "verb": "poetry",
    "object": "appears to have been composed in poetic form as an aid to memorization and oral transmission in ancient societies",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2878,114 +1445,34 @@
    ]
   },
   {
-   "id": "epics includes|the|greek iliad and the odyssey",
-   "subject": "epics includes",
-   "verb": "the",
-   "object": "Greek Iliad and the Odyssey",
+   "id": "established meter|are|common",
+   "subject": "established meter",
+   "verb": "are",
+   "object": "common",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#5881-6043",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
+     "text": "However, a number of variations to the established meter are common, both to provide emphasis or attention to a given foot or line and to avoid boring repetition."
     }
    ]
   },
   {
-   "id": "have sought|to|develop systems that would scan such complexity",
-   "subject": "have sought",
-   "verb": "to",
-   "object": "develop systems that would scan such complexity",
+   "id": "genres of|poetry|tend to use different meters",
+   "subject": "genres of",
+   "verb": "poetry",
+   "object": "tend to use different meters",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4936-5107",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#5596-5880",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Actual rhythm is significantly more complex than the basic scanned meter described above, and many scholars have sought to develop systems that would scan such complexity."
-    }
-   ]
-  },
-  {
-   "id": "have struggled|to|find a definition that could encompass formal differences as great as those between chaucer's the canterbury talescanterbury tales and matsuo bashō's oku no hosomichi",
-   "subject": "have struggled",
-   "verb": "to",
-   "object": "find a definition that could encompass formal differences as great as those between Chaucer's The Canterbury TalesCanterbury Tales and Matsuo Bashō's Oku no Hosomichi",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1988-2321",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "More recently, thinkers have struggled to find a definition that could encompass formal differences as great as those between Chaucer's The Canterbury TalesCanterbury Tales and Matsuo Bashō's Oku no Hosomichi, as well as differences in content spanning Hebrew BibleTanakh Biblical poetryreligious poetry, love poetry, and rappingrap."
-    }
-   ]
-  },
-  {
-   "id": "his remarks|on|the subject have become an invaluable source in music theorychinaancient music theory",
-   "subject": "His remarks",
-   "verb": "on",
-   "object": "the subject have become an invaluable source in Music theoryChinaancient music theory",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1550-1651",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "His remarks on the subject have become an invaluable source in Music theoryChinaancient music theory."
-    }
-   ]
-  },
-  {
-   "id": "iambic pentameter|and|dactylic hexameter were later used by a number of poets",
-   "subject": "Iambic pentameter",
-   "verb": "and",
-   "object": "dactylic hexameter were later used by a number of poets",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#2662-2860",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Ancient Orient Museum, Istanbul.jpg\"greek\"> Iambic pentameter and dactylic hexameter were later used by a number of poets, including William Shakespeare and Henry Wadsworth Longfellow, respectively."
-    }
-   ]
-  },
-  {
-   "id": "iambic pentameter|dactylic|hexameter (homer",
-   "subject": "Iambic pentameter",
-   "verb": "dactylic",
-   "object": "hexameter (Homer",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
-    }
-   ]
-  },
-  {
-   "id": "in place|of|a foot or stress)",
-   "subject": "in place",
-   "verb": "of",
-   "object": "a foot or stress)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#6044-6324",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "For example, the stress in a foot may be inverted, a caesura (or pause) may be added (sometimes in place of a foot or stress), or the final foot in a line may be given a Meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop."
+     "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
     }
    ]
   },
@@ -2995,7 +1482,7 @@
    "verb": "will",
    "object": "generally reflect a regularity in the use of accents to reinforce the meter",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3006,12 +1493,12 @@
    ]
   },
   {
-   "id": "in which|the|king hieros gamossymbolically married and mated with the goddess inanna to ensure fertility and prosperity",
-   "subject": "in which",
-   "verb": "the",
-   "object": "king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity",
+   "id": "king hieros|gamossymbolically|married and mated with the goddess inanna to ensure fertility and prosperity",
+   "subject": "king Hieros",
+   "verb": "gamossymbolically",
+   "object": "married and mated with the goddess Inanna to ensure fertility and prosperity",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3022,50 +1509,18 @@
    ]
   },
   {
-   "id": "is|the|most natural form of rhythm in the english language",
-   "subject": "is",
-   "verb": "the",
-   "object": "most natural form of rhythm in the English language",
+   "id": "length or|intonation|(linguistics)intonation rather than or in addition to syllabic accents in determining meter",
+   "subject": "length or",
+   "verb": "intonation",
+   "object": "(linguistics)intonation rather than or in addition to syllabic accents in determining meter",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4226-4358",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#3803-4125",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The iamb, for example, is the most natural form of rhythm in the English language, and generally produces a subtle but stable verse."
-    }
-   ]
-  },
-  {
-   "id": "its collection|of|poems and folk songs",
-   "subject": "its collection",
-   "verb": "of",
-   "object": "poems and folk songs",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1352-1549",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The Shijing, with its collection of poems and folk songs, was heavily valued by the philosopher Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics."
-    }
-   ]
-  },
-  {
-   "id": "labelled it|the|world's oldest love poem",
-   "subject": "labelled it",
-   "verb": "the",
-   "object": "world's oldest love poem",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#247-502",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The Istanbul 2461Istanbul tablet 2461, dating to 2000BCE, describes an annual rite in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity; some have labelled it the world's oldest love poem."
+     "text": "Languages which use vowel length or Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter, such as Metre (poetry)Ottoman TurkishOttoman Turkish or Vedic meterVedic, often have concepts similar to the iamb and dactyl to describe common combinations of long and short sounds."
     }
    ]
   },
@@ -3075,7 +1530,7 @@
    "verb": "poem",
    "object": "(EP)\"Goody",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3091,7 +1546,7 @@
    "verb": "used",
    "object": "as an independent structural element in a poem",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3102,50 +1557,50 @@
    ]
   },
   {
-   "id": "not show|the|varying degrees of stress (linguistics)stress",
-   "subject": "not show",
-   "verb": "the",
-   "object": "varying degrees of stress (linguistics)stress",
+   "id": "of egyptian|epic|poetry is story of sinuhethe story of sinuhe (c",
+   "subject": "of Egyptian",
+   "verb": "epic",
+   "object": "poetry is Story of SinuheThe Story of Sinuhe (c",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4359-4581",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#503-579",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Scanning meter can often show the basic or fundamental pattern underlying a verse, but does not show the varying degrees of stress (linguistics)stress, as well as the differing pitches and vowel lengthlengths of syllables."
+     "text": "An example of Egyptian epic poetry is Story of SinuheThe Story of Sinuhe (c."
     }
    ]
   },
   {
-   "id": "notable examples|of|poets and poems who use them",
-   "subject": "notable examples",
-   "verb": "of",
-   "object": "poets and poems who use them",
+   "id": "of feet|has|a certain \"feel",
+   "subject": "of feet",
+   "verb": "has",
+   "object": "a certain \"feel",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#4127-4225",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
+     "text": "Each of these types of feet has a certain \"feel,\" whether alone or in combination with other feet."
     }
    ]
   },
   {
-   "id": "often show|the|basic or fundamental pattern underlying a verse",
-   "subject": "often show",
-   "verb": "the",
-   "object": "basic or fundamental pattern underlying a verse",
+   "id": "of stressed|poetry|had been thought to be works composed by romanos the melodist (fl",
+   "subject": "of stressed",
+   "verb": "poetry",
+   "object": "had been thought to be works composed by Romanos the Melodist (fl",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4359-4581",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#2323-2446",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Scanning meter can often show the basic or fundamental pattern underlying a verse, but does not show the varying degrees of stress (linguistics)stress, as well as the differing pitches and vowel lengthlengths of syllables."
+     "text": "Until recently, the earliest examples of stressed poetry had been thought to be works composed by Romanos the Melodist (fl."
     }
    ]
   },
@@ -3155,7 +1610,7 @@
    "verb": "epic",
    "object": "poem",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3166,98 +1621,23 @@
    ]
   },
   {
-   "id": "or occurs|to|a much lesser extent",
-   "subject": "or occurs",
-   "verb": "to",
-   "object": "a much lesser extent",
+   "id": "pentameter and|dactylic|hexameter were later used by a number of poets",
+   "subject": "pentameter and",
+   "verb": "dactylic",
+   "object": "hexameter were later used by a number of poets",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#6511-6796",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#2662-2860",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "In addition, different patterns often develop distinctively in different languages, so that, for example, iambic tetrameter in Russian will generally reflect a regularity in the use of accents to reinforce the meter, which does not occur, or occurs to a much lesser extent, in English."
-    }
-   ]
-  },
-  {
-   "id": "or|the|final foot in a line may be given a meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop",
-   "subject": "or",
-   "verb": "the",
-   "object": "final foot in a line may be given a Meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
+     "text": "Ancient Orient Museum, Istanbul.jpg\"greek\"> Iambic pentameter and dactylic hexameter were later used by a number of poets, including William Shakespeare and Henry Wadsworth Longfellow, respectively."
+    },
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#6044-6324",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "For example, the stress in a foot may be inverted, a caesura (or pause) may be added (sometimes in place of a foot or stress), or the final foot in a line may be given a Meter (poetry)feminine ending to soften it or be replaced by a spondee to emphasize it and create a hard stop."
-    }
-   ]
-  },
-  {
-   "id": "other forms|of|poetry",
-   "subject": "Other forms",
-   "verb": "of",
-   "object": "poetry",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#982-1223",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Other forms of poetry, including such ancient collections of religious hymns as the Indian Sanskrit-language Rigveda, the Avestan Gatha (Zoroaster)Gathas, the Hurrian songs, and the Hebrew Psalms, possibly developed directly from folk songs."
-    }
-   ]
-  },
-  {
-   "id": "persian avestan|books|(the yasna)",
-   "subject": "Persian Avestan",
-   "verb": "books",
-   "object": "(the Yasna)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#592-852",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Other ancient epics includes the Greek Iliad and the Odyssey; the Persian Avestan books (the Yasna); the Ancient RomeRoman national epic, Virgil's Aeneid (written between 29 and 19 BCE); and the Indian epic poetryIndian epics, the Ramayana and the Mahabharata."
-    }
-   ]
-  },
-  {
-   "id": "ranging from|the|shakespearean iambic pentameter and the homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
-   "subject": "ranging from",
-   "verb": "the",
-   "object": "Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#5596-5880",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
-    }
-   ]
-  },
-  {
-   "id": "right up|to|a choriamb",
-   "subject": "right up",
-   "verb": "to",
-   "object": "a choriamb",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#3512-3720",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "There are a wide range of names for other types of feet, right up to a choriamb, a four syllable metric foot with a stressed syllable followed by two unstressed syllables and closing with a stressed syllable."
+     "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
     }
    ]
   },
@@ -3267,7 +1647,7 @@
    "verb": "has",
    "object": "argued that while dactyls are important in classical verse",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3283,7 +1663,7 @@
    "verb": "is",
    "object": "organized according to Sanskrit prosodychhandas",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3294,28 +1674,12 @@
    ]
   },
   {
-   "id": "separate from|the|repetitive sound patterns created",
-   "subject": "separate from",
-   "verb": "the",
-   "object": "repetitive sound patterns created",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#7799-7881",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "They can also carry a meaning separate from the repetitive sound patterns created."
-    }
-   ]
-  },
-  {
    "id": "such as|dactylic|hexameter",
    "subject": "such as",
    "verb": "dactylic",
    "object": "hexameter",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3331,39 +1695,7 @@
    "verb": "iambic",
    "object": "pentameter) tend to be fairly regular",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#6325-6472",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Some patterns (such as iambic pentameter) tend to be fairly regular, while other patterns, such as dactylic hexameter, tend to be highly irregular."
-    }
-   ]
-  },
-  {
-   "id": "suggested that|the|term \"scud\" be used to distinguish an unaccented stress from an accented stress",
-   "subject": "suggested that",
-   "verb": "the",
-   "object": "term \"scud\" be used to distinguish an unaccented stress from an accented stress",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#5108-5422",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Vladimir Nabokov noted that overlaid on top of the regular pattern of stressed and unstressed syllables in a line of verse was a separate pattern of accents resulting from the natural pitch of the spoken words, and suggested that the term \"scud\" be used to distinguish an unaccented stress from an accented stress."
-    }
-   ]
-  },
-  {
-   "id": "tend|to|be highly irregular",
-   "subject": "tend",
-   "verb": "to",
-   "object": "be highly irregular",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3379,7 +1711,7 @@
    "verb": "is",
    "object": "derived from some ancient Greek literatureGreek and Latin poetry",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3390,92 +1722,12 @@
    ]
   },
   {
-   "id": "the classic|of|poetry (shijing)",
-   "subject": "the Classic",
-   "verb": "of",
-   "object": "Poetry (Shijing)",
+   "id": "the indian|epic|poetryindian epics",
+   "subject": "the Indian",
+   "verb": "epic",
+   "object": "poetryIndian epics",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1224-1351",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The earliest entries in the oldest extant collection of Chinese poetry, the Classic of Poetry (Shijing), were initially lyrics."
-    }
-   ]
-  },
-  {
-   "id": "the efforts|of|ancient thinkers to determine what makes poetry distinctive as a form",
-   "subject": "The efforts",
-   "verb": "of",
-   "object": "ancient thinkers to determine what makes poetry distinctive as a form",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1653-1844",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form, and what distinguishes good poetry from bad, resulted in \"poetics\"—the study of the aesthetics of poetry."
-    }
-   ]
-  },
-  {
-   "id": "the epic|of|gilgamesh",
-   "subject": "the Epic",
-   "verb": "of",
-   "object": "Gilgamesh",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#38-246",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The oldest surviving epic poem, the Epic of Gilgamesh, dates from the 3rd millenniumBCE in Sumer (in Mesopotamia, present-day Iraq), and was written in cuneiform script on clay tablets and, later, on papyrus."
-    }
-   ]
-  },
-  {
-   "id": "the finnish|national|epic",
-   "subject": "the Finnish",
-   "verb": "national",
-   "object": "epic",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
-    }
-   ]
-  },
-  {
-   "id": "the istanbul|2461istanbul|tablet 2461",
-   "subject": "The Istanbul",
-   "verb": "2461istanbul",
-   "object": "tablet 2461",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#247-502",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The Istanbul 2461Istanbul tablet 2461, dating to 2000BCE, describes an annual rite in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity; some have labelled it the world's oldest love poem."
-    }
-   ]
-  },
-  {
-   "id": "the ramayana|and|the mahabharata",
-   "subject": "the Ramayana",
-   "verb": "and",
-   "object": "the Mahabharata",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3486,34 +1738,66 @@
    ]
   },
   {
-   "id": "the song|of|hiawatha",
-   "subject": "The Song",
-   "verb": "of",
-   "object": "Hiawatha",
+   "id": "the istanbul|2461istanbul|tablet 2461",
+   "subject": "The Istanbul",
+   "verb": "2461istanbul",
+   "object": "tablet 2461",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#6798-7462",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#247-502",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "]] Some common metrical patterns, with notable examples of poets and poems who use them, include: Iambic pentameter (John Milton, Paradise Lost; William Shakespeare, Shakespeare's SonnetsSonnets) Dactylic hexameter (Homer, Iliad; Virgil, Aeneid) Iambic tetrameter (Andrew Marvell, \"To His Coy Mistress\"; Alexander Pushkin, Eugene Onegin; Robert Frost, Stopping by Woods on a Snowy Evening) Trochaic octameter (Edgar Allan Poe, \"The Raven\") Trochaic tetrameter (Henry Wadsworth Longfellow, The Song of Hiawatha; the Finnish national epic, KalevalaThe Kalevala, is also in trochaic tetrameter, the natural rhythm of Finnish and Estonian) (Jean Racine, Phèdre)"
+     "text": "The Istanbul 2461Istanbul tablet 2461, dating to 2000BCE, describes an annual rite in which the king Hieros gamossymbolically married and mated with the goddess Inanna to ensure fertility and prosperity; some have labelled it the world's oldest love poem."
     }
    ]
   },
   {
-   "id": "the study|of|the aesthetics of poetry",
-   "subject": "the study",
-   "verb": "of",
-   "object": "the aesthetics of poetry",
+   "id": "the shakespearean|iambic|pentameter and the homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
+   "subject": "the Shakespearean",
+   "verb": "iambic",
+   "object": "pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1653-1844",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#5596-5880",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form, and what distinguishes good poetry from bad, resulted in \"poetics\"—the study of the aesthetics of poetry."
+     "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
+    }
+   ]
+  },
+  {
+   "id": "the snark|is|mainly in anapestic tetrameter",
+   "subject": "the Snark",
+   "verb": "is",
+   "object": "mainly in anapestic tetrameter",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#5596-5880",
+     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
+     "text": "'s The Hunting of the Snark (1876) is mainly in anapestic tetrameter.]] Different traditions and genres of poetry tend to use different meters, ranging from the Shakespearean iambic pentameter and the Homeric dactylic hexameter to the anapestic tetrameter used in many nursery rhymes."
+    }
+   ]
+  },
+  {
+   "id": "the|epic|of gilgamesh",
+   "subject": "the",
+   "verb": "epic",
+   "object": "of Gilgamesh",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#38-246",
+     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
+     "text": "The oldest surviving epic poem, the Epic of Gilgamesh, dates from the 3rd millenniumBCE in Sumer (in Mesopotamia, present-day Iraq), and was written in cuneiform script on clay tablets and, later, on papyrus."
     }
    ]
   },
@@ -3523,7 +1807,7 @@
    "verb": "are",
    "object": "a wide range of names for other types of feet",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3539,7 +1823,7 @@
    "verb": "is",
    "object": "debate over how useful a multiplicity of different \"feet\" is in describing meter",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3555,7 +1839,7 @@
    "verb": "writes",
    "object": "that an inscribed Greek poem predated Romanos' stressed poetry",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3566,44 +1850,12 @@
    ]
   },
   {
-   "id": "turkishottoman turkish|or|vedic metervedic",
-   "subject": "TurkishOttoman Turkish",
-   "verb": "or",
-   "object": "Vedic meterVedic",
+   "id": "usually|used|to end dactylic hexameter)",
+   "subject": "usually",
+   "verb": "used",
+   "object": "to end dactylic hexameter)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#3803-4125",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Languages which use vowel length or Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter, such as Metre (poetry)Ottoman TurkishOttoman Turkish or Vedic meterVedic, often have concepts similar to the iamb and dactyl to describe common combinations of long and short sounds."
-    }
-   ]
-  },
-  {
-   "id": "unstressed syllables|and|closing with a stressed syllable",
-   "subject": "unstressed syllables",
-   "verb": "and",
-   "object": "closing with a stressed syllable",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#3512-3720",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "There are a wide range of names for other types of feet, right up to a choriamb, a four syllable metric foot with a stressed syllable followed by two unstressed syllables and closing with a stressed syllable."
-    }
-   ]
-  },
-  {
-   "id": "usually used|to|end dactylic hexameter)",
-   "subject": "usually used",
-   "verb": "to",
-   "object": "end dactylic hexameter)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3614,28 +1866,12 @@
    ]
   },
   {
-   "id": "valued by|the|philosopher confucius and is considered to be one of the official four books and five classicsconfucian classics",
-   "subject": "valued by",
-   "verb": "the",
-   "object": "philosopher Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#1352-1549",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "The Shijing, with its collection of poems and folk songs, was heavily valued by the philosopher Confucius and is considered to be one of the official Four Books and Five ClassicsConfucian classics."
-    }
-   ]
-  },
-  {
    "id": "vladimir nabokov|noted|that overlaid on top of the regular pattern of stressed and unstressed syllables in a line of verse was a separate pattern of accents resulting from the natural pitch of the spoken words",
    "subject": "Vladimir Nabokov",
    "verb": "noted",
    "object": "that overlaid on top of the regular pattern of stressed and unstressed syllables in a line of verse was a separate pattern of accents resulting from the natural pitch of the spoken words",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3646,50 +1882,18 @@
    ]
   },
   {
-   "id": "vowel length|or|intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter",
-   "subject": "vowel length",
-   "verb": "or",
-   "object": "Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter",
+   "id": "what makes|poetry|distinctive as a form",
+   "subject": "what makes",
+   "verb": "poetry",
+   "object": "distinctive as a form",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#3803-4125",
+     "at": "02-encyclopedic/wikipedia/Poetry.txt#1653-1844",
      "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Languages which use vowel length or Intonation (linguistics)intonation rather than or in addition to syllabic accents in determining meter, such as Metre (poetry)Ottoman TurkishOttoman Turkish or Vedic meterVedic, often have concepts similar to the iamb and dactyl to describe common combinations of long and short sounds."
-    }
-   ]
-  },
-  {
-   "id": "well as|the|differing pitches and vowel lengthlengths of syllables",
-   "subject": "well as",
-   "verb": "the",
-   "object": "differing pitches and vowel lengthlengths of syllables",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4359-4581",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Scanning meter can often show the basic or fundamental pattern underlying a verse, but does not show the varying degrees of stress (linguistics)stress, as well as the differing pitches and vowel lengthlengths of syllables."
-    }
-   ]
-  },
-  {
-   "id": "whether alone|or|in combination with other feet",
-   "subject": "whether alone",
-   "verb": "or",
-   "object": "in combination with other feet",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#4127-4225",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Each of these types of feet has a certain \"feel,\" whether alone or in combination with other feet."
+     "text": "The efforts of ancient thinkers to determine what makes poetry distinctive as a form, and what distinguishes good poetry from bad, resulted in \"poetics\"—the study of the aesthetics of poetry."
     }
    ]
   },
@@ -3699,7 +1903,7 @@
    "verb": "are",
    "object": "manifold and continue to influence several South Asian languages' poetry",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Poetry.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3708,26 +1912,10 @@
      "text": "Sanskrit poetry is organized according to Sanskrit prosodychhandas, which are manifold and continue to influence several South Asian languages' poetry."
     }
    ]
-  },
-  {
-   "id": "william shakespeare|and|henry wadsworth longfellow",
-   "subject": "William Shakespeare",
-   "verb": "and",
-   "object": "Henry Wadsworth Longfellow",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Poetry.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Poetry.txt#2662-2860",
-     "ref": "02-encyclopedic/wikipedia/Poetry.txt",
-     "text": "Ancient Orient Museum, Istanbul.jpg\"greek\"> Iambic pentameter and dactylic hexameter were later used by a number of poets, including William Shakespeare and Henry Wadsworth Longfellow, respectively."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:43.359Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:23.315Z"
  }
 }

@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 63716,
   "bodyOffset": 0,
   "bodyChars": 63716,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 19,
   "distinctReferents": 14,
   "examined": true,
-  "edgesFound": 92,
-  "extractionError": null
+  "edgesFound": 34,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 18
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 34,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 125,
-  "excerptOk": 125,
-  "rawChecked": 125,
-  "rawOk": 125,
+  "excerptChecked": 46,
+  "excerptOk": 46,
+  "rawChecked": 46,
+  "rawOk": 46,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 92,
-  "heard": 92,
+  "offered": 34,
+  "heard": 34,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "one time|the|buddha was staying near rājagaha in the mango grove of jīvaka komārabhacca",
+    "task_id": "the buddha|was|staying near rājagaha in the mango grove of jīvaka komārabhacca",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "one time the Buddha was staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca",
-    "subject": "one time",
-    "verb": "the",
-    "object": "Buddha was staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca",
+    "description": "the Buddha was staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca",
+    "subject": "the Buddha",
+    "verb": "was",
+    "object": "staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "large saṅgha|of|1",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "large Saṅgha of 1",
-    "subject": "large Saṅgha",
-    "verb": "of",
-    "object": "1",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#112-253",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "At one time the Buddha was staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca, together with a large Saṅgha of 1,250 mendicants."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "was",
     "object": "the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,99 +142,7 @@
       "text": "Now, at that time it was the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha, son of the princess of Videha, was sitting upstairs in the royal longhouse surrounded by his ministers."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "son of|the|princess of videha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "son of the princess of Videha",
-    "subject": "son of",
-    "verb": "the",
-    "object": "princess of Videha",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#255-489",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Now, at that time it was the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha, son of the princess of Videha, was sitting upstairs in the royal longhouse surrounded by his ministers."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#491-690",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then Ajātasattu of Magadha, son of the princess of Videha, expressed this heartfelt sentiment, “Oh, sirs, this moonlit night is so very delightful, so beautiful, so glorious, so lovely, so striking."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sitting upstairs|in|the royal longhouse surrounded by his ministers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sitting upstairs in the royal longhouse surrounded by his ministers",
-    "subject": "sitting upstairs",
-    "verb": "in",
-    "object": "the royal longhouse surrounded by his ministers",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#255-489",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Now, at that time it was the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha, son of the princess of Videha, was sitting upstairs in the royal longhouse surrounded by his ministers."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then ajātasattu|of|magadha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Then Ajātasattu of Magadha",
-    "subject": "Then Ajātasattu",
-    "verb": "of",
-    "object": "Magadha",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#491-690",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then Ajātasattu of Magadha, son of the princess of Videha, expressed this heartfelt sentiment, “Oh, sirs, this moonlit night is so very delightful, so beautiful, so glorious, so lovely, so striking."
-     }
-    ],
-    "seq": 5,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -253,7 +162,7 @@
     "verb": "is",
     "object": "so very delightful",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -262,7 +171,7 @@
       "text": "Then Ajātasattu of Magadha, son of the princess of Videha, expressed this heartfelt sentiment, “Oh, sirs, this moonlit night is so very delightful, so beautiful, so glorious, so lovely, so striking."
      }
     ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -282,7 +191,7 @@
     "verb": "ascetic",
     "object": "or brahmin might I pay homage to today",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -291,36 +200,7 @@
       "text": "Now, what ascetic or brahmin might I pay homage to today, paying homage to whom my mind might find peace?”"
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "paying homage|to|whom my mind might find peace?”",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "paying homage to whom my mind might find peace?”",
-    "subject": "paying homage",
-    "verb": "to",
-    "object": "whom my mind might find peace?”",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#692-798",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Now, what ascetic or brahmin might I pay homage to today, paying homage to whom my mind might find peace?”"
-     }
-    ],
-    "seq": 8,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -340,45 +220,46 @@
     "verb": "had",
     "object": "spoken",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/suttacentral/dn2_en.txt#800-952",
       "ref": "14-holy-texts/suttacentral/dn2_en.txt",
       "text": "When he had spoken, one of the king’s ministers said to him, “Your Majesty, this Pūraṇa Kassapa leads an order and a community, and tutors a community."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "one of|the|king’s ministers said to him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "one of the king’s ministers said to him",
-    "subject": "one of",
-    "verb": "the",
-    "object": "king’s ministers said to him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
+     },
      {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#800-952",
+      "at": "14-holy-texts/suttacentral/dn2_en.txt#1224-1269",
       "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "When he had spoken, one of the king’s ministers said to him, “Your Majesty, this Pūraṇa Kassapa leads an order and a community, and tutors a community."
+      "text": "But when he had spoken, the king kept silent."
+     },
+     {
+      "at": "14-holy-texts/suttacentral/dn2_en.txt#1694-1739",
+      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+      "text": "But when he had spoken, the king kept silent."
+     },
+     {
+      "at": "14-holy-texts/suttacentral/dn2_en.txt#2160-2205",
+      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+      "text": "But when he had spoken, the king kept silent."
+     },
+     {
+      "at": "14-holy-texts/suttacentral/dn2_en.txt#2618-2663",
+      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+      "text": "But when he had spoken, the king kept silent."
+     },
+     {
+      "at": "14-holy-texts/suttacentral/dn2_en.txt#3080-3125",
+      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+      "text": "But when he had spoken, the king kept silent."
+     },
+     {
+      "at": "14-holy-texts/suttacentral/dn2_en.txt#3552-3597",
+      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+      "text": "But when he had spoken, the king kept silent."
      }
     ],
-    "seq": 10,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -398,7 +279,7 @@
     "verb": "leads",
     "object": "an order and a community",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -407,67 +288,13 @@
       "text": "When he had spoken, one of the king’s ministers said to him, “Your Majesty, this Pūraṇa Kassapa leads an order and a community, and tutors a community."
      }
     ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "known|and|famous religious founder",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "known and famous religious founder",
-    "subject": "known",
-    "verb": "and",
-    "object": "famous religious founder",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#953-1028",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1423-1498",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1889-1964",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2347-2422",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2809-2884",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3281-3356",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he is|of|long standing",
+    "task_id": "he|is|of long standing",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -477,11 +304,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "He is of long standing",
-    "subject": "He is",
-    "verb": "of",
-    "object": "long standing",
+    "subject": "He",
+    "verb": "is",
+    "object": "of long standing",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -490,7 +317,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 13,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -510,7 +337,7 @@
     "verb": "is",
     "object": "advanced in years and has reached the final stage of life",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -519,7 +346,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 14,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -539,7 +366,7 @@
     "verb": "pay",
     "object": "homage to him",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -578,203 +405,7 @@
       "text": "Let Your Majesty pay homage to him."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hopefully|in|so doing your mind will find peace",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Hopefully in so doing your mind will find peace",
-    "subject": "Hopefully",
-    "verb": "in",
-    "object": "so doing your mind will find peace",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1173-1222",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Hopefully in so doing your mind will find peace.”"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1643-1692",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Hopefully in so doing your mind will find peace.”"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2109-2158",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Hopefully in so doing your mind will find peace.”"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2567-2616",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Hopefully in so doing your mind will find peace.”"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3029-3078",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Hopefully in so doing your mind will find peace.”"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3501-3550",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Hopefully in so doing your mind will find peace.”"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4233-4282",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Hopefully in so doing your mind will find peace.”"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but when|he|had spoken",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But when he had spoken",
-    "subject": "But when",
-    "verb": "he",
-    "object": "had spoken",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1224-1269",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1694-1739",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2160-2205",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2618-2663",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3080-3125",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3552-3597",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the|king|kept silent",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the king kept silent",
-    "subject": "the",
-    "verb": "king",
-    "object": "kept silent",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1224-1269",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1694-1739",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2160-2205",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2618-2663",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3080-3125",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3552-3597",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But when he had spoken, the king kept silent."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "another of|the|king’s ministers said to him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Another of the king’s ministers said to him",
-    "subject": "Another of",
-    "verb": "the",
-    "object": "king’s ministers said to him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1271-1422",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this bamboo-staffed ascetic Gosāla leads an order and a community, and tutors a community."
-     }
-    ],
-    "seq": 19,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -794,7 +425,7 @@
     "verb": "ascetic",
     "object": "Gosāla leads an order and a community",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -803,13 +434,13 @@
       "text": "Another of the king’s ministers said to him, “Your Majesty, this bamboo-staffed ascetic Gosāla leads an order and a community, and tutors a community."
      }
     ],
-    "seq": 20,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "supersede",
-    "task_id": "he is|of|long standing",
+    "task_id": "he|is|of long standing",
     "operator": "SYN",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -819,11 +450,11 @@
     "mode": "Generate",
     "domain": "Structure",
     "description": "heard again: He is of long standing",
-    "subject": "He is",
-    "verb": "of",
-    "object": "long standing",
+    "subject": "He",
+    "verb": "is",
+    "object": "of long standing",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -837,7 +468,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 21,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -857,7 +488,7 @@
     "verb": "is",
     "object": "advanced in years and has reached the final stage of life",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -871,47 +502,13 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "another of|the|king’s ministers said to him",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: Another of the king’s ministers said to him",
-    "subject": "Another of",
-    "verb": "the",
-    "object": "king’s ministers said to him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1271-1422",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this bamboo-staffed ascetic Gosāla leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1741-1888",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Ajita of the hair blanket leads an order and a community, and tutors a community."
-     }
-    ],
-    "seq": 23,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "this ajita|of|the hair blanket leads an order and a community",
+    "task_id": "hair blanket|leads|an order and a community",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -920,12 +517,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "this Ajita of the hair blanket leads an order and a community",
-    "subject": "this Ajita",
-    "verb": "of",
-    "object": "the hair blanket leads an order and a community",
+    "description": "hair blanket leads an order and a community",
+    "subject": "hair blanket",
+    "verb": "leads",
+    "object": "an order and a community",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -934,13 +531,13 @@
       "text": "Another of the king’s ministers said to him, “Your Majesty, this Ajita of the hair blanket leads an order and a community, and tutors a community."
      }
     ],
-    "seq": 24,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "supersede",
-    "task_id": "he is|of|long standing",
+    "task_id": "he|is|of long standing",
     "operator": "SYN",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -950,11 +547,11 @@
     "mode": "Generate",
     "domain": "Structure",
     "description": "heard again: He is of long standing",
-    "subject": "He is",
-    "verb": "of",
-    "object": "long standing",
+    "subject": "He",
+    "verb": "is",
+    "object": "of long standing",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -973,7 +570,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 25,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -993,7 +590,7 @@
     "verb": "is",
     "object": "advanced in years and has reached the final stage of life",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1012,46 +609,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "another of|the|king’s ministers said to him",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: Another of the king’s ministers said to him",
-    "subject": "Another of",
-    "verb": "the",
-    "object": "king’s ministers said to him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1271-1422",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this bamboo-staffed ascetic Gosāla leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1741-1888",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Ajita of the hair blanket leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2207-2346",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Pakudha Kaccāyana leads an order and a community, and tutors a community."
-     }
-    ],
-    "seq": 27,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1071,7 +629,7 @@
     "verb": "leads",
     "object": "an order and a community",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1080,13 +638,13 @@
       "text": "Another of the king’s ministers said to him, “Your Majesty, this Pakudha Kaccāyana leads an order and a community, and tutors a community."
      }
     ],
-    "seq": 28,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "supersede",
-    "task_id": "he is|of|long standing",
+    "task_id": "he|is|of long standing",
     "operator": "SYN",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1096,11 +654,11 @@
     "mode": "Generate",
     "domain": "Structure",
     "description": "heard again: He is of long standing",
-    "subject": "He is",
-    "verb": "of",
-    "object": "long standing",
+    "subject": "He",
+    "verb": "is",
+    "object": "of long standing",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1124,7 +682,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 29,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1144,7 +702,7 @@
     "verb": "is",
     "object": "advanced in years and has reached the final stage of life",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1168,51 +726,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "another of|the|king’s ministers said to him",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: Another of the king’s ministers said to him",
-    "subject": "Another of",
-    "verb": "the",
-    "object": "king’s ministers said to him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1271-1422",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this bamboo-staffed ascetic Gosāla leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1741-1888",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Ajita of the hair blanket leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2207-2346",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Pakudha Kaccāyana leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2665-2808",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Sañjaya Belaṭṭhiputta leads an order and a community, and tutors a community."
-     }
-    ],
-    "seq": 31,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1232,7 +746,7 @@
     "verb": "leads",
     "object": "an order and a community",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1241,13 +755,13 @@
       "text": "Another of the king’s ministers said to him, “Your Majesty, this Sañjaya Belaṭṭhiputta leads an order and a community, and tutors a community."
      }
     ],
-    "seq": 32,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "supersede",
-    "task_id": "he is|of|long standing",
+    "task_id": "he|is|of long standing",
     "operator": "SYN",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1257,11 +771,11 @@
     "mode": "Generate",
     "domain": "Structure",
     "description": "heard again: He is of long standing",
-    "subject": "He is",
-    "verb": "of",
-    "object": "long standing",
+    "subject": "He",
+    "verb": "is",
+    "object": "of long standing",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1290,7 +804,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 33,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1310,7 +824,7 @@
     "verb": "is",
     "object": "advanced in years and has reached the final stage of life",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1339,56 +853,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "another of|the|king’s ministers said to him",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: Another of the king’s ministers said to him",
-    "subject": "Another of",
-    "verb": "the",
-    "object": "king’s ministers said to him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1271-1422",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this bamboo-staffed ascetic Gosāla leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#1741-1888",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Ajita of the hair blanket leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2207-2346",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Pakudha Kaccāyana leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#2665-2808",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Sañjaya Belaṭṭhiputta leads an order and a community, and tutors a community."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3127-3280",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Another of the king’s ministers said to him, “Your Majesty, this Jain ascetic of the Ñātika clan leads an order and a community, and tutors a community."
-     }
-    ],
-    "seq": 35,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1408,7 +873,7 @@
     "verb": "ascetic",
     "object": "of the Ñātika clan leads an order and a community",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1417,13 +882,13 @@
       "text": "Another of the king’s ministers said to him, “Your Majesty, this Jain ascetic of the Ñātika clan leads an order and a community, and tutors a community."
      }
     ],
-    "seq": 36,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "supersede",
-    "task_id": "he is|of|long standing",
+    "task_id": "he|is|of long standing",
     "operator": "SYN",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1433,11 +898,11 @@
     "mode": "Generate",
     "domain": "Structure",
     "description": "heard again: He is of long standing",
-    "subject": "He is",
-    "verb": "of",
-    "object": "long standing",
+    "subject": "He",
+    "verb": "is",
+    "object": "of long standing",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1471,7 +936,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 37,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1491,7 +956,7 @@
     "verb": "is",
     "object": "advanced in years and has reached the final stage of life",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1525,7 +990,7 @@
       "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
      }
     ],
-    "seq": 38,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1545,7 +1010,7 @@
     "verb": "was",
     "object": "sitting silently not far from the king",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1554,70 +1019,7 @@
       "text": "A Discussion With Jīvaka Komārabhacca Now at that time Jīvaka Komārabhacca was sitting silently not far from the king."
      }
     ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then the|king|said to him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Then the king said to him",
-    "subject": "Then the",
-    "verb": "king",
-    "object": "said to him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3723-3792",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then the king said to him, “But my dear Jīvaka, why are you silent?”"
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|my|dear jīvaka",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But my dear Jīvaka",
-    "subject": "But",
-    "verb": "my",
-    "object": "dear Jīvaka",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3723-3792",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then the king said to him, “But my dear Jīvaka, why are you silent?”"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-     }
-    ],
-    "seq": 41,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1637,7 +1039,7 @@
     "verb": "is",
     "object": "staying in my mango grove together with a large Saṅgha of 1",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1646,7 +1048,7 @@
       "text": "“Your Majesty, this Blessed One, the perfected one, the fully awakened Buddha is staying in my mango grove together with a large Saṅgha of 1,250 mendicants."
      }
     ],
-    "seq": 42,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1666,7 +1068,7 @@
     "verb": "is",
     "object": "perfected",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1675,123 +1077,7 @@
       "text": "He has this good reputation: ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’"
      }
     ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "accomplished|in|knowledge and conduct",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "accomplished in knowledge and conduct",
-    "subject": "accomplished",
-    "verb": "in",
-    "object": "knowledge and conduct",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3952-4194",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He has this good reputation: ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’"
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "knower of|the|world",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "knower of the world",
-    "subject": "knower of",
-    "verb": "the",
-    "object": "world",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3952-4194",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He has this good reputation: ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’"
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "teacher|of|gods and humans",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "teacher of gods and humans",
-    "subject": "teacher",
-    "verb": "of",
-    "object": "gods and humans",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#3952-4194",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He has this good reputation: ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’"
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have|the|elephants readied",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "have the elephants readied",
-    "subject": "have",
-    "verb": "the",
-    "object": "elephants readied",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4284-4340",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "“Well then, my dear Jīvaka, have the elephants readied.”"
-     }
-    ],
-    "seq": 47,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1811,7 +1097,7 @@
     "verb": "had",
     "object": "around five hundred female elephants readied",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1820,13 +1106,13 @@
       "text": "He had around five hundred female elephants readied, in addition to the king’s bull elephant for riding."
      }
     ],
-    "seq": 48,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "in addition|to|the king’s bull elephant for riding",
+    "task_id": "king ajātasattu|had|women mounted on each of the five hundred female elephants",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1835,104 +1121,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "in addition to the king’s bull elephant for riding",
-    "subject": "in addition",
-    "verb": "to",
-    "object": "the king’s bull elephant for riding",
+    "description": "King Ajātasattu had women mounted on each of the five hundred female elephants",
+    "subject": "King Ajātasattu",
+    "verb": "had",
+    "object": "women mounted on each of the five hundred female elephants",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4379-4483",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He had around five hundred female elephants readied, in addition to the king’s bull elephant for riding."
-     }
-    ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then|he|informed the king",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Then he informed the king",
-    "subject": "Then",
-    "verb": "he",
-    "object": "informed the king",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4484-4551",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then he informed the king, “The elephants are ready, Your Majesty."
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then|king|ajātasattu had women mounted on each of the five hundred female elephants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Then king Ajātasattu had women mounted on each of the five hundred female elephants",
-    "subject": "Then",
-    "verb": "king",
-    "object": "Ajātasattu had women mounted on each of the five hundred female elephants",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4586-4706",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then King Ajātasattu had women mounted on each of the five hundred female elephants, while he mounted his bull elephant."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "while|he|mounted his bull elephant",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "while he mounted his bull elephant",
-    "subject": "while",
-    "verb": "he",
-    "object": "mounted his bull elephant",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1941,279 +1135,13 @@
       "text": "Then King Ajātasattu had women mounted on each of the five hundred female elephants, while he mounted his bull elephant."
      }
     ],
-    "seq": 52,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "set out|in|full royal pomp from rājagaha to jīvaka’s mango grove",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "set out in full royal pomp from Rājagaha to Jīvaka’s Mango Grove",
-    "subject": "set out",
-    "verb": "in",
-    "object": "full royal pomp from Rājagaha to Jīvaka’s Mango Grove",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4707-4809",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "With attendants carrying torches, he set out in full royal pomp from Rājagaha to Jīvaka’s Mango Grove."
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but as|he|drew near the mango grove",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But as he drew near the mango grove",
-    "subject": "But as",
-    "verb": "he",
-    "object": "drew near the mango grove",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4811-4909",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But as he drew near the mango grove, the king became frightened, scared, his hair standing on end."
-     }
-    ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the|king|became frightened",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the king became frightened",
-    "subject": "the",
-    "verb": "king",
-    "object": "became frightened",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4811-4909",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "But as he drew near the mango grove, the king became frightened, scared, his hair standing on end."
-     }
-    ],
-    "seq": 55,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he said|to|jīvaka",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "He said to Jīvaka",
-    "subject": "He said",
-    "verb": "to",
-    "object": "Jīvaka",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#4911-4979",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He said to Jīvaka, “My dear Jīvaka, I hope you’re not deceiving me!"
-     }
-    ],
-    "seq": 56,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "me over|to|my enemies!",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "me over to my enemies!",
-    "subject": "me over",
-    "verb": "to",
-    "object": "my enemies!",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5014-5062",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "I hope you’re not turning me over to my enemies!"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5234-5314",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "I am not deceiving you, or betraying you, or turning you over to your enemies."
-     }
-    ],
-    "seq": 57,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "no sound|of|coughing or clearing throats or any noise in such a large saṅgha of 1",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "no sound of coughing or clearing throats or any noise in such a large Saṅgha of 1",
-    "subject": "no sound",
-    "verb": "of",
-    "object": "coughing or clearing throats or any noise in such a large Saṅgha of 1",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5064-5192",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "For how on earth can there be no sound of coughing or clearing throats or any noise in such a large Saṅgha of 1,250 mendicants?”"
-     }
-    ],
-    "seq": 58,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lamps shining|in|the pavilion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lamps shining in the pavilion",
-    "subject": "lamps shining",
-    "verb": "in",
-    "object": "the pavilion",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5352-5393",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Those are lamps shining in the pavilion.”"
-     }
-    ],
-    "seq": 59,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then descended|and|approached the pavilion door on foot",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "then descended and approached the pavilion door on foot",
-    "subject": "then descended",
-    "verb": "and",
-    "object": "approached the pavilion door on foot",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-     }
-    ],
-    "seq": 60,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "where|he|asked jīvaka",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "where he asked Jīvaka",
-    "subject": "where",
-    "verb": "he",
-    "object": "asked Jīvaka",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-     }
-    ],
-    "seq": 61,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "where is|the|buddha?”",
+    "task_id": "where|is|the buddha?”",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2223,11 +1151,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "where is the Buddha?”",
-    "subject": "where is",
-    "verb": "the",
-    "object": "Buddha?”",
+    "subject": "where",
+    "verb": "is",
+    "object": "the Buddha?”",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2236,13 +1164,13 @@
       "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
      }
     ],
-    "seq": 62,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "that is|the|buddha",
+    "task_id": "that|is|the buddha",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2252,11 +1180,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "That is the Buddha",
-    "subject": "That is",
-    "verb": "the",
-    "object": "Buddha",
+    "subject": "That",
+    "verb": "is",
+    "object": "the Buddha",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2265,632 +1193,13 @@
       "text": "“That is the Buddha, Great King, that is the Buddha!"
      }
     ],
-    "seq": 63,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "sitting against|the|central column facing east",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sitting against the central column facing east",
-    "subject": "sitting against",
-    "verb": "the",
-    "object": "central column facing east",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5701-5792",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He’s sitting against the central column facing east, in front of the Saṅgha of mendicants.”"
-     }
-    ],
-    "seq": 64,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in front|of|the saṅgha of mendicants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in front of the Saṅgha of mendicants",
-    "subject": "in front",
-    "verb": "of",
-    "object": "the Saṅgha of mendicants",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5701-5792",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He’s sitting against the central column facing east, in front of the Saṅgha of mendicants.”"
-     }
-    ],
-    "seq": 65,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then the|king|went up to the buddha and stood to one side",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Then the king went up to the Buddha and stood to one side",
-    "subject": "Then the",
-    "verb": "king",
-    "object": "went up to the Buddha and stood to one side",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5794-5852",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then the king went up to the Buddha and stood to one side."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6260-6363",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then the king bowed to the Buddha, raised his cupped palms toward the Saṅgha, and sat down to one side."
-     }
-    ],
-    "seq": 66,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "looked around|the|saṅgha of mendicants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "looked around the Saṅgha of mendicants",
-    "subject": "looked around",
-    "verb": "the",
-    "object": "Saṅgha of mendicants",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5854-6089",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He looked around the Saṅgha of mendicants, who were so very silent, like a still, clear lake, and expressed this heartfelt sentiment, “May my son, Prince Udāyibhadda, be blessed with such peace as the Saṅgha of mendicants now enjoys!”"
-     }
-    ],
-    "seq": 67,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "may|my|son",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "May my son",
-    "subject": "May",
-    "verb": "my",
-    "object": "son",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5854-6089",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He looked around the Saṅgha of mendicants, who were so very silent, like a still, clear lake, and expressed this heartfelt sentiment, “May my son, Prince Udāyibhadda, be blessed with such peace as the Saṅgha of mendicants now enjoys!”"
-     }
-    ],
-    "seq": 68,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "such peace|as|the saṅgha of mendicants now enjoys!”",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "such peace as the Saṅgha of mendicants now enjoys!”",
-    "subject": "such peace",
-    "verb": "as",
-    "object": "the Saṅgha of mendicants now enjoys!”",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#5854-6089",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He looked around the Saṅgha of mendicants, who were so very silent, like a still, clear lake, and expressed this heartfelt sentiment, “May my son, Prince Udāyibhadda, be blessed with such peace as the Saṅgha of mendicants now enjoys!”"
-     }
-    ],
-    "seq": 69,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mind gone|to|one you love",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mind gone to one you love",
-    "subject": "mind gone",
-    "verb": "to",
-    "object": "one you love",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6091-6140",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "“Has your mind gone to one you love, Great King?”"
-     }
-    ],
-    "seq": 70,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "i love|my|son",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "I love my son",
-    "subject": "I love",
-    "verb": "my",
-    "object": "son",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6142-6182",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "“I love my son, sir, Prince Udāyibhadda."
-     }
-    ],
-    "seq": 71,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "may|he|be blessed with such peace as the saṅgha of mendicants now enjoys!”",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "May he be blessed with such peace as the Saṅgha of mendicants now enjoys!”",
-    "subject": "May",
-    "verb": "he",
-    "object": "be blessed with such peace as the Saṅgha of mendicants now enjoys!”",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6184-6258",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "May he be blessed with such peace as the Saṅgha of mendicants now enjoys!”"
-     }
-    ],
-    "seq": 72,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "palms toward|the|saṅgha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "palms toward the Saṅgha",
-    "subject": "palms toward",
-    "verb": "the",
-    "object": "Saṅgha",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6260-6363",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then the king bowed to the Buddha, raised his cupped palms toward the Saṅgha, and sat down to one side."
-     }
-    ],
-    "seq": 73,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sat down|to|one side",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sat down to one side",
-    "subject": "sat down",
-    "verb": "to",
-    "object": "one side",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6260-6363",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "Then the king bowed to the Buddha, raised his cupped palms toward the Saṅgha, and sat down to one side."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7852-7962",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "When the greetings and polite conversation were over, I sat down to one side, and asked him the same question."
-     }
-    ],
-    "seq": 74,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he said|to|the buddha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "He said to the Buddha",
-    "subject": "He said",
-    "verb": "to",
-    "object": "the Buddha",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6365-6472",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He said to the Buddha, “Sir, I’d like to ask you about a certain point, if you’d take the time to answer.”"
-     }
-    ],
-    "seq": 75,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "i’d like|to|ask you about a certain point",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "I’d like to ask you about a certain point",
-    "subject": "I’d like",
-    "verb": "to",
-    "object": "ask you about a certain point",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6365-6472",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He said to the Buddha, “Sir, I’d like to ask you about a certain point, if you’d take the time to answer.”"
-     }
-    ],
-    "seq": 76,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you’d take|the|time to answer",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "you’d take the time to answer",
-    "subject": "you’d take",
-    "verb": "the",
-    "object": "time to answer",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6365-6472",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "He said to the Buddha, “Sir, I’d like to ask you about a certain point, if you’d take the time to answer.”"
-     }
-    ],
-    "seq": 77,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and sons|of|bondservants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and sons of bondservants",
-    "subject": "and sons",
-    "verb": "of",
-    "object": "bondservants",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6562-6769",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "These include elephant marshals, cavalry, charioteers, archers, bannermen, adjutants, food servers, warrior-chiefs, princes, chargers, great warriors, heroes, leather-clad soldiers, and sons of bondservants."
-     }
-    ],
-    "seq": 78,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "live off|the|fruits of their profession which are apparent in this very life",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "live off the fruits of their profession which are apparent in this very life",
-    "subject": "live off",
-    "verb": "the",
-    "object": "fruits of their profession which are apparent in this very life",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#6969-7056",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "All these live off the fruits of their profession which are apparent in this very life."
-     }
-    ],
-    "seq": 79,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "themselves happy|and|pleased",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "themselves happy and pleased",
-    "subject": "themselves happy",
-    "verb": "and",
-    "object": "pleased",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7058-7107",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "With that they make themselves happy and pleased."
-     }
-    ],
-    "seq": 80,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "their children|and|partners",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "their children and partners",
-    "subject": "their children",
-    "verb": "and",
-    "object": "partners",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7108-7213",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "They make their parents, their children and partners, and their friends and colleagues happy and pleased."
-     }
-    ],
-    "seq": 81,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "their friends|and|colleagues happy and pleased",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "their friends and colleagues happy and pleased",
-    "subject": "their friends",
-    "verb": "and",
-    "object": "colleagues happy and pleased",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7108-7213",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "They make their parents, their children and partners, and their friends and colleagues happy and pleased."
-     }
-    ],
-    "seq": 82,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "for ascetics|and|brahmins that’s conducive to heaven",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "for ascetics and brahmins that’s conducive to heaven",
-    "subject": "for ascetics",
-    "verb": "and",
-    "object": "brahmins that’s conducive to heaven",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7214-7360",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "And they establish an uplifting religious donation for ascetics and brahmins that’s conducive to heaven, ripens in happiness, and leads to heaven."
-     }
-    ],
-    "seq": 83,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ripens|in|happiness",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ripens in happiness",
-    "subject": "ripens",
-    "verb": "in",
-    "object": "happiness",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7214-7360",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "And they establish an uplifting religious donation for ascetics and brahmins that’s conducive to heaven, ripens in happiness, and leads to heaven."
-     }
-    ],
-    "seq": 84,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and leads|to|heaven",
+    "task_id": "and|leads|to heaven",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2900,11 +1209,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "and leads to heaven",
-    "subject": "and leads",
-    "verb": "to",
-    "object": "heaven",
+    "subject": "and",
+    "verb": "leads",
+    "object": "to heaven",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2913,13 +1222,13 @@
       "text": "And they establish an uplifting religious donation for ascetics and brahmins that’s conducive to heaven, ripens in happiness, and leads to heaven."
      }
     ],
-    "seq": 85,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "a fruit|of|the ascetic life that’s likewise apparent in this very life?”",
+    "task_id": "of the|ascetic|life that’s likewise apparent in this very life?”",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2928,12 +1237,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "a fruit of the ascetic life that’s likewise apparent in this very life?”",
-    "subject": "a fruit",
-    "verb": "of",
-    "object": "the ascetic life that’s likewise apparent in this very life?”",
+    "description": "of the ascetic life that’s likewise apparent in this very life?”",
+    "subject": "of the",
+    "verb": "ascetic",
+    "object": "life that’s likewise apparent in this very life?”",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2942,13 +1251,13 @@
       "text": "Sir, can you point out a fruit of the ascetic life that’s likewise apparent in this very life?”"
      }
     ],
-    "seq": 86,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "this question|of|other ascetics and brahmins?”",
+    "task_id": "blessed one|is|sitting here",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2957,41 +1266,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "this question of other ascetics and brahmins?”",
-    "subject": "this question",
-    "verb": "of",
-    "object": "other ascetics and brahmins?”",
+    "description": "Blessed One is sitting here",
+    "subject": "Blessed One",
+    "verb": "is",
+    "object": "sitting here",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7459-7545",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "“Great king, do you recall having asked this question of other ascetics and brahmins?”"
-     }
-    ],
-    "seq": 87,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "no trouble|when|someone such as the blessed one is sitting here",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "no trouble when someone such as the Blessed One is sitting here",
-    "subject": "no trouble",
-    "verb": "when",
-    "object": "someone such as the Blessed One is sitting here",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3000,99 +1280,12 @@
       "text": "“It’s no trouble when someone such as the Blessed One is sitting here.”"
      }
     ],
-    "seq": 88,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "pūraṇa kassapa|and|exchanged greetings with him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Pūraṇa Kassapa and exchanged greetings with him",
-    "subject": "Pūraṇa Kassapa",
-    "verb": "and",
-    "object": "exchanged greetings with him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7736-7850",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "The Doctrine of Pūraṇa Kassapa “This one time, sir, I approached Pūraṇa Kassapa and exchanged greetings with him."
-     }
-    ],
-    "seq": 89,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "when|the|greetings and polite conversation were over",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "When the greetings and polite conversation were over",
-    "subject": "When",
-    "verb": "the",
-    "object": "greetings and polite conversation were over",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7852-7962",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "When the greetings and polite conversation were over, I sat down to one side, and asked him the same question."
-     }
-    ],
-    "seq": 90,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "asked him|the|same question",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "asked him the same question",
-    "subject": "asked him",
-    "verb": "the",
-    "object": "same question",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn2_en.txt#7852-7962",
-      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-      "text": "When the greetings and polite conversation were over, I sat down to one side, and asked him the same question."
-     }
-    ],
-    "seq": 91,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 92,
+  "nextSeq": 34,
   "admits": [
    "NUL",
    "SEG",
@@ -3107,44 +1300,12 @@
  },
  "folded": [
   {
-   "id": "a fruit|of|the ascetic life that’s likewise apparent in this very life?”",
-   "subject": "a fruit",
-   "verb": "of",
-   "object": "the ascetic life that’s likewise apparent in this very life?”",
+   "id": "and|leads|to heaven",
+   "subject": "and",
+   "verb": "leads",
+   "object": "to heaven",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7362-7457",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Sir, can you point out a fruit of the ascetic life that’s likewise apparent in this very life?”"
-    }
-   ]
-  },
-  {
-   "id": "accomplished|in|knowledge and conduct",
-   "subject": "accomplished",
-   "verb": "in",
-   "object": "knowledge and conduct",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3952-4194",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He has this good reputation: ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’"
-    }
-   ]
-  },
-  {
-   "id": "and leads|to|heaven",
-   "subject": "and leads",
-   "verb": "to",
-   "object": "heaven",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3155,80 +1316,12 @@
    ]
   },
   {
-   "id": "and sons|of|bondservants",
-   "subject": "and sons",
-   "verb": "of",
-   "object": "bondservants",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6562-6769",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "These include elephant marshals, cavalry, charioteers, archers, bannermen, adjutants, food servers, warrior-chiefs, princes, chargers, great warriors, heroes, leather-clad soldiers, and sons of bondservants."
-    }
-   ]
-  },
-  {
-   "id": "another of|the|king’s ministers said to him",
-   "subject": "Another of",
-   "verb": "the",
-   "object": "king’s ministers said to him",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1271-1422",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Another of the king’s ministers said to him, “Your Majesty, this bamboo-staffed ascetic Gosāla leads an order and a community, and tutors a community."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1741-1888",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Another of the king’s ministers said to him, “Your Majesty, this Ajita of the hair blanket leads an order and a community, and tutors a community."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2207-2346",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Another of the king’s ministers said to him, “Your Majesty, this Pakudha Kaccāyana leads an order and a community, and tutors a community."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2665-2808",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Another of the king’s ministers said to him, “Your Majesty, this Sañjaya Belaṭṭhiputta leads an order and a community, and tutors a community."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3127-3280",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Another of the king’s ministers said to him, “Your Majesty, this Jain ascetic of the Ñātika clan leads an order and a community, and tutors a community."
-    }
-   ]
-  },
-  {
-   "id": "asked him|the|same question",
-   "subject": "asked him",
-   "verb": "the",
-   "object": "same question",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7852-7962",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "When the greetings and polite conversation were over, I sat down to one side, and asked him the same question."
-    }
-   ]
-  },
-  {
    "id": "awakened buddha|is|staying in my mango grove together with a large saṅgha of 1",
    "subject": "awakened Buddha",
    "verb": "is",
    "object": "staying in my mango grove together with a large Saṅgha of 1",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3244,7 +1337,7 @@
    "verb": "is",
    "object": "perfected",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3255,185 +1348,34 @@
    ]
   },
   {
-   "id": "but as|he|drew near the mango grove",
-   "subject": "But as",
-   "verb": "he",
-   "object": "drew near the mango grove",
+   "id": "blessed one|is|sitting here",
+   "subject": "Blessed One",
+   "verb": "is",
+   "object": "sitting here",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4811-4909",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#7625-7696",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "But as he drew near the mango grove, the king became frightened, scared, his hair standing on end."
+     "text": "“It’s no trouble when someone such as the Blessed One is sitting here.”"
     }
    ]
   },
   {
-   "id": "but when|he|had spoken",
-   "subject": "But when",
-   "verb": "he",
-   "object": "had spoken",
+   "id": "hair blanket|leads|an order and a community",
+   "subject": "hair blanket",
+   "verb": "leads",
+   "object": "an order and a community",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1224-1269",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#1741-1888",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "But when he had spoken, the king kept silent."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1694-1739",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "But when he had spoken, the king kept silent."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2160-2205",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "But when he had spoken, the king kept silent."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2618-2663",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "But when he had spoken, the king kept silent."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3080-3125",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "But when he had spoken, the king kept silent."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3552-3597",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "But when he had spoken, the king kept silent."
-    }
-   ]
-  },
-  {
-   "id": "but|my|dear jīvaka",
-   "subject": "But",
-   "verb": "my",
-   "object": "dear Jīvaka",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3723-3792",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then the king said to him, “But my dear Jīvaka, why are you silent?”"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-    }
-   ]
-  },
-  {
-   "id": "for ascetics|and|brahmins that’s conducive to heaven",
-   "subject": "for ascetics",
-   "verb": "and",
-   "object": "brahmins that’s conducive to heaven",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7214-7360",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "And they establish an uplifting religious donation for ascetics and brahmins that’s conducive to heaven, ripens in happiness, and leads to heaven."
-    }
-   ]
-  },
-  {
-   "id": "have|the|elephants readied",
-   "subject": "have",
-   "verb": "the",
-   "object": "elephants readied",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4284-4340",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "“Well then, my dear Jīvaka, have the elephants readied.”"
-    }
-   ]
-  },
-  {
-   "id": "he is|of|long standing",
-   "subject": "He is",
-   "verb": "of",
-   "object": "long standing",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1029-1134",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1499-1604",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1965-2070",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2423-2528",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2885-2990",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3357-3462",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
-    }
-   ]
-  },
-  {
-   "id": "he said|to|jīvaka",
-   "subject": "He said",
-   "verb": "to",
-   "object": "Jīvaka",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4911-4979",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He said to Jīvaka, “My dear Jīvaka, I hope you’re not deceiving me!"
-    }
-   ]
-  },
-  {
-   "id": "he said|to|the buddha",
-   "subject": "He said",
-   "verb": "to",
-   "object": "the Buddha",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6365-6472",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He said to the Buddha, “Sir, I’d like to ask you about a certain point, if you’d take the time to answer.”"
+     "text": "Another of the king’s ministers said to him, “Your Majesty, this Ajita of the hair blanket leads an order and a community, and tutors a community."
     }
    ]
   },
@@ -3443,7 +1385,7 @@
    "verb": "had",
    "object": "around five hundred female elephants readied",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3459,7 +1401,7 @@
    "verb": "is",
    "object": "advanced in years and has reached the final stage of life",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3495,112 +1437,43 @@
    ]
   },
   {
-   "id": "hopefully|in|so doing your mind will find peace",
-   "subject": "Hopefully",
-   "verb": "in",
-   "object": "so doing your mind will find peace",
+   "id": "he|is|of long standing",
+   "subject": "He",
+   "verb": "is",
+   "object": "of long standing",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1173-1222",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#1029-1134",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Hopefully in so doing your mind will find peace.”"
+     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
     },
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1643-1692",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#1499-1604",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Hopefully in so doing your mind will find peace.”"
+     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
     },
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2109-2158",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#1965-2070",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Hopefully in so doing your mind will find peace.”"
+     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
     },
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2567-2616",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#2423-2528",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Hopefully in so doing your mind will find peace.”"
+     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
     },
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3029-3078",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#2885-2990",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Hopefully in so doing your mind will find peace.”"
+     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
     },
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3501-3550",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#3357-3462",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Hopefully in so doing your mind will find peace.”"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4233-4282",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Hopefully in so doing your mind will find peace.”"
-    }
-   ]
-  },
-  {
-   "id": "i love|my|son",
-   "subject": "I love",
-   "verb": "my",
-   "object": "son",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6142-6182",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "“I love my son, sir, Prince Udāyibhadda."
-    }
-   ]
-  },
-  {
-   "id": "i’d like|to|ask you about a certain point",
-   "subject": "I’d like",
-   "verb": "to",
-   "object": "ask you about a certain point",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6365-6472",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He said to the Buddha, “Sir, I’d like to ask you about a certain point, if you’d take the time to answer.”"
-    }
-   ]
-  },
-  {
-   "id": "in addition|to|the king’s bull elephant for riding",
-   "subject": "in addition",
-   "verb": "to",
-   "object": "the king’s bull elephant for riding",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4379-4483",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He had around five hundred female elephants readied, in addition to the king’s bull elephant for riding."
-    }
-   ]
-  },
-  {
-   "id": "in front|of|the saṅgha of mendicants",
-   "subject": "in front",
-   "verb": "of",
-   "object": "the Saṅgha of mendicants",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5701-5792",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He’s sitting against the central column facing east, in front of the Saṅgha of mendicants.”"
+     "text": "He is of long standing, long gone forth; he is advanced in years and has reached the final stage of life."
     }
    ]
   },
@@ -3610,7 +1483,7 @@
    "verb": "was",
    "object": "sitting silently not far from the king",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3621,192 +1494,18 @@
    ]
   },
   {
-   "id": "knower of|the|world",
-   "subject": "knower of",
-   "verb": "the",
-   "object": "world",
+   "id": "king ajātasattu|had|women mounted on each of the five hundred female elephants",
+   "subject": "King Ajātasattu",
+   "verb": "had",
+   "object": "women mounted on each of the five hundred female elephants",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3952-4194",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#4586-4706",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He has this good reputation: ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’"
-    }
-   ]
-  },
-  {
-   "id": "known|and|famous religious founder",
-   "subject": "known",
-   "verb": "and",
-   "object": "famous religious founder",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#953-1028",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1423-1498",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1889-1964",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2347-2422",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#2809-2884",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3281-3356",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He’s a well-known and famous religious founder, deemed holy by many people."
-    }
-   ]
-  },
-  {
-   "id": "lamps shining|in|the pavilion",
-   "subject": "lamps shining",
-   "verb": "in",
-   "object": "the pavilion",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5352-5393",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Those are lamps shining in the pavilion.”"
-    }
-   ]
-  },
-  {
-   "id": "large saṅgha|of|1",
-   "subject": "large Saṅgha",
-   "verb": "of",
-   "object": "1",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#112-253",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "At one time the Buddha was staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca, together with a large Saṅgha of 1,250 mendicants."
-    }
-   ]
-  },
-  {
-   "id": "live off|the|fruits of their profession which are apparent in this very life",
-   "subject": "live off",
-   "verb": "the",
-   "object": "fruits of their profession which are apparent in this very life",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6969-7056",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "All these live off the fruits of their profession which are apparent in this very life."
-    }
-   ]
-  },
-  {
-   "id": "looked around|the|saṅgha of mendicants",
-   "subject": "looked around",
-   "verb": "the",
-   "object": "Saṅgha of mendicants",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5854-6089",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He looked around the Saṅgha of mendicants, who were so very silent, like a still, clear lake, and expressed this heartfelt sentiment, “May my son, Prince Udāyibhadda, be blessed with such peace as the Saṅgha of mendicants now enjoys!”"
-    }
-   ]
-  },
-  {
-   "id": "may|he|be blessed with such peace as the saṅgha of mendicants now enjoys!”",
-   "subject": "May",
-   "verb": "he",
-   "object": "be blessed with such peace as the Saṅgha of mendicants now enjoys!”",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6184-6258",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "May he be blessed with such peace as the Saṅgha of mendicants now enjoys!”"
-    }
-   ]
-  },
-  {
-   "id": "may|my|son",
-   "subject": "May",
-   "verb": "my",
-   "object": "son",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5854-6089",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He looked around the Saṅgha of mendicants, who were so very silent, like a still, clear lake, and expressed this heartfelt sentiment, “May my son, Prince Udāyibhadda, be blessed with such peace as the Saṅgha of mendicants now enjoys!”"
-    }
-   ]
-  },
-  {
-   "id": "me over|to|my enemies!",
-   "subject": "me over",
-   "verb": "to",
-   "object": "my enemies!",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5014-5062",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "I hope you’re not turning me over to my enemies!"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5234-5314",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "I am not deceiving you, or betraying you, or turning you over to your enemies."
-    }
-   ]
-  },
-  {
-   "id": "mind gone|to|one you love",
-   "subject": "mind gone",
-   "verb": "to",
-   "object": "one you love",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6091-6140",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "“Has your mind gone to one you love, Great King?”"
+     "text": "Then King Ajātasattu had women mounted on each of the five hundred female elephants, while he mounted his bull elephant."
     }
    ]
   },
@@ -3816,7 +1515,7 @@
    "verb": "is",
    "object": "so very delightful",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3827,66 +1526,18 @@
    ]
   },
   {
-   "id": "no sound|of|coughing or clearing throats or any noise in such a large saṅgha of 1",
-   "subject": "no sound",
-   "verb": "of",
-   "object": "coughing or clearing throats or any noise in such a large Saṅgha of 1",
+   "id": "of the|ascetic|life that’s likewise apparent in this very life?”",
+   "subject": "of the",
+   "verb": "ascetic",
+   "object": "life that’s likewise apparent in this very life?”",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5064-5192",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#7362-7457",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "For how on earth can there be no sound of coughing or clearing throats or any noise in such a large Saṅgha of 1,250 mendicants?”"
-    }
-   ]
-  },
-  {
-   "id": "no trouble|when|someone such as the blessed one is sitting here",
-   "subject": "no trouble",
-   "verb": "when",
-   "object": "someone such as the Blessed One is sitting here",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7625-7696",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "“It’s no trouble when someone such as the Blessed One is sitting here.”"
-    }
-   ]
-  },
-  {
-   "id": "one of|the|king’s ministers said to him",
-   "subject": "one of",
-   "verb": "the",
-   "object": "king’s ministers said to him",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#800-952",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "When he had spoken, one of the king’s ministers said to him, “Your Majesty, this Pūraṇa Kassapa leads an order and a community, and tutors a community."
-    }
-   ]
-  },
-  {
-   "id": "one time|the|buddha was staying near rājagaha in the mango grove of jīvaka komārabhacca",
-   "subject": "one time",
-   "verb": "the",
-   "object": "Buddha was staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#112-253",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "At one time the Buddha was staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca, together with a large Saṅgha of 1,250 mendicants."
+     "text": "Sir, can you point out a fruit of the ascetic life that’s likewise apparent in this very life?”"
     }
    ]
   },
@@ -3896,7 +1547,7 @@
    "verb": "leads",
    "object": "an order and a community",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3907,60 +1558,12 @@
    ]
   },
   {
-   "id": "palms toward|the|saṅgha",
-   "subject": "palms toward",
-   "verb": "the",
-   "object": "Saṅgha",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6260-6363",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then the king bowed to the Buddha, raised his cupped palms toward the Saṅgha, and sat down to one side."
-    }
-   ]
-  },
-  {
-   "id": "paying homage|to|whom my mind might find peace?”",
-   "subject": "paying homage",
-   "verb": "to",
-   "object": "whom my mind might find peace?”",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#692-798",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Now, what ascetic or brahmin might I pay homage to today, paying homage to whom my mind might find peace?”"
-    }
-   ]
-  },
-  {
-   "id": "pūraṇa kassapa|and|exchanged greetings with him",
-   "subject": "Pūraṇa Kassapa",
-   "verb": "and",
-   "object": "exchanged greetings with him",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7736-7850",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "The Doctrine of Pūraṇa Kassapa “This one time, sir, I approached Pūraṇa Kassapa and exchanged greetings with him."
-    }
-   ]
-  },
-  {
    "id": "pūraṇa kassapa|leads|an order and a community",
    "subject": "Pūraṇa Kassapa",
    "verb": "leads",
    "object": "an order and a community",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3971,28 +1574,12 @@
    ]
   },
   {
-   "id": "ripens|in|happiness",
-   "subject": "ripens",
-   "verb": "in",
-   "object": "happiness",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7214-7360",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "And they establish an uplifting religious donation for ascetics and brahmins that’s conducive to heaven, ripens in happiness, and leads to heaven."
-    }
-   ]
-  },
-  {
    "id": "sañjaya belaṭṭhiputta|leads|an order and a community",
    "subject": "Sañjaya Belaṭṭhiputta",
    "verb": "leads",
    "object": "an order and a community",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4003,102 +1590,12 @@
    ]
   },
   {
-   "id": "sat down|to|one side",
-   "subject": "sat down",
-   "verb": "to",
-   "object": "one side",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6260-6363",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then the king bowed to the Buddha, raised his cupped palms toward the Saṅgha, and sat down to one side."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7852-7962",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "When the greetings and polite conversation were over, I sat down to one side, and asked him the same question."
-    }
-   ]
-  },
-  {
-   "id": "set out|in|full royal pomp from rājagaha to jīvaka’s mango grove",
-   "subject": "set out",
-   "verb": "in",
-   "object": "full royal pomp from Rājagaha to Jīvaka’s Mango Grove",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4707-4809",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "With attendants carrying torches, he set out in full royal pomp from Rājagaha to Jīvaka’s Mango Grove."
-    }
-   ]
-  },
-  {
-   "id": "sitting against|the|central column facing east",
-   "subject": "sitting against",
-   "verb": "the",
-   "object": "central column facing east",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5701-5792",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He’s sitting against the central column facing east, in front of the Saṅgha of mendicants.”"
-    }
-   ]
-  },
-  {
-   "id": "sitting upstairs|in|the royal longhouse surrounded by his ministers",
-   "subject": "sitting upstairs",
-   "verb": "in",
-   "object": "the royal longhouse surrounded by his ministers",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#255-489",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Now, at that time it was the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha, son of the princess of Videha, was sitting upstairs in the royal longhouse surrounded by his ministers."
-    }
-   ]
-  },
-  {
-   "id": "son of|the|princess of videha",
-   "subject": "son of",
-   "verb": "the",
-   "object": "princess of Videha",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#255-489",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Now, at that time it was the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha, son of the princess of Videha, was sitting upstairs in the royal longhouse surrounded by his ministers."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#491-690",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then Ajātasattu of Magadha, son of the princess of Videha, expressed this heartfelt sentiment, “Oh, sirs, this moonlit night is so very delightful, so beautiful, so glorious, so lovely, so striking."
-    }
-   ]
-  },
-  {
    "id": "staffed|ascetic|gosāla leads an order and a community",
    "subject": "staffed",
    "verb": "ascetic",
    "object": "Gosāla leads an order and a community",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4109,44 +1606,12 @@
    ]
   },
   {
-   "id": "such peace|as|the saṅgha of mendicants now enjoys!”",
-   "subject": "such peace",
-   "verb": "as",
-   "object": "the Saṅgha of mendicants now enjoys!”",
+   "id": "that|is|the buddha",
+   "subject": "That",
+   "verb": "is",
+   "object": "the Buddha",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5854-6089",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He looked around the Saṅgha of mendicants, who were so very silent, like a still, clear lake, and expressed this heartfelt sentiment, “May my son, Prince Udāyibhadda, be blessed with such peace as the Saṅgha of mendicants now enjoys!”"
-    }
-   ]
-  },
-  {
-   "id": "teacher|of|gods and humans",
-   "subject": "teacher",
-   "verb": "of",
-   "object": "gods and humans",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3952-4194",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He has this good reputation: ‘That Blessed One is perfected, a fully awakened Buddha, accomplished in knowledge and conduct, holy, knower of the world, supreme guide for those fit for training, teacher of gods and humans, awakened, blessed.’"
-    }
-   ]
-  },
-  {
-   "id": "that is|the|buddha",
-   "subject": "That is",
-   "verb": "the",
-   "object": "Buddha",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4157,30 +1622,83 @@
    ]
   },
   {
-   "id": "the|king|became frightened",
-   "subject": "the",
-   "verb": "king",
-   "object": "became frightened",
+   "id": "the buddha|was|staying near rājagaha in the mango grove of jīvaka komārabhacca",
+   "subject": "the Buddha",
+   "verb": "was",
+   "object": "staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4811-4909",
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#112-253",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "But as he drew near the mango grove, the king became frightened, scared, his hair standing on end."
+     "text": "At one time the Buddha was staying near Rājagaha in the Mango Grove of Jīvaka Komārabhacca, together with a large Saṅgha of 1,250 mendicants."
     }
    ]
   },
   {
-   "id": "the|king|kept silent",
-   "subject": "the",
-   "verb": "king",
-   "object": "kept silent",
+   "id": "this jain|ascetic|of the ñātika clan leads an order and a community",
+   "subject": "this Jain",
+   "verb": "ascetic",
+   "object": "of the Ñātika clan leads an order and a community",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
+    {
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#3127-3280",
+     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+     "text": "Another of the king’s ministers said to him, “Your Majesty, this Jain ascetic of the Ñātika clan leads an order and a community, and tutors a community."
+    }
+   ]
+  },
+  {
+   "id": "time it|was|the sabbath—the komudī full moon on the fifteenth day of the fourth month—and king ajātasattu of magadha",
+   "subject": "time it",
+   "verb": "was",
+   "object": "the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha",
+   "witnesses": [
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#255-489",
+     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+     "text": "Now, at that time it was the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha, son of the princess of Videha, was sitting upstairs in the royal longhouse surrounded by his ministers."
+    }
+   ]
+  },
+  {
+   "id": "what|ascetic|or brahmin might i pay homage to today",
+   "subject": "what",
+   "verb": "ascetic",
+   "object": "or brahmin might I pay homage to today",
+   "witnesses": [
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#692-798",
+     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+     "text": "Now, what ascetic or brahmin might I pay homage to today, paying homage to whom my mind might find peace?”"
+    }
+   ]
+  },
+  {
+   "id": "when he|had|spoken",
+   "subject": "When he",
+   "verb": "had",
+   "object": "spoken",
+   "witnesses": [
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/suttacentral/dn2_en.txt#800-952",
+     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
+     "text": "When he had spoken, one of the king’s ministers said to him, “Your Majesty, this Pūraṇa Kassapa leads an order and a community, and tutors a community."
+    },
     {
      "at": "14-holy-texts/suttacentral/dn2_en.txt#1224-1269",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
@@ -4214,332 +1732,18 @@
    ]
   },
   {
-   "id": "their children|and|partners",
-   "subject": "their children",
-   "verb": "and",
-   "object": "partners",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7108-7213",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "They make their parents, their children and partners, and their friends and colleagues happy and pleased."
-    }
-   ]
-  },
-  {
-   "id": "their friends|and|colleagues happy and pleased",
-   "subject": "their friends",
-   "verb": "and",
-   "object": "colleagues happy and pleased",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7108-7213",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "They make their parents, their children and partners, and their friends and colleagues happy and pleased."
-    }
-   ]
-  },
-  {
-   "id": "themselves happy|and|pleased",
-   "subject": "themselves happy",
-   "verb": "and",
-   "object": "pleased",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7058-7107",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "With that they make themselves happy and pleased."
-    }
-   ]
-  },
-  {
-   "id": "then ajātasattu|of|magadha",
-   "subject": "Then Ajātasattu",
-   "verb": "of",
-   "object": "Magadha",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#491-690",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then Ajātasattu of Magadha, son of the princess of Videha, expressed this heartfelt sentiment, “Oh, sirs, this moonlit night is so very delightful, so beautiful, so glorious, so lovely, so striking."
-    }
-   ]
-  },
-  {
-   "id": "then descended|and|approached the pavilion door on foot",
-   "subject": "then descended",
-   "verb": "and",
-   "object": "approached the pavilion door on foot",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-    }
-   ]
-  },
-  {
-   "id": "then the|king|said to him",
-   "subject": "Then the",
-   "verb": "king",
-   "object": "said to him",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3723-3792",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then the king said to him, “But my dear Jīvaka, why are you silent?”"
-    }
-   ]
-  },
-  {
-   "id": "then the|king|went up to the buddha and stood to one side",
-   "subject": "Then the",
-   "verb": "king",
-   "object": "went up to the Buddha and stood to one side",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5794-5852",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then the king went up to the Buddha and stood to one side."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6260-6363",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then the king bowed to the Buddha, raised his cupped palms toward the Saṅgha, and sat down to one side."
-    }
-   ]
-  },
-  {
-   "id": "then|he|informed the king",
-   "subject": "Then",
-   "verb": "he",
-   "object": "informed the king",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4484-4551",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then he informed the king, “The elephants are ready, Your Majesty."
-    }
-   ]
-  },
-  {
-   "id": "then|king|ajātasattu had women mounted on each of the five hundred female elephants",
-   "subject": "Then",
-   "verb": "king",
-   "object": "Ajātasattu had women mounted on each of the five hundred female elephants",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4586-4706",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then King Ajātasattu had women mounted on each of the five hundred female elephants, while he mounted his bull elephant."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-    }
-   ]
-  },
-  {
-   "id": "this ajita|of|the hair blanket leads an order and a community",
-   "subject": "this Ajita",
-   "verb": "of",
-   "object": "the hair blanket leads an order and a community",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#1741-1888",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Another of the king’s ministers said to him, “Your Majesty, this Ajita of the hair blanket leads an order and a community, and tutors a community."
-    }
-   ]
-  },
-  {
-   "id": "this jain|ascetic|of the ñātika clan leads an order and a community",
-   "subject": "this Jain",
-   "verb": "ascetic",
-   "object": "of the Ñātika clan leads an order and a community",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#3127-3280",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Another of the king’s ministers said to him, “Your Majesty, this Jain ascetic of the Ñātika clan leads an order and a community, and tutors a community."
-    }
-   ]
-  },
-  {
-   "id": "this question|of|other ascetics and brahmins?”",
-   "subject": "this question",
-   "verb": "of",
-   "object": "other ascetics and brahmins?”",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7459-7545",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "“Great king, do you recall having asked this question of other ascetics and brahmins?”"
-    }
-   ]
-  },
-  {
-   "id": "time it|was|the sabbath—the komudī full moon on the fifteenth day of the fourth month—and king ajātasattu of magadha",
-   "subject": "time it",
-   "verb": "was",
-   "object": "the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#255-489",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Now, at that time it was the sabbath—the Komudī full moon on the fifteenth day of the fourth month—and King Ajātasattu of Magadha, son of the princess of Videha, was sitting upstairs in the royal longhouse surrounded by his ministers."
-    }
-   ]
-  },
-  {
-   "id": "what|ascetic|or brahmin might i pay homage to today",
-   "subject": "what",
-   "verb": "ascetic",
-   "object": "or brahmin might I pay homage to today",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#692-798",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Now, what ascetic or brahmin might I pay homage to today, paying homage to whom my mind might find peace?”"
-    }
-   ]
-  },
-  {
-   "id": "when he|had|spoken",
-   "subject": "When he",
-   "verb": "had",
-   "object": "spoken",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#800-952",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "When he had spoken, one of the king’s ministers said to him, “Your Majesty, this Pūraṇa Kassapa leads an order and a community, and tutors a community."
-    }
-   ]
-  },
-  {
-   "id": "when|the|greetings and polite conversation were over",
-   "subject": "When",
-   "verb": "the",
-   "object": "greetings and polite conversation were over",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#7852-7962",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "When the greetings and polite conversation were over, I sat down to one side, and asked him the same question."
-    }
-   ]
-  },
-  {
-   "id": "where is|the|buddha?”",
-   "subject": "where is",
-   "verb": "the",
-   "object": "Buddha?”",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-    }
-   ]
-  },
-  {
-   "id": "where|he|asked jīvaka",
+   "id": "where|is|the buddha?”",
    "subject": "where",
-   "verb": "he",
-   "object": "asked Jīvaka",
+   "verb": "is",
+   "object": "the Buddha?”",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/suttacentral/dn2_en.txt#5398-5645",
      "ref": "14-holy-texts/suttacentral/dn2_en.txt",
      "text": "The Question About the Fruits of the Ascetic Life Then King Ajātasattu rode on the elephant as far as the terrain allowed, then descended and approached the pavilion door on foot, where he asked Jīvaka, “But my dear Jīvaka, where is the Buddha?”"
-    }
-   ]
-  },
-  {
-   "id": "while|he|mounted his bull elephant",
-   "subject": "while",
-   "verb": "he",
-   "object": "mounted his bull elephant",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#4586-4706",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "Then King Ajātasattu had women mounted on each of the five hundred female elephants, while he mounted his bull elephant."
-    }
-   ]
-  },
-  {
-   "id": "you’d take|the|time to answer",
-   "subject": "you’d take",
-   "verb": "the",
-   "object": "time to answer",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn2_en.txt#6365-6472",
-     "ref": "14-holy-texts/suttacentral/dn2_en.txt",
-     "text": "He said to the Buddha, “Sir, I’d like to ask you about a certain point, if you’d take the time to answer.”"
     }
    ]
   },
@@ -4549,7 +1753,7 @@
    "verb": "pay",
    "object": "homage to him",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn2_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn2_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4591,7 +1795,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:52.387Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:50.700Z"
  }
 }

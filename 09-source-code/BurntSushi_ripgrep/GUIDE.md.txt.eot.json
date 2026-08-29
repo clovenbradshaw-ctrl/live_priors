@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 40883,
   "bodyOffset": 0,
   "bodyChars": 40883,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 2,
   "distinctReferents": 2,
   "examined": true,
-  "edgesFound": 3,
-  "extractionError": null
+  "edgesFound": 1,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 3,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 7
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 1,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 3,
-  "excerptOk": 3,
-  "rawChecked": 3,
-  "rawOk": 3,
+  "excerptChecked": 1,
+  "excerptOk": 1,
+  "rawChecked": 1,
+  "rawOk": 1,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 3,
-  "heard": 3,
+  "offered": 1,
+  "heard": 1,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "reading each|file|line by line",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "reading each file line by line",
-    "subject": "reading each",
-    "verb": "file",
-    "object": "line by line",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt#953-1006",
-      "ref": "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt",
-      "text": "ripgrep behaves as if reading each file line by line."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "ls\nbenchsuite|grep|tests         cargo",
@@ -103,7 +104,7 @@
     "verb": "grep",
     "object": "tests         Cargo",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,41 +113,12 @@
       "text": "``` $ curl -LO https://github.com/BurntSushi/ripgrep/archive/0.7.1.zip $ unzip 0.7.1.zip $ cd ripgrep-0.7.1 $ ls benchsuite grep tests Cargo.toml LICENSE-MIT ci ignore wincolor CHANGELOG.md README.md complete pkg appveyor.yml compile snapcraft.yaml doc src build.rs COPYING UNLICENSE globset termcolor Cargo.lock HomebrewFormula ```"
      }
     ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "specify a|file|at all",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "specify a file at all",
-    "subject": "specify a",
-    "verb": "file",
-    "object": "at all",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt#6561-6610",
-      "ref": "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt",
-      "text": "In this example, we didn't specify a file at all."
-     }
-    ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 3,
+  "nextSeq": 1,
   "admits": [
    "NUL",
    "SEG",
@@ -166,7 +138,7 @@
    "verb": "grep",
    "object": "tests         Cargo",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -175,42 +147,10 @@
      "text": "``` $ curl -LO https://github.com/BurntSushi/ripgrep/archive/0.7.1.zip $ unzip 0.7.1.zip $ cd ripgrep-0.7.1 $ ls benchsuite grep tests Cargo.toml LICENSE-MIT ci ignore wincolor CHANGELOG.md README.md complete pkg appveyor.yml compile snapcraft.yaml doc src build.rs COPYING UNLICENSE globset termcolor Cargo.lock HomebrewFormula ```"
     }
    ]
-  },
-  {
-   "id": "reading each|file|line by line",
-   "subject": "reading each",
-   "verb": "file",
-   "object": "line by line",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt#953-1006",
-     "ref": "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt",
-     "text": "ripgrep behaves as if reading each file line by line."
-    }
-   ]
-  },
-  {
-   "id": "specify a|file|at all",
-   "subject": "specify a",
-   "verb": "file",
-   "object": "at all",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt#6561-6610",
-     "ref": "09-source-code/BurntSushi_ripgrep/GUIDE.md.txt",
-     "text": "In this example, we didn't specify a file at all."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:51.833Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:03.330Z"
  }
 }

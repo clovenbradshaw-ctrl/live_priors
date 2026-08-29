@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 22484,
   "bodyOffset": 0,
   "bodyChars": 22484,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,85 +55,39 @@
   "referentEvents": 16,
   "distinctReferents": 12,
   "examined": true,
-  "edgesFound": 22,
-  "extractionError": null
+  "edgesFound": 4,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 20
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 4,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 24,
-  "excerptOk": 24,
-  "rawChecked": 24,
-  "rawOk": 24,
+  "excerptChecked": 4,
+  "excerptOk": 4,
+  "rawChecked": 4,
+  "rawOk": 4,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 22,
-  "heard": 22,
+  "offered": 4,
+  "heard": 4,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "background\n    geographically|the|third-smallest state in europe (after the holy see and monaco)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Background\n    Geographically the third-smallest state in Europe (after the Holy See and Monaco)",
-    "subject": "Background\n    Geographically",
-    "verb": "the",
-    "object": "third-smallest state in Europe (after the Holy See and Monaco)",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#133-292",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Background Geographically the third-smallest state in Europe (after the Holy See and Monaco), San Marino also claims to be the world's oldest republic."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "san marino|also|claims to be the world's oldest republic",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "San Marino also claims to be the world's oldest republic",
-    "subject": "San Marino",
-    "verb": "also",
-    "object": "claims to be the world's oldest republic",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#133-292",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Background Geographically the third-smallest state in Europe (after the Holy See and Monaco), San Marino also claims to be the world's oldest republic."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "a christian|stonemason|named marinus in a",
@@ -132,7 +104,7 @@
     "verb": "stonemason",
     "object": "named MARINUS in A",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_sm.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,7 +113,7 @@
       "text": "According to tradition, it was founded by a Christian stonemason named MARINUS in A.D. 301."
      }
     ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -161,7 +133,7 @@
     "verb": "is",
     "object": "aligned with that of the EU",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_sm.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,7 +142,7 @@
       "text": "San Marino's foreign policy is aligned with that of the EU, although it is not a member.&nbsp; San Marino is negotiating an Association Agreement that is expected to allow participation in the EU&rsquo;s internal market and cooperation in other policy areas by late 2024."
      }
     ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +162,7 @@
     "verb": "is",
     "object": "not a member",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_sm.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,7 +171,7 @@
       "text": "San Marino's foreign policy is aligned with that of the EU, although it is not a member.&nbsp; San Marino is negotiating an Association Agreement that is expected to allow participation in the EU&rsquo;s internal market and cooperation in other policy areas by late 2024."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +191,7 @@
     "verb": "is",
     "object": "negotiating an Association Agreement that is expected to allow participation in the EU&rsquo",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_sm.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,486 +200,12 @@
       "text": "San Marino's foreign policy is aligned with that of the EU, although it is not a member.&nbsp; San Marino is negotiating an Association Agreement that is expected to allow participation in the EU&rsquo;s internal market and cooperation in other policy areas by late 2024."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "internal market|and|cooperation in other policy areas by late 2024",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "internal market and cooperation in other policy areas by late 2024",
-    "subject": "internal market",
-    "verb": "and",
-    "object": "cooperation in other policy areas by late 2024",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#385-656",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "San Marino's foreign policy is aligned with that of the EU, although it is not a member.&nbsp; San Marino is negotiating an Association Agreement that is expected to allow participation in the EU&rsquo;s internal market and cooperation in other policy areas by late 2024."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "social|and|political trends in the republic track closely with those of its larger neighbor",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Social and political trends in the republic track closely with those of its larger neighbor",
-    "subject": "Social",
-    "verb": "and",
-    "object": "political trends in the republic track closely with those of its larger neighbor",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#657-756",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "Social and political trends in the republic track closely with those of its larger neighbor, Italy."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "an enclave|in|central italy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "an enclave in central Italy",
-    "subject": "an enclave",
-    "verb": "in",
-    "object": "central Italy",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#772-833",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Location Southern Europe, an enclave in central Italy"
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "third|the|size of washington",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "third the size of Washington",
-    "subject": "third",
-    "verb": "the",
-    "object": "size of Washington",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#996-1067",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Area - comparative about one-third the size of Washington, D.C."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "an enclave|of|(completely surrounded by) italy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "an enclave of (completely surrounded by) Italy",
-    "subject": "an enclave",
-    "verb": "of",
-    "object": "(completely surrounded by) Italy",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#1917-2105",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Geography - note landlocked; an enclave of (completely surrounded by) Italy; smallest independent state in Europe after the Holy See and Monaco; dominated by the Apennine Mountains"
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "independent state|in|europe after the holy see and monaco",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "independent state in Europe after the Holy See and Monaco",
-    "subject": "independent state",
-    "verb": "in",
-    "object": "Europe after the Holy See and Monaco",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#1917-2105",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Geography - note landlocked; an enclave of (completely surrounded by) Italy; smallest independent state in Europe after the Holy See and Monaco; dominated by the Apennine Mountains"
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dominated by|the|apennine mountains",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dominated by the Apennine Mountains",
-    "subject": "dominated by",
-    "verb": "the",
-    "object": "Apennine Mountains",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#1917-2105",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Geography - note landlocked; an enclave of (completely surrounded by) Italy; smallest independent state in Europe after the Holy See and Monaco; dominated by the Apennine Mountains"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#2107-2128",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "le informazioni|di|base",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "le informazioni di base",
-    "subject": "le informazioni",
-    "verb": "di",
-    "object": "base",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#2364-2527",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Languages Languages: Italian major-language sample(s): <br>L'Almanacco dei fatti del mondo, l'indispensabile fonte per le informazioni di base."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "annual rate|of|change (2020-25 est",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "annual rate of change (2020-25 est",
-    "subject": "annual rate",
-    "verb": "of",
-    "object": "change (2020-25 est",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#3416-3564",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Urbanization urban population: 97.8% of total population (2023) rate of urbanization: 0.41% annual rate of change (2020-25 est.)"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#6301-6449",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Urbanization urban population: 97.8% of total population (2023) rate of urbanization: 0.41% annual rate of change (2020-25 est.)"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "monte titano|in|the early 4th century",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Monte Titano in the early 4th century",
-    "subject": "Monte Titano",
-    "verb": "in",
-    "object": "the early 4th century",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#6715-7038",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Country name conventional long form: Republic of San Marino conventional short form: San Marino local long form: Repubblica di San Marino local short form: San Marino etymology: named after Saint MARINUS, who founded a monastic settlement on Monte Titano in the early 4th century"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#7088-7481",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Capital name: San Marino (city) geographic coordinates: 43 56 N, 12 25 E time difference: UTC+1 (6 hours ahead of Washington, DC, during Standard Time) daylight saving time: +1hr, begins last Sunday in March; ends last Sunday in October etymology: named after Saint MARINUS, who founded a monastic settlement on Monte Titano in the early 4th century"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hours ahead|of|washington",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hours ahead of Washington",
-    "subject": "hours ahead",
-    "verb": "of",
-    "object": "Washington",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#7088-7481",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Capital name: San Marino (city) geographic coordinates: 43 56 N, 12 25 E time difference: UTC+1 (6 hours ahead of Washington, DC, during Standard Time) daylight saving time: +1hr, begins last Sunday in March; ends last Sunday in October etymology: named after Saint MARINUS, who founded a monastic settlement on Monte Titano in the early 4th century"
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "last sunday|in|march",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "last Sunday in March",
-    "subject": "last Sunday",
-    "verb": "in",
-    "object": "March",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#7088-7481",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Capital name: San Marino (city) geographic coordinates: 43 56 N, 12 25 E time difference: UTC+1 (6 hours ahead of Washington, DC, during Standard Time) daylight saving time: +1hr, begins last Sunday in March; ends last Sunday in October etymology: named after Saint MARINUS, who founded a monastic settlement on Monte Titano in the early 4th century"
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "legal system|civil|law system with italian civil law influences",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Legal system civil law system with Italian civil law influences",
-    "subject": "Legal system",
-    "verb": "civil",
-    "object": "law system with Italian civil law influences",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#7701-7772",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Legal system civil law system with Italian civil law influences"
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "instruments consist|of|old customs (<em>antiche consuetudini</em>)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "instruments consist of old customs (<em>antiche consuetudini</em>)",
-    "subject": "instruments consist",
-    "verb": "of",
-    "object": "old customs (<em>antiche consuetudini</em>)",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#7774-8000",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Constitution history: San Marino’s principal legislative instruments consist of old customs (<em>antiche consuetudini</em>), the Statutory Laws of San Marino (Leges Statutae Sancti Marini), old statutes (<em>antich"
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "statutory laws|of|san marino (leges statutae sancti marini)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Statutory Laws of San Marino (Leges Statutae Sancti Marini)",
-    "subject": "Statutory Laws",
-    "verb": "of",
-    "object": "San Marino (Leges Statutae Sancti Marini)",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_sm.txt#7774-8000",
-      "ref": "06-government-legal/world-factbook/europe_sm.txt",
-      "text": "### Constitution history: San Marino’s principal legislative instruments consist of old customs (<em>antiche consuetudini</em>), the Statutory Laws of San Marino (Leges Statutae Sancti Marini), old statutes (<em>antich"
-     }
-    ],
-    "seq": 21,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 22,
+  "nextSeq": 4,
   "admits": [
    "NUL",
    "SEG",
@@ -727,7 +225,7 @@
    "verb": "stonemason",
    "object": "named MARINUS in A",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_sm.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -743,98 +241,13 @@
    "verb": "is",
    "object": "not a member",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_sm.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/world-factbook/europe_sm.txt#385-656",
      "ref": "06-government-legal/world-factbook/europe_sm.txt",
      "text": "San Marino's foreign policy is aligned with that of the EU, although it is not a member.&nbsp; San Marino is negotiating an Association Agreement that is expected to allow participation in the EU&rsquo;s internal market and cooperation in other policy areas by late 2024."
-    }
-   ]
-  },
-  {
-   "id": "an enclave|in|central italy",
-   "subject": "an enclave",
-   "verb": "in",
-   "object": "central Italy",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#772-833",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Location Southern Europe, an enclave in central Italy"
-    }
-   ]
-  },
-  {
-   "id": "an enclave|of|(completely surrounded by) italy",
-   "subject": "an enclave",
-   "verb": "of",
-   "object": "(completely surrounded by) Italy",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#1917-2105",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Geography - note landlocked; an enclave of (completely surrounded by) Italy; smallest independent state in Europe after the Holy See and Monaco; dominated by the Apennine Mountains"
-    }
-   ]
-  },
-  {
-   "id": "annual rate|of|change (2020-25 est",
-   "subject": "annual rate",
-   "verb": "of",
-   "object": "change (2020-25 est",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#3416-3564",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Urbanization urban population: 97.8% of total population (2023) rate of urbanization: 0.41% annual rate of change (2020-25 est.)"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#6301-6449",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Urbanization urban population: 97.8% of total population (2023) rate of urbanization: 0.41% annual rate of change (2020-25 est.)"
-    }
-   ]
-  },
-  {
-   "id": "background\n    geographically|the|third-smallest state in europe (after the holy see and monaco)",
-   "subject": "Background\n    Geographically",
-   "verb": "the",
-   "object": "third-smallest state in Europe (after the Holy See and Monaco)",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#133-292",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Background Geographically the third-smallest state in Europe (after the Holy See and Monaco), San Marino also claims to be the world's oldest republic."
-    }
-   ]
-  },
-  {
-   "id": "dominated by|the|apennine mountains",
-   "subject": "dominated by",
-   "verb": "the",
-   "object": "Apennine Mountains",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#1917-2105",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Geography - note landlocked; an enclave of (completely surrounded by) Italy; smallest independent state in Europe after the Holy See and Monaco; dominated by the Apennine Mountains"
     }
    ]
   },
@@ -844,178 +257,13 @@
    "verb": "is",
    "object": "aligned with that of the EU",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_sm.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/world-factbook/europe_sm.txt#385-656",
      "ref": "06-government-legal/world-factbook/europe_sm.txt",
      "text": "San Marino's foreign policy is aligned with that of the EU, although it is not a member.&nbsp; San Marino is negotiating an Association Agreement that is expected to allow participation in the EU&rsquo;s internal market and cooperation in other policy areas by late 2024."
-    }
-   ]
-  },
-  {
-   "id": "hours ahead|of|washington",
-   "subject": "hours ahead",
-   "verb": "of",
-   "object": "Washington",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#7088-7481",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Capital name: San Marino (city) geographic coordinates: 43 56 N, 12 25 E time difference: UTC+1 (6 hours ahead of Washington, DC, during Standard Time) daylight saving time: +1hr, begins last Sunday in March; ends last Sunday in October etymology: named after Saint MARINUS, who founded a monastic settlement on Monte Titano in the early 4th century"
-    }
-   ]
-  },
-  {
-   "id": "independent state|in|europe after the holy see and monaco",
-   "subject": "independent state",
-   "verb": "in",
-   "object": "Europe after the Holy See and Monaco",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#1917-2105",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Geography - note landlocked; an enclave of (completely surrounded by) Italy; smallest independent state in Europe after the Holy See and Monaco; dominated by the Apennine Mountains"
-    }
-   ]
-  },
-  {
-   "id": "instruments consist|of|old customs (<em>antiche consuetudini</em>)",
-   "subject": "instruments consist",
-   "verb": "of",
-   "object": "old customs (<em>antiche consuetudini</em>)",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#7774-8000",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Constitution history: San Marino’s principal legislative instruments consist of old customs (<em>antiche consuetudini</em>), the Statutory Laws of San Marino (Leges Statutae Sancti Marini), old statutes (<em>antich"
-    }
-   ]
-  },
-  {
-   "id": "internal market|and|cooperation in other policy areas by late 2024",
-   "subject": "internal market",
-   "verb": "and",
-   "object": "cooperation in other policy areas by late 2024",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#385-656",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "San Marino's foreign policy is aligned with that of the EU, although it is not a member.&nbsp; San Marino is negotiating an Association Agreement that is expected to allow participation in the EU&rsquo;s internal market and cooperation in other policy areas by late 2024."
-    }
-   ]
-  },
-  {
-   "id": "last sunday|in|march",
-   "subject": "last Sunday",
-   "verb": "in",
-   "object": "March",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#7088-7481",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Capital name: San Marino (city) geographic coordinates: 43 56 N, 12 25 E time difference: UTC+1 (6 hours ahead of Washington, DC, during Standard Time) daylight saving time: +1hr, begins last Sunday in March; ends last Sunday in October etymology: named after Saint MARINUS, who founded a monastic settlement on Monte Titano in the early 4th century"
-    }
-   ]
-  },
-  {
-   "id": "le informazioni|di|base",
-   "subject": "le informazioni",
-   "verb": "di",
-   "object": "base",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#2364-2527",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Languages Languages: Italian major-language sample(s): <br>L'Almanacco dei fatti del mondo, l'indispensabile fonte per le informazioni di base."
-    }
-   ]
-  },
-  {
-   "id": "legal system|civil|law system with italian civil law influences",
-   "subject": "Legal system",
-   "verb": "civil",
-   "object": "law system with Italian civil law influences",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#7701-7772",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Legal system civil law system with Italian civil law influences"
-    }
-   ]
-  },
-  {
-   "id": "monte titano|in|the early 4th century",
-   "subject": "Monte Titano",
-   "verb": "in",
-   "object": "the early 4th century",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#6715-7038",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Country name conventional long form: Republic of San Marino conventional short form: San Marino local long form: Repubblica di San Marino local short form: San Marino etymology: named after Saint MARINUS, who founded a monastic settlement on Monte Titano in the early 4th century"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#7088-7481",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Capital name: San Marino (city) geographic coordinates: 43 56 N, 12 25 E time difference: UTC+1 (6 hours ahead of Washington, DC, during Standard Time) daylight saving time: +1hr, begins last Sunday in March; ends last Sunday in October etymology: named after Saint MARINUS, who founded a monastic settlement on Monte Titano in the early 4th century"
-    }
-   ]
-  },
-  {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#2107-2128",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
-   "id": "san marino|also|claims to be the world's oldest republic",
-   "subject": "San Marino",
-   "verb": "also",
-   "object": "claims to be the world's oldest republic",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#133-292",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Background Geographically the third-smallest state in Europe (after the Holy See and Monaco), San Marino also claims to be the world's oldest republic."
     }
    ]
   },
@@ -1025,7 +273,7 @@
    "verb": "is",
    "object": "negotiating an Association Agreement that is expected to allow participation in the EU&rsquo",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_sm.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1034,58 +282,10 @@
      "text": "San Marino's foreign policy is aligned with that of the EU, although it is not a member.&nbsp; San Marino is negotiating an Association Agreement that is expected to allow participation in the EU&rsquo;s internal market and cooperation in other policy areas by late 2024."
     }
    ]
-  },
-  {
-   "id": "social|and|political trends in the republic track closely with those of its larger neighbor",
-   "subject": "Social",
-   "verb": "and",
-   "object": "political trends in the republic track closely with those of its larger neighbor",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#657-756",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "Social and political trends in the republic track closely with those of its larger neighbor, Italy."
-    }
-   ]
-  },
-  {
-   "id": "statutory laws|of|san marino (leges statutae sancti marini)",
-   "subject": "Statutory Laws",
-   "verb": "of",
-   "object": "San Marino (Leges Statutae Sancti Marini)",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#7774-8000",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Constitution history: San Marino’s principal legislative instruments consist of old customs (<em>antiche consuetudini</em>), the Statutory Laws of San Marino (Leges Statutae Sancti Marini), old statutes (<em>antich"
-    }
-   ]
-  },
-  {
-   "id": "third|the|size of washington",
-   "subject": "third",
-   "verb": "the",
-   "object": "size of Washington",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_sm.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_sm.txt#996-1067",
-     "ref": "06-government-legal/world-factbook/europe_sm.txt",
-     "text": "### Area - comparative about one-third the size of Washington, D.C."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:51.137Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:13.706Z"
  }
 }

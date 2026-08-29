@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 30045,
   "bodyOffset": 0,
   "bodyChars": 30045,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,63 +55,39 @@
   "referentEvents": 5,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 13,
+  "edgesFound": 6,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 4,
+   "verbs": 2,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 4
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 6,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 16,
-  "excerptOk": 16,
-  "rawChecked": 16,
-  "rawOk": 16,
+  "excerptChecked": 9,
+  "excerptOk": 9,
+  "rawChecked": 9,
+  "rawOk": 9,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 13,
-  "heard": 13,
+  "offered": 6,
+  "heard": 6,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "between queries|and|keys",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between queries and keys",
-    "subject": "between queries",
-    "verb": "and",
-    "object": "keys",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#317-482",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-      "text": "In :numref:`sec_attention-pooling`, we used a number of different distance-based kernels, including a Gaussian kernel to model interactions between queries and keys."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "with the|softmax|operation to ensure nonnegative attention weights",
@@ -110,7 +104,7 @@
     "verb": "softmax",
     "object": "operation to ensure nonnegative attention weights",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -119,7 +113,7 @@
       "text": "As such, with the softmax operation to ensure nonnegative attention weights, much of the work has gone into *attention scoring functions* $a$ in :eqref:`eq_softmax_attention` and :numref:`fig_attention_output` that are simpler to compute."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -139,7 +133,7 @@
     "verb": "softmax",
     "object": "operation",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,7 +142,7 @@
       "text": "![Computing the output of attention pooling as a weighted average of values, where weights are computed with the attention scoring function $\\mathit{a}$ and the softmax operation.](../img/attention-output.svg) :label:`fig_attention_output`"
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -168,7 +162,7 @@
     "verb": "kernel",
     "object": "for a moment:",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -177,94 +171,7 @@
       "text": "Let's review the attention function (without exponentiation) from the Gaussian kernel for a moment:"
      }
     ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "both batch|and|layer normalization (to be discussed later) lead to activations that have well-bounded",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "both batch and layer normalization (to be discussed later) lead to activations that have well-bounded",
-    "subject": "both batch",
-    "verb": "and",
-    "object": "layer normalization (to be discussed later) lead to activations that have well-bounded",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#2134-2300",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-      "text": "Second, note that both batch and layer normalization (to be discussed later) lead to activations that have well-bounded, and often constant, norms $\\|\\mathbf{k}_i\\|$."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are independent|and|identically drawn random variables with zero mean and unit variance",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are independent and identically drawn random variables with zero mean and unit variance",
-    "subject": "are independent",
-    "verb": "and",
-    "object": "identically drawn random variables with zero mean and unit variance",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#2597-2801",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-      "text": "Assume that all the elements of the query $\\mathbf{q} \\in \\mathbb{R}^d$ and the key $\\mathbf{k}_i \\in \\mathbb{R}^d$ are independent and identically drawn random variables with zero mean and unit variance."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "zero mean|and|a variance of $d$",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "zero mean and a variance of $d$",
-    "subject": "zero mean",
-    "verb": "and",
-    "object": "a variance of $d$",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#2802-2875",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-      "text": "The dot product between both vectors has zero mean and a variance of $d$."
-     }
-    ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -284,7 +191,7 @@
     "verb": "softmax",
     "object": "operation:",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -293,36 +200,7 @@
       "text": "We can simplify this further via :eqref:`eq_softmax_attention` by using the softmax operation:"
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "variable lengths|and|tools for efficient evaluation on minibatches (batch matrix multiplication)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "variable lengths and tools for efficient evaluation on minibatches (batch matrix multiplication)",
-    "subject": "variable lengths",
-    "verb": "and",
-    "object": "tools for efficient evaluation on minibatches (batch matrix multiplication)",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#3967-4153",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-      "text": "This includes tools for dealing with strings of variable lengths (common for natural language processing) and tools for efficient evaluation on minibatches (batch matrix multiplication)."
-     }
-    ],
-    "seq": 8,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -342,7 +220,7 @@
     "verb": "softmax",
     "object": "Operation**]",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -356,65 +234,7 @@
       "text": "Since it is such a common problem, it has a name: the *masked softmax operation*."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "to gradients|and|values vanish in practice",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "to gradients and values vanish in practice",
-    "subject": "to gradients",
-    "verb": "and",
-    "object": "values vanish in practice",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#5211-5377",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-      "text": "Moreover, it sets the attention weights to a large negative number, such as $-10^{6}$, in order to make their contribution to gradients and values vanish in practice."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "algebra kernels|and|operators are heavily optimized for gpus and it is faster to be slightly wasteful in computation rather than to have code with conditional (if then else) statements",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "algebra kernels and operators are heavily optimized for GPUs and it is faster to be slightly wasteful in computation rather than to have code with conditional (if then else) statements",
-    "subject": "algebra kernels",
-    "verb": "and",
-    "object": "operators are heavily optimized for GPUs and it is faster to be slightly wasteful in computation rather than to have code with conditional (if then else) statements",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#5378-5589",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-      "text": "This is done since linear algebra kernels and operators are heavily optimized for GPUs and it is faster to be slightly wasteful in computation rather than to have code with conditional (if then else) statements."
-     }
-    ],
-    "seq": 11,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -434,7 +254,7 @@
     "verb": "softmax",
     "object": "operation by masking elements on the last axis",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -453,12 +273,12 @@
       "text": "```{.python .input} %%tab tensorflow def masked_softmax(X, valid_lens): #@save \"\"\"Perform softmax operation by masking elements on the last axis.\"\"\""
      }
     ],
-    "seq": 12,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 13,
+  "nextSeq": 6,
   "admits": [
    "NUL",
    "SEG",
@@ -473,28 +293,12 @@
  },
  "folded": [
   {
-   "id": "algebra kernels|and|operators are heavily optimized for gpus and it is faster to be slightly wasteful in computation rather than to have code with conditional (if then else) statements",
-   "subject": "algebra kernels",
-   "verb": "and",
-   "object": "operators are heavily optimized for GPUs and it is faster to be slightly wasteful in computation rather than to have code with conditional (if then else) statements",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#5378-5589",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-     "text": "This is done since linear algebra kernels and operators are heavily optimized for GPUs and it is faster to be slightly wasteful in computation rather than to have code with conditional (if then else) statements."
-    }
-   ]
-  },
-  {
    "id": "and the|softmax|operation",
    "subject": "and the",
    "verb": "softmax",
    "object": "operation",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -505,60 +309,12 @@
    ]
   },
   {
-   "id": "are independent|and|identically drawn random variables with zero mean and unit variance",
-   "subject": "are independent",
-   "verb": "and",
-   "object": "identically drawn random variables with zero mean and unit variance",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#2597-2801",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-     "text": "Assume that all the elements of the query $\\mathbf{q} \\in \\mathbb{R}^d$ and the key $\\mathbf{k}_i \\in \\mathbb{R}^d$ are independent and identically drawn random variables with zero mean and unit variance."
-    }
-   ]
-  },
-  {
-   "id": "between queries|and|keys",
-   "subject": "between queries",
-   "verb": "and",
-   "object": "keys",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#317-482",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-     "text": "In :numref:`sec_attention-pooling`, we used a number of different distance-based kernels, including a Gaussian kernel to model interactions between queries and keys."
-    }
-   ]
-  },
-  {
-   "id": "both batch|and|layer normalization (to be discussed later) lead to activations that have well-bounded",
-   "subject": "both batch",
-   "verb": "and",
-   "object": "layer normalization (to be discussed later) lead to activations that have well-bounded",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#2134-2300",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-     "text": "Second, note that both batch and layer normalization (to be discussed later) lead to activations that have well-bounded, and often constant, norms $\\|\\mathbf{k}_i\\|$."
-    }
-   ]
-  },
-  {
    "id": "masked|softmax|operation**]",
    "subject": "Masked",
    "verb": "softmax",
    "object": "Operation**]",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -579,7 +335,7 @@
    "verb": "softmax",
    "object": "operation by masking elements on the last axis",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -605,7 +361,7 @@
    "verb": "kernel",
    "object": "for a moment:",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -616,28 +372,12 @@
    ]
   },
   {
-   "id": "to gradients|and|values vanish in practice",
-   "subject": "to gradients",
-   "verb": "and",
-   "object": "values vanish in practice",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#5211-5377",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-     "text": "Moreover, it sets the attention weights to a large negative number, such as $-10^{6}$, in order to make their contribution to gradients and values vanish in practice."
-    }
-   ]
-  },
-  {
    "id": "using the|softmax|operation:",
    "subject": "using the",
    "verb": "softmax",
    "object": "operation:",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -648,28 +388,12 @@
    ]
   },
   {
-   "id": "variable lengths|and|tools for efficient evaluation on minibatches (batch matrix multiplication)",
-   "subject": "variable lengths",
-   "verb": "and",
-   "object": "tools for efficient evaluation on minibatches (batch matrix multiplication)",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#3967-4153",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-     "text": "This includes tools for dealing with strings of variable lengths (common for natural language processing) and tools for efficient evaluation on minibatches (batch matrix multiplication)."
-    }
-   ]
-  },
-  {
    "id": "with the|softmax|operation to ensure nonnegative attention weights",
    "subject": "with the",
    "verb": "softmax",
    "object": "operation to ensure nonnegative attention weights",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -678,26 +402,10 @@
      "text": "As such, with the softmax operation to ensure nonnegative attention weights, much of the work has gone into *attention scoring functions* $a$ in :eqref:`eq_softmax_attention` and :numref:`fig_attention_output` that are simpler to compute."
     }
    ]
-  },
-  {
-   "id": "zero mean|and|a variance of $d$",
-   "subject": "zero mean",
-   "verb": "and",
-   "object": "a variance of $d$",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt#2802-2875",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-attention-scoring-functions.txt",
-     "text": "The dot product between both vectors has zero mean and a variance of $d$."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:48.289Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:26.771Z"
  }
 }

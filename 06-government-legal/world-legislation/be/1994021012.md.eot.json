@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 125019,
   "bodyOffset": 0,
   "bodyChars": 125019,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 7,
   "distinctReferents": 6,
   "examined": true,
-  "edgesFound": 20,
-  "extractionError": null
+  "edgesFound": 8,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 4,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 5
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 8,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 22,
-  "excerptOk": 22,
-  "rawChecked": 22,
-  "rawOk": 22,
+  "excerptChecked": 10,
+  "excerptOk": 10,
+  "rawChecked": 10,
+  "rawOk": 10,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 20,
-  "heard": 20,
+  "offered": 8,
+  "heard": 8,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "pour",
     "object": "les marchés publics",
     "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -108,7 +138,7 @@
     "verb": "officiel",
     "object": "de lUnion européenne ou au Bulletin des Adjudications ainsi que pour les marchés publics",
     "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -128,35 +158,6 @@
    },
    {
     "kind": "propose",
-    "task_id": "consultation|des|versions antérieures à partir du 26-01-1996 et mise à jour au 28-12-2009)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Consultation des versions antérieures à partir du 26-01-1996 et mise à jour au 28-12-2009)",
-    "subject": "Consultation",
-    "verb": "des",
-    "object": "versions antérieures à partir du 26-01-1996 et mise à jour au 28-12-2009)",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#2171-2311",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "78, 015 et 016; En vigueur : 01-07-2013>) (NOTE : Consultation des versions antérieures à partir du 26-01-1996 et mise à jour au 28-12-2009)"
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
     "task_id": "marché a|pour|objet des travaux",
     "operator": "INS",
     "operator_basis": "produced",
@@ -171,7 +172,7 @@
     "verb": "pour",
     "object": "objet des travaux",
     "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -180,123 +181,7 @@
       "text": "b) le marché a pour objet des travaux, fournitures ou services déclarés secrets ou dont l'exécution doit s'accompagner de mesures particulières de sécurité conformément à des dispositions législatives ou réglementaires en vigueur, ou lorsque la protection des intérêts essentiels de la sécurité du pays l'exige;"
      }
     ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "conformément à|des|dispositions législatives ou réglementaires en vigueur",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "conformément à des dispositions législatives ou réglementaires en vigueur",
-    "subject": "conformément à",
-    "verb": "des",
-    "object": "dispositions législatives ou réglementaires en vigueur",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#3091-3402",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "b) le marché a pour objet des travaux, fournitures ou services déclarés secrets ou dont l'exécution doit s'accompagner de mesures particulières de sécurité conformément à des dispositions législatives ou réglementaires en vigueur, ou lorsque la protection des intérêts essentiels de la sécurité du pays l'exige;"
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la protection|des|intérêts essentiels de la sécurité du pays l'exige",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la protection des intérêts essentiels de la sécurité du pays l'exige",
-    "subject": "la protection",
-    "verb": "des",
-    "object": "intérêts essentiels de la sécurité du pays l'exige",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#3091-3402",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "b) le marché a pour objet des travaux, fournitures ou services déclarés secrets ou dont l'exécution doit s'accompagner de mesures particulières de sécurité conformément à des dispositions législatives ou réglementaires en vigueur, ou lorsque la protection des intérêts essentiels de la sécurité du pays l'exige;"
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la protection|des|droits d'exclusivité",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la protection des droits d'exclusivité",
-    "subject": "la protection",
-    "verb": "des",
-    "object": "droits d'exclusivité",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#3819-4059",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "e) les travaux, fournitures ou services ne peuvent, en raison de leur spécificité technique, artistique ou tenant à la protection des droits d'exclusivité, être confiés qu'à un entrepreneur, fournisseur ou prestataire de services déterminé;"
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "uniquement à|des|fins de recherche",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "uniquement à des fins de recherche",
-    "subject": "uniquement à",
-    "verb": "des",
-    "object": "fins de recherche",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#4061-4167",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "f) le marché est passé uniquement à des fins de recherche, d'expérimentation, d'étude ou de développement."
-     }
-    ],
-    "seq": 7,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -316,7 +201,7 @@
     "verb": "pour",
     "object": "but d'assurer une rentabilité ou de récupérer les coûts de recherche et de développement (pour les marchés publics visés à l'article 41bis",
     "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -325,65 +210,7 @@
       "text": "Lorsqu'il s'agit d'un marché de travaux ou de fournitures, il ne peut avoir pour but d'assurer une rentabilité ou de récupérer les coûts de recherche et de développement (pour les marchés publics visés à l'article 41bis, cette disposition s'applique dans la mesure où la passation d'un tel marché ne porte pas prejudice à la mise en concurrence des marchés subséquents qui poursuivent notamment ces buts.); <AR 1996-01-10/33, art."
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "en concurrence|des|marchés subséquents qui poursuivent notamment ces buts",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "en concurrence des marchés subséquents qui poursuivent notamment ces buts",
-    "subject": "en concurrence",
-    "verb": "des",
-    "object": "marchés subséquents qui poursuivent notamment ces buts",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#4168-4598",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "Lorsqu'il s'agit d'un marché de travaux ou de fournitures, il ne peut avoir pour but d'assurer une rentabilité ou de récupérer les coûts de recherche et de développement (pour les marchés publics visés à l'article 41bis, cette disposition s'applique dans la mesure où la passation d'un tel marché ne porte pas prejudice à la mise en concurrence des marchés subséquents qui poursuivent notamment ces buts.); <AR 1996-01-10/33, art."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "selon une|des|procédures visées au § 1er",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "selon une des procédures visées au § 1er",
-    "subject": "selon une",
-    "verb": "des",
-    "object": "procédures visées au § 1er",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#4637-4785",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "g) pour les marchés à passer sur la base d'un accord-cadre, pour autant que cet accord-cadre ait été passé selon une des procédures visées au § 1er;"
-     }
-    ],
-    "seq": 10,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -403,7 +230,7 @@
     "verb": "pour",
     "object": "le pouvoir adjudicateur",
     "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -412,13 +239,13 @@
       "text": "- lorsque ces travaux complémentaires ne peuvent être techniquement ou économiquement séparés du marché principal sans inconvénient majeur pour le pouvoir adjudicateur,"
      }
     ],
-    "seq": 11,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "incompatibilité ou|des|difficultés d'utilisation et d'entretien disproportionnées",
+    "task_id": "courte et|pour|lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -427,41 +254,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "incompatibilité ou des difficultés d'utilisation et d'entretien disproportionnées",
-    "subject": "incompatibilité ou",
-    "verb": "des",
-    "object": "difficultés d'utilisation et d'entretien disproportionnées",
+    "description": "courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
+    "subject": "courte et",
+    "verb": "pour",
+    "object": "lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
     "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#5951-6410",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "a) des livraisons complémentaires sont à effectuer par le fournisseur initial et sont destinées soit au renouvellement partiel de fournitures ou d'installations d'usage courant, soit a l'extention de fournitures ou d'installations existantes, lorsque le changement de fournisseur obligerait le pouvoir adjudicateur à acquérir un matériel de technique différente entraînant une incompatibilité ou des difficultés d'utilisation et d'entretien disproportionnées;"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "possible d'acquérir|des|fournitures en profitant d'une occasion particulièrement avantageuse qui s'est présentée dans une période de temps très courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "possible d'acquérir des fournitures en profitant d'une occasion particulièrement avantageuse qui s'est présentée dans une période de temps très courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
-    "subject": "possible d'acquérir",
-    "verb": "des",
-    "object": "fournitures en profitant d'une occasion particulièrement avantageuse qui s'est présentée dans une période de temps très courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -470,13 +268,13 @@
       "text": "c) il s'agit d'achats d'opportunité, lorsqu'il est possible d'acquérir des fournitures en profitant d'une occasion particulièrement avantageuse qui s'est présentée dans une période de temps très courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché;"
      }
     ],
-    "seq": 13,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "fournitures dans|des|conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales",
+    "task_id": "des etats|membres|de la communauté européenne en raison de leur nature ou de leurs conditions particulières",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -485,128 +283,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "fournitures dans des conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales",
-    "subject": "fournitures dans",
-    "verb": "des",
-    "object": "conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales",
+    "description": "des Etats membres de la Communauté européenne en raison de leur nature ou de leurs conditions particulières",
+    "subject": "des Etats",
+    "verb": "membres",
+    "object": "de la Communauté européenne en raison de leur nature ou de leurs conditions particulières",
     "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#6789-7137",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "d) l'achat de fournitures dans des conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales, soit auprès des curateurs ou liquidateurs d'une faillite, d'un concordat judiciaire ou d'une procédure de même nature existant dans les législations ou réglementations nationales;"
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "soit auprès|des|curateurs ou liquidateurs d'une faillite",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "soit auprès des curateurs ou liquidateurs d'une faillite",
-    "subject": "soit auprès",
-    "verb": "des",
-    "object": "curateurs ou liquidateurs d'une faillite",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#6789-7137",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "d) l'achat de fournitures dans des conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales, soit auprès des curateurs ou liquidateurs d'une faillite, d'un concordat judiciaire ou d'une procédure de même nature existant dans les législations ou réglementations nationales;"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "confiée qu'à|des|artistes ou techniciens eprouvés",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "confiée qu'à des artistes ou techniciens eprouvés",
-    "subject": "confiée qu'à",
-    "verb": "des",
-    "object": "artistes ou techniciens eprouvés",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#7188-7324",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "a) il s'agit d'ouvrages et objets d'art ou de précision dont l'exécution ne peut être confiée qu'à des artistes ou techniciens eprouvés;"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "en raison|des|nécessités techniques ou d'investissements préalables importants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "en raison des nécessités techniques ou d'investissements préalables importants",
-    "subject": "en raison",
-    "verb": "des",
-    "object": "nécessités techniques ou d'investissements préalables importants",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/be/1994021012.md#7470-7633",
-      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-      "text": "c) les services ne peuvent, en raison des nécessités techniques ou d'investissements préalables importants, être confiés qu'à un prestataire de services déterminé;"
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "en dehors|des|territoires des etats membres de la communauté européenne en raison de leur nature ou de leurs conditions particulières",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "en dehors des territoires des Etats membres de la Communauté européenne en raison de leur nature ou de leurs conditions particulières",
-    "subject": "en dehors",
-    "verb": "des",
-    "object": "territoires des Etats membres de la Communauté européenne en raison de leur nature ou de leurs conditions particulières",
-    "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -615,7 +297,7 @@
       "text": "e) il s'agit de services qu'il s'impose d'adjuger en dehors des territoires des Etats membres de la Communauté européenne en raison de leur nature ou de leurs conditions particulières."
      }
     ],
-    "seq": 18,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -635,7 +317,7 @@
     "verb": "pour",
     "object": "la publicité euro",
     "witnesses": [
-     "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -644,12 +326,12 @@
       "text": "(5° dans le cas d'un marché public de services atteignant le montant fixé par le Roi pour la publicité euro"
      }
     ],
-    "seq": 19,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 20,
+  "nextSeq": 8,
   "admits": [
    "NUL",
    "SEG",
@@ -669,7 +351,7 @@
    "verb": "pour",
    "object": "les marchés publics",
    "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -690,7 +372,7 @@
    "verb": "officiel",
    "object": "de lUnion européenne ou au Bulletin des Adjudications ainsi que pour les marchés publics",
    "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -706,76 +388,28 @@
    ]
   },
   {
-   "id": "confiée qu'à|des|artistes ou techniciens eprouvés",
-   "subject": "confiée qu'à",
-   "verb": "des",
-   "object": "artistes ou techniciens eprouvés",
+   "id": "courte et|pour|lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
+   "subject": "courte et",
+   "verb": "pour",
+   "object": "lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
    "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#7188-7324",
+     "at": "06-government-legal/world-legislation/be/1994021012.md#6471-6787",
      "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "a) il s'agit d'ouvrages et objets d'art ou de précision dont l'exécution ne peut être confiée qu'à des artistes ou techniciens eprouvés;"
+     "text": "c) il s'agit d'achats d'opportunité, lorsqu'il est possible d'acquérir des fournitures en profitant d'une occasion particulièrement avantageuse qui s'est présentée dans une période de temps très courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché;"
     }
    ]
   },
   {
-   "id": "conformément à|des|dispositions législatives ou réglementaires en vigueur",
-   "subject": "conformément à",
-   "verb": "des",
-   "object": "dispositions législatives ou réglementaires en vigueur",
+   "id": "des etats|membres|de la communauté européenne en raison de leur nature ou de leurs conditions particulières",
+   "subject": "des Etats",
+   "verb": "membres",
+   "object": "de la Communauté européenne en raison de leur nature ou de leurs conditions particulières",
    "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#3091-3402",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "b) le marché a pour objet des travaux, fournitures ou services déclarés secrets ou dont l'exécution doit s'accompagner de mesures particulières de sécurité conformément à des dispositions législatives ou réglementaires en vigueur, ou lorsque la protection des intérêts essentiels de la sécurité du pays l'exige;"
-    }
-   ]
-  },
-  {
-   "id": "consultation|des|versions antérieures à partir du 26-01-1996 et mise à jour au 28-12-2009)",
-   "subject": "Consultation",
-   "verb": "des",
-   "object": "versions antérieures à partir du 26-01-1996 et mise à jour au 28-12-2009)",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#2171-2311",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "78, 015 et 016; En vigueur : 01-07-2013>) (NOTE : Consultation des versions antérieures à partir du 26-01-1996 et mise à jour au 28-12-2009)"
-    }
-   ]
-  },
-  {
-   "id": "en concurrence|des|marchés subséquents qui poursuivent notamment ces buts",
-   "subject": "en concurrence",
-   "verb": "des",
-   "object": "marchés subséquents qui poursuivent notamment ces buts",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#4168-4598",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "Lorsqu'il s'agit d'un marché de travaux ou de fournitures, il ne peut avoir pour but d'assurer une rentabilité ou de récupérer les coûts de recherche et de développement (pour les marchés publics visés à l'article 41bis, cette disposition s'applique dans la mesure où la passation d'un tel marché ne porte pas prejudice à la mise en concurrence des marchés subséquents qui poursuivent notamment ces buts.); <AR 1996-01-10/33, art."
-    }
-   ]
-  },
-  {
-   "id": "en dehors|des|territoires des etats membres de la communauté européenne en raison de leur nature ou de leurs conditions particulières",
-   "subject": "en dehors",
-   "verb": "des",
-   "object": "territoires des Etats membres de la Communauté européenne en raison de leur nature ou de leurs conditions particulières",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -786,60 +420,12 @@
    ]
   },
   {
-   "id": "en raison|des|nécessités techniques ou d'investissements préalables importants",
-   "subject": "en raison",
-   "verb": "des",
-   "object": "nécessités techniques ou d'investissements préalables importants",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#7470-7633",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "c) les services ne peuvent, en raison des nécessités techniques ou d'investissements préalables importants, être confiés qu'à un prestataire de services déterminé;"
-    }
-   ]
-  },
-  {
-   "id": "fournitures dans|des|conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales",
-   "subject": "fournitures dans",
-   "verb": "des",
-   "object": "conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#6789-7137",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "d) l'achat de fournitures dans des conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales, soit auprès des curateurs ou liquidateurs d'une faillite, d'un concordat judiciaire ou d'une procédure de même nature existant dans les législations ou réglementations nationales;"
-    }
-   ]
-  },
-  {
-   "id": "incompatibilité ou|des|difficultés d'utilisation et d'entretien disproportionnées",
-   "subject": "incompatibilité ou",
-   "verb": "des",
-   "object": "difficultés d'utilisation et d'entretien disproportionnées",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#5951-6410",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "a) des livraisons complémentaires sont à effectuer par le fournisseur initial et sont destinées soit au renouvellement partiel de fournitures ou d'installations d'usage courant, soit a l'extention de fournitures ou d'installations existantes, lorsque le changement de fournisseur obligerait le pouvoir adjudicateur à acquérir un matériel de technique différente entraînant une incompatibilité ou des difficultés d'utilisation et d'entretien disproportionnées;"
-    }
-   ]
-  },
-  {
    "id": "inconvénient majeur|pour|le pouvoir adjudicateur",
    "subject": "inconvénient majeur",
    "verb": "pour",
    "object": "le pouvoir adjudicateur",
    "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -850,44 +436,12 @@
    ]
   },
   {
-   "id": "la protection|des|droits d'exclusivité",
-   "subject": "la protection",
-   "verb": "des",
-   "object": "droits d'exclusivité",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#3819-4059",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "e) les travaux, fournitures ou services ne peuvent, en raison de leur spécificité technique, artistique ou tenant à la protection des droits d'exclusivité, être confiés qu'à un entrepreneur, fournisseur ou prestataire de services déterminé;"
-    }
-   ]
-  },
-  {
-   "id": "la protection|des|intérêts essentiels de la sécurité du pays l'exige",
-   "subject": "la protection",
-   "verb": "des",
-   "object": "intérêts essentiels de la sécurité du pays l'exige",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#3091-3402",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "b) le marché a pour objet des travaux, fournitures ou services déclarés secrets ou dont l'exécution doit s'accompagner de mesures particulières de sécurité conformément à des dispositions législatives ou réglementaires en vigueur, ou lorsque la protection des intérêts essentiels de la sécurité du pays l'exige;"
-    }
-   ]
-  },
-  {
    "id": "le roi|pour|la publicité euro",
    "subject": "le Roi",
    "verb": "pour",
    "object": "la publicité euro",
    "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -903,7 +457,7 @@
    "verb": "pour",
    "object": "objet des travaux",
    "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -919,7 +473,7 @@
    "verb": "pour",
    "object": "but d'assurer une rentabilité ou de récupérer les coûts de recherche et de développement (pour les marchés publics visés à l'article 41bis",
    "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/be/1994021012.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -928,74 +482,10 @@
      "text": "Lorsqu'il s'agit d'un marché de travaux ou de fournitures, il ne peut avoir pour but d'assurer une rentabilité ou de récupérer les coûts de recherche et de développement (pour les marchés publics visés à l'article 41bis, cette disposition s'applique dans la mesure où la passation d'un tel marché ne porte pas prejudice à la mise en concurrence des marchés subséquents qui poursuivent notamment ces buts.); <AR 1996-01-10/33, art."
     }
    ]
-  },
-  {
-   "id": "possible d'acquérir|des|fournitures en profitant d'une occasion particulièrement avantageuse qui s'est présentée dans une période de temps très courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
-   "subject": "possible d'acquérir",
-   "verb": "des",
-   "object": "fournitures en profitant d'une occasion particulièrement avantageuse qui s'est présentée dans une période de temps très courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#6471-6787",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "c) il s'agit d'achats d'opportunité, lorsqu'il est possible d'acquérir des fournitures en profitant d'une occasion particulièrement avantageuse qui s'est présentée dans une période de temps très courte et pour lesquelles le prix à payer est considérablement plus bas que les prix normalement pratiques sur le marché;"
-    }
-   ]
-  },
-  {
-   "id": "selon une|des|procédures visées au § 1er",
-   "subject": "selon une",
-   "verb": "des",
-   "object": "procédures visées au § 1er",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#4637-4785",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "g) pour les marchés à passer sur la base d'un accord-cadre, pour autant que cet accord-cadre ait été passé selon une des procédures visées au § 1er;"
-    }
-   ]
-  },
-  {
-   "id": "soit auprès|des|curateurs ou liquidateurs d'une faillite",
-   "subject": "soit auprès",
-   "verb": "des",
-   "object": "curateurs ou liquidateurs d'une faillite",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#6789-7137",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "d) l'achat de fournitures dans des conditions particulièrement avantageuses est possible soit auprès d'un fournisseur cessant définitivement ses activités commerciales, soit auprès des curateurs ou liquidateurs d'une faillite, d'un concordat judiciaire ou d'une procédure de même nature existant dans les législations ou réglementations nationales;"
-    }
-   ]
-  },
-  {
-   "id": "uniquement à|des|fins de recherche",
-   "subject": "uniquement à",
-   "verb": "des",
-   "object": "fins de recherche",
-   "witnesses": [
-    "06-government-legal/world-legislation/be/1994021012.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/be/1994021012.md#4061-4167",
-     "ref": "06-government-legal/world-legislation/be/1994021012.md",
-     "text": "f) le marché est passé uniquement à des fins de recherche, d'expérimentation, d'étude ou de développement."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:13.230Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:30.872Z"
  }
 }

@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 48795,
   "bodyOffset": 0,
   "bodyChars": 48795,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 8,
   "distinctReferents": 8,
   "examined": true,
-  "edgesFound": 46,
-  "extractionError": null
+  "edgesFound": 20,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 14
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 20,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 47,
-  "excerptOk": 47,
-  "rawChecked": 47,
-  "rawOk": 47,
+  "excerptChecked": 20,
+  "excerptOk": 20,
+  "rawChecked": 20,
+  "rawOk": 20,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 46,
-  "heard": 46,
+  "offered": 20,
+  "heard": 20,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "is",
     "object": "a three-layer system",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,64 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "level transactions|and|subtransactions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "level transactions and subtransactions",
-    "subject": "level transactions",
-    "verb": "and",
-    "object": "subtransactions",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#140-329",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "The bottom layer implements low-level transactions and subtransactions, on top of which rests the mainloop's control code, which in turn implements user-visible transactions and savepoints."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "visible\ntransactions|and|savepoints",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "visible\ntransactions and savepoints",
-    "subject": "visible\ntransactions",
-    "verb": "and",
-    "object": "savepoints",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#140-329",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "The bottom layer implements low-level transactions and subtransactions, on top of which rests the mainloop's control code, which in turn implements user-visible transactions and savepoints."
-     }
-    ],
-    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -161,7 +133,7 @@
     "verb": "is",
     "object": "called by postgres",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,181 +142,7 @@
       "text": "The middle layer of code is called by postgres.c before and after the processing of each query, or after detecting an error:"
      }
     ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the sql|commands|begin",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the SQL commands BEGIN",
-    "subject": "the SQL",
-    "verb": "commands",
-    "object": "BEGIN",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#537-673",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Meanwhile, the user can alter the system's state by issuing the SQL commands BEGIN, COMMIT, ROLLBACK, SAVEPOINT, ROLLBACK TO or RELEASE."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "rollback|to|or release",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ROLLBACK to or RELEASE",
-    "subject": "ROLLBACK",
-    "verb": "to",
-    "object": "or RELEASE",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#537-673",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Meanwhile, the user can alter the system's state by issuing the SQL commands BEGIN, COMMIT, ROLLBACK, SAVEPOINT, ROLLBACK TO or RELEASE."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "these calls|to|the toplevel routines",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "these calls to the toplevel routines",
-    "subject": "these calls",
-    "verb": "to",
-    "object": "the toplevel routines",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#675-737",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "The traffic cop redirects these calls to the toplevel routines"
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "level functions|to|activate the real transaction system:",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "level functions to activate the real transaction system:",
-    "subject": "level functions",
-    "verb": "to",
-    "object": "activate the real transaction system:",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#888-1015",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Depending on the current state of the system, these functions call low level functions to activate the real transaction system:"
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is called|to|increment the command counter",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is called to increment the command counter",
-    "subject": "is called",
-    "verb": "to",
-    "object": "increment the command counter",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#1188-1391",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Additionally, within a transaction, CommandCounterIncrement is called to increment the command counter, which allows future commands to \"see\" the effects of previous commands within the same transaction."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of previous|commands|within the same transaction",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of previous commands within the same transaction",
-    "subject": "of previous",
-    "verb": "commands",
-    "object": "within the same transaction",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#1188-1391",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Additionally, within a transaction, CommandCounterIncrement is called to increment the command counter, which allows future commands to \"see\" the effects of previous commands within the same transaction."
-     }
-    ],
-    "seq": 9,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -364,7 +162,7 @@
     "verb": "is",
     "object": "done after creating the heap so the pg_class row is visible",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,65 +171,7 @@
       "text": "(For example, in DefineRelation it is done after creating the heap so the pg_class row is visible, to be able to lock it.)"
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be able|to|lock it",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be able to lock it",
-    "subject": "be able",
-    "verb": "to",
-    "object": "lock it",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#1672-1794",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "(For example, in DefineRelation it is done after creating the heap so the pg_class row is visible, to be able to lock it.)"
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "to begintransactionblock|and|endtransactionblock and outside these calls they need to do normal start",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "to BeginTransactionBlock and EndTransactionBlock and outside these calls they need to do normal start",
-    "subject": "to BeginTransactionBlock",
-    "verb": "and",
-    "object": "EndTransactionBlock and outside these calls they need to do normal start",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#2704-3024",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "The point of this example is to demonstrate the need for StartTransactionCommand and CommitTransactionCommand to be state smart -- they should call CommandCounterIncrement between the calls to BeginTransactionBlock and EndTransactionBlock and outside these calls they need to do normal start, commit or abort processing."
-     }
-    ],
-    "seq": 12,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +191,7 @@
     "verb": "is",
     "object": "called",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,128 +200,7 @@
       "text": "In this case AbortCurrentTransaction is called, and the transaction is put in aborted state."
      }
     ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "or rollback|to|<savepoint> commands",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "or ROLLBACK to <savepoint> commands",
-    "subject": "or ROLLBACK",
-    "verb": "to",
-    "object": "<savepoint> commands",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#3192-3316",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "In this state, any user input is ignored except for transaction-termination statements, or ROLLBACK TO <savepoint> commands."
-     },
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#7424-7614",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "In the case of ROLLBACK TO <savepoint>, we abort all the subtransactions up through the one identified by the savepoint name, and then re-create that subtransaction level with the same name."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "she sees|and|types abort                (syntax error",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "she sees and types ABORT                (syntax error",
-    "subject": "she sees",
-    "verb": "and",
-    "object": "types ABORT                (syntax error",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#3542-3902",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "case 1 case 2 ------ ------ 1) user types BEGIN 1) user types BEGIN 2) user does something 2) user does something 3) user does not like what 3) system aborts for some reason she sees and types ABORT (syntax error, etc)"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we want|to|abort the transaction and return to the default state",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we want to abort the transaction and return to the default state",
-    "subject": "we want",
-    "verb": "to",
-    "object": "abort the transaction and return to the default state",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#3904-3980",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "In case 1, we want to abort the transaction and return to the default state."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "on aborttransaction|to|do all the real work",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "on AbortTransaction to do all the real work",
-    "subject": "on AbortTransaction",
-    "verb": "to",
-    "object": "do all the real work",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#4266-4328",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Both of them rely on AbortTransaction to do all the real work."
-     }
-    ],
-    "seq": 17,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -601,7 +220,7 @@
     "verb": "does",
     "object": "its work:",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -610,7 +229,7 @@
       "text": "The only difference is what state we enter after AbortTransaction does its work:"
      }
     ],
-    "seq": 18,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -630,7 +249,7 @@
     "verb": "leaves",
     "object": "us in TBLOCK_ABORT",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -639,7 +258,7 @@
       "text": "* AbortCurrentTransaction leaves us in TBLOCK_ABORT, * UserAbortTransactionBlock leaves us in TBLOCK_ABORT_END"
      }
     ],
-    "seq": 19,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -659,7 +278,7 @@
     "verb": "leaves",
     "object": "us in TBLOCK_ABORT_END",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -668,7 +287,7 @@
       "text": "* AbortCurrentTransaction leaves us in TBLOCK_ABORT, * UserAbortTransactionBlock leaves us in TBLOCK_ABORT_END"
      }
     ],
-    "seq": 20,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -688,7 +307,7 @@
     "verb": "has",
     "object": "failed",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -697,36 +316,7 @@
       "text": "Low-level transaction abort handling is divided in two phases: * AbortTransaction executes as soon as we realize the transaction has failed."
      }
     ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "destroy toptransactioncontext|until|this point",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "destroy TopTransactionContext until this point",
-    "subject": "destroy TopTransactionContext",
-    "verb": "until",
-    "object": "this point",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#4932-5007",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "In particular, we mustn't destroy TopTransactionContext until this point."
-     }
-    ],
-    "seq": 22,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -746,7 +336,7 @@
     "verb": "is",
     "object": "committed",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -755,36 +345,7 @@
       "text": "Also, note that when a transaction is committed, we don't close it right away."
      }
     ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "don't close|it|right away",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "don't close it right away",
-    "subject": "don't close",
-    "verb": "it",
-    "object": "right away",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#5009-5087",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Also, note that when a transaction is committed, we don't close it right away."
-     }
-    ],
-    "seq": 24,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -804,7 +365,7 @@
     "verb": "is",
     "object": "called after the query has finished processing",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -813,7 +374,7 @@
       "text": "Rather it's put in TBLOCK_END state, which means that when CommitTransactionCommand is called after the query has finished processing, the transaction has to be closed."
      }
     ],
-    "seq": 25,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -833,7 +394,7 @@
     "verb": "has",
     "object": "to be closed",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -842,7 +403,7 @@
       "text": "Rather it's put in TBLOCK_END state, which means that when CommitTransactionCommand is called after the query has finished processing, the transaction has to be closed."
      }
     ],
-    "seq": 26,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -862,7 +423,7 @@
     "verb": "is",
     "object": "subtle but important",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -871,65 +432,7 @@
       "text": "The distinction is subtle but important, because it means that control will leave the xact.c code with the transaction open, and the main loop will be able to keep processing inside the same transaction."
      }
     ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "because|it|means that control will leave the xact",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "because it means that control will leave the xact",
-    "subject": "because",
-    "verb": "it",
-    "object": "means that control will leave the xact",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#5258-5461",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "The distinction is subtle but important, because it means that control will leave the xact.c code with the transaction open, and the main loop will be able to keep processing inside the same transaction."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the creation|and|finishing of transactions and subtransactions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the creation and finishing of transactions and subtransactions",
-    "subject": "the creation",
-    "verb": "and",
-    "object": "finishing of transactions and subtransactions",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#5661-5779",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "The rest of the code in xact.c are routines to support the creation and finishing of transactions and subtransactions."
-     }
-    ],
-    "seq": 29,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -949,7 +452,7 @@
     "verb": "has",
     "object": "a pointer to its parent transaction's struct",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -958,7 +461,7 @@
       "text": "Subtransactions are implemented using a stack of TransactionState structures, each of which has a pointer to its parent transaction's struct."
      }
     ],
-    "seq": 30,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -978,7 +481,7 @@
     "verb": "is",
     "object": "to be opened",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -987,7 +490,7 @@
       "text": "When a new subtransaction is to be opened, PushTransaction is called, which creates a new TransactionState, with its parent link pointing to the current transaction."
      }
     ],
-    "seq": 31,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1007,7 +510,7 @@
     "verb": "is",
     "object": "called",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1016,65 +519,7 @@
       "text": "When a new subtransaction is to be opened, PushTransaction is called, which creates a new TransactionState, with its parent link pointing to the current transaction."
      }
     ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "link pointing|to|the current transaction",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "link pointing to the current transaction",
-    "subject": "link pointing",
-    "verb": "to",
-    "object": "the current transaction",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6078-6243",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "When a new subtransaction is to be opened, PushTransaction is called, which creates a new TransactionState, with its parent link pointing to the current transaction."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "new transactionstate|to|sane values",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "new TransactionState to sane values",
-    "subject": "new TransactionState",
-    "verb": "to",
-    "object": "sane values",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6244-6399",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "StartSubTransaction is in charge of initializing the new TransactionState to sane values, and properly initializing other subsystems (AtSubStart routines)."
-     }
-    ],
-    "seq": 34,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1094,7 +539,7 @@
     "verb": "is",
     "object": "committing)",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1103,36 +548,7 @@
       "text": "When closing a subtransaction, either CommitSubTransaction has to be called (if the subtransaction is committing), or AbortSubTransaction and CleanupSubTransaction (if it's aborting)."
      }
     ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "or abortsubtransaction|and|cleanupsubtransaction (if it's aborting)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "or AbortSubTransaction and CleanupSubTransaction (if it's aborting)",
-    "subject": "or AbortSubTransaction",
-    "verb": "and",
-    "object": "CleanupSubTransaction (if it's aborting)",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6401-6584",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "When closing a subtransaction, either CommitSubTransaction has to be called (if the subtransaction is committing), or AbortSubTransaction and CleanupSubTransaction (if it's aborting)."
-     }
-    ],
-    "seq": 36,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1152,7 +568,7 @@
     "verb": "is",
     "object": "called so the system returns to the parent transaction",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1161,65 +577,7 @@
       "text": "In either case, PopTransaction is called so the system returns to the parent transaction."
      }
     ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "may need|to|be closed in response to a single user command",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "may need to be closed in response to a single user command",
-    "subject": "may need",
-    "verb": "to",
-    "object": "be closed in response to a single user command",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6677-6806",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "One important point regarding subtransaction handling is that several may need to be closed in response to a single user command."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we allow|to|commit or rollback a savepoint by name",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we allow to commit or rollback a savepoint by name",
-    "subject": "we allow",
-    "verb": "to",
-    "object": "commit or rollback a savepoint by name",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6808-6956",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "That's because savepoints have names, and we allow to commit or rollback a savepoint by name, which is not necessarily the one that was last opened."
-     }
-    ],
-    "seq": 39,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1239,7 +597,7 @@
     "verb": "is",
     "object": "not necessarily the one that was last opened",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1248,36 +606,7 @@
       "text": "That's because savepoints have names, and we allow to commit or rollback a savepoint by name, which is not necessarily the one that was last opened."
      }
     ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be able|to|close out the entire stack",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be able to close out the entire stack",
-    "subject": "be able",
-    "verb": "to",
-    "object": "close out the entire stack",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6958-7035",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Also a COMMIT or ROLLBACK command must be able to close out the entire stack."
-     }
-    ],
-    "seq": 41,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1297,7 +626,7 @@
     "verb": "is",
     "object": "done",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1306,7 +635,7 @@
       "text": "We handle this by having the utility command subroutine mark all the state stack entries as commit- pending or abort-pending, and then when the main loop reaches CommitTransactionCommand, the real work is done."
      }
     ],
-    "seq": 42,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1326,7 +655,7 @@
     "verb": "is",
     "object": "that if we get an error while popping state stack entries",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1335,70 +664,12 @@
       "text": "The main point of doing things this way is that if we get an error while popping state stack entries, the remaining stack entries still show what we need to do to finish up."
      }
     ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we need|to|do to finish up",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we need to do to finish up",
-    "subject": "we need",
-    "verb": "to",
-    "object": "do to finish up",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#7249-7422",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "The main point of doing things this way is that if we get an error while popping state stack entries, the remaining stack entries still show what we need to do to finish up."
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are allowed|to|start \"internal\" subtransactions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are allowed to start \"internal\" subtransactions",
-    "subject": "are allowed",
-    "verb": "to",
-    "object": "start \"internal\" subtransactions",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#7696-7811",
-      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-      "text": "Other subsystems are allowed to start \"internal\" subtransactions, which are handled by BeginInternalSubTransaction."
-     }
-    ],
-    "seq": 45,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 46,
+  "nextSeq": 20,
   "admits": [
    "NUL",
    "SEG",
@@ -1418,7 +689,7 @@
    "verb": "is",
    "object": "committed",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1434,7 +705,7 @@
    "verb": "leaves",
    "object": "us in TBLOCK_ABORT",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1450,7 +721,7 @@
    "verb": "does",
    "object": "its work:",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1461,76 +732,12 @@
    ]
   },
   {
-   "id": "are allowed|to|start \"internal\" subtransactions",
-   "subject": "are allowed",
-   "verb": "to",
-   "object": "start \"internal\" subtransactions",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#7696-7811",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Other subsystems are allowed to start \"internal\" subtransactions, which are handled by BeginInternalSubTransaction."
-    }
-   ]
-  },
-  {
-   "id": "be able|to|close out the entire stack",
-   "subject": "be able",
-   "verb": "to",
-   "object": "close out the entire stack",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6958-7035",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Also a COMMIT or ROLLBACK command must be able to close out the entire stack."
-    }
-   ]
-  },
-  {
-   "id": "be able|to|lock it",
-   "subject": "be able",
-   "verb": "to",
-   "object": "lock it",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#1672-1794",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "(For example, in DefineRelation it is done after creating the heap so the pg_class row is visible, to be able to lock it.)"
-    }
-   ]
-  },
-  {
-   "id": "because|it|means that control will leave the xact",
-   "subject": "because",
-   "verb": "it",
-   "object": "means that control will leave the xact",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#5258-5461",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "The distinction is subtle but important, because it means that control will leave the xact.c code with the transaction open, and the main loop will be able to keep processing inside the same transaction."
-    }
-   ]
-  },
-  {
    "id": "case abortcurrenttransaction|is|called",
    "subject": "case AbortCurrentTransaction",
    "verb": "is",
    "object": "called",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1546,7 +753,7 @@
    "verb": "is",
    "object": "done after creating the heap so the pg_class row is visible",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1557,146 +764,18 @@
    ]
   },
   {
-   "id": "destroy toptransactioncontext|until|this point",
-   "subject": "destroy TopTransactionContext",
-   "verb": "until",
-   "object": "this point",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#4932-5007",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "In particular, we mustn't destroy TopTransactionContext until this point."
-    }
-   ]
-  },
-  {
-   "id": "don't close|it|right away",
-   "subject": "don't close",
-   "verb": "it",
-   "object": "right away",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#5009-5087",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Also, note that when a transaction is committed, we don't close it right away."
-    }
-   ]
-  },
-  {
-   "id": "is called|to|increment the command counter",
-   "subject": "is called",
-   "verb": "to",
-   "object": "increment the command counter",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#1188-1391",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Additionally, within a transaction, CommandCounterIncrement is called to increment the command counter, which allows future commands to \"see\" the effects of previous commands within the same transaction."
-    }
-   ]
-  },
-  {
-   "id": "level functions|to|activate the real transaction system:",
-   "subject": "level functions",
-   "verb": "to",
-   "object": "activate the real transaction system:",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#888-1015",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Depending on the current state of the system, these functions call low level functions to activate the real transaction system:"
-    }
-   ]
-  },
-  {
-   "id": "level transactions|and|subtransactions",
-   "subject": "level transactions",
-   "verb": "and",
-   "object": "subtransactions",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#140-329",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "The bottom layer implements low-level transactions and subtransactions, on top of which rests the mainloop's control code, which in turn implements user-visible transactions and savepoints."
-    }
-   ]
-  },
-  {
-   "id": "link pointing|to|the current transaction",
-   "subject": "link pointing",
-   "verb": "to",
-   "object": "the current transaction",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6078-6243",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "When a new subtransaction is to be opened, PushTransaction is called, which creates a new TransactionState, with its parent link pointing to the current transaction."
-    }
-   ]
-  },
-  {
-   "id": "may need|to|be closed in response to a single user command",
-   "subject": "may need",
-   "verb": "to",
-   "object": "be closed in response to a single user command",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6677-6806",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "One important point regarding subtransaction handling is that several may need to be closed in response to a single user command."
-    }
-   ]
-  },
-  {
    "id": "new\nsubtransaction|is|to be opened",
    "subject": "new\nsubtransaction",
    "verb": "is",
    "object": "to be opened",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6078-6243",
      "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
      "text": "When a new subtransaction is to be opened, PushTransaction is called, which creates a new TransactionState, with its parent link pointing to the current transaction."
-    }
-   ]
-  },
-  {
-   "id": "new transactionstate|to|sane values",
-   "subject": "new TransactionState",
-   "verb": "to",
-   "object": "sane values",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6244-6399",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "StartSubTransaction is in charge of initializing the new TransactionState to sane values, and properly initializing other subsystems (AtSubStart routines)."
     }
    ]
   },
@@ -1706,7 +785,7 @@
    "verb": "is",
    "object": "called by postgres",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1717,28 +796,12 @@
    ]
   },
   {
-   "id": "of previous|commands|within the same transaction",
-   "subject": "of previous",
-   "verb": "commands",
-   "object": "within the same transaction",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#1188-1391",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Additionally, within a transaction, CommandCounterIncrement is called to increment the command counter, which allows future commands to \"see\" the effects of previous commands within the same transaction."
-    }
-   ]
-  },
-  {
    "id": "of which|has|a pointer to its parent transaction's struct",
    "subject": "of which",
    "verb": "has",
    "object": "a pointer to its parent transaction's struct",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1749,65 +812,12 @@
    ]
   },
   {
-   "id": "on aborttransaction|to|do all the real work",
-   "subject": "on AbortTransaction",
-   "verb": "to",
-   "object": "do all the real work",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#4266-4328",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Both of them rely on AbortTransaction to do all the real work."
-    }
-   ]
-  },
-  {
-   "id": "or abortsubtransaction|and|cleanupsubtransaction (if it's aborting)",
-   "subject": "or AbortSubTransaction",
-   "verb": "and",
-   "object": "CleanupSubTransaction (if it's aborting)",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6401-6584",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "When closing a subtransaction, either CommitSubTransaction has to be called (if the subtransaction is committing), or AbortSubTransaction and CleanupSubTransaction (if it's aborting)."
-    }
-   ]
-  },
-  {
-   "id": "or rollback|to|<savepoint> commands",
-   "subject": "or ROLLBACK",
-   "verb": "to",
-   "object": "<savepoint> commands",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#3192-3316",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "In this state, any user input is ignored except for transaction-termination statements, or ROLLBACK TO <savepoint> commands."
-    },
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#7424-7614",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "In the case of ROLLBACK TO <savepoint>, we abort all the subtransactions up through the one identified by the savepoint name, and then re-create that subtransaction level with the same name."
-    }
-   ]
-  },
-  {
    "id": "poptransaction|is|called so the system returns to the parent transaction",
    "subject": "PopTransaction",
    "verb": "is",
    "object": "called so the system returns to the parent transaction",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1823,7 +833,7 @@
    "verb": "is",
    "object": "called",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1839,7 +849,7 @@
    "verb": "is",
    "object": "done",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1850,60 +860,12 @@
    ]
   },
   {
-   "id": "rollback|to|or release",
-   "subject": "ROLLBACK",
-   "verb": "to",
-   "object": "or RELEASE",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#537-673",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Meanwhile, the user can alter the system's state by issuing the SQL commands BEGIN, COMMIT, ROLLBACK, SAVEPOINT, ROLLBACK TO or RELEASE."
-    }
-   ]
-  },
-  {
-   "id": "she sees|and|types abort                (syntax error",
-   "subject": "she sees",
-   "verb": "and",
-   "object": "types ABORT                (syntax error",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#3542-3902",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "case 1 case 2 ------ ------ 1) user types BEGIN 1) user types BEGIN 2) user does something 2) user does something 3) user does not like what 3) system aborts for some reason she sees and types ABORT (syntax error, etc)"
-    }
-   ]
-  },
-  {
-   "id": "the creation|and|finishing of transactions and subtransactions",
-   "subject": "the creation",
-   "verb": "and",
-   "object": "finishing of transactions and subtransactions",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#5661-5779",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "The rest of the code in xact.c are routines to support the creation and finishing of transactions and subtransactions."
-    }
-   ]
-  },
-  {
    "id": "the distinction|is|subtle but important",
    "subject": "The distinction",
    "verb": "is",
    "object": "subtle but important",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1914,28 +876,12 @@
    ]
   },
   {
-   "id": "the sql|commands|begin",
-   "subject": "the SQL",
-   "verb": "commands",
-   "object": "BEGIN",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#537-673",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "Meanwhile, the user can alter the system's state by issuing the SQL commands BEGIN, COMMIT, ROLLBACK, SAVEPOINT, ROLLBACK TO or RELEASE."
-    }
-   ]
-  },
-  {
    "id": "the subtransaction|is|committing)",
    "subject": "the subtransaction",
    "verb": "is",
    "object": "committing)",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1951,7 +897,7 @@
    "verb": "has",
    "object": "failed",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1967,7 +913,7 @@
    "verb": "has",
    "object": "to be closed",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1978,28 +924,12 @@
    ]
   },
   {
-   "id": "these calls|to|the toplevel routines",
-   "subject": "these calls",
-   "verb": "to",
-   "object": "the toplevel routines",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#675-737",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "The traffic cop redirects these calls to the toplevel routines"
-    }
-   ]
-  },
-  {
    "id": "this way|is|that if we get an error while popping state stack entries",
    "subject": "this way",
    "verb": "is",
    "object": "that if we get an error while popping state stack entries",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2010,28 +940,12 @@
    ]
   },
   {
-   "id": "to begintransactionblock|and|endtransactionblock and outside these calls they need to do normal start",
-   "subject": "to BeginTransactionBlock",
-   "verb": "and",
-   "object": "EndTransactionBlock and outside these calls they need to do normal start",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#2704-3024",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "The point of this example is to demonstrate the need for StartTransactionCommand and CommitTransactionCommand to be state smart -- they should call CommandCounterIncrement between the calls to BeginTransactionBlock and EndTransactionBlock and outside these calls they need to do normal start, commit or abort processing."
-    }
-   ]
-  },
-  {
    "id": "transaction system|is|a three-layer system",
    "subject": "transaction system",
    "verb": "is",
    "object": "a three-layer system",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2047,7 +961,7 @@
    "verb": "leaves",
    "object": "us in TBLOCK_ABORT_END",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2058,76 +972,12 @@
    ]
   },
   {
-   "id": "visible\ntransactions|and|savepoints",
-   "subject": "visible\ntransactions",
-   "verb": "and",
-   "object": "savepoints",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#140-329",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "The bottom layer implements low-level transactions and subtransactions, on top of which rests the mainloop's control code, which in turn implements user-visible transactions and savepoints."
-    }
-   ]
-  },
-  {
-   "id": "we allow|to|commit or rollback a savepoint by name",
-   "subject": "we allow",
-   "verb": "to",
-   "object": "commit or rollback a savepoint by name",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#6808-6956",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "That's because savepoints have names, and we allow to commit or rollback a savepoint by name, which is not necessarily the one that was last opened."
-    }
-   ]
-  },
-  {
-   "id": "we need|to|do to finish up",
-   "subject": "we need",
-   "verb": "to",
-   "object": "do to finish up",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#7249-7422",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "The main point of doing things this way is that if we get an error while popping state stack entries, the remaining stack entries still show what we need to do to finish up."
-    }
-   ]
-  },
-  {
-   "id": "we want|to|abort the transaction and return to the default state",
-   "subject": "we want",
-   "verb": "to",
-   "object": "abort the transaction and return to the default state",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt#3904-3980",
-     "ref": "09-source-code/postgres_postgres/src_backend_access_transam_README.txt",
-     "text": "In case 1, we want to abort the transaction and return to the default state."
-    }
-   ]
-  },
-  {
    "id": "when\ncommittransactioncommand|is|called after the query has finished processing",
    "subject": "when\nCommitTransactionCommand",
    "verb": "is",
    "object": "called after the query has finished processing",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2143,7 +993,7 @@
    "verb": "is",
    "object": "not necessarily the one that was last opened",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_access_transam_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2155,7 +1005,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:53.827Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:04.248Z"
  }
 }

@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 18359,
   "bodyOffset": 0,
   "bodyChars": 18359,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,63 +55,39 @@
   "referentEvents": 24,
   "distinctReferents": 18,
   "examined": true,
-  "edgesFound": 96,
+  "edgesFound": 46,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 51,
+   "verbs": 30,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 51
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 46,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 97,
-  "excerptOk": 97,
-  "rawChecked": 97,
-  "rawOk": 97,
+  "excerptChecked": 46,
+  "excerptOk": 46,
+  "rawChecked": 46,
+  "rawOk": 46,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 96,
-  "heard": 96,
+  "offered": 46,
+  "heard": 46,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "england\n church|of|the holy trinity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "England\n Church of the Holy Trinity",
-    "subject": "England\n Church",
-    "verb": "of",
-    "object": "the Holy Trinity",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#66-157",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Stratford-upon-Avon, Warwickshire, England Church of the Holy Trinity, Stratford-upon-Avon"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "shakespeare|bibliography|english renaissance",
@@ -110,7 +104,7 @@
     "verb": "bibliography",
     "object": "English Renaissance",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -119,7 +113,7 @@
       "text": "Shakespeare bibliography English Renaissance"
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -139,7 +133,7 @@
     "verb": "was",
     "object": "Baptismbaptised 26 April",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,36 +142,7 @@
       "text": "He was Baptismbaptised 26 April."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "poet|and|actor",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "poet and actor",
-    "subject": "poet",
-    "verb": "and",
-    "object": "actor",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#368-432",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "}} – 23 April 1616)}} was an English playwright, poet and actor."
-     }
-    ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -197,7 +162,7 @@
     "verb": "is",
     "object": "widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -206,7 +171,7 @@
       "text": "He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -226,7 +191,7 @@
     "verb": "is",
     "object": "often called England's national poet and the \"Bard of River Avon",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -235,13 +200,13 @@
       "text": "He is often called England's national poet and the \"Bard of River Avon, WarwickshireAvon\" or simply \"the Bard\"."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "consist|of|some shakespeare's plays39 plays",
+    "task_id": "william shakespearehave|been|translated into every major modern languageliving language and are performed more often than those of any other playwright",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -250,99 +215,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "consist of some Shakespeare's plays39 plays",
-    "subject": "consist",
-    "verb": "of",
-    "object": "some Shakespeare's plays39 plays",
+    "description": "William Shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright",
+    "subject": "William Shakespearehave",
+    "verb": "been",
+    "object": "translated into every major modern languageliving language and are performed more often than those of any other playwright",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#653-892",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "His extant works, including William Shakespeare's collaborationscollaborations, consist of some Shakespeare's plays39 plays, Shakespeare's sonnets154 sonnets, three long narrative poems and a few other verses, some of uncertain authorship."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "narrative poems|and|a few other verses",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "narrative poems and a few other verses",
-    "subject": "narrative poems",
-    "verb": "and",
-    "object": "a few other verses",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#653-892",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "His extant works, including William Shakespeare's collaborationscollaborations, consist of some Shakespeare's plays39 plays, Shakespeare's sonnets154 sonnets, three long narrative poems and a few other verses, some of uncertain authorship."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "some|of|uncertain authorship",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "some of uncertain authorship",
-    "subject": "some",
-    "verb": "of",
-    "object": "uncertain authorship",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#653-892",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "His extant works, including William Shakespeare's collaborationscollaborations, consist of some Shakespeare's plays39 plays, Shakespeare's sonnets154 sonnets, three long narrative poems and a few other verses, some of uncertain authorship."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "plays list|of|translations of works by william shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "plays List of translations of works by William Shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright",
-    "subject": "plays List",
-    "verb": "of",
-    "object": "translations of works by William Shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -351,7 +229,7 @@
       "text": "His plays List of translations of works by William Shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright."
      }
     ],
-    "seq": 9,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -371,7 +249,7 @@
     "verb": "remains",
     "object": "arguably the most influential writer in the English language",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -380,36 +258,7 @@
       "text": "Shakespeare remains arguably the most influential writer in the English language, and his works continue to be studied and reinterpreted."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "works continue|to|be studied and reinterpreted",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "works continue to be studied and reinterpreted",
-    "subject": "works continue",
-    "verb": "to",
-    "object": "be studied and reinterpreted",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1089-1226",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Shakespeare remains arguably the most influential writer in the English language, and his works continue to be studied and reinterpreted."
-     }
-    ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -429,7 +278,7 @@
     "verb": "was",
     "object": "born and raised in Stratford-upon-Avon",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -438,36 +287,7 @@
       "text": "Shakespeare was born and raised in Stratford-upon-Avon, Warwickshire."
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the age|of|18",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the age of 18",
-    "subject": "the age",
-    "verb": "of",
-    "object": "18",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1298-1490",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "At the age of 18, he married Anne Hathaway (wife of Shakespeare)Anne Hathaway, with whom he had three children: Susanna HallSusanna, and twins Hamnet ShakespeareHamnet and Judith QuineyJudith."
-     }
-    ],
-    "seq": 13,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -487,7 +307,7 @@
     "verb": "married",
     "object": "Anne Hathaway (wife of Shakespeare)Anne Hathaway",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -496,7 +316,7 @@
       "text": "At the age of 18, he married Anne Hathaway (wife of Shakespeare)Anne Hathaway, with whom he had three children: Susanna HallSusanna, and twins Hamnet ShakespeareHamnet and Judith QuineyJudith."
      }
     ],
-    "seq": 14,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -516,7 +336,7 @@
     "verb": "had",
     "object": "three children: Susanna HallSusanna",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -525,13 +345,13 @@
       "text": "At the age of 18, he married Anne Hathaway (wife of Shakespeare)Anne Hathaway, with whom he had three children: Susanna HallSusanna, and twins Hamnet ShakespeareHamnet and Judith QuineyJudith."
      }
     ],
-    "seq": 15,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "hamnet shakespearehamnet|and|judith quineyjudith",
+    "task_id": "1592 he|began|a successful career in london as an actor",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -540,46 +360,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Hamnet ShakespeareHamnet and Judith QuineyJudith",
-    "subject": "Hamnet ShakespeareHamnet",
-    "verb": "and",
-    "object": "Judith QuineyJudith",
+    "description": "1592 he began a successful career in London as an actor",
+    "subject": "1592 he",
+    "verb": "began",
+    "object": "a successful career in London as an actor",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1298-1490",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "At the age of 18, he married Anne Hathaway (wife of Shakespeare)Anne Hathaway, with whom he had three children: Susanna HallSusanna, and twins Hamnet ShakespeareHamnet and Judith QuineyJudith."
-     },
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5522-5658",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Twins, son Hamnet ShakespeareHamnet and daughter Judith QuineyJudith, followed almost two years later and were baptised 2 February 1585."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between 1585|and|1592 he began a successful career in london as an actor",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between 1585 and 1592 he began a successful career in London as an actor",
-    "subject": "between 1585",
-    "verb": "and",
-    "object": "1592 he began a successful career in London as an actor",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -588,94 +374,7 @@
       "text": "Sometime between 1585 and 1592 he began a successful career in London as an actor, writer, and Shareholderpart-owner (\"sharer\") of a playing company called the Lord Chamberlain's Men, later known as the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "owner|of|a playing company called the lord chamberlain's men",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "owner of a playing company called the Lord Chamberlain's Men",
-    "subject": "owner",
-    "verb": "of",
-    "object": "a playing company called the Lord Chamberlain's Men",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1491-1818",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Sometime between 1585 and 1592 he began a successful career in London as an actor, writer, and Shareholderpart-owner (\"sharer\") of a playing company called the Lord Chamberlain's Men, later known as the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "later known|as|the king's men (playing company)king's men after the ascension of james vi and iking james vi of scotland to the english throne",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "later known as the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne",
-    "subject": "later known",
-    "verb": "as",
-    "object": "the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1491-1818",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Sometime between 1585 and 1592 he began a successful career in London as an actor, writer, and Shareholderpart-owner (\"sharer\") of a playing company called the Lord Chamberlain's Men, later known as the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he appears|to|have retired to stratford",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "he appears to have retired to Stratford",
-    "subject": "he appears",
-    "verb": "to",
-    "object": "have retired to Stratford",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1819-1916",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "At age 49 (around 1613) he appears to have retired to Stratford, where he died three years later."
-     }
-    ],
-    "seq": 20,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -695,7 +394,7 @@
     "verb": "died",
     "object": "three years later",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -704,13 +403,13 @@
       "text": "At age 49 (around 1613) he appears to have retired to Stratford, where he died three years later."
      }
     ],
-    "seq": 21,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "few records|of|shakespeare's private life survive",
+    "task_id": "were shakespeare|authorship|questionwritten by others",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -719,12 +418,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Few records of Shakespeare's private life survive",
-    "subject": "Few records",
-    "verb": "of",
-    "object": "Shakespeare's private life survive",
+    "description": "were Shakespeare authorship questionwritten by others",
+    "subject": "were Shakespeare",
+    "verb": "authorship",
+    "object": "questionwritten by others",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -733,94 +432,7 @@
       "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "such matters|as|portraits of shakespearehis physical appearance",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "such matters as Portraits of Shakespearehis physical appearance",
-    "subject": "such matters",
-    "verb": "as",
-    "object": "Portraits of Shakespearehis physical appearance",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1917-2320",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sexuality|of|william shakespearehis sexuality",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Sexuality of William Shakespearehis sexuality",
-    "subject": "Sexuality",
-    "verb": "of",
-    "object": "William Shakespearehis sexuality",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1917-2320",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "religious views|of|william shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were shakespeare authorship questionwritten by others",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others",
-    "subject": "Religious views",
-    "verb": "of",
-    "object": "William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1917-2320",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
-     }
-    ],
-    "seq": 25,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -840,7 +452,7 @@
     "verb": "produced",
     "object": "most of his known works between 1589 and 1613",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -849,7 +461,7 @@
       "text": "Shakespeare produced most of his known works between 1589 and 1613."
      }
     ],
-    "seq": 26,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -869,7 +481,7 @@
     "verb": "comedycomedies",
     "object": "and Shakespearean historyhistories and are regarded as some of the best works produced in these genres",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -878,7 +490,7 @@
       "text": "His early plays were primarily Shakespearean comedycomedies and Shakespearean historyhistories and are regarded as some of the best works produced in these genres."
      }
     ],
-    "seq": 27,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -898,7 +510,7 @@
     "verb": "tragedytragedies",
     "object": "until 1608",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -907,442 +519,7 @@
       "text": "He then wrote mainly Shakespearean tragedytragedies until 1608, among them Hamlet, Othello, King Lear and Macbeth, which are considered to be among the finest works in English."
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "king lear|and|macbeth",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "King Lear and Macbeth",
-    "subject": "King Lear",
-    "verb": "and",
-    "object": "Macbeth",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2554-2730",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "He then wrote mainly Shakespearean tragedytragedies until 1608, among them Hamlet, Othello, King Lear and Macbeth, which are considered to be among the finest works in English."
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are considered|to|be among the finest works in english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are considered to be among the finest works in English",
-    "subject": "are considered",
-    "verb": "to",
-    "object": "be among the finest works in English",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2554-2730",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "He then wrote mainly Shakespearean tragedytragedies until 1608, among them Hamlet, Othello, King Lear and Macbeth, which are considered to be among the finest works in English."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "last phase|of|his career",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "last phase of his career",
-    "subject": "last phase",
-    "verb": "of",
-    "object": "his career",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2731-2934",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "In the last phase of his career, he wrote tragicomedytragicomedies (also known as Shakespeare's late romancesromances), such as The Winter's Tale and The Tempest, and collaborated with other playwrights."
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "also known|as|shakespeare's late romancesromances)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "also known as Shakespeare's late romancesromances)",
-    "subject": "also known",
-    "verb": "as",
-    "object": "Shakespeare's late romancesromances)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2731-2934",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "In the last phase of his career, he wrote tragicomedytragicomedies (also known as Shakespeare's late romancesromances), such as The Winter's Tale and The Tempest, and collaborated with other playwrights."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "such|as|the winter's tale and the tempest",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "such as The Winter's Tale and The Tempest",
-    "subject": "such",
-    "verb": "as",
-    "object": "The Winter's Tale and The Tempest",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2731-2934",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "In the last phase of his career, he wrote tragicomedytragicomedies (also known as Shakespeare's late romancesromances), such as The Winter's Tale and The Tempest, and collaborated with other playwrights."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and collaborated|with|other playwrights",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and collaborated with other playwrights",
-    "subject": "and collaborated",
-    "verb": "with",
-    "object": "other playwrights",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2731-2934",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "In the last phase of his career, he wrote tragicomedytragicomedies (also known as Shakespeare's late romancesromances), such as The Winter's Tale and The Tempest, and collaborated with other playwrights."
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "many|of|shakespeare's plays were published in editions of varying quality and accuracy during his lifetime",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Many of Shakespeare's plays were published in editions of varying quality and accuracy during his lifetime",
-    "subject": "Many",
-    "verb": "of",
-    "object": "Shakespeare's plays were published in editions of varying quality and accuracy during his lifetime",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2936-3043",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Many of Shakespeare's plays were published in editions of varying quality and accuracy during his lifetime."
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "john heminges|and|henry condell",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "John Heminges and Henry Condell",
-    "subject": "John Heminges",
-    "verb": "and",
-    "object": "Henry Condell",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3044-3294",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "However, in 1623 John Heminges and Henry Condell, two fellow actors and friends of Shakespeare's, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeare's dramatic works that includes 36 of his plays."
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fellow actors|and|friends of shakespeare's",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fellow actors and friends of Shakespeare's",
-    "subject": "fellow actors",
-    "verb": "and",
-    "object": "friends of Shakespeare's",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3044-3294",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "However, in 1623 John Heminges and Henry Condell, two fellow actors and friends of Shakespeare's, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeare's dramatic works that includes 36 of his plays."
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "more definitive|text|known as the first folio",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "more definitive text known as the First Folio",
-    "subject": "more definitive",
-    "verb": "text",
-    "object": "known as the First Folio",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3044-3294",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "However, in 1623 John Heminges and Henry Condell, two fellow actors and friends of Shakespeare's, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeare's dramatic works that includes 36 of his plays."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "collected edition|of|shakespeare's dramatic works that includes 36 of his plays",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "collected edition of Shakespeare's dramatic works that includes 36 of his plays",
-    "subject": "collected edition",
-    "verb": "of",
-    "object": "Shakespeare's dramatic works that includes 36 of his plays",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3044-3294",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "However, in 1623 John Heminges and Henry Condell, two fellow actors and friends of Shakespeare's, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeare's dramatic works that includes 36 of his plays."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prescient poem|by|ben jonson",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "prescient poem by Ben Jonson",
-    "subject": "prescient poem",
-    "verb": "by",
-    "object": "Ben Jonson",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3295-3465",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Its preface includes a prescient poem by Ben Jonson, a former rival of Shakespeare, who hailed Shakespeare with the now-famous epithet: \"not of an age, but for all time\"."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "former rival|of|shakespeare",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "former rival of Shakespeare",
-    "subject": "former rival",
-    "verb": "of",
-    "object": "Shakespeare",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3295-3465",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Its preface includes a prescient poem by Ben Jonson, a former rival of Shakespeare, who hailed Shakespeare with the now-famous epithet: \"not of an age, but for all time\"."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hailed shakespeare|with|the now-famous epithet: \"not of an age",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hailed Shakespeare with the now-famous epithet: \"not of an age",
-    "subject": "hailed Shakespeare",
-    "verb": "with",
-    "object": "the now-famous epithet: \"not of an age",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3295-3465",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Its preface includes a prescient poem by Ben Jonson, a former rival of Shakespeare, who hailed Shakespeare with the now-famous epithet: \"not of an age, but for all time\"."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "believed|to|be shakespeare's birthplaceshakespeare's birthplace",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "believed to be Shakespeare's BirthplaceShakespeare's birthplace",
-    "subject": "believed",
-    "verb": "to",
-    "object": "be Shakespeare's BirthplaceShakespeare's birthplace",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3485-3889",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "'s house, believed to be Shakespeare's BirthplaceShakespeare's birthplace, in Stratford-upon-Avon]] William Shakespeare was the son of John Shakespeare, an alderman and a successful glover (glove-maker) originally from Snitterfield in Warwickshire, and Mary ShakespeareMary Arden, the daughter of an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community."
-     }
-    ],
-    "seq": 43,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1362,7 +539,7 @@
     "verb": "was",
     "object": "the son of John Shakespeare",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1371,13 +548,13 @@
       "text": "'s house, believed to be Shakespeare's BirthplaceShakespeare's birthplace, in Stratford-upon-Avon]] William Shakespeare was the son of John Shakespeare, an alderman and a successful glover (glove-maker) originally from Snitterfield in Warwickshire, and Mary ShakespeareMary Arden, the daughter of an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community."
      }
     ],
-    "seq": 44,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "an alderman|and|a successful glover (glove-maker) originally from snitterfield in warwickshire",
+    "task_id": "an arden|familyaffluent|landowning family that was influential in the recusancyrecusant catholic community",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1386,12 +563,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "an alderman and a successful glover (glove-maker) originally from Snitterfield in Warwickshire",
-    "subject": "an alderman",
-    "verb": "and",
-    "object": "a successful glover (glove-maker) originally from Snitterfield in Warwickshire",
+    "description": "an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community",
+    "subject": "an Arden",
+    "verb": "familyaffluent",
+    "object": "landowning family that was influential in the RecusancyRecusant Catholic community",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1400,36 +577,7 @@
       "text": "'s house, believed to be Shakespeare's BirthplaceShakespeare's birthplace, in Stratford-upon-Avon]] William Shakespeare was the son of John Shakespeare, an alderman and a successful glover (glove-maker) originally from Snitterfield in Warwickshire, and Mary ShakespeareMary Arden, the daughter of an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community."
      }
     ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the daughter|of|an arden familyaffluent landowning family that was influential in the recusancyrecusant catholic community",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the daughter of an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community",
-    "subject": "the daughter",
-    "verb": "of",
-    "object": "an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3485-3889",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "'s house, believed to be Shakespeare's BirthplaceShakespeare's birthplace, in Stratford-upon-Avon]] William Shakespeare was the son of John Shakespeare, an alderman and a successful glover (glove-maker) originally from Snitterfield in Warwickshire, and Mary ShakespeareMary Arden, the daughter of an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community."
-     }
-    ],
-    "seq": 46,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1449,7 +597,7 @@
     "verb": "was",
     "object": "born in Stratford-upon-Avon",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1458,7 +606,7 @@
       "text": "He was born in Stratford-upon-Avon, where he was Baptismbaptised on 26 April 1564."
      }
     ],
-    "seq": 47,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1478,7 +626,7 @@
     "verb": "was",
     "object": "Baptismbaptised on 26 April 1564",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1487,13 +635,13 @@
       "text": "He was born in Stratford-upon-Avon, where he was Baptismbaptised on 26 April 1564."
      }
     ],
-    "seq": 48,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "his date|of|birth is unknown but is traditionally observed on 23 april",
+    "task_id": "of birth|is|unknown but is traditionally observed on 23 april",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1502,12 +650,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "His date of birth is unknown but is traditionally observed on 23 April",
-    "subject": "His date",
-    "verb": "of",
-    "object": "birth is unknown but is traditionally observed on 23 April",
+    "description": "of birth is unknown but is traditionally observed on 23 April",
+    "subject": "of birth",
+    "verb": "is",
+    "object": "unknown but is traditionally observed on 23 April",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1516,13 +664,13 @@
       "text": "His date of birth is unknown but is traditionally observed on 23 April, Saint George's Day."
      }
     ],
-    "seq": 49,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "be traced|to|william oldys and george steevens",
+    "task_id": "because shakespeare|died|on the same date in 1616",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1531,12 +679,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "be traced to William Oldys and George Steevens",
-    "subject": "be traced",
-    "verb": "to",
-    "object": "William Oldys and George Steevens",
+    "description": "because Shakespeare died on the same date in 1616",
+    "subject": "because Shakespeare",
+    "verb": "died",
+    "object": "on the same date in 1616",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1545,36 +693,7 @@
       "text": "This date, which can be traced to William Oldys and George Steevens, has proved appealing to biographers because Shakespeare died on the same date in 1616."
      }
     ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "proved appealing|to|biographers because shakespeare died on the same date in 1616",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "proved appealing to biographers because Shakespeare died on the same date in 1616",
-    "subject": "proved appealing",
-    "verb": "to",
-    "object": "biographers because Shakespeare died on the same date in 1616",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4065-4220",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "This date, which can be traced to William Oldys and George Steevens, has proved appealing to biographers because Shakespeare died on the same date in 1616."
-     }
-    ],
-    "seq": 51,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1594,7 +713,7 @@
     "verb": "was",
     "object": "the third of eight children",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1603,7 +722,7 @@
       "text": "He was the third of eight children, and the eldest surviving son."
      }
     ],
-    "seq": 52,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1623,7 +742,7 @@
     "verb": "was",
     "object": "probably educated at the King Edward VI School",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1632,13 +751,13 @@
       "text": "Although no attendance records for the period survive, most biographers agree that Shakespeare was probably educated at the King Edward VI School, Stratford-upon-AvonKing's New School in Stratford, a free school chartered in 1553, based about a quarter-mile (400&nbsp;m) from his home in Stratford-upon-Avon GuildhallStratford's guildhall."
      }
     ],
-    "seq": 53,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "new school|in|stratford",
+    "task_id": "latin text|was|standardised by royal decree",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1647,99 +766,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "New School in Stratford",
-    "subject": "New School",
-    "verb": "in",
-    "object": "Stratford",
+    "description": "Latin text was standardised by royal decree",
+    "subject": "Latin text",
+    "verb": "was",
+    "object": "standardised by royal decree",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4288-4627",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Although no attendance records for the period survive, most biographers agree that Shakespeare was probably educated at the King Edward VI School, Stratford-upon-AvonKing's New School in Stratford, a free school chartered in 1553, based about a quarter-mile (400&nbsp;m) from his home in Stratford-upon-Avon GuildhallStratford's guildhall."
-     }
-    ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "school chartered|in|1553",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "school chartered in 1553",
-    "subject": "school chartered",
-    "verb": "in",
-    "object": "1553",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4288-4627",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Although no attendance records for the period survive, most biographers agree that Shakespeare was probably educated at the King Edward VI School, Stratford-upon-AvonKing's New School in Stratford, a free school chartered in 1553, based about a quarter-mile (400&nbsp;m) from his home in Stratford-upon-Avon GuildhallStratford's guildhall."
-     }
-    ],
-    "seq": 55,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mile|from|his home in stratford-upon-avon guildhallstratford's guildhall",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mile from his home in Stratford-upon-Avon GuildhallStratford's guildhall",
-    "subject": "mile",
-    "verb": "from",
-    "object": "his home in Stratford-upon-Avon GuildhallStratford's guildhall",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4288-4627",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Although no attendance records for the period survive, most biographers agree that Shakespeare was probably educated at the King Edward VI School, Stratford-upon-AvonKing's New School in Stratford, a free school chartered in 1553, based about a quarter-mile (400&nbsp;m) from his home in Stratford-upon-Avon GuildhallStratford's guildhall."
-     }
-    ],
-    "seq": 56,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "schools varied|in|quality during the elizabethan era",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "schools varied in quality during the Elizabethan era",
-    "subject": "schools varied",
-    "verb": "in",
-    "object": "quality during the Elizabethan era",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1748,13 +780,13 @@
       "text": "Grammar schools varied in quality during the Elizabethan era, but grammar school curricula were largely similar: the basic Latin text was standardised by royal decree, and the school would have provided an intensive education in grammar based upon Latin classicsclassical authors."
      }
     ],
-    "seq": 57,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "basic latin|text|was standardised by royal decree",
+    "task_id": "upon latin|classicsclassical|authors",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1763,12 +795,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "basic Latin text was standardised by royal decree",
-    "subject": "basic Latin",
-    "verb": "text",
-    "object": "was standardised by royal decree",
+    "description": "upon Latin classicsclassical authors",
+    "subject": "upon Latin",
+    "verb": "classicsclassical",
+    "object": "authors",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1777,70 +809,7 @@
       "text": "Grammar schools varied in quality during the Elizabethan era, but grammar school curricula were largely similar: the basic Latin text was standardised by royal decree, and the school would have provided an intensive education in grammar based upon Latin classicsclassical authors."
      }
     ],
-    "seq": 58,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "intensive education|in|grammar based upon latin classicsclassical authors",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "intensive education in grammar based upon Latin classicsclassical authors",
-    "subject": "intensive education",
-    "verb": "in",
-    "object": "grammar based upon Latin classicsclassical authors",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4628-4908",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Grammar schools varied in quality during the Elizabethan era, but grammar school curricula were largely similar: the basic Latin text was standardised by royal decree, and the school would have provided an intensive education in grammar based upon Latin classicsclassical authors."
-     }
-    ],
-    "seq": 59,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "the age|of|18",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: the age of 18",
-    "subject": "the age",
-    "verb": "of",
-    "object": "18",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1298-1490",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "At the age of 18, he married Anne Hathaway (wife of Shakespeare)Anne Hathaway, with whom he had three children: Susanna HallSusanna, and twins Hamnet ShakespeareHamnet and Judith QuineyJudith."
-     },
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4910-5008",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "At the age of 18, Shakespeare married 26-year-old Anne Hathaway (Shakespeare's wife)Anne Hathaway."
-     }
-    ],
-    "seq": 60,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1860,7 +829,7 @@
     "verb": "married",
     "object": "26-year-old Anne Hathaway (Shakespeare's wife)Anne Hathaway",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1869,13 +838,13 @@
       "text": "At the age of 18, Shakespeare married 26-year-old Anne Hathaway (Shakespeare's wife)Anne Hathaway."
      }
     ],
-    "seq": 61,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "consistory court|of|the anglican diocese of worcesterdiocese of worcester issued a marriage licence on 27 november 1582",
+    "task_id": "of worcester|issued|a marriage licence on 27 november 1582",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1884,12 +853,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "consistory court of the Anglican Diocese of WorcesterDiocese of Worcester issued a marriage licence on 27 November 1582",
-    "subject": "consistory court",
-    "verb": "of",
-    "object": "the Anglican Diocese of WorcesterDiocese of Worcester issued a marriage licence on 27 November 1582",
+    "description": "of Worcester issued a marriage licence on 27 November 1582",
+    "subject": "of Worcester",
+    "verb": "issued",
+    "object": "a marriage licence on 27 November 1582",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1898,36 +867,7 @@
       "text": "The consistory court of the Anglican Diocese of WorcesterDiocese of Worcester issued a marriage licence on 27 November 1582."
      }
     ],
-    "seq": 62,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "two|of|hathaway's neighbours posted bonds guaranteeing that no lawful claims impeded the marriage",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "two of Hathaway's neighbours posted bonds guaranteeing that no lawful claims impeded the marriage",
-    "subject": "two",
-    "verb": "of",
-    "object": "Hathaway's neighbours posted bonds guaranteeing that no lawful claims impeded the marriage",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5134-5246",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "The next day, two of Hathaway's neighbours posted bonds guaranteeing that no lawful claims impeded the marriage."
-     }
-    ],
-    "seq": 63,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1947,7 +887,7 @@
     "verb": "may",
     "object": "have been arranged in some haste",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1956,7 +896,7 @@
       "text": "The ceremony may have been arranged in some haste; the Worcester chancellor allowed the Banns of marriagemarriage banns to be read once instead of the usual three times."
      }
     ],
-    "seq": 64,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1976,7 +916,7 @@
     "verb": "chancellor",
     "object": "allowed the Banns of marriagemarriage banns to be read once instead of the usual three times",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1985,36 +925,7 @@
       "text": "The ceremony may have been arranged in some haste; the Worcester chancellor allowed the Banns of marriagemarriage banns to be read once instead of the usual three times."
      }
     ],
-    "seq": 65,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "six months|after|the marriage",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Six months after the marriage",
-    "subject": "Six months",
-    "verb": "after",
-    "object": "the marriage",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5417-5521",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Six months after the marriage, Anne gave birth to a daughter, Susanna HallSusanna, baptised 26 May 1583."
-     }
-    ],
-    "seq": 66,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -2034,7 +945,7 @@
     "verb": "gave",
     "object": "birth to a daughter",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2043,7 +954,7 @@
       "text": "Six months after the marriage, Anne gave birth to a daughter, Susanna HallSusanna, baptised 26 May 1583."
      }
     ],
-    "seq": 67,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -2063,7 +974,7 @@
     "verb": "may",
     "object": "1583",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2072,42 +983,13 @@
       "text": "Six months after the marriage, Anne gave birth to a daughter, Susanna HallSusanna, baptised 26 May 1583."
      }
     ],
-    "seq": 68,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "years later|and|were baptised 2 february 1585",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "years later and were baptised 2 February 1585",
-    "subject": "years later",
-    "verb": "and",
-    "object": "were baptised 2 February 1585",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5522-5658",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Twins, son Hamnet ShakespeareHamnet and daughter Judith QuineyJudith, followed almost two years later and were baptised 2 February 1585."
-     }
-    ],
-    "seq": 69,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hamnet died|of|unknown causes at the age of 11 and was buried 11 august 1596",
+    "task_id": "hamnet|died|of unknown causes at the age of 11 and was buried 11 august 1596",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2117,11 +999,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Hamnet died of unknown causes at the age of 11 and was buried 11 August 1596",
-    "subject": "Hamnet died",
-    "verb": "of",
-    "object": "unknown causes at the age of 11 and was buried 11 August 1596",
+    "subject": "Hamnet",
+    "verb": "died",
+    "object": "of unknown causes at the age of 11 and was buried 11 August 1596",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2130,94 +1012,7 @@
       "text": "Hamnet died of unknown causes at the age of 11 and was buried 11 August 1596."
      }
     ],
-    "seq": 70,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the book|of|coates and creasts",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The book of coates and creasts",
-    "subject": "The book",
-    "verb": "of",
-    "object": "coates and creasts",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5738-5790",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": ", from the 1602 book The book of coates and creasts."
-     }
-    ],
-    "seq": 71,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "features spears|as|a canting armspun on the family name",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "features spears as a canting armspun on the family name",
-    "subject": "features spears",
-    "verb": "as",
-    "object": "a canting armspun on the family name",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5813-5874",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "It features spears as a canting armspun on the family name.]]"
-     }
-    ],
-    "seq": 72,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the birth|of|the twins",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the birth of the twins",
-    "subject": "the birth",
-    "verb": "of",
-    "object": "the twins",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5876-6011",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "After the birth of the twins, Shakespeare left few historical traces until he is mentioned as part of the London theatre scene in 1592."
-     }
-    ],
-    "seq": 73,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -2237,7 +1032,7 @@
     "verb": "left",
     "object": "few historical traces until he is mentioned as part of the London theatre scene in 1592",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2246,7 +1041,7 @@
       "text": "After the birth of the twins, Shakespeare left few historical traces until he is mentioned as part of the London theatre scene in 1592."
      }
     ],
-    "seq": 74,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
@@ -2266,7 +1061,7 @@
     "verb": "is",
     "object": "the appearance of his name in the \"complaints bill\" of a law case before the Queen's Bench court at Westminster dated Michaelmas Term 1588 and 9 October 1589",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2275,13 +1070,13 @@
       "text": "The exception is the appearance of his name in the \"complaints bill\" of a law case before the Queen's Bench court at Westminster dated Michaelmas Term 1588 and 9 October 1589."
      }
     ],
-    "seq": 75,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "scholars refer|to|the years between 1585 and 1592 as shakespeare's \"lost years\"",
+    "task_id": "period have|reported|many wikt:apocryphalapocryphal stories",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2290,41 +1085,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Scholars refer to the years between 1585 and 1592 as Shakespeare's \"lost years\"",
-    "subject": "Scholars refer",
-    "verb": "to",
-    "object": "the years between 1585 and 1592 as Shakespeare's \"lost years\"",
+    "description": "period have reported many wikt:apocryphalapocryphal stories",
+    "subject": "period have",
+    "verb": "reported",
+    "object": "many wikt:apocryphalapocryphal stories",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#6188-6268",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Scholars refer to the years between 1585 and 1592 as Shakespeare's \"lost years\"."
-     }
-    ],
-    "seq": 76,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "biographers attempting|to|account for this period have reported many wikt:apocryphalapocryphal stories",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Biographers attempting to account for this period have reported many wikt:apocryphalapocryphal stories",
-    "subject": "Biographers attempting",
-    "verb": "to",
-    "object": "account for this period have reported many wikt:apocryphalapocryphal stories",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2333,13 +1099,13 @@
       "text": "Biographers attempting to account for this period have reported many wikt:apocryphalapocryphal stories."
      }
     ],
-    "seq": 77,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "a stratford|legend|that shakespeare fled the town for london to escape prosecution for deer poaching in the estate of local squire thomas lucy",
+    "task_id": "that shakespeare|fled|the town for london to escape prosecution for deer poaching in the estate of local squire thomas lucy",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2348,12 +1114,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "a Stratford legend that Shakespeare fled the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy",
-    "subject": "a Stratford",
-    "verb": "legend",
-    "object": "that Shakespeare fled the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy",
+    "description": "that Shakespeare fled the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy",
+    "subject": "that Shakespeare",
+    "verb": "fled",
+    "object": "the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2362,7 +1128,7 @@
       "text": "Nicholas Rowe (writer)Nicholas Rowe, Shakespeare's first biographer, recounted a Stratford legend that Shakespeare fled the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy."
      }
     ],
-    "seq": 78,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    },
@@ -2382,7 +1148,7 @@
     "verb": "is",
     "object": "also supposed to have taken his revenge on Lucy by writing a scurrilous ballad about him",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2391,7 +1157,7 @@
       "text": "Shakespeare is also supposed to have taken his revenge on Lucy by writing a scurrilous ballad about him."
      }
     ],
-    "seq": 79,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
@@ -2411,7 +1177,7 @@
     "verb": "starting",
     "object": "his theatrical career minding the horses of theatre patrons in London",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2420,7 +1186,7 @@
       "text": "Another 18th-century story has Shakespeare starting his theatrical career minding the horses of theatre patrons in London."
      }
     ],
-    "seq": 80,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    },
@@ -2440,7 +1206,7 @@
     "verb": "reported",
     "object": "that Shakespeare had been a country schoolmaster",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2449,7 +1215,7 @@
       "text": "John Aubrey reported that Shakespeare had been a country schoolmaster."
      }
     ],
-    "seq": 81,
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    },
@@ -2469,7 +1235,7 @@
     "verb": "may",
     "object": "have been employed as a schoolmaster by Alexander Hoghton of Lancashire",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2478,7 +1244,7 @@
       "text": "Some 20th-century scholars suggested that Shakespeare may have been employed as a schoolmaster by Alexander Hoghton of Lancashire, a Catholic landowner who named a certain \"William Shakeshafte\" in his will."
      }
     ],
-    "seq": 82,
+    "seq": 39,
     "depends_on": [],
     "evidence": []
    },
@@ -2498,7 +1264,7 @@
     "verb": "landowner",
     "object": "who named a certain \"William Shakeshafte\" in his will",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2507,36 +1273,7 @@
       "text": "Some 20th-century scholars suggested that Shakespeare may have been employed as a schoolmaster by Alexander Hoghton of Lancashire, a Catholic landowner who named a certain \"William Shakeshafte\" in his will."
      }
     ],
-    "seq": 83,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hearsayhearsay collected|after|his death",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hearsayhearsay collected after his death",
-    "subject": "hearsayhearsay collected",
-    "verb": "after",
-    "object": "his death",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7102-7260",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Little evidence substantiates such stories other than wikt:hearsayhearsay collected after his death, and Shakeshafte was a common name in the Lancashire area."
-     }
-    ],
-    "seq": 84,
+    "seq": 40,
     "depends_on": [],
     "evidence": []
    },
@@ -2556,7 +1293,7 @@
     "verb": "was",
     "object": "a common name in the Lancashire area",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2565,36 +1302,7 @@
       "text": "Little evidence substantiates such stories other than wikt:hearsayhearsay collected after his death, and Shakeshafte was a common name in the Lancashire area."
      }
     ],
-    "seq": 85,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "london|and|theatrical career",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "London and theatrical career",
-    "subject": "London",
-    "verb": "and",
-    "object": "theatrical career",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7262-7290",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "London and theatrical career"
-     }
-    ],
-    "seq": 86,
+    "seq": 41,
     "depends_on": [],
     "evidence": []
    },
@@ -2614,7 +1322,7 @@
     "verb": "is",
     "object": "not known definitively when Shakespeare began writing",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2623,36 +1331,7 @@
       "text": "It is not known definitively when Shakespeare began writing, but contemporary allusions and records of performances show that several of his plays were on the London stage by 1592."
      }
     ],
-    "seq": 87,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "contemporary allusions|and|records of performances show that several of his plays were on the london stage by 1592",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "contemporary allusions and records of performances show that several of his plays were on the London stage by 1592",
-    "subject": "contemporary allusions",
-    "verb": "and",
-    "object": "records of performances show that several of his plays were on the London stage by 1592",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7292-7472",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "It is not known definitively when Shakespeare began writing, but contemporary allusions and records of performances show that several of his plays were on the London stage by 1592."
-     }
-    ],
-    "seq": 88,
+    "seq": 42,
     "depends_on": [],
     "evidence": []
    },
@@ -2672,7 +1351,7 @@
     "verb": "was",
     "object": "sufficiently known in London to be attacked in print by the playwright Robert Greene (dramatist)Robert Greene in his Greene's Groats-Worth of WitGroats-Worth of Wit from that year:",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2681,7 +1360,7 @@
       "text": "By then, he was sufficiently known in London to be attacked in print by the playwright Robert Greene (dramatist)Robert Greene in his Greene's Groats-Worth of WitGroats-Worth of Wit from that year:"
      }
     ],
-    "seq": 89,
+    "seq": 43,
     "depends_on": [],
     "evidence": []
    },
@@ -2701,7 +1380,7 @@
     "verb": "is",
     "object": "an upstart Crow",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2710,65 +1389,7 @@
       "text": "...&nbsp;there is an upstart Crow, beautified with our feathers, that with his Tiger's heart wrapped in a Player's hide, supposes he is as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum, is in his own conceit the only Shake-scene in a }}"
      }
     ],
-    "seq": 90,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "beautified|with|our feathers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "beautified with our feathers",
-    "subject": "beautified",
-    "verb": "with",
-    "object": "our feathers",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7671-7960",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "...&nbsp;there is an upstart Crow, beautified with our feathers, that with his Tiger's heart wrapped in a Player's hide, supposes he is as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum, is in his own conceit the only Shake-scene in a }}"
-     }
-    ],
-    "seq": 91,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "that|with|his tiger's heart wrapped in a player's hide",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "that with his Tiger's heart wrapped in a Player's hide",
-    "subject": "that",
-    "verb": "with",
-    "object": "his Tiger's heart wrapped in a Player's hide",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7671-7960",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "...&nbsp;there is an upstart Crow, beautified with our feathers, that with his Tiger's heart wrapped in a Player's hide, supposes he is as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum, is in his own conceit the only Shake-scene in a }}"
-     }
-    ],
-    "seq": 92,
+    "seq": 44,
     "depends_on": [],
     "evidence": []
    },
@@ -2788,7 +1409,7 @@
     "verb": "is",
     "object": "as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum",
     "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2797,70 +1418,12 @@
       "text": "...&nbsp;there is an upstart Crow, beautified with our feathers, that with his Tiger's heart wrapped in a Player's hide, supposes he is as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum, is in his own conceit the only Shake-scene in a }}"
      }
     ],
-    "seq": 93,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|in|his own conceit the only shake-scene in a }}",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is in his own conceit the only Shake-scene in a }}",
-    "subject": "is",
-    "verb": "in",
-    "object": "his own conceit the only Shake-scene in a }}",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7671-7960",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "...&nbsp;there is an upstart Crow, beautified with our feathers, that with his Tiger's heart wrapped in a Player's hide, supposes he is as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum, is in his own conceit the only Shake-scene in a }}"
-     }
-    ],
-    "seq": 94,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "scholars differ|on|the exact meaning o",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Scholars differ on the exact meaning o",
-    "subject": "Scholars differ",
-    "verb": "on",
-    "object": "the exact meaning o",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7962-8000",
-      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-      "text": "Scholars differ on the exact meaning o"
-     }
-    ],
-    "seq": 95,
+    "seq": 45,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 96,
+  "nextSeq": 46,
   "admits": [
    "NUL",
    "SEG",
@@ -2875,12 +1438,28 @@
  },
  "folded": [
   {
+   "id": "1592 he|began|a successful career in london as an actor",
+   "subject": "1592 he",
+   "verb": "began",
+   "object": "a successful career in London as an actor",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1491-1818",
+     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
+     "text": "Sometime between 1585 and 1592 he began a successful career in London as an actor, writer, and Shareholderpart-owner (\"sharer\") of a playing company called the Lord Chamberlain's Men, later known as the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne."
+    }
+   ]
+  },
+  {
    "id": "a catholic|landowner|who named a certain \"william shakeshafte\" in his will",
    "subject": "a Catholic",
    "verb": "landowner",
    "object": "who named a certain \"William Shakeshafte\" in his will",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2891,44 +1470,12 @@
    ]
   },
   {
-   "id": "a stratford|legend|that shakespeare fled the town for london to escape prosecution for deer poaching in the estate of local squire thomas lucy",
-   "subject": "a Stratford",
-   "verb": "legend",
-   "object": "that Shakespeare fled the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy",
+   "id": "an arden|familyaffluent|landowning family that was influential in the recusancyrecusant catholic community",
+   "subject": "an Arden",
+   "verb": "familyaffluent",
+   "object": "landowning family that was influential in the RecusancyRecusant Catholic community",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#6373-6595",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Nicholas Rowe (writer)Nicholas Rowe, Shakespeare's first biographer, recounted a Stratford legend that Shakespeare fled the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy."
-    }
-   ]
-  },
-  {
-   "id": "also known|as|shakespeare's late romancesromances)",
-   "subject": "also known",
-   "verb": "as",
-   "object": "Shakespeare's late romancesromances)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2731-2934",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "In the last phase of his career, he wrote tragicomedytragicomedies (also known as Shakespeare's late romancesromances), such as The Winter's Tale and The Tempest, and collaborated with other playwrights."
-    }
-   ]
-  },
-  {
-   "id": "an alderman|and|a successful glover (glove-maker) originally from snitterfield in warwickshire",
-   "subject": "an alderman",
-   "verb": "and",
-   "object": "a successful glover (glove-maker) originally from Snitterfield in Warwickshire",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2939,28 +1486,12 @@
    ]
   },
   {
-   "id": "and collaborated|with|other playwrights",
-   "subject": "and collaborated",
-   "verb": "with",
-   "object": "other playwrights",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2731-2934",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "In the last phase of his career, he wrote tragicomedytragicomedies (also known as Shakespeare's late romancesromances), such as The Winter's Tale and The Tempest, and collaborated with other playwrights."
-    }
-   ]
-  },
-  {
    "id": "and shakeshafte|was|a common name in the lancashire area",
    "subject": "and Shakeshafte",
    "verb": "was",
    "object": "a common name in the Lancashire area",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2976,29 +1507,13 @@
    "verb": "gave",
    "object": "birth to a daughter",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5417-5521",
      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
      "text": "Six months after the marriage, Anne gave birth to a daughter, Susanna HallSusanna, baptised 26 May 1583."
-    }
-   ]
-  },
-  {
-   "id": "are considered|to|be among the finest works in english",
-   "subject": "are considered",
-   "verb": "to",
-   "object": "be among the finest works in English",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2554-2730",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "He then wrote mainly Shakespearean tragedytragedies until 1608, among them Hamlet, Othello, King Lear and Macbeth, which are considered to be among the finest works in English."
     }
    ]
   },
@@ -3008,7 +1523,7 @@
    "verb": "may",
    "object": "1583",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3019,28 +1534,12 @@
    ]
   },
   {
-   "id": "basic latin|text|was standardised by royal decree",
-   "subject": "basic Latin",
-   "verb": "text",
-   "object": "was standardised by royal decree",
+   "id": "because shakespeare|died|on the same date in 1616",
+   "subject": "because Shakespeare",
+   "verb": "died",
+   "object": "on the same date in 1616",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4628-4908",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Grammar schools varied in quality during the Elizabethan era, but grammar school curricula were largely similar: the basic Latin text was standardised by royal decree, and the school would have provided an intensive education in grammar based upon Latin classicsclassical authors."
-    }
-   ]
-  },
-  {
-   "id": "be traced|to|william oldys and george steevens",
-   "subject": "be traced",
-   "verb": "to",
-   "object": "William Oldys and George Steevens",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3051,236 +1550,12 @@
    ]
   },
   {
-   "id": "beautified|with|our feathers",
-   "subject": "beautified",
-   "verb": "with",
-   "object": "our feathers",
+   "id": "hamnet|died|of unknown causes at the age of 11 and was buried 11 august 1596",
+   "subject": "Hamnet",
+   "verb": "died",
+   "object": "of unknown causes at the age of 11 and was buried 11 August 1596",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7671-7960",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "...&nbsp;there is an upstart Crow, beautified with our feathers, that with his Tiger's heart wrapped in a Player's hide, supposes he is as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum, is in his own conceit the only Shake-scene in a }}"
-    }
-   ]
-  },
-  {
-   "id": "believed|to|be shakespeare's birthplaceshakespeare's birthplace",
-   "subject": "believed",
-   "verb": "to",
-   "object": "be Shakespeare's BirthplaceShakespeare's birthplace",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3485-3889",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "'s house, believed to be Shakespeare's BirthplaceShakespeare's birthplace, in Stratford-upon-Avon]] William Shakespeare was the son of John Shakespeare, an alderman and a successful glover (glove-maker) originally from Snitterfield in Warwickshire, and Mary ShakespeareMary Arden, the daughter of an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community."
-    }
-   ]
-  },
-  {
-   "id": "between 1585|and|1592 he began a successful career in london as an actor",
-   "subject": "between 1585",
-   "verb": "and",
-   "object": "1592 he began a successful career in London as an actor",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1491-1818",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Sometime between 1585 and 1592 he began a successful career in London as an actor, writer, and Shareholderpart-owner (\"sharer\") of a playing company called the Lord Chamberlain's Men, later known as the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne."
-    }
-   ]
-  },
-  {
-   "id": "biographers attempting|to|account for this period have reported many wikt:apocryphalapocryphal stories",
-   "subject": "Biographers attempting",
-   "verb": "to",
-   "object": "account for this period have reported many wikt:apocryphalapocryphal stories",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#6269-6372",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Biographers attempting to account for this period have reported many wikt:apocryphalapocryphal stories."
-    }
-   ]
-  },
-  {
-   "id": "collected edition|of|shakespeare's dramatic works that includes 36 of his plays",
-   "subject": "collected edition",
-   "verb": "of",
-   "object": "Shakespeare's dramatic works that includes 36 of his plays",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3044-3294",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "However, in 1623 John Heminges and Henry Condell, two fellow actors and friends of Shakespeare's, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeare's dramatic works that includes 36 of his plays."
-    }
-   ]
-  },
-  {
-   "id": "consist|of|some shakespeare's plays39 plays",
-   "subject": "consist",
-   "verb": "of",
-   "object": "some Shakespeare's plays39 plays",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#653-892",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "His extant works, including William Shakespeare's collaborationscollaborations, consist of some Shakespeare's plays39 plays, Shakespeare's sonnets154 sonnets, three long narrative poems and a few other verses, some of uncertain authorship."
-    }
-   ]
-  },
-  {
-   "id": "consistory court|of|the anglican diocese of worcesterdiocese of worcester issued a marriage licence on 27 november 1582",
-   "subject": "consistory court",
-   "verb": "of",
-   "object": "the Anglican Diocese of WorcesterDiocese of Worcester issued a marriage licence on 27 November 1582",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5009-5133",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "The consistory court of the Anglican Diocese of WorcesterDiocese of Worcester issued a marriage licence on 27 November 1582."
-    }
-   ]
-  },
-  {
-   "id": "contemporary allusions|and|records of performances show that several of his plays were on the london stage by 1592",
-   "subject": "contemporary allusions",
-   "verb": "and",
-   "object": "records of performances show that several of his plays were on the London stage by 1592",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7292-7472",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "It is not known definitively when Shakespeare began writing, but contemporary allusions and records of performances show that several of his plays were on the London stage by 1592."
-    }
-   ]
-  },
-  {
-   "id": "england\n church|of|the holy trinity",
-   "subject": "England\n Church",
-   "verb": "of",
-   "object": "the Holy Trinity",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#66-157",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Stratford-upon-Avon, Warwickshire, England Church of the Holy Trinity, Stratford-upon-Avon"
-    }
-   ]
-  },
-  {
-   "id": "features spears|as|a canting armspun on the family name",
-   "subject": "features spears",
-   "verb": "as",
-   "object": "a canting armspun on the family name",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5813-5874",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "It features spears as a canting armspun on the family name.]]"
-    }
-   ]
-  },
-  {
-   "id": "fellow actors|and|friends of shakespeare's",
-   "subject": "fellow actors",
-   "verb": "and",
-   "object": "friends of Shakespeare's",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3044-3294",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "However, in 1623 John Heminges and Henry Condell, two fellow actors and friends of Shakespeare's, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeare's dramatic works that includes 36 of his plays."
-    }
-   ]
-  },
-  {
-   "id": "few records|of|shakespeare's private life survive",
-   "subject": "Few records",
-   "verb": "of",
-   "object": "Shakespeare's private life survive",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1917-2320",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
-    }
-   ]
-  },
-  {
-   "id": "former rival|of|shakespeare",
-   "subject": "former rival",
-   "verb": "of",
-   "object": "Shakespeare",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3295-3465",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Its preface includes a prescient poem by Ben Jonson, a former rival of Shakespeare, who hailed Shakespeare with the now-famous epithet: \"not of an age, but for all time\"."
-    }
-   ]
-  },
-  {
-   "id": "hailed shakespeare|with|the now-famous epithet: \"not of an age",
-   "subject": "hailed Shakespeare",
-   "verb": "with",
-   "object": "the now-famous epithet: \"not of an age",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3295-3465",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Its preface includes a prescient poem by Ben Jonson, a former rival of Shakespeare, who hailed Shakespeare with the now-famous epithet: \"not of an age, but for all time\"."
-    }
-   ]
-  },
-  {
-   "id": "hamnet died|of|unknown causes at the age of 11 and was buried 11 august 1596",
-   "subject": "Hamnet died",
-   "verb": "of",
-   "object": "unknown causes at the age of 11 and was buried 11 August 1596",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3291,33 +1566,12 @@
    ]
   },
   {
-   "id": "hamnet shakespearehamnet|and|judith quineyjudith",
-   "subject": "Hamnet ShakespeareHamnet",
-   "verb": "and",
-   "object": "Judith QuineyJudith",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1298-1490",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "At the age of 18, he married Anne Hathaway (wife of Shakespeare)Anne Hathaway, with whom he had three children: Susanna HallSusanna, and twins Hamnet ShakespeareHamnet and Judith QuineyJudith."
-    },
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5522-5658",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Twins, son Hamnet ShakespeareHamnet and daughter Judith QuineyJudith, followed almost two years later and were baptised 2 February 1585."
-    }
-   ]
-  },
-  {
    "id": "has shakespeare|starting|his theatrical career minding the horses of theatre patrons in london",
    "subject": "has Shakespeare",
    "verb": "starting",
    "object": "his theatrical career minding the horses of theatre patrons in London",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3328,28 +1582,12 @@
    ]
   },
   {
-   "id": "he appears|to|have retired to stratford",
-   "subject": "he appears",
-   "verb": "to",
-   "object": "have retired to Stratford",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1819-1916",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "At age 49 (around 1613) he appears to have retired to Stratford, where he died three years later."
-    }
-   ]
-  },
-  {
    "id": "he|is|often called england's national poet and the \"bard of river avon",
    "subject": "He",
    "verb": "is",
    "object": "often called England's national poet and the \"Bard of River Avon",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3365,7 +1603,7 @@
    "verb": "is",
    "object": "widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3381,7 +1619,7 @@
    "verb": "married",
    "object": "Anne Hathaway (wife of Shakespeare)Anne Hathaway",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3397,7 +1635,7 @@
    "verb": "was",
    "object": "Baptismbaptised 26 April",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3413,7 +1651,7 @@
    "verb": "was",
    "object": "born in Stratford-upon-Avon",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3429,7 +1667,7 @@
    "verb": "was",
    "object": "sufficiently known in London to be attacked in print by the playwright Robert Greene (dramatist)Robert Greene in his Greene's Groats-Worth of WitGroats-Worth of Wit from that year:",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3445,7 +1683,7 @@
    "verb": "was",
    "object": "the third of eight children",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3456,76 +1694,12 @@
    ]
   },
   {
-   "id": "hearsayhearsay collected|after|his death",
-   "subject": "hearsayhearsay collected",
-   "verb": "after",
-   "object": "his death",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7102-7260",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Little evidence substantiates such stories other than wikt:hearsayhearsay collected after his death, and Shakeshafte was a common name in the Lancashire area."
-    }
-   ]
-  },
-  {
-   "id": "his date|of|birth is unknown but is traditionally observed on 23 april",
-   "subject": "His date",
-   "verb": "of",
-   "object": "birth is unknown but is traditionally observed on 23 April",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3973-4064",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "His date of birth is unknown but is traditionally observed on 23 April, Saint George's Day."
-    }
-   ]
-  },
-  {
-   "id": "intensive education|in|grammar based upon latin classicsclassical authors",
-   "subject": "intensive education",
-   "verb": "in",
-   "object": "grammar based upon Latin classicsclassical authors",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4628-4908",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Grammar schools varied in quality during the Elizabethan era, but grammar school curricula were largely similar: the basic Latin text was standardised by royal decree, and the school would have provided an intensive education in grammar based upon Latin classicsclassical authors."
-    }
-   ]
-  },
-  {
-   "id": "is|in|his own conceit the only shake-scene in a }}",
-   "subject": "is",
-   "verb": "in",
-   "object": "his own conceit the only Shake-scene in a }}",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7671-7960",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "...&nbsp;there is an upstart Crow, beautified with our feathers, that with his Tiger's heart wrapped in a Player's hide, supposes he is as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum, is in his own conceit the only Shake-scene in a }}"
-    }
-   ]
-  },
-  {
    "id": "it|is|not known definitively when shakespeare began writing",
    "subject": "It",
    "verb": "is",
    "object": "not known definitively when Shakespeare began writing",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3541,7 +1715,7 @@
    "verb": "reported",
    "object": "that Shakespeare had been a country schoolmaster",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3552,348 +1726,12 @@
    ]
   },
   {
-   "id": "john heminges|and|henry condell",
-   "subject": "John Heminges",
-   "verb": "and",
-   "object": "Henry Condell",
+   "id": "latin text|was|standardised by royal decree",
+   "subject": "Latin text",
+   "verb": "was",
+   "object": "standardised by royal decree",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3044-3294",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "However, in 1623 John Heminges and Henry Condell, two fellow actors and friends of Shakespeare's, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeare's dramatic works that includes 36 of his plays."
-    }
-   ]
-  },
-  {
-   "id": "king lear|and|macbeth",
-   "subject": "King Lear",
-   "verb": "and",
-   "object": "Macbeth",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2554-2730",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "He then wrote mainly Shakespearean tragedytragedies until 1608, among them Hamlet, Othello, King Lear and Macbeth, which are considered to be among the finest works in English."
-    }
-   ]
-  },
-  {
-   "id": "last phase|of|his career",
-   "subject": "last phase",
-   "verb": "of",
-   "object": "his career",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2731-2934",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "In the last phase of his career, he wrote tragicomedytragicomedies (also known as Shakespeare's late romancesromances), such as The Winter's Tale and The Tempest, and collaborated with other playwrights."
-    }
-   ]
-  },
-  {
-   "id": "later known|as|the king's men (playing company)king's men after the ascension of james vi and iking james vi of scotland to the english throne",
-   "subject": "later known",
-   "verb": "as",
-   "object": "the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1491-1818",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Sometime between 1585 and 1592 he began a successful career in London as an actor, writer, and Shareholderpart-owner (\"sharer\") of a playing company called the Lord Chamberlain's Men, later known as the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne."
-    }
-   ]
-  },
-  {
-   "id": "london|and|theatrical career",
-   "subject": "London",
-   "verb": "and",
-   "object": "theatrical career",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7262-7290",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "London and theatrical career"
-    }
-   ]
-  },
-  {
-   "id": "mainly shakespearean|tragedytragedies|until 1608",
-   "subject": "mainly Shakespearean",
-   "verb": "tragedytragedies",
-   "object": "until 1608",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2554-2730",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "He then wrote mainly Shakespearean tragedytragedies until 1608, among them Hamlet, Othello, King Lear and Macbeth, which are considered to be among the finest works in English."
-    }
-   ]
-  },
-  {
-   "id": "many|of|shakespeare's plays were published in editions of varying quality and accuracy during his lifetime",
-   "subject": "Many",
-   "verb": "of",
-   "object": "Shakespeare's plays were published in editions of varying quality and accuracy during his lifetime",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2936-3043",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Many of Shakespeare's plays were published in editions of varying quality and accuracy during his lifetime."
-    }
-   ]
-  },
-  {
-   "id": "mile|from|his home in stratford-upon-avon guildhallstratford's guildhall",
-   "subject": "mile",
-   "verb": "from",
-   "object": "his home in Stratford-upon-Avon GuildhallStratford's guildhall",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4288-4627",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Although no attendance records for the period survive, most biographers agree that Shakespeare was probably educated at the King Edward VI School, Stratford-upon-AvonKing's New School in Stratford, a free school chartered in 1553, based about a quarter-mile (400&nbsp;m) from his home in Stratford-upon-Avon GuildhallStratford's guildhall."
-    }
-   ]
-  },
-  {
-   "id": "more definitive|text|known as the first folio",
-   "subject": "more definitive",
-   "verb": "text",
-   "object": "known as the First Folio",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3044-3294",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "However, in 1623 John Heminges and Henry Condell, two fellow actors and friends of Shakespeare's, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeare's dramatic works that includes 36 of his plays."
-    }
-   ]
-  },
-  {
-   "id": "narrative poems|and|a few other verses",
-   "subject": "narrative poems",
-   "verb": "and",
-   "object": "a few other verses",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#653-892",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "His extant works, including William Shakespeare's collaborationscollaborations, consist of some Shakespeare's plays39 plays, Shakespeare's sonnets154 sonnets, three long narrative poems and a few other verses, some of uncertain authorship."
-    }
-   ]
-  },
-  {
-   "id": "new school|in|stratford",
-   "subject": "New School",
-   "verb": "in",
-   "object": "Stratford",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4288-4627",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Although no attendance records for the period survive, most biographers agree that Shakespeare was probably educated at the King Edward VI School, Stratford-upon-AvonKing's New School in Stratford, a free school chartered in 1553, based about a quarter-mile (400&nbsp;m) from his home in Stratford-upon-Avon GuildhallStratford's guildhall."
-    }
-   ]
-  },
-  {
-   "id": "owner|of|a playing company called the lord chamberlain's men",
-   "subject": "owner",
-   "verb": "of",
-   "object": "a playing company called the Lord Chamberlain's Men",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1491-1818",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Sometime between 1585 and 1592 he began a successful career in London as an actor, writer, and Shareholderpart-owner (\"sharer\") of a playing company called the Lord Chamberlain's Men, later known as the King's Men (playing company)King's Men after the ascension of James VI and IKing James VI of Scotland to the English throne."
-    }
-   ]
-  },
-  {
-   "id": "plays list|of|translations of works by william shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright",
-   "subject": "plays List",
-   "verb": "of",
-   "object": "translations of works by William Shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#893-1088",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "His plays List of translations of works by William Shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright."
-    }
-   ]
-  },
-  {
-   "id": "poet|and|actor",
-   "subject": "poet",
-   "verb": "and",
-   "object": "actor",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#368-432",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "}} – 23 April 1616)}} was an English playwright, poet and actor."
-    }
-   ]
-  },
-  {
-   "id": "prescient poem|by|ben jonson",
-   "subject": "prescient poem",
-   "verb": "by",
-   "object": "Ben Jonson",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3295-3465",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Its preface includes a prescient poem by Ben Jonson, a former rival of Shakespeare, who hailed Shakespeare with the now-famous epithet: \"not of an age, but for all time\"."
-    }
-   ]
-  },
-  {
-   "id": "primarily shakespearean|comedycomedies|and shakespearean historyhistories and are regarded as some of the best works produced in these genres",
-   "subject": "primarily Shakespearean",
-   "verb": "comedycomedies",
-   "object": "and Shakespearean historyhistories and are regarded as some of the best works produced in these genres",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2390-2553",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "His early plays were primarily Shakespearean comedycomedies and Shakespearean historyhistories and are regarded as some of the best works produced in these genres."
-    }
-   ]
-  },
-  {
-   "id": "proved appealing|to|biographers because shakespeare died on the same date in 1616",
-   "subject": "proved appealing",
-   "verb": "to",
-   "object": "biographers because Shakespeare died on the same date in 1616",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4065-4220",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "This date, which can be traced to William Oldys and George Steevens, has proved appealing to biographers because Shakespeare died on the same date in 1616."
-    }
-   ]
-  },
-  {
-   "id": "religious views|of|william shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were shakespeare authorship questionwritten by others",
-   "subject": "Religious views",
-   "verb": "of",
-   "object": "William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1917-2320",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
-    }
-   ]
-  },
-  {
-   "id": "scholars differ|on|the exact meaning o",
-   "subject": "Scholars differ",
-   "verb": "on",
-   "object": "the exact meaning o",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7962-8000",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Scholars differ on the exact meaning o"
-    }
-   ]
-  },
-  {
-   "id": "scholars refer|to|the years between 1585 and 1592 as shakespeare's \"lost years\"",
-   "subject": "Scholars refer",
-   "verb": "to",
-   "object": "the years between 1585 and 1592 as Shakespeare's \"lost years\"",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#6188-6268",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Scholars refer to the years between 1585 and 1592 as Shakespeare's \"lost years\"."
-    }
-   ]
-  },
-  {
-   "id": "school chartered|in|1553",
-   "subject": "school chartered",
-   "verb": "in",
-   "object": "1553",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4288-4627",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Although no attendance records for the period survive, most biographers agree that Shakespeare was probably educated at the King Edward VI School, Stratford-upon-AvonKing's New School in Stratford, a free school chartered in 1553, based about a quarter-mile (400&nbsp;m) from his home in Stratford-upon-Avon GuildhallStratford's guildhall."
-    }
-   ]
-  },
-  {
-   "id": "schools varied|in|quality during the elizabethan era",
-   "subject": "schools varied",
-   "verb": "in",
-   "object": "quality during the Elizabethan era",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3904,18 +1742,82 @@
    ]
   },
   {
-   "id": "sexuality|of|william shakespearehis sexuality",
-   "subject": "Sexuality",
-   "verb": "of",
-   "object": "William Shakespearehis sexuality",
+   "id": "mainly shakespearean|tragedytragedies|until 1608",
+   "subject": "mainly Shakespearean",
+   "verb": "tragedytragedies",
+   "object": "until 1608",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1917-2320",
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2554-2730",
      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
+     "text": "He then wrote mainly Shakespearean tragedytragedies until 1608, among them Hamlet, Othello, King Lear and Macbeth, which are considered to be among the finest works in English."
+    }
+   ]
+  },
+  {
+   "id": "of birth|is|unknown but is traditionally observed on 23 april",
+   "subject": "of birth",
+   "verb": "is",
+   "object": "unknown but is traditionally observed on 23 April",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3973-4064",
+     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
+     "text": "His date of birth is unknown but is traditionally observed on 23 April, Saint George's Day."
+    }
+   ]
+  },
+  {
+   "id": "of worcester|issued|a marriage licence on 27 november 1582",
+   "subject": "of Worcester",
+   "verb": "issued",
+   "object": "a marriage licence on 27 November 1582",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5009-5133",
+     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
+     "text": "The consistory court of the Anglican Diocese of WorcesterDiocese of Worcester issued a marriage licence on 27 November 1582."
+    }
+   ]
+  },
+  {
+   "id": "period have|reported|many wikt:apocryphalapocryphal stories",
+   "subject": "period have",
+   "verb": "reported",
+   "object": "many wikt:apocryphalapocryphal stories",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#6269-6372",
+     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
+     "text": "Biographers attempting to account for this period have reported many wikt:apocryphalapocryphal stories."
+    }
+   ]
+  },
+  {
+   "id": "primarily shakespearean|comedycomedies|and shakespearean historyhistories and are regarded as some of the best works produced in these genres",
+   "subject": "primarily Shakespearean",
+   "verb": "comedycomedies",
+   "object": "and Shakespearean historyhistories and are regarded as some of the best works produced in these genres",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2390-2553",
+     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
+     "text": "His early plays were primarily Shakespearean comedycomedies and Shakespearean historyhistories and are regarded as some of the best works produced in these genres."
     }
    ]
   },
@@ -3925,7 +1827,7 @@
    "verb": "bibliography",
    "object": "English Renaissance",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3941,7 +1843,7 @@
    "verb": "is",
    "object": "also supposed to have taken his revenge on Lucy by writing a scurrilous ballad about him",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3957,7 +1859,7 @@
    "verb": "left",
    "object": "few historical traces until he is mentioned as part of the London theatre scene in 1592",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3973,7 +1875,7 @@
    "verb": "married",
    "object": "26-year-old Anne Hathaway (Shakespeare's wife)Anne Hathaway",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3989,7 +1891,7 @@
    "verb": "produced",
    "object": "most of his known works between 1589 and 1613",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4005,7 +1907,7 @@
    "verb": "remains",
    "object": "arguably the most influential writer in the English language",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4021,7 +1923,7 @@
    "verb": "was",
    "object": "born and raised in Stratford-upon-Avon",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4032,76 +1934,12 @@
    ]
   },
   {
-   "id": "six months|after|the marriage",
-   "subject": "Six months",
-   "verb": "after",
-   "object": "the marriage",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5417-5521",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Six months after the marriage, Anne gave birth to a daughter, Susanna HallSusanna, baptised 26 May 1583."
-    }
-   ]
-  },
-  {
-   "id": "some|of|uncertain authorship",
-   "subject": "some",
-   "verb": "of",
-   "object": "uncertain authorship",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#653-892",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "His extant works, including William Shakespeare's collaborationscollaborations, consist of some Shakespeare's plays39 plays, Shakespeare's sonnets154 sonnets, three long narrative poems and a few other verses, some of uncertain authorship."
-    }
-   ]
-  },
-  {
-   "id": "such matters|as|portraits of shakespearehis physical appearance",
-   "subject": "such matters",
-   "verb": "as",
-   "object": "Portraits of Shakespearehis physical appearance",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1917-2320",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
-    }
-   ]
-  },
-  {
-   "id": "such|as|the winter's tale and the tempest",
-   "subject": "such",
-   "verb": "as",
-   "object": "The Winter's Tale and The Tempest",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#2731-2934",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "In the last phase of his career, he wrote tragicomedytragicomedies (also known as Shakespeare's late romancesromances), such as The Winter's Tale and The Tempest, and collaborated with other playwrights."
-    }
-   ]
-  },
-  {
    "id": "supposes he|is|as well able to bombast out a blank verse as the best of you: and being an absolute johannes factotum",
    "subject": "supposes he",
    "verb": "is",
    "object": "as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4112,12 +1950,28 @@
    ]
   },
   {
+   "id": "that shakespeare|fled|the town for london to escape prosecution for deer poaching in the estate of local squire thomas lucy",
+   "subject": "that Shakespeare",
+   "verb": "fled",
+   "object": "the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#6373-6595",
+     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
+     "text": "Nicholas Rowe (writer)Nicholas Rowe, Shakespeare's first biographer, recounted a Stratford legend that Shakespeare fled the town for London to escape prosecution for deer poaching in the estate of local squire Thomas Lucy."
+    }
+   ]
+  },
+  {
    "id": "that shakespeare|may|have been employed as a schoolmaster by alexander hoghton of lancashire",
    "subject": "that Shakespeare",
    "verb": "may",
    "object": "have been employed as a schoolmaster by Alexander Hoghton of Lancashire",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4133,7 +1987,7 @@
    "verb": "was",
    "object": "probably educated at the King Edward VI School",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4144,81 +1998,12 @@
    ]
   },
   {
-   "id": "that|with|his tiger's heart wrapped in a player's hide",
-   "subject": "that",
-   "verb": "with",
-   "object": "his Tiger's heart wrapped in a Player's hide",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#7671-7960",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "...&nbsp;there is an upstart Crow, beautified with our feathers, that with his Tiger's heart wrapped in a Player's hide, supposes he is as well able to bombast out a blank verse as the best of you: and being an absolute Johannes factotum, is in his own conceit the only Shake-scene in a }}"
-    }
-   ]
-  },
-  {
-   "id": "the age|of|18",
-   "subject": "the age",
-   "verb": "of",
-   "object": "18",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1298-1490",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "At the age of 18, he married Anne Hathaway (wife of Shakespeare)Anne Hathaway, with whom he had three children: Susanna HallSusanna, and twins Hamnet ShakespeareHamnet and Judith QuineyJudith."
-    },
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4910-5008",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "At the age of 18, Shakespeare married 26-year-old Anne Hathaway (Shakespeare's wife)Anne Hathaway."
-    }
-   ]
-  },
-  {
-   "id": "the birth|of|the twins",
-   "subject": "the birth",
-   "verb": "of",
-   "object": "the twins",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5876-6011",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "After the birth of the twins, Shakespeare left few historical traces until he is mentioned as part of the London theatre scene in 1592."
-    }
-   ]
-  },
-  {
-   "id": "the book|of|coates and creasts",
-   "subject": "The book",
-   "verb": "of",
-   "object": "coates and creasts",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5738-5790",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": ", from the 1602 book The book of coates and creasts."
-    }
-   ]
-  },
-  {
    "id": "the ceremony|may|have been arranged in some haste",
    "subject": "The ceremony",
    "verb": "may",
    "object": "have been arranged in some haste",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4229,28 +2014,12 @@
    ]
   },
   {
-   "id": "the daughter|of|an arden familyaffluent landowning family that was influential in the recusancyrecusant catholic community",
-   "subject": "the daughter",
-   "verb": "of",
-   "object": "an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#3485-3889",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "'s house, believed to be Shakespeare's BirthplaceShakespeare's birthplace, in Stratford-upon-Avon]] William Shakespeare was the son of John Shakespeare, an alderman and a successful glover (glove-maker) originally from Snitterfield in Warwickshire, and Mary ShakespeareMary Arden, the daughter of an Arden familyaffluent landowning family that was influential in the RecusancyRecusant Catholic community."
-    }
-   ]
-  },
-  {
    "id": "the exception|is|the appearance of his name in the \"complaints bill\" of a law case before the queen's bench court at westminster dated michaelmas term 1588 and 9 october 1589",
    "subject": "The exception",
    "verb": "is",
    "object": "the appearance of his name in the \"complaints bill\" of a law case before the Queen's Bench court at Westminster dated Michaelmas Term 1588 and 9 October 1589",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4266,7 +2035,7 @@
    "verb": "chancellor",
    "object": "allowed the Banns of marriagemarriage banns to be read once instead of the usual three times",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4282,7 +2051,7 @@
    "verb": "is",
    "object": "an upstart Crow",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4293,18 +2062,34 @@
    ]
   },
   {
-   "id": "two|of|hathaway's neighbours posted bonds guaranteeing that no lawful claims impeded the marriage",
-   "subject": "two",
-   "verb": "of",
-   "object": "Hathaway's neighbours posted bonds guaranteeing that no lawful claims impeded the marriage",
+   "id": "upon latin|classicsclassical|authors",
+   "subject": "upon Latin",
+   "verb": "classicsclassical",
+   "object": "authors",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5134-5246",
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#4628-4908",
      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "The next day, two of Hathaway's neighbours posted bonds guaranteeing that no lawful claims impeded the marriage."
+     "text": "Grammar schools varied in quality during the Elizabethan era, but grammar school curricula were largely similar: the basic Latin text was standardised by royal decree, and the school would have provided an intensive education in grammar based upon Latin classicsclassical authors."
+    }
+   ]
+  },
+  {
+   "id": "were shakespeare|authorship|questionwritten by others",
+   "subject": "were Shakespeare",
+   "verb": "authorship",
+   "object": "questionwritten by others",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1917-2320",
+     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
+     "text": "Few records of Shakespeare's private life survive; this has stimulated considerable speculation about such matters as Portraits of Shakespearehis physical appearance, Sexuality of William Shakespearehis sexuality, Religious views of William Shakespearehis religious beliefs and even certain fringe theories as to whether the works attributed to him were Shakespeare authorship questionwritten by others."
     }
    ]
   },
@@ -4314,7 +2099,7 @@
    "verb": "died",
    "object": "three years later",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4330,7 +2115,7 @@
    "verb": "was",
    "object": "Baptismbaptised on 26 April 1564",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4346,7 +2131,7 @@
    "verb": "had",
    "object": "three children: Susanna HallSusanna",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4362,7 +2147,7 @@
    "verb": "was",
    "object": "the son of John Shakespeare",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4373,40 +2158,24 @@
    ]
   },
   {
-   "id": "works continue|to|be studied and reinterpreted",
-   "subject": "works continue",
-   "verb": "to",
-   "object": "be studied and reinterpreted",
+   "id": "william shakespearehave|been|translated into every major modern languageliving language and are performed more often than those of any other playwright",
+   "subject": "William Shakespearehave",
+   "verb": "been",
+   "object": "translated into every major modern languageliving language and are performed more often than those of any other playwright",
    "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/William_Shakespeare.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#1089-1226",
+     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#893-1088",
      "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Shakespeare remains arguably the most influential writer in the English language, and his works continue to be studied and reinterpreted."
-    }
-   ]
-  },
-  {
-   "id": "years later|and|were baptised 2 february 1585",
-   "subject": "years later",
-   "verb": "and",
-   "object": "were baptised 2 February 1585",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/William_Shakespeare.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/William_Shakespeare.txt#5522-5658",
-     "ref": "02-encyclopedic/wikipedia/William_Shakespeare.txt",
-     "text": "Twins, son Hamnet ShakespeareHamnet and daughter Judith QuineyJudith, followed almost two years later and were baptised 2 February 1585."
+     "text": "His plays List of translations of works by William Shakespearehave been translated into every major modern languageliving language and are performed more often than those of any other playwright."
     }
    ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:46.145Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:25.252Z"
  }
 }

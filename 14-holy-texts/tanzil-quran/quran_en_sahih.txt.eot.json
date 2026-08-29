@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 866530,
   "bodyOffset": 0,
   "bodyChars": 866530,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 18,
   "distinctReferents": 15,
   "examined": true,
-  "edgesFound": 117,
-  "extractionError": null
+  "edgesFound": 72,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 15,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 30
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 72,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 133,
-  "excerptOk": 133,
-  "rawChecked": 133,
-  "rawOk": 133,
+  "excerptChecked": 79,
+  "excerptOk": 79,
+  "rawChecked": 79,
+  "rawOk": 79,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 117,
-  "heard": 117,
+  "offered": 72,
+  "heard": 72,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "in|the|name of allah",
+    "task_id": "praise|is|[due] to allah",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,108 +99,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "In the name of Allah",
-    "subject": "In",
-    "verb": "the",
-    "object": "name of Allah",
+    "description": "praise is [due] to Allah",
+    "subject": "praise",
+    "verb": "is",
+    "object": "[due] to Allah",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#0-111",
+      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#112-248",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "=== Surah 1: Al-Faatiha (The Opening) === In the name of Allah, the Entirely Merciful, the Especially Merciful."
+      "text": "[All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense."
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "praise is|to|allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "praise is to Allah",
-    "subject": "praise is",
-    "verb": "to",
-    "object": "Allah",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#112-248",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "[All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lord of|the|worlds - the entirely merciful",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Lord of the worlds - The Entirely Merciful",
-    "subject": "Lord of",
-    "verb": "the",
-    "object": "worlds - The Entirely Merciful",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#112-248",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "[All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sovereign of|the|day of recompense",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Sovereign of the Day of Recompense",
-    "subject": "Sovereign of",
-    "verb": "the",
-    "object": "Day of Recompense",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#112-248",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "[All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense."
-     }
-    ],
-    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +133,7 @@
     "verb": "is",
     "object": "You we worship and You we ask for help",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,13 +142,13 @@
       "text": "It is You we worship and You we ask for help."
      }
     ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "guide us|to|the straight path - the path of those upon whom you have bestowed favor",
+    "task_id": "those who|are|astray",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -214,12 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Guide us to the straight path - The path of those upon whom You have bestowed favor",
-    "subject": "Guide us",
-    "verb": "to",
-    "object": "the straight path - The path of those upon whom You have bestowed favor",
+    "description": "those who are astray",
+    "subject": "those who",
+    "verb": "are",
+    "object": "astray",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,42 +171,13 @@
       "text": "Guide us to the straight path - The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
      }
     ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "not|of|those who have evoked [your] anger or of those who are astray",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not of those who have evoked [Your] anger or of those who are astray",
-    "subject": "not",
-    "verb": "of",
-    "object": "those who have evoked [Your] anger or of those who are astray",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#295-449",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Guide us to the straight path - The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "this is|the|book about which there is no doubt",
+    "task_id": "this|is|the book about which there is no doubt",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -273,11 +187,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "This is the Book about which there is no doubt",
-    "subject": "This is",
-    "verb": "the",
-    "object": "Book about which there is no doubt",
+    "subject": "This",
+    "verb": "is",
+    "object": "the Book about which there is no doubt",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -286,13 +200,13 @@
       "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
      }
     ],
-    "seq": 7,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "a|guidance|for those conscious of allah - who believe in the unseen",
+    "task_id": "hereafter they|are|certain [in faith]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -301,12 +215,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "a guidance for those conscious of Allah - Who believe in the unseen",
-    "subject": "a",
-    "verb": "guidance",
-    "object": "for those conscious of Allah - Who believe in the unseen",
+    "description": "Hereafter they are certain [in faith]",
+    "subject": "Hereafter they",
+    "verb": "are",
+    "object": "certain [in faith]",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,133 +229,7 @@
       "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "spend out|of|what we have provided for them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "spend out of what We have provided for them",
-    "subject": "spend out",
-    "verb": "of",
-    "object": "what We have provided for them",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|who|believe in what has been revealed to you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And who believe in what has been revealed to you",
-    "subject": "And",
-    "verb": "who",
-    "object": "believe in what has been revealed to you",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4229-4299",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And those who have believed know that it is the truth from their Lord."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was revealed|before|you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was revealed before you",
-    "subject": "was revealed",
-    "verb": "before",
-    "object": "you",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and of|the|hereafter they are certain [in faith]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and of the Hereafter they are certain [in faith]",
-    "subject": "and of",
-    "verb": "the",
-    "object": "Hereafter they are certain [in faith]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1184-1287",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And of the people are some who say, \"We believe in Allah and the Last Day,\" but they are not believers."
-     }
-    ],
-    "seq": 12,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -461,7 +249,7 @@
     "verb": "are",
     "object": "upon [right] guidance from their Lord",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -470,7 +258,7 @@
       "text": "Those are upon [right] guidance from their Lord, and it is those who are the successful."
      }
     ],
-    "seq": 13,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -490,7 +278,7 @@
     "verb": "is",
     "object": "those who are the successful",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -499,13 +287,13 @@
       "text": "Those are upon [right] guidance from their Lord, and it is those who are the successful."
      }
     ],
-    "seq": 14,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "those|who|disbelieve - it is all the same for them whether you warn them or do not warn them - they will not believe",
+    "task_id": "it|is|all the same for them whether you warn them or do not warn them - they will not believe",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -514,12 +302,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "those who disbelieve - it is all the same for them whether you warn them or do not warn them - they will not believe",
-    "subject": "those",
-    "verb": "who",
-    "object": "disbelieve - it is all the same for them whether you warn them or do not warn them - they will not believe",
+    "description": "it is all the same for them whether you warn them or do not warn them - they will not believe",
+    "subject": "it",
+    "verb": "is",
+    "object": "all the same for them whether you warn them or do not warn them - they will not believe",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -528,36 +316,7 @@
       "text": "Indeed, those who disbelieve - it is all the same for them whether you warn them or do not warn them - they will not believe."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "their hearts|and|upon their hearing",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "their hearts and upon their hearing",
-    "subject": "their hearts",
-    "verb": "and",
-    "object": "upon their hearing",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1052-1147",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Allah has set a seal upon their hearts and upon their hearing, and over their vision is a veil."
-     }
-    ],
-    "seq": 16,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -577,7 +336,7 @@
     "verb": "is",
     "object": "a veil",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -586,7 +345,7 @@
       "text": "Allah has set a seal upon their hearts and upon their hearing, and over their vision is a veil."
      }
     ],
-    "seq": 17,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -606,7 +365,7 @@
     "verb": "is",
     "object": "a great punishment",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -620,13 +379,13 @@
       "text": "In their hearts is disease, so Allah has increased their disease; and for them is a painful punishment because they [habitually] used to lie."
      }
     ],
-    "seq": 18,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "in allah|and|the last day",
+    "task_id": "the people|are|some who say",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -635,12 +394,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "in Allah and the Last Day",
-    "subject": "in Allah",
-    "verb": "and",
-    "object": "the Last Day",
+    "description": "the people are some who say",
+    "subject": "the people",
+    "verb": "are",
+    "object": "some who say",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -649,7 +408,7 @@
       "text": "And of the people are some who say, \"We believe in Allah and the Last Day,\" but they are not believers."
      }
     ],
-    "seq": 19,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -669,7 +428,7 @@
     "verb": "are",
     "object": "not believers",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -678,75 +437,7 @@
       "text": "And of the people are some who say, \"We believe in Allah and the Last Day,\" but they are not believers."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "deceive allah|and|those who believe",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "deceive Allah and those who believe",
-    "subject": "deceive Allah",
-    "verb": "and",
-    "object": "those who believe",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1288-1402",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "They [think to] deceive Allah and those who believe, but they deceive not except themselves and perceive [it] not."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|they|deceive not except themselves and perceive [it] not",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "but they deceive not except themselves and perceive [it] not",
-    "subject": "but",
-    "verb": "they",
-    "object": "deceive not except themselves and perceive [it] not",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1288-1402",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "They [think to] deceive Allah and those who believe, but they deceive not except themselves and perceive [it] not."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1648-1726",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Unquestionably, it is they who are the corrupters, but they perceive [it] not."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1855-1926",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Unquestionably, it is they who are the foolish, but they know [it] not."
-     }
-    ],
-    "seq": 22,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -766,7 +457,7 @@
     "verb": "is",
     "object": "disease",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -775,13 +466,13 @@
       "text": "In their hearts is disease, so Allah has increased their disease; and for them is a painful punishment because they [habitually] used to lie."
      }
     ],
-    "seq": 23,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and|when|it is said to them",
+    "task_id": "when it|is|said to them",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -790,12 +481,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "And when it is said to them",
-    "subject": "And",
-    "verb": "when",
-    "object": "it is said to them",
+    "description": "when it is said to them",
+    "subject": "when it",
+    "verb": "is",
+    "object": "said to them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -807,48 +498,9 @@
       "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1727-1854",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
       "text": "And when it is said to them, \"Believe as the people have believed,\" they say, \"Should we believe as the foolish have believed?\""
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5687-5824",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And when he had informed them of their names, He said, \"Did I not tell you that I know the unseen [aspects] of the heavens and the earth?"
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5882-5987",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And [mention] when We said to the angels, \"Prostrate before Adam\"; so they prostrated, except for Iblees."
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "corruption on|the|earth",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "corruption on the earth",
-    "subject": "corruption on",
-    "verb": "the",
-    "object": "earth",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1545-1647",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And when it is said to them, \"Do not cause corruption on the earth,\" they say, \"We are but reformers.\""
-     }
-    ],
-    "seq": 25,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -868,7 +520,7 @@
     "verb": "are",
     "object": "but reformers",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -877,13 +529,13 @@
       "text": "And when it is said to them, \"Do not cause corruption on the earth,\" they say, \"We are but reformers.\""
      }
     ],
-    "seq": 26,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "it is|they|who are the corrupters",
+    "task_id": "it|is|they who are the corrupters",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -893,11 +545,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "it is they who are the corrupters",
-    "subject": "it is",
-    "verb": "they",
-    "object": "who are the corrupters",
+    "subject": "it",
+    "verb": "is",
+    "object": "they who are the corrupters",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -906,42 +558,13 @@
       "text": "Unquestionably, it is they who are the corrupters, but they perceive [it] not."
      }
     ],
-    "seq": 27,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "believe as|the|people have believed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Believe as the people have believed",
-    "subject": "Believe as",
-    "verb": "the",
-    "object": "people have believed",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1727-1854",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And when it is said to them, \"Believe as the people have believed,\" they say, \"Should we believe as the foolish have believed?\""
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it is|they|who are the foolish",
+    "task_id": "it|is|they who are the foolish",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -951,11 +574,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "it is they who are the foolish",
-    "subject": "it is",
-    "verb": "they",
-    "object": "who are the foolish",
+    "subject": "it",
+    "verb": "is",
+    "object": "they who are the foolish",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -964,13 +587,13 @@
       "text": "Unquestionably, it is they who are the foolish, but they know [it] not."
      }
     ],
-    "seq": 29,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and when|they|meet those who believe",
+    "task_id": "when they|are|alone with their evil ones",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -979,50 +602,26 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "And when they meet those who believe",
-    "subject": "And when",
-    "verb": "they",
-    "object": "meet those who believe",
+    "description": "when they are alone with their evil ones",
+    "subject": "when they",
+    "verb": "are",
+    "object": "alone with their evil ones",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1927-2093",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
       "text": "And when they meet those who believe, they say, \"We believe\"; but when they are alone with their evil ones, they say, \"Indeed, we are with you; we were only mockers.\""
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but when|they|are alone with their evil ones",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "but when they are alone with their evil ones",
-    "subject": "but when",
-    "verb": "they",
-    "object": "are alone with their evil ones",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
+     },
      {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1927-2093",
+      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3886-4009",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And when they meet those who believe, they say, \"We believe\"; but when they are alone with their evil ones, they say, \"Indeed, we are with you; we were only mockers.\""
+      "text": "Whenever they are provided with a provision of fruit therefrom, they will say, \"This is what we were provided with before.\""
      }
     ],
-    "seq": 31,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1042,7 +641,7 @@
     "verb": "are",
     "object": "with you",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1051,42 +650,13 @@
       "text": "And when they meet those who believe, they say, \"We believe\"; but when they are alone with their evil ones, they say, \"Indeed, we are with you; we were only mockers.\""
      }
     ],
-    "seq": 32,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "mocks them|and|prolongs them in their transgression [while] they wander blindly",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mocks them and prolongs them in their transgression [while] they wander blindly",
-    "subject": "mocks them",
-    "verb": "and",
-    "object": "prolongs them in their transgression [while] they wander blindly",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2094-2186",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "[But] Allah mocks them and prolongs them in their transgression [while] they wander blindly."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "those are|the|ones who have purchased error [in exchange] for guidance",
+    "task_id": "those|are|the ones who have purchased error [in exchange] for guidance",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1096,11 +666,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Those are the ones who have purchased error [in exchange] for guidance",
-    "subject": "Those are",
-    "verb": "the",
-    "object": "ones who have purchased error [in exchange] for guidance",
+    "subject": "Those",
+    "verb": "are",
+    "object": "the ones who have purchased error [in exchange] for guidance",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1109,7 +679,7 @@
       "text": "Those are the ones who have purchased error [in exchange] for guidance, so their transaction has brought no profit, nor were they guided."
      }
     ],
-    "seq": 34,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1129,7 +699,7 @@
     "verb": "brought",
     "object": "no profit",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1138,36 +708,7 @@
       "text": "Those are the ones who have purchased error [in exchange] for guidance, so their transaction has brought no profit, nor were they guided."
      }
     ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "nor were|they|guided",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "nor were they guided",
-    "subject": "nor were",
-    "verb": "they",
-    "object": "guided",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2187-2324",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Those are the ones who have purchased error [in exchange] for guidance, so their transaction has brought no profit, nor were they guided."
-     }
-    ],
-    "seq": 36,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1187,7 +728,7 @@
     "verb": "is",
     "object": "that of one who kindled a fire",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1196,13 +737,13 @@
       "text": "Their example is that of one who kindled a fire, but when it illuminated what was around him, Allah took away their light and left them in darkness [so] they could not see."
      }
     ],
-    "seq": 37,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "but|when|it illuminated what was around him",
+    "task_id": "they|could|not see",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1211,12 +752,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "but when it illuminated what was around him",
-    "subject": "but",
-    "verb": "when",
-    "object": "it illuminated what was around him",
+    "description": "they could not see",
+    "subject": "they",
+    "verb": "could",
+    "object": "not see",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1225,13 +766,13 @@
       "text": "Their example is that of one who kindled a fire, but when it illuminated what was around him, Allah took away their light and left them in darkness [so] they could not see."
      }
     ],
-    "seq": 38,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "their light|and|left them in darkness [so] they could not see",
+    "task_id": "so they|will|not return [to the right path]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1240,41 +781,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "their light and left them in darkness [so] they could not see",
-    "subject": "their light",
-    "verb": "and",
-    "object": "left them in darkness [so] they could not see",
+    "description": "so they will not return [to the right path]",
+    "subject": "so they",
+    "verb": "will",
+    "object": "not return [to the right path]",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2325-2497",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Their example is that of one who kindled a fire, but when it illuminated what was around him, Allah took away their light and left them in darkness [so] they could not see."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dumb|and|blind - so they will not return [to the right path]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dumb and blind - so they will not return [to the right path]",
-    "subject": "dumb",
-    "verb": "and",
-    "object": "blind - so they will not return [to the right path]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1283,13 +795,13 @@
       "text": "Deaf, dumb and blind - so they will not return [to the right path]."
      }
     ],
-    "seq": 40,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "rainstorm from|the|sky within which is darkness",
+    "task_id": "within which|is|darkness",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1298,12 +810,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "rainstorm from the sky within which is darkness",
-    "subject": "rainstorm from",
-    "verb": "the",
-    "object": "sky within which is darkness",
+    "description": "within which is darkness",
+    "subject": "within which",
+    "verb": "is",
+    "object": "darkness",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1312,65 +824,7 @@
       "text": "Or [it is] like a rainstorm from the sky within which is darkness, thunder and lightning."
      }
     ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "thunder|and|lightning",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "thunder and lightning",
-    "subject": "thunder",
-    "verb": "and",
-    "object": "lightning",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2566-2655",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Or [it is] like a rainstorm from the sky within which is darkness, thunder and lightning."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ears against|the|thunderclaps in dread of death",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ears against the thunderclaps in dread of death",
-    "subject": "ears against",
-    "verb": "the",
-    "object": "thunderclaps in dread of death",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2656-2736",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "They put their fingers in their ears against the thunderclaps in dread of death."
-     }
-    ],
-    "seq": 43,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1390,7 +844,7 @@
     "verb": "is",
     "object": "encompassing of the disbelievers",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1399,36 +853,7 @@
       "text": "But Allah is encompassing of the disbelievers."
      }
     ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|when|darkness comes over them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "but when darkness comes over them",
-    "subject": "but",
-    "verb": "when",
-    "object": "darkness comes over them",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2832-2946",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Every time it lights [the way] for them, they walk therein; but when darkness comes over them, they stand [still]."
-     }
-    ],
-    "seq": 45,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1448,7 +873,7 @@
     "verb": "could",
     "object": "have taken away their hearing and their sight",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1457,7 +882,7 @@
       "text": "And if Allah had willed, He could have taken away their hearing and their sight."
      }
     ],
-    "seq": 46,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1477,7 +902,7 @@
     "verb": "is",
     "object": "over all things competent",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1486,70 +911,7 @@
       "text": "Indeed, Allah is over all things competent."
      }
     ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "created you|and|those before you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "created you and those before you",
-    "subject": "created you",
-    "verb": "and",
-    "object": "those before you",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3072-3332",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "O mankind, worship your Lord, who created you and those before you, that you may become righteous - [He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5825-5881",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And I know what you reveal and what you have concealed.\""
-     }
-    ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "for you|the|earth a bed [spread out] and the sky a ceiling and sent down from the sky",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky",
-    "subject": "for you",
-    "verb": "the",
-    "object": "earth a bed [spread out] and the sky a ceiling and sent down from the sky",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3072-3332",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "O mankind, worship your Lord, who created you and those before you, that you may become righteous - [He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you."
-     }
-    ],
-    "seq": 49,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1569,22 +931,27 @@
     "verb": "brought",
     "object": "forth thereby fruits as provision for you",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3072-3332",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
       "text": "O mankind, worship your Lord, who created you and those before you, that you may become righteous - [He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you."
+     },
+     {
+      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4662-4852",
+      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+      "text": "How can you disbelieve in Allah when you were lifeless and He brought you to life; then He will cause you to die, then He will bring you [back] to life, and then to Him you will be returned."
      }
     ],
-    "seq": 50,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "not attribute|to|allah equals while you know [that there is nothing similar to him]",
+    "task_id": "that there|is|nothing similar to him]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1593,12 +960,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "not attribute to Allah equals while you know [that there is nothing similar to Him]",
-    "subject": "not attribute",
-    "verb": "to",
-    "object": "Allah equals while you know [that there is nothing similar to Him]",
+    "description": "that there is nothing similar to Him]",
+    "subject": "that there",
+    "verb": "is",
+    "object": "nothing similar to Him]",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1607,7 +974,7 @@
       "text": "So do not attribute to Allah equals while you know [that there is nothing similar to Him]."
      }
     ],
-    "seq": 51,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1627,7 +994,7 @@
     "verb": "are",
     "object": "in doubt about what We have sent down upon Our Servant [Muhammad]",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1636,36 +1003,7 @@
       "text": "And if you are in doubt about what We have sent down upon Our Servant [Muhammad], then produce a surah the like thereof and call upon your witnesses other than Allah, if you should be truthful."
      }
     ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a surah|the|like thereof and call upon your witnesses other than allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a surah the like thereof and call upon your witnesses other than Allah",
-    "subject": "a surah",
-    "verb": "the",
-    "object": "like thereof and call upon your witnesses other than Allah",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3424-3617",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And if you are in doubt about what We have sent down upon Our Servant [Muhammad], then produce a surah the like thereof and call upon your witnesses other than Allah, if you should be truthful."
-     }
-    ],
-    "seq": 53,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -1685,7 +1023,7 @@
     "verb": "will",
     "object": "never be able to - then fear the Fire",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1694,7 +1032,7 @@
       "text": "But if you do not - and you will never be able to - then fear the Fire, whose fuel is men and stones, prepared for the disbelievers."
      }
     ],
-    "seq": 54,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -1714,7 +1052,7 @@
     "verb": "is",
     "object": "men and stones",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1723,13 +1061,13 @@
       "text": "But if you do not - and you will never be able to - then fear the Fire, whose fuel is men and stones, prepared for the disbelievers."
      }
     ],
-    "seq": 55,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "prepared for|the|disbelievers",
+    "task_id": "that they|will|have gardens [in paradise] beneath which rivers flow",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1738,79 +1076,26 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "prepared for the disbelievers",
-    "subject": "prepared for",
-    "verb": "the",
-    "object": "disbelievers",
+    "description": "that they will have gardens [in Paradise] beneath which rivers flow",
+    "subject": "that they",
+    "verb": "will",
+    "object": "have gardens [in Paradise] beneath which rivers flow",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3618-3750",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "But if you do not - and you will never be able to - then fear the Fire, whose fuel is men and stones, prepared for the disbelievers."
-     }
-    ],
-    "seq": 56,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "good tidings|to|those who believe and do righteous deeds that they will have gardens [in paradise] beneath which rivers flow",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "good tidings to those who believe and do righteous deeds that they will have gardens [in Paradise] beneath which rivers flow",
-    "subject": "good tidings",
-    "verb": "to",
-    "object": "those who believe and do righteous deeds that they will have gardens [in Paradise] beneath which rivers flow",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3751-3885",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
       "text": "And give good tidings to those who believe and do righteous deeds that they will have gardens [in Paradise] beneath which rivers flow."
-     }
-    ],
-    "seq": 57,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "whenever they|are|provided with a provision of fruit therefrom",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Whenever they are provided with a provision of fruit therefrom",
-    "subject": "Whenever they",
-    "verb": "are",
-    "object": "provided with a provision of fruit therefrom",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
+     },
      {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3886-4009",
+      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4047-4130",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Whenever they are provided with a provision of fruit therefrom, they will say, \"This is what we were provided with before.\""
+      "text": "And they will have therein purified spouses, and they will abide therein eternally."
      }
     ],
-    "seq": 58,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -1830,7 +1115,7 @@
     "verb": "will",
     "object": "say",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1839,7 +1124,7 @@
       "text": "Whenever they are provided with a provision of fruit therefrom, they will say, \"This is what we were provided with before.\""
      }
     ],
-    "seq": 59,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
@@ -1859,7 +1144,7 @@
     "verb": "is",
     "object": "what we were provided with before",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1868,7 +1153,7 @@
       "text": "Whenever they are provided with a provision of fruit therefrom, they will say, \"This is what we were provided with before.\""
      }
     ],
-    "seq": 60,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    },
@@ -1888,7 +1173,7 @@
     "verb": "is",
     "object": "given to them in likeness",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1897,13 +1182,13 @@
       "text": "And it is given to them in likeness."
      }
     ],
-    "seq": 61,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and they|will|have therein purified spouses",
+    "task_id": "and they|will|abide therein eternally",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1912,12 +1197,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "And they will have therein purified spouses",
-    "subject": "And they",
+    "description": "and they will abide therein eternally",
+    "subject": "and they",
     "verb": "will",
-    "object": "have therein purified spouses",
+    "object": "abide therein eternally",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1926,17 +1211,12 @@
       "text": "And they will have therein purified spouses, and they will abide therein eternally."
      },
      {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6343-6488",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And We said, \"Go down, [all of you], as enemies to one another, and you will have upon the earth a place of settlement and provision for a time.\""
-     },
-     {
       "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6805-6924",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
       "text": "And those who disbelieve and deny Our signs - those will be companions of the Fire; they will abide therein eternally.\""
      }
     ],
-    "seq": 62,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    },
@@ -1956,7 +1236,7 @@
     "verb": "is",
     "object": "not timid to present an example - that of a mosquito or what is smaller than it",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1965,13 +1245,13 @@
       "text": "Indeed, Allah is not timid to present an example - that of a mosquito or what is smaller than it."
      }
     ],
-    "seq": 63,
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "for those|who|disbelieve",
+    "task_id": "that it|is|the truth from their lord",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1980,21 +1260,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "for those who disbelieve",
-    "subject": "for those",
-    "verb": "who",
-    "object": "disbelieve",
+    "description": "that it is the truth from their Lord",
+    "subject": "that it",
+    "verb": "is",
+    "object": "the truth from their Lord",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4300-4389",
+      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4229-4299",
       "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "But as for those who disbelieve, they say, \"What did Allah intend by this as an example?\""
+      "text": "And those who have believed know that it is the truth from their Lord."
      }
     ],
-    "seq": 64,
+    "seq": 39,
     "depends_on": [],
     "evidence": []
    },
@@ -2014,7 +1294,7 @@
     "verb": "misleads",
     "object": "many thereby and guides many thereby",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2023,7 +1303,7 @@
       "text": "He misleads many thereby and guides many thereby."
      }
     ],
-    "seq": 65,
+    "seq": 40,
     "depends_on": [],
     "evidence": []
    },
@@ -2043,7 +1323,7 @@
     "verb": "misleads",
     "object": "not except the defiantly disobedient",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2052,13 +1332,13 @@
       "text": "And He misleads not except the defiantly disobedient, Who break the covenant of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth."
      }
     ],
-    "seq": 66,
+    "seq": 41,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "who break|the|covenant of allah after contracting it and sever that which allah has ordered to be joined and cause corruption on earth",
+    "task_id": "break the|covenant|of allah after contracting it and sever that which allah has ordered to be joined and cause corruption on earth",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2067,12 +1347,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Who break the covenant of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth",
-    "subject": "Who break",
-    "verb": "the",
-    "object": "covenant of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth",
+    "description": "break the covenant of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth",
+    "subject": "break the",
+    "verb": "covenant",
+    "object": "of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2081,7 +1361,7 @@
       "text": "And He misleads not except the defiantly disobedient, Who break the covenant of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth."
      }
     ],
-    "seq": 67,
+    "seq": 42,
     "depends_on": [],
     "evidence": []
    },
@@ -2101,7 +1381,7 @@
     "verb": "is",
     "object": "those who are the losers",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2110,36 +1390,7 @@
       "text": "It is those who are the losers."
      }
     ],
-    "seq": 68,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in allah|when|you were lifeless and he brought you to life",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in Allah when you were lifeless and He brought you to life",
-    "subject": "in Allah",
-    "verb": "when",
-    "object": "you were lifeless and He brought you to life",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4662-4852",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "How can you disbelieve in Allah when you were lifeless and He brought you to life; then He will cause you to die, then He will bring you [back] to life, and then to Him you will be returned."
-     }
-    ],
-    "seq": 69,
+    "seq": 43,
     "depends_on": [],
     "evidence": []
    },
@@ -2159,7 +1410,7 @@
     "verb": "will",
     "object": "cause you to die",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2173,13 +1424,13 @@
       "text": "Then will you not reason?"
      }
     ],
-    "seq": 70,
+    "seq": 44,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and then|to|him you will be returned",
+    "task_id": "him you|will|be returned",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2188,12 +1439,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "and then to Him you will be returned",
-    "subject": "and then",
-    "verb": "to",
-    "object": "Him you will be returned",
+    "description": "Him you will be returned",
+    "subject": "Him you",
+    "verb": "will",
+    "object": "be returned",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2202,7 +1453,7 @@
       "text": "How can you disbelieve in Allah when you were lifeless and He brought you to life; then He will cause you to die, then He will bring you [back] to life, and then to Him you will be returned."
      }
     ],
-    "seq": 71,
+    "seq": 45,
     "depends_on": [],
     "evidence": []
    },
@@ -2222,7 +1473,7 @@
     "verb": "is",
     "object": "He who created for you all of that which is on the earth",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2231,7 +1482,7 @@
       "text": "It is He who created for you all of that which is on the earth."
      }
     ],
-    "seq": 72,
+    "seq": 46,
     "depends_on": [],
     "evidence": []
    },
@@ -2251,7 +1502,7 @@
     "verb": "directed",
     "object": "Himself to the heaven",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2260,7 +1511,7 @@
       "text": "Then He directed Himself to the heaven, [His being above all creation], and made them seven heavens, and He is Knowing of all things."
      }
     ],
-    "seq": 73,
+    "seq": 47,
     "depends_on": [],
     "evidence": []
    },
@@ -2280,7 +1531,7 @@
     "verb": "is",
     "object": "Knowing of all things",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2289,7 +1540,7 @@
       "text": "Then He directed Himself to the heaven, [His being above all creation], and made them seven heavens, and He is Knowing of all things."
      }
     ],
-    "seq": 74,
+    "seq": 48,
     "depends_on": [],
     "evidence": []
    },
@@ -2309,7 +1560,7 @@
     "verb": "said",
     "object": "to the angels",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2318,7 +1569,7 @@
       "text": "And [mention, O Muhammad], when your Lord said to the angels, \"Indeed, I will make upon the earth a successive authority.\""
      }
     ],
-    "seq": 75,
+    "seq": 49,
     "depends_on": [],
     "evidence": []
    },
@@ -2338,7 +1589,7 @@
     "verb": "will",
     "object": "make upon the earth a successive authority",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2347,65 +1598,7 @@
       "text": "And [mention, O Muhammad], when your Lord said to the angels, \"Indeed, I will make upon the earth a successive authority.\""
      }
     ],
-    "seq": 76,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "will you|place|upon it one who causes corruption therein and sheds blood",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Will You place upon it one who causes corruption therein and sheds blood",
-    "subject": "Will You",
-    "verb": "place",
-    "object": "upon it one who causes corruption therein and sheds blood",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5174-5307",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "They said, \"Will You place upon it one who causes corruption therein and sheds blood, while we declare Your praise and sanctify You?\""
-     }
-    ],
-    "seq": 77,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "your praise|and|sanctify you?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Your praise and sanctify You?\"",
-    "subject": "Your praise",
-    "verb": "and",
-    "object": "sanctify You?\"",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5174-5307",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "They said, \"Will You place upon it one who causes corruption therein and sheds blood, while we declare Your praise and sanctify You?\""
-     }
-    ],
-    "seq": 78,
+    "seq": 50,
     "depends_on": [],
     "evidence": []
    },
@@ -2425,7 +1618,7 @@
     "verb": "taught",
     "object": "Adam the names - all of them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2434,7 +1627,7 @@
       "text": "And He taught Adam the names - all of them."
      }
     ],
-    "seq": 79,
+    "seq": 51,
     "depends_on": [],
     "evidence": []
    },
@@ -2454,7 +1647,7 @@
     "verb": "showed",
     "object": "them to the angels and said",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2463,41 +1656,7 @@
       "text": "Then He showed them to the angels and said, \"Inform Me of the names of these, if you are truthful.\""
      }
     ],
-    "seq": 80,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "inform me|of|the names of these",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Inform Me of the names of these",
-    "subject": "Inform Me",
-    "verb": "of",
-    "object": "the names of these",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5409-5508",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Then He showed them to the angels and said, \"Inform Me of the names of these, if you are truthful.\""
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5640-5686",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "He said, \"O Adam, inform them of their names.\""
-     }
-    ],
-    "seq": 81,
+    "seq": 52,
     "depends_on": [],
     "evidence": []
    },
@@ -2517,7 +1676,7 @@
     "verb": "are",
     "object": "truthful",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2526,7 +1685,7 @@
       "text": "Then He showed them to the angels and said, \"Inform Me of the names of these, if you are truthful.\""
      }
     ],
-    "seq": 82,
+    "seq": 53,
     "depends_on": [],
     "evidence": []
    },
@@ -2546,7 +1705,7 @@
     "verb": "are",
     "object": "You",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2555,7 +1714,7 @@
       "text": "They said, \"Exalted are You; we have no knowledge except what You have taught us."
      }
     ],
-    "seq": 83,
+    "seq": 54,
     "depends_on": [],
     "evidence": []
    },
@@ -2575,7 +1734,7 @@
     "verb": "taught",
     "object": "us",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2584,7 +1743,7 @@
       "text": "They said, \"Exalted are You; we have no knowledge except what You have taught us."
      }
     ],
-    "seq": 84,
+    "seq": 55,
     "depends_on": [],
     "evidence": []
    },
@@ -2604,7 +1763,7 @@
     "verb": "is",
     "object": "You who is the Knowing",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2613,13 +1772,13 @@
       "text": "Indeed, it is You who is the Knowing, the Wise.\""
      }
     ],
-    "seq": 85,
+    "seq": 56,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "i know|the|unseen [aspects] of the heavens and the earth?",
+    "task_id": "when we|said|to the angels",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2628,41 +1787,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "I know the unseen [aspects] of the heavens and the earth?",
-    "subject": "I know",
-    "verb": "the",
-    "object": "unseen [aspects] of the heavens and the earth?",
+    "description": "when We said to the angels",
+    "subject": "when We",
+    "verb": "said",
+    "object": "to the angels",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5687-5824",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And when he had informed them of their names, He said, \"Did I not tell you that I know the unseen [aspects] of the heavens and the earth?"
-     }
-    ],
-    "seq": 86,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prostrate|before|adam\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Prostrate before Adam\"",
-    "subject": "Prostrate",
-    "verb": "before",
-    "object": "Adam\"",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2671,42 +1801,13 @@
       "text": "And [mention] when We said to the angels, \"Prostrate before Adam\"; so they prostrated, except for Iblees."
      }
     ],
-    "seq": 87,
+    "seq": 57,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "so|they|prostrated",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "so they prostrated",
-    "subject": "so",
-    "verb": "they",
-    "object": "prostrated",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5882-5987",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And [mention] when We said to the angels, \"Prostrate before Adam\"; so they prostrated, except for Iblees."
-     }
-    ],
-    "seq": 88,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he refused|and|was arrogant and became of the disbelievers",
+    "task_id": "he|refused|and was arrogant and became of the disbelievers",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2716,11 +1817,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "He refused and was arrogant and became of the disbelievers",
-    "subject": "He refused",
-    "verb": "and",
-    "object": "was arrogant and became of the disbelievers",
+    "subject": "He",
+    "verb": "refused",
+    "object": "and was arrogant and became of the disbelievers",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2729,94 +1830,7 @@
       "text": "He refused and was arrogant and became of the disbelievers."
      }
     ],
-    "seq": 89,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you|and|your wife",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "you and your wife",
-    "subject": "you",
-    "verb": "and",
-    "object": "your wife",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6048-6173",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And We said, \"O Adam, dwell, you and your wife, in Paradise and eat therefrom in [ease and] abundance from wherever you will."
-     }
-    ],
-    "seq": 90,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in paradise|and|eat therefrom in [ease and] abundance from wherever you will",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in Paradise and eat therefrom in [ease and] abundance from wherever you will",
-    "subject": "in Paradise",
-    "verb": "and",
-    "object": "eat therefrom in [ease and] abundance from wherever you will",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6048-6173",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And We said, \"O Adam, dwell, you and your wife, in Paradise and eat therefrom in [ease and] abundance from wherever you will."
-     }
-    ],
-    "seq": 91,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be among|the|wrongdoers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be among the wrongdoers",
-    "subject": "be among",
-    "verb": "the",
-    "object": "wrongdoers",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6174-6239",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "But do not approach this tree, lest you be among the wrongdoers.\""
-     }
-    ],
-    "seq": 92,
+    "seq": 58,
     "depends_on": [],
     "evidence": []
    },
@@ -2836,7 +1850,7 @@
     "verb": "caused",
     "object": "them to slip out of it and removed them from that [condition] in which they had been",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2845,13 +1859,13 @@
       "text": "But Satan caused them to slip out of it and removed them from that [condition] in which they had been."
      }
     ],
-    "seq": 93,
+    "seq": 59,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "all|of|you]",
+    "task_id": "and you|will|have upon the earth a place of settlement and provision for a time",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2860,46 +1874,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "all of you]",
-    "subject": "all",
-    "verb": "of",
-    "object": "you]",
+    "description": "and you will have upon the earth a place of settlement and provision for a time",
+    "subject": "and you",
+    "verb": "will",
+    "object": "have upon the earth a place of settlement and provision for a time",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6343-6488",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And We said, \"Go down, [all of you], as enemies to one another, and you will have upon the earth a place of settlement and provision for a time.\""
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6635-6673",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "We said, \"Go down from it, all of you."
-     }
-    ],
-    "seq": 94,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as enemies|to|one another",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as enemies to one another",
-    "subject": "as enemies",
-    "verb": "to",
-    "object": "one another",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2908,7 +1888,7 @@
       "text": "And We said, \"Go down, [all of you], as enemies to one another, and you will have upon the earth a place of settlement and provision for a time.\""
      }
     ],
-    "seq": 95,
+    "seq": 60,
     "depends_on": [],
     "evidence": []
    },
@@ -2928,7 +1908,7 @@
     "verb": "received",
     "object": "from his Lord [some] words",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2937,7 +1917,7 @@
       "text": "Then Adam received from his Lord [some] words, and He accepted his repentance."
      }
     ],
-    "seq": 96,
+    "seq": 61,
     "depends_on": [],
     "evidence": []
    },
@@ -2957,7 +1937,7 @@
     "verb": "accepted",
     "object": "his repentance",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2966,7 +1946,7 @@
       "text": "Then Adam received from his Lord [some] words, and He accepted his repentance."
      }
     ],
-    "seq": 97,
+    "seq": 62,
     "depends_on": [],
     "evidence": []
    },
@@ -2986,7 +1966,7 @@
     "verb": "is",
     "object": "He who is the Accepting of repentance",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2995,13 +1975,13 @@
       "text": "Indeed, it is He who is the Accepting of repentance, the Merciful."
      }
     ],
-    "seq": 98,
+    "seq": 63,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "go|down|from it",
+    "task_id": "there|will|be no fear concerning them",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -3010,41 +1990,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Go down from it",
-    "subject": "Go",
-    "verb": "down",
-    "object": "from it",
+    "description": "there will be no fear concerning them",
+    "subject": "there",
+    "verb": "will",
+    "object": "be no fear concerning them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6635-6673",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "We said, \"Go down from it, all of you."
-     }
-    ],
-    "seq": 99,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and when|guidance|comes to you from me",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And when guidance comes to you from Me",
-    "subject": "And when",
-    "verb": "guidance",
-    "object": "comes to you from Me",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3053,42 +2004,13 @@
       "text": "And when guidance comes to you from Me, whoever follows My guidance - there will be no fear concerning them, nor will they grieve."
      }
     ],
-    "seq": 100,
+    "seq": 64,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "follows my|guidance|- there will be no fear concerning them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "follows My guidance - there will be no fear concerning them",
-    "subject": "follows My",
-    "verb": "guidance",
-    "object": "- there will be no fear concerning them",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6674-6804",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And when guidance comes to you from Me, whoever follows My guidance - there will be no fear concerning them, nor will they grieve."
-     }
-    ],
-    "seq": 101,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "nor will|they|grieve",
+    "task_id": "nor|will|they grieve",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -3098,11 +2020,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "nor will they grieve",
-    "subject": "nor will",
-    "verb": "they",
-    "object": "grieve",
+    "subject": "nor",
+    "verb": "will",
+    "object": "they grieve",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3111,13 +2033,13 @@
       "text": "And when guidance comes to you from Me, whoever follows My guidance - there will be no fear concerning them, nor will they grieve."
      }
     ],
-    "seq": 102,
+    "seq": 65,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and those|who|disbelieve and deny our signs - those will be companions of the fire",
+    "task_id": "those|will|be companions of the fire",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -3126,12 +2048,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "And those who disbelieve and deny Our signs - those will be companions of the Fire",
-    "subject": "And those",
-    "verb": "who",
-    "object": "disbelieve and deny Our signs - those will be companions of the Fire",
+    "description": "those will be companions of the Fire",
+    "subject": "those",
+    "verb": "will",
+    "object": "be companions of the Fire",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3140,13 +2062,13 @@
       "text": "And those who disbelieve and deny Our signs - those will be companions of the Fire; they will abide therein eternally.\""
      }
     ],
-    "seq": 103,
+    "seq": 66,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "o children|of|israel",
+    "task_id": "fulfill my|covenant|[upon you] that i will fulfill your covenant [from me]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -3155,80 +2077,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "O Children of Israel",
-    "subject": "O Children",
-    "verb": "of",
-    "object": "Israel",
+    "description": "fulfill My covenant [upon you] that I will fulfill your covenant [from Me]",
+    "subject": "fulfill My",
+    "verb": "covenant",
+    "object": "[upon you] that I will fulfill your covenant [from Me]",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6925-7103",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "O Children of Israel, remember My favor which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me], and be afraid of [only] Me."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7786-7897",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "O Children of Israel, remember My favor that I have bestowed upon you and that I preferred you over the worlds."
-     }
-    ],
-    "seq": 104,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "remember my|favor|which i have bestowed upon you and fulfill my covenant [upon you] that i will fulfill your covenant [from me]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "remember My favor which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me]",
-    "subject": "remember My",
-    "verb": "favor",
-    "object": "which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6925-7103",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "O Children of Israel, remember My favor which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me], and be afraid of [only] Me."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7786-7897",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "O Children of Israel, remember My favor that I have bestowed upon you and that I preferred you over the worlds."
-     }
-    ],
-    "seq": 105,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be afraid|of|[only] me",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be afraid of [only] Me",
-    "subject": "be afraid",
-    "verb": "of",
-    "object": "[only] Me",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3237,13 +2091,13 @@
       "text": "O Children of Israel, remember My favor which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me], and be afraid of [only] Me."
      }
     ],
-    "seq": 106,
+    "seq": 67,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "have sent|down|confirming that which is [already] with you",
+    "task_id": "that which|is|[already] with you",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -3252,12 +2106,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "have sent down confirming that which is [already] with you",
-    "subject": "have sent",
-    "verb": "down",
-    "object": "confirming that which is [already] with you",
+    "description": "that which is [already] with you",
+    "subject": "that which",
+    "verb": "is",
+    "object": "[already] with you",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3266,181 +2120,7 @@
       "text": "And believe in what I have sent down confirming that which is [already] with you, and be not the first to disbelieve in it."
      }
     ],
-    "seq": 107,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be not|the|first to disbelieve in it",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be not the first to disbelieve in it",
-    "subject": "be not",
-    "verb": "the",
-    "object": "first to disbelieve in it",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7104-7227",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And believe in what I have sent down confirming that which is [already] with you, and be not the first to disbelieve in it."
-     }
-    ],
-    "seq": 108,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "exchange my|signs|for a small price",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "exchange My signs for a small price",
-    "subject": "exchange My",
-    "verb": "signs",
-    "object": "for a small price",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7228-7295",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And do not exchange My signs for a small price, and fear [only] Me."
-     }
-    ],
-    "seq": 109,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not mix|the|truth with falsehood or conceal the truth while you know [it]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not mix the truth with falsehood or conceal the truth while you know [it]",
-    "subject": "not mix",
-    "verb": "the",
-    "object": "truth with falsehood or conceal the truth while you know [it]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7296-7377",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And do not mix the truth with falsehood or conceal the truth while you know [it]."
-     }
-    ],
-    "seq": 110,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "establish prayer|and|give zakah and bow with those who bow [in worship and obedience]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "establish prayer and give zakah and bow with those who bow [in worship and obedience]",
-    "subject": "establish prayer",
-    "verb": "and",
-    "object": "give zakah and bow with those who bow [in worship and obedience]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7378-7468",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And establish prayer and give zakah and bow with those who bow [in worship and obedience]."
-     }
-    ],
-    "seq": 111,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "order righteousness|of|the people and forget yourselves while you recite the scripture?",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "order righteousness of the people and forget yourselves while you recite the Scripture?",
-    "subject": "order righteousness",
-    "verb": "of",
-    "object": "the people and forget yourselves while you recite the Scripture?",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7469-7563",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "Do you order righteousness of the people and forget yourselves while you recite the Scripture?"
-     }
-    ],
-    "seq": 112,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "through patience|and|prayer",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "through patience and prayer",
-    "subject": "through patience",
-    "verb": "and",
-    "object": "prayer",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7590-7785",
-      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-      "text": "And seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive [to Allah] Who are certain that they will meet their Lord and that they will return to Him."
-     }
-    ],
-    "seq": 113,
+    "seq": 68,
     "depends_on": [],
     "evidence": []
    },
@@ -3460,7 +2140,7 @@
     "verb": "is",
     "object": "difficult except for the humbly submissive [to Allah] Who are certain that they will meet their Lord and that they will return to Him",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3469,13 +2149,13 @@
       "text": "And seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive [to Allah] Who are certain that they will meet their Lord and that they will return to Him."
      }
     ],
-    "seq": 114,
+    "seq": 69,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "a day|when|no soul will suffice for another soul at all",
+    "task_id": "no soul|will|suffice for another soul at all",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -3484,12 +2164,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "a Day when no soul will suffice for another soul at all",
-    "subject": "a Day",
-    "verb": "when",
-    "object": "no soul will suffice for another soul at all",
+    "description": "no soul will suffice for another soul at all",
+    "subject": "no soul",
+    "verb": "will",
+    "object": "suffice for another soul at all",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3498,7 +2178,7 @@
       "text": "And fear a Day when no soul will suffice for another soul at all, nor will intercession be accepted fr"
      }
     ],
-    "seq": 115,
+    "seq": 70,
     "depends_on": [],
     "evidence": []
    },
@@ -3518,7 +2198,7 @@
     "verb": "will",
     "object": "intercession be accepted fr",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -3527,12 +2207,12 @@
       "text": "And fear a Day when no soul will suffice for another soul at all, nor will intercession be accepted fr"
      }
     ],
-    "seq": 116,
+    "seq": 71,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 117,
+  "nextSeq": 72,
   "admits": [
    "NUL",
    "SEG",
@@ -3547,81 +2227,12 @@
  },
  "folded": [
   {
-   "id": "a day|when|no soul will suffice for another soul at all",
-   "subject": "a Day",
-   "verb": "when",
-   "object": "no soul will suffice for another soul at all",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7898-8000",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And fear a Day when no soul will suffice for another soul at all, nor will intercession be accepted fr"
-    }
-   ]
-  },
-  {
-   "id": "a surah|the|like thereof and call upon your witnesses other than allah",
-   "subject": "a surah",
-   "verb": "the",
-   "object": "like thereof and call upon your witnesses other than Allah",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3424-3617",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And if you are in doubt about what We have sent down upon Our Servant [Muhammad], then produce a surah the like thereof and call upon your witnesses other than Allah, if you should be truthful."
-    }
-   ]
-  },
-  {
-   "id": "a|guidance|for those conscious of allah - who believe in the unseen",
-   "subject": "a",
-   "verb": "guidance",
-   "object": "for those conscious of Allah - Who believe in the unseen",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
-    }
-   ]
-  },
-  {
-   "id": "all|of|you]",
-   "subject": "all",
-   "verb": "of",
-   "object": "you]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6343-6488",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And We said, \"Go down, [all of you], as enemies to one another, and you will have upon the earth a place of settlement and provision for a time.\""
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6635-6673",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "We said, \"Go down from it, all of you."
-    }
-   ]
-  },
-  {
    "id": "allah|is|not timid to present an example - that of a mosquito or what is smaller than it",
    "subject": "Allah",
    "verb": "is",
    "object": "not timid to present an example - that of a mosquito or what is smaller than it",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3637,7 +2248,7 @@
    "verb": "is",
    "object": "over all things competent",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3653,7 +2264,7 @@
    "verb": "accepted",
    "object": "his repentance",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3669,7 +2280,7 @@
    "verb": "is",
    "object": "Knowing of all things",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3685,7 +2296,7 @@
    "verb": "misleads",
    "object": "not except the defiantly disobedient",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3701,7 +2312,7 @@
    "verb": "taught",
    "object": "Adam the names - all of them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3717,7 +2328,7 @@
    "verb": "is",
    "object": "given to them in likeness",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3733,7 +2344,7 @@
    "verb": "is",
    "object": "those who are the successful",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3744,49 +2355,12 @@
    ]
   },
   {
-   "id": "and of|the|hereafter they are certain [in faith]",
-   "subject": "and of",
-   "verb": "the",
-   "object": "Hereafter they are certain [in faith]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1184-1287",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And of the people are some who say, \"We believe in Allah and the Last Day,\" but they are not believers."
-    }
-   ]
-  },
-  {
-   "id": "and then|to|him you will be returned",
-   "subject": "and then",
-   "verb": "to",
-   "object": "Him you will be returned",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4662-4852",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "How can you disbelieve in Allah when you were lifeless and He brought you to life; then He will cause you to die, then He will bring you [back] to life, and then to Him you will be returned."
-    }
-   ]
-  },
-  {
-   "id": "and they|will|have therein purified spouses",
-   "subject": "And they",
+   "id": "and they|will|abide therein eternally",
+   "subject": "and they",
    "verb": "will",
-   "object": "have therein purified spouses",
+   "object": "abide therein eternally",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3795,62 +2369,25 @@
      "text": "And they will have therein purified spouses, and they will abide therein eternally."
     },
     {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6805-6924",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "And those who disbelieve and deny Our signs - those will be companions of the Fire; they will abide therein eternally.\""
+    }
+   ]
+  },
+  {
+   "id": "and you|will|have upon the earth a place of settlement and provision for a time",
+   "subject": "and you",
+   "verb": "will",
+   "object": "have upon the earth a place of settlement and provision for a time",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6343-6488",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
      "text": "And We said, \"Go down, [all of you], as enemies to one another, and you will have upon the earth a place of settlement and provision for a time.\""
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6805-6924",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And those who disbelieve and deny Our signs - those will be companions of the Fire; they will abide therein eternally.\""
-    }
-   ]
-  },
-  {
-   "id": "and those|who|disbelieve and deny our signs - those will be companions of the fire",
-   "subject": "And those",
-   "verb": "who",
-   "object": "disbelieve and deny Our signs - those will be companions of the Fire",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6805-6924",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And those who disbelieve and deny Our signs - those will be companions of the Fire; they will abide therein eternally.\""
-    }
-   ]
-  },
-  {
-   "id": "and when|guidance|comes to you from me",
-   "subject": "And when",
-   "verb": "guidance",
-   "object": "comes to you from Me",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6674-6804",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when guidance comes to you from Me, whoever follows My guidance - there will be no fear concerning them, nor will they grieve."
-    }
-   ]
-  },
-  {
-   "id": "and when|they|meet those who believe",
-   "subject": "And when",
-   "verb": "they",
-   "object": "meet those who believe",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1927-2093",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when they meet those who believe, they say, \"We believe\"; but when they are alone with their evil ones, they say, \"Indeed, we are with you; we were only mockers.\""
     }
    ]
   },
@@ -3860,7 +2397,7 @@
    "verb": "will",
    "object": "never be able to - then fear the Fire",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3871,134 +2408,18 @@
    ]
   },
   {
-   "id": "and|when|it is said to them",
-   "subject": "And",
-   "verb": "when",
-   "object": "it is said to them",
+   "id": "break the|covenant|of allah after contracting it and sever that which allah has ordered to be joined and cause corruption on earth",
+   "subject": "break the",
+   "verb": "covenant",
+   "object": "of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1545-1647",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4440-4629",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when it is said to them, \"Do not cause corruption on the earth,\" they say, \"We are but reformers.\""
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1727-1854",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when it is said to them, \"Believe as the people have believed,\" they say, \"Should we believe as the foolish have believed?\""
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5687-5824",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when he had informed them of their names, He said, \"Did I not tell you that I know the unseen [aspects] of the heavens and the earth?"
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5882-5987",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And [mention] when We said to the angels, \"Prostrate before Adam\"; so they prostrated, except for Iblees."
-    }
-   ]
-  },
-  {
-   "id": "and|who|believe in what has been revealed to you",
-   "subject": "And",
-   "verb": "who",
-   "object": "believe in what has been revealed to you",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4229-4299",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And those who have believed know that it is the truth from their Lord."
-    }
-   ]
-  },
-  {
-   "id": "as enemies|to|one another",
-   "subject": "as enemies",
-   "verb": "to",
-   "object": "one another",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6343-6488",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And We said, \"Go down, [all of you], as enemies to one another, and you will have upon the earth a place of settlement and provision for a time.\""
-    }
-   ]
-  },
-  {
-   "id": "be afraid|of|[only] me",
-   "subject": "be afraid",
-   "verb": "of",
-   "object": "[only] Me",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6925-7103",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "O Children of Israel, remember My favor which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me], and be afraid of [only] Me."
-    }
-   ]
-  },
-  {
-   "id": "be among|the|wrongdoers",
-   "subject": "be among",
-   "verb": "the",
-   "object": "wrongdoers",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6174-6239",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "But do not approach this tree, lest you be among the wrongdoers.\""
-    }
-   ]
-  },
-  {
-   "id": "be not|the|first to disbelieve in it",
-   "subject": "be not",
-   "verb": "the",
-   "object": "first to disbelieve in it",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7104-7227",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And believe in what I have sent down confirming that which is [already] with you, and be not the first to disbelieve in it."
-    }
-   ]
-  },
-  {
-   "id": "believe as|the|people have believed",
-   "subject": "Believe as",
-   "verb": "the",
-   "object": "people have believed",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1727-1854",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when it is said to them, \"Believe as the people have believed,\" they say, \"Should we believe as the foolish have believed?\""
+     "text": "And He misleads not except the defiantly disobedient, Who break the covenant of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth."
     }
    ]
   },
@@ -4008,7 +2429,7 @@
    "verb": "is",
    "object": "encompassing of the disbelievers",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4024,7 +2445,7 @@
    "verb": "caused",
    "object": "them to slip out of it and removed them from that [condition] in which they had been",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4040,7 +2461,7 @@
    "verb": "are",
    "object": "not believers",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4051,187 +2472,12 @@
    ]
   },
   {
-   "id": "but when|they|are alone with their evil ones",
-   "subject": "but when",
-   "verb": "they",
-   "object": "are alone with their evil ones",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1927-2093",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when they meet those who believe, they say, \"We believe\"; but when they are alone with their evil ones, they say, \"Indeed, we are with you; we were only mockers.\""
-    }
-   ]
-  },
-  {
-   "id": "but|they|deceive not except themselves and perceive [it] not",
-   "subject": "but",
-   "verb": "they",
-   "object": "deceive not except themselves and perceive [it] not",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1288-1402",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "They [think to] deceive Allah and those who believe, but they deceive not except themselves and perceive [it] not."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1648-1726",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Unquestionably, it is they who are the corrupters, but they perceive [it] not."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1855-1926",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Unquestionably, it is they who are the foolish, but they know [it] not."
-    }
-   ]
-  },
-  {
-   "id": "but|when|darkness comes over them",
-   "subject": "but",
-   "verb": "when",
-   "object": "darkness comes over them",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2832-2946",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Every time it lights [the way] for them, they walk therein; but when darkness comes over them, they stand [still]."
-    }
-   ]
-  },
-  {
-   "id": "but|when|it illuminated what was around him",
-   "subject": "but",
-   "verb": "when",
-   "object": "it illuminated what was around him",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2325-2497",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Their example is that of one who kindled a fire, but when it illuminated what was around him, Allah took away their light and left them in darkness [so] they could not see."
-    }
-   ]
-  },
-  {
-   "id": "corruption on|the|earth",
-   "subject": "corruption on",
-   "verb": "the",
-   "object": "earth",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1545-1647",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when it is said to them, \"Do not cause corruption on the earth,\" they say, \"We are but reformers.\""
-    }
-   ]
-  },
-  {
-   "id": "created you|and|those before you",
-   "subject": "created you",
-   "verb": "and",
-   "object": "those before you",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3072-3332",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "O mankind, worship your Lord, who created you and those before you, that you may become righteous - [He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5825-5881",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And I know what you reveal and what you have concealed.\""
-    }
-   ]
-  },
-  {
-   "id": "deceive allah|and|those who believe",
-   "subject": "deceive Allah",
-   "verb": "and",
-   "object": "those who believe",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1288-1402",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "They [think to] deceive Allah and those who believe, but they deceive not except themselves and perceive [it] not."
-    }
-   ]
-  },
-  {
-   "id": "dumb|and|blind - so they will not return [to the right path]",
-   "subject": "dumb",
-   "verb": "and",
-   "object": "blind - so they will not return [to the right path]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2498-2565",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Deaf, dumb and blind - so they will not return [to the right path]."
-    }
-   ]
-  },
-  {
-   "id": "ears against|the|thunderclaps in dread of death",
-   "subject": "ears against",
-   "verb": "the",
-   "object": "thunderclaps in dread of death",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2656-2736",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "They put their fingers in their ears against the thunderclaps in dread of death."
-    }
-   ]
-  },
-  {
-   "id": "establish prayer|and|give zakah and bow with those who bow [in worship and obedience]",
-   "subject": "establish prayer",
-   "verb": "and",
-   "object": "give zakah and bow with those who bow [in worship and obedience]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7378-7468",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And establish prayer and give zakah and bow with those who bow [in worship and obedience]."
-    }
-   ]
-  },
-  {
    "id": "exalted|are|you",
    "subject": "Exalted",
    "verb": "are",
    "object": "You",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4242,44 +2488,12 @@
    ]
   },
   {
-   "id": "exchange my|signs|for a small price",
-   "subject": "exchange My",
-   "verb": "signs",
-   "object": "for a small price",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7228-7295",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And do not exchange My signs for a small price, and fear [only] Me."
-    }
-   ]
-  },
-  {
-   "id": "follows my|guidance|- there will be no fear concerning them",
-   "subject": "follows My",
-   "verb": "guidance",
-   "object": "- there will be no fear concerning them",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6674-6804",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when guidance comes to you from Me, whoever follows My guidance - there will be no fear concerning them, nor will they grieve."
-    }
-   ]
-  },
-  {
    "id": "for them|is|a great punishment",
    "subject": "for them",
    "verb": "is",
    "object": "a great punishment",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4295,114 +2509,18 @@
    ]
   },
   {
-   "id": "for those|who|disbelieve",
-   "subject": "for those",
-   "verb": "who",
-   "object": "disbelieve",
+   "id": "fulfill my|covenant|[upon you] that i will fulfill your covenant [from me]",
+   "subject": "fulfill My",
+   "verb": "covenant",
+   "object": "[upon you] that I will fulfill your covenant [from Me]",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4300-4389",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6925-7103",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "But as for those who disbelieve, they say, \"What did Allah intend by this as an example?\""
-    }
-   ]
-  },
-  {
-   "id": "for you|the|earth a bed [spread out] and the sky a ceiling and sent down from the sky",
-   "subject": "for you",
-   "verb": "the",
-   "object": "earth a bed [spread out] and the sky a ceiling and sent down from the sky",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3072-3332",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "O mankind, worship your Lord, who created you and those before you, that you may become righteous - [He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you."
-    }
-   ]
-  },
-  {
-   "id": "go|down|from it",
-   "subject": "Go",
-   "verb": "down",
-   "object": "from it",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6635-6673",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "We said, \"Go down from it, all of you."
-    }
-   ]
-  },
-  {
-   "id": "good tidings|to|those who believe and do righteous deeds that they will have gardens [in paradise] beneath which rivers flow",
-   "subject": "good tidings",
-   "verb": "to",
-   "object": "those who believe and do righteous deeds that they will have gardens [in Paradise] beneath which rivers flow",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3751-3885",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And give good tidings to those who believe and do righteous deeds that they will have gardens [in Paradise] beneath which rivers flow."
-    }
-   ]
-  },
-  {
-   "id": "guide us|to|the straight path - the path of those upon whom you have bestowed favor",
-   "subject": "Guide us",
-   "verb": "to",
-   "object": "the straight path - The path of those upon whom You have bestowed favor",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#295-449",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Guide us to the straight path - The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
-    }
-   ]
-  },
-  {
-   "id": "have sent|down|confirming that which is [already] with you",
-   "subject": "have sent",
-   "verb": "down",
-   "object": "confirming that which is [already] with you",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7104-7227",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And believe in what I have sent down confirming that which is [already] with you, and be not the first to disbelieve in it."
-    }
-   ]
-  },
-  {
-   "id": "he refused|and|was arrogant and became of the disbelievers",
-   "subject": "He refused",
-   "verb": "and",
-   "object": "was arrogant and became of the disbelievers",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5988-6047",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "He refused and was arrogant and became of the disbelievers."
+     "text": "O Children of Israel, remember My favor which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me], and be afraid of [only] Me."
     }
    ]
   },
@@ -4412,7 +2530,7 @@
    "verb": "could",
    "object": "have taken away their hearing and their sight",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4428,7 +2546,7 @@
    "verb": "misleads",
    "object": "many thereby and guides many thereby",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4439,18 +2557,50 @@
    ]
   },
   {
-   "id": "i know|the|unseen [aspects] of the heavens and the earth?",
-   "subject": "I know",
-   "verb": "the",
-   "object": "unseen [aspects] of the heavens and the earth?",
+   "id": "he|refused|and was arrogant and became of the disbelievers",
+   "subject": "He",
+   "verb": "refused",
+   "object": "and was arrogant and became of the disbelievers",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5687-5824",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5988-6047",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when he had informed them of their names, He said, \"Did I not tell you that I know the unseen [aspects] of the heavens and the earth?"
+     "text": "He refused and was arrogant and became of the disbelievers."
+    }
+   ]
+  },
+  {
+   "id": "hereafter they|are|certain [in faith]",
+   "subject": "Hereafter they",
+   "verb": "are",
+   "object": "certain [in faith]",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
+    }
+   ]
+  },
+  {
+   "id": "him you|will|be returned",
+   "subject": "Him you",
+   "verb": "will",
+   "object": "be returned",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4662-4852",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "How can you disbelieve in Allah when you were lifeless and He brought you to life; then He will cause you to die, then He will bring you [back] to life, and then to Him you will be returned."
     }
    ]
   },
@@ -4460,7 +2610,7 @@
    "verb": "will",
    "object": "make upon the earth a successive authority",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4476,7 +2626,7 @@
    "verb": "are",
    "object": "in doubt about what We have sent down upon Our Servant [Muhammad]",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4492,7 +2642,7 @@
    "verb": "are",
    "object": "truthful",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4503,119 +2653,18 @@
    ]
   },
   {
-   "id": "in allah|and|the last day",
-   "subject": "in Allah",
-   "verb": "and",
-   "object": "the Last Day",
+   "id": "it|is|all the same for them whether you warn them or do not warn them - they will not believe",
+   "subject": "it",
+   "verb": "is",
+   "object": "all the same for them whether you warn them or do not warn them - they will not believe",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1184-1287",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#926-1051",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And of the people are some who say, \"We believe in Allah and the Last Day,\" but they are not believers."
-    }
-   ]
-  },
-  {
-   "id": "in allah|when|you were lifeless and he brought you to life",
-   "subject": "in Allah",
-   "verb": "when",
-   "object": "you were lifeless and He brought you to life",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4662-4852",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "How can you disbelieve in Allah when you were lifeless and He brought you to life; then He will cause you to die, then He will bring you [back] to life, and then to Him you will be returned."
-    }
-   ]
-  },
-  {
-   "id": "in paradise|and|eat therefrom in [ease and] abundance from wherever you will",
-   "subject": "in Paradise",
-   "verb": "and",
-   "object": "eat therefrom in [ease and] abundance from wherever you will",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6048-6173",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And We said, \"O Adam, dwell, you and your wife, in Paradise and eat therefrom in [ease and] abundance from wherever you will."
-    }
-   ]
-  },
-  {
-   "id": "in|the|name of allah",
-   "subject": "In",
-   "verb": "the",
-   "object": "name of Allah",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#0-111",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "=== Surah 1: Al-Faatiha (The Opening) === In the name of Allah, the Entirely Merciful, the Especially Merciful."
-    }
-   ]
-  },
-  {
-   "id": "inform me|of|the names of these",
-   "subject": "Inform Me",
-   "verb": "of",
-   "object": "the names of these",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5409-5508",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Then He showed them to the angels and said, \"Inform Me of the names of these, if you are truthful.\""
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5640-5686",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "He said, \"O Adam, inform them of their names.\""
-    }
-   ]
-  },
-  {
-   "id": "it is|they|who are the corrupters",
-   "subject": "it is",
-   "verb": "they",
-   "object": "who are the corrupters",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1648-1726",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Unquestionably, it is they who are the corrupters, but they perceive [it] not."
-    }
-   ]
-  },
-  {
-   "id": "it is|they|who are the foolish",
-   "subject": "it is",
-   "verb": "they",
-   "object": "who are the foolish",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1855-1926",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Unquestionably, it is they who are the foolish, but they know [it] not."
+     "text": "Indeed, those who disbelieve - it is all the same for them whether you warn them or do not warn them - they will not believe."
     }
    ]
   },
@@ -4625,7 +2674,7 @@
    "verb": "is",
    "object": "difficult except for the humbly submissive [to Allah] Who are certain that they will meet their Lord and that they will return to Him",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4641,7 +2690,7 @@
    "verb": "is",
    "object": "He who created for you all of that which is on the earth",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4657,7 +2706,7 @@
    "verb": "is",
    "object": "He who is the Accepting of repentance",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4668,12 +2717,44 @@
    ]
   },
   {
+   "id": "it|is|they who are the corrupters",
+   "subject": "it",
+   "verb": "is",
+   "object": "they who are the corrupters",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1648-1726",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "Unquestionably, it is they who are the corrupters, but they perceive [it] not."
+    }
+   ]
+  },
+  {
+   "id": "it|is|they who are the foolish",
+   "subject": "it",
+   "verb": "is",
+   "object": "they who are the foolish",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1855-1926",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "Unquestionably, it is they who are the foolish, but they know [it] not."
+    }
+   ]
+  },
+  {
    "id": "it|is|those who are the losers",
    "subject": "It",
    "verb": "is",
    "object": "those who are the losers",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4689,7 +2770,7 @@
    "verb": "is",
    "object": "You we worship and You we ask for help",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4705,7 +2786,7 @@
    "verb": "is",
    "object": "You who is the Knowing",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4716,76 +2797,12 @@
    ]
   },
   {
-   "id": "lord of|the|worlds - the entirely merciful",
-   "subject": "Lord of",
-   "verb": "the",
-   "object": "worlds - The Entirely Merciful",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#112-248",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "[All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense."
-    }
-   ]
-  },
-  {
-   "id": "mocks them|and|prolongs them in their transgression [while] they wander blindly",
-   "subject": "mocks them",
-   "verb": "and",
-   "object": "prolongs them in their transgression [while] they wander blindly",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2094-2186",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "[But] Allah mocks them and prolongs them in their transgression [while] they wander blindly."
-    }
-   ]
-  },
-  {
-   "id": "nor were|they|guided",
-   "subject": "nor were",
-   "verb": "they",
-   "object": "guided",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2187-2324",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Those are the ones who have purchased error [in exchange] for guidance, so their transaction has brought no profit, nor were they guided."
-    }
-   ]
-  },
-  {
-   "id": "nor will|they|grieve",
-   "subject": "nor will",
-   "verb": "they",
-   "object": "grieve",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6674-6804",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And when guidance comes to you from Me, whoever follows My guidance - there will be no fear concerning them, nor will they grieve."
-    }
-   ]
-  },
-  {
-   "id": "nor|will|intercession be accepted fr",
-   "subject": "nor",
+   "id": "no soul|will|suffice for another soul at all",
+   "subject": "no soul",
    "verb": "will",
-   "object": "intercession be accepted fr",
+   "object": "suffice for another soul at all",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4796,12 +2813,113 @@
    ]
   },
   {
-   "id": "not attribute|to|allah equals while you know [that there is nothing similar to him]",
-   "subject": "not attribute",
-   "verb": "to",
-   "object": "Allah equals while you know [that there is nothing similar to Him]",
+   "id": "nor|will|intercession be accepted fr",
+   "subject": "nor",
+   "verb": "will",
+   "object": "intercession be accepted fr",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7898-8000",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "And fear a Day when no soul will suffice for another soul at all, nor will intercession be accepted fr"
+    }
+   ]
+  },
+  {
+   "id": "nor|will|they grieve",
+   "subject": "nor",
+   "verb": "will",
+   "object": "they grieve",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6674-6804",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "And when guidance comes to you from Me, whoever follows My guidance - there will be no fear concerning them, nor will they grieve."
+    }
+   ]
+  },
+  {
+   "id": "praise|is|[due] to allah",
+   "subject": "praise",
+   "verb": "is",
+   "object": "[due] to Allah",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#112-248",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "[All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense."
+    }
+   ]
+  },
+  {
+   "id": "rain and|brought|forth thereby fruits as provision for you",
+   "subject": "rain and",
+   "verb": "brought",
+   "object": "forth thereby fruits as provision for you",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3072-3332",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "O mankind, worship your Lord, who created you and those before you, that you may become righteous - [He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you."
+    },
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4662-4852",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "How can you disbelieve in Allah when you were lifeless and He brought you to life; then He will cause you to die, then He will bring you [back] to life, and then to Him you will be returned."
+    }
+   ]
+  },
+  {
+   "id": "so they|will|not return [to the right path]",
+   "subject": "so they",
+   "verb": "will",
+   "object": "not return [to the right path]",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2498-2565",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "Deaf, dumb and blind - so they will not return [to the right path]."
+    }
+   ]
+  },
+  {
+   "id": "that it|is|the truth from their lord",
+   "subject": "that it",
+   "verb": "is",
+   "object": "the truth from their Lord",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4229-4299",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "And those who have believed know that it is the truth from their Lord."
+    }
+   ]
+  },
+  {
+   "id": "that there|is|nothing similar to him]",
+   "subject": "that there",
+   "verb": "is",
+   "object": "nothing similar to Him]",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4812,220 +2930,55 @@
    ]
   },
   {
-   "id": "not mix|the|truth with falsehood or conceal the truth while you know [it]",
-   "subject": "not mix",
-   "verb": "the",
-   "object": "truth with falsehood or conceal the truth while you know [it]",
+   "id": "that they|will|have gardens [in paradise] beneath which rivers flow",
+   "subject": "that they",
+   "verb": "will",
+   "object": "have gardens [in Paradise] beneath which rivers flow",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7296-7377",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3751-3885",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And do not mix the truth with falsehood or conceal the truth while you know [it]."
-    }
-   ]
-  },
-  {
-   "id": "not|of|those who have evoked [your] anger or of those who are astray",
-   "subject": "not",
-   "verb": "of",
-   "object": "those who have evoked [Your] anger or of those who are astray",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#295-449",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Guide us to the straight path - The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
-    }
-   ]
-  },
-  {
-   "id": "o children|of|israel",
-   "subject": "O Children",
-   "verb": "of",
-   "object": "Israel",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6925-7103",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "O Children of Israel, remember My favor which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me], and be afraid of [only] Me."
+     "text": "And give good tidings to those who believe and do righteous deeds that they will have gardens [in Paradise] beneath which rivers flow."
     },
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7786-7897",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4047-4130",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "O Children of Israel, remember My favor that I have bestowed upon you and that I preferred you over the worlds."
+     "text": "And they will have therein purified spouses, and they will abide therein eternally."
     }
    ]
   },
   {
-   "id": "order righteousness|of|the people and forget yourselves while you recite the scripture?",
-   "subject": "order righteousness",
-   "verb": "of",
-   "object": "the people and forget yourselves while you recite the Scripture?",
+   "id": "that which|is|[already] with you",
+   "subject": "that which",
+   "verb": "is",
+   "object": "[already] with you",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7469-7563",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7104-7227",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Do you order righteousness of the people and forget yourselves while you recite the Scripture?"
+     "text": "And believe in what I have sent down confirming that which is [already] with you, and be not the first to disbelieve in it."
     }
    ]
   },
   {
-   "id": "praise is|to|allah",
-   "subject": "praise is",
-   "verb": "to",
-   "object": "Allah",
+   "id": "the people|are|some who say",
+   "subject": "the people",
+   "verb": "are",
+   "object": "some who say",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#112-248",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1184-1287",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "[All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense."
-    }
-   ]
-  },
-  {
-   "id": "prepared for|the|disbelievers",
-   "subject": "prepared for",
-   "verb": "the",
-   "object": "disbelievers",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3618-3750",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "But if you do not - and you will never be able to - then fear the Fire, whose fuel is men and stones, prepared for the disbelievers."
-    }
-   ]
-  },
-  {
-   "id": "prostrate|before|adam\"",
-   "subject": "Prostrate",
-   "verb": "before",
-   "object": "Adam\"",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5882-5987",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And [mention] when We said to the angels, \"Prostrate before Adam\"; so they prostrated, except for Iblees."
-    }
-   ]
-  },
-  {
-   "id": "rain and|brought|forth thereby fruits as provision for you",
-   "subject": "rain and",
-   "verb": "brought",
-   "object": "forth thereby fruits as provision for you",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3072-3332",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "O mankind, worship your Lord, who created you and those before you, that you may become righteous - [He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you."
-    }
-   ]
-  },
-  {
-   "id": "rainstorm from|the|sky within which is darkness",
-   "subject": "rainstorm from",
-   "verb": "the",
-   "object": "sky within which is darkness",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2566-2655",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Or [it is] like a rainstorm from the sky within which is darkness, thunder and lightning."
-    }
-   ]
-  },
-  {
-   "id": "remember my|favor|which i have bestowed upon you and fulfill my covenant [upon you] that i will fulfill your covenant [from me]",
-   "subject": "remember My",
-   "verb": "favor",
-   "object": "which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6925-7103",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "O Children of Israel, remember My favor which I have bestowed upon you and fulfill My covenant [upon you] that I will fulfill your covenant [from Me], and be afraid of [only] Me."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7786-7897",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "O Children of Israel, remember My favor that I have bestowed upon you and that I preferred you over the worlds."
-    }
-   ]
-  },
-  {
-   "id": "so|they|prostrated",
-   "subject": "so",
-   "verb": "they",
-   "object": "prostrated",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5882-5987",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And [mention] when We said to the angels, \"Prostrate before Adam\"; so they prostrated, except for Iblees."
-    }
-   ]
-  },
-  {
-   "id": "sovereign of|the|day of recompense",
-   "subject": "Sovereign of",
-   "verb": "the",
-   "object": "Day of Recompense",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#112-248",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "[All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense."
-    }
-   ]
-  },
-  {
-   "id": "spend out|of|what we have provided for them",
-   "subject": "spend out",
-   "verb": "of",
-   "object": "what We have provided for them",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
+     "text": "And of the people are some who say, \"We believe in Allah and the Last Day,\" but they are not believers."
     }
    ]
   },
@@ -5035,7 +2988,7 @@
    "verb": "is",
    "object": "that of one who kindled a fire",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5046,28 +2999,12 @@
    ]
   },
   {
-   "id": "their hearts|and|upon their hearing",
-   "subject": "their hearts",
-   "verb": "and",
-   "object": "upon their hearing",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1052-1147",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Allah has set a seal upon their hearts and upon their hearing, and over their vision is a veil."
-    }
-   ]
-  },
-  {
    "id": "their hearts|is|disease",
    "subject": "their hearts",
    "verb": "is",
    "object": "disease",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5078,28 +3015,12 @@
    ]
   },
   {
-   "id": "their light|and|left them in darkness [so] they could not see",
-   "subject": "their light",
-   "verb": "and",
-   "object": "left them in darkness [so] they could not see",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2325-2497",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Their example is that of one who kindled a fire, but when it illuminated what was around him, Allah took away their light and left them in darkness [so] they could not see."
-    }
-   ]
-  },
-  {
    "id": "their vision|is|a veil",
    "subject": "their vision",
    "verb": "is",
    "object": "a veil",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5115,7 +3036,7 @@
    "verb": "received",
    "object": "from his Lord [some] words",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5131,7 +3052,7 @@
    "verb": "directed",
    "object": "Himself to the heaven",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5147,7 +3068,7 @@
    "verb": "showed",
    "object": "them to the angels and said",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5163,7 +3084,7 @@
    "verb": "will",
    "object": "cause you to die",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5179,12 +3100,44 @@
    ]
   },
   {
+   "id": "there|will|be no fear concerning them",
+   "subject": "there",
+   "verb": "will",
+   "object": "be no fear concerning them",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6674-6804",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "And when guidance comes to you from Me, whoever follows My guidance - there will be no fear concerning them, nor will they grieve."
+    }
+   ]
+  },
+  {
+   "id": "they|could|not see",
+   "subject": "they",
+   "verb": "could",
+   "object": "not see",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2325-2497",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "Their example is that of one who kindled a fire, but when it illuminated what was around him, Allah took away their light and left them in darkness [so] they could not see."
+    }
+   ]
+  },
+  {
    "id": "they|will|say",
    "subject": "they",
    "verb": "will",
    "object": "say",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5195,12 +3148,12 @@
    ]
   },
   {
-   "id": "this is|the|book about which there is no doubt",
-   "subject": "This is",
-   "verb": "the",
-   "object": "Book about which there is no doubt",
+   "id": "this|is|the book about which there is no doubt",
+   "subject": "This",
+   "verb": "is",
+   "object": "the Book about which there is no doubt",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5216,7 +3169,7 @@
    "verb": "is",
    "object": "what we were provided with before",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5227,12 +3180,28 @@
    ]
   },
   {
-   "id": "those are|the|ones who have purchased error [in exchange] for guidance",
-   "subject": "Those are",
-   "verb": "the",
-   "object": "ones who have purchased error [in exchange] for guidance",
+   "id": "those who|are|astray",
+   "subject": "those who",
+   "verb": "are",
+   "object": "astray",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#295-449",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "Guide us to the straight path - The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
+    }
+   ]
+  },
+  {
+   "id": "those|are|the ones who have purchased error [in exchange] for guidance",
+   "subject": "Those",
+   "verb": "are",
+   "object": "the ones who have purchased error [in exchange] for guidance",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5248,7 +3217,7 @@
    "verb": "are",
    "object": "upon [right] guidance from their Lord",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5259,50 +3228,18 @@
    ]
   },
   {
-   "id": "those|who|disbelieve - it is all the same for them whether you warn them or do not warn them - they will not believe",
+   "id": "those|will|be companions of the fire",
    "subject": "those",
-   "verb": "who",
-   "object": "disbelieve - it is all the same for them whether you warn them or do not warn them - they will not believe",
+   "verb": "will",
+   "object": "be companions of the Fire",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#926-1051",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6805-6924",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Indeed, those who disbelieve - it is all the same for them whether you warn them or do not warn them - they will not believe."
-    }
-   ]
-  },
-  {
-   "id": "through patience|and|prayer",
-   "subject": "through patience",
-   "verb": "and",
-   "object": "prayer",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#7590-7785",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive [to Allah] Who are certain that they will meet their Lord and that they will return to Him."
-    }
-   ]
-  },
-  {
-   "id": "thunder|and|lightning",
-   "subject": "thunder",
-   "verb": "and",
-   "object": "lightning",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2566-2655",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "Or [it is] like a rainstorm from the sky within which is darkness, thunder and lightning."
+     "text": "And those who disbelieve and deny Our signs - those will be companions of the Fire; they will abide therein eternally.\""
     }
    ]
   },
@@ -5312,7 +3249,7 @@
    "verb": "brought",
    "object": "no profit",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5323,28 +3260,12 @@
    ]
   },
   {
-   "id": "was revealed|before|you",
-   "subject": "was revealed",
-   "verb": "before",
-   "object": "you",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#505-836",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah - Who believe in the unseen, establish prayer, and spend out of what We have provided for them, And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
-    }
-   ]
-  },
-  {
    "id": "we|are|but reformers",
    "subject": "We",
    "verb": "are",
    "object": "but reformers",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5360,7 +3281,7 @@
    "verb": "are",
    "object": "with you",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5371,14 +3292,40 @@
    ]
   },
   {
-   "id": "whenever they|are|provided with a provision of fruit therefrom",
-   "subject": "Whenever they",
-   "verb": "are",
-   "object": "provided with a provision of fruit therefrom",
+   "id": "when it|is|said to them",
+   "subject": "when it",
+   "verb": "is",
+   "object": "said to them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1545-1647",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "And when it is said to them, \"Do not cause corruption on the earth,\" they say, \"We are but reformers.\""
+    },
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1727-1854",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "And when it is said to them, \"Believe as the people have believed,\" they say, \"Should we believe as the foolish have believed?\""
+    }
+   ]
+  },
+  {
+   "id": "when they|are|alone with their evil ones",
+   "subject": "when they",
+   "verb": "are",
+   "object": "alone with their evil ones",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#1927-2093",
+     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
+     "text": "And when they meet those who believe, they say, \"We believe\"; but when they are alone with their evil ones, they say, \"Indeed, we are with you; we were only mockers.\""
+    },
     {
      "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#3886-4009",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
@@ -5387,18 +3334,18 @@
    ]
   },
   {
-   "id": "who break|the|covenant of allah after contracting it and sever that which allah has ordered to be joined and cause corruption on earth",
-   "subject": "Who break",
-   "verb": "the",
-   "object": "covenant of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth",
+   "id": "when we|said|to the angels",
+   "subject": "when We",
+   "verb": "said",
+   "object": "to the angels",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#4440-4629",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5882-5987",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And He misleads not except the defiantly disobedient, Who break the covenant of Allah after contracting it and sever that which Allah has ordered to be joined and cause corruption on earth."
+     "text": "And [mention] when We said to the angels, \"Prostrate before Adam\"; so they prostrated, except for Iblees."
     }
    ]
   },
@@ -5408,7 +3355,7 @@
    "verb": "is",
    "object": "men and stones",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5419,18 +3366,18 @@
    ]
   },
   {
-   "id": "will you|place|upon it one who causes corruption therein and sheds blood",
-   "subject": "Will You",
-   "verb": "place",
-   "object": "upon it one who causes corruption therein and sheds blood",
+   "id": "within which|is|darkness",
+   "subject": "within which",
+   "verb": "is",
+   "object": "darkness",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5174-5307",
+     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#2566-2655",
      "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "They said, \"Will You place upon it one who causes corruption therein and sheds blood, while we declare Your praise and sanctify You?\""
+     "text": "Or [it is] like a rainstorm from the sky within which is darkness, thunder and lightning."
     }
    ]
   },
@@ -5440,7 +3387,7 @@
    "verb": "taught",
    "object": "us",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5451,28 +3398,12 @@
    ]
   },
   {
-   "id": "you|and|your wife",
-   "subject": "you",
-   "verb": "and",
-   "object": "your wife",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#6048-6173",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "And We said, \"O Adam, dwell, you and your wife, in Paradise and eat therefrom in [ease and] abundance from wherever you will."
-    }
-   ]
-  },
-  {
    "id": "your lord|said|to the angels",
    "subject": "your Lord",
    "verb": "said",
    "object": "to the angels",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -5481,26 +3412,10 @@
      "text": "And [mention, O Muhammad], when your Lord said to the angels, \"Indeed, I will make upon the earth a successive authority.\""
     }
    ]
-  },
-  {
-   "id": "your praise|and|sanctify you?\"",
-   "subject": "Your praise",
-   "verb": "and",
-   "object": "sanctify You?\"",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/quran_en_sahih.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/quran_en_sahih.txt#5174-5307",
-     "ref": "14-holy-texts/tanzil-quran/quran_en_sahih.txt",
-     "text": "They said, \"Will You place upon it one who causes corruption therein and sheds blood, while we declare Your praise and sanctify You?\""
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:58.520Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:55.383Z"
  }
 }

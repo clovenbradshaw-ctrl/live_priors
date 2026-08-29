@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 29195,
   "bodyOffset": 0,
   "bodyChars": 29195,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 9,
   "distinctReferents": 8,
   "examined": true,
-  "edgesFound": 24,
-  "extractionError": null
+  "edgesFound": 10,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 16
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 10,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 26,
-  "excerptOk": 26,
-  "rawChecked": 26,
-  "rawOk": 26,
+  "excerptChecked": 11,
+  "excerptOk": 11,
+  "rawChecked": 11,
+  "rawOk": 11,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 24,
-  "heard": 24,
+  "offered": 10,
+  "heard": 10,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "a swazi|kingdom|was founded in the mid-18th century and ruled by a series of kings",
+    "task_id": "swazi kingdom|was|founded in the mid-18th century and ruled by a series of kings",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "A Swazi kingdom was founded in the mid-18th century and ruled by a series of kings",
-    "subject": "A Swazi",
-    "verb": "kingdom",
-    "object": "was founded in the mid-18th century and ruled by a series of kings",
+    "description": "Swazi kingdom was founded in the mid-18th century and ruled by a series of kings",
+    "subject": "Swazi kingdom",
+    "verb": "was",
+    "object": "founded in the mid-18th century and ruled by a series of kings",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -103,7 +133,7 @@
     "verb": "was",
     "object": "adopted for the country and its predominant ethnic group",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -113,35 +143,6 @@
      }
     ],
     "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "european|countries|defined the kingdom’s modern borders during the late-19th century",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "European countries defined the kingdom’s modern borders during the late-19th century",
-    "subject": "European",
-    "verb": "countries",
-    "object": "defined the kingdom’s modern borders during the late-19th century",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#349-562",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "European countries defined the kingdom’s modern borders during the late-19th century, and Swaziland (as it became known) was administered as a UK high commission territory from 1903 until its independence in 1968."
-     }
-    ],
-    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -161,7 +162,7 @@
     "verb": "was",
     "object": "administered as a UK high commission territory from 1903 until its independence in 1968",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,13 +171,42 @@
       "text": "European countries defined the kingdom’s modern borders during the late-19th century, and Swaziland (as it became known) was administered as a UK high commission territory from 1903 until its independence in 1968."
      }
     ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the kingdom|is|still considered an absolute monarchy",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the kingdom is still considered an absolute monarchy",
+    "subject": "the kingdom",
+    "verb": "is",
+    "object": "still considered an absolute monarchy",
+    "witnesses": [
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/world-factbook/africa_wz.txt#563-797",
+      "ref": "06-government-legal/world-factbook/africa_wz.txt",
+      "text": "A new constitution that came into effect in 2005 included provisions for a more independent parliament and judiciary, but the legal status of political parties remains unclear, and the kingdom is still considered an absolute monarchy."
+     }
+    ],
     "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "into effect|in|2005 included provisions for a more independent parliament and judiciary",
+    "task_id": "of violence|has|not materialized",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -185,128 +215,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "into effect in 2005 included provisions for a more independent parliament and judiciary",
-    "subject": "into effect",
-    "verb": "in",
-    "object": "2005 included provisions for a more independent parliament and judiciary",
+    "description": "of violence has not materialized",
+    "subject": "of violence",
+    "verb": "has",
+    "object": "not materialized",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#563-797",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "A new constitution that came into effect in 2005 included provisions for a more independent parliament and judiciary, but the legal status of political parties remains unclear, and the kingdom is still considered an absolute monarchy."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and the|kingdom|is still considered an absolute monarchy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the kingdom is still considered an absolute monarchy",
-    "subject": "and the",
-    "verb": "kingdom",
-    "object": "is still considered an absolute monarchy",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#563-797",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "A new constitution that came into effect in 2005 included provisions for a more independent parliament and judiciary, but the legal status of political parties remains unclear, and the kingdom is still considered an absolute monarchy."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from swaziland|to|eswatini in 2018 to reflect the name most commonly used by its citizens",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "from Swaziland to Eswatini in 2018 to reflect the name most commonly used by its citizens",
-    "subject": "from Swaziland",
-    "verb": "to",
-    "object": "Eswatini in 2018 to reflect the name most commonly used by its citizens",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#798-924",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "King MSWATI III renamed the country from Swaziland to Eswatini in 2018 to reflect the name most commonly used by its citizens."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "security forces|to|suppress prodemocracy protests",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "security forces to suppress prodemocracy protests",
-    "subject": "security forces",
-    "verb": "to",
-    "object": "suppress prodemocracy protests",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#925-1008",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "<br><br>In 2021, MSWATI III used security forces to suppress prodemocracy protests."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "national dialogue|and|reconciliation process agreed to in the wake of violence has not materialized",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "national dialogue and reconciliation process agreed to in the wake of violence has not materialized",
-    "subject": "national dialogue",
-    "verb": "and",
-    "object": "reconciliation process agreed to in the wake of violence has not materialized",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,7 +229,7 @@
       "text": "A national dialogue and reconciliation process agreed to in the wake of violence has not materialized."
      }
     ],
-    "seq": 8,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -335,7 +249,7 @@
     "verb": "suffers",
     "object": "from severe poverty",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -344,36 +258,7 @@
       "text": "Despite its classification as a lower-middle income country, Eswatini suffers from severe poverty, corruption, and high unemployment."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|high|unemployment",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and high unemployment",
-    "subject": "and",
-    "verb": "high",
-    "object": "unemployment",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#1217-1350",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "Despite its classification as a lower-middle income country, Eswatini suffers from severe poverty, corruption, and high unemployment."
-     }
-    ],
-    "seq": 10,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +278,7 @@
     "verb": "has",
     "object": "the world's highest HIV/AIDS prevalence rate",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,36 +287,7 @@
       "text": "Eswatini has the world's highest HIV/AIDS prevalence rate, although recent years have shown marked declines in new infections."
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "marked declines|in|new infections",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "marked declines in new infections",
-    "subject": "marked declines",
-    "verb": "in",
-    "object": "new infections",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#1351-1477",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "Eswatini has the world's highest HIV/AIDS prevalence rate, although recent years have shown marked declines in new infections."
-     }
-    ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +307,7 @@
     "verb": "is",
     "object": "the only country in Africa that recognizes Taiwan",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,123 +316,7 @@
       "text": "Eswatini is the only country in Africa that recognizes Taiwan."
      }
     ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between mozambique|and|south africa",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between Mozambique and South Africa",
-    "subject": "between Mozambique",
-    "verb": "and",
-    "object": "South Africa",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#1556-1625",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "### Location Southern Africa, between Mozambique and South Africa"
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from tropical|to|near temperate",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "from tropical to near temperate",
-    "subject": "from tropical",
-    "verb": "to",
-    "object": "near temperate",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#2047-2101",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "### Climate varies from tropical to near temperate"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mostly mountains|and|hills",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mostly mountains and hills",
-    "subject": "mostly mountains",
-    "verb": "and",
-    "object": "hills",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#2103-2177",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "### Terrain mostly mountains and hills; some moderately sloping plains"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "small gold|and|diamond deposits",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "small gold and diamond deposits",
-    "subject": "small gold",
-    "verb": "and",
-    "object": "diamond deposits",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#2308-2445",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "### Natural resources asbestos, coal, clay, cassiterite, hydropower, forests, small gold and diamond deposits, quarry stone, and talc"
-     }
-    ],
-    "seq": 17,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -596,7 +336,7 @@
     "verb": "is",
     "object": "uneven throughout the country",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -610,128 +350,7 @@
       "text": "### Population distribution because of its mountainous terrain, the population distribution is uneven throughout the country, concentrating primarily in valleys and plains as shown in this population distribution map"
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "concentrating primarily|in|valleys and plains as shown in this population distribution map",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "concentrating primarily in valleys and plains as shown in this population distribution map",
-    "subject": "concentrating primarily",
-    "verb": "in",
-    "object": "valleys and plains as shown in this population distribution map",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#2843-3063",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "### Population distribution because of its mountainous terrain, the population distribution is uneven throughout the country, concentrating primarily in valleys and plains as shown in this population distribution map"
-     },
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#4861-5081",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "### Population distribution because of its mountainous terrain, the population distribution is uneven throughout the country, concentrating primarily in valleys and plains as shown in this population distribution map"
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#3181-3202",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "other african|ethnic|groups",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "other African ethnic groups",
-    "subject": "other African",
-    "verb": "ethnic",
-    "object": "groups",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#3524-3684",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "### Ethnic groups <p>predominantly Swazi; smaller populations of other African ethnic groups, including the Zulu, as well as people of European ancestry</p>"
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of christianity|and|traditional african religions - 40%",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of Christianity and traditional African religions - 40%",
-    "subject": "of Christianity",
-    "verb": "and",
-    "object": "traditional African religions - 40%",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_wz.txt#3774-4084",
-      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-      "text": "### Religions Christian 90% (Zionist - a blend of Christianity and traditional African religions - 40%, Roman Catholic 20%, other Christian 30% - includes Anglican, Methodist, Church of Jesus Christ, Jehovah's Witness), Muslim 2%, other 8% (includes Baha'i, Buddhist, Hindu, indigenous, Jewish) (2015 est.)"
-     }
-    ],
-    "seq": 22,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -751,7 +370,7 @@
     "verb": "expenditure",
     "object": "(% nation",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -760,12 +379,12 @@
       "text": "### Education expenditure Education expenditure (% GDP): 6% of GDP (2024 est.) Education expenditure (% nation"
      }
     ],
-    "seq": 23,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 24,
+  "nextSeq": 10,
   "admits": [
    "NUL",
    "SEG",
@@ -780,28 +399,12 @@
  },
  "folded": [
   {
-   "id": "a swazi|kingdom|was founded in the mid-18th century and ruled by a series of kings",
-   "subject": "A Swazi",
-   "verb": "kingdom",
-   "object": "was founded in the mid-18th century and ruled by a series of kings",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#131-348",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Background A Swazi kingdom was founded in the mid-18th century and ruled by a series of kings, including MSWATI II, a 19th century ruler whose name was adopted for the country and its predominant ethnic group."
-    }
-   ]
-  },
-  {
    "id": "and swaziland|was|administered as a uk high commission territory from 1903 until its independence in 1968",
    "subject": "and Swaziland",
    "verb": "was",
    "object": "administered as a UK high commission territory from 1903 until its independence in 1968",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -812,81 +415,12 @@
    ]
   },
   {
-   "id": "and the|kingdom|is still considered an absolute monarchy",
-   "subject": "and the",
-   "verb": "kingdom",
-   "object": "is still considered an absolute monarchy",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#563-797",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "A new constitution that came into effect in 2005 included provisions for a more independent parliament and judiciary, but the legal status of political parties remains unclear, and the kingdom is still considered an absolute monarchy."
-    }
-   ]
-  },
-  {
-   "id": "and|high|unemployment",
-   "subject": "and",
-   "verb": "high",
-   "object": "unemployment",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#1217-1350",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "Despite its classification as a lower-middle income country, Eswatini suffers from severe poverty, corruption, and high unemployment."
-    }
-   ]
-  },
-  {
-   "id": "between mozambique|and|south africa",
-   "subject": "between Mozambique",
-   "verb": "and",
-   "object": "South Africa",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#1556-1625",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Location Southern Africa, between Mozambique and South Africa"
-    }
-   ]
-  },
-  {
-   "id": "concentrating primarily|in|valleys and plains as shown in this population distribution map",
-   "subject": "concentrating primarily",
-   "verb": "in",
-   "object": "valleys and plains as shown in this population distribution map",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#2843-3063",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Population distribution because of its mountainous terrain, the population distribution is uneven throughout the country, concentrating primarily in valleys and plains as shown in this population distribution map"
-    },
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#4861-5081",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Population distribution because of its mountainous terrain, the population distribution is uneven throughout the country, concentrating primarily in valleys and plains as shown in this population distribution map"
-    }
-   ]
-  },
-  {
    "id": "education|expenditure|(% nation",
    "subject": "Education",
    "verb": "expenditure",
    "object": "(% nation",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -902,7 +436,7 @@
    "verb": "has",
    "object": "the world's highest HIV/AIDS prevalence rate",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -918,7 +452,7 @@
    "verb": "is",
    "object": "the only country in Africa that recognizes Taiwan",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -934,7 +468,7 @@
    "verb": "suffers",
    "object": "from severe poverty",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -945,108 +479,12 @@
    ]
   },
   {
-   "id": "european|countries|defined the kingdom’s modern borders during the late-19th century",
-   "subject": "European",
-   "verb": "countries",
-   "object": "defined the kingdom’s modern borders during the late-19th century",
+   "id": "of violence|has|not materialized",
+   "subject": "of violence",
+   "verb": "has",
+   "object": "not materialized",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#349-562",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "European countries defined the kingdom’s modern borders during the late-19th century, and Swaziland (as it became known) was administered as a UK high commission territory from 1903 until its independence in 1968."
-    }
-   ]
-  },
-  {
-   "id": "from swaziland|to|eswatini in 2018 to reflect the name most commonly used by its citizens",
-   "subject": "from Swaziland",
-   "verb": "to",
-   "object": "Eswatini in 2018 to reflect the name most commonly used by its citizens",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#798-924",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "King MSWATI III renamed the country from Swaziland to Eswatini in 2018 to reflect the name most commonly used by its citizens."
-    }
-   ]
-  },
-  {
-   "id": "from tropical|to|near temperate",
-   "subject": "from tropical",
-   "verb": "to",
-   "object": "near temperate",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#2047-2101",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Climate varies from tropical to near temperate"
-    }
-   ]
-  },
-  {
-   "id": "into effect|in|2005 included provisions for a more independent parliament and judiciary",
-   "subject": "into effect",
-   "verb": "in",
-   "object": "2005 included provisions for a more independent parliament and judiciary",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#563-797",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "A new constitution that came into effect in 2005 included provisions for a more independent parliament and judiciary, but the legal status of political parties remains unclear, and the kingdom is still considered an absolute monarchy."
-    }
-   ]
-  },
-  {
-   "id": "marked declines|in|new infections",
-   "subject": "marked declines",
-   "verb": "in",
-   "object": "new infections",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#1351-1477",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "Eswatini has the world's highest HIV/AIDS prevalence rate, although recent years have shown marked declines in new infections."
-    }
-   ]
-  },
-  {
-   "id": "mostly mountains|and|hills",
-   "subject": "mostly mountains",
-   "verb": "and",
-   "object": "hills",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#2103-2177",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Terrain mostly mountains and hills; some moderately sloping plains"
-    }
-   ]
-  },
-  {
-   "id": "national dialogue|and|reconciliation process agreed to in the wake of violence has not materialized",
-   "subject": "national dialogue",
-   "verb": "and",
-   "object": "reconciliation process agreed to in the wake of violence has not materialized",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1057,60 +495,12 @@
    ]
   },
   {
-   "id": "of christianity|and|traditional african religions - 40%",
-   "subject": "of Christianity",
-   "verb": "and",
-   "object": "traditional African religions - 40%",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#3774-4084",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Religions Christian 90% (Zionist - a blend of Christianity and traditional African religions - 40%, Roman Catholic 20%, other Christian 30% - includes Anglican, Methodist, Church of Jesus Christ, Jehovah's Witness), Muslim 2%, other 8% (includes Baha'i, Buddhist, Hindu, indigenous, Jewish) (2015 est.)"
-    }
-   ]
-  },
-  {
-   "id": "other african|ethnic|groups",
-   "subject": "other African",
-   "verb": "ethnic",
-   "object": "groups",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#3524-3684",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Ethnic groups <p>predominantly Swazi; smaller populations of other African ethnic groups, including the Zulu, as well as people of European ancestry</p>"
-    }
-   ]
-  },
-  {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#3181-3202",
-     "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
    "id": "population distribution|is|uneven throughout the country",
    "subject": "population distribution",
    "verb": "is",
    "object": "uneven throughout the country",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1126,34 +516,34 @@
    ]
   },
   {
-   "id": "security forces|to|suppress prodemocracy protests",
-   "subject": "security forces",
-   "verb": "to",
-   "object": "suppress prodemocracy protests",
+   "id": "swazi kingdom|was|founded in the mid-18th century and ruled by a series of kings",
+   "subject": "Swazi kingdom",
+   "verb": "was",
+   "object": "founded in the mid-18th century and ruled by a series of kings",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#925-1008",
+     "at": "06-government-legal/world-factbook/africa_wz.txt#131-348",
      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "<br><br>In 2021, MSWATI III used security forces to suppress prodemocracy protests."
+     "text": "### Background A Swazi kingdom was founded in the mid-18th century and ruled by a series of kings, including MSWATI II, a 19th century ruler whose name was adopted for the country and its predominant ethnic group."
     }
    ]
   },
   {
-   "id": "small gold|and|diamond deposits",
-   "subject": "small gold",
-   "verb": "and",
-   "object": "diamond deposits",
+   "id": "the kingdom|is|still considered an absolute monarchy",
+   "subject": "the kingdom",
+   "verb": "is",
+   "object": "still considered an absolute monarchy",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/africa_wz.txt#2308-2445",
+     "at": "06-government-legal/world-factbook/africa_wz.txt#563-797",
      "ref": "06-government-legal/world-factbook/africa_wz.txt",
-     "text": "### Natural resources asbestos, coal, clay, cassiterite, hydropower, forests, small gold and diamond deposits, quarry stone, and talc"
+     "text": "A new constitution that came into effect in 2005 included provisions for a more independent parliament and judiciary, but the legal status of political parties remains unclear, and the kingdom is still considered an absolute monarchy."
     }
    ]
   },
@@ -1163,7 +553,7 @@
    "verb": "was",
    "object": "adopted for the country and its predominant ethnic group",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_wz.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_wz.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1175,7 +565,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:26.884Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:56.020Z"
  }
 }

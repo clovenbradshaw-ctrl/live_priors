@@ -62,3 +62,48 @@ test("a span crossing a raw line wrap: the address resolves (whitespace-collapse
   }
   assert.ok(checkedAtLeastOneWrappedSpan, "this specimen must actually exercise a line-wrapped span, or this test proves nothing about the invariant it claims to pin");
 });
+
+// eot-digest.mjs's own loadOrgans() now wires hypergraph.js::makeRelationReader's
+// `posPriorFor` — a TYPE-level majority-vote gate over the real UD treebank
+// (relations.js::discoverRelationVocab's own `posPrior` param), distinct
+// from grammar-lens.js's `classifyConnector` (still disclosure-only, per-EDGE,
+// P56's asymmetric rule — untouched by this pass). Measured live before this
+// test was written (Shakespeare 90->22 edges, the Iliad 65->25, Alice
+// 97->34, all excluded tokens genuine non-verbs: of/the/by/with/in/that/
+// this/how/what/either/or); pinned here against a real corpus file so a
+// future change to this wiring cannot silently regress to the ungated
+// behaviour without a failing test naming it.
+const KNOWN_NONVERBS = new Set(["of", "the", "by", "with", "in", "that", "this", "how", "what", "either", "or", "a", "his", "on", "but", "up", "at", "under", "into", "about", "below", "to", "after", "like", "my"]);
+
+test("the POS vocabulary gate demonstrably narrows candidate verbs to real verbs, never refuses an unattested form", async () => {
+  const target = path.join(LP_ROOT, "01-literature-books", "gutenberg", "pg11_Alice_s_Adventures_in_Wonderland.txt");
+  if (!fs.existsSync(target)) return; // sibling corpus content not present in this checkout — skip, never fail
+
+  const organs = await loadOrgans();
+  if (!organs.posPriorLoaded) return; // local gitignored POSPrior@1 build not present — skip, never fail (byte-identical degradation is the design, not this test's to enforce)
+
+  // fresh: true — this test is about the GATE's own correctness, not about
+  // whatever an on-disk sidecar happens to carry from a prior sweep (a
+  // recipe change never retroactively cleans an already-admitted fact —
+  // see readSidecar's own comment on `fresh`), so it must not be able to
+  // pass or fail depending on when it happens to run relative to a sweep.
+  const { sidecar } = await readSidecar(organs, target, { fresh: true });
+  assert.ok(sidecar.reading.vocabulary, "a vocabulary reading must be present on a clean specimen");
+  assert.ok(
+    sidecar.reading.vocabulary.candidates > sidecar.reading.vocabulary.verbs,
+    `the gate must demonstrably narrow the vocabulary on real prose (candidates=${sidecar.reading.vocabulary.candidates}, verbs=${sidecar.reading.vocabulary.verbs}) — equality would mean the gate never ran`,
+  );
+
+  for (const note of sidecar.folded) {
+    const verb = note.verb ?? note.payload?.verb;
+    if (typeof verb === "string") {
+      assert.ok(!KNOWN_NONVERBS.has(verb.toLowerCase()), `"${verb}" is a known non-verb and must not survive the gate as an admitted relation`);
+    }
+  }
+
+  assert.equal(
+    typeof sidecar.recipe.descriptor.posPriorGate,
+    "string",
+    "the recipe descriptor must disclose that the vocabulary gate ran, so recipeId's own hash moves with this behavior",
+  );
+});

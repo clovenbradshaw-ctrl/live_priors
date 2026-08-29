@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 157148,
   "bodyOffset": 0,
   "bodyChars": 157148,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 4,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 5,
-  "extractionError": null
+  "edgesFound": 4,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 1,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 4
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 4,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 5,
-  "excerptOk": 5,
-  "rawChecked": 5,
-  "rawOk": 5,
+  "excerptChecked": 4,
+  "excerptOk": 4,
+  "rawChecked": 4,
+  "rawOk": 4,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 5,
-  "heard": 5,
+  "offered": 4,
+  "heard": 4,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "a python|program|is represented by objects or by relations between objects",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a Python program is represented by objects or by relations between objects",
-    "subject": "a Python",
-    "verb": "program",
-    "object": "is represented by objects or by relations between objects",
-    "witnesses": [
-     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt#216-303",
-      "ref": "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt",
-      "text": "All data in a Python program is represented by objects or by relations between objects."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "unreachable\nthey|may|be garbage-collected",
@@ -103,7 +104,7 @@
     "verb": "may",
     "object": "be garbage-collected",
     "witnesses": [
-     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
+     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,7 +113,7 @@
       "text": "Objects are never explicitly destroyed; however, when they become unreachable they may be garbage-collected."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "may",
     "object": "change",
     "witnesses": [
-     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
+     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,7 +142,7 @@
       "text": "Other implementations act differently and CPython may change."
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -161,7 +162,7 @@
     "verb": "may",
     "object": "keep objects alive that would normally be collectable",
     "witnesses": [
-     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
+     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,7 +171,7 @@
       "text": "Note that the use of the implementation's tracing or debugging facilities may keep objects alive that would normally be collectable."
      }
     ],
-    "seq": 3,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +191,7 @@
     "verb": "may",
     "object": "change in the future",
     "witnesses": [
-     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
+     "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,12 +200,12 @@
       "text": "Their definition may change in the future."
      }
     ],
-    "seq": 4,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 5,
+  "nextSeq": 4,
   "admits": [
    "NUL",
    "SEG",
@@ -219,28 +220,12 @@
  },
  "folded": [
   {
-   "id": "a python|program|is represented by objects or by relations between objects",
-   "subject": "a Python",
-   "verb": "program",
-   "object": "is represented by objects or by relations between objects",
-   "witnesses": [
-    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt#216-303",
-     "ref": "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt",
-     "text": "All data in a Python program is represented by objects or by relations between objects."
-    }
-   ]
-  },
-  {
    "id": "and cpython|may|change",
    "subject": "and CPython",
    "verb": "may",
    "object": "change",
    "witnesses": [
-    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
+    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -256,7 +241,7 @@
    "verb": "may",
    "object": "keep objects alive that would normally be collectable",
    "witnesses": [
-    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
+    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -272,7 +257,7 @@
    "verb": "may",
    "object": "change in the future",
    "witnesses": [
-    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
+    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -288,7 +273,7 @@
    "verb": "may",
    "object": "be garbage-collected",
    "witnesses": [
-    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@b2de25493ccfe8e8"
+    "09-source-code/python_cpython/Doc_reference_datamodel.rst.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -300,7 +285,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:53.923Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:04.323Z"
  }
 }

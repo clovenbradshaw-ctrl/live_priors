@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 13699,
   "bodyOffset": 0,
   "bodyChars": 13699,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 9,
   "distinctReferents": 9,
   "examined": true,
-  "edgesFound": 60,
-  "extractionError": null
+  "edgesFound": 44,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 17
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 44,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 64,
-  "excerptOk": 64,
-  "rawChecked": 64,
-  "rawOk": 64,
+  "excerptChecked": 44,
+  "excerptOk": 44,
+  "rawChecked": 44,
+  "rawOk": 44,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 60,
-  "heard": 60,
+  "offered": 44,
+  "heard": 44,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "the revelation|of|the book is from allah",
+    "task_id": "the book|is|from allah",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The revelation of the Book is from Allah",
-    "subject": "The revelation",
-    "verb": "of",
-    "object": "the Book is from Allah",
+    "description": "the Book is from Allah",
+    "subject": "the Book",
+    "verb": "is",
+    "object": "from Allah",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the exalted|in|might",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Exalted in Might",
-    "subject": "the Exalted",
-    "verb": "in",
-    "object": "Might",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#129-273",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[2] AR: تَنزِيلُ ٱلْكِتَٰبِ مِنَ ٱللَّهِ ٱلْعَزِيزِ ٱلْحَكِيمِ EN: The revelation of the Book is from Allah, the Exalted in Might, the Wise."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "did",
     "object": "not create the heavens and earth and what is between them except in truth and [for] a specified term",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,99 +142,7 @@
       "text": "[3] AR: مَا خَلَقْنَا ٱلسَّمَٰوَٰتِ وَٱلْأَرْضَ وَمَا بَيْنَهُمَآ إِلَّا بِٱلْحَقِّ وَأَجَلٍۢ مُّسَمًّۭى ۚ وَٱلَّذِينَ كَفَرُوا۟ عَمَّآ أُنذِرُوا۟ مُعْرِضُونَ EN: We did not create the heavens and earth and what is between them except in truth and [for] a specified term."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|those|who disbelieve",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But those who disbelieve",
-    "subject": "But",
-    "verb": "those",
-    "object": "who disbelieve",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#553-632",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "But those who disbelieve, from that of which they are warned, are turning away."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from that|of|which they are warned",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "from that of which they are warned",
-    "subject": "from that",
-    "verb": "of",
-    "object": "which they are warned",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#553-632",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "But those who disbelieve, from that of which they are warned, are turning away."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have|you|considered that which you invoke besides allah?",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Have you considered that which you invoke besides Allah?",
-    "subject": "Have",
-    "verb": "you",
-    "object": "considered that which you invoke besides Allah?",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#634-950",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[4] AR: قُلْ أَرَءَيْتُم مَّا تَدْعُونَ مِن دُونِ ٱللَّهِ أَرُونِى مَاذَا خَلَقُوا۟ مِنَ ٱلْأَرْضِ أَمْ لَهُمْ شِرْكٌۭ فِى ٱلسَّمَٰوَٰتِ ۖ ٱئْتُونِى بِكِتَٰبٍۢ مِّن قَبْلِ هَٰذَآ أَوْ أَثَٰرَةٍۢ مِّنْ عِلْمٍ إِن كُنتُمْ صَٰدِقِينَ EN: Say, [O Muhammad], \"Have you considered that which you invoke besides Allah?"
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#2915-3343",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[10] AR: قُلْ أَرَءَيْتُمْ إِن كَانَ مِنْ عِندِ ٱللَّهِ وَكَفَرْتُم بِهِۦ وَشَهِدَ شَاهِدٌۭ مِّنۢ بَنِىٓ إِسْرَٰٓءِيلَ عَلَىٰ مِثْلِهِۦ فَـَٔامَنَ وَٱسْتَكْبَرْتُمْ ۖ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلظَّٰلِمِينَ EN: Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
-     }
-    ],
-    "seq": 5,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -253,7 +162,7 @@
     "verb": "have",
     "object": "created of the earth",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -262,7 +171,7 @@
       "text": "Show me what they have created of the earth; or did they have partnership in [creation of] the heavens?"
      }
     ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -282,7 +191,7 @@
     "verb": "did",
     "object": "they have partnership in [creation of] the heavens?",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -291,65 +200,7 @@
       "text": "Show me what they have created of the earth; or did they have partnership in [creation of] the heavens?"
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "trace|of|knowledge",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "trace of knowledge",
-    "subject": "trace",
-    "verb": "of",
-    "object": "knowledge",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#1055-1163",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful.\""
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "if|you|should be truthful",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "if you should be truthful",
-    "subject": "if",
-    "verb": "you",
-    "object": "should be truthful",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#1055-1163",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful.\""
-     }
-    ],
-    "seq": 9,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -369,7 +220,7 @@
     "verb": "is",
     "object": "more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -378,41 +229,7 @@
       "text": "[5] AR: وَمَنْ أَضَلُّ مِمَّن يَدْعُوا۟ مِن دُونِ ٱللَّهِ مَن لَّا يَسْتَجِيبُ لَهُۥٓ إِلَىٰ يَوْمِ ٱلْقِيَٰمَةِ وَهُمْ عَن دُعَآئِهِمْ غَٰفِلُونَ EN: And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and when|the|people are gathered [that day]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And when the people are gathered [that Day]",
-    "subject": "And when",
-    "verb": "the",
-    "object": "people are gathered [that Day]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#1488-1730",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[6] AR: وَإِذَا حُشِرَ ٱلنَّاسُ كَانُوا۟ لَهُمْ أَعْدَآءًۭ وَكَانُوا۟ بِعِبَادَتِهِمْ كَٰفِرِينَ EN: And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#7285-7884",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[20] AR: وَيَوْمَ يُعْرَضُ ٱلَّذِينَ كَفَرُوا۟ عَلَى ٱلنَّارِ أَذْهَبْتُمْ طَيِّبَٰتِكُمْ فِى حَيَاتِكُمُ ٱلدُّنْيَا وَٱسْتَمْتَعْتُم بِهَا فَٱلْيَوْمَ تُجْزَوْنَ عَذَابَ ٱلْهُونِ بِمَا كُنتُمْ تَسْتَكْبِرُونَ فِى ٱلْأَرْضِ بِغَيْرِ ٱلْحَقِّ وَبِمَا كُنتُمْ تَفْسُقُونَ EN: And the Day those who disbelieved are exposed to the Fire [it will be said], \"You exhausted your pleasures during your worldly life and enjoyed them, so this Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient.\""
-     }
-    ],
-    "seq": 11,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -432,7 +249,7 @@
     "verb": "will",
     "object": "be enemies to them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -441,7 +258,7 @@
       "text": "[6] AR: وَإِذَا حُشِرَ ٱلنَّاسُ كَانُوا۟ لَهُمْ أَعْدَآءًۭ وَكَانُوا۟ بِعِبَادَتِهِمْ كَٰفِرِينَ EN: And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship."
      }
     ],
-    "seq": 12,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -461,7 +278,7 @@
     "verb": "will",
     "object": "be deniers of their worship",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -470,7 +287,7 @@
       "text": "[6] AR: وَإِذَا حُشِرَ ٱلنَّاسُ كَانُوا۟ لَهُمْ أَعْدَآءًۭ وَكَانُوا۟ بِعِبَادَتِهِمْ كَٰفِرِينَ EN: And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship."
      }
     ],
-    "seq": 13,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -490,7 +307,7 @@
     "verb": "verses",
     "object": "are recited to them as clear evidences",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -499,13 +316,13 @@
       "text": "[7] AR: وَإِذَا تُتْلَىٰ عَلَيْهِمْ ءَايَٰتُنَا بَيِّنَٰتٍۢ قَالَ ٱلَّذِينَ كَفَرُوا۟ لِلْحَقِّ لَمَّا جَآءَهُمْ هَٰذَا سِحْرٌۭ مُّبِينٌ EN: And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic.\""
      }
     ],
-    "seq": 14,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "disbelieve say|of|the truth when it has come to them",
+    "task_id": "when it|has|come to them",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -514,12 +331,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "disbelieve say of the truth when it has come to them",
-    "subject": "disbelieve say",
-    "verb": "of",
-    "object": "the truth when it has come to them",
+    "description": "when it has come to them",
+    "subject": "when it",
+    "verb": "has",
+    "object": "come to them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -528,7 +345,7 @@
       "text": "[7] AR: وَإِذَا تُتْلَىٰ عَلَيْهِمْ ءَايَٰتُنَا بَيِّنَٰتٍۢ قَالَ ٱلَّذِينَ كَفَرُوا۟ لِلْحَقِّ لَمَّا جَآءَهُمْ هَٰذَا سِحْرٌۭ مُّبِينٌ EN: And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic.\""
      }
     ],
-    "seq": 15,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -548,7 +365,7 @@
     "verb": "is",
     "object": "obvious magic",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -557,7 +374,7 @@
       "text": "[7] AR: وَإِذَا تُتْلَىٰ عَلَيْهِمْ ءَايَٰتُنَا بَيِّنَٰتٍۢ قَالَ ٱلَّذِينَ كَفَرُوا۟ لِلْحَقِّ لَمَّا جَآءَهُمْ هَٰذَا سِحْرٌۭ مُّبِينٌ EN: And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic.\""
      }
     ],
-    "seq": 16,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -577,7 +394,7 @@
     "verb": "has",
     "object": "invented it?\"",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -586,7 +403,7 @@
       "text": "[8] AR: أَمْ يَقُولُونَ ٱفْتَرَىٰهُ ۖ قُلْ إِنِ ٱفْتَرَيْتُهُۥ فَلَا تَمْلِكُونَ لِى مِنَ ٱللَّهِ شَيْـًٔا ۖ هُوَ أَعْلَمُ بِمَا تُفِيضُونَ فِيهِ ۖ كَفَىٰ بِهِۦ شَهِيدًۢا بَيْنِى وَبَيْنَكُمْ ۖ وَهُوَ ٱلْغَفُورُ ٱلرَّحِيمُ EN: Or do they say, \"He has invented it?\""
      }
     ],
-    "seq": 17,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -606,7 +423,7 @@
     "verb": "have",
     "object": "invented it",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -615,7 +432,7 @@
       "text": "Say, \"If I have invented it, you will not possess for me [the power of protection] from Allah at all."
      }
     ],
-    "seq": 18,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -635,7 +452,7 @@
     "verb": "will",
     "object": "not possess for me [the power of protection] from Allah at all",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -644,7 +461,7 @@
       "text": "Say, \"If I have invented it, you will not possess for me [the power of protection] from Allah at all."
      }
     ],
-    "seq": 19,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -664,7 +481,7 @@
     "verb": "is",
     "object": "most knowing of that in which you are involved",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -673,7 +490,7 @@
       "text": "He is most knowing of that in which you are involved."
      }
     ],
-    "seq": 20,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -693,7 +510,7 @@
     "verb": "is",
     "object": "He as Witness between me and you",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -702,7 +519,7 @@
       "text": "Sufficient is He as Witness between me and you, and He is the Forgiving the Merciful.\""
      }
     ],
-    "seq": 21,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -722,7 +539,7 @@
     "verb": "is",
     "object": "the Forgiving the Merciful",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -731,36 +548,7 @@
       "text": "Sufficient is He as Witness between me and you, and He is the Forgiving the Merciful.\""
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "original among|the|messengers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "original among the messengers",
-    "subject": "original among",
-    "verb": "the",
-    "object": "messengers",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#2541-2835",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[9] AR: قُلْ مَا كُنتُ بِدْعًۭا مِّنَ ٱلرُّسُلِ وَمَآ أَدْرِى مَا يُفْعَلُ بِى وَلَا بِكُمْ ۖ إِنْ أَتَّبِعُ إِلَّا مَا يُوحَىٰٓ إِلَىَّ وَمَآ أَنَا۠ إِلَّا نَذِيرٌۭ مُّبِينٌۭ EN: Say, \"I am not something original among the messengers, nor do I know what will be done with me or with you."
-     }
-    ],
-    "seq": 23,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -780,7 +568,7 @@
     "verb": "will",
     "object": "be done with me or with you",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -789,7 +577,7 @@
       "text": "[9] AR: قُلْ مَا كُنتُ بِدْعًۭا مِّنَ ٱلرُّسُلِ وَمَآ أَدْرِى مَا يُفْعَلُ بِى وَلَا بِكُمْ ۖ إِنْ أَتَّبِعُ إِلَّا مَا يُوحَىٰٓ إِلَىَّ وَمَآ أَنَا۠ إِلَّا نَذِيرٌۭ مُّبِينٌۭ EN: Say, \"I am not something original among the messengers, nor do I know what will be done with me or with you."
      }
     ],
-    "seq": 24,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -809,7 +597,7 @@
     "verb": "is",
     "object": "revealed to me",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -818,13 +606,13 @@
       "text": "I only follow that which is revealed to me, and I am not but a clear warner.\""
      }
     ],
-    "seq": 25,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and|you|disbelieved in it while a witness from the children of israel has testified to something similar and believed while you were arrogant",
+    "task_id": "the qur'an|was|from allah",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -833,12 +621,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant",
-    "subject": "and",
-    "verb": "you",
-    "object": "disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant",
+    "description": "the Qur'an was from Allah",
+    "subject": "the Qur'an",
+    "verb": "was",
+    "object": "from Allah",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -847,7 +635,36 @@
       "text": "[10] AR: قُلْ أَرَءَيْتُمْ إِن كَانَ مِنْ عِندِ ٱللَّهِ وَكَفَرْتُم بِهِۦ وَشَهِدَ شَاهِدٌۭ مِّنۢ بَنِىٓ إِسْرَٰٓءِيلَ عَلَىٰ مِثْلِهِۦ فَـَٔامَنَ وَٱسْتَكْبَرْتُمْ ۖ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلظَّٰلِمِينَ EN: Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
      }
     ],
-    "seq": 26,
+    "seq": 18,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of israel|has|testified to something similar and believed while you were arrogant",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of Israel has testified to something similar and believed while you were arrogant",
+    "subject": "of Israel",
+    "verb": "has",
+    "object": "testified to something similar and believed while you were arrogant",
+    "witnesses": [
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#2915-3343",
+      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
+      "text": "[10] AR: قُلْ أَرَءَيْتُمْ إِن كَانَ مِنْ عِندِ ٱللَّهِ وَكَفَرْتُم بِهِۦ وَشَهِدَ شَاهِدٌۭ مِّنۢ بَنِىٓ إِسْرَٰٓءِيلَ عَلَىٰ مِثْلِهِۦ فَـَٔامَنَ وَٱسْتَكْبَرْتُمْ ۖ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلظَّٰلِمِينَ EN: Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
+     }
+    ],
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -867,7 +684,7 @@
     "verb": "does",
     "object": "not guide the wrongdoing people",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -876,36 +693,7 @@
       "text": "Indeed, Allah does not guide the wrongdoing people."
      }
     ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|those|who disbelieve say of those who believe",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And those who disbelieve say of those who believe",
-    "subject": "And",
-    "verb": "those",
-    "object": "who disbelieve say of those who believe",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#3397-3702",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[11] AR: وَقَالَ ٱلَّذِينَ كَفَرُوا۟ لِلَّذِينَ ءَامَنُوا۟ لَوْ كَانَ خَيْرًۭا مَّا سَبَقُونَآ إِلَيْهِ ۚ وَإِذْ لَمْ يَهْتَدُوا۟ بِهِۦ فَسَيَقُولُونَ هَٰذَآ إِفْكٌۭ قَدِيمٌۭ EN: And those who disbelieve say of those who believe, \"If it had [truly] been good, they would not have preceded us to it.\""
-     }
-    ],
-    "seq": 28,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -925,7 +713,7 @@
     "verb": "have",
     "object": "preceded us to it",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -934,7 +722,7 @@
       "text": "[11] AR: وَقَالَ ٱلَّذِينَ كَفَرُوا۟ لِلَّذِينَ ءَامَنُوا۟ لَوْ كَانَ خَيْرًۭا مَّا سَبَقُونَآ إِلَيْهِ ۚ وَإِذْ لَمْ يَهْتَدُوا۟ بِهِۦ فَسَيَقُولُونَ هَٰذَآ إِفْكٌۭ قَدِيمٌۭ EN: And those who disbelieve say of those who believe, \"If it had [truly] been good, they would not have preceded us to it.\""
      }
     ],
-    "seq": 29,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -954,7 +742,7 @@
     "verb": "will",
     "object": "say",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -963,7 +751,7 @@
       "text": "And when they are not guided by it, they will say, \"This is an ancient falsehood.\""
      }
     ],
-    "seq": 30,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -983,7 +771,7 @@
     "verb": "is",
     "object": "an ancient falsehood",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -992,7 +780,7 @@
       "text": "And when they are not guided by it, they will say, \"This is an ancient falsehood.\""
      }
     ],
-    "seq": 31,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1012,7 +800,7 @@
     "verb": "was",
     "object": "the scripture of Moses to lead and as a mercy",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1021,7 +809,7 @@
       "text": "[12] AR: وَمِن قَبْلِهِۦ كِتَٰبُ مُوسَىٰٓ إِمَامًۭا وَرَحْمَةًۭ ۚ وَهَٰذَا كِتَٰبٌۭ مُّصَدِّقٌۭ لِّسَانًا عَرَبِيًّۭا لِّيُنذِرَ ٱلَّذِينَ ظَلَمُوا۟ وَبُشْرَىٰ لِلْمُحْسِنِينَ EN: And before it was the scripture of Moses to lead and as a mercy."
      }
     ],
-    "seq": 32,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1041,7 +829,7 @@
     "verb": "is",
     "object": "a confirming Book in an Arabic tongue to warn those who have wronged and as good tidings to the doers of good",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1050,7 +838,7 @@
       "text": "And this is a confirming Book in an Arabic tongue to warn those who have wronged and as good tidings to the doers of good."
      }
     ],
-    "seq": 33,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1070,7 +858,7 @@
     "verb": "have",
     "object": "said",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1079,7 +867,7 @@
       "text": "[13] AR: إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ EN: Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve."
      }
     ],
-    "seq": 34,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1099,7 +887,7 @@
     "verb": "is",
     "object": "Allah",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1108,7 +896,7 @@
       "text": "[13] AR: إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ EN: Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve."
      }
     ],
-    "seq": 35,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1128,7 +916,7 @@
     "verb": "will",
     "object": "be no fear concerning them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1137,7 +925,7 @@
       "text": "[13] AR: إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ EN: Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve."
      }
     ],
-    "seq": 36,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -1157,7 +945,7 @@
     "verb": "will",
     "object": "they grieve",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1166,65 +954,7 @@
       "text": "[13] AR: إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ EN: Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve."
      }
     ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "those are|the|companions of paradise",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Those are the companions of Paradise",
-    "subject": "Those are",
-    "verb": "the",
-    "object": "companions of Paradise",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#4436-4641",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[14] AR: أُو۟لَٰٓئِكَ أَصْحَٰبُ ٱلْجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءًۢ بِمَا كَانُوا۟ يَعْمَلُونَ EN: Those are the companions of Paradise, abiding eternally therein as reward for what they used to do."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as reward|for|what they used to do",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as reward for what they used to do",
-    "subject": "as reward",
-    "verb": "for",
-    "object": "what they used to do",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#4436-4641",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[14] AR: أُو۟لَٰٓئِكَ أَصْحَٰبُ ٱلْجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءًۢ بِمَا كَانُوا۟ يَعْمَلُونَ EN: Those are the companions of Paradise, abiding eternally therein as reward for what they used to do."
-     }
-    ],
-    "seq": 39,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1244,7 +974,7 @@
     "verb": "have",
     "object": "enjoined upon man",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1253,36 +983,7 @@
       "text": "[15] AR: وَوَصَّيْنَا ٱلْإِنسَٰنَ بِوَٰلِدَيْهِ إِحْسَٰنًا ۖ حَمَلَتْهُ أُمُّهُۥ كُرْهًۭا وَوَضَعَتْهُ كُرْهًۭا ۖ وَحَمْلُهُۥ وَفِصَٰلُهُۥ ثَلَٰثُونَ شَهْرًا ۚ حَتَّىٰٓ إِذَا بَلَغَ أَشُدَّهُۥ وَبَلَغَ أَرْبَعِينَ سَنَةًۭ قَالَ رَبِّ أَوْزِعْنِىٓ أَنْ أَشْكُرَ نِعْمَتَكَ ٱلَّتِىٓ أَنْعَمْتَ عَلَىَّ وَعَلَىٰ وَٰلِدَىَّ وَأَنْ أَعْمَلَ صَٰلِحًۭا تَرْضَىٰهُ وَأَصْلِحْ لِى فِى ذُرِّيَّتِىٓ ۖ إِنِّى تُبْتُ إِلَيْكَ وَإِنِّى مِنَ ٱلْمُسْلِمِينَ EN: And We have enjoined upon man, to his parents, good treatment."
      }
     ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gave birth|to|him with hardship",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gave birth to him with hardship",
-    "subject": "gave birth",
-    "verb": "to",
-    "object": "him with hardship",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5157-5287",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "His mother carried him with hardship and gave birth to him with hardship, and his gestation and weaning [period] is thirty months."
-     }
-    ],
-    "seq": 41,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -1302,7 +1003,7 @@
     "verb": "is",
     "object": "thirty months",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1311,13 +1012,13 @@
       "text": "His mother carried him with hardship and gave birth to him with hardship, and his gestation and weaning [period] is thirty months."
      }
     ],
-    "seq": 42,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "enable me|to|be grateful for your favor which you have bestowed upon me and upon my parents and to work righteousness of which you will approve and make righteous for me my offspring",
+    "task_id": "which you|have|bestowed upon me and upon my parents and to work righteousness of which you will approve and make righteous for me my offspring",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1326,12 +1027,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
-    "subject": "enable me",
-    "verb": "to",
-    "object": "be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
+    "description": "which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
+    "subject": "which You",
+    "verb": "have",
+    "object": "bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1340,7 +1041,7 @@
       "text": "[He grows] until, when he reaches maturity and reaches [the age of] forty years, he says, \"My Lord, enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring."
      }
     ],
-    "seq": 43,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
@@ -1360,7 +1061,7 @@
     "verb": "have",
     "object": "repented to You",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1369,13 +1070,13 @@
       "text": "Indeed, I have repented to You, and indeed, I am of the Muslims.\""
      }
     ],
-    "seq": 44,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "i am|of|the muslims",
+    "task_id": "whom we|will|accept the best of what they did and overlook their misdeeds",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1384,75 +1085,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "I am of the Muslims",
-    "subject": "I am",
-    "verb": "of",
-    "object": "the Muslims",
+    "description": "whom We will accept the best of what they did and overlook their misdeeds",
+    "subject": "whom We",
+    "verb": "will",
+    "object": "accept the best of what they did and overlook their misdeeds",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5572-5637",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "Indeed, I have repented to You, and indeed, I am of the Muslims.\""
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "those are|the|ones from whom we will accept the best of what they did and overlook their misdeeds",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Those are the ones from whom We will accept the best of what they did and overlook their misdeeds",
-    "subject": "Those are",
-    "verb": "the",
-    "object": "ones from whom We will accept the best of what they did and overlook their misdeeds",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5639-5976",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[16] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ نَتَقَبَّلُ عَنْهُمْ أَحْسَنَ مَا عَمِلُوا۟ وَنَتَجَاوَزُ عَن سَيِّـَٔاتِهِمْ فِىٓ أَصْحَٰبِ ٱلْجَنَّةِ ۖ وَعْدَ ٱلصِّدْقِ ٱلَّذِى كَانُوا۟ يُوعَدُونَ EN: Those are the ones from whom We will accept the best of what they did and overlook their misdeeds, [their being] among the companions of Paradise."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6658-6958",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[18] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ حَقَّ عَلَيْهِمُ ٱلْقَوْلُ فِىٓ أُمَمٍۢ قَدْ خَلَتْ مِن قَبْلِهِم مِّنَ ٱلْجِنِّ وَٱلْإِنسِ ۖ إِنَّهُمْ كَانُوا۟ خَٰسِرِينَ EN: Those are the ones upon whom the word has come into effect, [who will be] among nations which had passed on before them of jinn and men."
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "among|the|companions of paradise",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "among the companions of Paradise",
-    "subject": "among",
-    "verb": "the",
-    "object": "companions of Paradise",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1461,13 +1099,13 @@
       "text": "[16] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ نَتَقَبَّلُ عَنْهُمْ أَحْسَنَ مَا عَمِلُوا۟ وَنَتَجَاوَزُ عَن سَيِّـَٔاتِهِمْ فِىٓ أَصْحَٰبِ ٱلْجَنَّةِ ۖ وَعْدَ ٱلصِّدْقِ ٱلَّذِى كَانُوا۟ يُوعَدُونَ EN: Those are the ones from whom We will accept the best of what they did and overlook their misdeeds, [their being] among the companions of Paradise."
      }
     ],
-    "seq": 47,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the promise|of|truth which they had been promised",
+    "task_id": "that i|will|be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1476,171 +1114,50 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the promise of truth which they had been promised",
-    "subject": "the promise",
-    "verb": "of",
-    "object": "truth which they had been promised",
+    "description": "that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
+    "subject": "that I",
+    "verb": "will",
+    "object": "be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5977-6037",
+      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6039-6478",
       "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[That is] the promise of truth which they had been promised."
-     },
+      "text": "[17] AR: وَٱلَّذِى قَالَ لِوَٰلِدَيْهِ أُفٍّۢ لَّكُمَآ أَتَعِدَانِنِىٓ أَنْ أُخْرَجَ وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى وَهُمَا يَسْتَغِيثَانِ ٱللَّهَ وَيْلَكَ ءَامِنْ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ فَيَقُولُ مَا هَٰذَآ إِلَّآ أَسَٰطِيرُ ٱلْأَوَّلِينَ EN: But one who says to his parents, \"Uff to you; do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\""
+     }
+    ],
+    "seq": 35,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of allah|is|truth",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of Allah is truth",
+    "subject": "of Allah",
+    "verb": "is",
+    "object": "truth",
+    "witnesses": [
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+    ],
+    "spans": [
      {
       "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6555-6594",
       "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
       "text": "Indeed, the promise of Allah is truth.\""
      }
     ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "who says|to|his parents",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "who says to his parents",
-    "subject": "who says",
-    "verb": "to",
-    "object": "his parents",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6039-6478",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[17] AR: وَٱلَّذِى قَالَ لِوَٰلِدَيْهِ أُفٍّۢ لَّكُمَآ أَتَعِدَانِنِىٓ أَنْ أُخْرَجَ وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى وَهُمَا يَسْتَغِيثَانِ ٱللَّهَ وَيْلَكَ ءَامِنْ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ فَيَقُولُ مَا هَٰذَآ إِلَّآ أَسَٰطِيرُ ٱلْأَوَّلِينَ EN: But one who says to his parents, \"Uff to you; do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\""
-     }
-    ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "uff|to|you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Uff to you",
-    "subject": "Uff",
-    "verb": "to",
-    "object": "you",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6039-6478",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[17] AR: وَٱلَّذِى قَالَ لِوَٰلِدَيْهِ أُفٍّۢ لَّكُمَآ أَتَعِدَانِنِىٓ أَنْ أُخْرَجَ وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى وَهُمَا يَسْتَغِيثَانِ ٱللَّهَ وَيْلَكَ ءَامِنْ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ فَيَقُولُ مَا هَٰذَآ إِلَّآ أَسَٰطِيرُ ٱلْأَوَّلِينَ EN: But one who says to his parents, \"Uff to you; do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\""
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "do|you|promise me that i will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
-    "subject": "do",
-    "verb": "you",
-    "object": "promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6039-6478",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[17] AR: وَٱلَّذِى قَالَ لِوَٰلِدَيْهِ أُفٍّۢ لَّكُمَآ أَتَعِدَانِنِىٓ أَنْ أُخْرَجَ وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى وَهُمَا يَسْتَغِيثَانِ ٱللَّهَ وَيْلَكَ ءَامِنْ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ فَيَقُولُ مَا هَٰذَآ إِلَّآ أَسَٰطِيرُ ٱلْأَوَّلِينَ EN: But one who says to his parents, \"Uff to you; do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\""
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they call|to|allah for help [and to their son]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "they call to Allah for help [and to their son]",
-    "subject": "they call",
-    "verb": "to",
-    "object": "Allah for help [and to their son]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6479-6545",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "while they call to Allah for help [and to their son], \"Woe to you!"
-     }
-    ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "woe|to|you!",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Woe to you!",
-    "subject": "Woe",
-    "verb": "to",
-    "object": "you!",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6479-6545",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "while they call to Allah for help [and to their son], \"Woe to you!"
-     }
-    ],
-    "seq": 53,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
@@ -1660,7 +1177,7 @@
     "verb": "is",
     "object": "not but legends of the former people\" -",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1669,7 +1186,36 @@
       "text": "But he says, \"This is not but legends of the former people\" -"
      }
     ],
-    "seq": 54,
+    "seq": 37,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the word|has|come into effect",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the word has come into effect",
+    "subject": "the word",
+    "verb": "has",
+    "object": "come into effect",
+    "witnesses": [
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6658-6958",
+      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
+      "text": "[18] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ حَقَّ عَلَيْهِمُ ٱلْقَوْلُ فِىٓ أُمَمٍۢ قَدْ خَلَتْ مِن قَبْلِهِم مِّنَ ٱلْجِنِّ وَٱلْإِنسِ ۖ إِنَّهُمْ كَانُوا۟ خَٰسِرِينَ EN: Those are the ones upon whom the word has come into effect, [who will be] among nations which had passed on before them of jinn and men."
+     }
+    ],
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    },
@@ -1689,7 +1235,7 @@
     "verb": "will",
     "object": "be] among nations which had passed on before them of jinn and men",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1698,13 +1244,13 @@
       "text": "[18] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ حَقَّ عَلَيْهِمُ ٱلْقَوْلُ فِىٓ أُمَمٍۢ قَدْ خَلَتْ مِن قَبْلِهِم مِّنَ ٱلْجِنِّ وَٱلْإِنسِ ۖ إِنَّهُمْ كَانُوا۟ خَٰسِرِينَ EN: Those are the ones upon whom the word has come into effect, [who will be] among nations which had passed on before them of jinn and men."
      }
     ],
-    "seq": 55,
+    "seq": 39,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and|for|all there are degrees [of reward and punishment] for what they have done",
+    "task_id": "what they|have|done",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1713,12 +1259,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "And for all there are degrees [of reward and punishment] for what they have done",
-    "subject": "And",
-    "verb": "for",
-    "object": "all there are degrees [of reward and punishment] for what they have done",
+    "description": "what they have done",
+    "subject": "what they",
+    "verb": "have",
+    "object": "done",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1727,36 +1273,7 @@
       "text": "[19] AR: وَلِكُلٍّۢ دَرَجَٰتٌۭ مِّمَّا عَمِلُوا۟ ۖ وَلِيُوَفِّيَهُمْ أَعْمَٰلَهُمْ وَهُمْ لَا يُظْلَمُونَ EN: And for all there are degrees [of reward and punishment] for what they have done, and [it is] so that He may fully compensate them for their deeds, and they will not be wronged."
      }
     ],
-    "seq": 56,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "compensate them|for|their deeds",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "compensate them for their deeds",
-    "subject": "compensate them",
-    "verb": "for",
-    "object": "their deeds",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6992-7283",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-      "text": "[19] AR: وَلِكُلٍّۢ دَرَجَٰتٌۭ مِّمَّا عَمِلُوا۟ ۖ وَلِيُوَفِّيَهُمْ أَعْمَٰلَهُمْ وَهُمْ لَا يُظْلَمُونَ EN: And for all there are degrees [of reward and punishment] for what they have done, and [it is] so that He may fully compensate them for their deeds, and they will not be wronged."
-     }
-    ],
-    "seq": 57,
+    "seq": 40,
     "depends_on": [],
     "evidence": []
    },
@@ -1776,7 +1293,7 @@
     "verb": "will",
     "object": "not be wronged",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1785,13 +1302,13 @@
       "text": "[19] AR: وَلِكُلٍّۢ دَرَجَٰتٌۭ مِّمَّا عَمِلُوا۟ ۖ وَلِيُوَفِّيَهُمْ أَعْمَٰلَهُمْ وَهُمْ لَا يُظْلَمُونَ EN: And for all there are degrees [of reward and punishment] for what they have done, and [it is] so that He may fully compensate them for their deeds, and they will not be wronged."
      }
     ],
-    "seq": 58,
+    "seq": 41,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "this day|you|will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
+    "task_id": "it|will|be said]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1800,12 +1317,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "this Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
-    "subject": "this Day",
-    "verb": "you",
-    "object": "will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
+    "description": "it will be said]",
+    "subject": "it",
+    "verb": "will",
+    "object": "be said]",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1814,12 +1331,41 @@
       "text": "[20] AR: وَيَوْمَ يُعْرَضُ ٱلَّذِينَ كَفَرُوا۟ عَلَى ٱلنَّارِ أَذْهَبْتُمْ طَيِّبَٰتِكُمْ فِى حَيَاتِكُمُ ٱلدُّنْيَا وَٱسْتَمْتَعْتُم بِهَا فَٱلْيَوْمَ تُجْزَوْنَ عَذَابَ ٱلْهُونِ بِمَا كُنتُمْ تَسْتَكْبِرُونَ فِى ٱلْأَرْضِ بِغَيْرِ ٱلْحَقِّ وَبِمَا كُنتُمْ تَفْسُقُونَ EN: And the Day those who disbelieved are exposed to the Fire [it will be said], \"You exhausted your pleasures during your worldly life and enjoyed them, so this Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient.\""
      }
     ],
-    "seq": 59,
+    "seq": 42,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "day you|will|be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
+    "subject": "Day you",
+    "verb": "will",
+    "object": "be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
+    "witnesses": [
+     "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#7285-7884",
+      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
+      "text": "[20] AR: وَيَوْمَ يُعْرَضُ ٱلَّذِينَ كَفَرُوا۟ عَلَى ٱلنَّارِ أَذْهَبْتُمْ طَيِّبَٰتِكُمْ فِى حَيَاتِكُمُ ٱلدُّنْيَا وَٱسْتَمْتَعْتُم بِهَا فَٱلْيَوْمَ تُجْزَوْنَ عَذَابَ ٱلْهُونِ بِمَا كُنتُمْ تَسْتَكْبِرُونَ فِى ٱلْأَرْضِ بِغَيْرِ ٱلْحَقِّ وَبِمَا كُنتُمْ تَفْسُقُونَ EN: And the Day those who disbelieved are exposed to the Fire [it will be said], \"You exhausted your pleasures during your worldly life and enjoyed them, so this Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient.\""
+     }
+    ],
+    "seq": 43,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 60,
+  "nextSeq": 44,
   "admits": [
    "NUL",
    "SEG",
@@ -1839,7 +1385,7 @@
    "verb": "does",
    "object": "not guide the wrongdoing people",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1850,28 +1396,12 @@
    ]
   },
   {
-   "id": "among|the|companions of paradise",
-   "subject": "among",
-   "verb": "the",
-   "object": "companions of Paradise",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5639-5976",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[16] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ نَتَقَبَّلُ عَنْهُمْ أَحْسَنَ مَا عَمِلُوا۟ وَنَتَجَاوَزُ عَن سَيِّـَٔاتِهِمْ فِىٓ أَصْحَٰبِ ٱلْجَنَّةِ ۖ وَعْدَ ٱلصِّدْقِ ٱلَّذِى كَانُوا۟ يُوعَدُونَ EN: Those are the ones from whom We will accept the best of what they did and overlook their misdeeds, [their being] among the companions of Paradise."
-    }
-   ]
-  },
-  {
    "id": "and he|is|the forgiving the merciful",
    "subject": "and He",
    "verb": "is",
    "object": "the Forgiving the Merciful",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1887,7 +1417,7 @@
    "verb": "will",
    "object": "be deniers of their worship",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1903,7 +1433,7 @@
    "verb": "will",
    "object": "not be wronged",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1919,7 +1449,7 @@
    "verb": "is",
    "object": "a confirming Book in an Arabic tongue to warn those who have wronged and as good tidings to the doers of good",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1935,7 +1465,7 @@
    "verb": "have",
    "object": "enjoined upon man",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1951,7 +1481,7 @@
    "verb": "is",
    "object": "thirty months",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1962,33 +1492,12 @@
    ]
   },
   {
-   "id": "and when|the|people are gathered [that day]",
-   "subject": "And when",
-   "verb": "the",
-   "object": "people are gathered [that Day]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#1488-1730",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[6] AR: وَإِذَا حُشِرَ ٱلنَّاسُ كَانُوا۟ لَهُمْ أَعْدَآءًۭ وَكَانُوا۟ بِعِبَادَتِهِمْ كَٰفِرِينَ EN: And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#7285-7884",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[20] AR: وَيَوْمَ يُعْرَضُ ٱلَّذِينَ كَفَرُوا۟ عَلَى ٱلنَّارِ أَذْهَبْتُمْ طَيِّبَٰتِكُمْ فِى حَيَاتِكُمُ ٱلدُّنْيَا وَٱسْتَمْتَعْتُم بِهَا فَٱلْيَوْمَ تُجْزَوْنَ عَذَابَ ٱلْهُونِ بِمَا كُنتُمْ تَسْتَكْبِرُونَ فِى ٱلْأَرْضِ بِغَيْرِ ٱلْحَقِّ وَبِمَا كُنتُمْ تَفْسُقُونَ EN: And the Day those who disbelieved are exposed to the Fire [it will be said], \"You exhausted your pleasures during your worldly life and enjoyed them, so this Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient.\""
-    }
-   ]
-  },
-  {
    "id": "and who|is|more astray than he who invokes besides allah those who will not respond to him until the day of resurrection",
    "subject": "And who",
    "verb": "is",
    "object": "more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1999,76 +1508,12 @@
    ]
   },
   {
-   "id": "and|for|all there are degrees [of reward and punishment] for what they have done",
-   "subject": "And",
-   "verb": "for",
-   "object": "all there are degrees [of reward and punishment] for what they have done",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6992-7283",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[19] AR: وَلِكُلٍّۢ دَرَجَٰتٌۭ مِّمَّا عَمِلُوا۟ ۖ وَلِيُوَفِّيَهُمْ أَعْمَٰلَهُمْ وَهُمْ لَا يُظْلَمُونَ EN: And for all there are degrees [of reward and punishment] for what they have done, and [it is] so that He may fully compensate them for their deeds, and they will not be wronged."
-    }
-   ]
-  },
-  {
-   "id": "and|those|who disbelieve say of those who believe",
-   "subject": "And",
-   "verb": "those",
-   "object": "who disbelieve say of those who believe",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#3397-3702",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[11] AR: وَقَالَ ٱلَّذِينَ كَفَرُوا۟ لِلَّذِينَ ءَامَنُوا۟ لَوْ كَانَ خَيْرًۭا مَّا سَبَقُونَآ إِلَيْهِ ۚ وَإِذْ لَمْ يَهْتَدُوا۟ بِهِۦ فَسَيَقُولُونَ هَٰذَآ إِفْكٌۭ قَدِيمٌۭ EN: And those who disbelieve say of those who believe, \"If it had [truly] been good, they would not have preceded us to it.\""
-    }
-   ]
-  },
-  {
-   "id": "and|you|disbelieved in it while a witness from the children of israel has testified to something similar and believed while you were arrogant",
-   "subject": "and",
-   "verb": "you",
-   "object": "disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#2915-3343",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[10] AR: قُلْ أَرَءَيْتُمْ إِن كَانَ مِنْ عِندِ ٱللَّهِ وَكَفَرْتُم بِهِۦ وَشَهِدَ شَاهِدٌۭ مِّنۢ بَنِىٓ إِسْرَٰٓءِيلَ عَلَىٰ مِثْلِهِۦ فَـَٔامَنَ وَٱسْتَكْبَرْتُمْ ۖ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلظَّٰلِمِينَ EN: Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
-    }
-   ]
-  },
-  {
-   "id": "as reward|for|what they used to do",
-   "subject": "as reward",
-   "verb": "for",
-   "object": "what they used to do",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#4436-4641",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[14] AR: أُو۟لَٰٓئِكَ أَصْحَٰبُ ٱلْجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءًۢ بِمَا كَانُوا۟ يَعْمَلُونَ EN: Those are the companions of Paradise, abiding eternally therein as reward for what they used to do."
-    }
-   ]
-  },
-  {
    "id": "before it|was|the scripture of moses to lead and as a mercy",
    "subject": "before it",
    "verb": "was",
    "object": "the scripture of Moses to lead and as a mercy",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2079,135 +1524,18 @@
    ]
   },
   {
-   "id": "but|those|who disbelieve",
-   "subject": "But",
-   "verb": "those",
-   "object": "who disbelieve",
+   "id": "day you|will|be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
+   "subject": "Day you",
+   "verb": "will",
+   "object": "be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#553-632",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#7285-7884",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "But those who disbelieve, from that of which they are warned, are turning away."
-    }
-   ]
-  },
-  {
-   "id": "compensate them|for|their deeds",
-   "subject": "compensate them",
-   "verb": "for",
-   "object": "their deeds",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6992-7283",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[19] AR: وَلِكُلٍّۢ دَرَجَٰتٌۭ مِّمَّا عَمِلُوا۟ ۖ وَلِيُوَفِّيَهُمْ أَعْمَٰلَهُمْ وَهُمْ لَا يُظْلَمُونَ EN: And for all there are degrees [of reward and punishment] for what they have done, and [it is] so that He may fully compensate them for their deeds, and they will not be wronged."
-    }
-   ]
-  },
-  {
-   "id": "disbelieve say|of|the truth when it has come to them",
-   "subject": "disbelieve say",
-   "verb": "of",
-   "object": "the truth when it has come to them",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#1732-2026",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[7] AR: وَإِذَا تُتْلَىٰ عَلَيْهِمْ ءَايَٰتُنَا بَيِّنَٰتٍۢ قَالَ ٱلَّذِينَ كَفَرُوا۟ لِلْحَقِّ لَمَّا جَآءَهُمْ هَٰذَا سِحْرٌۭ مُّبِينٌ EN: And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic.\""
-    }
-   ]
-  },
-  {
-   "id": "do|you|promise me that i will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
-   "subject": "do",
-   "verb": "you",
-   "object": "promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6039-6478",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[17] AR: وَٱلَّذِى قَالَ لِوَٰلِدَيْهِ أُفٍّۢ لَّكُمَآ أَتَعِدَانِنِىٓ أَنْ أُخْرَجَ وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى وَهُمَا يَسْتَغِيثَانِ ٱللَّهَ وَيْلَكَ ءَامِنْ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ فَيَقُولُ مَا هَٰذَآ إِلَّآ أَسَٰطِيرُ ٱلْأَوَّلِينَ EN: But one who says to his parents, \"Uff to you; do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\""
-    }
-   ]
-  },
-  {
-   "id": "enable me|to|be grateful for your favor which you have bestowed upon me and upon my parents and to work righteousness of which you will approve and make righteous for me my offspring",
-   "subject": "enable me",
-   "verb": "to",
-   "object": "be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5288-5571",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[He grows] until, when he reaches maturity and reaches [the age of] forty years, he says, \"My Lord, enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring."
-    }
-   ]
-  },
-  {
-   "id": "from that|of|which they are warned",
-   "subject": "from that",
-   "verb": "of",
-   "object": "which they are warned",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#553-632",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "But those who disbelieve, from that of which they are warned, are turning away."
-    }
-   ]
-  },
-  {
-   "id": "gave birth|to|him with hardship",
-   "subject": "gave birth",
-   "verb": "to",
-   "object": "him with hardship",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5157-5287",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "His mother carried him with hardship and gave birth to him with hardship, and his gestation and weaning [period] is thirty months."
-    }
-   ]
-  },
-  {
-   "id": "have|you|considered that which you invoke besides allah?",
-   "subject": "Have",
-   "verb": "you",
-   "object": "considered that which you invoke besides Allah?",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#634-950",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[4] AR: قُلْ أَرَءَيْتُم مَّا تَدْعُونَ مِن دُونِ ٱللَّهِ أَرُونِى مَاذَا خَلَقُوا۟ مِنَ ٱلْأَرْضِ أَمْ لَهُمْ شِرْكٌۭ فِى ٱلسَّمَٰوَٰتِ ۖ ٱئْتُونِى بِكِتَٰبٍۢ مِّن قَبْلِ هَٰذَآ أَوْ أَثَٰرَةٍۢ مِّنْ عِلْمٍ إِن كُنتُمْ صَٰدِقِينَ EN: Say, [O Muhammad], \"Have you considered that which you invoke besides Allah?"
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#2915-3343",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[10] AR: قُلْ أَرَءَيْتُمْ إِن كَانَ مِنْ عِندِ ٱللَّهِ وَكَفَرْتُم بِهِۦ وَشَهِدَ شَاهِدٌۭ مِّنۢ بَنِىٓ إِسْرَٰٓءِيلَ عَلَىٰ مِثْلِهِۦ فَـَٔامَنَ وَٱسْتَكْبَرْتُمْ ۖ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلظَّٰلِمِينَ EN: Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
+     "text": "[20] AR: وَيَوْمَ يُعْرَضُ ٱلَّذِينَ كَفَرُوا۟ عَلَى ٱلنَّارِ أَذْهَبْتُمْ طَيِّبَٰتِكُمْ فِى حَيَاتِكُمُ ٱلدُّنْيَا وَٱسْتَمْتَعْتُم بِهَا فَٱلْيَوْمَ تُجْزَوْنَ عَذَابَ ٱلْهُونِ بِمَا كُنتُمْ تَسْتَكْبِرُونَ فِى ٱلْأَرْضِ بِغَيْرِ ٱلْحَقِّ وَبِمَا كُنتُمْ تَفْسُقُونَ EN: And the Day those who disbelieved are exposed to the Fire [it will be said], \"You exhausted your pleasures during your worldly life and enjoyed them, so this Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient.\""
     }
    ]
   },
@@ -2217,7 +1545,7 @@
    "verb": "has",
    "object": "invented it?\"",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2233,7 +1561,7 @@
    "verb": "is",
    "object": "most knowing of that in which you are involved",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2244,28 +1572,12 @@
    ]
   },
   {
-   "id": "i am|of|the muslims",
-   "subject": "I am",
-   "verb": "of",
-   "object": "the Muslims",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5572-5637",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "Indeed, I have repented to You, and indeed, I am of the Muslims.\""
-    }
-   ]
-  },
-  {
    "id": "i|have|repented to you",
    "subject": "I",
    "verb": "have",
    "object": "repented to You",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2281,7 +1593,7 @@
    "verb": "have",
    "object": "invented it",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2292,18 +1604,18 @@
    ]
   },
   {
-   "id": "if|you|should be truthful",
-   "subject": "if",
-   "verb": "you",
-   "object": "should be truthful",
+   "id": "it|will|be said]",
+   "subject": "it",
+   "verb": "will",
+   "object": "be said]",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#1055-1163",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#7285-7884",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful.\""
+     "text": "[20] AR: وَيَوْمَ يُعْرَضُ ٱلَّذِينَ كَفَرُوا۟ عَلَى ٱلنَّارِ أَذْهَبْتُمْ طَيِّبَٰتِكُمْ فِى حَيَاتِكُمُ ٱلدُّنْيَا وَٱسْتَمْتَعْتُم بِهَا فَٱلْيَوْمَ تُجْزَوْنَ عَذَابَ ٱلْهُونِ بِمَا كُنتُمْ تَسْتَكْبِرُونَ فِى ٱلْأَرْضِ بِغَيْرِ ٱلْحَقِّ وَبِمَا كُنتُمْ تَفْسُقُونَ EN: And the Day those who disbelieved are exposed to the Fire [it will be said], \"You exhausted your pleasures during your worldly life and enjoyed them, so this Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient.\""
     }
    ]
   },
@@ -2313,7 +1625,7 @@
    "verb": "will",
    "object": "be done with me or with you",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2329,7 +1641,7 @@
    "verb": "will",
    "object": "they grieve",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2340,12 +1652,44 @@
    ]
   },
   {
+   "id": "of allah|is|truth",
+   "subject": "of Allah",
+   "verb": "is",
+   "object": "truth",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6555-6594",
+     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
+     "text": "Indeed, the promise of Allah is truth.\""
+    }
+   ]
+  },
+  {
+   "id": "of israel|has|testified to something similar and believed while you were arrogant",
+   "subject": "of Israel",
+   "verb": "has",
+   "object": "testified to something similar and believed while you were arrogant",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#2915-3343",
+     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
+     "text": "[10] AR: قُلْ أَرَءَيْتُمْ إِن كَانَ مِنْ عِندِ ٱللَّهِ وَكَفَرْتُم بِهِۦ وَشَهِدَ شَاهِدٌۭ مِّنۢ بَنِىٓ إِسْرَٰٓءِيلَ عَلَىٰ مِثْلِهِۦ فَـَٔامَنَ وَٱسْتَكْبَرْتُمْ ۖ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلظَّٰلِمِينَ EN: Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
+    }
+   ]
+  },
+  {
    "id": "or|did|they have partnership in [creation of] the heavens?",
    "subject": "or",
    "verb": "did",
    "object": "they have partnership in [creation of] the heavens?",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2356,28 +1700,12 @@
    ]
   },
   {
-   "id": "original among|the|messengers",
-   "subject": "original among",
-   "verb": "the",
-   "object": "messengers",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#2541-2835",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[9] AR: قُلْ مَا كُنتُ بِدْعًۭا مِّنَ ٱلرُّسُلِ وَمَآ أَدْرِى مَا يُفْعَلُ بِى وَلَا بِكُمْ ۖ إِنْ أَتَّبِعُ إِلَّا مَا يُوحَىٰٓ إِلَىَّ وَمَآ أَنَا۠ إِلَّا نَذِيرٌۭ مُّبِينٌۭ EN: Say, \"I am not something original among the messengers, nor do I know what will be done with me or with you."
-    }
-   ]
-  },
-  {
    "id": "our lord|is|allah",
    "subject": "Our Lord",
    "verb": "is",
    "object": "Allah",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2393,7 +1721,7 @@
    "verb": "is",
    "object": "He as Witness between me and you",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2404,12 +1732,28 @@
    ]
   },
   {
+   "id": "that i|will|be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
+   "subject": "that I",
+   "verb": "will",
+   "object": "be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\"",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6039-6478",
+     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
+     "text": "[17] AR: وَٱلَّذِى قَالَ لِوَٰلِدَيْهِ أُفٍّۢ لَّكُمَآ أَتَعِدَانِنِىٓ أَنْ أُخْرَجَ وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى وَهُمَا يَسْتَغِيثَانِ ٱللَّهَ وَيْلَكَ ءَامِنْ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ فَيَقُولُ مَا هَٰذَآ إِلَّآ أَسَٰطِيرُ ٱلْأَوَّلِينَ EN: But one who says to his parents, \"Uff to you; do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\""
+    }
+   ]
+  },
+  {
    "id": "that which|is|revealed to me",
    "subject": "that which",
    "verb": "is",
    "object": "revealed to me",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2420,12 +1764,12 @@
    ]
   },
   {
-   "id": "the exalted|in|might",
-   "subject": "the Exalted",
-   "verb": "in",
-   "object": "Might",
+   "id": "the book|is|from allah",
+   "subject": "the Book",
+   "verb": "is",
+   "object": "from Allah",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2436,39 +1780,34 @@
    ]
   },
   {
-   "id": "the promise|of|truth which they had been promised",
-   "subject": "the promise",
-   "verb": "of",
-   "object": "truth which they had been promised",
+   "id": "the qur'an|was|from allah",
+   "subject": "the Qur'an",
+   "verb": "was",
+   "object": "from Allah",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5977-6037",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#2915-3343",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[That is] the promise of truth which they had been promised."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6555-6594",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "Indeed, the promise of Allah is truth.\""
+     "text": "[10] AR: قُلْ أَرَءَيْتُمْ إِن كَانَ مِنْ عِندِ ٱللَّهِ وَكَفَرْتُم بِهِۦ وَشَهِدَ شَاهِدٌۭ مِّنۢ بَنِىٓ إِسْرَٰٓءِيلَ عَلَىٰ مِثْلِهِۦ فَـَٔامَنَ وَٱسْتَكْبَرْتُمْ ۖ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلظَّٰلِمِينَ EN: Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
     }
    ]
   },
   {
-   "id": "the revelation|of|the book is from allah",
-   "subject": "The revelation",
-   "verb": "of",
-   "object": "the Book is from Allah",
+   "id": "the word|has|come into effect",
+   "subject": "the word",
+   "verb": "has",
+   "object": "come into effect",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#129-273",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6658-6958",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[2] AR: تَنزِيلُ ٱلْكِتَٰبِ مِنَ ٱللَّهِ ٱلْعَزِيزِ ٱلْحَكِيمِ EN: The revelation of the Book is from Allah, the Exalted in Might, the Wise."
+     "text": "[18] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ حَقَّ عَلَيْهِمُ ٱلْقَوْلُ فِىٓ أُمَمٍۢ قَدْ خَلَتْ مِن قَبْلِهِم مِّنَ ٱلْجِنِّ وَٱلْإِنسِ ۖ إِنَّهُمْ كَانُوا۟ خَٰسِرِينَ EN: Those are the ones upon whom the word has come into effect, [who will be] among nations which had passed on before them of jinn and men."
     }
    ]
   },
@@ -2478,7 +1817,7 @@
    "verb": "will",
    "object": "be no fear concerning them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2489,28 +1828,12 @@
    ]
   },
   {
-   "id": "they call|to|allah for help [and to their son]",
-   "subject": "they call",
-   "verb": "to",
-   "object": "Allah for help [and to their son]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6479-6545",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "while they call to Allah for help [and to their son], \"Woe to you!"
-    }
-   ]
-  },
-  {
    "id": "they|will|be enemies to them",
    "subject": "they",
    "verb": "will",
    "object": "be enemies to them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2526,7 +1849,7 @@
    "verb": "will",
    "object": "say",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2537,28 +1860,12 @@
    ]
   },
   {
-   "id": "this day|you|will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
-   "subject": "this Day",
-   "verb": "you",
-   "object": "will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#7285-7884",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[20] AR: وَيَوْمَ يُعْرَضُ ٱلَّذِينَ كَفَرُوا۟ عَلَى ٱلنَّارِ أَذْهَبْتُمْ طَيِّبَٰتِكُمْ فِى حَيَاتِكُمُ ٱلدُّنْيَا وَٱسْتَمْتَعْتُم بِهَا فَٱلْيَوْمَ تُجْزَوْنَ عَذَابَ ٱلْهُونِ بِمَا كُنتُمْ تَسْتَكْبِرُونَ فِى ٱلْأَرْضِ بِغَيْرِ ٱلْحَقِّ وَبِمَا كُنتُمْ تَفْسُقُونَ EN: And the Day those who disbelieved are exposed to the Fire [it will be said], \"You exhausted your pleasures during your worldly life and enjoyed them, so this Day you will be awarded the punishment of [extreme] humiliation because you were arrogant upon the earth without right and because you were defiantly disobedient.\""
-    }
-   ]
-  },
-  {
    "id": "this|is|an ancient falsehood",
    "subject": "This",
    "verb": "is",
    "object": "an ancient falsehood",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2574,7 +1881,7 @@
    "verb": "is",
    "object": "not but legends of the former people\" -",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2590,7 +1897,7 @@
    "verb": "is",
    "object": "obvious magic",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2601,49 +1908,12 @@
    ]
   },
   {
-   "id": "those are|the|companions of paradise",
-   "subject": "Those are",
-   "verb": "the",
-   "object": "companions of Paradise",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#4436-4641",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[14] AR: أُو۟لَٰٓئِكَ أَصْحَٰبُ ٱلْجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءًۢ بِمَا كَانُوا۟ يَعْمَلُونَ EN: Those are the companions of Paradise, abiding eternally therein as reward for what they used to do."
-    }
-   ]
-  },
-  {
-   "id": "those are|the|ones from whom we will accept the best of what they did and overlook their misdeeds",
-   "subject": "Those are",
-   "verb": "the",
-   "object": "ones from whom We will accept the best of what they did and overlook their misdeeds",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5639-5976",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[16] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ نَتَقَبَّلُ عَنْهُمْ أَحْسَنَ مَا عَمِلُوا۟ وَنَتَجَاوَزُ عَن سَيِّـَٔاتِهِمْ فِىٓ أَصْحَٰبِ ٱلْجَنَّةِ ۖ وَعْدَ ٱلصِّدْقِ ٱلَّذِى كَانُوا۟ يُوعَدُونَ EN: Those are the ones from whom We will accept the best of what they did and overlook their misdeeds, [their being] among the companions of Paradise."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6658-6958",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[18] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ حَقَّ عَلَيْهِمُ ٱلْقَوْلُ فِىٓ أُمَمٍۢ قَدْ خَلَتْ مِن قَبْلِهِم مِّنَ ٱلْجِنِّ وَٱلْإِنسِ ۖ إِنَّهُمْ كَانُوا۟ خَٰسِرِينَ EN: Those are the ones upon whom the word has come into effect, [who will be] among nations which had passed on before them of jinn and men."
-    }
-   ]
-  },
-  {
    "id": "those who|have|said",
    "subject": "those who",
    "verb": "have",
    "object": "said",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2654,44 +1924,12 @@
    ]
   },
   {
-   "id": "trace|of|knowledge",
-   "subject": "trace",
-   "verb": "of",
-   "object": "knowledge",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#1055-1163",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful.\""
-    }
-   ]
-  },
-  {
-   "id": "uff|to|you",
-   "subject": "Uff",
-   "verb": "to",
-   "object": "you",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6039-6478",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[17] AR: وَٱلَّذِى قَالَ لِوَٰلِدَيْهِ أُفٍّۢ لَّكُمَآ أَتَعِدَانِنِىٓ أَنْ أُخْرَجَ وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى وَهُمَا يَسْتَغِيثَانِ ٱللَّهَ وَيْلَكَ ءَامِنْ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ فَيَقُولُ مَا هَٰذَآ إِلَّآ أَسَٰطِيرُ ٱلْأَوَّلِينَ EN: But one who says to his parents, \"Uff to you; do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\""
-    }
-   ]
-  },
-  {
    "id": "we|did|not create the heavens and earth and what is between them except in truth and [for] a specified term",
    "subject": "We",
    "verb": "did",
    "object": "not create the heavens and earth and what is between them except in truth and [for] a specified term",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2707,7 +1945,7 @@
    "verb": "have",
    "object": "created of the earth",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2718,12 +1956,28 @@
    ]
   },
   {
-   "id": "when our|verses|are recited to them as clear evidences",
-   "subject": "when Our",
-   "verb": "verses",
-   "object": "are recited to them as clear evidences",
+   "id": "what they|have|done",
+   "subject": "what they",
+   "verb": "have",
+   "object": "done",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6992-7283",
+     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
+     "text": "[19] AR: وَلِكُلٍّۢ دَرَجَٰتٌۭ مِّمَّا عَمِلُوا۟ ۖ وَلِيُوَفِّيَهُمْ أَعْمَٰلَهُمْ وَهُمْ لَا يُظْلَمُونَ EN: And for all there are degrees [of reward and punishment] for what they have done, and [it is] so that He may fully compensate them for their deeds, and they will not be wronged."
+    }
+   ]
+  },
+  {
+   "id": "when it|has|come to them",
+   "subject": "when it",
+   "verb": "has",
+   "object": "come to them",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2734,18 +1988,34 @@
    ]
   },
   {
-   "id": "who says|to|his parents",
-   "subject": "who says",
-   "verb": "to",
-   "object": "his parents",
+   "id": "when our|verses|are recited to them as clear evidences",
+   "subject": "when Our",
+   "verb": "verses",
+   "object": "are recited to them as clear evidences",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6039-6478",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#1732-2026",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "[17] AR: وَٱلَّذِى قَالَ لِوَٰلِدَيْهِ أُفٍّۢ لَّكُمَآ أَتَعِدَانِنِىٓ أَنْ أُخْرَجَ وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى وَهُمَا يَسْتَغِيثَانِ ٱللَّهَ وَيْلَكَ ءَامِنْ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ فَيَقُولُ مَا هَٰذَآ إِلَّآ أَسَٰطِيرُ ٱلْأَوَّلِينَ EN: But one who says to his parents, \"Uff to you; do you promise me that I will be brought forth [from the earth] when generations before me have already passed on [into oblivion]?\""
+     "text": "[7] AR: وَإِذَا تُتْلَىٰ عَلَيْهِمْ ءَايَٰتُنَا بَيِّنَٰتٍۢ قَالَ ٱلَّذِينَ كَفَرُوا۟ لِلْحَقِّ لَمَّا جَآءَهُمْ هَٰذَا سِحْرٌۭ مُّبِينٌ EN: And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic.\""
+    }
+   ]
+  },
+  {
+   "id": "which you|have|bestowed upon me and upon my parents and to work righteousness of which you will approve and make righteous for me my offspring",
+   "subject": "which You",
+   "verb": "have",
+   "object": "bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5288-5571",
+     "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
+     "text": "[He grows] until, when he reaches maturity and reaches [the age of] forty years, he says, \"My Lord, enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring."
     }
    ]
   },
@@ -2755,7 +2025,7 @@
    "verb": "will",
    "object": "be] among nations which had passed on before them of jinn and men",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2766,18 +2036,18 @@
    ]
   },
   {
-   "id": "woe|to|you!",
-   "subject": "Woe",
-   "verb": "to",
-   "object": "you!",
+   "id": "whom we|will|accept the best of what they did and overlook their misdeeds",
+   "subject": "whom We",
+   "verb": "will",
+   "object": "accept the best of what they did and overlook their misdeeds",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#6479-6545",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt#5639-5976",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt",
-     "text": "while they call to Allah for help [and to their son], \"Woe to you!"
+     "text": "[16] AR: أُو۟لَٰٓئِكَ ٱلَّذِينَ نَتَقَبَّلُ عَنْهُمْ أَحْسَنَ مَا عَمِلُوا۟ وَنَتَجَاوَزُ عَن سَيِّـَٔاتِهِمْ فِىٓ أَصْحَٰبِ ٱلْجَنَّةِ ۖ وَعْدَ ٱلصِّدْقِ ٱلَّذِى كَانُوا۟ يُوعَدُونَ EN: Those are the ones from whom We will accept the best of what they did and overlook their misdeeds, [their being] among the companions of Paradise."
     }
    ]
   },
@@ -2787,7 +2057,7 @@
    "verb": "have",
    "object": "preceded us to it",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2803,7 +2073,7 @@
    "verb": "will",
    "object": "not possess for me [the power of protection] from Allah at all",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_046_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2815,7 +2085,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:56.606Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:53.798Z"
  }
 }

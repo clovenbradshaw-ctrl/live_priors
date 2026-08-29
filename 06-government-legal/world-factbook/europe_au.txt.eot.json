@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 37224,
   "bodyOffset": 0,
   "bodyChars": 37224,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,85 +55,39 @@
   "referentEvents": 12,
   "distinctReferents": 12,
   "examined": true,
-  "edgesFound": 29,
-  "extractionError": null
+  "edgesFound": 8,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 18
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 8,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 32,
-  "excerptOk": 32,
-  "rawChecked": 32,
-  "rawOk": 32,
+  "excerptChecked": 8,
+  "excerptOk": 8,
+  "rawChecked": 8,
+  "rawOk": 8,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 29,
-  "heard": 29,
+  "offered": 8,
+  "heard": 8,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "background\n    once|the|center of power for the large austro-hungarian empire",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Background\n    Once the center of power for the large Austro-Hungarian Empire",
-    "subject": "Background\n    Once",
-    "verb": "the",
-    "object": "center of power for the large Austro-Hungarian Empire",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#130-285",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Background Once the center of power for the large Austro-Hungarian Empire, Austria was reduced to a small republic after its defeat in World War I."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "its defeat|in|world war i",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "its defeat in World War I",
-    "subject": "its defeat",
-    "verb": "in",
-    "object": "World War I",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#130-285",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Background Once the center of power for the large Austro-Hungarian Empire, Austria was reduced to a small republic after its defeat in World War I."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "nazi germany|annexed|austria in 1938",
@@ -132,7 +104,7 @@
     "verb": "annexed",
     "object": "Austria in 1938",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,36 +113,7 @@
       "text": "Nazi Germany annexed Austria in 1938, and the victorious Allies then occupied the country in 1945."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|the|victorious allies then occupied the country in 1945",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the victorious Allies then occupied the country in 1945",
-    "subject": "and",
-    "verb": "the",
-    "object": "victorious Allies then occupied the country in 1945",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#286-384",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "Nazi Germany annexed Austria in 1938, and the victorious Allies then occupied the country in 1945."
-     }
-    ],
-    "seq": 3,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +133,7 @@
     "verb": "signed",
     "object": "in 1955 ended the occupation",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,13 +142,13 @@
       "text": "As a result, Austria's status remained unclear for a decade after World War II, until a State Treaty signed in 1955 ended the occupation, recognized Austria's independence, and forbade unification with Germany."
      }
     ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "year declared|the|country's \"perpetual neutrality\" as a condition for soviet military withdrawal",
+    "task_id": "traversable alpine|passes|and valleys",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -214,404 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "year declared the country's \"perpetual neutrality\" as a condition for Soviet military withdrawal",
-    "subject": "year declared",
-    "verb": "the",
-    "object": "country's \"perpetual neutrality\" as a condition for Soviet military withdrawal",
+    "description": "traversable Alpine passes and valleys",
+    "subject": "traversable Alpine",
+    "verb": "passes",
+    "object": "and valleys",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#596-724",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "A constitutional law that same year declared the country's \"perpetual neutrality\" as a condition for Soviet military withdrawal."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "austria joined|the|eu in 1995",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Austria joined the EU in 1995",
-    "subject": "Austria joined",
-    "verb": "the",
-    "object": "EU in 1995",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#725-905",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "Austria joined the EU in 1995, but the obligation to remain neutral kept it from joining NATO, although the country became a member of NATO's Partnership for Peace program in 1995."
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#906-965",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "Austria entered the EU Economic and Monetary Union in 1999."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|the|obligation to remain neutral kept it from joining nato",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "but the obligation to remain neutral kept it from joining NATO",
-    "subject": "but",
-    "verb": "the",
-    "object": "obligation to remain neutral kept it from joining NATO",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#725-905",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "Austria joined the EU in 1995, but the obligation to remain neutral kept it from joining NATO, although the country became a member of NATO's Partnership for Peace program in 1995."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "although|the|country became a member of nato's partnership for peace program in 1995",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "although the country became a member of NATO's Partnership for Peace program in 1995",
-    "subject": "although",
-    "verb": "the",
-    "object": "country became a member of NATO's Partnership for Peace program in 1995",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#725-905",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "Austria joined the EU in 1995, but the obligation to remain neutral kept it from joining NATO, although the country became a member of NATO's Partnership for Peace program in 1995."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of italy|and|slovenia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of Italy and Slovenia",
-    "subject": "of Italy",
-    "verb": "and",
-    "object": "Slovenia",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#981-1041",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Location Central Europe, north of Italy and Slovenia"
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "comparative\n    about|the|size of south carolina",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "comparative\n    about the size of South Carolina",
-    "subject": "comparative\n    about",
-    "verb": "the",
-    "object": "size of South Carolina",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#1216-1331",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Area - comparative about the size of South Carolina; slightly more than two-thirds the size of Pennsylvania"
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "thirds|the|size of pennsylvania",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "thirds the size of Pennsylvania",
-    "subject": "thirds",
-    "verb": "the",
-    "object": "size of Pennsylvania",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#1216-1331",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Area - comparative about the size of South Carolina; slightly more than two-thirds the size of Pennsylvania"
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "frequent rain|and|some snow in lowlands and snow in mountains",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "frequent rain and some snow in lowlands and snow in mountains",
-    "subject": "frequent rain",
-    "verb": "and",
-    "object": "some snow in lowlands and snow in mountains",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#1627-1796",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Climate temperate; continental, cloudy; cold winters with frequent rain and some snow in lowlands and snow in mountains; moderate summers with occasional showers"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mostly mountains|in|the west and south",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mostly mountains in the west and south",
-    "subject": "mostly mountains",
-    "verb": "in",
-    "object": "the west and south",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#1798-1929",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Terrain mostly mountains (Alps) in the west and south; mostly flat or gently sloping along the eastern and northern margins"
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sloping along|the|eastern and northern margins",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sloping along the eastern and northern margins",
-    "subject": "sloping along",
-    "verb": "the",
-    "object": "eastern and northern margins",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#1798-1929",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Terrain mostly mountains (Alps) in the west and south; mostly flat or gently sloping along the eastern and northern margins"
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with switzerland|and|germany) - 540 sq km",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "with Switzerland and Germany) - 540 sq km",
-    "subject": "with Switzerland",
-    "verb": "and",
-    "object": "Germany) - 540 sq km",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#2598-2720",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Major lakes (area sq km) fresh water lake(s): Lake Constance (shared with Switzerland and Germany) - 540 sq km"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "population distribution|the|northern and eastern portions of the country are more densely populated",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Population distribution the northern and eastern portions of the country are more densely populated",
-    "subject": "Population distribution",
-    "verb": "the",
-    "object": "northern and eastern portions of the country are more densely populated",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#3157-3320",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Population distribution the northern and eastern portions of the country are more densely populated; nearly two thirds of the populace lives in urban areas"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#6048-6211",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Population distribution the northern and eastern portions of the country are more densely populated; nearly two thirds of the populace lives in urban areas"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "thirds of|the|populace lives in urban areas",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "thirds of the populace lives in urban areas",
-    "subject": "thirds of",
-    "verb": "the",
-    "object": "populace lives in urban areas",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#3157-3320",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Population distribution the northern and eastern portions of the country are more densely populated; nearly two thirds of the populace lives in urban areas"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#6048-6211",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Population distribution the northern and eastern portions of the country are more densely populated; nearly two thirds of the populace lives in urban areas"
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "location at|the|crossroads of central europe with many easily traversable alpine passes and valleys",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "location at the crossroads of central Europe with many easily traversable Alpine passes and valleys",
-    "subject": "location at",
-    "verb": "the",
-    "object": "crossroads of central Europe with many easily traversable Alpine passes and valleys",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -620,7 +171,7 @@
       "text": "### Geography - note <strong>note 1</strong>: landlocked; strategic location at the crossroads of central Europe with many easily traversable Alpine passes and valleys; major river is the Danube; population is concentrated on eastern lowlands because of steep slopes, poor soils, and low temperatures elsewhere<br><br><strong>note 2</strong>: the world's largest and longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen, about 40 km south of Salzburg; ice caves are bedrock caves that contain year-round ice formations; they differ from glacial caves, which are transient and are formed by melting ice and flowing water within and under glaciers"
      }
     ],
-    "seq": 18,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -640,7 +191,7 @@
     "verb": "is",
     "object": "the Danube",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -649,7 +200,7 @@
       "text": "### Geography - note <strong>note 1</strong>: landlocked; strategic location at the crossroads of central Europe with many easily traversable Alpine passes and valleys; major river is the Danube; population is concentrated on eastern lowlands because of steep slopes, poor soils, and low temperatures elsewhere<br><br><strong>note 2</strong>: the world's largest and longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen, about 40 km south of Salzburg; ice caves are bedrock caves that contain year-round ice formations; they differ from glacial caves, which are transient and are formed by melting ice and flowing water within and under glaciers"
      }
     ],
-    "seq": 19,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -669,7 +220,7 @@
     "verb": "is",
     "object": "concentrated on eastern lowlands because of steep slopes",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -678,13 +229,13 @@
       "text": "### Geography - note <strong>note 1</strong>: landlocked; strategic location at the crossroads of central Europe with many easily traversable Alpine passes and valleys; major river is the Danube; population is concentrated on eastern lowlands because of steep slopes, poor soils, and low temperatures elsewhere<br><br><strong>note 2</strong>: the world's largest and longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen, about 40 km south of Salzburg; ice caves are bedrock caves that contain year-round ice formations; they differ from glacial caves, which are transient and are formed by melting ice and flowing water within and under glaciers"
      }
     ],
-    "seq": 20,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "world's largest|and|longest ice cave system at 42 km (26 mi) is the eisriesenwelt (ice giants world) inside the hochkogel mountain near werfen",
+    "task_id": "42 km|is|the eisriesenwelt (ice giants world) inside the hochkogel mountain near werfen",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -693,12 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "world's largest and longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen",
-    "subject": "world's largest",
-    "verb": "and",
-    "object": "longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen",
+    "description": "42 km is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen",
+    "subject": "42 km",
+    "verb": "is",
+    "object": "the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -707,152 +258,7 @@
       "text": "### Geography - note <strong>note 1</strong>: landlocked; strategic location at the crossroads of central Europe with many easily traversable Alpine passes and valleys; major river is the Danube; population is concentrated on eastern lowlands because of steep slopes, poor soils, and low temperatures elsewhere<br><br><strong>note 2</strong>: the world's largest and longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen, about 40 km south of Salzburg; ice caves are bedrock caves that contain year-round ice formations; they differ from glacial caves, which are transient and are formed by melting ice and flowing water within and under glaciers"
      }
     ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are transient|and|are formed by melting ice and flowing water within and under glaciers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are transient and are formed by melting ice and flowing water within and under glaciers",
-    "subject": "are transient",
-    "verb": "and",
-    "object": "are formed by melting ice and flowing water within and under glaciers",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#3383-4102",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Geography - note <strong>note 1</strong>: landlocked; strategic location at the crossroads of central Europe with many easily traversable Alpine passes and valleys; major river is the Danube; population is concentrated on eastern lowlands because of steep slopes, poor soils, and low temperatures elsewhere<br><br><strong>note 2</strong>: the world's largest and longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen, about 40 km south of Salzburg; ice caves are bedrock caves that contain year-round ice formations; they differ from glacial caves, which are transient and are formed by melting ice and flowing water within and under glaciers"
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#4104-4125",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bosnian|and|herzegovinian 1",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Bosnian and Herzegovinian 1",
-    "subject": "Bosnian",
-    "verb": "and",
-    "object": "Herzegovinian 1",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#4301-4531",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Ethnic groups Austrian 80.8%, German 2.6%, Bosnian and Herzegovinian 1.9%, Turkish 1.8%, Serbian 1.6%, Romanian 1.3%, other 10% (2018 est.) note: <strong>note:</strong> data represent population by country of birth"
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "official|in|burgenland) 1",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "official in Burgenland) 1",
-    "subject": "official",
-    "verb": "in",
-    "object": "Burgenland) 1",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#4533-4898",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Languages Languages: German (official nationwide) 88.6%, Turkish 2.3%, Serbian 2.2%, Croatian (official in Burgenland) 1.6%, other (includes Slovene, official in southern Carinthia, and Hungarian, official in Burgenland) 5.3% (2001 est.) major-language sample(s): <br>Das World Factbook, die unverzichtbare Quelle für grundlegende Informationen."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "official|in|southern carinthia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "official in southern Carinthia",
-    "subject": "official",
-    "verb": "in",
-    "object": "southern Carinthia",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_au.txt#4533-4898",
-      "ref": "06-government-legal/world-factbook/europe_au.txt",
-      "text": "### Languages Languages: German (official nationwide) 88.6%, Turkish 2.3%, Serbian 2.2%, Croatian (official in Burgenland) 1.6%, other (includes Slovene, official in southern Carinthia, and Hungarian, official in Burgenland) 5.3% (2001 est.) major-language sample(s): <br>Das World Factbook, die unverzichtbare Quelle für grundlegende Informationen."
-     }
-    ],
-    "seq": 26,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -872,7 +278,7 @@
     "verb": "für",
     "object": "grundlegende Informationen",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -881,7 +287,7 @@
       "text": "### Languages Languages: German (official nationwide) 88.6%, Turkish 2.3%, Serbian 2.2%, Croatian (official in Burgenland) 1.6%, other (includes Slovene, official in southern Carinthia, and Hungarian, official in Burgenland) 5.3% (2001 est.) major-language sample(s): <br>Das World Factbook, die unverzichtbare Quelle für grundlegende Informationen."
      }
     ],
-    "seq": 27,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -901,7 +307,7 @@
     "verb": "is",
     "object": "a 2016 estimate",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -910,12 +316,12 @@
       "text": "### Religions Roman Catholic 55.2%, Muslim 8.3%, Orthodox 4.9%, Evangelical Christian 3.8%, Jewish 0.1%, other 5.4%, none 22.4% (2021 est.) note: <strong>note: </strong>data on Muslim is a 2016 estimate; data on other/none/unspecified are from 2012-2018 estimates"
      }
     ],
-    "seq": 28,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 29,
+  "nextSeq": 8,
   "admits": [
    "NUL",
    "SEG",
@@ -930,177 +336,12 @@
  },
  "folded": [
   {
-   "id": "although|the|country became a member of nato's partnership for peace program in 1995",
-   "subject": "although",
-   "verb": "the",
-   "object": "country became a member of NATO's Partnership for Peace program in 1995",
+   "id": "42 km|is|the eisriesenwelt (ice giants world) inside the hochkogel mountain near werfen",
+   "subject": "42 km",
+   "verb": "is",
+   "object": "the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#725-905",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "Austria joined the EU in 1995, but the obligation to remain neutral kept it from joining NATO, although the country became a member of NATO's Partnership for Peace program in 1995."
-    }
-   ]
-  },
-  {
-   "id": "and|the|victorious allies then occupied the country in 1945",
-   "subject": "and",
-   "verb": "the",
-   "object": "victorious Allies then occupied the country in 1945",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#286-384",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "Nazi Germany annexed Austria in 1938, and the victorious Allies then occupied the country in 1945."
-    }
-   ]
-  },
-  {
-   "id": "are transient|and|are formed by melting ice and flowing water within and under glaciers",
-   "subject": "are transient",
-   "verb": "and",
-   "object": "are formed by melting ice and flowing water within and under glaciers",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#3383-4102",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Geography - note <strong>note 1</strong>: landlocked; strategic location at the crossroads of central Europe with many easily traversable Alpine passes and valleys; major river is the Danube; population is concentrated on eastern lowlands because of steep slopes, poor soils, and low temperatures elsewhere<br><br><strong>note 2</strong>: the world's largest and longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen, about 40 km south of Salzburg; ice caves are bedrock caves that contain year-round ice formations; they differ from glacial caves, which are transient and are formed by melting ice and flowing water within and under glaciers"
-    }
-   ]
-  },
-  {
-   "id": "austria joined|the|eu in 1995",
-   "subject": "Austria joined",
-   "verb": "the",
-   "object": "EU in 1995",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#725-905",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "Austria joined the EU in 1995, but the obligation to remain neutral kept it from joining NATO, although the country became a member of NATO's Partnership for Peace program in 1995."
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#906-965",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "Austria entered the EU Economic and Monetary Union in 1999."
-    }
-   ]
-  },
-  {
-   "id": "background\n    once|the|center of power for the large austro-hungarian empire",
-   "subject": "Background\n    Once",
-   "verb": "the",
-   "object": "center of power for the large Austro-Hungarian Empire",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#130-285",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Background Once the center of power for the large Austro-Hungarian Empire, Austria was reduced to a small republic after its defeat in World War I."
-    }
-   ]
-  },
-  {
-   "id": "bosnian|and|herzegovinian 1",
-   "subject": "Bosnian",
-   "verb": "and",
-   "object": "Herzegovinian 1",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#4301-4531",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Ethnic groups Austrian 80.8%, German 2.6%, Bosnian and Herzegovinian 1.9%, Turkish 1.8%, Serbian 1.6%, Romanian 1.3%, other 10% (2018 est.) note: <strong>note:</strong> data represent population by country of birth"
-    }
-   ]
-  },
-  {
-   "id": "but|the|obligation to remain neutral kept it from joining nato",
-   "subject": "but",
-   "verb": "the",
-   "object": "obligation to remain neutral kept it from joining NATO",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#725-905",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "Austria joined the EU in 1995, but the obligation to remain neutral kept it from joining NATO, although the country became a member of NATO's Partnership for Peace program in 1995."
-    }
-   ]
-  },
-  {
-   "id": "comparative\n    about|the|size of south carolina",
-   "subject": "comparative\n    about",
-   "verb": "the",
-   "object": "size of South Carolina",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#1216-1331",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Area - comparative about the size of South Carolina; slightly more than two-thirds the size of Pennsylvania"
-    }
-   ]
-  },
-  {
-   "id": "frequent rain|and|some snow in lowlands and snow in mountains",
-   "subject": "frequent rain",
-   "verb": "and",
-   "object": "some snow in lowlands and snow in mountains",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#1627-1796",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Climate temperate; continental, cloudy; cold winters with frequent rain and some snow in lowlands and snow in mountains; moderate summers with occasional showers"
-    }
-   ]
-  },
-  {
-   "id": "its defeat|in|world war i",
-   "subject": "its defeat",
-   "verb": "in",
-   "object": "World War I",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#130-285",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Background Once the center of power for the large Austro-Hungarian Empire, Austria was reduced to a small republic after its defeat in World War I."
-    }
-   ]
-  },
-  {
-   "id": "location at|the|crossroads of central europe with many easily traversable alpine passes and valleys",
-   "subject": "location at",
-   "verb": "the",
-   "object": "crossroads of central Europe with many easily traversable Alpine passes and valleys",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1116,7 +357,7 @@
    "verb": "is",
    "object": "the Danube",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1127,28 +368,12 @@
    ]
   },
   {
-   "id": "mostly mountains|in|the west and south",
-   "subject": "mostly mountains",
-   "verb": "in",
-   "object": "the west and south",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#1798-1929",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Terrain mostly mountains (Alps) in the west and south; mostly flat or gently sloping along the eastern and northern margins"
-    }
-   ]
-  },
-  {
    "id": "nazi germany|annexed|austria in 1938",
    "subject": "Nazi Germany",
    "verb": "annexed",
    "object": "Austria in 1938",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1159,60 +384,12 @@
    ]
   },
   {
-   "id": "of italy|and|slovenia",
-   "subject": "of Italy",
-   "verb": "and",
-   "object": "Slovenia",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#981-1041",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Location Central Europe, north of Italy and Slovenia"
-    }
-   ]
-  },
-  {
-   "id": "official|in|burgenland) 1",
-   "subject": "official",
-   "verb": "in",
-   "object": "Burgenland) 1",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#4533-4898",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Languages Languages: German (official nationwide) 88.6%, Turkish 2.3%, Serbian 2.2%, Croatian (official in Burgenland) 1.6%, other (includes Slovene, official in southern Carinthia, and Hungarian, official in Burgenland) 5.3% (2001 est.) major-language sample(s): <br>Das World Factbook, die unverzichtbare Quelle für grundlegende Informationen."
-    }
-   ]
-  },
-  {
-   "id": "official|in|southern carinthia",
-   "subject": "official",
-   "verb": "in",
-   "object": "southern Carinthia",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#4533-4898",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Languages Languages: German (official nationwide) 88.6%, Turkish 2.3%, Serbian 2.2%, Croatian (official in Burgenland) 1.6%, other (includes Slovene, official in southern Carinthia, and Hungarian, official in Burgenland) 5.3% (2001 est.) major-language sample(s): <br>Das World Factbook, die unverzichtbare Quelle für grundlegende Informationen."
-    }
-   ]
-  },
-  {
    "id": "on muslim|is|a 2016 estimate",
    "subject": "on Muslim",
    "verb": "is",
    "object": "a 2016 estimate",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1223,49 +400,12 @@
    ]
   },
   {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#4104-4125",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
-   "id": "population distribution|the|northern and eastern portions of the country are more densely populated",
-   "subject": "Population distribution",
-   "verb": "the",
-   "object": "northern and eastern portions of the country are more densely populated",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#3157-3320",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Population distribution the northern and eastern portions of the country are more densely populated; nearly two thirds of the populace lives in urban areas"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#6048-6211",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Population distribution the northern and eastern portions of the country are more densely populated; nearly two thirds of the populace lives in urban areas"
-    }
-   ]
-  },
-  {
    "id": "population|is|concentrated on eastern lowlands because of steep slopes",
    "subject": "population",
    "verb": "is",
    "object": "concentrated on eastern lowlands because of steep slopes",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1276,28 +416,12 @@
    ]
   },
   {
-   "id": "sloping along|the|eastern and northern margins",
-   "subject": "sloping along",
-   "verb": "the",
-   "object": "eastern and northern margins",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#1798-1929",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Terrain mostly mountains (Alps) in the west and south; mostly flat or gently sloping along the eastern and northern margins"
-    }
-   ]
-  },
-  {
    "id": "state treaty|signed|in 1955 ended the occupation",
    "subject": "State Treaty",
    "verb": "signed",
    "object": "in 1955 ended the occupation",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1308,81 +432,12 @@
    ]
   },
   {
-   "id": "thirds of|the|populace lives in urban areas",
-   "subject": "thirds of",
-   "verb": "the",
-   "object": "populace lives in urban areas",
+   "id": "traversable alpine|passes|and valleys",
+   "subject": "traversable Alpine",
+   "verb": "passes",
+   "object": "and valleys",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#3157-3320",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Population distribution the northern and eastern portions of the country are more densely populated; nearly two thirds of the populace lives in urban areas"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#6048-6211",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Population distribution the northern and eastern portions of the country are more densely populated; nearly two thirds of the populace lives in urban areas"
-    }
-   ]
-  },
-  {
-   "id": "thirds|the|size of pennsylvania",
-   "subject": "thirds",
-   "verb": "the",
-   "object": "size of Pennsylvania",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#1216-1331",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Area - comparative about the size of South Carolina; slightly more than two-thirds the size of Pennsylvania"
-    }
-   ]
-  },
-  {
-   "id": "unverzichtbare quelle|für|grundlegende informationen",
-   "subject": "unverzichtbare Quelle",
-   "verb": "für",
-   "object": "grundlegende Informationen",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#4533-4898",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Languages Languages: German (official nationwide) 88.6%, Turkish 2.3%, Serbian 2.2%, Croatian (official in Burgenland) 1.6%, other (includes Slovene, official in southern Carinthia, and Hungarian, official in Burgenland) 5.3% (2001 est.) major-language sample(s): <br>Das World Factbook, die unverzichtbare Quelle für grundlegende Informationen."
-    }
-   ]
-  },
-  {
-   "id": "with switzerland|and|germany) - 540 sq km",
-   "subject": "with Switzerland",
-   "verb": "and",
-   "object": "Germany) - 540 sq km",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_au.txt#2598-2720",
-     "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "### Major lakes (area sq km) fresh water lake(s): Lake Constance (shared with Switzerland and Germany) - 540 sq km"
-    }
-   ]
-  },
-  {
-   "id": "world's largest|and|longest ice cave system at 42 km (26 mi) is the eisriesenwelt (ice giants world) inside the hochkogel mountain near werfen",
-   "subject": "world's largest",
-   "verb": "and",
-   "object": "longest ice cave system at 42 km (26 mi) is the Eisriesenwelt (Ice Giants World) inside the Hochkogel mountain near Werfen",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1393,24 +448,24 @@
    ]
   },
   {
-   "id": "year declared|the|country's \"perpetual neutrality\" as a condition for soviet military withdrawal",
-   "subject": "year declared",
-   "verb": "the",
-   "object": "country's \"perpetual neutrality\" as a condition for Soviet military withdrawal",
+   "id": "unverzichtbare quelle|für|grundlegende informationen",
+   "subject": "unverzichtbare Quelle",
+   "verb": "für",
+   "object": "grundlegende Informationen",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_au.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_au.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/europe_au.txt#596-724",
+     "at": "06-government-legal/world-factbook/europe_au.txt#4533-4898",
      "ref": "06-government-legal/world-factbook/europe_au.txt",
-     "text": "A constitutional law that same year declared the country's \"perpetual neutrality\" as a condition for Soviet military withdrawal."
+     "text": "### Languages Languages: German (official nationwide) 88.6%, Turkish 2.3%, Serbian 2.2%, Croatian (official in Burgenland) 1.6%, other (includes Slovene, official in southern Carinthia, and Hungarian, official in Burgenland) 5.3% (2001 est.) major-language sample(s): <br>Das World Factbook, die unverzichtbare Quelle für grundlegende Informationen."
     }
    ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:44.879Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:09.152Z"
  }
 }

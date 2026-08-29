@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 23562,
   "bodyOffset": 0,
   "bodyChars": 23562,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 4,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 14,
-  "extractionError": null
+  "edgesFound": 5,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 5,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 9
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 5,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 22,
-  "excerptOk": 22,
-  "rawChecked": 22,
-  "rawOk": 22,
+  "excerptChecked": 6,
+  "excerptOk": 6,
+  "rawChecked": 6,
+  "rawOk": 6,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 14,
-  "heard": 14,
+  "offered": 5,
+  "heard": 5,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "one time|the|buddha was staying near rājagaha",
+    "task_id": "the buddha|was|staying near rājagaha",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "one time the Buddha was staying near Rājagaha",
-    "subject": "one time",
-    "verb": "the",
-    "object": "Buddha was staying near Rājagaha",
+    "description": "the Buddha was staying near Rājagaha",
+    "subject": "the Buddha",
+    "verb": "was",
+    "object": "staying near Rājagaha",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "on|the|vulture’s peak mountain",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "on the Vulture’s Peak Mountain",
-    "subject": "on",
-    "verb": "the",
-    "object": "Vulture’s Peak Mountain",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#416-532",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain, not long after Devadatta had left."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "had",
     "object": "left",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,109 +142,7 @@
       "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain, not long after Devadatta had left."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "take|the|case of a gentleman who has gone forth out of faith from the lay life to homelessness",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "take the case of a gentleman who has gone forth out of faith from the lay life to homelessness",
-    "subject": "take",
-    "verb": "the",
-    "object": "case of a gentleman who has gone forth out of faith from the lay life to homelessness",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#533-1067",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "Tatra kho bhagavā devadattaṁ ārabbha bhikkhū āmantesi: There the Buddha spoke to the mendicants about Devadatta: “Idha, bhikkhave, ekacco kulaputto saddhā agārasmā anagāriyaṁ pabbajito hoti: “Mendicants, take the case of a gentleman who has gone forth out of faith from the lay life to homelessness, thinking, Tamenaṁ cakkhumā puriso disvā evaṁ vadeyya: If a person with clear eyes saw him they’d say, ‘na vatāyaṁ bhavaṁ puriso aññāsi sāraṁ, na aññāsi phegguṁ, na aññāsi tacaṁ, na aññāsi papaṭikaṁ, na aññāsi sākhāpalāsaṁ."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "if|a|person with clear eyes saw him they’d say",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "If a person with clear eyes saw him they’d say",
-    "subject": "If",
-    "verb": "a",
-    "object": "person with clear eyes saw him they’d say",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#533-1067",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "Tatra kho bhagavā devadattaṁ ārabbha bhikkhū āmantesi: There the Buddha spoke to the mendicants about Devadatta: “Idha, bhikkhave, ekacco kulaputto saddhā agārasmā anagāriyaṁ pabbajito hoti: “Mendicants, take the case of a gentleman who has gone forth out of faith from the lay life to homelessness, thinking, Tamenaṁ cakkhumā puriso disvā evaṁ vadeyya: If a person with clear eyes saw him they’d say, ‘na vatāyaṁ bhavaṁ puriso aññāsi sāraṁ, na aññāsi phegguṁ, na aññāsi tacaṁ, na aññāsi papaṭikaṁ, na aññāsi sākhāpalāsaṁ."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#5480-5696",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "Tamenaṁ cakkhumā puriso disvā evaṁ vadeyya: If a person with clear eyes saw him they’d say, ‘na vatāyaṁ bhavaṁ puriso aññāsi sāraṁ, na aññāsi phegguṁ, na aññāsi tacaṁ, na aññāsi papaṭikaṁ, na aññāsi sākhāpalāsaṁ."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cut off|the|branches and leaves",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "cut off the branches and leaves",
-    "subject": "cut off",
-    "verb": "the",
-    "object": "branches and leaves",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#1410-1514",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "That’s why he passed them over, cut off the branches and leaves, and left imagining they were heartwood."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#4130-4268",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "But, passing over the heartwood, softwood, bark, and shoots, he’d cut off the branches and leaves and leave imagining they were heartwood."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#5362-5479",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "But, passing over the heartwood, softwood, and bark, he’d cut off the shoots and leave imagining they were heartwood."
-     }
-    ],
-    "seq": 5,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -263,7 +162,7 @@
     "verb": "swamped",
     "object": "by rebirth",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -272,7 +171,7 @@
       "text": "‘otiṇṇomhi jātiyā jarāya maraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi, dukkhotiṇṇo dukkhapareto, ‘I’m swamped by rebirth, old age, and death; by sorrow, lamentation, pain, sadness, and distress."
      }
     ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -292,7 +191,7 @@
     "verb": "swamped",
     "object": "by suffering",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -301,41 +200,7 @@
       "text": "I’m swamped by suffering, mired in suffering."
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "i’m|the|one with possessions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "I’m the one with possessions",
-    "subject": "I’m",
-    "verb": "the",
-    "object": "one with possessions",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#3371-3424",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "‘I’m the one with possessions, honor, and popularity."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#4651-4698",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "‘I’m the one who is ethical, of good character."
-     }
-    ],
-    "seq": 8,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -355,7 +220,7 @@
     "verb": "was",
     "object": "a person in need of heartwood",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -369,143 +234,12 @@
       "text": "Suppose there was a person in need of heartwood."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "come across|a|large tree standing with heartwood",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "come across a large tree standing with heartwood",
-    "subject": "come across",
-    "verb": "a",
-    "object": "large tree standing with heartwood",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#4032-4129",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "And while wandering in search of heartwood he’d come across a large tree standing with heartwood."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#5264-5361",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "And while wandering in search of heartwood he’d come across a large tree standing with heartwood."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "passing over|the|heartwood",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "passing over the heartwood",
-    "subject": "passing over",
-    "verb": "the",
-    "object": "heartwood",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#4130-4268",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "But, passing over the heartwood, softwood, bark, and shoots, he’d cut off the branches and leaves and leave imagining they were heartwood."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#5362-5479",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "But, passing over the heartwood, softwood, and bark, he’d cut off the shoots and leave imagining they were heartwood."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "take|a|gentleman who has gone forth out of faith from the lay life to homelessness …",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "take a gentleman who has gone forth out of faith from the lay life to homelessness …",
-    "subject": "take",
-    "verb": "a",
-    "object": "gentleman who has gone forth out of faith from the lay life to homelessness …",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#4269-4445",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "Idha pana, bhikkhave, ekacco kulaputto saddhā agārasmā anagāriyaṁ pabbajito hoti: Next, take a gentleman who has gone forth out of faith from the lay life to homelessness …"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#7761-7937",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "Idha pana, bhikkhave, ekacco kulaputto saddhā agārasmā anagāriyaṁ pabbajito hoti: Next, take a gentleman who has gone forth out of faith from the lay life to homelessness …"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cut off|the|shoots",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "cut off the shoots",
-    "subject": "cut off",
-    "verb": "the",
-    "object": "shoots",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn29.txt#5798-6107",
-      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-      "text": "Tathā hayaṁ bhavaṁ puriso sāratthiko sāragavesī sārapariyesanaṁ caramāno mahato rukkhassa tiṭṭhato sāravato atikkammeva sāraṁ atikkamma phegguṁ atikkamma tacaṁ, papaṭikaṁ chetvā ādāya pakkanto “sāran”ti maññamāno; That’s why he passed them over, cut off the shoots, and left imagining they were heartwood."
-     }
-    ],
-    "seq": 13,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 14,
+  "nextSeq": 5,
   "admits": [
    "NUL",
    "SEG",
@@ -525,7 +259,7 @@
    "verb": "had",
    "object": "left",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -536,75 +270,12 @@
    ]
   },
   {
-   "id": "come across|a|large tree standing with heartwood",
-   "subject": "come across",
-   "verb": "a",
-   "object": "large tree standing with heartwood",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#4032-4129",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "And while wandering in search of heartwood he’d come across a large tree standing with heartwood."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#5264-5361",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "And while wandering in search of heartwood he’d come across a large tree standing with heartwood."
-    }
-   ]
-  },
-  {
-   "id": "cut off|the|branches and leaves",
-   "subject": "cut off",
-   "verb": "the",
-   "object": "branches and leaves",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#1410-1514",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "That’s why he passed them over, cut off the branches and leaves, and left imagining they were heartwood."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#4130-4268",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "But, passing over the heartwood, softwood, bark, and shoots, he’d cut off the branches and leaves and leave imagining they were heartwood."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#5362-5479",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "But, passing over the heartwood, softwood, and bark, he’d cut off the shoots and leave imagining they were heartwood."
-    }
-   ]
-  },
-  {
-   "id": "cut off|the|shoots",
-   "subject": "cut off",
-   "verb": "the",
-   "object": "shoots",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#5798-6107",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "Tathā hayaṁ bhavaṁ puriso sāratthiko sāragavesī sārapariyesanaṁ caramāno mahato rukkhassa tiṭṭhato sāravato atikkammeva sāraṁ atikkamma phegguṁ atikkamma tacaṁ, papaṭikaṁ chetvā ādāya pakkanto “sāran”ti maññamāno; That’s why he passed them over, cut off the shoots, and left imagining they were heartwood."
-    }
-   ]
-  },
-  {
    "id": "i’m|swamped|by rebirth",
    "subject": "I’m",
    "verb": "swamped",
    "object": "by rebirth",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -620,7 +291,7 @@
    "verb": "swamped",
    "object": "by suffering",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -631,107 +302,12 @@
    ]
   },
   {
-   "id": "i’m|the|one with possessions",
-   "subject": "I’m",
-   "verb": "the",
-   "object": "one with possessions",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#3371-3424",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "‘I’m the one with possessions, honor, and popularity."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#4651-4698",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "‘I’m the one who is ethical, of good character."
-    }
-   ]
-  },
-  {
-   "id": "if|a|person with clear eyes saw him they’d say",
-   "subject": "If",
-   "verb": "a",
-   "object": "person with clear eyes saw him they’d say",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#533-1067",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "Tatra kho bhagavā devadattaṁ ārabbha bhikkhū āmantesi: There the Buddha spoke to the mendicants about Devadatta: “Idha, bhikkhave, ekacco kulaputto saddhā agārasmā anagāriyaṁ pabbajito hoti: “Mendicants, take the case of a gentleman who has gone forth out of faith from the lay life to homelessness, thinking, Tamenaṁ cakkhumā puriso disvā evaṁ vadeyya: If a person with clear eyes saw him they’d say, ‘na vatāyaṁ bhavaṁ puriso aññāsi sāraṁ, na aññāsi phegguṁ, na aññāsi tacaṁ, na aññāsi papaṭikaṁ, na aññāsi sākhāpalāsaṁ."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#5480-5696",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "Tamenaṁ cakkhumā puriso disvā evaṁ vadeyya: If a person with clear eyes saw him they’d say, ‘na vatāyaṁ bhavaṁ puriso aññāsi sāraṁ, na aññāsi phegguṁ, na aññāsi tacaṁ, na aññāsi papaṭikaṁ, na aññāsi sākhāpalāsaṁ."
-    }
-   ]
-  },
-  {
-   "id": "on|the|vulture’s peak mountain",
-   "subject": "on",
-   "verb": "the",
-   "object": "Vulture’s Peak Mountain",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#416-532",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain, not long after Devadatta had left."
-    }
-   ]
-  },
-  {
-   "id": "one time|the|buddha was staying near rājagaha",
-   "subject": "one time",
-   "verb": "the",
-   "object": "Buddha was staying near Rājagaha",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#416-532",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain, not long after Devadatta had left."
-    }
-   ]
-  },
-  {
-   "id": "passing over|the|heartwood",
-   "subject": "passing over",
-   "verb": "the",
-   "object": "heartwood",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#4130-4268",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "But, passing over the heartwood, softwood, bark, and shoots, he’d cut off the branches and leaves and leave imagining they were heartwood."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#5362-5479",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "But, passing over the heartwood, softwood, and bark, he’d cut off the shoots and leave imagining they were heartwood."
-    }
-   ]
-  },
-  {
    "id": "suppose there|was|a person in need of heartwood",
    "subject": "Suppose there",
    "verb": "was",
    "object": "a person in need of heartwood",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -747,45 +323,24 @@
    ]
   },
   {
-   "id": "take|a|gentleman who has gone forth out of faith from the lay life to homelessness …",
-   "subject": "take",
-   "verb": "a",
-   "object": "gentleman who has gone forth out of faith from the lay life to homelessness …",
+   "id": "the buddha|was|staying near rājagaha",
+   "subject": "the Buddha",
+   "verb": "was",
+   "object": "staying near Rājagaha",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn29.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#4269-4445",
+     "at": "14-holy-texts/pali-suttas/mn29.txt#416-532",
      "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "Idha pana, bhikkhave, ekacco kulaputto saddhā agārasmā anagāriyaṁ pabbajito hoti: Next, take a gentleman who has gone forth out of faith from the lay life to homelessness …"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#7761-7937",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "Idha pana, bhikkhave, ekacco kulaputto saddhā agārasmā anagāriyaṁ pabbajito hoti: Next, take a gentleman who has gone forth out of faith from the lay life to homelessness …"
-    }
-   ]
-  },
-  {
-   "id": "take|the|case of a gentleman who has gone forth out of faith from the lay life to homelessness",
-   "subject": "take",
-   "verb": "the",
-   "object": "case of a gentleman who has gone forth out of faith from the lay life to homelessness",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn29.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn29.txt#533-1067",
-     "ref": "14-holy-texts/pali-suttas/mn29.txt",
-     "text": "Tatra kho bhagavā devadattaṁ ārabbha bhikkhū āmantesi: There the Buddha spoke to the mendicants about Devadatta: “Idha, bhikkhave, ekacco kulaputto saddhā agārasmā anagāriyaṁ pabbajito hoti: “Mendicants, take the case of a gentleman who has gone forth out of faith from the lay life to homelessness, thinking, Tamenaṁ cakkhumā puriso disvā evaṁ vadeyya: If a person with clear eyes saw him they’d say, ‘na vatāyaṁ bhavaṁ puriso aññāsi sāraṁ, na aññāsi phegguṁ, na aññāsi tacaṁ, na aññāsi papaṭikaṁ, na aññāsi sākhāpalāsaṁ."
+     "text": "At one time the Buddha was staying near Rājagaha, on the Vulture’s Peak Mountain, not long after Devadatta had left."
     }
    ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:38.129Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:39.425Z"
  }
 }

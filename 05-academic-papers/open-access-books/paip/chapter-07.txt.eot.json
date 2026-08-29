@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 42066,
   "bodyOffset": 0,
   "bodyChars": 42066,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,92 +55,39 @@
   "referentEvents": 4,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 51,
+  "edgesFound": 33,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 16,
+   "verbs": 9,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 16
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 33,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 52,
-  "excerptOk": 52,
-  "rawChecked": 52,
-  "rawOk": 52,
+  "excerptChecked": 33,
+  "excerptOk": 33,
+  "rawChecked": 33,
+  "rawOk": 33,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 51,
-  "heard": 51,
+  "offered": 33,
+  "heard": 33,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "using meaning|to|solve linguistic problems",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "using meaning to solve linguistic problems",
-    "subject": "using meaning",
-    "verb": "to",
-    "object": "solve linguistic problems",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#175-274",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "> *[This] is an example par excellence* of the power of using meaning to solve linguistic problems."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mit|computer|scientist",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "MIT computer scientist",
-    "subject": "MIT",
-    "verb": "computer",
-    "object": "scientist",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#275-353",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "> > -[Marvin Minsky (1968)](bibliography.md#bb0845) > > MIT computer scientist"
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "student|was|another early language understanding program",
@@ -139,7 +104,7 @@
     "verb": "was",
     "object": "another early language understanding program",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,36 +113,7 @@
       "text": "STUDENT was another early language understanding program, written by Daniel Bobrow as his Ph.D."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "daniel bobrow|as|his ph",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Daniel Bobrow as his Ph",
-    "subject": "Daniel Bobrow",
-    "verb": "as",
-    "object": "his Ph",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#355-450",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "STUDENT was another early language understanding program, written by Daniel Bobrow as his Ph.D."
-     }
-    ],
-    "seq": 3,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -197,7 +133,7 @@
     "verb": "was",
     "object": "designed to read and solve the kind of word problems found in high school algebra books",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -206,7 +142,7 @@
       "text": "It was designed to read and solve the kind of word problems found in high school algebra books."
      }
     ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -226,7 +162,7 @@
     "verb": "gets",
     "object": "is twice the square of 20% of the number of advertisements he runs",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -235,7 +171,7 @@
       "text": "> If the number of customers Tom gets is twice the square of 20% of the number of advertisements he runs, and the number of advertisements is 45, then what is the number of customers Tom gets?"
      }
     ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -255,7 +191,7 @@
     "verb": "is",
     "object": "45",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -264,7 +200,7 @@
       "text": "> If the number of customers Tom gets is twice the square of 20% of the number of advertisements he runs, and the number of advertisements is 45, then what is the number of customers Tom gets?"
      }
     ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -284,7 +220,7 @@
     "verb": "is",
     "object": "the number of customers Tom gets?",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -293,7 +229,7 @@
       "text": "> If the number of customers Tom gets is twice the square of 20% of the number of advertisements he runs, and the number of advertisements is 45, then what is the number of customers Tom gets?"
      }
     ],
-    "seq": 7,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -313,7 +249,7 @@
     "verb": "could",
     "object": "correctly reply that the number of customers is 162",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -322,7 +258,7 @@
       "text": "STUDENT could correctly reply that the number of customers is 162."
      }
     ],
-    "seq": 8,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -342,7 +278,7 @@
     "verb": "must",
     "object": "be far more sophisticated than ELIZA",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -351,7 +287,7 @@
       "text": "To do this, STUDENT must be far more sophisticated than ELIZA; it must process and \"understand\" a great deal of the input, rather than just concentrate on a few key words."
      }
     ],
-    "seq": 9,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -371,7 +307,7 @@
     "verb": "must",
     "object": "process and \"understand\" a great deal of the input",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -380,7 +316,7 @@
       "text": "To do this, STUDENT must be far more sophisticated than ELIZA; it must process and \"understand\" a great deal of the input, rather than just concentrate on a few key words."
      }
     ],
-    "seq": 10,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -400,7 +336,7 @@
     "verb": "must",
     "object": "compute a response",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -409,36 +345,7 @@
       "text": "And it must compute a response, rather than just fill in blanks."
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the student|program|uses little more than the pattern-matching techniques of eliza to translate the input into a set of algebraic equations",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the STUDENT program uses little more than the pattern-matching techniques of ELIZA to translate the input into a set of algebraic equations",
-    "subject": "the STUDENT",
-    "verb": "program",
-    "object": "uses little more than the pattern-matching techniques of ELIZA to translate the input into a set of algebraic equations",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1087-1254",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "However, we shall see that the STUDENT program uses little more than the pattern-matching techniques of ELIZA to translate the input into a set of algebraic equations."
-     }
-    ],
-    "seq": 12,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -458,7 +365,7 @@
     "verb": "must",
     "object": "know enough algebra to solve the equations",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -467,7 +374,7 @@
       "text": "From there, it must know enough algebra to solve the equations, but that is not very difficult."
      }
     ],
-    "seq": 13,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -487,7 +394,7 @@
     "verb": "is",
     "object": "not very difficult",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -496,13 +403,13 @@
       "text": "From there, it must know enough algebra to solve the equations, but that is not very difficult."
      }
     ],
-    "seq": 14,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "of student|we|develop here is nearly a full implementation of the original",
+    "task_id": "develop here|is|nearly a full implementation of the original",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -511,12 +418,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "of STUDENT we develop here is nearly a full implementation of the original",
-    "subject": "of STUDENT",
-    "verb": "we",
-    "object": "develop here is nearly a full implementation of the original",
+    "description": "develop here is nearly a full implementation of the original",
+    "subject": "develop here",
+    "verb": "is",
+    "object": "nearly a full implementation of the original",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -525,7 +432,7 @@
       "text": "The version of STUDENT we develop here is nearly a full implementation of the original."
      }
     ],
-    "seq": 15,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -545,7 +452,7 @@
     "verb": "was",
     "object": "state-of-the-art as of 1964",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -554,7 +461,7 @@
       "text": "However, remember that while the original was state-of-the-art as of 1964, AI has made some progress in a quarter century, as subsequent chapters will attempt to show."
      }
     ],
-    "seq": 16,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -574,7 +481,7 @@
     "verb": "has",
     "object": "made some progress in a quarter century",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -583,7 +490,7 @@
       "text": "However, remember that while the original was state-of-the-art as of 1964, AI has made some progress in a quarter century, as subsequent chapters will attempt to show."
      }
     ],
-    "seq": 17,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -603,7 +510,7 @@
     "verb": "will",
     "object": "attempt to show",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -612,13 +519,13 @@
       "text": "However, remember that while the original was state-of-the-art as of 1964, AI has made some progress in a quarter century, as subsequent chapters will attempt to show."
      }
     ],
-    "seq": 18,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "translating english|into|equations",
+    "task_id": "phrases that|will|represent equations",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -627,41 +534,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Translating English into Equations",
-    "subject": "Translating English",
-    "verb": "into",
-    "object": "Equations",
+    "description": "phrases that will represent equations",
+    "subject": "phrases that",
+    "verb": "will",
+    "object": "represent equations",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1609-1650",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "## 7.1 Translating English into Equations"
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the input|into|phrases that will represent equations",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the input into phrases that will represent equations",
-    "subject": "the input",
-    "verb": "into",
-    "object": "phrases that will represent equations",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -670,99 +548,7 @@
       "text": "Break the input into phrases that will represent equations."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "break each|phrase|into a pair of phrases on either side of the = sign",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Break each phrase into a pair of phrases on either side of the = sign",
-    "subject": "Break each",
-    "verb": "phrase",
-    "object": "into a pair of phrases on either side of the = sign",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1753-1823",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "Break each phrase into a pair of phrases on either side of the = sign."
-     },
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#2129-2190",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "Translate each English phrase into a mathematical expression."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "down further|into|sums and products",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "down further into sums and products",
-    "subject": "down further",
-    "verb": "into",
-    "object": "sums and products",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1829-1952",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "Break these phrases down further into sums and products, and so on, until finally we bottom out with numbers and variables."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "until finally|we|bottom out with numbers and variables",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "until finally we bottom out with numbers and variables",
-    "subject": "until finally",
-    "verb": "we",
-    "object": "bottom out with numbers and variables",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1829-1952",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "Break these phrases down further into sums and products, and so on, until finally we bottom out with numbers and variables."
-     }
-    ],
-    "seq": 23,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -782,7 +568,7 @@
     "verb": "is",
     "object": "distinct from the idea of a \"pattern-matching variable\" as used in `pat-match` in [chapter 6](chapter6",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -791,65 +577,7 @@
       "text": "(By \"variable\" here, I mean \"mathematical variable,\" which is distinct from the idea of a \"pattern-matching variable\" as used in `pat-match` in [chapter 6](chapter6.md))."
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "based translator|as|developed for eliza",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "based translator as developed for ELIZA",
-    "subject": "based translator",
-    "verb": "as",
-    "object": "developed for ELIZA",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#2191-2257",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "We use the idea of a rule-based translator as developed for ELIZA."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the pattern|to|the input above",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the pattern to the input above",
-    "subject": "the pattern",
-    "verb": "to",
-    "object": "the input above",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#2573-2684",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "Applying the pattern to the input above, `?y` would have the value (`what is the number of customers Tomgets`)."
-     }
-    ],
-    "seq": 26,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -869,7 +597,7 @@
     "verb": "is",
     "object": "the number of customers Tomgets`)",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -878,7 +606,7 @@
       "text": "Applying the pattern to the input above, `?y` would have the value (`what is the number of customers Tomgets`)."
      }
     ],
-    "seq": 27,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -898,7 +626,7 @@
     "verb": "could",
     "object": "have a response corresponding to an equation where `?x` and `?y` are the two sides of the equation",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -907,7 +635,7 @@
       "text": "Another pattern of the form (`?x is ?y`) could have a response corresponding to an equation where `?x` and `?y` are the two sides of the equation."
      }
     ],
-    "seq": 28,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -927,7 +655,7 @@
     "verb": "could",
     "object": "then make up a mathematical variable for (`what`) and another for (`the number of customers Tom gets`)",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -936,36 +664,7 @@
       "text": "We could then make up a mathematical variable for (`what`) and another for (`the number of customers Tom gets`)."
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "this later|phrase|as a variable because there are no patterns to break it down further",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "this later phrase as a variable because there are no patterns to break it down further",
-    "subject": "this later",
-    "verb": "phrase",
-    "object": "as a variable because there are no patterns to break it down further",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#2945-3051",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "We would recognize this later phrase as a variable because there are no patterns to break it down further."
-     }
-    ],
-    "seq": 30,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -985,7 +684,7 @@
     "verb": "could",
     "object": "match a pattern of the form (`twice ?x`) and transform to `(* 2 (the square of 20 per cent of the number of advertisements he runs))",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -994,13 +693,13 @@
       "text": "In contrast, the phrase (`twice the square of 20 per cent of the number of advertisements he runs`) could match a pattern of the form (`twice ?x`) and transform to `(* 2 (the square of 20 per cent of the number of advertisements he runs)),` and by further applying patterns of the form (`the square of ?x`) and (`?x per cent of ?y`) we could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`, where `n` is the variable generated by (`the number of advertisements he runs`)."
      }
     ],
-    "seq": 31,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and|we|could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
+    "task_id": "we|could|arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1009,12 +708,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "and we could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
-    "subject": "and",
-    "verb": "we",
-    "object": "could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
+    "description": "we could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
+    "subject": "we",
+    "verb": "could",
+    "object": "arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1023,13 +722,13 @@
       "text": "In contrast, the phrase (`twice the square of 20 per cent of the number of advertisements he runs`) could match a pattern of the form (`twice ?x`) and transform to `(* 2 (the square of 20 per cent of the number of advertisements he runs)),` and by further applying patterns of the form (`the square of ?x`) and (`?x per cent of ?y`) we could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`, where `n` is the variable generated by (`the number of advertisements he runs`)."
      }
     ],
-    "seq": 32,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "we need|to|represent variables",
+    "task_id": "to do|is|to use something we know: represent them just as lisp itself does",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1038,41 +737,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "we need to represent variables",
-    "subject": "we need",
-    "verb": "to",
-    "object": "represent variables",
+    "description": "to do is to use something we know: represent them just as Lisp itself does",
+    "subject": "to do",
+    "verb": "is",
+    "object": "to use something we know: represent them just as Lisp itself does",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#3541-3625",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "Thus, we need to represent variables, expressions, equations, and sets of equations."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "easiest thing|to|do is to use something we know: represent them just as lisp itself does",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "easiest thing to do is to use something we know: represent them just as Lisp itself does",
-    "subject": "easiest thing",
-    "verb": "to",
-    "object": "do is to use something we know: represent them just as Lisp itself does",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1081,7 +751,7 @@
       "text": "The easiest thing to do is to use something we know: represent them just as Lisp itself does."
      }
     ],
-    "seq": 34,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1101,7 +771,7 @@
     "verb": "will",
     "object": "be symbols",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1110,7 +780,7 @@
       "text": "Variables will be symbols, expressions and equations will be nested lists with prefix operators, and sets of equations will be lists of equations."
      }
     ],
-    "seq": 35,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1130,7 +800,7 @@
     "verb": "will",
     "object": "be nested lists with prefix operators",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1139,36 +809,7 @@
       "text": "Variables will be symbols, expressions and equations will be nested lists with prefix operators, and sets of equations will be lists of equations."
      }
     ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "rules corresponding|to|the type of statements found in algebra word problems",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "rules corresponding to the type of statements found in algebra word problems",
-    "subject": "rules corresponding",
-    "verb": "to",
-    "object": "the type of statements found in algebra word problems",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#3867-4004",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "With that in mind, we can define a list of pattern-response rules corresponding to the type of statements found in algebra word problems."
-     }
-    ],
-    "seq": 37,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1188,7 +829,7 @@
     "verb": "is",
     "object": "repeated here",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1197,36 +838,7 @@
       "text": "The structure definition for a rule is repeated here, and the structure `exp`, an expression, is added."
      }
     ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is defined|as|a constructor that builds expressions without taking keyword arguments",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is defined as a constructor that builds expressions without taking keyword arguments",
-    "subject": "is defined",
-    "verb": "as",
-    "object": "a constructor that builds expressions without taking keyword arguments",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#4175-4294",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "Note that the constructor `mkexp` is defined as a constructor that builds expressions without taking keyword arguments."
-     }
-    ],
-    "seq": 39,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1246,7 +858,7 @@
     "verb": "must",
     "object": "make allowances for them",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1255,7 +867,7 @@
       "text": "We ignored commas and periods in ELIZA, but they are crucial for STUDENT, so we must make allowances for them."
      }
     ],
-    "seq": 40,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1275,7 +887,7 @@
     "verb": "is",
     "object": "that a `\"",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1284,65 +896,7 @@
       "text": "The problem is that a `\",\"` in Lisp normally can be used only within a backquote construction, and a `\".\"` normally can be used only as a decimal point or in a dotted pair."
      }
     ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "used only|as|a decimal point or in a dotted pair",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "used only as a decimal point or in a dotted pair",
-    "subject": "used only",
-    "verb": "as",
-    "object": "a decimal point or in a dotted pair",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#4788-4960",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "The problem is that a `\",\"` in Lisp normally can be used only within a backquote construction, and a `\".\"` normally can be used only as a decimal point or in a dotted pair."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "these characters|to|the lisp reader can be escaped either by preceding the character with a backslash (`\\",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "these characters to the Lisp reader can be escaped either by preceding the character with a backslash (`\\",
-    "subject": "these characters",
-    "verb": "to",
-    "object": "the Lisp reader can be escaped either by preceding the character with a backslash (`\\",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#4961-5150",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "The special meaning of these characters to the Lisp reader can be escaped either by preceding the character with a backslash (`\\,`) or by surrounding the character by vertical bars (`|,|`)."
-     }
-    ],
-    "seq": 43,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1362,7 +916,7 @@
     "verb": "will",
     "object": "search through the list of rules for a response",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1371,36 +925,7 @@
       "text": "The main section of STUDENT will search through the list of rules for a response, just as ELIZA did."
      }
     ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "just|as|eliza did",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "just as ELIZA did",
-    "subject": "just",
-    "verb": "as",
-    "object": "ELIZA did",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#6663-6763",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "The main section of STUDENT will search through the list of rules for a response, just as ELIZA did."
-     }
-    ],
-    "seq": 45,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -1420,7 +945,7 @@
     "verb": "is",
     "object": "that before we substitute the values of the `pat-match` variables into the response",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1429,7 +954,7 @@
       "text": "The first point of deviation is that before we substitute the values of the `pat-match` variables into the response, we must first recursively translate the value of each variable, using the same list of pattern-response rules."
      }
     ],
-    "seq": 46,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1449,7 +974,7 @@
     "verb": "must",
     "object": "first recursively translate the value of each variable",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1458,7 +983,7 @@
       "text": "The first point of deviation is that before we substitute the values of the `pat-match` variables into the response, we must first recursively translate the value of each variable, using the same list of pattern-response rules."
      }
     ],
-    "seq": 47,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -1478,7 +1003,7 @@
     "verb": "is",
     "object": "that once we're done",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1487,36 +1012,7 @@
       "text": "The other difference is that once we're done, we don't just print the response; instead we have to solve the set of equations and print the answers."
      }
     ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "instead|we|have to solve the set of equations and print the answers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "instead we have to solve the set of equations and print the answers",
-    "subject": "instead",
-    "verb": "we",
-    "object": "have to solve the set of equations and print the answers",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#6992-7140",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-      "text": "The other difference is that once we're done, we don't just print the response; instead we have to solve the set of equations and print the answers."
-     }
-    ],
-    "seq": 49,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -1536,7 +1032,7 @@
     "verb": "is",
     "object": "summarized in figure 7",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1545,12 +1041,12 @@
       "text": "The program is summarized in figure 7.1."
      }
     ],
-    "seq": 50,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 51,
+  "nextSeq": 33,
   "admits": [
    "NUL",
    "SEG",
@@ -1570,7 +1066,7 @@
    "verb": "is",
    "object": "repeated here",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1586,7 +1082,7 @@
    "verb": "has",
    "object": "made some progress in a quarter century",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1602,7 +1098,7 @@
    "verb": "will",
    "object": "be nested lists with prefix operators",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1618,7 +1114,7 @@
    "verb": "must",
    "object": "compute a response",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1629,65 +1125,12 @@
    ]
   },
   {
-   "id": "and|we|could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
-   "subject": "and",
-   "verb": "we",
-   "object": "could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#3052-3539",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "In contrast, the phrase (`twice the square of 20 per cent of the number of advertisements he runs`) could match a pattern of the form (`twice ?x`) and transform to `(* 2 (the square of 20 per cent of the number of advertisements he runs)),` and by further applying patterns of the form (`the square of ?x`) and (`?x per cent of ?y`) we could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`, where `n` is the variable generated by (`the number of advertisements he runs`)."
-    }
-   ]
-  },
-  {
-   "id": "based translator|as|developed for eliza",
-   "subject": "based translator",
-   "verb": "as",
-   "object": "developed for ELIZA",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#2191-2257",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "We use the idea of a rule-based translator as developed for ELIZA."
-    }
-   ]
-  },
-  {
-   "id": "break each|phrase|into a pair of phrases on either side of the = sign",
-   "subject": "Break each",
-   "verb": "phrase",
-   "object": "into a pair of phrases on either side of the = sign",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1753-1823",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "Break each phrase into a pair of phrases on either side of the = sign."
-    },
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#2129-2190",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "Translate each English phrase into a mathematical expression."
-    }
-   ]
-  },
-  {
    "id": "but that|is|not very difficult",
    "subject": "but that",
    "verb": "is",
    "object": "not very difficult",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1703,7 +1146,7 @@
    "verb": "gets",
    "object": "is twice the square of 20% of the number of advertisements he runs",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1714,82 +1157,18 @@
    ]
   },
   {
-   "id": "daniel bobrow|as|his ph",
-   "subject": "Daniel Bobrow",
-   "verb": "as",
-   "object": "his Ph",
+   "id": "develop here|is|nearly a full implementation of the original",
+   "subject": "develop here",
+   "verb": "is",
+   "object": "nearly a full implementation of the original",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#355-450",
+     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1352-1439",
      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "STUDENT was another early language understanding program, written by Daniel Bobrow as his Ph.D."
-    }
-   ]
-  },
-  {
-   "id": "down further|into|sums and products",
-   "subject": "down further",
-   "verb": "into",
-   "object": "sums and products",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1829-1952",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "Break these phrases down further into sums and products, and so on, until finally we bottom out with numbers and variables."
-    }
-   ]
-  },
-  {
-   "id": "easiest thing|to|do is to use something we know: represent them just as lisp itself does",
-   "subject": "easiest thing",
-   "verb": "to",
-   "object": "do is to use something we know: represent them just as Lisp itself does",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#3626-3719",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "The easiest thing to do is to use something we know: represent them just as Lisp itself does."
-    }
-   ]
-  },
-  {
-   "id": "instead|we|have to solve the set of equations and print the answers",
-   "subject": "instead",
-   "verb": "we",
-   "object": "have to solve the set of equations and print the answers",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#6992-7140",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "The other difference is that once we're done, we don't just print the response; instead we have to solve the set of equations and print the answers."
-    }
-   ]
-  },
-  {
-   "id": "is defined|as|a constructor that builds expressions without taking keyword arguments",
-   "subject": "is defined",
-   "verb": "as",
-   "object": "a constructor that builds expressions without taking keyword arguments",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#4175-4294",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "Note that the constructor `mkexp` is defined as a constructor that builds expressions without taking keyword arguments."
+     "text": "The version of STUDENT we develop here is nearly a full implementation of the original."
     }
    ]
   },
@@ -1799,7 +1178,7 @@
    "verb": "must",
    "object": "know enough algebra to solve the equations",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1815,7 +1194,7 @@
    "verb": "must",
    "object": "process and \"understand\" a great deal of the input",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1831,7 +1210,7 @@
    "verb": "was",
    "object": "designed to read and solve the kind of word problems found in high school algebra books",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1842,44 +1221,12 @@
    ]
   },
   {
-   "id": "just|as|eliza did",
-   "subject": "just",
-   "verb": "as",
-   "object": "ELIZA did",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#6663-6763",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "The main section of STUDENT will search through the list of rules for a response, just as ELIZA did."
-    }
-   ]
-  },
-  {
-   "id": "mit|computer|scientist",
-   "subject": "MIT",
-   "verb": "computer",
-   "object": "scientist",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#275-353",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "> > -[Marvin Minsky (1968)](bibliography.md#bb0845) > > MIT computer scientist"
-    }
-   ]
-  },
-  {
    "id": "of advertisements|is|45",
    "subject": "of advertisements",
    "verb": "is",
    "object": "45",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1895,7 +1242,7 @@
    "verb": "is",
    "object": "that before we substitute the values of the `pat-match` variables into the response",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1906,28 +1253,12 @@
    ]
   },
   {
-   "id": "of student|we|develop here is nearly a full implementation of the original",
-   "subject": "of STUDENT",
-   "verb": "we",
-   "object": "develop here is nearly a full implementation of the original",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1352-1439",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "The version of STUDENT we develop here is nearly a full implementation of the original."
-    }
-   ]
-  },
-  {
    "id": "of student|will|search through the list of rules for a response",
    "subject": "of STUDENT",
    "verb": "will",
    "object": "search through the list of rules for a response",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1943,7 +1274,7 @@
    "verb": "is",
    "object": "that once we're done",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1954,18 +1285,18 @@
    ]
   },
   {
-   "id": "rules corresponding|to|the type of statements found in algebra word problems",
-   "subject": "rules corresponding",
-   "verb": "to",
-   "object": "the type of statements found in algebra word problems",
+   "id": "phrases that|will|represent equations",
+   "subject": "phrases that",
+   "verb": "will",
+   "object": "represent equations",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#3867-4004",
+     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1688-1747",
      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "With that in mind, we can define a list of pattern-response rules corresponding to the type of statements found in algebra word problems."
+     "text": "Break the input into phrases that will represent equations."
     }
    ]
   },
@@ -1975,7 +1306,7 @@
    "verb": "must",
    "object": "make allowances for them",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1991,7 +1322,7 @@
    "verb": "could",
    "object": "correctly reply that the number of customers is 162",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2007,7 +1338,7 @@
    "verb": "must",
    "object": "be far more sophisticated than ELIZA",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2023,7 +1354,7 @@
    "verb": "was",
    "object": "another early language understanding program",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2039,7 +1370,7 @@
    "verb": "will",
    "object": "attempt to show",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2055,7 +1386,7 @@
    "verb": "could",
    "object": "have a response corresponding to an equation where `?x` and `?y` are the two sides of the equation",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2066,28 +1397,12 @@
    ]
   },
   {
-   "id": "the input|into|phrases that will represent equations",
-   "subject": "the input",
-   "verb": "into",
-   "object": "phrases that will represent equations",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1688-1747",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "Break the input into phrases that will represent equations."
-    }
-   ]
-  },
-  {
    "id": "the original|was|state-of-the-art as of 1964",
    "subject": "the original",
    "verb": "was",
    "object": "state-of-the-art as of 1964",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2098,28 +1413,12 @@
    ]
   },
   {
-   "id": "the pattern|to|the input above",
-   "subject": "the pattern",
-   "verb": "to",
-   "object": "the input above",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#2573-2684",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "Applying the pattern to the input above, `?y` would have the value (`what is the number of customers Tomgets`)."
-    }
-   ]
-  },
-  {
    "id": "the phrase|could|match a pattern of the form (`twice ?x`) and transform to `(* 2 (the square of 20 per cent of the number of advertisements he runs))",
    "subject": "the phrase",
    "verb": "could",
    "object": "match a pattern of the form (`twice ?x`) and transform to `(* 2 (the square of 20 per cent of the number of advertisements he runs))",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2135,7 +1434,7 @@
    "verb": "is",
    "object": "that a `\"",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2151,7 +1450,7 @@
    "verb": "is",
    "object": "summarized in figure 7",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2162,28 +1461,12 @@
    ]
   },
   {
-   "id": "the student|program|uses little more than the pattern-matching techniques of eliza to translate the input into a set of algebraic equations",
-   "subject": "the STUDENT",
-   "verb": "program",
-   "object": "uses little more than the pattern-matching techniques of ELIZA to translate the input into a set of algebraic equations",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1087-1254",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "However, we shall see that the STUDENT program uses little more than the pattern-matching techniques of ELIZA to translate the input into a set of algebraic equations."
-    }
-   ]
-  },
-  {
    "id": "then what|is|the number of customers tom gets?",
    "subject": "then what",
    "verb": "is",
    "object": "the number of customers Tom gets?",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2194,98 +1477,18 @@
    ]
   },
   {
-   "id": "these characters|to|the lisp reader can be escaped either by preceding the character with a backslash (`\\",
-   "subject": "these characters",
-   "verb": "to",
-   "object": "the Lisp reader can be escaped either by preceding the character with a backslash (`\\",
+   "id": "to do|is|to use something we know: represent them just as lisp itself does",
+   "subject": "to do",
+   "verb": "is",
+   "object": "to use something we know: represent them just as Lisp itself does",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#4961-5150",
+     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#3626-3719",
      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "The special meaning of these characters to the Lisp reader can be escaped either by preceding the character with a backslash (`\\,`) or by surrounding the character by vertical bars (`|,|`)."
-    }
-   ]
-  },
-  {
-   "id": "this later|phrase|as a variable because there are no patterns to break it down further",
-   "subject": "this later",
-   "verb": "phrase",
-   "object": "as a variable because there are no patterns to break it down further",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#2945-3051",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "We would recognize this later phrase as a variable because there are no patterns to break it down further."
-    }
-   ]
-  },
-  {
-   "id": "translating english|into|equations",
-   "subject": "Translating English",
-   "verb": "into",
-   "object": "Equations",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1609-1650",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "## 7.1 Translating English into Equations"
-    }
-   ]
-  },
-  {
-   "id": "until finally|we|bottom out with numbers and variables",
-   "subject": "until finally",
-   "verb": "we",
-   "object": "bottom out with numbers and variables",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#1829-1952",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "Break these phrases down further into sums and products, and so on, until finally we bottom out with numbers and variables."
-    }
-   ]
-  },
-  {
-   "id": "used only|as|a decimal point or in a dotted pair",
-   "subject": "used only",
-   "verb": "as",
-   "object": "a decimal point or in a dotted pair",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#4788-4960",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "The problem is that a `\",\"` in Lisp normally can be used only within a backquote construction, and a `\".\"` normally can be used only as a decimal point or in a dotted pair."
-    }
-   ]
-  },
-  {
-   "id": "using meaning|to|solve linguistic problems",
-   "subject": "using meaning",
-   "verb": "to",
-   "object": "solve linguistic problems",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#175-274",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "> *[This] is an example par excellence* of the power of using meaning to solve linguistic problems."
+     "text": "The easiest thing to do is to use something we know: represent them just as Lisp itself does."
     }
    ]
   },
@@ -2295,7 +1498,7 @@
    "verb": "will",
    "object": "be symbols",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2306,18 +1509,18 @@
    ]
   },
   {
-   "id": "we need|to|represent variables",
-   "subject": "we need",
-   "verb": "to",
-   "object": "represent variables",
+   "id": "we|could|arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
+   "subject": "we",
+   "verb": "could",
+   "object": "arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#3541-3625",
+     "at": "05-academic-papers/open-access-books/paip/chapter-07.txt#3052-3539",
      "ref": "05-academic-papers/open-access-books/paip/chapter-07.txt",
-     "text": "Thus, we need to represent variables, expressions, equations, and sets of equations."
+     "text": "In contrast, the phrase (`twice the square of 20 per cent of the number of advertisements he runs`) could match a pattern of the form (`twice ?x`) and transform to `(* 2 (the square of 20 per cent of the number of advertisements he runs)),` and by further applying patterns of the form (`the square of ?x`) and (`?x per cent of ?y`) we could arrive at a final response of `(* 2 (expt (* (/ 20 100) n) 2))`, where `n` is the variable generated by (`the number of advertisements he runs`)."
     }
    ]
   },
@@ -2327,7 +1530,7 @@
    "verb": "could",
    "object": "then make up a mathematical variable for (`what`) and another for (`the number of customers Tom gets`)",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2343,7 +1546,7 @@
    "verb": "must",
    "object": "first recursively translate the value of each variable",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2359,7 +1562,7 @@
    "verb": "is",
    "object": "the number of customers Tomgets`)",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2375,7 +1578,7 @@
    "verb": "is",
    "object": "distinct from the idea of a \"pattern-matching variable\" as used in `pat-match` in [chapter 6](chapter6",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-07.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-07.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2387,7 +1590,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:51.587Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:29.267Z"
  }
 }

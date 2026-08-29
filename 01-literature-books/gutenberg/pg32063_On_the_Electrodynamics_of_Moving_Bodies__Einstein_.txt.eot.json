@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 347157,
   "bodyOffset": 0,
   "bodyChars": 347157,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 7830,
   "truncated": true
  },
@@ -37,92 +55,39 @@
   "referentEvents": 28,
   "distinctReferents": 16,
   "examined": true,
-  "edgesFound": 22,
+  "edgesFound": 8,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 6,
+   "verbs": 2,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 6
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 8,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 23,
-  "excerptOk": 23,
-  "rawChecked": 23,
-  "rawOk": 23,
+  "excerptChecked": 8,
+  "excerptOk": 8,
+  "rawChecked": 8,
+  "rawOk": 8,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 22,
-  "heard": 22,
+  "offered": 8,
+  "heard": 8,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "produced|by|marius masi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Produced by Marius Masi",
-    "subject": "Produced",
-    "verb": "by",
-    "object": "Marius Masi",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#0-125",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "Produced by Marius Masi, Don Kretz, Juliet Sutherland, and the Online Distributed Proofreading Team at https://www.pgdp.net"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "proofreading team|at|https://www",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Proofreading Team at https://www",
-    "subject": "Proofreading Team",
-    "verb": "at",
-    "object": "https://www",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#0-125",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "Produced by Marius Masi, Don Kretz, Juliet Sutherland, and the Online Distributed Proofreading Team at https://www.pgdp.net"
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "when letters|are|subscripted",
@@ -139,7 +104,7 @@
     "verb": "are",
     "object": "subscripted",
     "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,7 +113,7 @@
       "text": "When letters are subscripted, they are preceded by an underscore, like C_n."
      }
     ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -168,7 +133,7 @@
     "verb": "are",
     "object": "preceded by an underscore",
     "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -177,13 +142,13 @@
       "text": "When letters are subscripted, they are preceded by an underscore, like C_n."
      }
     ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "letters topped|by|macron are represented as [=x]",
+    "task_id": "by macron|are|represented as [=x]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -192,12 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Letters topped by Macron are represented as [=x]",
-    "subject": "Letters topped",
-    "verb": "by",
-    "object": "Macron are represented as [=x]",
+    "description": "by Macron are represented as [=x]",
+    "subject": "by Macron",
+    "verb": "are",
+    "object": "represented as [=x]",
     "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -206,7 +171,7 @@
       "text": "(3) Letters topped by Macron are represented as [=x]."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -226,7 +191,7 @@
     "verb": "have",
     "object": "been corrected:",
     "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -235,157 +200,7 @@
       "text": "(5) The following typographical errors have been corrected:"
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "that due|to|anode rays",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "that due to anode rays",
-    "subject": "that due",
-    "verb": "to",
-    "object": "anode rays",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#810-931",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "Page 890: \"The colour of the luminosity due to positive rays is not in general the same as that due to anode rays.\""
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "large|or|small",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "large or small",
-    "subject": "large",
-    "verb": "or",
-    "object": "small",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#2061-2239",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "All material substances possess in some degree, large or small, electric conductivity, and may for the sake of convenience be broadly divided into five classes in this respect."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a more|or|less arbitrary one",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a more or less arbitrary one",
-    "subject": "a more",
-    "verb": "or",
-    "object": "less arbitrary one",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#2240-2390",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "Between these, however, there is no sharply-marked dividing line, and the classification must therefore be accepted as a more or less arbitrary one."
-     },
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#3840-3998",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "These substances differ greatly in insulating power, and according as the conductivity is more or less marked, they are spoken of as bad or good insulators."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "those mixtures|or|combinations of metallic substances known as alloys",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "those mixtures or combinations of metallic substances known as alloys",
-    "subject": "those mixtures",
-    "verb": "or",
-    "object": "combinations of metallic substances known as alloys",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#2548-2675",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "The first class comprises all metallic substances, and those mixtures or combinations of metallic substances known as alloys."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "amongst insulators|or|non-conductors",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "amongst insulators or non-conductors",
-    "subject": "amongst insulators",
-    "verb": "or",
-    "object": "non-conductors",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#3242-3527",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "As charcoal it possesses a fairly well-marked but not very high conductivity in comparison with metals; as graphite, a conductivity about one-four-hundredth of that of iron; but as diamond so little conductivity that the substance is included amongst insulators or non-conductors."
-     }
-    ],
-    "seq": 10,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -405,7 +220,7 @@
     "verb": "are",
     "object": "generally called insulators or non-conductors",
     "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -414,7 +229,7 @@
       "text": "The third class includes those substances which are generally called insulators or non-conductors, but which are better denominated dielectric conductors; it comprises such solid substances as mica, ebonite, shellac, india-rubber, gutta-percha, paraffin, and a large number of liquids, chiefly hydrocarbons."
      }
     ],
-    "seq": 11,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -434,7 +249,7 @@
     "verb": "are",
     "object": "spoken of as bad or good insulators",
     "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -443,36 +258,7 @@
       "text": "These substances differ greatly in insulating power, and according as the conductivity is more or less marked, they are spoken of as bad or good insulators."
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "circuit traversed|by|an electric current",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "circuit traversed by an electric current",
-    "subject": "circuit traversed",
-    "verb": "by",
-    "object": "an electric current",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#4329-4528",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "The fourth class, namely the electrolytic conductors comprises all those substances which undergo chemical decomposition when they form part of an electric circuit traversed by an electric current."
-     }
-    ],
-    "seq": 13,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -492,7 +278,7 @@
     "verb": "are",
     "object": "considered in section III",
     "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -501,152 +287,7 @@
       "text": "The conditions under which this class of substance becomes possessed of electric conductivity are considered in section III., on conduction in gases."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "discovered independently|by|d",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "discovered independently by D",
-    "subject": "discovered independently",
-    "verb": "by",
-    "object": "D",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#5591-5650",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "This fact, investigated and discovered independently by D."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "chiefly developed|by|marconi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "chiefly developed by Marconi",
-    "subject": "chiefly developed",
-    "verb": "by",
-    "object": "Marconi",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#5691-5880",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "Lodge and others, is applied in the construction of the \"coherer,\" or sensitive tube employed as a detector or receiver in that form of \"wireless telegraphy\" chiefly developed by Marconi."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "electric\n  current|by|a column of mercury at the temperature of melting ice",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "electric\n  current by a column of mercury at the temperature of melting ice",
-    "subject": "electric\n  current",
-    "verb": "by",
-    "object": "a column of mercury at the temperature of melting ice",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#5981-6361",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "_International Ohm._--The practical unit of electrical resistance was legally defined in Great Britain by the authority of the queen in council in 1894, as the \"resistance offered to an invariable electric current by a column of mercury at the temperature of melting ice, 14.4521 grammes in mass, of a constant cross-sectional area, and a length 106.3 centimetres.\""
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "international|or|standard ohm",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "International or Standard Ohm",
-    "subject": "International",
-    "verb": "or",
-    "object": "Standard Ohm",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#6362-6517",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "The same unit has been also legalized as a standard in France, Germany and the United States, and is denominated the \"International or Standard Ohm.\""
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "resistance equal|to|10° absolute c",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "resistance equal to 10° absolute C",
-    "subject": "resistance equal",
-    "verb": "to",
-    "object": "10° absolute C",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#6518-6645",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "It is intended to represent as nearly as possible a resistance equal to 10° absolute C.G.S. units of electric resistance."
-     }
-    ],
-    "seq": 19,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -666,7 +307,7 @@
     "verb": "are",
     "object": "the microhm and the megohm",
     "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -675,41 +316,12 @@
       "text": "Convenient multiples and subdivisions of the ohm are the microhm and the megohm, the former being a millionth part of an ohm, and the latter a million ohms."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "microhms|or|megohms",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "microhms or megohms",
-    "subject": "microhms",
-    "verb": "or",
-    "object": "megohms",
-    "witnesses": [
-     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#6809-7044",
-      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-      "text": "The resistivity of substances is then numerically expressed by stating the resistance of one cubic centimetre of the substance taken between opposed faces, and expressed in ohms, microhms or megohms, as may be most convenient."
-     }
-    ],
-    "seq": 21,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 22,
+  "nextSeq": 8,
   "admits": [
    "NUL",
    "SEG",
@@ -724,161 +336,12 @@
  },
  "folded": [
   {
-   "id": "a more|or|less arbitrary one",
-   "subject": "a more",
-   "verb": "or",
-   "object": "less arbitrary one",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#2240-2390",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "Between these, however, there is no sharply-marked dividing line, and the classification must therefore be accepted as a more or less arbitrary one."
-    },
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#3840-3998",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "These substances differ greatly in insulating power, and according as the conductivity is more or less marked, they are spoken of as bad or good insulators."
-    }
-   ]
-  },
-  {
-   "id": "amongst insulators|or|non-conductors",
-   "subject": "amongst insulators",
-   "verb": "or",
-   "object": "non-conductors",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#3242-3527",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "As charcoal it possesses a fairly well-marked but not very high conductivity in comparison with metals; as graphite, a conductivity about one-four-hundredth of that of iron; but as diamond so little conductivity that the substance is included amongst insulators or non-conductors."
-    }
-   ]
-  },
-  {
-   "id": "chiefly developed|by|marconi",
-   "subject": "chiefly developed",
-   "verb": "by",
-   "object": "Marconi",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#5691-5880",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "Lodge and others, is applied in the construction of the \"coherer,\" or sensitive tube employed as a detector or receiver in that form of \"wireless telegraphy\" chiefly developed by Marconi."
-    }
-   ]
-  },
-  {
-   "id": "circuit traversed|by|an electric current",
-   "subject": "circuit traversed",
-   "verb": "by",
-   "object": "an electric current",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#4329-4528",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "The fourth class, namely the electrolytic conductors comprises all those substances which undergo chemical decomposition when they form part of an electric circuit traversed by an electric current."
-    }
-   ]
-  },
-  {
-   "id": "discovered independently|by|d",
-   "subject": "discovered independently",
-   "verb": "by",
-   "object": "D",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#5591-5650",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "This fact, investigated and discovered independently by D."
-    }
-   ]
-  },
-  {
-   "id": "electric\n  current|by|a column of mercury at the temperature of melting ice",
-   "subject": "electric\n  current",
-   "verb": "by",
-   "object": "a column of mercury at the temperature of melting ice",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#5981-6361",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "_International Ohm._--The practical unit of electrical resistance was legally defined in Great Britain by the authority of the queen in council in 1894, as the \"resistance offered to an invariable electric current by a column of mercury at the temperature of melting ice, 14.4521 grammes in mass, of a constant cross-sectional area, and a length 106.3 centimetres.\""
-    }
-   ]
-  },
-  {
-   "id": "electric conductivity|are|considered in section iii",
-   "subject": "electric conductivity",
+   "id": "by macron|are|represented as [=x]",
+   "subject": "by Macron",
    "verb": "are",
-   "object": "considered in section III",
+   "object": "represented as [=x]",
    "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#4665-4817",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "The conditions under which this class of substance becomes possessed of electric conductivity are considered in section III., on conduction in gases."
-    }
-   ]
-  },
-  {
-   "id": "international|or|standard ohm",
-   "subject": "International",
-   "verb": "or",
-   "object": "Standard Ohm",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#6362-6517",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "The same unit has been also legalized as a standard in France, Germany and the United States, and is denominated the \"International or Standard Ohm.\""
-    }
-   ]
-  },
-  {
-   "id": "large|or|small",
-   "subject": "large",
-   "verb": "or",
-   "object": "small",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#2061-2239",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "All material substances possess in some degree, large or small, electric conductivity, and may for the sake of convenience be broadly divided into five classes in this respect."
-    }
-   ]
-  },
-  {
-   "id": "letters topped|by|macron are represented as [=x]",
-   "subject": "Letters topped",
-   "verb": "by",
-   "object": "Macron are represented as [=x]",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -889,66 +352,18 @@
    ]
   },
   {
-   "id": "microhms|or|megohms",
-   "subject": "microhms",
-   "verb": "or",
-   "object": "megohms",
+   "id": "electric conductivity|are|considered in section iii",
+   "subject": "electric conductivity",
+   "verb": "are",
+   "object": "considered in section III",
    "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#6809-7044",
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#4665-4817",
      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "The resistivity of substances is then numerically expressed by stating the resistance of one cubic centimetre of the substance taken between opposed faces, and expressed in ohms, microhms or megohms, as may be most convenient."
-    }
-   ]
-  },
-  {
-   "id": "produced|by|marius masi",
-   "subject": "Produced",
-   "verb": "by",
-   "object": "Marius Masi",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#0-125",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "Produced by Marius Masi, Don Kretz, Juliet Sutherland, and the Online Distributed Proofreading Team at https://www.pgdp.net"
-    }
-   ]
-  },
-  {
-   "id": "proofreading team|at|https://www",
-   "subject": "Proofreading Team",
-   "verb": "at",
-   "object": "https://www",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#0-125",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "Produced by Marius Masi, Don Kretz, Juliet Sutherland, and the Online Distributed Proofreading Team at https://www.pgdp.net"
-    }
-   ]
-  },
-  {
-   "id": "resistance equal|to|10° absolute c",
-   "subject": "resistance equal",
-   "verb": "to",
-   "object": "10° absolute C",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#6518-6645",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "It is intended to represent as nearly as possible a resistance equal to 10° absolute C.G.S. units of electric resistance."
+     "text": "The conditions under which this class of substance becomes possessed of electric conductivity are considered in section III., on conduction in gases."
     }
    ]
   },
@@ -958,7 +373,7 @@
    "verb": "are",
    "object": "generally called insulators or non-conductors",
    "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -969,28 +384,12 @@
    ]
   },
   {
-   "id": "that due|to|anode rays",
-   "subject": "that due",
-   "verb": "to",
-   "object": "anode rays",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#810-931",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "Page 890: \"The colour of the luminosity due to positive rays is not in general the same as that due to anode rays.\""
-    }
-   ]
-  },
-  {
    "id": "the ohm|are|the microhm and the megohm",
    "subject": "the ohm",
    "verb": "are",
    "object": "the microhm and the megohm",
    "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1006,7 +405,7 @@
    "verb": "are",
    "object": "preceded by an underscore",
    "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1022,7 +421,7 @@
    "verb": "are",
    "object": "spoken of as bad or good insulators",
    "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1033,28 +432,12 @@
    ]
   },
   {
-   "id": "those mixtures|or|combinations of metallic substances known as alloys",
-   "subject": "those mixtures",
-   "verb": "or",
-   "object": "combinations of metallic substances known as alloys",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#2548-2675",
-     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
-     "text": "The first class comprises all metallic substances, and those mixtures or combinations of metallic substances known as alloys."
-    }
-   ]
-  },
-  {
    "id": "typographical errors|have|been corrected:",
    "subject": "typographical errors",
    "verb": "have",
    "object": "been corrected:",
    "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1070,7 +453,7 @@
    "verb": "are",
    "object": "subscripted",
    "witnesses": [
-    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@b2de25493ccfe8e8"
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1082,7 +465,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:26.407Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:11.128Z"
  }
 }

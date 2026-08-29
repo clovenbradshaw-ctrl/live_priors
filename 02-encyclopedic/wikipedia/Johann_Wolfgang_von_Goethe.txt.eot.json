@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 61511,
   "bodyOffset": 0,
   "bodyChars": 61511,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,63 +55,39 @@
   "referentEvents": 28,
   "distinctReferents": 22,
   "examined": true,
-  "edgesFound": 91,
+  "edgesFound": 50,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 61,
+   "verbs": 46,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 61
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 50,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 94,
-  "excerptOk": 94,
-  "rawChecked": 94,
-  "rawOk": 94,
+  "excerptChecked": 54,
+  "excerptOk": 54,
+  "rawChecked": 54,
+  "rawOk": 54,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 91,
-  "heard": 91,
+  "offered": 50,
+  "heard": 50,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "free city|of|frankfurt",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Free City of Frankfurt",
-    "subject": "Free City",
-    "verb": "of",
-    "object": "Frankfurt",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#0-22",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Free City of Frankfurt"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "including august|von|goetheaugust",
@@ -110,7 +104,7 @@
     "verb": "von",
     "object": "GoetheAugust",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -119,7 +113,7 @@
       "text": "5, including August von GoetheAugust"
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -139,7 +133,7 @@
     "verb": "bibliography",
     "object": "}}",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,7 +142,7 @@
       "text": "See Johann Wolfgang von Goethe bibliography }}"
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -168,7 +162,7 @@
     "verb": "von",
     "object": "Goethe",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -185,9 +179,14 @@
       "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4160-4986",
       "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
       "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
+     },
+     {
+      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5970-6220",
+      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
+      "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
      }
     ],
-    "seq": 3,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -207,7 +206,7 @@
     "verb": "pronunciations",
     "object": "include",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -216,7 +215,7 @@
       "text": "Johann Wolfgang von Goethe; English pronunciations include , .}} (28 August 1749 – 22 March 1832) was a German polymath who is widely regarded as the most influential writer in the German language."
      }
     ],
-    "seq": 4,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -236,7 +235,7 @@
     "verb": "is",
     "object": "widely regarded as the most influential writer in the German language",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -245,36 +244,7 @@
       "text": "Johann Wolfgang von Goethe; English pronunciations include , .}} (28 August 1749 – 22 March 1832) was a German polymath who is widely regarded as the most influential writer in the German language."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ranging influence|on|western literatureliterary",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ranging influence on Western literatureliterary",
-    "subject": "ranging influence",
-    "verb": "on",
-    "object": "Western literatureliterary",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#380-631",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "His work has had a wide-ranging influence on Western literatureliterary, Political philosophyEuropean Enlightenmentpolitical, Christian views, and Western philosophyphilosophical thought in the Western world from the late 18th century to the present.."
-     }
-    ],
-    "seq": 6,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -294,7 +264,7 @@
     "verb": "philosophyeuropean",
     "object": "Enlightenmentpolitical",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -303,7 +273,7 @@
       "text": "His work has had a wide-ranging influence on Western literatureliterary, Political philosophyEuropean Enlightenmentpolitical, Christian views, and Western philosophyphilosophical thought in the Western world from the late 18th century to the present.."
      }
     ],
-    "seq": 7,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -323,7 +293,7 @@
     "verb": "philosophyphilosophical",
     "object": "thought in the Western world from the late 18th century to the present",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -332,7 +302,7 @@
       "text": "His work has had a wide-ranging influence on Western literatureliterary, Political philosophyEuropean Enlightenmentpolitical, Christian views, and Western philosophyphilosophical thought in the Western world from the late 18th century to the present.."
      }
     ],
-    "seq": 8,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -352,7 +322,7 @@
     "verb": "wrote",
     "object": "a wide range of Johann Wolfgang von Goethe bibliographyworks",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -361,65 +331,7 @@
       "text": "A poet, playwright, novelist, scientist, statesman, theatre-director, and critic, Goethe wrote a wide range of Johann Wolfgang von Goethe bibliographyworks, including plays, poetry and aesthetic criticism, as well as treatises on botany, anatomy, and colour."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "poetry|and|aesthetic criticism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "poetry and aesthetic criticism",
-    "subject": "poetry",
-    "verb": "and",
-    "object": "aesthetic criticism",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#632-890",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "A poet, playwright, novelist, scientist, statesman, theatre-director, and critic, Goethe wrote a wide range of Johann Wolfgang von Goethe bibliographyworks, including plays, poetry and aesthetic criticism, as well as treatises on botany, anatomy, and colour."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as well|as|treatises on botany",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as well as treatises on botany",
-    "subject": "as well",
-    "verb": "as",
-    "object": "treatises on botany",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#632-890",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "A poet, playwright, novelist, scientist, statesman, theatre-director, and critic, Goethe wrote a wide range of Johann Wolfgang von Goethe bibliographyworks, including plays, poetry and aesthetic criticism, as well as treatises on botany, anatomy, and colour."
-     }
-    ],
-    "seq": 11,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -439,7 +351,7 @@
     "verb": "took",
     "object": "up residence in Weimar in 1775 following the success of his first novel",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -448,65 +360,7 @@
       "text": "Goethe took up residence in Weimar in 1775 following the success of his first novel, The Sorrows of Young Werther (1774), and joined a thriving intellectual and cultural environment under the patronage of Duchess Anna Amalia of Brunswick-WolfenbüttelDuchess Anna Amalia that formed the basis of Weimar Classicism."
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the sorrows|of|young werther (1774)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The Sorrows of Young Werther (1774)",
-    "subject": "The Sorrows",
-    "verb": "of",
-    "object": "Young Werther (1774)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#892-1205",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Goethe took up residence in Weimar in 1775 following the success of his first novel, The Sorrows of Young Werther (1774), and joined a thriving intellectual and cultural environment under the patronage of Duchess Anna Amalia of Brunswick-WolfenbüttelDuchess Anna Amalia that formed the basis of Weimar Classicism."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "thriving intellectual|and|cultural environment under the patronage of duchess anna amalia of brunswick-wolfenbüttelduchess anna amalia that formed the basis of weimar classicism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "thriving intellectual and cultural environment under the patronage of Duchess Anna Amalia of Brunswick-WolfenbüttelDuchess Anna Amalia that formed the basis of Weimar Classicism",
-    "subject": "thriving intellectual",
-    "verb": "and",
-    "object": "cultural environment under the patronage of Duchess Anna Amalia of Brunswick-WolfenbüttelDuchess Anna Amalia that formed the basis of Weimar Classicism",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#892-1205",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Goethe took up residence in Weimar in 1775 following the success of his first novel, The Sorrows of Young Werther (1774), and joined a thriving intellectual and cultural environment under the patronage of Duchess Anna Amalia of Brunswick-WolfenbüttelDuchess Anna Amalia that formed the basis of Weimar Classicism."
-     }
-    ],
-    "seq": 14,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -526,7 +380,7 @@
     "verb": "was",
     "object": "ennobled by Karl August",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -535,36 +389,7 @@
       "text": "He was ennobled by Karl August, Grand Duke of Saxe-Weimar-EisenachKarl August, Duke of Saxe-Weimar, in 1782."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "grand duke|of|saxe-weimar-eisenachkarl august",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Grand Duke of Saxe-Weimar-EisenachKarl August",
-    "subject": "Grand Duke",
-    "verb": "of",
-    "object": "Saxe-Weimar-EisenachKarl August",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1206-1314",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "He was ennobled by Karl August, Grand Duke of Saxe-Weimar-EisenachKarl August, Duke of Saxe-Weimar, in 1782."
-     }
-    ],
-    "seq": 16,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -584,7 +409,7 @@
     "verb": "was",
     "object": "an early participant in the Sturm und Drang literary movement",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -593,36 +418,7 @@
       "text": "Goethe was an early participant in the Sturm und Drang literary movement."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ten years|in|weimar",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ten years in Weimar",
-    "subject": "ten years",
-    "verb": "in",
-    "object": "Weimar",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1389-1665",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
-     }
-    ],
-    "seq": 18,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -642,7 +438,7 @@
     "verb": "became",
     "object": "a member of the Duke's privy council (1776–1785)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -651,152 +447,7 @@
       "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
      }
     ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sat|on|the war and highway commissions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sat on the war and highway commissions",
-    "subject": "sat",
-    "verb": "on",
-    "object": "the war and highway commissions",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1389-1665",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the reopening|of|silver mines in nearby ilmenau",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the reopening of silver mines in nearby Ilmenau",
-    "subject": "the reopening",
-    "verb": "of",
-    "object": "silver mines in nearby Ilmenau",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1389-1665",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a series|of|administrative reforms at the university of jena",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a series of administrative reforms at the University of Jena",
-    "subject": "a series",
-    "verb": "of",
-    "object": "administrative reforms at the University of Jena",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1389-1665",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he|also|contributed to the planning of weimar's botanical park and the rebuilding of its schloss weimarducal palace",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "He also contributed to the planning of Weimar's botanical park and the rebuilding of its Schloss WeimarDucal Palace",
-    "subject": "He",
-    "verb": "also",
-    "object": "contributed to the planning of Weimar's botanical park and the rebuilding of its Schloss WeimarDucal Palace",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1666-1784",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "He also contributed to the planning of Weimar's botanical park and the rebuilding of its Schloss WeimarDucal Palace.}}"
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the metamorphosis|of|plants",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Metamorphosis of Plants",
-    "subject": "the Metamorphosis",
-    "verb": "of",
-    "object": "Plants",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1786-1911",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Goethe's first major scientific work, the Metamorphosis of Plants, was published after he returned from a 1788 tour of Italy."
-     }
-    ],
-    "seq": 24,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -816,7 +467,7 @@
     "verb": "published",
     "object": "after he returned from a 1788 tour of Italy",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -825,7 +476,7 @@
       "text": "Goethe's first major scientific work, the Metamorphosis of Plants, was published after he returned from a 1788 tour of Italy."
      }
     ],
-    "seq": 25,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -845,7 +496,7 @@
     "verb": "was",
     "object": "made managing director of the Deutsches Nationaltheater und Staatskapelle Weimartheatre at Weimar",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -854,36 +505,7 @@
       "text": "In 1791 he was made managing director of the Deutsches Nationaltheater und Staatskapelle Weimartheatre at Weimar, and in 1794 he began a friendship with the playwrightdramatist, historian, and philosopher Friedrich Schiller, whose plays he premiered until Schiller's death in 1805."
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|in|1794 he began a friendship with the playwrightdramatist",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and in 1794 he began a friendship with the playwrightdramatist",
-    "subject": "and",
-    "verb": "in",
-    "object": "1794 he began a friendship with the playwrightdramatist",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1912-2193",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "In 1791 he was made managing director of the Deutsches Nationaltheater und Staatskapelle Weimartheatre at Weimar, and in 1794 he began a friendship with the playwrightdramatist, historian, and philosopher Friedrich Schiller, whose plays he premiered until Schiller's death in 1805."
-     }
-    ],
-    "seq": 27,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -903,7 +525,7 @@
     "verb": "philosopher",
     "object": "Friedrich Schiller",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -912,36 +534,7 @@
       "text": "In 1791 he was made managing director of the Deutsches Nationaltheater und Staatskapelle Weimartheatre at Weimar, and in 1794 he began a friendship with the playwrightdramatist, historian, and philosopher Friedrich Schiller, whose plays he premiered until Schiller's death in 1805."
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "schiller's death|in|1805",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Schiller's death in 1805",
-    "subject": "Schiller's death",
-    "verb": "in",
-    "object": "1805",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1912-2193",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "In 1791 he was made managing director of the Deutsches Nationaltheater und Staatskapelle Weimartheatre at Weimar, and in 1794 he began a friendship with the playwrightdramatist, historian, and philosopher Friedrich Schiller, whose plays he premiered until Schiller's death in 1805."
-     }
-    ],
-    "seq": 29,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -961,7 +554,7 @@
     "verb": "published",
     "object": "his second novel",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -970,94 +563,7 @@
       "text": "During this period, Goethe published his second novel, Wilhelm Meister's Apprenticeship; the verse epic Hermann and Dorothea, and, in 1808, the first part of his most celebrated drama, Goethe's FaustFaust."
      }
     ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "epic hermann|and|dorothea",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "epic Hermann and Dorothea",
-    "subject": "epic Hermann",
-    "verb": "and",
-    "object": "Dorothea",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2194-2399",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "During this period, Goethe published his second novel, Wilhelm Meister's Apprenticeship; the verse epic Hermann and Dorothea, and, in 1808, the first part of his most celebrated drama, Goethe's FaustFaust."
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "first part|of|his most celebrated drama",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "first part of his most celebrated drama",
-    "subject": "first part",
-    "verb": "of",
-    "object": "his most celebrated drama",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2194-2399",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "During this period, Goethe published his second novel, Wilhelm Meister's Apprenticeship; the verse epic Hermann and Dorothea, and, in 1808, the first part of his most celebrated drama, Goethe's FaustFaust."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "his conversations|and|various shared undertakings throughout the 1790s with schiller",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "His conversations and various shared undertakings throughout the 1790s with Schiller",
-    "subject": "His conversations",
-    "verb": "and",
-    "object": "various shared undertakings throughout the 1790s with Schiller",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2400-2684",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "His conversations and various shared undertakings throughout the 1790s with Schiller, Johann Gottlieb Fichte, Johann Gottfried Herder, Alexander von Humboldt, Wilhelm von Humboldt, and August SchlegelAugust and Friedrich Schlegel have come to be collectively termed Weimar Classicism."
-     }
-    ],
-    "seq": 33,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1077,7 +583,7 @@
     "verb": "von",
     "object": "Humboldt",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1086,7 +592,7 @@
       "text": "His conversations and various shared undertakings throughout the 1790s with Schiller, Johann Gottlieb Fichte, Johann Gottfried Herder, Alexander von Humboldt, Wilhelm von Humboldt, and August SchlegelAugust and Friedrich Schlegel have come to be collectively termed Weimar Classicism."
      }
     ],
-    "seq": 34,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1106,7 +612,7 @@
     "verb": "von",
     "object": "Humboldt",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1115,13 +621,13 @@
       "text": "His conversations and various shared undertakings throughout the 1790s with Schiller, Johann Gottlieb Fichte, Johann Gottfried Herder, Alexander von Humboldt, Wilhelm von Humboldt, and August SchlegelAugust and Friedrich Schlegel have come to be collectively termed Weimar Classicism."
      }
     ],
-    "seq": 35,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "august schlegelaugust|and|friedrich schlegel have come to be collectively termed weimar classicism",
+    "task_id": "friedrich schlegel|have|come to be collectively termed weimar classicism",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1130,12 +636,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "August SchlegelAugust and Friedrich Schlegel have come to be collectively termed Weimar Classicism",
-    "subject": "August SchlegelAugust",
-    "verb": "and",
-    "object": "Friedrich Schlegel have come to be collectively termed Weimar Classicism",
+    "description": "Friedrich Schlegel have come to be collectively termed Weimar Classicism",
+    "subject": "Friedrich Schlegel",
+    "verb": "have",
+    "object": "come to be collectively termed Weimar Classicism",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1144,7 +650,7 @@
       "text": "His conversations and various shared undertakings throughout the 1790s with Schiller, Johann Gottlieb Fichte, Johann Gottfried Herder, Alexander von Humboldt, Wilhelm von Humboldt, and August SchlegelAugust and Friedrich Schlegel have come to be collectively termed Weimar Classicism."
      }
     ],
-    "seq": 36,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1164,7 +670,7 @@
     "verb": "philosopher",
     "object": "Arthur Schopenhauer named Wilhelm Meister's Apprenticeship one of the four greatest novels ever written",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1173,7 +679,7 @@
       "text": "The German philosopher Arthur Schopenhauer named Wilhelm Meister's Apprenticeship one of the four greatest novels ever written, while the American philosopher and essayist Ralph Waldo Emerson selected Goethe as one of six \"representative men\" in his Representative Menwork of the same name (along with Plato, Emanuel Swedenborg, Michel de Montaigne, Napoleon, and William Shakespeare)."
      }
     ],
-    "seq": 37,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1193,7 +699,7 @@
     "verb": "philosopher",
     "object": "and essayist Ralph Waldo Emerson selected Goethe as one of six \"representative men\" in his Representative Menwork of the same name (along with Plato",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1202,36 +708,7 @@
       "text": "The German philosopher Arthur Schopenhauer named Wilhelm Meister's Apprenticeship one of the four greatest novels ever written, while the American philosopher and essayist Ralph Waldo Emerson selected Goethe as one of six \"representative men\" in his Representative Menwork of the same name (along with Plato, Emanuel Swedenborg, Michel de Montaigne, Napoleon, and William Shakespeare)."
      }
     ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "goethe's comments|and|observations form the basis of several biographical works",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Goethe's comments and observations form the basis of several biographical works",
-    "subject": "Goethe's comments",
-    "verb": "and",
-    "object": "observations form the basis of several biographical works",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3072-3219",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Goethe's comments and observations form the basis of several biographical works, notably Johann Peter Eckermann's Conversations with Goethe (1836)."
-     }
-    ],
-    "seq": 39,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1251,7 +728,7 @@
     "verb": "were",
     "object": "set to music by many composers",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1260,13 +737,13 @@
       "text": "His poems were set to music by many composers, including Wolfgang Amadeus Mozart, Ludwig van Beethoven, Franz Schubert, Hector Berlioz, Franz Liszt, Richard Wagner, and Gustav Mahler."
      }
     ],
-    "seq": 40,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "exterior|of|the goethe house on großer hirschgraben in frankfurt am main",
+    "task_id": "in frankfurt|am|main",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1275,12 +752,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Exterior of the Goethe House on Großer Hirschgraben in Frankfurt am Main",
-    "subject": "Exterior",
-    "verb": "of",
-    "object": "the Goethe House on Großer Hirschgraben in Frankfurt am Main",
+    "description": "in Frankfurt am Main",
+    "subject": "in Frankfurt",
+    "verb": "am",
+    "object": "Main",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1289,42 +766,13 @@
       "text": "in Frankfurt (Großer Hirschgraben)Exterior of the Goethe House on Großer Hirschgraben in Frankfurt am Main, showing its multi-storey yellow facade with gray trim and rows of rectangular windows.]]"
      }
     ],
-    "seq": 41,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "gray trim|and|rows of rectangular windows",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gray trim and rows of rectangular windows",
-    "subject": "gray trim",
-    "verb": "and",
-    "object": "rows of rectangular windows",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3428-3624",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "in Frankfurt (Großer Hirschgraben)Exterior of the Goethe House on Großer Hirschgraben in Frankfurt am Main, showing its multi-storey yellow facade with gray trim and rows of rectangular windows.]]"
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "goethe descended|from|the :de:sadok seli soltan soltan",
+    "task_id": "goethe|descended|from the :de:sadok seli soltan soltan",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1334,11 +782,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Goethe descended from the :de:Sadok Seli Soltan Soltan",
-    "subject": "Goethe descended",
-    "verb": "from",
-    "object": "the :de:Sadok Seli Soltan Soltan",
+    "subject": "Goethe",
+    "verb": "descended",
+    "object": "from the :de:Sadok Seli Soltan Soltan",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1347,7 +795,7 @@
       "text": "Through his maternal grandmother, Goethe descended from the :de:Sadok Seli Soltan Soltan .Meier-Braun, Karl-Heinz [in German] (2017), Die 101 wichtigsten Fragen: Einwanderung und Asyl, C.H."
      }
     ],
-    "seq": 43,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1367,7 +815,7 @@
     "verb": "und",
     "object": "Asyl",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1376,7 +824,7 @@
       "text": "Through his maternal grandmother, Goethe descended from the :de:Sadok Seli Soltan Soltan .Meier-Braun, Karl-Heinz [in German] (2017), Die 101 wichtigsten Fragen: Einwanderung und Asyl, C.H."
      }
     ],
-    "seq": 44,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1396,7 +844,7 @@
     "verb": "diese",
     "object": "Wurzeln jedoch nach Baden-Württemberg zurückreichen",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1405,36 +853,7 @@
       "text": "Dass diese Wurzeln jedoch nach Baden-Württemberg zurückreichen, weniger."
      }
     ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hat jedenfalls|der|brackenheimer dekan werner-ulrich deetjen herausgefunden",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hat jedenfalls der Brackenheimer Dekan Werner-Ulrich Deetjen herausgefunden",
-    "subject": "hat jedenfalls",
-    "verb": "der",
-    "object": "Brackenheimer Dekan Werner-Ulrich Deetjen herausgefunden",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3968-4048",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Das hat jedenfalls der Brackenheimer Dekan Werner-Ulrich Deetjen herausgefunden."
-     }
-    ],
-    "seq": 46,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1454,7 +873,7 @@
     "verb": "gehen",
     "object": "Goethes Vorfahren auf Sadok Selim zurück",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1463,36 +882,7 @@
       "text": "Laut dem promovierten Kirchenhistoriker gehen Goethes Vorfahren auf Sadok Selim zurück, der gegen Ende des 13."
      }
     ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gegen ende|des|13",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gegen Ende des 13",
-    "subject": "gegen Ende",
-    "verb": "des",
-    "object": "13",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4049-4159",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Laut dem promovierten Kirchenhistoriker gehen Goethes Vorfahren auf Sadok Selim zurück, der gegen Ende des 13."
-     }
-    ],
-    "seq": 48,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1512,7 +902,7 @@
     "verb": "mit",
     "object": "Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1521,36 +911,7 @@
       "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
      }
     ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "schule in|der|einwanderungsgesellschaft: ein handbuch",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Schule in der Einwanderungsgesellschaft: ein Handbuch",
-    "subject": "Schule in",
-    "verb": "der",
-    "object": "Einwanderungsgesellschaft: ein Handbuch",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4160-4986",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
-     }
-    ],
-    "seq": 50,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1570,7 +931,7 @@
     "verb": "von",
     "object": "dem türkischen Offizier Sadok Seli Zoltan abstammen",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1579,7 +940,7 @@
       "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
      }
     ],
-    "seq": 51,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -1599,7 +960,7 @@
     "verb": "von",
     "object": "Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1608,36 +969,7 @@
       "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
      }
     ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "geschichte|der|ausländer in deutschland",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Geschichte der Ausländer in Deutschland",
-    "subject": "Geschichte",
-    "verb": "der",
-    "object": "Ausländer in Deutschland",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4160-4986",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
-     }
-    ],
-    "seq": 53,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1657,7 +989,7 @@
     "verb": "und",
     "object": "Auswanderung in Baden-Württemberg",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1666,7 +998,7 @@
       "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
      }
     ],
-    "seq": 54,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -1686,7 +1018,7 @@
     "verb": "heiratete",
     "object": "Rebekka Dohlerin",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1695,7 +1027,7 @@
       "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
      }
     ],
-    "seq": 55,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -1715,7 +1047,7 @@
     "verb": "als",
     "object": "Johann Wolfgang von Goethe zählt diesen ehemaligen türkischen Beamten und Offizier zu seinen Vorfahren\" His earliest ancestor documented in Germany is believed to be Sadok Seli Soltan (Mehmet Sadık Selim Sultan) from Sultanate of RumSeljuk Sultanate of Rum",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1724,7 +1056,7 @@
       "text": "Kein Geringerer als Johann Wolfgang von Goethe zählt diesen ehemaligen türkischen Beamten und Offizier zu seinen Vorfahren\" His earliest ancestor documented in Germany is believed to be Sadok Seli Soltan (Mehmet Sadık Selim Sultan) from Sultanate of RumSeljuk Sultanate of Rum."
      }
     ],
-    "seq": 56,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
@@ -1744,7 +1076,7 @@
     "verb": "was",
     "object": "a Turkish peopleTurkish officer who was captured by Count von Lechtomir (Reinhart von Württemberg) during his return to Germany from the Holy Land in 1291",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1753,7 +1085,7 @@
       "text": "Soltan was a Turkish peopleTurkish officer who was captured by Count von Lechtomir (Reinhart von Württemberg) during his return to Germany from the Holy Land in 1291."
      }
     ],
-    "seq": 57,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -1773,7 +1105,7 @@
     "verb": "baptised",
     "object": "and took the name Johann Soldan and married the Rebekka Dohlerin",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1782,94 +1114,7 @@
       "text": "By 1304 Soltan baptised and took the name Johann Soldan and married the Rebekka Dohlerin."
      }
     ],
-    "seq": 58,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "moved|from|thuringia in 1687 and changed the spelling of his surname from göthe to goethe",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "moved from Thuringia in 1687 and changed the spelling of his surname from Göthe to Goethe",
-    "subject": "moved",
-    "verb": "from",
-    "object": "Thuringia in 1687 and changed the spelling of his surname from Göthe to Goethe",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5523-5637",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Goethe's grandfather, , moved from Thuringia in 1687 and changed the spelling of his surname from Göthe to Goethe."
-     }
-    ],
-    "seq": 59,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "first worked|as|a tailor",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "first worked as a tailor",
-    "subject": "first worked",
-    "verb": "as",
-    "object": "a tailor",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5638-5702",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "In Frankfurt, he first worked as a tailor, then opened a tavern."
-     }
-    ],
-    "seq": 60,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "his son|and|grandchildren subsequently lived on the fortune he earned",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "His son and grandchildren subsequently lived on the fortune he earned",
-    "subject": "His son",
-    "verb": "and",
-    "object": "grandchildren subsequently lived on the fortune he earned",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5703-5773",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "His son and grandchildren subsequently lived on the fortune he earned."
-     }
-    ],
-    "seq": 61,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
@@ -1889,7 +1134,7 @@
     "verb": "was",
     "object": "married twice",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1898,7 +1143,7 @@
       "text": "Friedrich Georg Goethe was married twice; his first marriage was to Anna Elisabeth Lutz, the daughter of a burgher, Sebastian Lutz, with whom he had five children, including Hermann Jakob Goethe."
      }
     ],
-    "seq": 62,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    },
@@ -1918,7 +1163,7 @@
     "verb": "was",
     "object": "to Anna Elisabeth Lutz",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1927,65 +1172,7 @@
       "text": "Friedrich Georg Goethe was married twice; his first marriage was to Anna Elisabeth Lutz, the daughter of a burgher, Sebastian Lutz, with whom he had five children, including Hermann Jakob Goethe."
      }
     ],
-    "seq": 63,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the daughter|of|a burgher",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the daughter of a burgher",
-    "subject": "the daughter",
-    "verb": "of",
-    "object": "a burgher",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5774-5969",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Friedrich Georg Goethe was married twice; his first marriage was to Anna Elisabeth Lutz, the daughter of a burgher, Sebastian Lutz, with whom he had five children, including Hermann Jakob Goethe."
-     }
-    ],
-    "seq": 64,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the death|of|his first wife in 1705",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the death of his first wife in 1705",
-    "subject": "the death",
-    "verb": "of",
-    "object": "his first wife in 1705",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5970-6220",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
-     }
-    ],
-    "seq": 65,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
@@ -2005,7 +1192,7 @@
     "verb": "married",
     "object": "Cornelia Schellhorn",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2014,152 +1201,7 @@
       "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
      }
     ],
-    "seq": 66,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "widow|of|the innkeeper johannes schellhorn (died 1704)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "widow of the innkeeper Johannes Schellhorn (died 1704)",
-    "subject": "widow",
-    "verb": "of",
-    "object": "the innkeeper Johannes Schellhorn (died 1704)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5970-6220",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
-     }
-    ],
-    "seq": 67,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "father|of|johann wolfgang von goethe",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "father of Johann Wolfgang von Goethe",
-    "subject": "father",
-    "verb": "of",
-    "object": "Johann Wolfgang von Goethe",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5970-6220",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
-     }
-    ],
-    "seq": 68,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "his family|in|a large house (today the goethe house) in frankfurt",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "his family in a large house (today the Goethe House) in Frankfurt",
-    "subject": "his family",
-    "verb": "in",
-    "object": "a large house (today the Goethe House) in Frankfurt",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6222-6390",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Goethe's father, Johann Caspar Goethe, lived with his family in a large house (today the Goethe House) in Frankfurt, then a free imperial city of the Holy Roman Empire."
-     }
-    ],
-    "seq": 69,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "imperial city|of|the holy roman empire",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "imperial city of the Holy Roman Empire",
-    "subject": "imperial city",
-    "verb": "of",
-    "object": "the Holy Roman Empire",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6222-6390",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Goethe's father, Johann Caspar Goethe, lived with his family in a large house (today the Goethe House) in Frankfurt, then a free imperial city of the Holy Roman Empire."
-     }
-    ],
-    "seq": 70,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "studied jurisprudencelaw|in|leipzig and had been appointed imperial councillor",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "studied Jurisprudencelaw in Leipzig and had been appointed Imperial Councillor",
-    "subject": "studied Jurisprudencelaw",
-    "verb": "in",
-    "object": "Leipzig and had been appointed Imperial Councillor",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6391-6575",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Though he had studied Jurisprudencelaw in Leipzig and had been appointed Imperial Councillor, Johann Caspar Goethe was not involved in the city's official affairs.Herman Grimm: Goethe."
-     }
-    ],
-    "seq": 71,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    },
@@ -2179,7 +1221,7 @@
     "verb": "was",
     "object": "not involved in the city's official affairs",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2188,13 +1230,13 @@
       "text": "Though he had studied Jurisprudencelaw in Leipzig and had been appointed Imperial Councillor, Johann Caspar Goethe was not involved in the city's official affairs.Herman Grimm: Goethe."
      }
     ],
-    "seq": 72,
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "gehalten an|der|königlichen universität zu berlin",
+    "task_id": "königlichen universität|zu|berlin",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2203,12 +1245,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "gehalten an der Königlichen Universität zu Berlin",
-    "subject": "gehalten an",
-    "verb": "der",
-    "object": "Königlichen Universität zu Berlin",
+    "description": "Königlichen Universität zu Berlin",
+    "subject": "Königlichen Universität",
+    "verb": "zu",
+    "object": "Berlin",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2217,7 +1259,7 @@
       "text": "Vorlesungen gehalten an der Königlichen Universität zu Berlin."
      }
     ],
-    "seq": 73,
+    "seq": 39,
     "depends_on": [],
     "evidence": []
    },
@@ -2237,7 +1279,7 @@
     "verb": "married",
     "object": "Goethe's mother",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2246,36 +1288,7 @@
       "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
      }
     ],
-    "seq": 74,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in frankfurt|on|20 august 1748",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in Frankfurt on 20 August 1748",
-    "subject": "in Frankfurt",
-    "verb": "on",
-    "object": "20 August 1748",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6652-6999",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
-     }
-    ],
-    "seq": 75,
+    "seq": 40,
     "depends_on": [],
     "evidence": []
    },
@@ -2295,7 +1308,7 @@
     "verb": "was",
     "object": "38 and she was 17",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2304,7 +1317,7 @@
       "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
      }
     ],
-    "seq": 76,
+    "seq": 41,
     "depends_on": [],
     "evidence": []
    },
@@ -2324,7 +1337,7 @@
     "verb": "was",
     "object": "the daughter of  (1693–1771)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2333,123 +1346,7 @@
       "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
      }
     ],
-    "seq": 77,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sheriff|of|frankfurt",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sheriff of Frankfurt",
-    "subject": "sheriff",
-    "verb": "of",
-    "object": "Frankfurt",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6652-6999",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
-     }
-    ],
-    "seq": 78,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|of|anna margaretha lindheimer (1711–1783)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and of Anna Margaretha Lindheimer (1711–1783)",
-    "subject": "and",
-    "verb": "of",
-    "object": "Anna Margaretha Lindheimer (1711–1783)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6652-6999",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
-     }
-    ],
-    "seq": 79,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the exception|of|johann wolfgang and his sister cornelia schlossercornelia friederica christiana",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the exception of Johann Wolfgang and his sister Cornelia SchlosserCornelia Friederica Christiana",
-    "subject": "the exception",
-    "verb": "of",
-    "object": "Johann Wolfgang and his sister Cornelia SchlosserCornelia Friederica Christiana",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7000-7144",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "All their children, with the exception of Johann Wolfgang and his sister Cornelia SchlosserCornelia Friederica Christiana, died at an early age."
-     }
-    ],
-    "seq": 80,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "died|at|an early age",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "died at an early age",
-    "subject": "died",
-    "verb": "at",
-    "object": "an early age",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7000-7144",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "All their children, with the exception of Johann Wolfgang and his sister Cornelia SchlosserCornelia Friederica Christiana, died at an early age."
-     }
-    ],
-    "seq": 81,
+    "seq": 42,
     "depends_on": [],
     "evidence": []
    },
@@ -2469,7 +1366,7 @@
     "verb": "received",
     "object": "from his father and private tutors lessons in subjects common at the time",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2483,13 +1380,13 @@
       "text": "Goethe also received lessons in dancing, equestrianismriding, and fencing."
      }
     ],
-    "seq": 82,
+    "seq": 43,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "feeling frustrated|in|his own ambitions",
+    "task_id": "children should|have|every advantage he had missed",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2498,12 +1395,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "feeling frustrated in his own ambitions",
-    "subject": "feeling frustrated",
-    "verb": "in",
-    "object": "his own ambitions",
+    "description": "children should have every advantage he had missed",
+    "subject": "children should",
+    "verb": "have",
+    "object": "every advantage he had missed",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2512,36 +1409,7 @@
       "text": "Johann Caspar, feeling frustrated in his own ambitions, was determined that his children should have every advantage he had missed."
      }
     ],
-    "seq": 83,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was determined|that|his children should have every advantage he had missed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was determined that his children should have every advantage he had missed",
-    "subject": "was determined",
-    "verb": "that",
-    "object": "his children should have every advantage he had missed",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7429-7560",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "Johann Caspar, feeling frustrated in his own ambitions, was determined that his children should have every advantage he had missed."
-     }
-    ],
-    "seq": 84,
+    "seq": 44,
     "depends_on": [],
     "evidence": []
    },
@@ -2561,7 +1429,7 @@
     "verb": "was",
     "object": "drawing",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2570,7 +1438,7 @@
       "text": "Although Goethe's great passion was drawing, he quickly became interested in literature; Friedrich Gottlieb Klopstock and Homer were among his early favourites.Oehler, R 1932, \"Buch und Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\", The Library Quarterly, 2, pp."
      }
     ],
-    "seq": 85,
+    "seq": 45,
     "depends_on": [],
     "evidence": []
    },
@@ -2590,7 +1458,7 @@
     "verb": "became",
     "object": "interested in literature",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2599,13 +1467,13 @@
       "text": "Although Goethe's great passion was drawing, he quickly became interested in literature; Friedrich Gottlieb Klopstock and Homer were among his early favourites.Oehler, R 1932, \"Buch und Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\", The Library Quarterly, 2, pp."
      }
     ],
-    "seq": 86,
+    "seq": 46,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "gottlieb klopstock|and|homer were among his early favourites",
+    "task_id": "and homer|were|among his early favourites",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2614,12 +1482,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Gottlieb Klopstock and Homer were among his early favourites",
-    "subject": "Gottlieb Klopstock",
-    "verb": "and",
-    "object": "Homer were among his early favourites",
+    "description": "and Homer were among his early favourites",
+    "subject": "and Homer",
+    "verb": "were",
+    "object": "among his early favourites",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2628,7 +1496,7 @@
       "text": "Although Goethe's great passion was drawing, he quickly became interested in literature; Friedrich Gottlieb Klopstock and Homer were among his early favourites.Oehler, R 1932, \"Buch und Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\", The Library Quarterly, 2, pp."
      }
     ],
-    "seq": 87,
+    "seq": 47,
     "depends_on": [],
     "evidence": []
    },
@@ -2648,7 +1516,7 @@
     "verb": "und",
     "object": "Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\"",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2657,36 +1525,7 @@
       "text": "Although Goethe's great passion was drawing, he quickly became interested in literature; Friedrich Gottlieb Klopstock and Homer were among his early favourites.Oehler, R 1932, \"Buch und Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\", The Library Quarterly, 2, pp."
      }
     ],
-    "seq": 88,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "249 he|also|had a devotion to the theater",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "249 He also had a devotion to the theater",
-    "subject": "249 He",
-    "verb": "also",
-    "object": "had a devotion to the theater",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7869-8000",
-      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-      "text": "232–249 He also had a devotion to the theater, and was greatly fascinated by the puppet shows that were annually arranged by occupy"
-     }
-    ],
-    "seq": 89,
+    "seq": 48,
     "depends_on": [],
     "evidence": []
    },
@@ -2706,7 +1545,7 @@
     "verb": "was",
     "object": "greatly fascinated by the puppet shows that were annually arranged by occupy",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2715,12 +1554,12 @@
       "text": "232–249 He also had a devotion to the theater, and was greatly fascinated by the puppet shows that were annually arranged by occupy"
      }
     ],
-    "seq": 90,
+    "seq": 49,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 91,
+  "nextSeq": 50,
   "admits": [
    "NUL",
    "SEG",
@@ -2740,7 +1579,7 @@
    "verb": "baptised",
    "object": "and took the name Johann Soldan and married the Rebekka Dohlerin",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2756,7 +1595,7 @@
    "verb": "was",
    "object": "made managing director of the Deutsches Nationaltheater und Staatskapelle Weimartheatre at Weimar",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2767,44 +1606,12 @@
    ]
   },
   {
-   "id": "249 he|also|had a devotion to the theater",
-   "subject": "249 He",
-   "verb": "also",
-   "object": "had a devotion to the theater",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7869-8000",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "232–249 He also had a devotion to the theater, and was greatly fascinated by the puppet shows that were annually arranged by occupy"
-    }
-   ]
-  },
-  {
-   "id": "a series|of|administrative reforms at the university of jena",
-   "subject": "a series",
-   "verb": "of",
-   "object": "administrative reforms at the University of Jena",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1389-1665",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
-    }
-   ]
-  },
-  {
    "id": "alexander|von|humboldt",
    "subject": "Alexander",
    "verb": "von",
    "object": "Humboldt",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2815,12 +1622,28 @@
    ]
   },
   {
+   "id": "and homer|were|among his early favourites",
+   "subject": "and Homer",
+   "verb": "were",
+   "object": "among his early favourites",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7562-7868",
+     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
+     "text": "Although Goethe's great passion was drawing, he quickly became interested in literature; Friedrich Gottlieb Klopstock and Homer were among his early favourites.Oehler, R 1932, \"Buch und Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\", The Library Quarterly, 2, pp."
+    }
+   ]
+  },
+  {
    "id": "and western|philosophyphilosophical|thought in the western world from the late 18th century to the present",
    "subject": "and Western",
    "verb": "philosophyphilosophical",
    "object": "thought in the Western world from the late 18th century to the present",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2831,44 +1654,12 @@
    ]
   },
   {
-   "id": "and|in|1794 he began a friendship with the playwrightdramatist",
-   "subject": "and",
-   "verb": "in",
-   "object": "1794 he began a friendship with the playwrightdramatist",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1912-2193",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "In 1791 he was made managing director of the Deutsches Nationaltheater und Staatskapelle Weimartheatre at Weimar, and in 1794 he began a friendship with the playwrightdramatist, historian, and philosopher Friedrich Schiller, whose plays he premiered until Schiller's death in 1805."
-    }
-   ]
-  },
-  {
-   "id": "and|of|anna margaretha lindheimer (1711–1783)",
-   "subject": "and",
-   "verb": "of",
-   "object": "Anna Margaretha Lindheimer (1711–1783)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6652-6999",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
-    }
-   ]
-  },
-  {
    "id": "and|philosopher|friedrich schiller",
    "subject": "and",
    "verb": "philosopher",
    "object": "Friedrich Schiller",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2884,7 +1675,7 @@
    "verb": "was",
    "object": "greatly fascinated by the puppet shows that were annually arranged by occupy",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2895,44 +1686,12 @@
    ]
   },
   {
-   "id": "as well|as|treatises on botany",
-   "subject": "as well",
-   "verb": "as",
-   "object": "treatises on botany",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#632-890",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "A poet, playwright, novelist, scientist, statesman, theatre-director, and critic, Goethe wrote a wide range of Johann Wolfgang von Goethe bibliographyworks, including plays, poetry and aesthetic criticism, as well as treatises on botany, anatomy, and colour."
-    }
-   ]
-  },
-  {
-   "id": "august schlegelaugust|and|friedrich schlegel have come to be collectively termed weimar classicism",
-   "subject": "August SchlegelAugust",
-   "verb": "and",
-   "object": "Friedrich Schlegel have come to be collectively termed Weimar Classicism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2400-2684",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "His conversations and various shared undertakings throughout the 1790s with Schiller, Johann Gottlieb Fichte, Johann Gottfried Herder, Alexander von Humboldt, Wilhelm von Humboldt, and August SchlegelAugust and Friedrich Schlegel have come to be collectively termed Weimar Classicism."
-    }
-   ]
-  },
-  {
    "id": "bei kämpfen|mit|kreuzfahrern im heiligen land in die gefangenschaft des deutschritterordens geriet",
    "subject": "bei Kämpfen",
    "verb": "mit",
    "object": "Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2948,7 +1707,7 @@
    "verb": "und",
    "object": "Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\"",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2964,7 +1723,7 @@
    "verb": "was",
    "object": "not involved in the city's official affairs",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2980,7 +1739,7 @@
    "verb": "was",
    "object": "the daughter of  (1693–1771)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2991,12 +1750,28 @@
    ]
   },
   {
+   "id": "children should|have|every advantage he had missed",
+   "subject": "children should",
+   "verb": "have",
+   "object": "every advantage he had missed",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7429-7560",
+     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
+     "text": "Johann Caspar, feeling frustrated in his own ambitions, was determined that his children should have every advantage he had missed."
+    }
+   ]
+  },
+  {
    "id": "dass|diese|wurzeln jedoch nach baden-württemberg zurückreichen",
    "subject": "Dass",
    "verb": "diese",
    "object": "Wurzeln jedoch nach Baden-Württemberg zurückreichen",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3007,28 +1782,12 @@
    ]
   },
   {
-   "id": "died|at|an early age",
-   "subject": "died",
-   "verb": "at",
-   "object": "an early age",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7000-7144",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "All their children, with the exception of Johann Wolfgang and his sister Cornelia SchlosserCornelia Friederica Christiana, died at an early age."
-    }
-   ]
-  },
-  {
    "id": "einwanderung|und|asyl",
    "subject": "Einwanderung",
    "verb": "und",
    "object": "Asyl",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3044,7 +1803,7 @@
    "verb": "pronunciations",
    "object": "include",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3055,82 +1814,18 @@
    ]
   },
   {
-   "id": "epic hermann|and|dorothea",
-   "subject": "epic Hermann",
-   "verb": "and",
-   "object": "Dorothea",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2194-2399",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "During this period, Goethe published his second novel, Wilhelm Meister's Apprenticeship; the verse epic Hermann and Dorothea, and, in 1808, the first part of his most celebrated drama, Goethe's FaustFaust."
-    }
-   ]
-  },
-  {
    "id": "er soll|von|dem türkischen offizier sadok seli zoltan abstammen",
    "subject": "Er soll",
    "verb": "von",
    "object": "dem türkischen Offizier Sadok Seli Zoltan abstammen",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4160-4986",
      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
      "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
-    }
-   ]
-  },
-  {
-   "id": "exterior|of|the goethe house on großer hirschgraben in frankfurt am main",
-   "subject": "Exterior",
-   "verb": "of",
-   "object": "the Goethe House on Großer Hirschgraben in Frankfurt am Main",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3428-3624",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "in Frankfurt (Großer Hirschgraben)Exterior of the Goethe House on Großer Hirschgraben in Frankfurt am Main, showing its multi-storey yellow facade with gray trim and rows of rectangular windows.]]"
-    }
-   ]
-  },
-  {
-   "id": "father|of|johann wolfgang von goethe",
-   "subject": "father",
-   "verb": "of",
-   "object": "Johann Wolfgang von Goethe",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5970-6220",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
-    }
-   ]
-  },
-  {
-   "id": "feeling frustrated|in|his own ambitions",
-   "subject": "feeling frustrated",
-   "verb": "in",
-   "object": "his own ambitions",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7429-7560",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Johann Caspar, feeling frustrated in his own ambitions, was determined that his children should have every advantage he had missed."
     }
    ]
   },
@@ -3140,7 +1835,7 @@
    "verb": "was",
    "object": "to Anna Elisabeth Lutz",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3151,82 +1846,18 @@
    ]
   },
   {
-   "id": "first part|of|his most celebrated drama",
-   "subject": "first part",
-   "verb": "of",
-   "object": "his most celebrated drama",
+   "id": "friedrich schlegel|have|come to be collectively termed weimar classicism",
+   "subject": "Friedrich Schlegel",
+   "verb": "have",
+   "object": "come to be collectively termed Weimar Classicism",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2194-2399",
+     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2400-2684",
      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "During this period, Goethe published his second novel, Wilhelm Meister's Apprenticeship; the verse epic Hermann and Dorothea, and, in 1808, the first part of his most celebrated drama, Goethe's FaustFaust."
-    }
-   ]
-  },
-  {
-   "id": "first worked|as|a tailor",
-   "subject": "first worked",
-   "verb": "as",
-   "object": "a tailor",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5638-5702",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "In Frankfurt, he first worked as a tailor, then opened a tavern."
-    }
-   ]
-  },
-  {
-   "id": "free city|of|frankfurt",
-   "subject": "Free City",
-   "verb": "of",
-   "object": "Frankfurt",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#0-22",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Free City of Frankfurt"
-    }
-   ]
-  },
-  {
-   "id": "gegen ende|des|13",
-   "subject": "gegen Ende",
-   "verb": "des",
-   "object": "13",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4049-4159",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Laut dem promovierten Kirchenhistoriker gehen Goethes Vorfahren auf Sadok Selim zurück, der gegen Ende des 13."
-    }
-   ]
-  },
-  {
-   "id": "gehalten an|der|königlichen universität zu berlin",
-   "subject": "gehalten an",
-   "verb": "der",
-   "object": "Königlichen Universität zu Berlin",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6576-6638",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Vorlesungen gehalten an der Königlichen Universität zu Berlin."
+     "text": "His conversations and various shared undertakings throughout the 1790s with Schiller, Johann Gottlieb Fichte, Johann Gottfried Herder, Alexander von Humboldt, Wilhelm von Humboldt, and August SchlegelAugust and Friedrich Schlegel have come to be collectively termed Weimar Classicism."
     }
    ]
   },
@@ -3236,7 +1867,7 @@
    "verb": "was",
    "object": "married twice",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3247,60 +1878,12 @@
    ]
   },
   {
-   "id": "geschichte|der|ausländer in deutschland",
-   "subject": "Geschichte",
-   "verb": "der",
-   "object": "Ausländer in Deutschland",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4160-4986",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
-    }
-   ]
-  },
-  {
-   "id": "goethe descended|from|the :de:sadok seli soltan soltan",
-   "subject": "Goethe descended",
-   "verb": "from",
-   "object": "the :de:Sadok Seli Soltan Soltan",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3626-3815",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Through his maternal grandmother, Goethe descended from the :de:Sadok Seli Soltan Soltan .Meier-Braun, Karl-Heinz [in German] (2017), Die 101 wichtigsten Fragen: Einwanderung und Asyl, C.H."
-    }
-   ]
-  },
-  {
-   "id": "goethe's comments|and|observations form the basis of several biographical works",
-   "subject": "Goethe's comments",
-   "verb": "and",
-   "object": "observations form the basis of several biographical works",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3072-3219",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Goethe's comments and observations form the basis of several biographical works, notably Johann Peter Eckermann's Conversations with Goethe (1836)."
-    }
-   ]
-  },
-  {
    "id": "goethe|became|a member of the duke's privy council (1776–1785)",
    "subject": "Goethe",
    "verb": "became",
    "object": "a member of the Duke's privy council (1776–1785)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3311,12 +1894,28 @@
    ]
   },
   {
+   "id": "goethe|descended|from the :de:sadok seli soltan soltan",
+   "subject": "Goethe",
+   "verb": "descended",
+   "object": "from the :de:Sadok Seli Soltan Soltan",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3626-3815",
+     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
+     "text": "Through his maternal grandmother, Goethe descended from the :de:Sadok Seli Soltan Soltan .Meier-Braun, Karl-Heinz [in German] (2017), Die 101 wichtigsten Fragen: Einwanderung und Asyl, C.H."
+    }
+   ]
+  },
+  {
    "id": "goethe|published|his second novel",
    "subject": "Goethe",
    "verb": "published",
    "object": "his second novel",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3332,7 +1931,7 @@
    "verb": "took",
    "object": "up residence in Weimar in 1775 following the success of his first novel",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3348,7 +1947,7 @@
    "verb": "was",
    "object": "an early participant in the Sturm und Drang literary movement",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3364,7 +1963,7 @@
    "verb": "wrote",
    "object": "a wide range of Johann Wolfgang von Goethe bibliographyworks",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3375,28 +1974,12 @@
    ]
   },
   {
-   "id": "gottlieb klopstock|and|homer were among his early favourites",
-   "subject": "Gottlieb Klopstock",
-   "verb": "and",
-   "object": "Homer were among his early favourites",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7562-7868",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Although Goethe's great passion was drawing, he quickly became interested in literature; Friedrich Gottlieb Klopstock and Homer were among his early favourites.Oehler, R 1932, \"Buch und Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\", The Library Quarterly, 2, pp."
-    }
-   ]
-  },
-  {
    "id": "graf reinhart|von|württemberg im jahre 1291 von einem der kreuzzüge aus dem heiligen land mit nach süddeutschland gebracht hatte\"engelmann",
    "subject": "Graf Reinhart",
    "verb": "von",
    "object": "Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3407,66 +1990,18 @@
    ]
   },
   {
-   "id": "grand duke|of|saxe-weimar-eisenachkarl august",
-   "subject": "Grand Duke",
-   "verb": "of",
-   "object": "Saxe-Weimar-EisenachKarl August",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1206-1314",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "He was ennobled by Karl August, Grand Duke of Saxe-Weimar-EisenachKarl August, Duke of Saxe-Weimar, in 1782."
-    }
-   ]
-  },
-  {
-   "id": "gray trim|and|rows of rectangular windows",
-   "subject": "gray trim",
-   "verb": "and",
-   "object": "rows of rectangular windows",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3428-3624",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "in Frankfurt (Großer Hirschgraben)Exterior of the Goethe House on Großer Hirschgraben in Frankfurt am Main, showing its multi-storey yellow facade with gray trim and rows of rectangular windows.]]"
-    }
-   ]
-  },
-  {
    "id": "great passion|was|drawing",
    "subject": "great passion",
    "verb": "was",
    "object": "drawing",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7562-7868",
      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
      "text": "Although Goethe's great passion was drawing, he quickly became interested in literature; Friedrich Gottlieb Klopstock and Homer were among his early favourites.Oehler, R 1932, \"Buch und Bibliotheken unter der Perspektive Goethe – Goethe's attitude toward books and libraries\", The Library Quarterly, 2, pp."
-    }
-   ]
-  },
-  {
-   "id": "hat jedenfalls|der|brackenheimer dekan werner-ulrich deetjen herausgefunden",
-   "subject": "hat jedenfalls",
-   "verb": "der",
-   "object": "Brackenheimer Dekan Werner-Ulrich Deetjen herausgefunden",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3968-4048",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Das hat jedenfalls der Brackenheimer Dekan Werner-Ulrich Deetjen herausgefunden."
     }
    ]
   },
@@ -3476,7 +2011,7 @@
    "verb": "became",
    "object": "interested in literature",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3487,28 +2022,12 @@
    ]
   },
   {
-   "id": "he|also|contributed to the planning of weimar's botanical park and the rebuilding of its schloss weimarducal palace",
-   "subject": "He",
-   "verb": "also",
-   "object": "contributed to the planning of Weimar's botanical park and the rebuilding of its Schloss WeimarDucal Palace",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1666-1784",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "He also contributed to the planning of Weimar's botanical park and the rebuilding of its Schloss WeimarDucal Palace.}}"
-    }
-   ]
-  },
-  {
    "id": "he|married|cornelia schellhorn",
    "subject": "he",
    "verb": "married",
    "object": "Cornelia Schellhorn",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3524,7 +2043,7 @@
    "verb": "was",
    "object": "ennobled by Karl August",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3535,44 +2054,12 @@
    ]
   },
   {
-   "id": "his conversations|and|various shared undertakings throughout the 1790s with schiller",
-   "subject": "His conversations",
-   "verb": "and",
-   "object": "various shared undertakings throughout the 1790s with Schiller",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2400-2684",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "His conversations and various shared undertakings throughout the 1790s with Schiller, Johann Gottlieb Fichte, Johann Gottfried Herder, Alexander von Humboldt, Wilhelm von Humboldt, and August SchlegelAugust and Friedrich Schlegel have come to be collectively termed Weimar Classicism."
-    }
-   ]
-  },
-  {
-   "id": "his family|in|a large house (today the goethe house) in frankfurt",
-   "subject": "his family",
-   "verb": "in",
-   "object": "a large house (today the Goethe House) in Frankfurt",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6222-6390",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Goethe's father, Johann Caspar Goethe, lived with his family in a large house (today the Goethe House) in Frankfurt, then a free imperial city of the Holy Roman Empire."
-    }
-   ]
-  },
-  {
    "id": "his poems|were|set to music by many composers",
    "subject": "His poems",
    "verb": "were",
    "object": "set to music by many composers",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3583,50 +2070,18 @@
    ]
   },
   {
-   "id": "his son|and|grandchildren subsequently lived on the fortune he earned",
-   "subject": "His son",
-   "verb": "and",
-   "object": "grandchildren subsequently lived on the fortune he earned",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5703-5773",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "His son and grandchildren subsequently lived on the fortune he earned."
-    }
-   ]
-  },
-  {
-   "id": "imperial city|of|the holy roman empire",
-   "subject": "imperial city",
-   "verb": "of",
-   "object": "the Holy Roman Empire",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6222-6390",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Goethe's father, Johann Caspar Goethe, lived with his family in a large house (today the Goethe House) in Frankfurt, then a free imperial city of the Holy Roman Empire."
-    }
-   ]
-  },
-  {
-   "id": "in frankfurt|on|20 august 1748",
+   "id": "in frankfurt|am|main",
    "subject": "in Frankfurt",
-   "verb": "on",
-   "object": "20 August 1748",
+   "verb": "am",
+   "object": "Main",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6652-6999",
+     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#3428-3624",
      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
+     "text": "in Frankfurt (Großer Hirschgraben)Exterior of the Goethe House on Großer Hirschgraben in Frankfurt am Main, showing its multi-storey yellow facade with gray trim and rows of rectangular windows.]]"
     }
    ]
   },
@@ -3636,7 +2091,7 @@
    "verb": "von",
    "object": "GoetheAugust",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3652,7 +2107,7 @@
    "verb": "married",
    "object": "Goethe's mother",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3668,7 +2123,7 @@
    "verb": "heiratete",
    "object": "Rebekka Dohlerin",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3684,7 +2139,7 @@
    "verb": "von",
    "object": "Goethe",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3701,6 +2156,11 @@
      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4160-4986",
      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
      "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
+    },
+    {
+     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5970-6220",
+     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
+     "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
     }
    ]
   },
@@ -3710,7 +2170,7 @@
    "verb": "als",
    "object": "Johann Wolfgang von Goethe zählt diesen ehemaligen türkischen Beamten und Offizier zu seinen Vorfahren\" His earliest ancestor documented in Germany is believed to be Sadok Seli Soltan (Mehmet Sadık Selim Sultan) from Sultanate of RumSeljuk Sultanate of Rum",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3721,34 +2181,18 @@
    ]
   },
   {
-   "id": "moved|from|thuringia in 1687 and changed the spelling of his surname from göthe to goethe",
-   "subject": "moved",
-   "verb": "from",
-   "object": "Thuringia in 1687 and changed the spelling of his surname from Göthe to Goethe",
+   "id": "königlichen universität|zu|berlin",
+   "subject": "Königlichen Universität",
+   "verb": "zu",
+   "object": "Berlin",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5523-5637",
+     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6576-6638",
      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Goethe's grandfather, , moved from Thuringia in 1687 and changed the spelling of his surname from Göthe to Goethe."
-    }
-   ]
-  },
-  {
-   "id": "poetry|and|aesthetic criticism",
-   "subject": "poetry",
-   "verb": "and",
-   "object": "aesthetic criticism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#632-890",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "A poet, playwright, novelist, scientist, statesman, theatre-director, and critic, Goethe wrote a wide range of Johann Wolfgang von Goethe bibliographyworks, including plays, poetry and aesthetic criticism, as well as treatises on botany, anatomy, and colour."
+     "text": "Vorlesungen gehalten an der Königlichen Universität zu Berlin."
     }
    ]
   },
@@ -3758,7 +2202,7 @@
    "verb": "philosophyeuropean",
    "object": "Enlightenmentpolitical",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3774,7 +2218,7 @@
    "verb": "is",
    "object": "widely regarded as the most influential writer in the German language",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3790,7 +2234,7 @@
    "verb": "gehen",
    "object": "Goethes Vorfahren auf Sadok Selim zurück",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3801,92 +2245,12 @@
    ]
   },
   {
-   "id": "ranging influence|on|western literatureliterary",
-   "subject": "ranging influence",
-   "verb": "on",
-   "object": "Western literatureliterary",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#380-631",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "His work has had a wide-ranging influence on Western literatureliterary, Political philosophyEuropean Enlightenmentpolitical, Christian views, and Western philosophyphilosophical thought in the Western world from the late 18th century to the present.."
-    }
-   ]
-  },
-  {
-   "id": "sat|on|the war and highway commissions",
-   "subject": "sat",
-   "verb": "on",
-   "object": "the war and highway commissions",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1389-1665",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
-    }
-   ]
-  },
-  {
-   "id": "schiller's death|in|1805",
-   "subject": "Schiller's death",
-   "verb": "in",
-   "object": "1805",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1912-2193",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "In 1791 he was made managing director of the Deutsches Nationaltheater und Staatskapelle Weimartheatre at Weimar, and in 1794 he began a friendship with the playwrightdramatist, historian, and philosopher Friedrich Schiller, whose plays he premiered until Schiller's death in 1805."
-    }
-   ]
-  },
-  {
-   "id": "schule in|der|einwanderungsgesellschaft: ein handbuch",
-   "subject": "Schule in",
-   "verb": "der",
-   "object": "Einwanderungsgesellschaft: ein Handbuch",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#4160-4986",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Jahrhunderts bei Kämpfen mit Kreuzfahrern im Heiligen Land in die Gefangenschaft des Deutschritterordens geriet.\"Leiprecht, Rudolf [in German] (2005), Schule in der Einwanderungsgesellschaft: ein Handbuch, Wochenschau Verlag, p. 29, ISBN 9783879202744, \"Johann Wolfgang von Goethe, einen fremdländischen Vorfahren: Er soll von dem türkischen Offizier Sadok Seli Zoltan abstammen, den Graf Reinhart von Württemberg im Jahre 1291 von einem der Kreuzzüge aus dem Heiligen Land mit nach Süddeutschland gebracht hatte\"Engelmann, Bernt [in German] (1991), Du deutsch?: Geschichte der Ausländer in Deutschland, Steidl, p. 59, ISBN 9783882431858Maier, Ulrich [in German] (2002), Fremd bin ich eingezogen: Zuwanderung und Auswanderung in Baden-Württemberg, Bleicher Verlag, p. 27, \"Gedachter Johann Soldan heiratete Rebekka Dohlerin..."
-    }
-   ]
-  },
-  {
-   "id": "sheriff|of|frankfurt",
-   "subject": "sheriff",
-   "verb": "of",
-   "object": "Frankfurt",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6652-6999",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Cotta'sche Buchhandlung Nachfolger, Stuttgart / Berlin 1923, p. 36 Johann Caspar married Goethe's mother, Catharina Elisabeth GoetheCatharina Elisabeth Textor, in Frankfurt on 20 August 1748, when he was 38 and she was 17.Catharina was the daughter of (1693–1771), sheriff (Schultheiß) of Frankfurt, and of Anna Margaretha Lindheimer (1711–1783)."
-    }
-   ]
-  },
-  {
    "id": "soltan|was|a turkish peopleturkish officer who was captured by count von lechtomir (reinhart von württemberg) during his return to germany from the holy land in 1291",
    "subject": "Soltan",
    "verb": "was",
    "object": "a Turkish peopleTurkish officer who was captured by Count von Lechtomir (Reinhart von Württemberg) during his return to Germany from the Holy Land in 1291",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3897,98 +2261,18 @@
    ]
   },
   {
-   "id": "studied jurisprudencelaw|in|leipzig and had been appointed imperial councillor",
-   "subject": "studied Jurisprudencelaw",
-   "verb": "in",
-   "object": "Leipzig and had been appointed Imperial Councillor",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#6391-6575",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Though he had studied Jurisprudencelaw in Leipzig and had been appointed Imperial Councillor, Johann Caspar Goethe was not involved in the city's official affairs.Herman Grimm: Goethe."
-    }
-   ]
-  },
-  {
-   "id": "ten years|in|weimar",
-   "subject": "ten years",
-   "verb": "in",
-   "object": "Weimar",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1389-1665",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
-    }
-   ]
-  },
-  {
    "id": "the american|philosopher|and essayist ralph waldo emerson selected goethe as one of six \"representative men\" in his representative menwork of the same name (along with plato",
    "subject": "the American",
    "verb": "philosopher",
    "object": "and essayist Ralph Waldo Emerson selected Goethe as one of six \"representative men\" in his Representative Menwork of the same name (along with Plato",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#2686-3071",
      "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
      "text": "The German philosopher Arthur Schopenhauer named Wilhelm Meister's Apprenticeship one of the four greatest novels ever written, while the American philosopher and essayist Ralph Waldo Emerson selected Goethe as one of six \"representative men\" in his Representative Menwork of the same name (along with Plato, Emanuel Swedenborg, Michel de Montaigne, Napoleon, and William Shakespeare)."
-    }
-   ]
-  },
-  {
-   "id": "the daughter|of|a burgher",
-   "subject": "the daughter",
-   "verb": "of",
-   "object": "a burgher",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5774-5969",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Friedrich Georg Goethe was married twice; his first marriage was to Anna Elisabeth Lutz, the daughter of a burgher, Sebastian Lutz, with whom he had five children, including Hermann Jakob Goethe."
-    }
-   ]
-  },
-  {
-   "id": "the death|of|his first wife in 1705",
-   "subject": "the death",
-   "verb": "of",
-   "object": "his first wife in 1705",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5970-6220",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
-    }
-   ]
-  },
-  {
-   "id": "the exception|of|johann wolfgang and his sister cornelia schlossercornelia friederica christiana",
-   "subject": "the exception",
-   "verb": "of",
-   "object": "Johann Wolfgang and his sister Cornelia SchlosserCornelia Friederica Christiana",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7000-7144",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "All their children, with the exception of Johann Wolfgang and his sister Cornelia SchlosserCornelia Friederica Christiana, died at an early age."
     }
    ]
   },
@@ -3998,7 +2282,7 @@
    "verb": "philosopher",
    "object": "Arthur Schopenhauer named Wilhelm Meister's Apprenticeship one of the four greatest novels ever written",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4009,76 +2293,12 @@
    ]
   },
   {
-   "id": "the metamorphosis|of|plants",
-   "subject": "the Metamorphosis",
-   "verb": "of",
-   "object": "Plants",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1786-1911",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Goethe's first major scientific work, the Metamorphosis of Plants, was published after he returned from a 1788 tour of Italy."
-    }
-   ]
-  },
-  {
-   "id": "the reopening|of|silver mines in nearby ilmenau",
-   "subject": "the reopening",
-   "verb": "of",
-   "object": "silver mines in nearby Ilmenau",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#1389-1665",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "During his first ten years in Weimar, Goethe became a member of the Duke's privy council (1776–1785), sat on the war and highway commissions, oversaw the reopening of silver mines in nearby Ilmenau, and implemented a series of administrative reforms at the University of Jena."
-    }
-   ]
-  },
-  {
-   "id": "the sorrows|of|young werther (1774)",
-   "subject": "The Sorrows",
-   "verb": "of",
-   "object": "Young Werther (1774)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#892-1205",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Goethe took up residence in Weimar in 1775 following the success of his first novel, The Sorrows of Young Werther (1774), and joined a thriving intellectual and cultural environment under the patronage of Duchess Anna Amalia of Brunswick-WolfenbüttelDuchess Anna Amalia that formed the basis of Weimar Classicism."
-    }
-   ]
-  },
-  {
-   "id": "thriving intellectual|and|cultural environment under the patronage of duchess anna amalia of brunswick-wolfenbüttelduchess anna amalia that formed the basis of weimar classicism",
-   "subject": "thriving intellectual",
-   "verb": "and",
-   "object": "cultural environment under the patronage of Duchess Anna Amalia of Brunswick-WolfenbüttelDuchess Anna Amalia that formed the basis of Weimar Classicism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#892-1205",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Goethe took up residence in Weimar in 1775 following the success of his first novel, The Sorrows of Young Werther (1774), and joined a thriving intellectual and cultural environment under the patronage of Duchess Anna Amalia of Brunswick-WolfenbüttelDuchess Anna Amalia that formed the basis of Weimar Classicism."
-    }
-   ]
-  },
-  {
    "id": "von goethe|bibliography|}}",
    "subject": "von Goethe",
    "verb": "bibliography",
    "object": "}}",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4089,28 +2309,12 @@
    ]
   },
   {
-   "id": "was determined|that|his children should have every advantage he had missed",
-   "subject": "was determined",
-   "verb": "that",
-   "object": "his children should have every advantage he had missed",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#7429-7560",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "Johann Caspar, feeling frustrated in his own ambitions, was determined that his children should have every advantage he had missed."
-    }
-   ]
-  },
-  {
    "id": "was|published|after he returned from a 1788 tour of italy",
    "subject": "was",
    "verb": "published",
    "object": "after he returned from a 1788 tour of Italy",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4126,7 +2330,7 @@
    "verb": "was",
    "object": "38 and she was 17",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4137,28 +2341,12 @@
    ]
   },
   {
-   "id": "widow|of|the innkeeper johannes schellhorn (died 1704)",
-   "subject": "widow",
-   "verb": "of",
-   "object": "the innkeeper Johannes Schellhorn (died 1704)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt#5970-6220",
-     "ref": "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt",
-     "text": "After the death of his first wife in 1705, he married Cornelia Schellhorn, née Walther, widow of the innkeeper Johannes Schellhorn (died 1704), with whom he had four more children, including Johann Caspar Goethe, father of Johann Wolfgang von Goethe."
-    }
-   ]
-  },
-  {
    "id": "wilhelm|von|humboldt",
    "subject": "Wilhelm",
    "verb": "von",
    "object": "Humboldt",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4174,7 +2362,7 @@
    "verb": "received",
    "object": "from his father and private tutors lessons in subjects common at the time",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4195,7 +2383,7 @@
    "verb": "und",
    "object": "Auswanderung in Baden-Württemberg",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Johann_Wolfgang_von_Goethe.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4207,7 +2395,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:38.189Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:19.744Z"
  }
 }

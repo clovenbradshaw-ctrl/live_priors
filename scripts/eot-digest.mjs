@@ -38,12 +38,35 @@
 //     though the specific incident was not re-run. On non-English
 //     material both closed classes are inert (their tokens essentially
 //     never occur) — confirmed per-source below, not assumed.
+//   - posPriorFor (hypergraph.js's own VOCABULARY-level POS gate, feeding
+//     relations.js::discoverRelationVocab's `posPrior` parameter) IS
+//     INJECTED, when the local POSPrior@1 build is present. This is a
+//     narrower, safer mechanism than it first looks like being the same
+//     thing as `classifyConnector` below — measured on real material
+//     before shipping (Shakespeare 90→22 edges, the Iliad 65→25, Alice
+//     97→34; the excluded tokens on all three are exactly what a reader
+//     would refuse by hand: of/the/by/with/in/that/this/how/what/either/
+//     or; the survivors on Alice are was/started/had/think/fallen/got/
+//     began/opened — real verbs, none lost). It gates the CANDIDATE SET a
+//     verb is drawn from (a majority-vote-over-the-real-treebank
+//     type-level fact, exactly the standing already held for
+//     `determiners`/`negationWords` above), never a per-occurrence verdict
+//     on an already-extracted edge — an unattested word is explicitly NOT
+//     refused (`discoverRelationVocab`'s own docstring: "a witness cannot
+//     refuse what it never saw"), only a word the treebank clearly says is
+//     NOT a verb across its real attested uses is excluded from ever being
+//     tried as one. See `loadOrgans`'s own comment at the load site for
+//     why this is NOT the same decision as `classifyConnector`'s
+//     disclosure-only posture, immediately below.
 //   - classifyConnector (the-fold's grammar-lens.js, a Thrax verb-hood
-//     lens) is OMITTED. It depends on a local, gitignored build against
-//     the real UD_English-EWT treebank that was not run in this
-//     environment. hyperlexicon.js's own header names this as a real,
-//     honest degradation, not a silent one: "with no lens, the verb-hood
-//     check does not run and no edge is refused for it."
+//     lens) still runs DISCLOSURE-ONLY, on the edges that survive the
+//     vocabulary gate above — P56's asymmetric rule (a settled part of
+//     speech is refusable, never confirmable) governs a PER-EDGE verdict,
+//     which this never computes; `mismatchedConnectors` only flags edges
+//     whose verb landed in the vocabulary as an unattested "gap" (never
+//     refused there) but still reads as non-dominant on a closer look —
+//     surfaced for a later reasoning step to weigh, never baked into the
+//     append-only log as a refusal.
 //   - verbForms / createLemmatizer (UniMorph-backed recall widening) are
 //     OMITTED. the-fold's own CLAUDE.md record: "whether the live app
 //     should adopt it by default is a real, undecided question" — a
@@ -67,13 +90,58 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const LP_ROOT = path.join(HERE, "..");
 const FOLD_ROOT = path.join(LP_ROOT, "..", "the-fold");
-const NATIVE = path.join(LP_ROOT, "..", "eoreader7", "native");
+const EOREADER7_ROOT = path.join(LP_ROOT, "..", "eoreader7");
+const NATIVE = path.join(EOREADER7_ROOT, "native");
 const DIGEST_DIR = path.join(LP_ROOT, "digested");
+
+/**
+ * repoState(dir) — the exact git commit of a sibling repo whose code
+ * directly ran to produce a reading, plus whether its working tree carried
+ * uncommitted changes at the moment it ran.
+ *
+ * WHY THIS EXISTS, user-directed: "make sure all EOT have the exact state
+ * of eoreader7 that encoded this AND the state of the priors repo to know
+ * what contributed to the reading." recipeId (LP5) already hashes a PROSE
+ * description of which organs ran ("priors.js DEFINITE_DETERMINERS...");
+ * it says nothing about which COMMIT of those organs' own code was
+ * checked out. This session's own history is the proof this matters: S25,
+ * S26, S27, and the ATX-heading fix all landed in eoreader7's spans.js
+ * within one sitting — a reading taken before any of them and a reading
+ * taken after would carry an IDENTICAL prose recipe description while
+ * producing different edges from the identical bytes. Recording the
+ * commit closes that gap without needing to enumerate every function that
+ * changed; the commit already names everything.
+ *
+ * Three repos are recorded, not two, because all three directly run code
+ * that shapes a reading: eoreader7 (the linguistic organs), the-fold
+ * (hypergraph.js's relation reader, hyperlexicon.js's admission door,
+ * source.js's container/identity readers), and live_priors itself (this
+ * driver's own excerpting, blanking, and front-matter logic — a
+ * `git log` on eot-sidecar.mjs this same session shows it changing just
+ * as often as the sibling engines did).
+ *
+ * `dirty: true` is disclosed rather than hidden: a reading taken against
+ * uncommitted local edits has no commit a future reader could check out
+ * to reproduce it — real during active development (this session's own
+ * repeated push-while-sweeping pattern), and the honest thing is to say
+ * so, not to silently record a commit that does not actually match what
+ * ran.
+ */
+function repoState(dir) {
+  try {
+    const commit = execFileSync("git", ["-C", dir, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+    const dirty = execFileSync("git", ["-C", dir, "status", "--porcelain"], { encoding: "utf8" }).trim().length > 0;
+    return { commit, dirty };
+  } catch (err) {
+    return { commit: null, dirty: null, error: String(err?.message ?? err) };
+  }
+}
 
 // Declared, not tuned: enough for real referent recurrence and real clause
 // structure without letting one giant novel dominate the batch's runtime.
@@ -92,6 +160,68 @@ async function loadOrgans() {
   const { makeRelationReader } = await import(path.join(FOLD_ROOT, "hypergraph.js"));
   const { makeHyperlexicon } = await import(path.join(FOLD_ROOT, "hyperlexicon.js"));
   const { stripContainer, declaredIdentity } = await import(path.join(FOLD_ROOT, "source.js"));
+  const { makeGrammarLens, mismatchedConnectors } = await import(path.join(FOLD_ROOT, "grammar-lens.js"));
+
+  // Loaded OPTIONALLY — a missing local POSPrior@1 build degrades this
+  // driver to exactly its prior behaviour (posPriorFor / classifyConnector
+  // both null), never a hard failure, since a fresh checkout of this repo
+  // has no reason to have run that local build yet (one curl, one node
+  // invocation, matching eoreader7's own build-pos-prior.mjs usage
+  // comment).
+  //
+  // TWO DIFFERENT GATES, ONE FIXTURE — DO NOT CONFLATE THEM AGAIN. An
+  // earlier pass here reasoned about only one of them (`classifyConnector`,
+  // hyperlexicon.js::admit's per-EDGE verb-hood check) and correctly
+  // declined it on P56's own asymmetric rule: a settled part of speech is
+  // refusable, never confirmable, and admission is exactly the place a
+  // wrong per-occurrence refusal would be hardest to walk back. That
+  // reasoning still holds for `classifyConnector`/`mismatchedConnectors`
+  // below — disclosure only, no refusal, unchanged.
+  //
+  // It does NOT extend to `posPriorFor`, wired into `makeRelationReader`
+  // just below — a genuinely different, coarser mechanism the same
+  // reasoning does not cover. `relations.js::discoverRelationVocab`'s own
+  // `posPrior` parameter gates the CANDIDATE VOCABULARY a verb is drawn
+  // from, by a TYPE-level majority vote over the real UD treebank
+  // (`verbShare > 0.5` — hardcoded, not a tuned knob, and unattested forms
+  // are explicitly NOT refused: "a witness cannot refuse what it never
+  // saw"). This is structurally the SAME class of gate `determiners`/
+  // `negationWords` above already are — closing a vocabulary-level false
+  // admission, never convicting one already-extracted edge — and P43's own
+  // distinguishing test names exactly why it belongs here: "does the prior
+  // close a false binding, or does it widen what the reader hears?" A
+  // preposition or article wrongly treated as a verb is a false binding
+  // closed, not a recall-widening move (that class — verbForms/
+  // createLemmatizer — stays omitted below, unchanged).
+  //
+  // Measured before shipping, on real material, not assumed: gating
+  // dropped garbage connectors (of/the/by/with/in/that/this/how/what/
+  // either/or, among others) from three real Gutenberg excerpts —
+  // Shakespeare 90→22 edges, the Iliad 65→25, Alice 97→34 — while every
+  // surviving verb on Alice (was/started/had/think/fallen/got/began/
+  // opened) is a genuine one; `candidates` (the full nominated set, gated
+  // or not) is unchanged, so nothing about what was NOMINATED moved, only
+  // what was ADMITTED to the vocabulary extraction actually draws from.
+  const POS_PRIOR_PATH = path.join(EOREADER7_ROOT, "legacy-eoreader6.1", "scripts", "corpus", "pos-eng.json");
+  const GRAMMAR_MIN_SHARE = 0.5;
+  let classifyConnector = null;
+  let posPriorLoaded = false;
+  let posPrior = null;
+  try {
+    const wordclass = await import(path.join(EOREADER7_ROOT, "legacy-eoreader6.1", "packages/engine/perceiver/text/wordclass.js"));
+    posPrior = JSON.parse(fs.readFileSync(POS_PRIOR_PATH, "utf8"));
+    classifyConnector = makeGrammarLens({
+      classifyWord: wordclass.classifyWord,
+      dominantClass: wordclass.dominantClass,
+      posPrior,
+      posPriorMeta: wordclass.POS_PRIOR_META,
+      thraxMeta: wordclass.THRAX_META,
+    });
+    posPriorLoaded = true;
+  } catch {
+    classifyConnector = null; // disclosed absence, not a guess — see recipe.descriptor.grammar
+    posPrior = null;
+  }
 
   const determiners = new Set([...priors.DEFINITE_DETERMINERS, ...priors.INDEFINITE_DETERMINERS]);
   const relationsFor = makeRelationReader({
@@ -105,6 +235,14 @@ async function loadOrgans() {
     tokenize: material.tokenize,
     determiners,
     negationWords: priors.NEGATION_WORDS,
+    // See the WHY DISCLOSE-ONLY / WHY GATE comment above this function —
+    // a type-level majority-vote vocabulary gate, not a per-edge verdict.
+    // `posPriorFor` is a zero-arg accessor (app.js's own lazy-prior
+    // pattern) so a caller that never loaded a POSPrior@1 fixture pays
+    // nothing; `posPrior === null` here degrades makeRelationReader to
+    // byte-identical prior behaviour (checked at hypergraph.js's own
+    // `organs.posPriorFor ? organs.posPriorFor() : null`).
+    posPriorFor: posPriorLoaded ? () => posPrior : null,
   });
   // taskLog.js exports GRAIN_RANK directly (native/kernel/task-log.js,
   // eoreader7 S23) — hyperlexicon.js reads it to name the Figure grain
@@ -112,9 +250,19 @@ async function loadOrgans() {
   // layout (task-log.js's own historical operators.js companion has no
   // native counterpart; cube.js is where cellOf actually lives here).
   const hl = makeHyperlexicon({ ...taskLog, cellOf: cube.cellOf });
+  // Computed ONCE per process, not per source — the three repos' commits
+  // are invariant across a whole batch/sweep, and re-shelling to git for
+  // every one of 2,207 files would be pure waste for a fact that cannot
+  // change mid-run.
+  const repoStates = {
+    eoreader7: repoState(EOREADER7_ROOT),
+    theFold: repoState(FOLD_ROOT),
+    livePriors: repoState(LP_ROOT),
+  };
   return {
     spans, surfaces, relations, material, priors, taskLog, cube,
-    relationsFor, hl, stripContainer, declaredIdentity,
+    relationsFor, hl, stripContainer, declaredIdentity, repoStates,
+    classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
   };
 }
 
@@ -294,7 +442,7 @@ async function digestOne(organs, spec) {
   };
 }
 
-export { loadOrgans, digestOne, excerptOf, stripCatalogBoilerplate, verifySpans, EXCERPT_CHARS, LP_ROOT, DIGEST_DIR };
+export { loadOrgans, digestOne, excerptOf, stripCatalogBoilerplate, verifySpans, EXCERPT_CHARS, LP_ROOT, DIGEST_DIR, repoState };
 
 // ── the sample manifest ─────────────────────────────────────────────────
 //

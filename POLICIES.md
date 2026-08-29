@@ -298,6 +298,97 @@ accumulating record while being an unreadable one.
 
 ---
 
+## LP6 — A recipe defect is not new material: append-only cannot self-correct one, and must not be asked to
+
+LP2 states the standing law: a reading accumulates, a recipe that hears
+nothing appends nothing, a refuted reading is conceded (REC), never
+deleted. This entry names the one case that law does not, by itself,
+cover: **when the RECIPE itself was wrong** — not a source revised, not a
+new organ widening what is heard, but the same organs mis-admitting facts
+they should never have admitted in the first place.
+
+**What happened, concretely.** `eot-digest.mjs`'s recipe called
+`hypergraph.js::makeRelationReader` without its own `posPriorFor`
+accessor — an already-built, already-tested TYPE-level gate
+(`relations.js::discoverRelationVocab`'s `posPrior` param: a candidate
+verb is admitted only if VERB+AUX account for more than half its
+attested uses in the real UD_English-EWT treebank; an unattested form is
+never refused, only a form the treebank clearly says is NOT a verb). An
+earlier pass here loaded the fixture only for `classifyConnector`
+(the-fold's grammar-lens.js, correctly kept disclosure-only per P56's
+own asymmetric rule — a settled part of speech is refusable, never
+confirmable) and, in doing so, never separately considered this coarser,
+safer mechanism — conflating two different gates and declining both.
+
+Measured on real corpus files before this was found: **80-99% of
+extracted "relation verbs" were prepositions, conjunctions, articles, or
+pronouns** — `of`, `the`, `by`, `with`, `in`, `that`, `this`, `how`,
+`what`, among others — because `discoverRelationVocab`'s own
+slot-anchoring (the token immediately following a recurring surface) has
+no notion of grammatical category on its own. Wiring `posPriorFor` closes
+this at the source: on Shakespeare, the Iliad and Alice's Adventures in
+Wonderland (three real Gutenberg excerpts), gated edges fell from
+90/65/97 to 22/25/34 while every surviving verb on Alice
+(`was, started, had, think, fallen, got, began, opened`) is genuine — see
+`POS-VOCABULARY-GATE-VALIDATION.md` for the full 10-specimen diverse
+validation this fix was checked against before the corpus was re-swept,
+including two real, disclosed limits the gate does NOT close (non-English
+text passes through entirely ungated; an uncommon ENGLISH noun absent
+from the treebank's own ~16,654-word vocabulary passes through exactly
+the same way a foreign word does — both are `posStanding: "gap"`, never
+a refusal, by the gate's own conservative design).
+
+**The problem this created for LP2's own append-only rule.** The corpus
+had already been swept once (task #8, before this fix), and every one of
+those readings is keyed by `witness = slug@recipe` where `recipe` did not
+yet include the gate. Because the source bytes never changed,
+`eot-sidecar.mjs`'s own reuse rule (`existing.source.sha256 === hash` →
+reuse the existing log, only append) means an ORDINARY re-run under the
+new, corrected recipe would have kept every stale false-verb admission
+from the old recipe forever, merely ADDING the newly-gated facts beside
+them — confirmed live: Alice's own sidecar, re-swept with the gate
+wired in, still carried `"to"` as an admitted relation verb from the
+prior sweep, even though the gate correctly excluded `"to"` from the
+FRESH vocabulary computed on that same read (`verbShare` for `"to"` in
+the real treebank: 0.0002).
+
+**The rule, stated generally.** LP2's append-only discipline governs
+what a reading learns about a STABLE source under a STABLE or WIDENING
+recipe. It was never a promise that an admission made under a recipe
+later found to mis-admit facts stays admitted forever — that would make
+correctness debt permanent by construction. **A recipe correction is not
+new material layered onto old material; it is a claim that the old
+material's own admissions were wrong**, and the honest response is the
+same one LP2 already names for a refuted reading: concession, not
+silent accumulation.
+
+**What shipped, since no per-edge REC-driving mechanism exists yet at
+corpus scale (HL/void-loop tooling that could adjudicate 2,207 files'
+worth of individual admissions is real, unbuilt future work — see the
+27-cells reference in the-fold's own CLAUDE.md for where that capability
+would live).** `readSidecar`/`processFile` gained an explicit, named
+`fresh` option (CLI: `--fresh`) that skips reading the existing sidecar
+entirely rather than reusing its log — a deliberate, disclosed,
+one-time corpus-wide re-read, treating the WHOLE prior sweep as
+conceded because the recipe itself was the defect, never the routine
+mode. This is not a bulk deletion: each source's sidecar is regenerated
+file-by-file, under its own real bytes, self-verified exactly as before
+(P5.2 at the door, unchanged) — the file that lands is a genuinely fresh
+reading, not a patched one.
+
+**What this does NOT license.** `--fresh` is not a general-purpose reset
+button. Reaching for it again requires the same standing this pass
+met: a demonstrated recipe-level correctness defect (not merely a wider
+recipe, which append-only already handles correctly), validated on a
+deliberately diverse sample before the corpus-wide re-read, with the
+validation itself committed as a record (this repo's own standing
+practice — `eot-sidecar-sweep-RESULTS.md`, `eot-legal-text-anomaly-NOTE.md`,
+and now `POS-VOCABULARY-GATE-VALIDATION.md` all exist for exactly this
+reason: a reader should never have to trust a claim about corpus quality
+without the evidence that produced it).
+
+---
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work

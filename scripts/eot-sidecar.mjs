@@ -138,8 +138,11 @@ function verifyRawSpan(raw, bodyOffset, toRaw, s) {
  * sidecar; the caller decides whether to write the result) so this is
  * callable from a throughput-measuring driver without committing to disk.
  */
-async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {}) {
-  const { spans, surfaces, relationsFor, hl, stripContainer, declaredIdentity } = organs;
+async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fresh = false } = {}) {
+  const {
+    spans, surfaces, relationsFor, hl, stripContainer, declaredIdentity, repoStates,
+    classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
+  } = organs;
   globalThis.__eotSidecarSpans = spans; // verifyRawSpan's own closure, avoiding a second import path
 
   const relPath = path.relative(LP_ROOT, absPath).split(path.sep).join("/");
@@ -147,81 +150,136 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
   const hash = sha256(raw);
 
   const sidecarPath = `${absPath}.eot.json`;
+  // `fresh: true` — a deliberate, disclosed corpus-wide re-read, never a
+  // silent one. LP2's own append-only design ("a recipe that hears nothing
+  // appends nothing... a refuted reading is CONCEDED, never deleted") means
+  // an ordinary re-run of --scan on UNCHANGED source bytes reuses the
+  // existing log and only APPENDS — so a recipe change that REMOVES false
+  // admissions (the POS vocabulary gate, this same pass) can only ever grow
+  // the corpus's own contamination, never correct it, without this escape
+  // hatch. Confirmed live before this was added: Alice's Adventures in
+  // Wonderland's sidecar, swept once before the gate existed, still carried
+  // "to" as an admitted relation verb after a second --scan pass with the
+  // gate wired in — the gate ran correctly on THIS read (verified: `to`
+  // never entered the fresh vocabulary), but the STALE pre-gate admission
+  // from the earlier sweep survived because append-only NEVER revisits an
+  // already-admitted fact absent an explicit REC. `fresh` treats the whole
+  // corpus's prior sweep as the thing being conceded — an honest, one-time,
+  // disclosed reset when the RECIPE itself was the defect, not a routine
+  // mode this driver reaches for.
   let existing = null;
-  if (fs.existsSync(sidecarPath)) {
+  if (!fresh && fs.existsSync(sidecarPath)) {
     try { existing = JSON.parse(fs.readFileSync(sidecarPath, "utf8")); }
     catch (err) { existing = { corrupt: true, error: String(err?.message ?? err) }; }
   }
 
   const { text: rawBody, offset: containerOffset } = stripContainer(raw);
+
+  /**
+   * One candidate reading window — everything from blanking through
+   * self-verification, for a GIVEN starting point inside the stripped
+   * body. Factored out so a front-matter skip can be tried and, crucially,
+   * COMPARED against the flat prefix rather than trusted unconditionally.
+   */
+  function attemptWindow(candidateBody, candidateOffset) {
+    const { text: blanked, blankedChars } = blankCatalogLines(candidateBody);
+    const excerptWindow = blanked.slice(0, excerptChars);
+    // blankCatalogLines pads a whole "collection:..." line to SPACES, so a
+    // blanked line's own signature within the excerpt is simply a line made
+    // ENTIRELY of one-or-more space characters — a shape ordinary prose
+    // does not produce (a blank prose paragraph break is a zero-length
+    // line, "\n\n", never a line full of literal spaces).
+    const excerptBlankedChars = [...excerptWindow.matchAll(/^ +$/gm)].reduce((n, m) => n + m[0].length, 0);
+    const { text: excerpt, toRaw } = spans.normaliseNewlines(excerptWindow);
+    const truncated = blanked.length > excerptChars;
+    const catalogDominated = excerptWindow.length > 0 && excerptBlankedChars / excerptWindow.length > 0.5;
+
+    const sentences = spans.splitSentences(excerpt);
+    const script = surfaces.scriptCoverage(sentences);
+    const surfaceEvidence = surfaces.extractSurfaces(sentences);
+    const { events } = surfaces.discoverReferents(surfaceEvidence, {});
+    const referentIds = new Set(events.map((e) => e.referent_id));
+
+    const passage = { ref: relPath, text: excerpt };
+    let report;
+    try { report = relationsFor([passage], { pool: [passage] }); }
+    catch (err) { report = { edges: [], examined: 0, error: String(err?.message ?? err) }; }
+
+    const rawEdges = report.edges ?? [];
+    let excerptChecked = 0, excerptOk = 0, rawChecked = 0, rawOk = 0;
+    const badSpans = [];
+    const admitEdges = [];
+    for (const e of rawEdges) {
+      const verifiedSpans = [];
+      for (const s of e.spans ?? []) {
+        excerptChecked += 1;
+        const excerptGood = verifyExcerptSpan(excerpt, s);
+        if (excerptGood) excerptOk += 1;
+        rawChecked += 1;
+        const { ok: rawGood, rawStart, rawEnd } = verifyRawSpan(raw, candidateOffset, toRaw, s);
+        if (rawGood) {
+          rawOk += 1;
+          verifiedSpans.push({ ref: relPath, start: rawStart, end: rawEnd, text: s.text });
+        } else {
+          badSpans.push({ edge: `${e.subject} —${e.verb}→ ${e.object}`, excerptSpan: s, excerptGood, rawGood: false });
+        }
+      }
+      if (verifiedSpans.length) admitEdges.push({ subject: e.subject, verb: e.verb, object: e.object, spans: verifiedSpans });
+    }
+
+    // DISCLOSURE ONLY — see loadOrgans's own comment for why this never
+    // gates admission. Computed over the raw (pre-self-verification)
+    // edges: a connector's grammatical standing is a fact about the
+    // TEXT, independent of whether its span happened to survive the
+    // separate byte-address check above.
+    const grammar = classifyConnector
+      ? { checked: rawEdges.length, minShare: GRAMMAR_MIN_SHARE, mismatched: mismatchedConnectors(rawEdges, classifyConnector, { minShare: GRAMMAR_MIN_SHARE }).map((m) => ({ subject: m.edge.subject, verb: m.edge.verb, object: m.edge.object, thraxClass: m.classification.thraxClass })) }
+      : null;
+
+    return {
+      bodyOffset: candidateOffset, body: candidateBody, blankedChars, excerpt, truncated, catalogDominated, grammar,
+      sentences, script, surfaceEvidence, events, referentIds, report, rawEdges,
+      excerptChecked, excerptOk, rawChecked, rawOk, badSpans, admitEdges,
+    };
+  }
+
   // A table of contents (or other short-unterminated-line front matter) can
   // outrun a flat excerpt window entirely — task #9's own adversarial audit,
   // the specimen it was built and verified against is a Gutenberg-mirrored
   // Les Misérables whose TOC runs to ~char 21,600, past this driver's own
   // 8000-char window, extracting zero edges from a book that has hundreds.
-  // Detected on the STRIPPED body (a container's own front matter is a
-  // separate, already-handled concern) and folded straight into `bodyOffset`
-  // so every downstream raw-coordinate composition (verifyRawSpan, the
-  // sidecar's own addresses) needs no second offset to track.
   const frontMatter = spans.detectFrontMatterRun(rawBody);
-  const frontMatterSkip = frontMatter.detected ? frontMatter.skipTo : 0;
-  const bodyOffset = containerOffset + frontMatterSkip;
-  const body = rawBody.slice(frontMatterSkip);
-  const { text: blanked, blankedChars } = blankCatalogLines(body);
-  const excerptWindow = blanked.slice(0, excerptChars);
-  // blankCatalogLines pads a whole "collection:..." line to SPACES, so a
-  // blanked line's own signature within the excerpt is simply a line made
-  // ENTIRELY of one-or-more space characters — a shape ordinary prose does
-  // not produce (a blank prose paragraph break is a zero-length line, "\n\n",
-  // never a line full of literal spaces).
-  const excerptBlankedChars = [...excerptWindow.matchAll(/^ +$/gm)].reduce((n, m) => n + m[0].length, 0);
-  const { text: excerpt, toRaw } = spans.normaliseNewlines(excerptWindow);
-  const truncated = blanked.length > excerptChars;
-  // A disclosed signal for the next pass's audit, not a fix: a flat prefix
-  // excerpt of a catalog file whose boilerplate sits near byte 0 (measured:
-  // grateful-dead-catalog.txt is 98.5% `collection:` lines) reads almost
-  // entirely as blanked filler and correctly comes back `empty` — honest,
-  // per LP4 ("absence of a reading is a fact about the reader"), but a
-  // reader that skipped past the blanked region before excerpting would
-  // likely find real content. That reader is unbuilt; this flag is how the
-  // gap stays visible rather than silently indistinguishable from a source
-  // that is genuinely silent.
-  const catalogDominated = excerptWindow.length > 0 && excerptBlankedChars / excerptWindow.length > 0.5;
+
+  const flatAttempt = attemptWindow(rawBody, containerOffset);
+  let attempt = flatAttempt;
+  let frontMatterUsed = false;
+  if (frontMatter.detected) {
+    // Detecting a TOC-shaped run is not the same as knowing the skip
+    // HELPS — found live, not assumed: several corpus specimens (APiCS
+    // survey chapters especially) already read cleanly from a flat prefix
+    // BECAUSE their real prose starts early enough, and the front-matter
+    // scanner can still find a LATER, coincidentally-qualifying run
+    // deeper in the document (an examples list, a references section)
+    // and jump there — landing on a region with FEWER real edges than the
+    // window it left behind. Never trust the skip unconditionally: run
+    // both candidates and keep whichever one actually reads better. A
+    // skip is used only when it does not cost edges relative to the flat
+    // prefix — ties keep the skip, since a real TOC WAS found and skipping
+    // past it is the more correct choice when the two are otherwise equal.
+    const skippedAttempt = attemptWindow(rawBody.slice(frontMatter.skipTo), containerOffset + frontMatter.skipTo);
+    if (skippedAttempt.rawEdges.length >= flatAttempt.rawEdges.length) {
+      attempt = skippedAttempt;
+      frontMatterUsed = true;
+    }
+  }
+
+  const {
+    bodyOffset, body, blankedChars, excerpt, truncated, catalogDominated, grammar,
+    sentences, script, surfaceEvidence, events, referentIds, report, rawEdges,
+    excerptChecked, excerptOk, rawChecked, rawOk, badSpans, admitEdges,
+  } = attempt;
 
   const identity = declaredIdentity(relPath, raw);
-
-  const sentences = spans.splitSentences(excerpt);
-  const script = surfaces.scriptCoverage(sentences);
-  const surfaceEvidence = surfaces.extractSurfaces(sentences);
-  const { events } = surfaces.discoverReferents(surfaceEvidence, {});
-  const referentIds = new Set(events.map((e) => e.referent_id));
-
-  const passage = { ref: relPath, text: excerpt };
-  let report;
-  try { report = relationsFor([passage], { pool: [passage] }); }
-  catch (err) { report = { edges: [], examined: 0, error: String(err?.message ?? err) }; }
-
-  const rawEdges = report.edges ?? [];
-  let excerptChecked = 0, excerptOk = 0, rawChecked = 0, rawOk = 0;
-  const badSpans = [];
-  const admitEdges = [];
-  for (const e of rawEdges) {
-    const verifiedSpans = [];
-    for (const s of e.spans ?? []) {
-      excerptChecked += 1;
-      const excerptGood = verifyExcerptSpan(excerpt, s);
-      if (excerptGood) excerptOk += 1;
-      rawChecked += 1;
-      const { ok: rawGood, rawStart, rawEnd } = verifyRawSpan(raw, bodyOffset, toRaw, s);
-      if (rawGood) {
-        rawOk += 1;
-        verifiedSpans.push({ ref: relPath, start: rawStart, end: rawEnd, text: s.text });
-      } else {
-        badSpans.push({ edge: `${e.subject} —${e.verb}→ ${e.object}`, excerptSpan: s, excerptGood, rawGood: false });
-      }
-    }
-    if (verifiedSpans.length) admitEdges.push({ subject: e.subject, verb: e.verb, object: e.object, spans: verifiedSpans });
-  }
 
   // Script gate FIRST, before admission is even attempted — a caseless
   // script means every candidate surface this pass found is unreliable by
@@ -244,10 +302,24 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
     engine: "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
     determiners: "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
     negationWords: "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-    classifyConnector: null,
+    posPriorGate: posPriorLoaded
+      ? "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)"
+      : null,
+    classifyConnector: posPriorLoaded
+      ? `wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
+      : null,
     verbForms: null,
     createLemmatizer: null,
     excerptChars,
+    // The exact commit of every repo whose code ran to produce this
+    // reading — folded into the descriptor itself (not just disclosed
+    // alongside it) so recipeId's own hash changes the moment any of
+    // them do. A prose description of "which organs ran" (the fields
+    // above) stays identical across a code change that alters what those
+    // organs actually DO — this session's own S26/S27/ATX-heading-fix
+    // sequence in eoreader7 proves it: three different behaviors, one
+    // unchanged prose recipe, until this field is added.
+    provenance: repoStates,
   };
   const recipeIdValue = await hl.recipeId(recipe);
   const witness = `${relPath}@${recipeIdValue}`;
@@ -281,7 +353,12 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
     recipe: { id: recipeIdValue, descriptor: recipe },
     excerpting: {
       fullChars: raw.length, bodyOffset, bodyChars: body.length,
-      frontMatterSkipped: frontMatter.detected ? { chars: frontMatterSkip, runLength: frontMatter.runLength } : undefined,
+      // `detected` and `used` are disclosed SEPARATELY on purpose: a front-
+      // matter run can be genuinely detected and still correctly declined
+      // (frontMatterUsed: false) when the flat prefix already reads at
+      // least as well — collapsing the two into one boolean would hide
+      // exactly the comparison that decided this reading.
+      frontMatter: frontMatter.detected ? { detected: true, skipTo: frontMatter.skipTo, runLength: frontMatter.runLength, used: frontMatterUsed } : { detected: false },
       catalogBlankedChars: blankedChars || undefined,
       catalogDominated: catalogDominated || undefined,
       excerptChars: excerpt.length, truncated,
@@ -298,18 +375,22 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
       // hypergraph.js::relationsFor's own vocabulary.candidates (task #9's
       // adversarial audit, the SBLGNT — Greek New Testament critical-
       // apparatus format — specimen): how many tokens discoverRelationVocab
-      // NOMINATED as candidate verbs, before any recurrence floor. Verified
-      // empirically before shipping, not assumed: under THIS recipe's own
-      // configuration (MIN_SURFACES_PER_VERB=1, no posPrior/classifyConnector
-      // injected), every nominated candidate clears the floor by
-      // construction, so `candidates === vocabulary.verbs` ALWAYS here — the
-      // field alone does not distinguish "genuinely nothing to hear" from
-      // "heard something, none of it cleared a floor" under this specific
-      // recipe (it does for a caller using a stricter floor or a real
-      // posPrior — see hypergraph-vocabulary-candidates.test.mjs's own
-      // divergence case). Surfaced anyway for transparency; the actual
-      // distinguishing signal for THIS pipeline is `contentWithoutRelations`
-      // below, built from fields this sidecar already carried.
+      // NOMINATED as candidate verbs, before any recurrence floor OR the
+      // POS gate. Under a run with posPriorGate loaded (see recipe
+      // .descriptor.posPriorGate), `candidates` counts every token that
+      // followed a recurring surface REGARDLESS of POS — `vocabulary.verbs`
+      // is now the narrower, POS-gated survivor count, so the two GENUINELY
+      // DIVERGE (measured: Alice's Adventures in Wonderland, 8000-char
+      // excerpt, candidates=24 / verbs=9 with the gate on) — this was
+      // previously claimed to always be equal under MIN_SURFACES_PER_VERB=1;
+      // that claim held only while no posPrior was passed to
+      // discoverRelationVocab, which is no longer this recipe's
+      // configuration. Without a loaded POSPrior@1 fixture (posPriorLoaded
+      // false), the old equality still holds — degrading byte-identically
+      // to prior behaviour. Surfaced for transparency either way; the
+      // actual distinguishing signal for "nothing to hear" vs. "heard
+      // something, none of it cleared a floor" for THIS pipeline is
+      // `contentWithoutRelations` below.
       vocabulary: report.vocabulary ?? null,
       // The genuine disclosure task #9 was chasing: real linguistic content
       // (a surface or a referent) was found, but the relation tier heard
@@ -318,6 +399,18 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
       // actually empty," using fields already computed above rather than a
       // new mechanism.
       contentWithoutRelations: (events.length > 0 || (Array.isArray(surfaceEvidence) && surfaceEvidence.length > 0)) && rawEdges.length === 0,
+      // Real POS evidence (Universal Dependencies UD_English-EWT via
+      // wordclass.js's dominantClass), DISCLOSURE ONLY — never used to
+      // refuse an edge at admission (P56's own asymmetric rule: a part of
+      // speech is a candidate set, never a per-occurrence verdict; settled
+      // means refusable, never confirmable, and this driver never asks it
+      // to refuse anything). `null` when the local treebank fixture was
+      // never built (a real, disclosed absence — see recipe.descriptor
+      // .classifyConnector); every entry in `mismatched` names an edge
+      // whose connector settles, at a bare majority, as something OTHER
+      // than a verb — evidence for a LATER reasoning step to weigh, not a
+      // conviction against anything already heard.
+      grammar,
     },
     spanSelfVerification: {
       excerptChecked, excerptOk,
@@ -342,8 +435,8 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS } = {
   return { sidecar, sidecarPath };
 }
 
-async function processFile(organs, absPath, { write = true, excerptChars } = {}) {
-  const { sidecar, sidecarPath } = await readSidecar(organs, absPath, { excerptChars });
+async function processFile(organs, absPath, { write = true, excerptChars, fresh = false } = {}) {
+  const { sidecar, sidecarPath } = await readSidecar(organs, absPath, { excerptChars, fresh });
   if (write) fs.writeFileSync(sidecarPath, JSON.stringify(sidecar, null, 1));
   return sidecar;
 }
@@ -380,24 +473,30 @@ export { readSidecar, processFile, walkCorpus, blankCatalogLines, sha256, EXCERP
 // ── CLI ─────────────────────────────────────────────────────────────────
 // `node eot-sidecar.mjs <path> [<path> ...]`  — one or more specific files
 // `node eot-sidecar.mjs --scan`               — every text/md file in the corpus
+// `--fresh` (with either form) — see readSidecar's own comment on `fresh`:
+// ignores an existing sidecar's log entirely rather than appending to it.
+// A deliberate, disclosed corpus-wide re-read, for when the RECIPE itself
+// was the defect (a false-admission bug fixed, not new material to layer
+// on top of) — never the routine mode.
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const args = process.argv.slice(2);
+  const args = process.argv.slice(2).filter((a) => a !== "--fresh");
+  const fresh = process.argv.slice(2).includes("--fresh");
   const organs = await loadOrgans();
   let targets;
   if (args[0] === "--scan") {
     targets = walkCorpus();
-    console.log(`scanning ${targets.length} files under ${LP_ROOT}`);
+    console.log(`scanning ${targets.length} files under ${LP_ROOT}${fresh ? " (--fresh: ignoring existing sidecars)" : ""}`);
   } else if (args.length) {
     targets = args.map((a) => path.resolve(a));
   } else {
-    console.log("usage: node eot-sidecar.mjs <path> [<path> ...] | --scan");
+    console.log("usage: node eot-sidecar.mjs <path> [<path> ...] | --scan [--fresh]");
     process.exit(1);
   }
   let clean = 0, gappedScript = 0, gappedSelfVerify = 0, empty = 0;
   const started = Date.now();
   for (const abs of targets) {
     const t0 = Date.now();
-    const out = await processFile(organs, abs);
+    const out = await processFile(organs, abs, { fresh });
     const ms = Date.now() - t0;
     const rel = path.relative(LP_ROOT, abs);
     if (out.admission.gate === "clean") clean += 1;

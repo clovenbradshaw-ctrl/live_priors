@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 1089,
   "bodyOffset": 0,
   "bodyChars": 1089,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 1089,
   "truncated": false
  },
@@ -37,21 +55,33 @@
   "referentEvents": 1,
   "distinctReferents": 1,
   "examined": true,
-  "edgesFound": 2,
-  "extractionError": null
+  "edgesFound": 1,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 2,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 6
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 1,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 2,
-  "excerptOk": 2,
-  "rawChecked": 2,
-  "rawOk": 2,
+  "excerptChecked": 1,
+  "excerptOk": 1,
+  "rawChecked": 1,
+  "rawOk": 1,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 2,
-  "heard": 2,
+  "offered": 1,
+  "heard": 1,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "does",
     "object": "not vendor the raw text in-repo",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -86,38 +116,9 @@
     "seq": 0,
     "depends_on": [],
     "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hugging face|team|and released under apache 2\")",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Hugging Face team and released under Apache 2\")",
-    "subject": "Hugging Face",
-    "verb": "team",
-    "object": "and released under Apache 2\")",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt#504-801",
-      "ref": "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt",
-      "text": "License: Apache License 2.0, confirmed by fetching and reading https://raw.githubusercontent.com/masakhane-io/masakhane-ner/main/LICENSE directly (full Apache-2.0 text, headed \"The masakhane-NER code is based on the original transformer code by the Hugging Face team and released under Apache 2\")."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
    }
   ],
-  "nextSeq": 2,
+  "nextSeq": 1,
   "admits": [
    "NUL",
    "SEG",
@@ -137,7 +138,7 @@
    "verb": "does",
    "object": "not vendor the raw text in-repo",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -146,26 +147,10 @@
      "text": "Source: MasakhaNER 2.0 (Nigerian Pidgin / Naija, \"pcm\" split) Fetched directly from: https://github.com/masakhane-io/masakhane-ner (MasakhaNER2.0/data/pcm/{train,dev,test}.txt) This is the exact dataset CreoleVal's own nlu/ner/download_masakhaner.sh script fetches -- CreoleVal does not vendor the raw text in-repo, only the download script and MaChAmp training configs (nlu/ner/configs/ner_naija.json), so this pocket fetched the real upstream files directly, the same way CreoleVal's own script would."
     }
    ]
-  },
-  {
-   "id": "hugging face|team|and released under apache 2\")",
-   "subject": "Hugging Face",
-   "verb": "team",
-   "object": "and released under Apache 2\")",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt#504-801",
-     "ref": "11-multi-language/dialects-pidgins-creoles/creoleval/ner_masakhaner_pcm/PROVENANCE.txt",
-     "text": "License: Apache License 2.0, confirmed by fetching and reading https://raw.githubusercontent.com/masakhane-io/masakhane-ner/main/LICENSE directly (full Apache-2.0 text, headed \"The masakhane-NER code is based on the original transformer code by the Hugging Face team and released under Apache 2\")."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:18.399Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:24.961Z"
  }
 }

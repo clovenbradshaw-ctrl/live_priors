@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 10207,
   "bodyOffset": 0,
   "bodyChars": 10207,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,28 +55,33 @@
   "referentEvents": 1,
   "distinctReferents": 1,
   "examined": true,
-  "edgesFound": 10,
+  "edgesFound": 4,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 5,
+   "verbs": 2,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 5
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 4,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 10,
-  "excerptOk": 10,
-  "rawChecked": 10,
-  "rawOk": 10,
+  "excerptChecked": 4,
+  "excerptOk": 4,
+  "rawChecked": 4,
+  "rawOk": 4,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 10,
-  "heard": 10,
+  "offered": 4,
+  "heard": 4,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -81,7 +104,7 @@
     "verb": "are",
     "object": "similarly convenient here",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -91,122 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "because|of|numerical underflow and overflow in the exponentiation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "because of numerical underflow and overflow in the exponentiation",
-    "subject": "because",
-    "verb": "of",
-    "object": "numerical underflow and overflow in the exponentiation",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#3581-3727",
-      "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-      "text": "While this is perfectly reasonable mathematically, it is risky computationally, because of numerical underflow and overflow in the exponentiation."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "if some|of|the $o_k$ are very large",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "If some of the $o_k$ are very large",
-    "subject": "If some",
-    "verb": "of",
-    "object": "the $o_k$ are very large",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#3838-3988",
-      "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-      "text": "If some of the $o_k$ are very large, i.e., very positive, then $\\exp(o_k)$ might be larger than the largest number we can have for certain data types."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the range|of|$10^{-38}$ to $10^{38}$",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the range of $10^{-38}$ to $10^{38}$",
-    "subject": "the range",
-    "verb": "of",
-    "object": "$10^{-38}$ to $10^{38}$",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#4102-4213",
-      "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-      "text": "For instance, single precision floating point numbers approximately cover the range of $10^{-38}$ to $10^{38}$."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a screenful|of|the dreaded `nan` (not a number) results",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a screenful of the dreaded `NaN` (Not a Number) results",
-    "subject": "a screenful",
-    "verb": "of",
-    "object": "the dreaded `NaN` (Not a Number) results",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#5095-5221",
-      "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-      "text": "In particular, in backpropagation, we might find ourselves faced with a screenful of the dreaded `NaN` (Not a Number) results."
-     }
-    ],
-    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -226,7 +133,7 @@
     "verb": "are",
     "object": "computing exponential functions",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -235,36 +142,7 @@
       "text": "Fortunately, we are saved by the fact that even though we are computing exponential functions, we ultimately intend to take their log (when calculating the cross-entropy loss)."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but instead|of|passing softmax probabilities into our new loss function",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But instead of passing softmax probabilities into our new loss function",
-    "subject": "But instead",
-    "verb": "of",
-    "object": "passing softmax probabilities into our new loss function",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#5818-6103",
-      "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-      "text": "But instead of passing softmax probabilities into our new loss function, we just [**pass the logits and compute the softmax and its log all at once inside the cross-entropy loss function,**] which does smart things like the [\"LogSumExp trick\"](https://en.wikipedia.org/wiki/LogSumExp)."
-     }
-    ],
-    "seq": 6,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -284,7 +162,7 @@
     "verb": "return",
     "object": "(fn(Y_hat",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -293,36 +171,7 @@
       "text": "```{.python .input} %%tab jax @d2l.add_to_class(d2l.Classifier) #@save @partial(jax.jit, static_argnums=(0, 5)) def loss(self, params, X, Y, state, averaged=True): # To be used later (e.g., for batch norm) Y_hat = state.apply_fn({'params': params}, *X, mutable=False, rngs=None) Y_hat = d2l.reshape(Y_hat, (-1, Y_hat.shape[-1])) Y = d2l.reshape(Y, (-1,)) fn = optax.softmax_cross_entropy_with_integer_labels # The returned empty dictionary is a placeholder for auxiliary data, # which will be used later (e.g., for batch norm) return (fn(Y_hat, Y).mean(), {}) if averaged else (fn(Y_hat, Y), {}) ```"
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fewer lines|of|code than before",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fewer lines of code than before",
-    "subject": "fewer lines",
-    "verb": "of",
-    "object": "code than before",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#7708-7841",
-      "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-      "text": "As before, this algorithm converges to a solution that is reasonably accurate, albeit this time with fewer lines of code than before."
-     }
-    ],
-    "seq": 8,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -342,7 +191,7 @@
     "verb": "are",
     "object": "very convenient at hiding from their user potentially dangerous aspects",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -351,12 +200,12 @@
       "text": "High-level APIs are very convenient at hiding from their user potentially dangerous aspects, such as numerical stability."
      }
     ],
-    "seq": 9,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 10,
+  "nextSeq": 4,
   "admits": [
    "NUL",
    "SEG",
@@ -371,92 +220,12 @@
  },
  "folded": [
   {
-   "id": "a screenful|of|the dreaded `nan` (not a number) results",
-   "subject": "a screenful",
-   "verb": "of",
-   "object": "the dreaded `NaN` (Not a Number) results",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#5095-5221",
-     "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-     "text": "In particular, in backpropagation, we might find ourselves faced with a screenful of the dreaded `NaN` (Not a Number) results."
-    }
-   ]
-  },
-  {
-   "id": "because|of|numerical underflow and overflow in the exponentiation",
-   "subject": "because",
-   "verb": "of",
-   "object": "numerical underflow and overflow in the exponentiation",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#3581-3727",
-     "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-     "text": "While this is perfectly reasonable mathematically, it is risky computationally, because of numerical underflow and overflow in the exponentiation."
-    }
-   ]
-  },
-  {
-   "id": "but instead|of|passing softmax probabilities into our new loss function",
-   "subject": "But instead",
-   "verb": "of",
-   "object": "passing softmax probabilities into our new loss function",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#5818-6103",
-     "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-     "text": "But instead of passing softmax probabilities into our new loss function, we just [**pass the logits and compute the softmax and its log all at once inside the cross-entropy loss function,**] which does smart things like the [\"LogSumExp trick\"](https://en.wikipedia.org/wiki/LogSumExp)."
-    }
-   ]
-  },
-  {
-   "id": "fewer lines|of|code than before",
-   "subject": "fewer lines",
-   "verb": "of",
-   "object": "code than before",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#7708-7841",
-     "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-     "text": "As before, this algorithm converges to a solution that is reasonably accurate, albeit this time with fewer lines of code than before."
-    }
-   ]
-  },
-  {
-   "id": "if some|of|the $o_k$ are very large",
-   "subject": "If some",
-   "verb": "of",
-   "object": "the $o_k$ are very large",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#3838-3988",
-     "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-     "text": "If some of the $o_k$ are very large, i.e., very positive, then $\\exp(o_k)$ might be larger than the largest number we can have for certain data types."
-    }
-   ]
-  },
-  {
    "id": "level apis|are|very convenient at hiding from their user potentially dangerous aspects",
    "subject": "level APIs",
    "verb": "are",
    "object": "very convenient at hiding from their user potentially dangerous aspects",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -467,28 +236,12 @@
    ]
   },
   {
-   "id": "the range|of|$10^{-38}$ to $10^{38}$",
-   "subject": "the range",
-   "verb": "of",
-   "object": "$10^{-38}$ to $10^{38}$",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt#4102-4213",
-     "ref": "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt",
-     "text": "For instance, single precision floating point numbers approximately cover the range of $10^{-38}$ to $10^{38}$."
-    }
-   ]
-  },
-  {
    "id": "they|are|similarly convenient here",
    "subject": "they",
    "verb": "are",
    "object": "similarly convenient here",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -504,7 +257,7 @@
    "verb": "are",
    "object": "computing exponential functions",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -520,7 +273,7 @@
    "verb": "return",
    "object": "(fn(Y_hat",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/linear-classification-softmax-regression-concise.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -532,7 +285,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:49.549Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:27.765Z"
  }
 }

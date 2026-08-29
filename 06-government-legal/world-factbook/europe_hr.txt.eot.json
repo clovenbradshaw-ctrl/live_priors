@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 34792,
   "bodyOffset": 0,
   "bodyChars": 34792,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 14,
   "distinctReferents": 13,
   "examined": true,
-  "edgesFound": 26,
-  "extractionError": null
+  "edgesFound": 5,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 9,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 23
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 5,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 31,
-  "excerptOk": 31,
-  "rawChecked": 31,
-  "rawOk": 31,
+  "excerptChecked": 5,
+  "excerptOk": 5,
+  "rawChecked": 5,
+  "rawOk": 5,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 26,
-  "heard": 26,
+  "offered": 5,
+  "heard": 5,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "lands",
     "object": "that today comprise Croatia were part of the Austro-Hungarian Empire until the end of World War I",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -103,7 +133,7 @@
     "verb": "formed",
     "object": "a kingdom known after 1929 as Yugoslavia",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -132,7 +162,7 @@
     "verb": "became",
     "object": "a federal independent communist state consisting of six socialist republics",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -147,7 +177,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "from yugoslavia|in|1991",
+    "task_id": "eastern slavonia|was|returned to croatia in 1998",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -156,70 +186,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "from Yugoslavia in 1991",
-    "subject": "from Yugoslavia",
-    "verb": "in",
-    "object": "1991",
+    "description": "eastern Slavonia was returned to Croatia in 1998",
+    "subject": "eastern Slavonia",
+    "verb": "was",
+    "object": "returned to Croatia in 1998",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#533-775",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "Although Croatia declared its independence from Yugoslavia in 1991, it took four years of sporadic, but often bitter, fighting before Yugoslav forces were cleared from Croatian lands, along with a majority of Croatia's ethnic Serb population."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "before yugoslav|forces|were cleared from croatian lands",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "before Yugoslav forces were cleared from Croatian lands",
-    "subject": "before Yugoslav",
-    "verb": "forces",
-    "object": "were cleared from Croatian lands",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#533-775",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "Although Croatia declared its independence from Yugoslavia in 1991, it took four years of sporadic, but often bitter, fighting before Yugoslav forces were cleared from Croatian lands, along with a majority of Croatia's ethnic Serb population."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "held enclave|in|eastern slavonia was returned to croatia in 1998",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "held enclave in eastern Slavonia was returned to Croatia in 1998",
-    "subject": "held enclave",
-    "verb": "in",
-    "object": "eastern Slavonia was returned to Croatia in 1998",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,394 +200,7 @@
       "text": "Under UN supervision, the last Serb-held enclave in eastern Slavonia was returned to Croatia in 1998."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "joined nato|in|2009 and the eu in 2013",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "joined NATO in 2009 and the EU in 2013",
-    "subject": "joined NATO",
-    "verb": "in",
-    "object": "2009 and the EU in 2013",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#878-929",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "The country joined NATO in 2009 and the EU in 2013."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the eu|by|joining the eurozone and the schengen area",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the EU by joining the Eurozone and the Schengen Area",
-    "subject": "the EU",
-    "verb": "by",
-    "object": "joining the Eurozone and the Schengen Area",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#930-1032",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "In January 2023, Croatia further integrated into the EU by joining the Eurozone and the Schengen Area."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between bosnia|and|herzegovina and slovenia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between Bosnia and Herzegovina and Slovenia",
-    "subject": "between Bosnia",
-    "verb": "and",
-    "object": "Herzegovina and Slovenia",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#1048-1157",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Location Southeastern Europe, bordering the Adriatic Sea, between Bosnia and Herzegovina and Slovenia"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#1394-1559",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Land boundaries total: 2,237 km border countries: Bosnia and Herzegovina 956 km; Hungary 348 km; Montenegro 19 km; Serbia 314 km; Slovenia 600 km"
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "depth or|to|the depth of exploitation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "depth or to the depth of exploitation",
-    "subject": "depth or",
-    "verb": "to",
-    "object": "the depth of exploitation",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#1627-1748",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Maritime claims territorial sea: 12 nm continental shelf: 200-m depth or to the depth of exploitation"
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "climate\n    mediterranean|and|continental",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Climate\n    Mediterranean and continental",
-    "subject": "Climate\n    Mediterranean",
-    "verb": "and",
-    "object": "continental",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#1750-1901",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Climate Mediterranean and continental; continental climate predominant with hot summers and cold winters; mild winters, dry summers along coast"
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hot summers|and|cold winters",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hot summers and cold winters",
-    "subject": "hot summers",
-    "verb": "and",
-    "object": "cold winters",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#1750-1901",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Climate Mediterranean and continental; continental climate predominant with hot summers and cold winters; mild winters, dry summers along coast"
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "low mountains|and|highlands near adriatic coastline and islands",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "low mountains and highlands near Adriatic coastline and islands",
-    "subject": "low mountains",
-    "verb": "and",
-    "object": "highlands near Adriatic coastline and islands",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#1903-2042",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Terrain geographically diverse; flat plains along Hungarian border, low mountains and highlands near Adriatic coastline and islands"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of the|population|lives in the northern half of the country",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of the population lives in the northern half of the country",
-    "subject": "of the",
-    "verb": "population",
-    "object": "lives in the northern half of the country",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3115-3346",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "populace residing|in|and around the capital of zagreb",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "populace residing in and around the capital of Zagreb",
-    "subject": "populace residing",
-    "verb": "in",
-    "object": "and around the capital of Zagreb",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3115-3346",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#5548-5779",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of the|islands|are sparsely populated",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of the islands are sparsely populated",
-    "subject": "of the",
-    "verb": "islands",
-    "object": "are sparsely populated",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3115-3346",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "western europe|to|the aegean sea and turkish straits",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Western Europe to the Aegean Sea and Turkish Straits",
-    "subject": "Western Europe",
-    "verb": "to",
-    "object": "the Aegean Sea and Turkish Straits",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3397-3610",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Geography - note controls most land routes from Western Europe to the Aegean Sea and Turkish Straits; most Adriatic Sea islands lie off the coast of Croatia -- some 1,200 islands, islets, ridges, and rocks"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "adriatic sea|islands|lie off the coast of croatia -- some 1",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Adriatic Sea islands lie off the coast of Croatia -- some 1",
-    "subject": "Adriatic Sea",
-    "verb": "islands",
-    "object": "lie off the coast of Croatia -- some 1",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3397-3610",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Geography - note controls most land routes from Western Europe to the Aegean Sea and Turkish Straits; most Adriatic Sea islands lie off the coast of Croatia -- some 1,200 islands, islets, ridges, and rocks"
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3612-3633",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 18,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -635,7 +220,7 @@
     "verb": "designation",
     "object": "of \"Croate\" to Croatian mercenaries in the 17th century eventually became \"Cravate\" and later came to be applied to the soldiers' scarves - the cravat",
     "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -644,211 +229,12 @@
       "text": "### Nationality noun: Croat(s), Croatian(s) adjective: Croatian note: <strong>note:</strong> the French designation of \"Croate\" to Croatian mercenaries in the 17th century eventually became \"Cravate\" and later came to be applied to the soldiers' scarves - the cravat; Croatia celebrates Cravat Day every 18 October"
      }
     ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cravat day|every|18 october",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Cravat Day every 18 October",
-    "subject": "Cravat Day",
-    "verb": "every",
-    "object": "18 October",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3738-4076",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Nationality noun: Croat(s), Croatian(s) adjective: Croatian note: <strong>note:</strong> the French designation of \"Croate\" to Croatian mercenaries in the 17th century eventually became \"Cravate\" and later came to be applied to the soldiers' scarves - the cravat; Croatia celebrates Cravat Day every 18 October"
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "000|population|(2025 est",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "000 population (2025 est",
-    "subject": "000",
-    "verb": "population",
-    "object": "(2025 est",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#5351-5410",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Birth rate 8.49 births/1,000 population (2025 est.)"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#5412-5472",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Death rate 12.87 deaths/1,000 population (2025 est.)"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#5474-5546",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Net migration rate -0.87 migrant(s)/1,000 population (2025 est.)"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#7190-7256",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Hospital bed density 5.6 beds/1,000 population (2020 est.)"
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "of the|population|lives in the northern half of the country",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: of the population lives in the northern half of the country",
-    "subject": "of the",
-    "verb": "population",
-    "object": "lives in the northern half of the country",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3115-3346",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#5548-5779",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "of the|islands|are sparsely populated",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: of the islands are sparsely populated",
-    "subject": "of the",
-    "verb": "islands",
-    "object": "are sparsely populated",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#3115-3346",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-     },
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#5548-5779",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of|population|(2022 est",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of population (2022 est",
-    "subject": "of",
-    "verb": "population",
-    "object": "(2022 est",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#6794-6945",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Drinking water source improved: urban: urban: 100% of population (2022 est.) unimproved: urban: urban: 0% of population (2022 est.)"
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "000|population|(2022)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "000 population (2022)",
-    "subject": "000",
-    "verb": "population",
-    "object": "(2022)",
-    "witnesses": [
-     "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/europe_hr.txt#7123-7188",
-      "ref": "06-government-legal/world-factbook/europe_hr.txt",
-      "text": "### Physician density 3.91 physicians/1,000 population (2022)"
-     }
-    ],
-    "seq": 25,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 26,
+  "nextSeq": 5,
   "admits": [
    "NUL",
    "SEG",
@@ -863,75 +249,12 @@
  },
  "folded": [
   {
-   "id": "000|population|(2022)",
-   "subject": "000",
-   "verb": "population",
-   "object": "(2022)",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#7123-7188",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Physician density 3.91 physicians/1,000 population (2022)"
-    }
-   ]
-  },
-  {
-   "id": "000|population|(2025 est",
-   "subject": "000",
-   "verb": "population",
-   "object": "(2025 est",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#5351-5410",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Birth rate 8.49 births/1,000 population (2025 est.)"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#5412-5472",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Death rate 12.87 deaths/1,000 population (2025 est.)"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#5474-5546",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Net migration rate -0.87 migrant(s)/1,000 population (2025 est.)"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#7190-7256",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Hospital bed density 5.6 beds/1,000 population (2020 est.)"
-    }
-   ]
-  },
-  {
-   "id": "adriatic sea|islands|lie off the coast of croatia -- some 1",
-   "subject": "Adriatic Sea",
-   "verb": "islands",
-   "object": "lie off the coast of Croatia -- some 1",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#3397-3610",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Geography - note controls most land routes from Western Europe to the Aegean Sea and Turkish Straits; most Adriatic Sea islands lie off the coast of Croatia -- some 1,200 islands, islets, ridges, and rocks"
-    }
-   ]
-  },
-  {
    "id": "and slovenes|formed|a kingdom known after 1929 as yugoslavia",
    "subject": "and Slovenes",
    "verb": "formed",
    "object": "a kingdom known after 1929 as Yugoslavia",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -947,7 +270,7 @@
    "verb": "lands",
    "object": "that today comprise Croatia were part of the Austro-Hungarian Empire until the end of World War I",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -958,113 +281,12 @@
    ]
   },
   {
-   "id": "before yugoslav|forces|were cleared from croatian lands",
-   "subject": "before Yugoslav",
-   "verb": "forces",
-   "object": "were cleared from Croatian lands",
+   "id": "eastern slavonia|was|returned to croatia in 1998",
+   "subject": "eastern Slavonia",
+   "verb": "was",
+   "object": "returned to Croatia in 1998",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#533-775",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "Although Croatia declared its independence from Yugoslavia in 1991, it took four years of sporadic, but often bitter, fighting before Yugoslav forces were cleared from Croatian lands, along with a majority of Croatia's ethnic Serb population."
-    }
-   ]
-  },
-  {
-   "id": "between bosnia|and|herzegovina and slovenia",
-   "subject": "between Bosnia",
-   "verb": "and",
-   "object": "Herzegovina and Slovenia",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#1048-1157",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Location Southeastern Europe, bordering the Adriatic Sea, between Bosnia and Herzegovina and Slovenia"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#1394-1559",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Land boundaries total: 2,237 km border countries: Bosnia and Herzegovina 956 km; Hungary 348 km; Montenegro 19 km; Serbia 314 km; Slovenia 600 km"
-    }
-   ]
-  },
-  {
-   "id": "climate\n    mediterranean|and|continental",
-   "subject": "Climate\n    Mediterranean",
-   "verb": "and",
-   "object": "continental",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#1750-1901",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Climate Mediterranean and continental; continental climate predominant with hot summers and cold winters; mild winters, dry summers along coast"
-    }
-   ]
-  },
-  {
-   "id": "cravat day|every|18 october",
-   "subject": "Cravat Day",
-   "verb": "every",
-   "object": "18 October",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#3738-4076",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Nationality noun: Croat(s), Croatian(s) adjective: Croatian note: <strong>note:</strong> the French designation of \"Croate\" to Croatian mercenaries in the 17th century eventually became \"Cravate\" and later came to be applied to the soldiers' scarves - the cravat; Croatia celebrates Cravat Day every 18 October"
-    }
-   ]
-  },
-  {
-   "id": "depth or|to|the depth of exploitation",
-   "subject": "depth or",
-   "verb": "to",
-   "object": "the depth of exploitation",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#1627-1748",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Maritime claims territorial sea: 12 nm continental shelf: 200-m depth or to the depth of exploitation"
-    }
-   ]
-  },
-  {
-   "id": "from yugoslavia|in|1991",
-   "subject": "from Yugoslavia",
-   "verb": "in",
-   "object": "1991",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#533-775",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "Although Croatia declared its independence from Yugoslavia in 1991, it took four years of sporadic, but often bitter, fighting before Yugoslav forces were cleared from Croatian lands, along with a majority of Croatia's ethnic Serb population."
-    }
-   ]
-  },
-  {
-   "id": "held enclave|in|eastern slavonia was returned to croatia in 1998",
-   "subject": "held enclave",
-   "verb": "in",
-   "object": "eastern Slavonia was returned to Croatia in 1998",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1075,171 +297,12 @@
    ]
   },
   {
-   "id": "hot summers|and|cold winters",
-   "subject": "hot summers",
-   "verb": "and",
-   "object": "cold winters",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#1750-1901",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Climate Mediterranean and continental; continental climate predominant with hot summers and cold winters; mild winters, dry summers along coast"
-    }
-   ]
-  },
-  {
-   "id": "joined nato|in|2009 and the eu in 2013",
-   "subject": "joined NATO",
-   "verb": "in",
-   "object": "2009 and the EU in 2013",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#878-929",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "The country joined NATO in 2009 and the EU in 2013."
-    }
-   ]
-  },
-  {
-   "id": "low mountains|and|highlands near adriatic coastline and islands",
-   "subject": "low mountains",
-   "verb": "and",
-   "object": "highlands near Adriatic coastline and islands",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#1903-2042",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Terrain geographically diverse; flat plains along Hungarian border, low mountains and highlands near Adriatic coastline and islands"
-    }
-   ]
-  },
-  {
-   "id": "of the|islands|are sparsely populated",
-   "subject": "of the",
-   "verb": "islands",
-   "object": "are sparsely populated",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#3115-3346",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#5548-5779",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-    }
-   ]
-  },
-  {
-   "id": "of the|population|lives in the northern half of the country",
-   "subject": "of the",
-   "verb": "population",
-   "object": "lives in the northern half of the country",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#3115-3346",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#5548-5779",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-    }
-   ]
-  },
-  {
-   "id": "of|population|(2022 est",
-   "subject": "of",
-   "verb": "population",
-   "object": "(2022 est",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#6794-6945",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Drinking water source improved: urban: urban: 100% of population (2022 est.) unimproved: urban: urban: 0% of population (2022 est.)"
-    }
-   ]
-  },
-  {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#3612-3633",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
-   "id": "populace residing|in|and around the capital of zagreb",
-   "subject": "populace residing",
-   "verb": "in",
-   "object": "and around the capital of Zagreb",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#3115-3346",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-    },
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#5548-5779",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Population distribution more of the population lives in the northern half of the country, with approximately a quarter of the populace residing in and around the capital of Zagreb; many of the islands are sparsely populated"
-    }
-   ]
-  },
-  {
-   "id": "the eu|by|joining the eurozone and the schengen area",
-   "subject": "the EU",
-   "verb": "by",
-   "object": "joining the Eurozone and the Schengen Area",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#930-1032",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "In January 2023, Croatia further integrated into the EU by joining the Eurozone and the Schengen Area."
-    }
-   ]
-  },
-  {
    "id": "the french|designation|of \"croate\" to croatian mercenaries in the 17th century eventually became \"cravate\" and later came to be applied to the soldiers' scarves - the cravat",
    "subject": "the French",
    "verb": "designation",
    "object": "of \"Croate\" to Croatian mercenaries in the 17th century eventually became \"Cravate\" and later came to be applied to the soldiers' scarves - the cravat",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1250,28 +313,12 @@
    ]
   },
   {
-   "id": "western europe|to|the aegean sea and turkish straits",
-   "subject": "Western Europe",
-   "verb": "to",
-   "object": "the Aegean Sea and Turkish Straits",
-   "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/europe_hr.txt#3397-3610",
-     "ref": "06-government-legal/world-factbook/europe_hr.txt",
-     "text": "### Geography - note controls most land routes from Western Europe to the Aegean Sea and Turkish Straits; most Adriatic Sea islands lie off the coast of Croatia -- some 1,200 islands, islets, ridges, and rocks"
-    }
-   ]
-  },
-  {
    "id": "yugoslavia|became|a federal independent communist state consisting of six socialist republics",
    "subject": "Yugoslavia",
    "verb": "became",
    "object": "a federal independent communist state consisting of six socialist republics",
    "witnesses": [
-    "06-government-legal/world-factbook/europe_hr.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/europe_hr.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1283,7 +330,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:47.802Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:11.281Z"
  }
 }

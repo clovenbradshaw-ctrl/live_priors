@@ -12,21 +12,39 @@
   }
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 1176893,
   "bodyOffset": 595,
   "bodyChars": 1157221,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 7829,
   "truncated": true
  },
@@ -42,28 +60,33 @@
   "referentEvents": 4,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 103,
+  "edgesFound": 29,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 17,
+   "verbs": 6,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 17
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 29,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 104,
-  "excerptOk": 104,
-  "rawChecked": 104,
-  "rawOk": 104,
+  "excerptChecked": 29,
+  "excerptOk": 29,
+  "rawChecked": 29,
+  "rawOk": 29,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 103,
-  "heard": 103,
+  "offered": 29,
+  "heard": 29,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -72,70 +95,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "crime|and|punishment",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "CRIME and PUNISHMENT",
-    "subject": "CRIME",
-    "verb": "and",
-    "object": "PUNISHMENT",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#652-672",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "CRIME AND PUNISHMENT"
-     },
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5308-5328",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "CRIME AND PUNISHMENT"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "english reader|to|understand his work",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "English reader to understand his work",
-    "subject": "English reader",
-    "verb": "to",
-    "object": "understand his work",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#769-858",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "A few words about Dostoevsky himself may help the English reader to understand his work."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dostoevsky was|the|son of a doctor",
+    "task_id": "dostoevsky|was|the son of a doctor",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -145,11 +105,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Dostoevsky was the son of a doctor",
-    "subject": "Dostoevsky was",
-    "verb": "the",
-    "object": "son of a doctor",
+    "subject": "Dostoevsky",
+    "verb": "was",
+    "object": "the son of a doctor",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -158,123 +118,7 @@
       "text": "Dostoevsky was the son of a doctor."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "working|and|deeply religious people",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "working and deeply religious people",
-    "subject": "working",
-    "verb": "and",
-    "object": "deeply religious people",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#898-1035",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "His parents were very hard-working and deeply religious people, but so poor that they lived with their five children in only two rooms."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "five\nchildren|in|only two rooms",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "five\nchildren in only two rooms",
-    "subject": "five\nchildren",
-    "verb": "in",
-    "object": "only two rooms",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#898-1035",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "His parents were very hard-working and deeply religious people, but so poor that they lived with their five children in only two rooms."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "their evenings|in|reading aloud to their children",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "their evenings in reading aloud to their children",
-    "subject": "their evenings",
-    "verb": "in",
-    "object": "reading aloud to their children",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1036-1161",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "The father and mother spent their evenings in reading aloud to their children, generally from books of a serious character."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "third in|the|final examination of the petersburg school of engineering",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "third in the final examination of the Petersburg school of Engineering",
-    "subject": "third in",
-    "verb": "the",
-    "object": "final examination of the Petersburg school of Engineering",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1165-1291",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Though always sickly and delicate Dostoevsky came out third in the final examination of the Petersburg school of Engineering."
-     }
-    ],
-    "seq": 6,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -294,7 +138,7 @@
     "verb": "had",
     "object": "already begun his first work",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -303,13 +147,13 @@
       "text": "There he had already begun his first work, \"Poor Folk.\""
      }
     ],
-    "seq": 7,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "his review|and|was received with acclamations",
+    "task_id": "review and|was|received with acclamations",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -318,12 +162,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "his review and was received with acclamations",
-    "subject": "his review",
-    "verb": "and",
-    "object": "was received with acclamations",
+    "description": "review and was received with acclamations",
+    "subject": "review and",
+    "verb": "was",
+    "object": "received with acclamations",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -332,65 +176,7 @@
       "text": "This story was published by the poet Nekrassov in his review and was received with acclamations."
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "youth found|himself|instantly something of a celebrity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "youth found himself instantly something of a celebrity",
-    "subject": "youth found",
-    "verb": "himself",
-    "object": "instantly something of a celebrity",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1450-1523",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "The shy, unknown youth found himself instantly something of a celebrity."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "career\nseemed|to|open before him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "career\nseemed to open before him",
-    "subject": "career\nseemed",
-    "verb": "to",
-    "object": "open before him",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1524-1619",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "A brilliant and successful career seemed to open before him, but those hopes were soon dashed."
-     }
-    ],
-    "seq": 10,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -410,7 +196,7 @@
     "verb": "was",
     "object": "arrested",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -419,181 +205,7 @@
       "text": "In 1849 he was arrested."
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "nor conviction|a|revolutionist",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "nor conviction a revolutionist",
-    "subject": "nor conviction",
-    "verb": "a",
-    "object": "revolutionist",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1649-1809",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Though neither by temperament nor conviction a revolutionist, Dostoevsky was one of a little group of young men who met together to read Fourier and Proudhon."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "read fourier|and|proudhon",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "read Fourier and Proudhon",
-    "subject": "read Fourier",
-    "verb": "and",
-    "object": "Proudhon",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1649-1809",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Though neither by temperament nor conviction a revolutionist, Dostoevsky was one of a little group of young men who met together to read Fourier and Proudhon."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "conversations against|the|censorship",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "conversations against the censorship",
-    "subject": "conversations against",
-    "verb": "the",
-    "object": "censorship",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1810-1989",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was accused of \"taking part in conversations against the censorship, of reading a letter from Byelinsky to Gogol, and of knowing of the intention to set up a printing press.\""
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of reading|a|letter from byelinsky to gogol",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of reading a letter from Byelinsky to Gogol",
-    "subject": "of reading",
-    "verb": "a",
-    "object": "letter from Byelinsky to Gogol",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1810-1989",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was accused of \"taking part in conversations against the censorship, of reading a letter from Byelinsky to Gogol, and of knowing of the intention to set up a printing press.\""
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "knowing of|the|intention to set up a printing press",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "knowing of the intention to set up a printing press",
-    "subject": "knowing of",
-    "verb": "the",
-    "object": "intention to set up a printing press",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1810-1989",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was accused of \"taking part in conversations against the censorship, of reading a letter from Byelinsky to Gogol, and of knowing of the intention to set up a printing press.\""
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "stern|and|just man",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "stern and just man",
-    "subject": "stern",
-    "verb": "and",
-    "object": "just man",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2009-2114",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "(that \"stern and just man,\" as Maurice Baring calls him) this was enough, and he was condemned to death."
-     }
-    ],
-    "seq": 17,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -613,7 +225,7 @@
     "verb": "was",
     "object": "enough",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -622,7 +234,7 @@
       "text": "(that \"stern and just man,\" as Maurice Baring calls him) this was enough, and he was condemned to death."
      }
     ],
-    "seq": 18,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -642,7 +254,7 @@
     "verb": "was",
     "object": "condemned to death",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -651,326 +263,7 @@
       "text": "(that \"stern and just man,\" as Maurice Baring calls him) this was enough, and he was condemned to death."
      }
     ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "semyonovsky square|to|be shot",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Semyonovsky Square to be shot",
-    "subject": "Semyonovsky Square",
-    "verb": "to",
-    "object": "be shot",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2115-2227",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "After eight months' imprisonment he was with twenty-one others taken out to the Semyonovsky Square to be shot."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "writing|to|his brother mihail",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Writing to his brother Mihail",
-    "subject": "Writing",
-    "verb": "to",
-    "object": "his brother Mihail",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2228-2390",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Writing to his brother Mihail, Dostoevsky says: \"They snapped words over our heads, and they made us put on the white shirts worn by persons condemned to death."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "persons condemned|to|death",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "persons condemned to death",
-    "subject": "persons condemned",
-    "verb": "to",
-    "object": "death",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2228-2390",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Writing to his brother Mihail, Dostoevsky says: \"They snapped words over our heads, and they made us put on the white shirts worn by persons condemned to death."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "were bound|in|threes to stakes",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "were bound in threes to stakes",
-    "subject": "were bound",
-    "verb": "in",
-    "object": "threes to stakes",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2391-2457",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Thereupon we were bound in threes to stakes, to suffer execution."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "being|the|third in the row",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Being the third in the row",
-    "subject": "Being",
-    "verb": "the",
-    "object": "third in the row",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2458-2542",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Being the third in the row, I concluded I had only a few minutes of life before me."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "had only|a|few minutes of life before me",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "had only a few minutes of life before me",
-    "subject": "had only",
-    "verb": "a",
-    "object": "few minutes of life before me",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2458-2542",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Being the third in the row, I concluded I had only a few minutes of life before me."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dear ones|and|i contrived to kiss plestcheiev and dourov",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dear ones and I contrived to kiss Plestcheiev and Dourov",
-    "subject": "dear ones",
-    "verb": "and",
-    "object": "I contrived to kiss Plestcheiev and Dourov",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2543-2675",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "I thought of you and your dear ones and I contrived to kiss Plestcheiev and Dourov, who were next to me, and to bid them farewell."
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "were next|to|me",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "were next to me",
-    "subject": "were next",
-    "verb": "to",
-    "object": "me",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2543-2675",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "I thought of you and your dear ones and I contrived to kiss Plestcheiev and Dourov, who were next to me, and to bid them farewell."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|to|bid them farewell",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and to bid them farewell",
-    "subject": "and",
-    "verb": "to",
-    "object": "bid them farewell",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2543-2675",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "I thought of you and your dear ones and I contrived to kiss Plestcheiev and Dourov, who were next to me, and to bid them farewell."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "suddenly|the|troops beat a tattoo",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Suddenly the troops beat a tattoo",
-    "subject": "Suddenly",
-    "verb": "the",
-    "object": "troops beat a tattoo",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2676-2817",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Suddenly the troops beat a tattoo, we were unbound, brought back upon the scaffold, and informed that his Majesty had spared us our lives.\""
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "back upon|the|scaffold",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "back upon the scaffold",
-    "subject": "back upon",
-    "verb": "the",
-    "object": "scaffold",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2676-2817",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Suddenly the troops beat a tattoo, we were unbound, brought back upon the scaffold, and informed that his Majesty had spared us our lives.\""
-     }
-    ],
-    "seq": 30,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -990,7 +283,7 @@
     "verb": "was",
     "object": "commuted to hard labour",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -999,36 +292,7 @@
       "text": "The sentence was commuted to hard labour."
      }
     ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "one of|the|prisoners",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "One of the prisoners",
-    "subject": "One of",
-    "verb": "the",
-    "object": "prisoners",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2863-2962",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "One of the prisoners, Grigoryev, went mad as soon as he was untied, and never regained his sanity."
-     }
-    ],
-    "seq": 32,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -1048,7 +312,7 @@
     "verb": "was",
     "object": "untied",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1057,239 +321,7 @@
       "text": "One of the prisoners, Grigoryev, went mad as soon as he was untied, and never regained his sanity."
      }
     ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a blessing|in|his own case",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a blessing in his own case",
-    "subject": "a blessing",
-    "verb": "in",
-    "object": "his own case",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3051-3243",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Though his religious temper led him in the end to accept every suffering with resignation and to regard it as a blessing in his own case, he constantly recurs to the subject in his writings."
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "constantly recurs|to|the subject in his writings",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "constantly recurs to the subject in his writings",
-    "subject": "constantly recurs",
-    "verb": "to",
-    "object": "the subject in his writings",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3051-3243",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Though his religious temper led him in the end to accept every suffering with resignation and to regard it as a blessing in his own case, he constantly recurs to the subject in his writings."
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "insists on|the|cruelty of inflicting such torture",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "insists on the cruelty of inflicting such torture",
-    "subject": "insists on",
-    "verb": "the",
-    "object": "cruelty of inflicting such torture",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3245-3350",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He describes the awful agony of the condemned man and insists on the cruelty of inflicting such torture."
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "spent in|the|company of common criminals in siberia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "spent in the company of common criminals in Siberia",
-    "subject": "spent in",
-    "verb": "the",
-    "object": "company of common criminals in Siberia",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3351-3539",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Then followed four years of penal servitude, spent in the company of common criminals in Siberia, where he began the \"Dead House,\" and some years of service in a disciplinary battalion."
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he began|the|\"dead house",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "he began the \"Dead House",
-    "subject": "he began",
-    "verb": "the",
-    "object": "\"Dead House",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3351-3539",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Then followed four years of penal servitude, spent in the company of common criminals in Siberia, where he began the \"Dead House,\" and some years of service in a disciplinary battalion."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "his arrest|and|this now developed into violent attacks of epilepsy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "his arrest and this now developed into violent attacks of epilepsy",
-    "subject": "his arrest",
-    "verb": "and",
-    "object": "this now developed into violent attacks of epilepsy",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3543-3719",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He had shown signs of some obscure nervous disease before his arrest and this now developed into violent attacks of epilepsy, from which he suffered for the rest of his life."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "suffered for|the|rest of his life",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "suffered for the rest of his life",
-    "subject": "suffered for",
-    "verb": "the",
-    "object": "rest of his life",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3543-3719",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He had shown signs of some obscure nervous disease before his arrest and this now developed into violent attacks of epilepsy, from which he suffered for the rest of his life."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "four times|a|year and were more frequent in periods of great strain",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "four times a year and were more frequent in periods of great strain",
-    "subject": "four times",
-    "verb": "a",
-    "object": "year and were more frequent in periods of great strain",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3720-3816",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "The fits occurred three or four times a year and were more frequent in periods of great strain."
-     }
-    ],
-    "seq": 41,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -1309,7 +341,7 @@
     "verb": "was",
     "object": "allowed to return to Russia",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1318,36 +350,7 @@
       "text": "In 1859 he was allowed to return to Russia."
      }
     ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he started|a|journal--\"vremya",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "He started a journal--\"Vremya",
-    "subject": "He started",
-    "verb": "a",
-    "object": "journal--\"Vremya",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3862-3960",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He started a journal--\"Vremya,\" which was forbidden by the Censorship through a misunderstanding."
-     }
-    ],
-    "seq": 43,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -1367,7 +370,7 @@
     "verb": "was",
     "object": "forbidden by the Censorship through a misunderstanding",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1376,42 +379,13 @@
       "text": "He started a journal--\"Vremya,\" which was forbidden by the Censorship through a misunderstanding."
      }
     ],
-    "seq": 44,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "first wife|and|his brother mihail",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "first wife and his brother Mihail",
-    "subject": "first wife",
-    "verb": "and",
-    "object": "his brother Mihail",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3961-4016",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "In 1864 he lost his first wife and his brother Mihail."
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he was|in|terrible poverty",
+    "task_id": "he|was|in terrible poverty",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1421,11 +395,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "He was in terrible poverty",
-    "subject": "He was",
-    "verb": "in",
-    "object": "terrible poverty",
+    "subject": "He",
+    "verb": "was",
+    "object": "in terrible poverty",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1434,36 +408,7 @@
       "text": "He was in terrible poverty, yet he took upon himself the payment of his brother's debts."
      }
     ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "took upon|himself|the payment of his brother's debts",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "took upon himself the payment of his brother's debts",
-    "subject": "took upon",
-    "verb": "himself",
-    "object": "the payment of his brother's debts",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4017-4106",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was in terrible poverty, yet he took upon himself the payment of his brother's debts."
-     }
-    ],
-    "seq": 47,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -1483,7 +428,7 @@
     "verb": "was",
     "object": "weighed down by debt",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1492,7 +437,7 @@
       "text": "He was weighed down by debt, his brother's family was dependent on him, he was forced to write at heart-breaking speed, and is said never to have corrected his work."
      }
     ],
-    "seq": 48,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -1512,7 +457,7 @@
     "verb": "was",
     "object": "dependent on him",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1521,7 +466,7 @@
       "text": "He was weighed down by debt, his brother's family was dependent on him, he was forced to write at heart-breaking speed, and is said never to have corrected his work."
      }
     ],
-    "seq": 49,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -1541,7 +486,7 @@
     "verb": "was",
     "object": "forced to write at heart-breaking speed",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1550,210 +495,7 @@
       "text": "He was weighed down by debt, his brother's family was dependent on him, he was forced to write at heart-breaking speed, and is said never to have corrected his work."
      }
     ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "said never|to|have corrected his work",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "said never to have corrected his work",
-    "subject": "said never",
-    "verb": "to",
-    "object": "have corrected his work",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4197-4364",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was weighed down by debt, his brother's family was dependent on him, he was forced to write at heart-breaking speed, and is said never to have corrected his work."
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "softened by|the|tenderness and devotion of his second wife",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "softened by the tenderness and devotion of his second wife",
-    "subject": "softened by",
-    "verb": "the",
-    "object": "tenderness and devotion of his second wife",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4365-4463",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "The later years of his life were much softened by the tenderness and devotion of his second wife."
-     }
-    ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of love|and|honour",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of love and honour",
-    "subject": "of love",
-    "verb": "and",
-    "object": "honour",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4467-4635",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "In June 1880 he made his famous speech at the unveiling of the monument to Pushkin in Moscow and he was received with extraordinary demonstrations of love and honour."
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "grave by|a|vast multitude of mourners",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "grave by a vast multitude of mourners",
-    "subject": "grave by",
-    "verb": "a",
-    "object": "vast multitude of mourners",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4675-4788",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was followed to the grave by a vast multitude of mourners, who \"gave the hapless man the funeral of a king.\""
-     }
-    ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "funeral of|a|king",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "funeral of a king",
-    "subject": "funeral of",
-    "verb": "a",
-    "object": "king",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4675-4788",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was followed to the grave by a vast multitude of mourners, who \"gave the hapless man the funeral of a king.\""
-     }
-    ],
-    "seq": 55,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "still probably|the|most widely read writer in russia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "still probably the most widely read writer in Russia",
-    "subject": "still probably",
-    "verb": "the",
-    "object": "most widely read writer in Russia",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4789-4848",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He is still probably the most widely read writer in Russia."
-     }
-    ],
-    "seq": 56,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in|the|words of a russian critic",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "In the words of a Russian critic",
-    "subject": "In",
-    "verb": "the",
-    "object": "words of a Russian critic",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4852-5113",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "In the words of a Russian critic, who seeks to explain the feeling inspired by Dostoevsky: \"He was one of ourselves, a man of our blood and our bone, but one who has suffered and has seen so much more deeply than we have his insight impresses us as wisdom..."
-     }
-    ],
-    "seq": 57,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1773,7 +515,7 @@
     "verb": "was",
     "object": "one of ourselves",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1782,65 +524,7 @@
       "text": "In the words of a Russian critic, who seeks to explain the feeling inspired by Dostoevsky: \"He was one of ourselves, a man of our blood and our bone, but one who has suffered and has seen so much more deeply than we have his insight impresses us as wisdom..."
      }
     ],
-    "seq": 58,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "our blood|and|our bone",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "our blood and our bone",
-    "subject": "our blood",
-    "verb": "and",
-    "object": "our bone",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4852-5113",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "In the words of a Russian critic, who seeks to explain the feeling inspired by Dostoevsky: \"He was one of ourselves, a man of our blood and our bone, but one who has suffered and has seen so much more deeply than we have his insight impresses us as wisdom..."
-     }
-    ],
-    "seq": 59,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it how|to|live",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "it how to live",
-    "subject": "it how",
-    "verb": "to",
-    "object": "live",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5114-5192",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "that wisdom of the heart which we seek that we may learn from it how to live."
-     }
-    ],
-    "seq": 60,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1860,7 +544,7 @@
     "verb": "came",
     "object": "to him from nature",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1869,94 +553,7 @@
       "text": "All his other gifts came to him from nature, this he won for himself and through it he became great.\""
      }
     ],
-    "seq": 61,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "out of|the|garret in which he lodged in s",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "out of the garret in which he lodged in S",
-    "subject": "out of",
-    "verb": "the",
-    "object": "garret in which he lodged in S",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5365-5471",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "On an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S."
-     }
-    ],
-    "seq": 62,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "place|and|walked slowly",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Place and walked slowly",
-    "subject": "Place",
-    "verb": "and",
-    "object": "walked slowly",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5472-5533",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Place and walked slowly, as though in hesitation, towards K."
-     }
-    ],
-    "seq": 63,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as though|in|hesitation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as though in hesitation",
-    "subject": "as though",
-    "verb": "in",
-    "object": "hesitation",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5472-5533",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Place and walked slowly, as though in hesitation, towards K."
-     }
-    ],
-    "seq": 64,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1976,7 +573,7 @@
     "verb": "had",
     "object": "successfully avoided meeting his landlady on the staircase",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1985,7 +582,7 @@
       "text": "He had successfully avoided meeting his landlady on the staircase."
      }
     ],
-    "seq": 65,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -2005,7 +602,7 @@
     "verb": "was",
     "object": "under the roof of a high",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2014,65 +611,7 @@
       "text": "His garret was under the roof of a high, five-storied house and was more like a cupboard than a room."
      }
     ],
-    "seq": 66,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "more\nlike|a|cupboard than a room",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "more\nlike a cupboard than a room",
-    "subject": "more\nlike",
-    "verb": "a",
-    "object": "cupboard than a room",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5612-5715",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "His garret was under the roof of a high, five-storied house and was more like a cupboard than a room."
-     }
-    ],
-    "seq": 67,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lived on|the|floor below",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lived on the floor below",
-    "subject": "lived on",
-    "verb": "the",
-    "object": "floor below",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5716-5916",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "The landlady who provided him with garret, dinners, and attendance, lived on the floor below, and every time he went out he was obliged to pass her kitchen, the door of which invariably stood open."
-     }
-    ],
-    "seq": 68,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -2092,7 +631,7 @@
     "verb": "was",
     "object": "obliged to pass her kitchen",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2101,65 +640,7 @@
       "text": "The landlady who provided him with garret, dinners, and attendance, lived on the floor below, and every time he went out he was obliged to pass her kitchen, the door of which invariably stood open."
      }
     ],
-    "seq": 69,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "man had|a|sick",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "man had a sick",
-    "subject": "man had",
-    "verb": "a",
-    "object": "sick",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5917-6027",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "And each time he passed, the young man had a sick, frightened feeling, which made him scowl and feel ashamed."
-     }
-    ],
-    "seq": 70,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "him scowl|and|feel ashamed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "him scowl and feel ashamed",
-    "subject": "him scowl",
-    "verb": "and",
-    "object": "feel ashamed",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5917-6027",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "And each time he passed, the young man had a sick, frightened feeling, which made him scowl and feel ashamed."
-     }
-    ],
-    "seq": 71,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -2179,7 +660,7 @@
     "verb": "was",
     "object": "hopelessly in debt to his landlady",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2188,7 +669,7 @@
       "text": "He was hopelessly in debt to his landlady, and was afraid of meeting her."
      }
     ],
-    "seq": 72,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -2208,7 +689,7 @@
     "verb": "was",
     "object": "afraid of meeting her",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2217,7 +698,7 @@
       "text": "He was hopelessly in debt to his landlady, and was afraid of meeting her."
      }
     ],
-    "seq": 73,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -2237,7 +718,7 @@
     "verb": "was",
     "object": "not because he was cowardly and abject",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2246,36 +727,7 @@
       "text": "This was not because he was cowardly and abject, quite the contrary; but for some time past he had been in an overstrained irritable condition, verging on hypochondria."
      }
     ],
-    "seq": 74,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "quite|the|contrary",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "quite the contrary",
-    "subject": "quite",
-    "verb": "the",
-    "object": "contrary",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6106-6276",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "This was not because he was cowardly and abject, quite the contrary; but for some time past he had been in an overstrained irritable condition, verging on hypochondria."
-     }
-    ],
-    "seq": 75,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -2295,7 +747,7 @@
     "verb": "had",
     "object": "been in an overstrained irritable condition",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2304,36 +756,7 @@
       "text": "This was not because he was cowardly and abject, quite the contrary; but for some time past he had been in an overstrained irritable condition, verging on hypochondria."
      }
     ],
-    "seq": 76,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "completely absorbed|in|himself",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "completely absorbed in himself",
-    "subject": "completely absorbed",
-    "verb": "in",
-    "object": "himself",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6277-6424",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He had become so completely absorbed in himself, and isolated from his fellows that he dreaded meeting, not only his landlady, but anyone at all."
-     }
-    ],
-    "seq": 77,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -2353,7 +776,7 @@
     "verb": "was",
     "object": "crushed by poverty",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2362,13 +785,13 @@
       "text": "He was crushed by poverty, but the anxieties of his position had of late ceased to weigh upon him."
      }
     ],
-    "seq": 78,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "but|the|anxieties of his position had of late ceased to weigh upon him",
+    "task_id": "his position|had|of late ceased to weigh upon him",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2377,12 +800,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "but the anxieties of his position had of late ceased to weigh upon him",
-    "subject": "but",
-    "verb": "the",
-    "object": "anxieties of his position had of late ceased to weigh upon him",
+    "description": "his position had of late ceased to weigh upon him",
+    "subject": "his position",
+    "verb": "had",
+    "object": "of late ceased to weigh upon him",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2391,7 +814,7 @@
       "text": "He was crushed by poverty, but the anxieties of his position had of late ceased to weigh upon him."
      }
     ],
-    "seq": 79,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -2411,7 +834,7 @@
     "verb": "had",
     "object": "given up attending to matters of practical importance",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2420,13 +843,13 @@
       "text": "He had given up attending to matters of practical importance; he had lost all desire to do so."
      }
     ],
-    "seq": 80,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "all\ndesire|to|do so",
+    "task_id": "the street|was|terrible: and the airlessness",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2435,360 +858,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "all\ndesire to do so",
-    "subject": "all\ndesire",
-    "verb": "to",
-    "object": "do so",
+    "description": "the street was terrible: and the airlessness",
+    "subject": "the street",
+    "verb": "was",
+    "object": "terrible: and the airlessness",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6525-6621",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He had given up attending to matters of practical importance; he had lost all desire to do so."
-     }
-    ],
-    "seq": 81,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|to|be stopped on the stairs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But to be stopped on the stairs",
-    "subject": "But",
-    "verb": "to",
-    "object": "be stopped on the stairs",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6685-6982",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
-     }
-    ],
-    "seq": 82,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "threats|and|complaints",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "threats and complaints",
-    "subject": "threats",
-    "verb": "and",
-    "object": "complaints",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6685-6982",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
-     }
-    ],
-    "seq": 83,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|to|rack his brains for excuses",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and to rack his brains for excuses",
-    "subject": "and",
-    "verb": "to",
-    "object": "rack his brains for excuses",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6685-6982",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
-     }
-    ],
-    "seq": 84,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a cat|and|slip out unseen",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a cat and slip out unseen",
-    "subject": "a cat",
-    "verb": "and",
-    "object": "slip out unseen",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6685-6982",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
-     }
-    ],
-    "seq": 85,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "out into|the|street",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "out into the street",
-    "subject": "out into",
-    "verb": "the",
-    "object": "street",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6986-7078",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "This evening, however, on coming out into the street, he became acutely aware of his fears."
-     }
-    ],
-    "seq": 86,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "man's\nhands|and|he lets it all slip from cowardice",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "man's\nhands and he lets it all slip from cowardice",
-    "subject": "man's\nhands",
-    "verb": "and",
-    "object": "he lets it all slip from cowardice",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7197-7283",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "yes, all is in a man's hands and he lets it all slip from cowardice, that's an axiom."
-     }
-    ],
-    "seq": 87,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be interesting|to|know what it is men are most afraid of",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be interesting to know what it is men are most afraid of",
-    "subject": "be interesting",
-    "verb": "to",
-    "object": "know what it is men are most afraid of",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7284-7351",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "It would be interesting to know what it is men are most afraid of."
-     }
-    ],
-    "seq": 88,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "uttering|a|new word is what they fear most",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "uttering a new word is what they fear most",
-    "subject": "uttering",
-    "verb": "a",
-    "object": "new word is what they fear most",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7352-7418",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Taking a new step, uttering a new word is what they fear most...."
-     }
-    ],
-    "seq": 89,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "days together|in|my den thinking",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "days together in my den thinking",
-    "subject": "days together",
-    "verb": "in",
-    "object": "my den thinking",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7544-7631",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "I've learned to chatter this last month, lying for days together in my den thinking..."
-     }
-    ],
-    "seq": 90,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of jack|the|giant-killer",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of Jack the Giant-killer",
-    "subject": "of Jack",
-    "verb": "the",
-    "object": "Giant-killer",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7632-7658",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "of Jack the Giant-killer."
-     }
-    ],
-    "seq": 91,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it is|a|plaything",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "it is a plaything",
-    "subject": "it is",
-    "verb": "a",
-    "object": "plaything",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7808-7838",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "Yes, maybe it is a plaything.\""
-     }
-    ],
-    "seq": 92,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the heat|in|the street was terrible: and the airlessness",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The heat in the street was terrible: and the airlessness",
-    "subject": "The heat",
-    "verb": "in",
-    "object": "the street was terrible: and the airlessness",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2797,36 +872,7 @@
       "text": "The heat in the street was terrible: and the airlessness, the bustle and the plaster, scaffolding, bricks, and dust all about him, and that special Petersburg stench, so familiar to all who are unable to get out of town in summer--all worked painfully upon the young man's already overwrought nerves."
      }
     ],
-    "seq": 93,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the bustle|and|the plaster",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the bustle and the plaster",
-    "subject": "the bustle",
-    "verb": "and",
-    "object": "the plaster",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7842-8146",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "The heat in the street was terrible: and the airlessness, the bustle and the plaster, scaffolding, bricks, and dust all about him, and that special Petersburg stench, so familiar to all who are unable to get out of town in summer--all worked painfully upon the young man's already overwrought nerves."
-     }
-    ],
-    "seq": 94,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -2846,7 +892,7 @@
     "verb": "stench",
     "object": "from the pot-houses",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2855,36 +901,7 @@
       "text": "The insufferable stench from the pot-houses, which are particularly numerous in that part of the town, and the drunken men whom he met continually, although it was a working day, completed the revolting misery of the picture."
      }
     ],
-    "seq": 95,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "particularly numerous|in|that part of the town",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "particularly numerous in that part of the town",
-    "subject": "particularly numerous",
-    "verb": "in",
-    "object": "that part of the town",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8147-8375",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "The insufferable stench from the pot-houses, which are particularly numerous in that part of the town, and the drunken men whom he met continually, although it was a working day, completed the revolting misery of the picture."
-     }
-    ],
-    "seq": 96,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -2904,7 +921,7 @@
     "verb": "was",
     "object": "a working day",
     "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2913,157 +930,12 @@
       "text": "The insufferable stench from the pot-houses, which are particularly numerous in that part of the town, and the drunken men whom he met continually, although it was a working day, completed the revolting misery of the picture."
      }
     ],
-    "seq": 97,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "completed|the|revolting misery of the picture",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "completed the revolting misery of the picture",
-    "subject": "completed",
-    "verb": "the",
-    "object": "revolting misery of the picture",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8147-8375",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "The insufferable stench from the pot-houses, which are particularly numerous in that part of the town, and the drunken men whom he met continually, although it was a working day, completed the revolting misery of the picture."
-     }
-    ],
-    "seq": 98,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gleamed for|a|moment in the young man's refined face",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gleamed for a moment in the young man's refined face",
-    "subject": "gleamed for",
-    "verb": "a",
-    "object": "moment in the young man's refined face",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8376-8471",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "An expression of the profoundest disgust gleamed for a moment in the young man's refined face."
-     }
-    ],
-    "seq": 99,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "by|the|way",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "by the way",
-    "subject": "by",
-    "verb": "the",
-    "object": "way",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8472-8595",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was, by the way, exceptionally handsome, above the average in height, slim, well-built, with beautiful dark eyes and d"
-     }
-    ],
-    "seq": 100,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "above|the|average in height",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "above the average in height",
-    "subject": "above",
-    "verb": "the",
-    "object": "average in height",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8472-8595",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was, by the way, exceptionally handsome, above the average in height, slim, well-built, with beautiful dark eyes and d"
-     }
-    ],
-    "seq": 101,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dark eyes|and|d",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dark eyes and d",
-    "subject": "dark eyes",
-    "verb": "and",
-    "object": "d",
-    "witnesses": [
-     "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8472-8595",
-      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-      "text": "He was, by the way, exceptionally handsome, above the average in height, slim, well-built, with beautiful dark eyes and d"
-     }
-    ],
-    "seq": 102,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 103,
+  "nextSeq": 29,
   "admits": [
    "NUL",
    "SEG",
@@ -3083,7 +955,7 @@
    "verb": "was",
    "object": "arrested",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3099,7 +971,7 @@
    "verb": "was",
    "object": "allowed to return to Russia",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3110,76 +982,12 @@
    ]
   },
   {
-   "id": "a blessing|in|his own case",
-   "subject": "a blessing",
-   "verb": "in",
-   "object": "his own case",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3051-3243",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Though his religious temper led him in the end to accept every suffering with resignation and to regard it as a blessing in his own case, he constantly recurs to the subject in his writings."
-    }
-   ]
-  },
-  {
-   "id": "a cat|and|slip out unseen",
-   "subject": "a cat",
-   "verb": "and",
-   "object": "slip out unseen",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6685-6982",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
-    }
-   ]
-  },
-  {
-   "id": "above|the|average in height",
-   "subject": "above",
-   "verb": "the",
-   "object": "average in height",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8472-8595",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was, by the way, exceptionally handsome, above the average in height, slim, well-built, with beautiful dark eyes and d"
-    }
-   ]
-  },
-  {
-   "id": "all\ndesire|to|do so",
-   "subject": "all\ndesire",
-   "verb": "to",
-   "object": "do so",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6525-6621",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He had given up attending to matters of practical importance; he had lost all desire to do so."
-    }
-   ]
-  },
-  {
    "id": "although it|was|a working day",
    "subject": "although it",
    "verb": "was",
    "object": "a working day",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3195,7 +1003,7 @@
    "verb": "was",
    "object": "condemned to death",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3206,44 +1014,12 @@
    ]
   },
   {
-   "id": "and|to|bid them farewell",
-   "subject": "and",
-   "verb": "to",
-   "object": "bid them farewell",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2543-2675",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "I thought of you and your dear ones and I contrived to kiss Plestcheiev and Dourov, who were next to me, and to bid them farewell."
-    }
-   ]
-  },
-  {
-   "id": "and|to|rack his brains for excuses",
-   "subject": "and",
-   "verb": "to",
-   "object": "rack his brains for excuses",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6685-6982",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
-    }
-   ]
-  },
-  {
    "id": "and|was|afraid of meeting her",
    "subject": "and",
    "verb": "was",
    "object": "afraid of meeting her",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3259,7 +1035,7 @@
    "verb": "was",
    "object": "untied",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3270,76 +1046,12 @@
    ]
   },
   {
-   "id": "as though|in|hesitation",
-   "subject": "as though",
-   "verb": "in",
-   "object": "hesitation",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5472-5533",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Place and walked slowly, as though in hesitation, towards K."
-    }
-   ]
-  },
-  {
-   "id": "back upon|the|scaffold",
-   "subject": "back upon",
-   "verb": "the",
-   "object": "scaffold",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2676-2817",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Suddenly the troops beat a tattoo, we were unbound, brought back upon the scaffold, and informed that his Majesty had spared us our lives.\""
-    }
-   ]
-  },
-  {
-   "id": "be interesting|to|know what it is men are most afraid of",
-   "subject": "be interesting",
-   "verb": "to",
-   "object": "know what it is men are most afraid of",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7284-7351",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "It would be interesting to know what it is men are most afraid of."
-    }
-   ]
-  },
-  {
-   "id": "being|the|third in the row",
-   "subject": "Being",
-   "verb": "the",
-   "object": "third in the row",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2458-2542",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Being the third in the row, I concluded I had only a few minutes of life before me."
-    }
-   ]
-  },
-  {
    "id": "brother's family|was|dependent on him",
    "subject": "brother's family",
    "verb": "was",
    "object": "dependent on him",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3350,209 +1062,12 @@
    ]
   },
   {
-   "id": "but|the|anxieties of his position had of late ceased to weigh upon him",
-   "subject": "but",
-   "verb": "the",
-   "object": "anxieties of his position had of late ceased to weigh upon him",
+   "id": "dostoevsky|was|the son of a doctor",
+   "subject": "Dostoevsky",
+   "verb": "was",
+   "object": "the son of a doctor",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6425-6524",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was crushed by poverty, but the anxieties of his position had of late ceased to weigh upon him."
-    }
-   ]
-  },
-  {
-   "id": "but|to|be stopped on the stairs",
-   "subject": "But",
-   "verb": "to",
-   "object": "be stopped on the stairs",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6685-6982",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
-    }
-   ]
-  },
-  {
-   "id": "by|the|way",
-   "subject": "by",
-   "verb": "the",
-   "object": "way",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8472-8595",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was, by the way, exceptionally handsome, above the average in height, slim, well-built, with beautiful dark eyes and d"
-    }
-   ]
-  },
-  {
-   "id": "career\nseemed|to|open before him",
-   "subject": "career\nseemed",
-   "verb": "to",
-   "object": "open before him",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1524-1619",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "A brilliant and successful career seemed to open before him, but those hopes were soon dashed."
-    }
-   ]
-  },
-  {
-   "id": "completed|the|revolting misery of the picture",
-   "subject": "completed",
-   "verb": "the",
-   "object": "revolting misery of the picture",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8147-8375",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The insufferable stench from the pot-houses, which are particularly numerous in that part of the town, and the drunken men whom he met continually, although it was a working day, completed the revolting misery of the picture."
-    }
-   ]
-  },
-  {
-   "id": "completely absorbed|in|himself",
-   "subject": "completely absorbed",
-   "verb": "in",
-   "object": "himself",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6277-6424",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He had become so completely absorbed in himself, and isolated from his fellows that he dreaded meeting, not only his landlady, but anyone at all."
-    }
-   ]
-  },
-  {
-   "id": "constantly recurs|to|the subject in his writings",
-   "subject": "constantly recurs",
-   "verb": "to",
-   "object": "the subject in his writings",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3051-3243",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Though his religious temper led him in the end to accept every suffering with resignation and to regard it as a blessing in his own case, he constantly recurs to the subject in his writings."
-    }
-   ]
-  },
-  {
-   "id": "conversations against|the|censorship",
-   "subject": "conversations against",
-   "verb": "the",
-   "object": "censorship",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1810-1989",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was accused of \"taking part in conversations against the censorship, of reading a letter from Byelinsky to Gogol, and of knowing of the intention to set up a printing press.\""
-    }
-   ]
-  },
-  {
-   "id": "crime|and|punishment",
-   "subject": "CRIME",
-   "verb": "and",
-   "object": "PUNISHMENT",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#652-672",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "CRIME AND PUNISHMENT"
-    },
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5308-5328",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "CRIME AND PUNISHMENT"
-    }
-   ]
-  },
-  {
-   "id": "dark eyes|and|d",
-   "subject": "dark eyes",
-   "verb": "and",
-   "object": "d",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8472-8595",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was, by the way, exceptionally handsome, above the average in height, slim, well-built, with beautiful dark eyes and d"
-    }
-   ]
-  },
-  {
-   "id": "days together|in|my den thinking",
-   "subject": "days together",
-   "verb": "in",
-   "object": "my den thinking",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7544-7631",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "I've learned to chatter this last month, lying for days together in my den thinking..."
-    }
-   ]
-  },
-  {
-   "id": "dear ones|and|i contrived to kiss plestcheiev and dourov",
-   "subject": "dear ones",
-   "verb": "and",
-   "object": "I contrived to kiss Plestcheiev and Dourov",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2543-2675",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "I thought of you and your dear ones and I contrived to kiss Plestcheiev and Dourov, who were next to me, and to bid them farewell."
-    }
-   ]
-  },
-  {
-   "id": "dostoevsky was|the|son of a doctor",
-   "subject": "Dostoevsky was",
-   "verb": "the",
-   "object": "son of a doctor",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3563,188 +1078,12 @@
    ]
   },
   {
-   "id": "english reader|to|understand his work",
-   "subject": "English reader",
-   "verb": "to",
-   "object": "understand his work",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#769-858",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "A few words about Dostoevsky himself may help the English reader to understand his work."
-    }
-   ]
-  },
-  {
-   "id": "first wife|and|his brother mihail",
-   "subject": "first wife",
-   "verb": "and",
-   "object": "his brother Mihail",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3961-4016",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "In 1864 he lost his first wife and his brother Mihail."
-    }
-   ]
-  },
-  {
-   "id": "five\nchildren|in|only two rooms",
-   "subject": "five\nchildren",
-   "verb": "in",
-   "object": "only two rooms",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#898-1035",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "His parents were very hard-working and deeply religious people, but so poor that they lived with their five children in only two rooms."
-    }
-   ]
-  },
-  {
-   "id": "four times|a|year and were more frequent in periods of great strain",
-   "subject": "four times",
-   "verb": "a",
-   "object": "year and were more frequent in periods of great strain",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3720-3816",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The fits occurred three or four times a year and were more frequent in periods of great strain."
-    }
-   ]
-  },
-  {
-   "id": "funeral of|a|king",
-   "subject": "funeral of",
-   "verb": "a",
-   "object": "king",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4675-4788",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was followed to the grave by a vast multitude of mourners, who \"gave the hapless man the funeral of a king.\""
-    }
-   ]
-  },
-  {
-   "id": "gleamed for|a|moment in the young man's refined face",
-   "subject": "gleamed for",
-   "verb": "a",
-   "object": "moment in the young man's refined face",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8376-8471",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "An expression of the profoundest disgust gleamed for a moment in the young man's refined face."
-    }
-   ]
-  },
-  {
-   "id": "grave by|a|vast multitude of mourners",
-   "subject": "grave by",
-   "verb": "a",
-   "object": "vast multitude of mourners",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4675-4788",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was followed to the grave by a vast multitude of mourners, who \"gave the hapless man the funeral of a king.\""
-    }
-   ]
-  },
-  {
-   "id": "had only|a|few minutes of life before me",
-   "subject": "had only",
-   "verb": "a",
-   "object": "few minutes of life before me",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2458-2542",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Being the third in the row, I concluded I had only a few minutes of life before me."
-    }
-   ]
-  },
-  {
-   "id": "he began|the|\"dead house",
-   "subject": "he began",
-   "verb": "the",
-   "object": "\"Dead House",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3351-3539",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Then followed four years of penal servitude, spent in the company of common criminals in Siberia, where he began the \"Dead House,\" and some years of service in a disciplinary battalion."
-    }
-   ]
-  },
-  {
-   "id": "he started|a|journal--\"vremya",
-   "subject": "He started",
-   "verb": "a",
-   "object": "journal--\"Vremya",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3862-3960",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He started a journal--\"Vremya,\" which was forbidden by the Censorship through a misunderstanding."
-    }
-   ]
-  },
-  {
-   "id": "he was|in|terrible poverty",
-   "subject": "He was",
-   "verb": "in",
-   "object": "terrible poverty",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4017-4106",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was in terrible poverty, yet he took upon himself the payment of his brother's debts."
-    }
-   ]
-  },
-  {
    "id": "he|had|given up attending to matters of practical importance",
    "subject": "He",
    "verb": "had",
    "object": "given up attending to matters of practical importance",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3760,7 +1099,7 @@
    "verb": "had",
    "object": "successfully avoided meeting his landlady on the staircase",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3776,7 +1115,7 @@
    "verb": "was",
    "object": "crushed by poverty",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3792,7 +1131,7 @@
    "verb": "was",
    "object": "forced to write at heart-breaking speed",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3808,7 +1147,7 @@
    "verb": "was",
    "object": "hopelessly in debt to his landlady",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3819,12 +1158,28 @@
    ]
   },
   {
+   "id": "he|was|in terrible poverty",
+   "subject": "He",
+   "verb": "was",
+   "object": "in terrible poverty",
+   "witnesses": [
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4017-4106",
+     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
+     "text": "He was in terrible poverty, yet he took upon himself the payment of his brother's debts."
+    }
+   ]
+  },
+  {
    "id": "he|was|one of ourselves",
    "subject": "He",
    "verb": "was",
    "object": "one of ourselves",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3840,7 +1195,7 @@
    "verb": "was",
    "object": "weighed down by debt",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3851,28 +1206,12 @@
    ]
   },
   {
-   "id": "him scowl|and|feel ashamed",
-   "subject": "him scowl",
-   "verb": "and",
-   "object": "feel ashamed",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5917-6027",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "And each time he passed, the young man had a sick, frightened feeling, which made him scowl and feel ashamed."
-    }
-   ]
-  },
-  {
    "id": "his\ngarret|was|under the roof of a high",
    "subject": "His\ngarret",
    "verb": "was",
    "object": "under the roof of a high",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3883,258 +1222,18 @@
    ]
   },
   {
-   "id": "his arrest|and|this now developed into violent attacks of epilepsy",
-   "subject": "his arrest",
-   "verb": "and",
-   "object": "this now developed into violent attacks of epilepsy",
+   "id": "his position|had|of late ceased to weigh upon him",
+   "subject": "his position",
+   "verb": "had",
+   "object": "of late ceased to weigh upon him",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3543-3719",
+     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6425-6524",
      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He had shown signs of some obscure nervous disease before his arrest and this now developed into violent attacks of epilepsy, from which he suffered for the rest of his life."
-    }
-   ]
-  },
-  {
-   "id": "his review|and|was received with acclamations",
-   "subject": "his review",
-   "verb": "and",
-   "object": "was received with acclamations",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1352-1449",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "This story was published by the poet Nekrassov in his review and was received with acclamations."
-    }
-   ]
-  },
-  {
-   "id": "in|the|words of a russian critic",
-   "subject": "In",
-   "verb": "the",
-   "object": "words of a Russian critic",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4852-5113",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "In the words of a Russian critic, who seeks to explain the feeling inspired by Dostoevsky: \"He was one of ourselves, a man of our blood and our bone, but one who has suffered and has seen so much more deeply than we have his insight impresses us as wisdom..."
-    }
-   ]
-  },
-  {
-   "id": "insists on|the|cruelty of inflicting such torture",
-   "subject": "insists on",
-   "verb": "the",
-   "object": "cruelty of inflicting such torture",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3245-3350",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He describes the awful agony of the condemned man and insists on the cruelty of inflicting such torture."
-    }
-   ]
-  },
-  {
-   "id": "it how|to|live",
-   "subject": "it how",
-   "verb": "to",
-   "object": "live",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5114-5192",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "that wisdom of the heart which we seek that we may learn from it how to live."
-    }
-   ]
-  },
-  {
-   "id": "it is|a|plaything",
-   "subject": "it is",
-   "verb": "a",
-   "object": "plaything",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7808-7838",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Yes, maybe it is a plaything.\""
-    }
-   ]
-  },
-  {
-   "id": "knowing of|the|intention to set up a printing press",
-   "subject": "knowing of",
-   "verb": "the",
-   "object": "intention to set up a printing press",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1810-1989",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was accused of \"taking part in conversations against the censorship, of reading a letter from Byelinsky to Gogol, and of knowing of the intention to set up a printing press.\""
-    }
-   ]
-  },
-  {
-   "id": "lived on|the|floor below",
-   "subject": "lived on",
-   "verb": "the",
-   "object": "floor below",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5716-5916",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The landlady who provided him with garret, dinners, and attendance, lived on the floor below, and every time he went out he was obliged to pass her kitchen, the door of which invariably stood open."
-    }
-   ]
-  },
-  {
-   "id": "man had|a|sick",
-   "subject": "man had",
-   "verb": "a",
-   "object": "sick",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5917-6027",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "And each time he passed, the young man had a sick, frightened feeling, which made him scowl and feel ashamed."
-    }
-   ]
-  },
-  {
-   "id": "man's\nhands|and|he lets it all slip from cowardice",
-   "subject": "man's\nhands",
-   "verb": "and",
-   "object": "he lets it all slip from cowardice",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7197-7283",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "yes, all is in a man's hands and he lets it all slip from cowardice, that's an axiom."
-    }
-   ]
-  },
-  {
-   "id": "more\nlike|a|cupboard than a room",
-   "subject": "more\nlike",
-   "verb": "a",
-   "object": "cupboard than a room",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5612-5715",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "His garret was under the roof of a high, five-storied house and was more like a cupboard than a room."
-    }
-   ]
-  },
-  {
-   "id": "nor conviction|a|revolutionist",
-   "subject": "nor conviction",
-   "verb": "a",
-   "object": "revolutionist",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1649-1809",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Though neither by temperament nor conviction a revolutionist, Dostoevsky was one of a little group of young men who met together to read Fourier and Proudhon."
-    }
-   ]
-  },
-  {
-   "id": "of jack|the|giant-killer",
-   "subject": "of Jack",
-   "verb": "the",
-   "object": "Giant-killer",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7632-7658",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "of Jack the Giant-killer."
-    }
-   ]
-  },
-  {
-   "id": "of love|and|honour",
-   "subject": "of love",
-   "verb": "and",
-   "object": "honour",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4467-4635",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "In June 1880 he made his famous speech at the unveiling of the monument to Pushkin in Moscow and he was received with extraordinary demonstrations of love and honour."
-    }
-   ]
-  },
-  {
-   "id": "of reading|a|letter from byelinsky to gogol",
-   "subject": "of reading",
-   "verb": "a",
-   "object": "letter from Byelinsky to Gogol",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1810-1989",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was accused of \"taking part in conversations against the censorship, of reading a letter from Byelinsky to Gogol, and of knowing of the intention to set up a printing press.\""
-    }
-   ]
-  },
-  {
-   "id": "one of|the|prisoners",
-   "subject": "One of",
-   "verb": "the",
-   "object": "prisoners",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2863-2962",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "One of the prisoners, Grigoryev, went mad as soon as he was untied, and never regained his sanity."
+     "text": "He was crushed by poverty, but the anxieties of his position had of late ceased to weigh upon him."
     }
    ]
   },
@@ -4144,7 +1243,7 @@
    "verb": "came",
    "object": "to him from nature",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4155,28 +1254,12 @@
    ]
   },
   {
-   "id": "our blood|and|our bone",
-   "subject": "our blood",
-   "verb": "and",
-   "object": "our bone",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4852-5113",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "In the words of a Russian critic, who seeks to explain the feeling inspired by Dostoevsky: \"He was one of ourselves, a man of our blood and our bone, but one who has suffered and has seen so much more deeply than we have his insight impresses us as wisdom..."
-    }
-   ]
-  },
-  {
    "id": "out he|was|obliged to pass her kitchen",
    "subject": "out he",
    "verb": "was",
    "object": "obliged to pass her kitchen",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4187,60 +1270,12 @@
    ]
   },
   {
-   "id": "out into|the|street",
-   "subject": "out into",
-   "verb": "the",
-   "object": "street",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6986-7078",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "This evening, however, on coming out into the street, he became acutely aware of his fears."
-    }
-   ]
-  },
-  {
-   "id": "out of|the|garret in which he lodged in s",
-   "subject": "out of",
-   "verb": "the",
-   "object": "garret in which he lodged in S",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5365-5471",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "On an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S."
-    }
-   ]
-  },
-  {
-   "id": "particularly numerous|in|that part of the town",
-   "subject": "particularly numerous",
-   "verb": "in",
-   "object": "that part of the town",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#8147-8375",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The insufferable stench from the pot-houses, which are particularly numerous in that part of the town, and the drunken men whom he met continually, although it was a working day, completed the revolting misery of the picture."
-    }
-   ]
-  },
-  {
    "id": "past he|had|been in an overstrained irritable condition",
    "subject": "past he",
    "verb": "had",
    "object": "been in an overstrained irritable condition",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4251,226 +1286,18 @@
    ]
   },
   {
-   "id": "persons condemned|to|death",
-   "subject": "persons condemned",
-   "verb": "to",
-   "object": "death",
+   "id": "review and|was|received with acclamations",
+   "subject": "review and",
+   "verb": "was",
+   "object": "received with acclamations",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2228-2390",
+     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1352-1449",
      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Writing to his brother Mihail, Dostoevsky says: \"They snapped words over our heads, and they made us put on the white shirts worn by persons condemned to death."
-    }
-   ]
-  },
-  {
-   "id": "place|and|walked slowly",
-   "subject": "Place",
-   "verb": "and",
-   "object": "walked slowly",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#5472-5533",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Place and walked slowly, as though in hesitation, towards K."
-    }
-   ]
-  },
-  {
-   "id": "quite|the|contrary",
-   "subject": "quite",
-   "verb": "the",
-   "object": "contrary",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6106-6276",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "This was not because he was cowardly and abject, quite the contrary; but for some time past he had been in an overstrained irritable condition, verging on hypochondria."
-    }
-   ]
-  },
-  {
-   "id": "read fourier|and|proudhon",
-   "subject": "read Fourier",
-   "verb": "and",
-   "object": "Proudhon",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1649-1809",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Though neither by temperament nor conviction a revolutionist, Dostoevsky was one of a little group of young men who met together to read Fourier and Proudhon."
-    }
-   ]
-  },
-  {
-   "id": "said never|to|have corrected his work",
-   "subject": "said never",
-   "verb": "to",
-   "object": "have corrected his work",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4197-4364",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was weighed down by debt, his brother's family was dependent on him, he was forced to write at heart-breaking speed, and is said never to have corrected his work."
-    }
-   ]
-  },
-  {
-   "id": "semyonovsky square|to|be shot",
-   "subject": "Semyonovsky Square",
-   "verb": "to",
-   "object": "be shot",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2115-2227",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "After eight months' imprisonment he was with twenty-one others taken out to the Semyonovsky Square to be shot."
-    }
-   ]
-  },
-  {
-   "id": "softened by|the|tenderness and devotion of his second wife",
-   "subject": "softened by",
-   "verb": "the",
-   "object": "tenderness and devotion of his second wife",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4365-4463",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The later years of his life were much softened by the tenderness and devotion of his second wife."
-    }
-   ]
-  },
-  {
-   "id": "spent in|the|company of common criminals in siberia",
-   "subject": "spent in",
-   "verb": "the",
-   "object": "company of common criminals in Siberia",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3351-3539",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Then followed four years of penal servitude, spent in the company of common criminals in Siberia, where he began the \"Dead House,\" and some years of service in a disciplinary battalion."
-    }
-   ]
-  },
-  {
-   "id": "stern|and|just man",
-   "subject": "stern",
-   "verb": "and",
-   "object": "just man",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2009-2114",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "(that \"stern and just man,\" as Maurice Baring calls him) this was enough, and he was condemned to death."
-    }
-   ]
-  },
-  {
-   "id": "still probably|the|most widely read writer in russia",
-   "subject": "still probably",
-   "verb": "the",
-   "object": "most widely read writer in Russia",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4789-4848",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He is still probably the most widely read writer in Russia."
-    }
-   ]
-  },
-  {
-   "id": "suddenly|the|troops beat a tattoo",
-   "subject": "Suddenly",
-   "verb": "the",
-   "object": "troops beat a tattoo",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2676-2817",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Suddenly the troops beat a tattoo, we were unbound, brought back upon the scaffold, and informed that his Majesty had spared us our lives.\""
-    }
-   ]
-  },
-  {
-   "id": "suffered for|the|rest of his life",
-   "subject": "suffered for",
-   "verb": "the",
-   "object": "rest of his life",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#3543-3719",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He had shown signs of some obscure nervous disease before his arrest and this now developed into violent attacks of epilepsy, from which he suffered for the rest of his life."
-    }
-   ]
-  },
-  {
-   "id": "the bustle|and|the plaster",
-   "subject": "the bustle",
-   "verb": "and",
-   "object": "the plaster",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7842-8146",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The heat in the street was terrible: and the airlessness, the bustle and the plaster, scaffolding, bricks, and dust all about him, and that special Petersburg stench, so familiar to all who are unable to get out of town in summer--all worked painfully upon the young man's already overwrought nerves."
-    }
-   ]
-  },
-  {
-   "id": "the heat|in|the street was terrible: and the airlessness",
-   "subject": "The heat",
-   "verb": "in",
-   "object": "the street was terrible: and the airlessness",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7842-8146",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The heat in the street was terrible: and the airlessness, the bustle and the plaster, scaffolding, bricks, and dust all about him, and that special Petersburg stench, so familiar to all who are unable to get out of town in summer--all worked painfully upon the young man's already overwrought nerves."
+     "text": "This story was published by the poet Nekrassov in his review and was received with acclamations."
     }
    ]
   },
@@ -4480,7 +1307,7 @@
    "verb": "stench",
    "object": "from the pot-houses",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4496,7 +1323,7 @@
    "verb": "was",
    "object": "commuted to hard labour",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4507,18 +1334,18 @@
    ]
   },
   {
-   "id": "their evenings|in|reading aloud to their children",
-   "subject": "their evenings",
-   "verb": "in",
-   "object": "reading aloud to their children",
+   "id": "the street|was|terrible: and the airlessness",
+   "subject": "the street",
+   "verb": "was",
+   "object": "terrible: and the airlessness",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1036-1161",
+     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7842-8146",
      "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The father and mother spent their evenings in reading aloud to their children, generally from books of a serious character."
+     "text": "The heat in the street was terrible: and the airlessness, the bustle and the plaster, scaffolding, bricks, and dust all about him, and that special Petersburg stench, so familiar to all who are unable to get out of town in summer--all worked painfully upon the young man's already overwrought nerves."
     }
    ]
   },
@@ -4528,7 +1355,7 @@
    "verb": "had",
    "object": "already begun his first work",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4539,28 +1366,12 @@
    ]
   },
   {
-   "id": "third in|the|final examination of the petersburg school of engineering",
-   "subject": "third in",
-   "verb": "the",
-   "object": "final examination of the Petersburg school of Engineering",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1165-1291",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Though always sickly and delicate Dostoevsky came out third in the final examination of the Petersburg school of Engineering."
-    }
-   ]
-  },
-  {
    "id": "this|was|enough",
    "subject": "this",
    "verb": "was",
    "object": "enough",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4576,7 +1387,7 @@
    "verb": "was",
    "object": "not because he was cowardly and abject",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4587,92 +1398,12 @@
    ]
   },
   {
-   "id": "threats|and|complaints",
-   "subject": "threats",
-   "verb": "and",
-   "object": "complaints",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#6685-6982",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
-    }
-   ]
-  },
-  {
-   "id": "took upon|himself|the payment of his brother's debts",
-   "subject": "took upon",
-   "verb": "himself",
-   "object": "the payment of his brother's debts",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#4017-4106",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "He was in terrible poverty, yet he took upon himself the payment of his brother's debts."
-    }
-   ]
-  },
-  {
-   "id": "uttering|a|new word is what they fear most",
-   "subject": "uttering",
-   "verb": "a",
-   "object": "new word is what they fear most",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#7352-7418",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Taking a new step, uttering a new word is what they fear most...."
-    }
-   ]
-  },
-  {
-   "id": "were bound|in|threes to stakes",
-   "subject": "were bound",
-   "verb": "in",
-   "object": "threes to stakes",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2391-2457",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Thereupon we were bound in threes to stakes, to suffer execution."
-    }
-   ]
-  },
-  {
-   "id": "were next|to|me",
-   "subject": "were next",
-   "verb": "to",
-   "object": "me",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2543-2675",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "I thought of you and your dear ones and I contrived to kiss Plestcheiev and Dourov, who were next to me, and to bid them farewell."
-    }
-   ]
-  },
-  {
    "id": "which|was|forbidden by the censorship through a misunderstanding",
    "subject": "which",
    "verb": "was",
    "object": "forbidden by the Censorship through a misunderstanding",
    "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
+    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4681,58 +1412,10 @@
      "text": "He started a journal--\"Vremya,\" which was forbidden by the Censorship through a misunderstanding."
     }
    ]
-  },
-  {
-   "id": "working|and|deeply religious people",
-   "subject": "working",
-   "verb": "and",
-   "object": "deeply religious people",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#898-1035",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "His parents were very hard-working and deeply religious people, but so poor that they lived with their five children in only two rooms."
-    }
-   ]
-  },
-  {
-   "id": "writing|to|his brother mihail",
-   "subject": "Writing",
-   "verb": "to",
-   "object": "his brother Mihail",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#2228-2390",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "Writing to his brother Mihail, Dostoevsky says: \"They snapped words over our heads, and they made us put on the white shirts worn by persons condemned to death."
-    }
-   ]
-  },
-  {
-   "id": "youth found|himself|instantly something of a celebrity",
-   "subject": "youth found",
-   "verb": "himself",
-   "object": "instantly something of a celebrity",
-   "witnesses": [
-    "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt#1450-1523",
-     "ref": "01-literature-books/gitenberg/pg2554_Crime-and-Punishment.txt",
-     "text": "The shy, unknown youth found himself instantly something of a celebrity."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:23.305Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:08.840Z"
  }
 }

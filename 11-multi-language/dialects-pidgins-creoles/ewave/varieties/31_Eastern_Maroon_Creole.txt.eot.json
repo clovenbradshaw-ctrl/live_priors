@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 19977,
   "bodyOffset": 0,
   "bodyChars": 19977,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 5,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 62,
-  "extractionError": null
+  "edgesFound": 8,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 15
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 8,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 66,
-  "excerptOk": 66,
-  "rawChecked": 66,
-  "rawOk": 66,
+  "excerptChecked": 8,
+  "excerptOk": 8,
+  "rawChecked": 8,
+  "rawOk": 8,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 62,
-  "heard": 62,
+  "offered": 8,
+  "heard": 8,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "based contact|varieties|(or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "subject": "based contact",
-    "verb": "varieties",
-    "object": "(or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#45-311",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "eWAVE variety ID: 31 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,7 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "its native|speakers|was normally very limited",
+    "task_id": "native speakers|was|normally very limited",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,19 +128,43 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "its native speakers was normally very limited",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "was normally very limited",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#452-526",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
       "text": "English), while exposure to its native speakers was normally very limited."
-     },
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "witnesses": [
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
+    ],
+    "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#527-721",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
@@ -152,7 +177,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "maroon creole|or|nenge(e) is a cover term for three very closely related and mutually intelligible conservative creole varieties spoken by the descendants of three maroon groups (aluku",
+    "task_id": "soli i|sama|a mi",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -161,819 +186,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Maroon Creole or Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku",
-    "subject": "Maroon Creole",
-    "verb": "or",
-    "object": "Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku",
+    "description": "soli i sama a mi",
+    "subject": "soli i",
+    "verb": "sama",
+    "object": "a mi",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#882-1266",
+      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2787-2986",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The term Eastern Maroon Creole or Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku, Ndyuka or Okanisi, Pamaka) in Suriname and French Guiana."
+      "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"Mi o soli i sama a mi.\""
      }
     ],
     "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ndyuka|or|okanisi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Ndyuka or Okanisi",
-    "subject": "Ndyuka",
-    "verb": "or",
-    "object": "Okanisi",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#882-1266",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The term Eastern Maroon Creole or Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku, Ndyuka or Okanisi, Pamaka) in Suriname and French Guiana."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in suriname|and|french guiana",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in Suriname and French Guiana",
-    "subject": "in Suriname",
-    "verb": "and",
-    "object": "French Guiana",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#882-1266",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The term Eastern Maroon Creole or Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku, Ndyuka or Okanisi, Pamaka) in Suriname and French Guiana."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in rural|and|urban centres of the two countries",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in rural and urban centres of the two countries",
-    "subject": "in rural",
-    "verb": "and",
-    "object": "urban centres of the two countries",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1267-1406",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "Speakers of these languages predominantly reside in rural and urban centres of the two countries, but also in Europe (Netherlands, France)."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "000|and|80",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "000 and 80",
-    "subject": "000",
-    "verb": "and",
-    "object": "80",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1450-1548",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "Conservative counts estimate that they number roughly between 65.000 and 80.000 speakers in total."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "000|speakers|in total",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "000 speakers in total",
-    "subject": "000",
-    "verb": "speakers",
-    "object": "in total",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1450-1548",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "Conservative counts estimate that they number roughly between 65.000 and 80.000 speakers in total."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "these communities|and|languages emerged throughout the 18th century as a result of their founders’ flight from the plantations of suriname",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "These communities and languages emerged throughout the 18th century as a result of their founders’ flight from the plantations of Suriname",
-    "subject": "These communities",
-    "verb": "and",
-    "object": "languages emerged throughout the 18th century as a result of their founders’ flight from the plantations of Suriname",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1549-1688",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "These communities and languages emerged throughout the 18th century as a result of their founders’ flight from the plantations of Suriname."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as home|and|community languages and in recent years have made some head way in the public sphere in both countries",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as home and community languages and in recent years have made some head way in the public sphere in both countries",
-    "subject": "as home",
-    "verb": "and",
-    "object": "community languages and in recent years have made some head way in the public sphere in both countries",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1689-1842",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "These languages are still widely used as home and community languages and in recent years have made some head way in the public sphere in both countries."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "da|i|luku a ini a [pointing at cupboard]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Da i luku a ini a [pointing at cupboard]",
-    "subject": "Da",
-    "verb": "i",
-    "object": "luku a ini a [pointing at cupboard]",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2211-2308",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Da i luku a ini a [pointing at cupboard], da i luku na a sani [=cupboard] ondoo, i o si a patu.\""
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "da|i|luku na a sani [=cupboard] ondoo",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "da i luku na a sani [=cupboard] ondoo",
-    "subject": "da",
-    "verb": "i",
-    "object": "luku na a sani [=cupboard] ondoo",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2211-2308",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Da i luku a ini a [pointing at cupboard], da i luku na a sani [=cupboard] ondoo, i o si a patu.\""
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "o si|a|patu",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "o si a patu",
-    "subject": "o si",
-    "verb": "a",
-    "object": "patu",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2211-2308",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Da i luku a ini a [pointing at cupboard], da i luku na a sani [=cupboard] ondoo, i o si a patu.\""
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "referring to|a|person",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "referring to a person",
-    "subject": "referring to",
-    "verb": "a",
-    "object": "person",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2310-2450",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[When referring to a person, di sani 'this thing' is frequently used as one way of avoiding name calling.] \"A teki fa den kali en man tu.\""
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "da|i|diki en kon gi mi tu",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "da i diki en kon gi mi tu",
-    "subject": "da",
-    "verb": "i",
-    "object": "diki en kon gi mi tu",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2499-2547",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"A baafu patu fu mi, da i diki en kon gi mi tu.\""
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "neen|a|taki",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Neen a taki",
-    "subject": "Neen",
-    "verb": "a",
-    "object": "taki",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2550-2579",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Neen a taki, \"pe a uman de?\""
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "pe|a|uman de?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "pe a uman de?\"",
-    "subject": "pe",
-    "verb": "a",
-    "object": "uman de?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2550-2579",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Neen a taki, \"pe a uman de?\""
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "leti fa|i|si yoyo e kisi en ya",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "leti fa i si yoyo e kisi en ya",
-    "subject": "leti fa",
-    "verb": "i",
-    "object": "si yoyo e kisi en ya",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2632-2718",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"A leti fa i si yoyo e kisi en ya, ala en ondoo ana fuu te a fuu te a fuu kwakwakwaa.\""
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fuu te|a|fuu te a fuu kwakwakwaa",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fuu te a fuu te a fuu kwakwakwaa",
-    "subject": "fuu te",
-    "verb": "a",
-    "object": "fuu te a fuu kwakwakwaa",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2632-2718",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"A leti fa i si yoyo e kisi en ya, ala en ondoo ana fuu te a fuu te a fuu kwakwakwaa.\""
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "na apatou|gi|en a pampila kon a data",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Na Apatou gi en a pampila kon a data",
-    "subject": "Na Apatou",
-    "verb": "gi",
-    "object": "en a pampila kon a data",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2720-2785",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[en referring to a man] \"Na Apatou gi en a pampila kon a data.\""
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "object|and|dative object pronouns are the same",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "object and dative object pronouns are the same",
-    "subject": "object",
-    "verb": "and",
-    "object": "dative object pronouns are the same",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2787-2986",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"Mi o soli i sama a mi.\""
-     },
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2988-3188",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"A soli den a osu eside.\""
-     },
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#3190-3406",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[elicited; Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"A teki fa den kali en man tu.\""
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "o soli|i|sama a mi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "o soli i sama a mi",
-    "subject": "o soli",
-    "verb": "i",
-    "object": "sama a mi",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2787-2986",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"Mi o soli i sama a mi.\""
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "soli den|a|osu eside",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "soli den a osu eside",
-    "subject": "soli den",
-    "verb": "a",
-    "object": "osu eside",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2988-3188",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"A soli den a osu eside.\""
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ma efu|i|án boli alisi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Ma efu i án boli alisi",
-    "subject": "Ma efu",
-    "verb": "i",
-    "object": "án boli alisi",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#3565-3617",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Ma efu i án boli alisi, u seefi, a kwaka u e njan.\""
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "i án|gi|mi i beenki",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "I án gi mi i beenki",
-    "subject": "I án",
-    "verb": "gi",
-    "object": "mi i beenki",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#3773-3808",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[elicited] \"I án gi mi i beenki.\""
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "for 2nd|and|3rd person singular pronouns",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "for 2nd and 3rd person singular pronouns",
-    "subject": "for 2nd",
-    "verb": "and",
-    "object": "3rd person singular pronouns",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#3946-4028",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[elicited; This distinction is only made for 2nd and 3rd person singular pronouns."
-     },
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4194-4266",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[This distinction is only made for 2nd and 3rd person singular pronouns."
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kon na|a|dede osu?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "kon na a dede osu?\"",
-    "subject": "kon na",
-    "verb": "a",
-    "object": "dede osu?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4267-4430",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "But note that the 2nd person singular emphatic form yu may also be used in non-emphatic contexts in Ndyuka; further research is needed.] \"U o kon na a dede osu?\""
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "i ná|a|baafu wata moo",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "I ná a baafu wata moo",
-    "subject": "I ná",
-    "verb": "a",
-    "object": "baafu wata moo",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4433-4457",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"I ná a baafu wata moo.\""
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "pe|i|e [ye] go uku",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Pe i e [ye] go uku",
-    "subject": "Pe",
-    "verb": "i",
-    "object": "e [ye] go uku",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4460-4489",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Pe i e [ye] go uku, na ape?\""
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is really|a|definite plural determiner",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is really a definite plural determiner",
-    "subject": "is really",
-    "verb": "a",
-    "object": "definite plural determiner",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4563-4700",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[Den is really a definite plural determiner; non-definite plural NPs do not select den.] \"Den Ma Sanna taanga moo ala den Pamaka sama.\""
-     }
-    ],
-    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -993,7 +220,7 @@
     "verb": "do",
     "object": "not select den",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1002,7 +229,7 @@
       "text": "[Den is really a definite plural determiner; non-definite plural NPs do not select den.] \"Den Ma Sanna taanga moo ala den Pamaka sama.\""
      }
     ],
-    "seq": 31,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -1022,7 +249,7 @@
     "verb": "taanga",
     "object": "moo ala den Pamaka sama",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1031,13 +258,13 @@
       "text": "[Den is really a definite plural determiner; non-definite plural NPs do not select den.] \"Den Ma Sanna taanga moo ala den Pamaka sama.\""
      }
     ],
-    "seq": 32,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "we mean|a|plural form indicating that reference is made to the named referent plus several other people closely associated with him/her (e",
+    "task_id": "gi den|sama|ya",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1046,128 +273,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "we mean a plural form indicating that reference is made to the named referent plus several other people closely associated with him/her (e",
-    "subject": "we mean",
-    "verb": "a",
-    "object": "plural form indicating that reference is made to the named referent plus several other people closely associated with him/her (e",
+    "description": "gi den sama ya",
+    "subject": "gi den",
+    "verb": "sama",
+    "object": "ya",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4702-4866",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[by associative plural we mean a plural form indicating that reference is made to the named referent plus several other people closely associated with him/her (e.g."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a ná|a|meliki fu gi wan pikin",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "A ná a meliki fu gi wan pikin",
-    "subject": "A ná",
-    "verb": "a",
-    "object": "meliki fu gi wan pikin",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4867-4932",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "family, friends or colleagues] \"A ná a meliki fu gi wan pikin.\""
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a de|a|osu anda",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "A de a osu anda",
-    "subject": "A de",
-    "verb": "a",
-    "object": "osu anda",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4935-4953",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"A de a osu anda.\""
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "komoto na|a|osu de oo",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "komoto na a osu de oo",
-    "subject": "komoto na",
-    "verb": "a",
-    "object": "osu de oo",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4956-4992",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"I mu dilekt komoto na a osu de oo.\""
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tya go|gi|den sama ya",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Tya go gi den sama ya",
-    "subject": "Tya go",
-    "verb": "gi",
-    "object": "den sama ya",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1176,500 +287,7 @@
       "text": "\"Tya go gi den sama ya.\""
      }
     ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "foo fu|a|mma ya de?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "foo fu a mma ya de?\"",
-    "subject": "foo fu",
-    "verb": "a",
-    "object": "mma ya de?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5066-5094",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Pe den foo fu a mma ya de?\""
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a kon|a|kownu konde",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "A kon a kownu konde",
-    "subject": "A kon",
-    "verb": "a",
-    "object": "kownu konde",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5097-5154",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Mi o go boli a fisi fu mi anda\" \"A kon a kownu konde.\""
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bigi moo|a|boketi de",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "bigi moo a boketi de",
-    "subject": "bigi moo",
-    "verb": "a",
-    "object": "boketi de",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5156-5199",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[elicited] \"Wan se bigi moo a boketi de.\""
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be is|a|relative past marker",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be is a relative past marker",
-    "subject": "be is",
-    "verb": "a",
-    "object": "relative past marker",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5327-5357",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[be is a relative past marker."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "used when|a|past frame has been set",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "used when a past frame has been set",
-    "subject": "used when",
-    "verb": "a",
-    "object": "past frame has been set",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5358-5515",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "It is generally not used when a past frame has been set; in fact, if it is used in clearly past marked contexts, it typically expresses past before past (cf."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "winford|and|migge 2007)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Winford and Migge 2007)",
-    "subject": "Winford",
-    "verb": "and",
-    "object": "Migge 2007)",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5516-5569",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "Winford and Migge 2007).] \"Da a alisi na o koo no.\""
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "da|a|alisi na o koo no",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Da a alisi na o koo no",
-    "subject": "Da",
-    "verb": "a",
-    "object": "alisi na o koo no",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5516-5569",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "Winford and Migge 2007).] \"Da a alisi na o koo no.\""
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mu boli|a|foo de nownow?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mu boli a foo de nownow?\"",
-    "subject": "mu boli",
-    "verb": "a",
-    "object": "foo de nownow?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5571-5649",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[The current future marker o derives from go.] \"Mi mu boli a foo de nownow?\""
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hoop taki|a|toli de sa koti nou",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hoop taki a toli de sa koti nou",
-    "subject": "hoop taki",
-    "verb": "a",
-    "object": "toli de sa koti nou",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5652-5688",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"U hoop taki a toli de sa koti nou.\""
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "án de|a|tabiki",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "án de a tabiki",
-    "subject": "án de",
-    "verb": "a",
-    "object": "tabiki",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5709-5728",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"U án de a tabiki.\""
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "iti baafu|gi|en",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "iti baafu gi en",
-    "subject": "iti baafu",
-    "verb": "gi",
-    "object": "en",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5731-5756",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Kon go iti baafu gi en.\""
-     }
-    ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "e puu|gi|i",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "e puu gi i",
-    "subject": "e puu",
-    "verb": "gi",
-    "object": "i",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5759-5779",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Kon mi e puu gi i.\""
-     }
-    ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mi yee|a|án bun gi en",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mi yee a án bun gi en",
-    "subject": "mi yee",
-    "verb": "a",
-    "object": "án bun gi en",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5782-5809",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Ma mi yee a án bun gi en.\""
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a lon|gi|sikoutu",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "A lon gi sikoutu",
-    "subject": "A lon",
-    "verb": "gi",
-    "object": "sikoutu",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5812-5831",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"A lon gi sikoutu.\""
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "u ná|a|fu tya mi go!\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "u ná a fu tya mi go!\"",
-    "subject": "u ná",
-    "verb": "a",
-    "object": "fu tya mi go!\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5834-5859",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Da u ná a fu tya mi go!\""
-     }
-    ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tya ala|a|patu kon a osu?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "tya ala a patu kon a osu?\"",
-    "subject": "tya ala",
-    "verb": "a",
-    "object": "patu kon a osu?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5862-5891",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"I tya ala a patu kon a osu?\""
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "solanga|i|teki tya kon gi en",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Solanga i teki tya kon gi en",
-    "subject": "Solanga",
-    "verb": "i",
-    "object": "teki tya kon gi en",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5893-5948",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[elicited] \"Solanga i teki tya kon gi en, a de kaba.\""
-     }
-    ],
-    "seq": 54,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -1689,7 +307,7 @@
     "verb": "taanga",
     "object": "fu fom en",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1698,186 +316,12 @@
       "text": "\"Mati a taanga fu fom en.\""
      }
     ],
-    "seq": 55,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "wani taki|a|án doo a dei fu a puu en",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "wani taki a án doo a dei fu a puu en",
-    "subject": "wani taki",
-    "verb": "a",
-    "object": "án doo a dei fu a puu en",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6060-6107",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Ma dati wani taki a án doo a dei fu a puu en.\""
-     }
-    ],
-    "seq": 56,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "de na|a|bangi tapu ye",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "de na a bangi tapu ye",
-    "subject": "de na",
-    "verb": "a",
-    "object": "bangi tapu ye",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6172-6224",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "[elicited] \"Wan koko lampu de na a bangi tapu ye.\""
-     }
-    ],
-    "seq": 57,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a de|a|dyiko ondo ya",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "A de a dyiko ondo ya",
-    "subject": "A de",
-    "verb": "a",
-    "object": "dyiko ondo ya",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6227-6250",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"A de a dyiko ondo ya.\""
-     }
-    ],
-    "seq": 58,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "na alibina|a|be e tan tuu?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Na Alibina a be e tan tuu?\"",
-    "subject": "Na Alibina",
-    "verb": "a",
-    "object": "be e tan tuu?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6305-6333",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Na Alibina a be e tan tuu?\""
-     }
-    ],
-    "seq": 59,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "den án|gi|i a sani?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Den án gi i a sani?\"",
-    "subject": "Den án",
-    "verb": "gi",
-    "object": "i a sani?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6439-6460",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "\"Den án gi i a sani?\""
-     }
-    ],
-    "seq": 60,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "pervasive|or|obligatory",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "pervasive or obligatory",
-    "subject": "pervasive",
-    "verb": "or",
-    "object": "obligatory",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6474-6848",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-      "text": "FULL MORPHOSYNTACTIC FEATURE PROFILE (all 235 eWAVE features) ---------------------------------------------------------------------- Each feature below is rated on eWAVE's six-point scale: A = pervasive or obligatory; B = attested, neither pervasive nor extremely rare; C = attested but extremely rare; D = attested absence; X = not applicable to this variety's structure; ?"
-     }
-    ],
-    "seq": 61,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 62,
+  "nextSeq": 8,
   "admits": [
    "NUL",
    "SEG",
@@ -1892,928 +336,12 @@
  },
  "folded": [
   {
-   "id": "000|and|80",
-   "subject": "000",
-   "verb": "and",
-   "object": "80",
+   "id": "gi den|sama|ya",
+   "subject": "gi den",
+   "verb": "sama",
+   "object": "ya",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1450-1548",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "Conservative counts estimate that they number roughly between 65.000 and 80.000 speakers in total."
-    }
-   ]
-  },
-  {
-   "id": "000|speakers|in total",
-   "subject": "000",
-   "verb": "speakers",
-   "object": "in total",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1450-1548",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "Conservative counts estimate that they number roughly between 65.000 and 80.000 speakers in total."
-    }
-   ]
-  },
-  {
-   "id": "a de|a|dyiko ondo ya",
-   "subject": "A de",
-   "verb": "a",
-   "object": "dyiko ondo ya",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6227-6250",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"A de a dyiko ondo ya.\""
-    }
-   ]
-  },
-  {
-   "id": "a de|a|osu anda",
-   "subject": "A de",
-   "verb": "a",
-   "object": "osu anda",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4935-4953",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"A de a osu anda.\""
-    }
-   ]
-  },
-  {
-   "id": "a kon|a|kownu konde",
-   "subject": "A kon",
-   "verb": "a",
-   "object": "kownu konde",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5097-5154",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Mi o go boli a fisi fu mi anda\" \"A kon a kownu konde.\""
-    }
-   ]
-  },
-  {
-   "id": "a lon|gi|sikoutu",
-   "subject": "A lon",
-   "verb": "gi",
-   "object": "sikoutu",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5812-5831",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"A lon gi sikoutu.\""
-    }
-   ]
-  },
-  {
-   "id": "a ná|a|meliki fu gi wan pikin",
-   "subject": "A ná",
-   "verb": "a",
-   "object": "meliki fu gi wan pikin",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4867-4932",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "family, friends or colleagues] \"A ná a meliki fu gi wan pikin.\""
-    }
-   ]
-  },
-  {
-   "id": "án de|a|tabiki",
-   "subject": "án de",
-   "verb": "a",
-   "object": "tabiki",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5709-5728",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"U án de a tabiki.\""
-    }
-   ]
-  },
-  {
-   "id": "as home|and|community languages and in recent years have made some head way in the public sphere in both countries",
-   "subject": "as home",
-   "verb": "and",
-   "object": "community languages and in recent years have made some head way in the public sphere in both countries",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1689-1842",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "These languages are still widely used as home and community languages and in recent years have made some head way in the public sphere in both countries."
-    }
-   ]
-  },
-  {
-   "id": "based contact|varieties|(or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-   "subject": "based contact",
-   "verb": "varieties",
-   "object": "(or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#45-311",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "eWAVE variety ID: 31 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-    }
-   ]
-  },
-  {
-   "id": "be is|a|relative past marker",
-   "subject": "be is",
-   "verb": "a",
-   "object": "relative past marker",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5327-5357",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[be is a relative past marker."
-    }
-   ]
-  },
-  {
-   "id": "bigi moo|a|boketi de",
-   "subject": "bigi moo",
-   "verb": "a",
-   "object": "boketi de",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5156-5199",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[elicited] \"Wan se bigi moo a boketi de.\""
-    }
-   ]
-  },
-  {
-   "id": "da|a|alisi na o koo no",
-   "subject": "Da",
-   "verb": "a",
-   "object": "alisi na o koo no",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5516-5569",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "Winford and Migge 2007).] \"Da a alisi na o koo no.\""
-    }
-   ]
-  },
-  {
-   "id": "da|i|diki en kon gi mi tu",
-   "subject": "da",
-   "verb": "i",
-   "object": "diki en kon gi mi tu",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2499-2547",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"A baafu patu fu mi, da i diki en kon gi mi tu.\""
-    }
-   ]
-  },
-  {
-   "id": "da|i|luku a ini a [pointing at cupboard]",
-   "subject": "Da",
-   "verb": "i",
-   "object": "luku a ini a [pointing at cupboard]",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2211-2308",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Da i luku a ini a [pointing at cupboard], da i luku na a sani [=cupboard] ondoo, i o si a patu.\""
-    }
-   ]
-  },
-  {
-   "id": "da|i|luku na a sani [=cupboard] ondoo",
-   "subject": "da",
-   "verb": "i",
-   "object": "luku na a sani [=cupboard] ondoo",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2211-2308",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Da i luku a ini a [pointing at cupboard], da i luku na a sani [=cupboard] ondoo, i o si a patu.\""
-    }
-   ]
-  },
-  {
-   "id": "de na|a|bangi tapu ye",
-   "subject": "de na",
-   "verb": "a",
-   "object": "bangi tapu ye",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6172-6224",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[elicited] \"Wan koko lampu de na a bangi tapu ye.\""
-    }
-   ]
-  },
-  {
-   "id": "den án|gi|i a sani?\"",
-   "subject": "Den án",
-   "verb": "gi",
-   "object": "i a sani?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6439-6460",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Den án gi i a sani?\""
-    }
-   ]
-  },
-  {
-   "id": "e puu|gi|i",
-   "subject": "e puu",
-   "verb": "gi",
-   "object": "i",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5759-5779",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Kon mi e puu gi i.\""
-    }
-   ]
-  },
-  {
-   "id": "foo fu|a|mma ya de?\"",
-   "subject": "foo fu",
-   "verb": "a",
-   "object": "mma ya de?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5066-5094",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Pe den foo fu a mma ya de?\""
-    }
-   ]
-  },
-  {
-   "id": "for 2nd|and|3rd person singular pronouns",
-   "subject": "for 2nd",
-   "verb": "and",
-   "object": "3rd person singular pronouns",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#3946-4028",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[elicited; This distinction is only made for 2nd and 3rd person singular pronouns."
-    },
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4194-4266",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[This distinction is only made for 2nd and 3rd person singular pronouns."
-    }
-   ]
-  },
-  {
-   "id": "fuu te|a|fuu te a fuu kwakwakwaa",
-   "subject": "fuu te",
-   "verb": "a",
-   "object": "fuu te a fuu kwakwakwaa",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2632-2718",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"A leti fa i si yoyo e kisi en ya, ala en ondoo ana fuu te a fuu te a fuu kwakwakwaa.\""
-    }
-   ]
-  },
-  {
-   "id": "hoop taki|a|toli de sa koti nou",
-   "subject": "hoop taki",
-   "verb": "a",
-   "object": "toli de sa koti nou",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5652-5688",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"U hoop taki a toli de sa koti nou.\""
-    }
-   ]
-  },
-  {
-   "id": "i án|gi|mi i beenki",
-   "subject": "I án",
-   "verb": "gi",
-   "object": "mi i beenki",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#3773-3808",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[elicited] \"I án gi mi i beenki.\""
-    }
-   ]
-  },
-  {
-   "id": "i ná|a|baafu wata moo",
-   "subject": "I ná",
-   "verb": "a",
-   "object": "baafu wata moo",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4433-4457",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"I ná a baafu wata moo.\""
-    }
-   ]
-  },
-  {
-   "id": "in rural|and|urban centres of the two countries",
-   "subject": "in rural",
-   "verb": "and",
-   "object": "urban centres of the two countries",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1267-1406",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "Speakers of these languages predominantly reside in rural and urban centres of the two countries, but also in Europe (Netherlands, France)."
-    }
-   ]
-  },
-  {
-   "id": "in suriname|and|french guiana",
-   "subject": "in Suriname",
-   "verb": "and",
-   "object": "French Guiana",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#882-1266",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The term Eastern Maroon Creole or Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku, Ndyuka or Okanisi, Pamaka) in Suriname and French Guiana."
-    }
-   ]
-  },
-  {
-   "id": "is really|a|definite plural determiner",
-   "subject": "is really",
-   "verb": "a",
-   "object": "definite plural determiner",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4563-4700",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[Den is really a definite plural determiner; non-definite plural NPs do not select den.] \"Den Ma Sanna taanga moo ala den Pamaka sama.\""
-    }
-   ]
-  },
-  {
-   "id": "iti baafu|gi|en",
-   "subject": "iti baafu",
-   "verb": "gi",
-   "object": "en",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5731-5756",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Kon go iti baafu gi en.\""
-    }
-   ]
-  },
-  {
-   "id": "its native|speakers|was normally very limited",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "was normally very limited",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#452-526",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "English), while exposure to its native speakers was normally very limited."
-    },
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#527-721",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
-    }
-   ]
-  },
-  {
-   "id": "komoto na|a|osu de oo",
-   "subject": "komoto na",
-   "verb": "a",
-   "object": "osu de oo",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4956-4992",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"I mu dilekt komoto na a osu de oo.\""
-    }
-   ]
-  },
-  {
-   "id": "kon na|a|dede osu?\"",
-   "subject": "kon na",
-   "verb": "a",
-   "object": "dede osu?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4267-4430",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "But note that the 2nd person singular emphatic form yu may also be used in non-emphatic contexts in Ndyuka; further research is needed.] \"U o kon na a dede osu?\""
-    }
-   ]
-  },
-  {
-   "id": "leti fa|i|si yoyo e kisi en ya",
-   "subject": "leti fa",
-   "verb": "i",
-   "object": "si yoyo e kisi en ya",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2632-2718",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"A leti fa i si yoyo e kisi en ya, ala en ondoo ana fuu te a fuu te a fuu kwakwakwaa.\""
-    }
-   ]
-  },
-  {
-   "id": "ma efu|i|án boli alisi",
-   "subject": "Ma efu",
-   "verb": "i",
-   "object": "án boli alisi",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#3565-3617",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Ma efu i án boli alisi, u seefi, a kwaka u e njan.\""
-    }
-   ]
-  },
-  {
-   "id": "ma sanna|taanga|moo ala den pamaka sama",
-   "subject": "Ma Sanna",
-   "verb": "taanga",
-   "object": "moo ala den Pamaka sama",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4563-4700",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[Den is really a definite plural determiner; non-definite plural NPs do not select den.] \"Den Ma Sanna taanga moo ala den Pamaka sama.\""
-    }
-   ]
-  },
-  {
-   "id": "maroon creole|or|nenge(e) is a cover term for three very closely related and mutually intelligible conservative creole varieties spoken by the descendants of three maroon groups (aluku",
-   "subject": "Maroon Creole",
-   "verb": "or",
-   "object": "Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#882-1266",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The term Eastern Maroon Creole or Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku, Ndyuka or Okanisi, Pamaka) in Suriname and French Guiana."
-    }
-   ]
-  },
-  {
-   "id": "mati a|taanga|fu fom en",
-   "subject": "Mati a",
-   "verb": "taanga",
-   "object": "fu fom en",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6031-6057",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Mati a taanga fu fom en.\""
-    }
-   ]
-  },
-  {
-   "id": "mi yee|a|án bun gi en",
-   "subject": "mi yee",
-   "verb": "a",
-   "object": "án bun gi en",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5782-5809",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Ma mi yee a án bun gi en.\""
-    }
-   ]
-  },
-  {
-   "id": "mu boli|a|foo de nownow?\"",
-   "subject": "mu boli",
-   "verb": "a",
-   "object": "foo de nownow?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5571-5649",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[The current future marker o derives from go.] \"Mi mu boli a foo de nownow?\""
-    }
-   ]
-  },
-  {
-   "id": "na alibina|a|be e tan tuu?\"",
-   "subject": "Na Alibina",
-   "verb": "a",
-   "object": "be e tan tuu?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6305-6333",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Na Alibina a be e tan tuu?\""
-    }
-   ]
-  },
-  {
-   "id": "na apatou|gi|en a pampila kon a data",
-   "subject": "Na Apatou",
-   "verb": "gi",
-   "object": "en a pampila kon a data",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2720-2785",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[en referring to a man] \"Na Apatou gi en a pampila kon a data.\""
-    }
-   ]
-  },
-  {
-   "id": "ndyuka|or|okanisi",
-   "subject": "Ndyuka",
-   "verb": "or",
-   "object": "Okanisi",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#882-1266",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The term Eastern Maroon Creole or Nenge(e) is a cover term for three very closely related and mutually intelligible conservative Creole varieties spoken by the descendants of three Maroon groups (Aluku, Ndyuka or Okanisi, Pamaka) in Suriname and French Guiana."
-    }
-   ]
-  },
-  {
-   "id": "neen|a|taki",
-   "subject": "Neen",
-   "verb": "a",
-   "object": "taki",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2550-2579",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Neen a taki, \"pe a uman de?\""
-    }
-   ]
-  },
-  {
-   "id": "o si|a|patu",
-   "subject": "o si",
-   "verb": "a",
-   "object": "patu",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2211-2308",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Da i luku a ini a [pointing at cupboard], da i luku na a sani [=cupboard] ondoo, i o si a patu.\""
-    }
-   ]
-  },
-  {
-   "id": "o soli|i|sama a mi",
-   "subject": "o soli",
-   "verb": "i",
-   "object": "sama a mi",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2787-2986",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"Mi o soli i sama a mi.\""
-    }
-   ]
-  },
-  {
-   "id": "object|and|dative object pronouns are the same",
-   "subject": "object",
-   "verb": "and",
-   "object": "dative object pronouns are the same",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2787-2986",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"Mi o soli i sama a mi.\""
-    },
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2988-3188",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"A soli den a osu eside.\""
-    },
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#3190-3406",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[elicited; Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"A teki fa den kali en man tu.\""
-    }
-   ]
-  },
-  {
-   "id": "pe|a|uman de?\"",
-   "subject": "pe",
-   "verb": "a",
-   "object": "uman de?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2550-2579",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Neen a taki, \"pe a uman de?\""
-    }
-   ]
-  },
-  {
-   "id": "pe|i|e [ye] go uku",
-   "subject": "Pe",
-   "verb": "i",
-   "object": "e [ye] go uku",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4460-4489",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Pe i e [ye] go uku, na ape?\""
-    }
-   ]
-  },
-  {
-   "id": "pervasive|or|obligatory",
-   "subject": "pervasive",
-   "verb": "or",
-   "object": "obligatory",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6474-6848",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "FULL MORPHOSYNTACTIC FEATURE PROFILE (all 235 eWAVE features) ---------------------------------------------------------------------- Each feature below is rated on eWAVE's six-point scale: A = pervasive or obligatory; B = attested, neither pervasive nor extremely rare; C = attested but extremely rare; D = attested absence; X = not applicable to this variety's structure; ?"
-    }
-   ]
-  },
-  {
-   "id": "plural nps|do|not select den",
-   "subject": "plural NPs",
-   "verb": "do",
-   "object": "not select den",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4563-4700",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[Den is really a definite plural determiner; non-definite plural NPs do not select den.] \"Den Ma Sanna taanga moo ala den Pamaka sama.\""
-    }
-   ]
-  },
-  {
-   "id": "referring to|a|person",
-   "subject": "referring to",
-   "verb": "a",
-   "object": "person",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2310-2450",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[When referring to a person, di sani 'this thing' is frequently used as one way of avoiding name calling.] \"A teki fa den kali en man tu.\""
-    }
-   ]
-  },
-  {
-   "id": "solanga|i|teki tya kon gi en",
-   "subject": "Solanga",
-   "verb": "i",
-   "object": "teki tya kon gi en",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5893-5948",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[elicited] \"Solanga i teki tya kon gi en, a de kaba.\""
-    }
-   ]
-  },
-  {
-   "id": "soli den|a|osu eside",
-   "subject": "soli den",
-   "verb": "a",
-   "object": "osu eside",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2988-3188",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"A soli den a osu eside.\""
-    }
-   ]
-  },
-  {
-   "id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
-   "subject": "there",
-   "verb": "was",
-   "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#312-451",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
-    }
-   ]
-  },
-  {
-   "id": "these communities|and|languages emerged throughout the 18th century as a result of their founders’ flight from the plantations of suriname",
-   "subject": "These communities",
-   "verb": "and",
-   "object": "languages emerged throughout the 18th century as a result of their founders’ flight from the plantations of Suriname",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#1549-1688",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "These communities and languages emerged throughout the 18th century as a result of their founders’ flight from the plantations of Suriname."
-    }
-   ]
-  },
-  {
-   "id": "tya ala|a|patu kon a osu?\"",
-   "subject": "tya ala",
-   "verb": "a",
-   "object": "patu kon a osu?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5862-5891",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"I tya ala a patu kon a osu?\""
-    }
-   ]
-  },
-  {
-   "id": "tya go|gi|den sama ya",
-   "subject": "Tya go",
-   "verb": "gi",
-   "object": "den sama ya",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2824,88 +352,120 @@
    ]
   },
   {
-   "id": "u ná|a|fu tya mi go!\"",
-   "subject": "u ná",
-   "verb": "a",
-   "object": "fu tya mi go!\"",
+   "id": "ma sanna|taanga|moo ala den pamaka sama",
+   "subject": "Ma Sanna",
+   "verb": "taanga",
+   "object": "moo ala den Pamaka sama",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5834-5859",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4563-4700",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Da u ná a fu tya mi go!\""
+     "text": "[Den is really a definite plural determiner; non-definite plural NPs do not select den.] \"Den Ma Sanna taanga moo ala den Pamaka sama.\""
     }
    ]
   },
   {
-   "id": "used when|a|past frame has been set",
-   "subject": "used when",
-   "verb": "a",
-   "object": "past frame has been set",
+   "id": "mati a|taanga|fu fom en",
+   "subject": "Mati a",
+   "verb": "taanga",
+   "object": "fu fom en",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5358-5515",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6031-6057",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "It is generally not used when a past frame has been set; in fact, if it is used in clearly past marked contexts, it typically expresses past before past (cf."
+     "text": "\"Mati a taanga fu fom en.\""
     }
    ]
   },
   {
-   "id": "wani taki|a|án doo a dei fu a puu en",
-   "subject": "wani taki",
-   "verb": "a",
-   "object": "án doo a dei fu a puu en",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#6060-6107",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#452-526",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "\"Ma dati wani taki a án doo a dei fu a puu en.\""
+     "text": "English), while exposure to its native speakers was normally very limited."
     }
    ]
   },
   {
-   "id": "we mean|a|plural form indicating that reference is made to the named referent plus several other people closely associated with him/her (e",
-   "subject": "we mean",
-   "verb": "a",
-   "object": "plural form indicating that reference is made to the named referent plus several other people closely associated with him/her (e",
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+   "subject": "of English",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4702-4866",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#527-721",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "[by associative plural we mean a plural form indicating that reference is made to the named referent plus several other people closely associated with him/her (e.g."
+     "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
     }
    ]
   },
   {
-   "id": "winford|and|migge 2007)",
-   "subject": "Winford",
-   "verb": "and",
-   "object": "Migge 2007)",
+   "id": "plural nps|do|not select den",
+   "subject": "plural NPs",
+   "verb": "do",
+   "object": "not select den",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#5516-5569",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#4563-4700",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
-     "text": "Winford and Migge 2007).] \"Da a alisi na o koo no.\""
+     "text": "[Den is really a definite plural determiner; non-definite plural NPs do not select den.] \"Den Ma Sanna taanga moo ala den Pamaka sama.\""
+    }
+   ]
+  },
+  {
+   "id": "soli i|sama|a mi",
+   "subject": "soli i",
+   "verb": "sama",
+   "object": "a mi",
+   "witnesses": [
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#2787-2986",
+     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
+     "text": "[Note that subject, object and dative object pronouns are the same, except for the 3rd person singular pronoun where the latter two are different from the subject pronoun.] \"Mi o soli i sama a mi.\""
+    }
+   ]
+  },
+  {
+   "id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
+   "subject": "there",
+   "verb": "was",
+   "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
+   "witnesses": [
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt#312-451",
+     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/31_Eastern_Maroon_Creole.txt",
+     "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
     }
    ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:22.382Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:27.744Z"
  }
 }

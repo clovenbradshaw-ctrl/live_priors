@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 25790,
   "bodyOffset": 0,
   "bodyChars": 25790,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 7,
   "distinctReferents": 6,
   "examined": true,
-  "edgesFound": 26,
-  "extractionError": null
+  "edgesFound": 15,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 33,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 46
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 15,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 26,
-  "excerptOk": 26,
-  "rawChecked": 26,
-  "rawOk": 26,
+  "excerptChecked": 15,
+  "excerptOk": 15,
+  "rawChecked": 15,
+  "rawOk": 15,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 26,
-  "heard": 26,
+  "offered": 15,
+  "heard": 15,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "the mother|of|the book with us",
+    "task_id": "and we|destroyed|greater than them in [striking] power",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the Mother of the Book with Us",
-    "subject": "the Mother",
-    "verb": "of",
-    "object": "the Book with Us",
+    "description": "And We destroyed greater than them in [striking] power",
+    "subject": "And We",
+    "verb": "destroyed",
+    "object": "greater than them in [striking] power",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,93 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then should|we|turn the message away",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Then should we turn the message away",
-    "subject": "Then should",
-    "verb": "we",
-    "object": "turn the message away",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#218-1926",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alawwaleena\n    and|we|destroyed greater than them in [striking] power",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alawwaleena\n    And we destroyed greater than them in [striking] power",
-    "subject": "alawwaleena\n    And",
-    "verb": "we",
-    "object": "destroyed greater than them in [striking] power",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#218-1926",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alaaaleemu\n    and|if|you should ask them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alAAaleemu\n    And if you should ask them",
-    "subject": "alAAaleemu\n    And",
-    "verb": "if",
-    "object": "you should ask them",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#218-1926",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
-     }
-    ],
-    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +133,7 @@
     "verb": "has",
     "object": "created the heavens and the earth?\"",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,13 +142,13 @@
       "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
      }
     ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the exalted|in|might",
+    "task_id": "when you|have|settled upon them and say",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -214,12 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the Exalted in Might",
-    "subject": "the Exalted",
-    "verb": "in",
-    "object": "Might",
+    "description": "when you have settled upon them and say",
+    "subject": "when you",
+    "verb": "have",
+    "object": "settled upon them and say",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,94 +171,7 @@
       "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the sky|in|measured amounts",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the sky in measured amounts",
-    "subject": "the sky",
-    "verb": "in",
-    "object": "measured amounts",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#1927-3471",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "all|of|them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "all of them",
-    "subject": "all",
-    "verb": "of",
-    "object": "them",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#1927-3471",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lahu muqrineena|that|you may settle yourselves upon their backs and then remember the favor of your lord when you have settled upon them and say",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lahu muqrineena that you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say",
-    "subject": "lahu muqrineena",
-    "verb": "that",
-    "object": "you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#1927-3471",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
-     }
-    ],
-    "seq": 8,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -335,7 +191,7 @@
     "verb": "is",
     "object": "He who has subjected this to us",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -344,7 +200,7 @@
       "text": "\"Exalted is He who has subjected this to us, and we could not have [otherwise] subdued it [43:14] وَإِنَّآ إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ Wainna ila rabbina lamunqaliboona And indeed we, to our Lord, will [surely] return [43:15] وَجَعَلُواْ لَهُۥ مِنۡ عِبَادِهِۦ جُزۡءًاۚ إِنَّ ٱلۡإِنسَٰنَ لَكَفُورٞ مُّبِينٌ WajaAAaloo lahu min AAibadihi juzan inna alinsana lakafoorun mubeenun But they have attributed to Him from His servants a portion."
      }
     ],
-    "seq": 9,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -364,7 +220,7 @@
     "verb": "have",
     "object": "attributed to Him from His servants a portion",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,7 +229,7 @@
       "text": "\"Exalted is He who has subjected this to us, and we could not have [otherwise] subdued it [43:14] وَإِنَّآ إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ Wainna ila rabbina lamunqaliboona And indeed we, to our Lord, will [surely] return [43:15] وَجَعَلُواْ لَهُۥ مِنۡ عِبَادِهِۦ جُزۡءًاۚ إِنَّ ٱلۡإِنسَٰنَ لَكَفُورٞ مُّبِينٌ WajaAAaloo lahu min AAibadihi juzan inna alinsana lakafoorun mubeenun But they have attributed to Him from His servants a portion."
      }
     ],
-    "seq": 10,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +249,7 @@
     "verb": "has",
     "object": "He taken",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,13 +258,13 @@
       "text": "Indeed, man is clearly ungrateful [43:16] أَمِ ٱتَّخَذَ مِمَّا يَخۡلُقُ بَنَاتٖ وَأَصۡفَىٰكُم بِٱلۡبَنِينَ Ami ittakhatha mimma yakhluqu banatin waasfakum bialbaneena Or has He taken, out of what He has created, daughters and chosen you for [having] sons [43:17] وَإِذَا بُشِّرَ أَحَدُهُم بِمَا ضَرَبَ لِلرَّحۡمَٰنِ مَثَلٗا ظَلَّ وَجۡهُهُۥ مُسۡوَدّٗا وَهُوَ كَظِيمٌ Waitha bushshira ahaduhum bima daraba lilrrahmani mathalan thalla wajhuhu muswaddan wahuwa katheemun And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison, his face becomes dark, and he suppresses grief [43:18] أَوَمَن يُنَشَّؤُاْ فِي ٱلۡحِلۡيَةِ وَهُوَ فِي ٱلۡخِصَامِ غَيۡرُ مُبِينٖ Awaman yunashshao fee alhilyati wahuwa fee alkhisami ghayru mubeenin So is one brought up in ornaments while being during conflict unevident [attributed to Allah] [43:19] وَجَعَلُواْ ٱلۡمَلَـٰٓئِكَةَ ٱلَّذِينَ هُمۡ عِبَٰدُ ٱلرَّحۡمَٰنِ إِنَٰثًاۚ أَشَهِدُواْ خَلۡقَهُمۡۚ سَتُكۡتَبُ شَهَٰدَتُهُمۡ وَيُسۡـَٔلُونَ WajaAAaloo almalaikata allatheena hum AAibadu alrrahmani inathan ashahidoo khalqahum satuktabu shahadatuhum wayusaloona And they have made the angels, who are servants of the Most Merciful, females."
      }
     ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "out|of|what he has created",
+    "task_id": "what he|has|created",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -417,12 +273,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "out of what He has created",
-    "subject": "out",
-    "verb": "of",
-    "object": "what He has created",
+    "description": "what He has created",
+    "subject": "what He",
+    "verb": "has",
+    "object": "created",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,13 +287,13 @@
       "text": "Indeed, man is clearly ungrateful [43:16] أَمِ ٱتَّخَذَ مِمَّا يَخۡلُقُ بَنَاتٖ وَأَصۡفَىٰكُم بِٱلۡبَنِينَ Ami ittakhatha mimma yakhluqu banatin waasfakum bialbaneena Or has He taken, out of what He has created, daughters and chosen you for [having] sons [43:17] وَإِذَا بُشِّرَ أَحَدُهُم بِمَا ضَرَبَ لِلرَّحۡمَٰنِ مَثَلٗا ظَلَّ وَجۡهُهُۥ مُسۡوَدّٗا وَهُوَ كَظِيمٌ Waitha bushshira ahaduhum bima daraba lilrrahmani mathalan thalla wajhuhu muswaddan wahuwa katheemun And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison, his face becomes dark, and he suppresses grief [43:18] أَوَمَن يُنَشَّؤُاْ فِي ٱلۡحِلۡيَةِ وَهُوَ فِي ٱلۡخِصَامِ غَيۡرُ مُبِينٖ Awaman yunashshao fee alhilyati wahuwa fee alkhisami ghayru mubeenin So is one brought up in ornaments while being during conflict unevident [attributed to Allah] [43:19] وَجَعَلُواْ ٱلۡمَلَـٰٓئِكَةَ ٱلَّذِينَ هُمۡ عِبَٰدُ ٱلرَّحۡمَٰنِ إِنَٰثًاۚ أَشَهِدُواْ خَلۡقَهُمۡۚ سَتُكۡتَبُ شَهَٰدَتُهُمۡ وَيُسۡـَٔلُونَ WajaAAaloo almalaikata allatheena hum AAibadu alrrahmani inathan ashahidoo khalqahum satuktabu shahadatuhum wayusaloona And they have made the angels, who are servants of the Most Merciful, females."
      }
     ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "katheemun\n    and|when|one of them is given good tidings of that which he attributes to the most merciful in comparison",
+    "task_id": "of them|is|given good tidings of that which he attributes to the most merciful in comparison",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -446,12 +302,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "katheemun\n    And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison",
-    "subject": "katheemun\n    And",
-    "verb": "when",
-    "object": "one of them is given good tidings of that which he attributes to the Most Merciful in comparison",
+    "description": "of them is given good tidings of that which he attributes to the Most Merciful in comparison",
+    "subject": "of them",
+    "verb": "is",
+    "object": "given good tidings of that which he attributes to the Most Merciful in comparison",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,7 +316,7 @@
       "text": "Indeed, man is clearly ungrateful [43:16] أَمِ ٱتَّخَذَ مِمَّا يَخۡلُقُ بَنَاتٖ وَأَصۡفَىٰكُم بِٱلۡبَنِينَ Ami ittakhatha mimma yakhluqu banatin waasfakum bialbaneena Or has He taken, out of what He has created, daughters and chosen you for [having] sons [43:17] وَإِذَا بُشِّرَ أَحَدُهُم بِمَا ضَرَبَ لِلرَّحۡمَٰنِ مَثَلٗا ظَلَّ وَجۡهُهُۥ مُسۡوَدّٗا وَهُوَ كَظِيمٌ Waitha bushshira ahaduhum bima daraba lilrrahmani mathalan thalla wajhuhu muswaddan wahuwa katheemun And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison, his face becomes dark, and he suppresses grief [43:18] أَوَمَن يُنَشَّؤُاْ فِي ٱلۡحِلۡيَةِ وَهُوَ فِي ٱلۡخِصَامِ غَيۡرُ مُبِينٖ Awaman yunashshao fee alhilyati wahuwa fee alkhisami ghayru mubeenin So is one brought up in ornaments while being during conflict unevident [attributed to Allah] [43:19] وَجَعَلُواْ ٱلۡمَلَـٰٓئِكَةَ ٱلَّذِينَ هُمۡ عِبَٰدُ ٱلرَّحۡمَٰنِ إِنَٰثًاۚ أَشَهِدُواْ خَلۡقَهُمۡۚ سَتُكۡتَبُ شَهَٰدَتُهُمۡ وَيُسۡـَٔلُونَ WajaAAaloo almalaikata allatheena hum AAibadu alrrahmani inathan ashahidoo khalqahum satuktabu shahadatuhum wayusaloona And they have made the angels, who are servants of the Most Merciful, females."
      }
     ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -480,7 +336,7 @@
     "verb": "have",
     "object": "made the angels",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -489,36 +345,7 @@
       "text": "Indeed, man is clearly ungrateful [43:16] أَمِ ٱتَّخَذَ مِمَّا يَخۡلُقُ بَنَاتٖ وَأَصۡفَىٰكُم بِٱلۡبَنِينَ Ami ittakhatha mimma yakhluqu banatin waasfakum bialbaneena Or has He taken, out of what He has created, daughters and chosen you for [having] sons [43:17] وَإِذَا بُشِّرَ أَحَدُهُم بِمَا ضَرَبَ لِلرَّحۡمَٰنِ مَثَلٗا ظَلَّ وَجۡهُهُۥ مُسۡوَدّٗا وَهُوَ كَظِيمٌ Waitha bushshira ahaduhum bima daraba lilrrahmani mathalan thalla wajhuhu muswaddan wahuwa katheemun And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison, his face becomes dark, and he suppresses grief [43:18] أَوَمَن يُنَشَّؤُاْ فِي ٱلۡحِلۡيَةِ وَهُوَ فِي ٱلۡخِصَامِ غَيۡرُ مُبِينٖ Awaman yunashshao fee alhilyati wahuwa fee alkhisami ghayru mubeenin So is one brought up in ornaments while being during conflict unevident [attributed to Allah] [43:19] وَجَعَلُواْ ٱلۡمَلَـٰٓئِكَةَ ٱلَّذِينَ هُمۡ عِبَٰدُ ٱلرَّحۡمَٰنِ إِنَٰثًاۚ أَشَهِدُواْ خَلۡقَهُمۡۚ سَتُكۡتَبُ شَهَٰدَتُهُمۡ وَيُسۡـَٔلُونَ WajaAAaloo almalaikata allatheena hum AAibadu alrrahmani inathan ashahidoo khalqahum satuktabu shahadatuhum wayusaloona And they have made the angels, who are servants of the Most Merciful, females."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are servants|of|the most merciful",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are servants of the Most Merciful",
-    "subject": "are servants",
-    "verb": "of",
-    "object": "the Most Merciful",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#3929-5171",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "Indeed, man is clearly ungrateful [43:16] أَمِ ٱتَّخَذَ مِمَّا يَخۡلُقُ بَنَاتٖ وَأَصۡفَىٰكُم بِٱلۡبَنِينَ Ami ittakhatha mimma yakhluqu banatin waasfakum bialbaneena Or has He taken, out of what He has created, daughters and chosen you for [having] sons [43:17] وَإِذَا بُشِّرَ أَحَدُهُم بِمَا ضَرَبَ لِلرَّحۡمَٰنِ مَثَلٗا ظَلَّ وَجۡهُهُۥ مُسۡوَدّٗا وَهُوَ كَظِيمٌ Waitha bushshira ahaduhum bima daraba lilrrahmani mathalan thalla wajhuhu muswaddan wahuwa katheemun And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison, his face becomes dark, and he suppresses grief [43:18] أَوَمَن يُنَشَّؤُاْ فِي ٱلۡحِلۡيَةِ وَهُوَ فِي ٱلۡخِصَامِ غَيۡرُ مُبِينٖ Awaman yunashshao fee alhilyati wahuwa fee alkhisami ghayru mubeenin So is one brought up in ornaments while being during conflict unevident [attributed to Allah] [43:19] وَجَعَلُواْ ٱلۡمَلَـٰٓئِكَةَ ٱلَّذِينَ هُمۡ عِبَٰدُ ٱلرَّحۡمَٰنِ إِنَٰثًاۚ أَشَهِدُواْ خَلۡقَهُمۡۚ سَتُكۡتَبُ شَهَٰدَتُهُمۡ وَيُسۡـَٔلُونَ WajaAAaloo almalaikata allatheena hum AAibadu alrrahmani inathan ashahidoo khalqahum satuktabu shahadatuhum wayusaloona And they have made the angels, who are servants of the Most Merciful, females."
-     }
-    ],
-    "seq": 15,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -538,7 +365,7 @@
     "verb": "had",
     "object": "willed",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -547,7 +374,7 @@
       "text": "Their testimony will be recorded, and they will be questioned [43:20] وَقَالُواْ لَوۡ شَآءَ ٱلرَّحۡمَٰنُ مَا عَبَدۡنَٰهُمۗ مَّا لَهُم بِذَٰلِكَ مِنۡ عِلۡمٍۖ إِنۡ هُمۡ إِلَّا يَخۡرُصُونَ Waqaloo law shaa alrrahmanu ma AAabadnahum ma lahum bithalika min AAilmin in hum illa yakhrusoona And they said, \"If the Most Merciful had willed, we would not have worshipped them.\""
      }
     ],
-    "seq": 16,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -567,7 +394,7 @@
     "verb": "have",
     "object": "worshipped them",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -576,13 +403,13 @@
       "text": "Their testimony will be recorded, and they will be questioned [43:20] وَقَالُواْ لَوۡ شَآءَ ٱلرَّحۡمَٰنُ مَا عَبَدۡنَٰهُمۗ مَّا لَهُم بِذَٰلِكَ مِنۡ عِلۡمٍۖ إِنۡ هُمۡ إِلَّا يَخۡرُصُونَ Waqaloo law shaa alrrahmanu ma AAabadnahum ma lahum bithalika min AAilmin in hum illa yakhrusoona And they said, \"If the Most Merciful had willed, we would not have worshipped them.\""
      }
     ],
-    "seq": 17,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "they have|of|that no knowledge",
+    "task_id": "they|have|of that no knowledge",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -592,11 +419,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "They have of that no knowledge",
-    "subject": "They have",
-    "verb": "of",
-    "object": "that no knowledge",
+    "subject": "They",
+    "verb": "have",
+    "object": "of that no knowledge",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -605,123 +432,7 @@
       "text": "They have of that no knowledge."
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you any|warner|into a city except that its affluent said",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "you any warner into a city except that its affluent said",
-    "subject": "you any",
-    "verb": "warner",
-    "object": "into a city except that its affluent said",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#5615-7072",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "They are not but falsifying [43:21] أَمۡ ءَاتَيۡنَٰهُمۡ كِتَٰبٗا مِّن قَبۡلِهِۦ فَهُم بِهِۦ مُسۡتَمۡسِكُونَ Am ataynahum kitaban min qablihi fahum bihi mustamsikoona Or have We given them a book before the Qur'an to which they are adhering [43:22] بَلۡ قَالُوٓاْ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّهۡتَدُونَ Bal qaloo inna wajadna abaana AAala ommatin wainna AAala atharihim muhtadoona Rather, they say, \"Indeed, we found our fathers upon a religion, and we are in their footsteps [rightly] guided [43:23] وَكَذَٰلِكَ مَآ أَرۡسَلۡنَا مِن قَبۡلِكَ فِي قَرۡيَةٖ مِّن نَّذِيرٍ إِلَّا قَالَ مُتۡرَفُوهَآ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّقۡتَدُونَ Wakathalika ma arsalna min qablika fee qaryatin min natheerin illa qala mutrafooha inna wajadna abaana AAala ommatin wainna AAala atharihim muqtadoona And similarly, We did not send before you any warner into a city except that its affluent said, \"Indeed, we found our fathers upon a religion, and we are, in their footsteps, following [43:24] ۞قَٰلَ أَوَلَوۡ جِئۡتُكُم بِأَهۡدَىٰ مِمَّا وَجَدتُّمۡ عَلَيۡهِ ءَابَآءَكُمۡۖ قَالُوٓاْ إِنَّا بِمَآ أُرۡسِلۡتُم بِهِۦ كَٰفِرُونَ Qala awalaw jitukum biahda mimma wajadtum AAalayhi abaakum qaloo inna bima orsiltum bihi kafiroona [Each warner] said, \"Even if I brought you better guidance than that [religion] upon which you found your fathers?\""
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|we|are",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and we are",
-    "subject": "and",
-    "verb": "we",
-    "object": "are",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#5615-7072",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "They are not but falsifying [43:21] أَمۡ ءَاتَيۡنَٰهُمۡ كِتَٰبٗا مِّن قَبۡلِهِۦ فَهُم بِهِۦ مُسۡتَمۡسِكُونَ Am ataynahum kitaban min qablihi fahum bihi mustamsikoona Or have We given them a book before the Qur'an to which they are adhering [43:22] بَلۡ قَالُوٓاْ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّهۡتَدُونَ Bal qaloo inna wajadna abaana AAala ommatin wainna AAala atharihim muhtadoona Rather, they say, \"Indeed, we found our fathers upon a religion, and we are in their footsteps [rightly] guided [43:23] وَكَذَٰلِكَ مَآ أَرۡسَلۡنَا مِن قَبۡلِكَ فِي قَرۡيَةٖ مِّن نَّذِيرٍ إِلَّا قَالَ مُتۡرَفُوهَآ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّقۡتَدُونَ Wakathalika ma arsalna min qablika fee qaryatin min natheerin illa qala mutrafooha inna wajadna abaana AAala ommatin wainna AAala atharihim muqtadoona And similarly, We did not send before you any warner into a city except that its affluent said, \"Indeed, we found our fathers upon a religion, and we are, in their footsteps, following [43:24] ۞قَٰلَ أَوَلَوۡ جِئۡتُكُم بِأَهۡدَىٰ مِمَّا وَجَدتُّمۡ عَلَيۡهِ ءَابَآءَكُمۡۖ قَالُوٓاْ إِنَّا بِمَآ أُرۡسِلۡتُم بِهِۦ كَٰفِرُونَ Qala awalaw jitukum biahda mimma wajadtum AAalayhi abaakum qaloo inna bima orsiltum bihi kafiroona [Each warner] said, \"Even if I brought you better guidance than that [religion] upon which you found your fathers?\""
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "even|if|i brought you better guidance than that [religion] upon which you found your fathers?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Even if I brought you better guidance than that [religion] upon which you found your fathers?\"",
-    "subject": "Even",
-    "verb": "if",
-    "object": "I brought you better guidance than that [religion] upon which you found your fathers?\"",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#5615-7072",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "They are not but falsifying [43:21] أَمۡ ءَاتَيۡنَٰهُمۡ كِتَٰبٗا مِّن قَبۡلِهِۦ فَهُم بِهِۦ مُسۡتَمۡسِكُونَ Am ataynahum kitaban min qablihi fahum bihi mustamsikoona Or have We given them a book before the Qur'an to which they are adhering [43:22] بَلۡ قَالُوٓاْ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّهۡتَدُونَ Bal qaloo inna wajadna abaana AAala ommatin wainna AAala atharihim muhtadoona Rather, they say, \"Indeed, we found our fathers upon a religion, and we are in their footsteps [rightly] guided [43:23] وَكَذَٰلِكَ مَآ أَرۡسَلۡنَا مِن قَبۡلِكَ فِي قَرۡيَةٖ مِّن نَّذِيرٍ إِلَّا قَالَ مُتۡرَفُوهَآ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّقۡتَدُونَ Wakathalika ma arsalna min qablika fee qaryatin min natheerin illa qala mutrafooha inna wajadna abaana AAala ommatin wainna AAala atharihim muqtadoona And similarly, We did not send before you any warner into a city except that its affluent said, \"Indeed, we found our fathers upon a religion, and we are, in their footsteps, following [43:24] ۞قَٰلَ أَوَلَوۡ جِئۡتُكُم بِأَهۡدَىٰ مِمَّا وَجَدتُّمۡ عَلَيۡهِ ءَابَآءَكُمۡۖ قَالُوٓاْ إِنَّا بِمَآ أُرۡسِلۡتُم بِهِۦ كَٰفِرُونَ Qala awalaw jitukum biahda mimma wajadtum AAalayhi abaakum qaloo inna bima orsiltum bihi kafiroona [Each warner] said, \"Even if I brought you better guidance than that [religion] upon which you found your fathers?\""
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in|that|with which you were sent",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in that with which you were sent",
-    "subject": "in",
-    "verb": "that",
-    "object": "with which you were sent",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#7073-8000",
-      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-      "text": "They said, \"Indeed we, in that with which you were sent, are disbelievers [43:25] فَٱنتَقَمۡنَا مِنۡهُمۡۖ فَٱنظُرۡ كَيۡفَ كَانَ عَٰقِبَةُ ٱلۡمُكَذِّبِينَ Faintaqamna minhum faonthur kayfa kana AAaqibatu almukaththibeena So we took retribution from them; then see how was the end of the deniers [43:26] وَإِذۡ قَالَ إِبۡرَٰهِيمُ لِأَبِيهِ وَقَوۡمِهِۦٓ إِنَّنِي بَرَآءٞ مِّمَّا تَعۡبُدُونَ Waith qala ibraheemu liabeehi waqawmihi innanee baraon mimma taAAbudoona And [mention, O Muhammad], when Abraham said to his father and his people, \"Indeed, I am disassociated from that which you worship [43:27] إِلَّا ٱلَّذِي فَطَرَنِي فَإِنَّهُۥ سَيَهۡدِينِ Illa allathee fataranee fainnahu sayahdeeni Except for He who created me; and indeed, He will guide me [43:28] وَجَعَلَهَا كَلِمَةَۢ بَاقِيَةٗ فِي عَقِبِهِۦ لَعَلَّهُمۡ يَرۡجِعُونَ WajaAAalaha kalimatan baqiyatan fee AAaqibihi laAAallahum yarjiAAoona"
-     }
-    ],
-    "seq": 22,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -741,7 +452,7 @@
     "verb": "almukaththibeena",
     "object": "So we took retribution from them",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -750,7 +461,7 @@
       "text": "They said, \"Indeed we, in that with which you were sent, are disbelievers [43:25] فَٱنتَقَمۡنَا مِنۡهُمۡۖ فَٱنظُرۡ كَيۡفَ كَانَ عَٰقِبَةُ ٱلۡمُكَذِّبِينَ Faintaqamna minhum faonthur kayfa kana AAaqibatu almukaththibeena So we took retribution from them; then see how was the end of the deniers [43:26] وَإِذۡ قَالَ إِبۡرَٰهِيمُ لِأَبِيهِ وَقَوۡمِهِۦٓ إِنَّنِي بَرَآءٞ مِّمَّا تَعۡبُدُونَ Waith qala ibraheemu liabeehi waqawmihi innanee baraon mimma taAAbudoona And [mention, O Muhammad], when Abraham said to his father and his people, \"Indeed, I am disassociated from that which you worship [43:27] إِلَّا ٱلَّذِي فَطَرَنِي فَإِنَّهُۥ سَيَهۡدِينِ Illa allathee fataranee fainnahu sayahdeeni Except for He who created me; and indeed, He will guide me [43:28] وَجَعَلَهَا كَلِمَةَۢ بَاقِيَةٗ فِي عَقِبِهِۦ لَعَلَّهُمۡ يَرۡجِعُونَ WajaAAalaha kalimatan baqiyatan fee AAaqibihi laAAallahum yarjiAAoona"
      }
     ],
-    "seq": 23,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -770,7 +481,7 @@
     "verb": "said",
     "object": "to his father and his people",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -779,7 +490,7 @@
       "text": "They said, \"Indeed we, in that with which you were sent, are disbelievers [43:25] فَٱنتَقَمۡنَا مِنۡهُمۡۖ فَٱنظُرۡ كَيۡفَ كَانَ عَٰقِبَةُ ٱلۡمُكَذِّبِينَ Faintaqamna minhum faonthur kayfa kana AAaqibatu almukaththibeena So we took retribution from them; then see how was the end of the deniers [43:26] وَإِذۡ قَالَ إِبۡرَٰهِيمُ لِأَبِيهِ وَقَوۡمِهِۦٓ إِنَّنِي بَرَآءٞ مِّمَّا تَعۡبُدُونَ Waith qala ibraheemu liabeehi waqawmihi innanee baraon mimma taAAbudoona And [mention, O Muhammad], when Abraham said to his father and his people, \"Indeed, I am disassociated from that which you worship [43:27] إِلَّا ٱلَّذِي فَطَرَنِي فَإِنَّهُۥ سَيَهۡدِينِ Illa allathee fataranee fainnahu sayahdeeni Except for He who created me; and indeed, He will guide me [43:28] وَجَعَلَهَا كَلِمَةَۢ بَاقِيَةٗ فِي عَقِبِهِۦ لَعَلَّهُمۡ يَرۡجِعُونَ WajaAAalaha kalimatan baqiyatan fee AAaqibihi laAAallahum yarjiAAoona"
      }
     ],
-    "seq": 24,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -799,7 +510,7 @@
     "verb": "kalimatan",
     "object": "baqiyatan fee AAaqibihi laAAallahum yarjiAAoona",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -808,12 +519,12 @@
       "text": "They said, \"Indeed we, in that with which you were sent, are disbelievers [43:25] فَٱنتَقَمۡنَا مِنۡهُمۡۖ فَٱنظُرۡ كَيۡفَ كَانَ عَٰقِبَةُ ٱلۡمُكَذِّبِينَ Faintaqamna minhum faonthur kayfa kana AAaqibatu almukaththibeena So we took retribution from them; then see how was the end of the deniers [43:26] وَإِذۡ قَالَ إِبۡرَٰهِيمُ لِأَبِيهِ وَقَوۡمِهِۦٓ إِنَّنِي بَرَآءٞ مِّمَّا تَعۡبُدُونَ Waith qala ibraheemu liabeehi waqawmihi innanee baraon mimma taAAbudoona And [mention, O Muhammad], when Abraham said to his father and his people, \"Indeed, I am disassociated from that which you worship [43:27] إِلَّا ٱلَّذِي فَطَرَنِي فَإِنَّهُۥ سَيَهۡدِينِ Illa allathee fataranee fainnahu sayahdeeni Except for He who created me; and indeed, He will guide me [43:28] وَجَعَلَهَا كَلِمَةَۢ بَاقِيَةٗ فِي عَقِبِهِۦ لَعَلَّهُمۡ يَرۡجِعُونَ WajaAAalaha kalimatan baqiyatan fee AAaqibihi laAAallahum yarjiAAoona"
      }
     ],
-    "seq": 25,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 26,
+  "nextSeq": 15,
   "admits": [
    "NUL",
    "SEG",
@@ -828,60 +539,12 @@
  },
  "folded": [
   {
-   "id": "alaaaleemu\n    and|if|you should ask them",
-   "subject": "alAAaleemu\n    And",
-   "verb": "if",
-   "object": "you should ask them",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#218-1926",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
-    }
-   ]
-  },
-  {
-   "id": "alawwaleena\n    and|we|destroyed greater than them in [striking] power",
-   "subject": "alawwaleena\n    And",
-   "verb": "we",
-   "object": "destroyed greater than them in [striking] power",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#218-1926",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
-    }
-   ]
-  },
-  {
-   "id": "all|of|them",
-   "subject": "all",
-   "verb": "of",
-   "object": "them",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#1927-3471",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
-    }
-   ]
-  },
-  {
    "id": "and they|have|made the angels",
    "subject": "And they",
    "verb": "have",
    "object": "made the angels",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -892,34 +555,18 @@
    ]
   },
   {
-   "id": "and|we|are",
-   "subject": "and",
-   "verb": "we",
-   "object": "are",
+   "id": "and we|destroyed|greater than them in [striking] power",
+   "subject": "And We",
+   "verb": "destroyed",
+   "object": "greater than them in [striking] power",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#5615-7072",
+     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#218-1926",
      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "They are not but falsifying [43:21] أَمۡ ءَاتَيۡنَٰهُمۡ كِتَٰبٗا مِّن قَبۡلِهِۦ فَهُم بِهِۦ مُسۡتَمۡسِكُونَ Am ataynahum kitaban min qablihi fahum bihi mustamsikoona Or have We given them a book before the Qur'an to which they are adhering [43:22] بَلۡ قَالُوٓاْ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّهۡتَدُونَ Bal qaloo inna wajadna abaana AAala ommatin wainna AAala atharihim muhtadoona Rather, they say, \"Indeed, we found our fathers upon a religion, and we are in their footsteps [rightly] guided [43:23] وَكَذَٰلِكَ مَآ أَرۡسَلۡنَا مِن قَبۡلِكَ فِي قَرۡيَةٖ مِّن نَّذِيرٍ إِلَّا قَالَ مُتۡرَفُوهَآ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّقۡتَدُونَ Wakathalika ma arsalna min qablika fee qaryatin min natheerin illa qala mutrafooha inna wajadna abaana AAala ommatin wainna AAala atharihim muqtadoona And similarly, We did not send before you any warner into a city except that its affluent said, \"Indeed, we found our fathers upon a religion, and we are, in their footsteps, following [43:24] ۞قَٰلَ أَوَلَوۡ جِئۡتُكُم بِأَهۡدَىٰ مِمَّا وَجَدتُّمۡ عَلَيۡهِ ءَابَآءَكُمۡۖ قَالُوٓاْ إِنَّا بِمَآ أُرۡسِلۡتُم بِهِۦ كَٰفِرُونَ Qala awalaw jitukum biahda mimma wajadtum AAalayhi abaakum qaloo inna bima orsiltum bihi kafiroona [Each warner] said, \"Even if I brought you better guidance than that [religion] upon which you found your fathers?\""
-    }
-   ]
-  },
-  {
-   "id": "are servants|of|the most merciful",
-   "subject": "are servants",
-   "verb": "of",
-   "object": "the Most Merciful",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#3929-5171",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "Indeed, man is clearly ungrateful [43:16] أَمِ ٱتَّخَذَ مِمَّا يَخۡلُقُ بَنَاتٖ وَأَصۡفَىٰكُم بِٱلۡبَنِينَ Ami ittakhatha mimma yakhluqu banatin waasfakum bialbaneena Or has He taken, out of what He has created, daughters and chosen you for [having] sons [43:17] وَإِذَا بُشِّرَ أَحَدُهُم بِمَا ضَرَبَ لِلرَّحۡمَٰنِ مَثَلٗا ظَلَّ وَجۡهُهُۥ مُسۡوَدّٗا وَهُوَ كَظِيمٌ Waitha bushshira ahaduhum bima daraba lilrrahmani mathalan thalla wajhuhu muswaddan wahuwa katheemun And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison, his face becomes dark, and he suppresses grief [43:18] أَوَمَن يُنَشَّؤُاْ فِي ٱلۡحِلۡيَةِ وَهُوَ فِي ٱلۡخِصَامِ غَيۡرُ مُبِينٖ Awaman yunashshao fee alhilyati wahuwa fee alkhisami ghayru mubeenin So is one brought up in ornaments while being during conflict unevident [attributed to Allah] [43:19] وَجَعَلُواْ ٱلۡمَلَـٰٓئِكَةَ ٱلَّذِينَ هُمۡ عِبَٰدُ ٱلرَّحۡمَٰنِ إِنَٰثًاۚ أَشَهِدُواْ خَلۡقَهُمۡۚ سَتُكۡتَبُ شَهَٰدَتُهُمۡ وَيُسۡـَٔلُونَ WajaAAaloo almalaikata allatheena hum AAibadu alrrahmani inathan ashahidoo khalqahum satuktabu shahadatuhum wayusaloona And they have made the angels, who are servants of the Most Merciful, females."
+     "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
     }
    ]
   },
@@ -929,7 +576,7 @@
    "verb": "has",
    "object": "He taken",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -945,29 +592,13 @@
    "verb": "have",
    "object": "attributed to Him from His servants a portion",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#3472-3928",
      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
      "text": "\"Exalted is He who has subjected this to us, and we could not have [otherwise] subdued it [43:14] وَإِنَّآ إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ Wainna ila rabbina lamunqaliboona And indeed we, to our Lord, will [surely] return [43:15] وَجَعَلُواْ لَهُۥ مِنۡ عِبَادِهِۦ جُزۡءًاۚ إِنَّ ٱلۡإِنسَٰنَ لَكَفُورٞ مُّبِينٌ WajaAAaloo lahu min AAibadihi juzan inna alinsana lakafoorun mubeenun But they have attributed to Him from His servants a portion."
-    }
-   ]
-  },
-  {
-   "id": "even|if|i brought you better guidance than that [religion] upon which you found your fathers?\"",
-   "subject": "Even",
-   "verb": "if",
-   "object": "I brought you better guidance than that [religion] upon which you found your fathers?\"",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#5615-7072",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "They are not but falsifying [43:21] أَمۡ ءَاتَيۡنَٰهُمۡ كِتَٰبٗا مِّن قَبۡلِهِۦ فَهُم بِهِۦ مُسۡتَمۡسِكُونَ Am ataynahum kitaban min qablihi fahum bihi mustamsikoona Or have We given them a book before the Qur'an to which they are adhering [43:22] بَلۡ قَالُوٓاْ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّهۡتَدُونَ Bal qaloo inna wajadna abaana AAala ommatin wainna AAala atharihim muhtadoona Rather, they say, \"Indeed, we found our fathers upon a religion, and we are in their footsteps [rightly] guided [43:23] وَكَذَٰلِكَ مَآ أَرۡسَلۡنَا مِن قَبۡلِكَ فِي قَرۡيَةٖ مِّن نَّذِيرٍ إِلَّا قَالَ مُتۡرَفُوهَآ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّقۡتَدُونَ Wakathalika ma arsalna min qablika fee qaryatin min natheerin illa qala mutrafooha inna wajadna abaana AAala ommatin wainna AAala atharihim muqtadoona And similarly, We did not send before you any warner into a city except that its affluent said, \"Indeed, we found our fathers upon a religion, and we are, in their footsteps, following [43:24] ۞قَٰلَ أَوَلَوۡ جِئۡتُكُم بِأَهۡدَىٰ مِمَّا وَجَدتُّمۡ عَلَيۡهِ ءَابَآءَكُمۡۖ قَالُوٓاْ إِنَّا بِمَآ أُرۡسِلۡتُم بِهِۦ كَٰفِرُونَ Qala awalaw jitukum biahda mimma wajadtum AAalayhi abaakum qaloo inna bima orsiltum bihi kafiroona [Each warner] said, \"Even if I brought you better guidance than that [religion] upon which you found your fathers?\""
     }
    ]
   },
@@ -977,7 +608,7 @@
    "verb": "is",
    "object": "He who has subjected this to us",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -988,66 +619,18 @@
    ]
   },
   {
-   "id": "in|that|with which you were sent",
-   "subject": "in",
-   "verb": "that",
-   "object": "with which you were sent",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#7073-8000",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "They said, \"Indeed we, in that with which you were sent, are disbelievers [43:25] فَٱنتَقَمۡنَا مِنۡهُمۡۖ فَٱنظُرۡ كَيۡفَ كَانَ عَٰقِبَةُ ٱلۡمُكَذِّبِينَ Faintaqamna minhum faonthur kayfa kana AAaqibatu almukaththibeena So we took retribution from them; then see how was the end of the deniers [43:26] وَإِذۡ قَالَ إِبۡرَٰهِيمُ لِأَبِيهِ وَقَوۡمِهِۦٓ إِنَّنِي بَرَآءٞ مِّمَّا تَعۡبُدُونَ Waith qala ibraheemu liabeehi waqawmihi innanee baraon mimma taAAbudoona And [mention, O Muhammad], when Abraham said to his father and his people, \"Indeed, I am disassociated from that which you worship [43:27] إِلَّا ٱلَّذِي فَطَرَنِي فَإِنَّهُۥ سَيَهۡدِينِ Illa allathee fataranee fainnahu sayahdeeni Except for He who created me; and indeed, He will guide me [43:28] وَجَعَلَهَا كَلِمَةَۢ بَاقِيَةٗ فِي عَقِبِهِۦ لَعَلَّهُمۡ يَرۡجِعُونَ WajaAAalaha kalimatan baqiyatan fee AAaqibihi laAAallahum yarjiAAoona"
-    }
-   ]
-  },
-  {
    "id": "kana aaaqibatu|almukaththibeena|so we took retribution from them",
    "subject": "kana AAaqibatu",
    "verb": "almukaththibeena",
    "object": "So we took retribution from them",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#7073-8000",
      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
      "text": "They said, \"Indeed we, in that with which you were sent, are disbelievers [43:25] فَٱنتَقَمۡنَا مِنۡهُمۡۖ فَٱنظُرۡ كَيۡفَ كَانَ عَٰقِبَةُ ٱلۡمُكَذِّبِينَ Faintaqamna minhum faonthur kayfa kana AAaqibatu almukaththibeena So we took retribution from them; then see how was the end of the deniers [43:26] وَإِذۡ قَالَ إِبۡرَٰهِيمُ لِأَبِيهِ وَقَوۡمِهِۦٓ إِنَّنِي بَرَآءٞ مِّمَّا تَعۡبُدُونَ Waith qala ibraheemu liabeehi waqawmihi innanee baraon mimma taAAbudoona And [mention, O Muhammad], when Abraham said to his father and his people, \"Indeed, I am disassociated from that which you worship [43:27] إِلَّا ٱلَّذِي فَطَرَنِي فَإِنَّهُۥ سَيَهۡدِينِ Illa allathee fataranee fainnahu sayahdeeni Except for He who created me; and indeed, He will guide me [43:28] وَجَعَلَهَا كَلِمَةَۢ بَاقِيَةٗ فِي عَقِبِهِۦ لَعَلَّهُمۡ يَرۡجِعُونَ WajaAAalaha kalimatan baqiyatan fee AAaqibihi laAAallahum yarjiAAoona"
-    }
-   ]
-  },
-  {
-   "id": "katheemun\n    and|when|one of them is given good tidings of that which he attributes to the most merciful in comparison",
-   "subject": "katheemun\n    And",
-   "verb": "when",
-   "object": "one of them is given good tidings of that which he attributes to the Most Merciful in comparison",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#3929-5171",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "Indeed, man is clearly ungrateful [43:16] أَمِ ٱتَّخَذَ مِمَّا يَخۡلُقُ بَنَاتٖ وَأَصۡفَىٰكُم بِٱلۡبَنِينَ Ami ittakhatha mimma yakhluqu banatin waasfakum bialbaneena Or has He taken, out of what He has created, daughters and chosen you for [having] sons [43:17] وَإِذَا بُشِّرَ أَحَدُهُم بِمَا ضَرَبَ لِلرَّحۡمَٰنِ مَثَلٗا ظَلَّ وَجۡهُهُۥ مُسۡوَدّٗا وَهُوَ كَظِيمٌ Waitha bushshira ahaduhum bima daraba lilrrahmani mathalan thalla wajhuhu muswaddan wahuwa katheemun And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison, his face becomes dark, and he suppresses grief [43:18] أَوَمَن يُنَشَّؤُاْ فِي ٱلۡحِلۡيَةِ وَهُوَ فِي ٱلۡخِصَامِ غَيۡرُ مُبِينٖ Awaman yunashshao fee alhilyati wahuwa fee alkhisami ghayru mubeenin So is one brought up in ornaments while being during conflict unevident [attributed to Allah] [43:19] وَجَعَلُواْ ٱلۡمَلَـٰٓئِكَةَ ٱلَّذِينَ هُمۡ عِبَٰدُ ٱلرَّحۡمَٰنِ إِنَٰثًاۚ أَشَهِدُواْ خَلۡقَهُمۡۚ سَتُكۡتَبُ شَهَٰدَتُهُمۡ وَيُسۡـَٔلُونَ WajaAAaloo almalaikata allatheena hum AAibadu alrrahmani inathan ashahidoo khalqahum satuktabu shahadatuhum wayusaloona And they have made the angels, who are servants of the Most Merciful, females."
-    }
-   ]
-  },
-  {
-   "id": "lahu muqrineena|that|you may settle yourselves upon their backs and then remember the favor of your lord when you have settled upon them and say",
-   "subject": "lahu muqrineena",
-   "verb": "that",
-   "object": "you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#1927-3471",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
     }
    ]
   },
@@ -1057,7 +640,7 @@
    "verb": "had",
    "object": "willed",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1068,12 +651,12 @@
    ]
   },
   {
-   "id": "out|of|what he has created",
-   "subject": "out",
-   "verb": "of",
-   "object": "what He has created",
+   "id": "of them|is|given good tidings of that which he attributes to the most merciful in comparison",
+   "subject": "of them",
+   "verb": "is",
+   "object": "given good tidings of that which he attributes to the Most Merciful in comparison",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1084,76 +667,12 @@
    ]
   },
   {
-   "id": "the exalted|in|might",
-   "subject": "the Exalted",
-   "verb": "in",
-   "object": "Might",
+   "id": "they|have|of that no knowledge",
+   "subject": "They",
+   "verb": "have",
+   "object": "of that no knowledge",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#1927-3471",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
-    }
-   ]
-  },
-  {
-   "id": "the mother|of|the book with us",
-   "subject": "the Mother",
-   "verb": "of",
-   "object": "the Book with Us",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#218-1926",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
-    }
-   ]
-  },
-  {
-   "id": "the sky|in|measured amounts",
-   "subject": "the sky",
-   "verb": "in",
-   "object": "measured amounts",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#1927-3471",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
-    }
-   ]
-  },
-  {
-   "id": "then should|we|turn the message away",
-   "subject": "Then should",
-   "verb": "we",
-   "object": "turn the message away",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#218-1926",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "[43:1] حمٓ Hameem Ha, Meem [43:2] وَٱلۡكِتَٰبِ ٱلۡمُبِينِ Waalkitabi almubeeni By the clear Book [43:3] إِنَّا جَعَلۡنَٰهُ قُرۡءَٰنًا عَرَبِيّٗا لَّعَلَّكُمۡ تَعۡقِلُونَ Inna jaAAalnahu quranan AAarabiyyan laAAallakum taAAqiloona Indeed, We have made it an Arabic Qur'an that you might understand [43:4] وَإِنَّهُۥ فِيٓ أُمِّ ٱلۡكِتَٰبِ لَدَيۡنَا لَعَلِيٌّ حَكِيمٌ Wainnahu fee ommi alkitabi ladayna laAAaliyyun hakeemun And indeed it is, in the Mother of the Book with Us, exalted and full of wisdom [43:5] أَفَنَضۡرِبُ عَنكُمُ ٱلذِّكۡرَ صَفۡحًا أَن كُنتُمۡ قَوۡمٗا مُّسۡرِفِينَ Afanadribu AAankumu alththikra safhan an kuntum qawman musrifeena Then should We turn the message away, disregarding you, because you are a transgressing people [43:6] وَكَمۡ أَرۡسَلۡنَا مِن نَّبِيّٖ فِي ٱلۡأَوَّلِينَ Wakam arsalna min nabiyyin fee alawwaleena And how many a prophet We sent among the former peoples [43:7] وَمَا يَأۡتِيهِم مِّن نَّبِيٍّ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ Wama yateehim min nabiyyin illa kanoo bihi yastahzioona But there would not come to them a prophet except that they used to ridicule him [43:8] فَأَهۡلَكۡنَآ أَشَدَّ مِنۡهُم بَطۡشٗا وَمَضَىٰ مَثَلُ ٱلۡأَوَّلِينَ Faahlakna ashadda minhum batshan wamada mathalu alawwaleena And We destroyed greater than them in [striking] power, and the example of the former peoples has preceded [43:9] وَلَئِن سَأَلۡتَهُم مَّنۡ خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ لَيَقُولُنَّ خَلَقَهُنَّ ٱلۡعَزِيزُ ٱلۡعَلِيمُ Walain saaltahum man khalaqa alssamawati waalarda layaqoolunna khalaqahunna alAAazeezu alAAaleemu And if you should ask them, \"Who has created the heavens and the earth?\""
-    }
-   ]
-  },
-  {
-   "id": "they have|of|that no knowledge",
-   "subject": "They have",
-   "verb": "of",
-   "object": "that no knowledge",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1169,13 +688,29 @@
    "verb": "kalimatan",
    "object": "baqiyatan fee AAaqibihi laAAallahum yarjiAAoona",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#7073-8000",
      "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
      "text": "They said, \"Indeed we, in that with which you were sent, are disbelievers [43:25] فَٱنتَقَمۡنَا مِنۡهُمۡۖ فَٱنظُرۡ كَيۡفَ كَانَ عَٰقِبَةُ ٱلۡمُكَذِّبِينَ Faintaqamna minhum faonthur kayfa kana AAaqibatu almukaththibeena So we took retribution from them; then see how was the end of the deniers [43:26] وَإِذۡ قَالَ إِبۡرَٰهِيمُ لِأَبِيهِ وَقَوۡمِهِۦٓ إِنَّنِي بَرَآءٞ مِّمَّا تَعۡبُدُونَ Waith qala ibraheemu liabeehi waqawmihi innanee baraon mimma taAAbudoona And [mention, O Muhammad], when Abraham said to his father and his people, \"Indeed, I am disassociated from that which you worship [43:27] إِلَّا ٱلَّذِي فَطَرَنِي فَإِنَّهُۥ سَيَهۡدِينِ Illa allathee fataranee fainnahu sayahdeeni Except for He who created me; and indeed, He will guide me [43:28] وَجَعَلَهَا كَلِمَةَۢ بَاقِيَةٗ فِي عَقِبِهِۦ لَعَلَّهُمۡ يَرۡجِعُونَ WajaAAalaha kalimatan baqiyatan fee AAaqibihi laAAallahum yarjiAAoona"
+    }
+   ]
+  },
+  {
+   "id": "what he|has|created",
+   "subject": "what He",
+   "verb": "has",
+   "object": "created",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#3929-5171",
+     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
+     "text": "Indeed, man is clearly ungrateful [43:16] أَمِ ٱتَّخَذَ مِمَّا يَخۡلُقُ بَنَاتٖ وَأَصۡفَىٰكُم بِٱلۡبَنِينَ Ami ittakhatha mimma yakhluqu banatin waasfakum bialbaneena Or has He taken, out of what He has created, daughters and chosen you for [having] sons [43:17] وَإِذَا بُشِّرَ أَحَدُهُم بِمَا ضَرَبَ لِلرَّحۡمَٰنِ مَثَلٗا ظَلَّ وَجۡهُهُۥ مُسۡوَدّٗا وَهُوَ كَظِيمٌ Waitha bushshira ahaduhum bima daraba lilrrahmani mathalan thalla wajhuhu muswaddan wahuwa katheemun And when one of them is given good tidings of that which he attributes to the Most Merciful in comparison, his face becomes dark, and he suppresses grief [43:18] أَوَمَن يُنَشَّؤُاْ فِي ٱلۡحِلۡيَةِ وَهُوَ فِي ٱلۡخِصَامِ غَيۡرُ مُبِينٖ Awaman yunashshao fee alhilyati wahuwa fee alkhisami ghayru mubeenin So is one brought up in ornaments while being during conflict unevident [attributed to Allah] [43:19] وَجَعَلُواْ ٱلۡمَلَـٰٓئِكَةَ ٱلَّذِينَ هُمۡ عِبَٰدُ ٱلرَّحۡمَٰنِ إِنَٰثًاۚ أَشَهِدُواْ خَلۡقَهُمۡۚ سَتُكۡتَبُ شَهَٰدَتُهُمۡ وَيُسۡـَٔلُونَ WajaAAaloo almalaikata allatheena hum AAibadu alrrahmani inathan ashahidoo khalqahum satuktabu shahadatuhum wayusaloona And they have made the angels, who are servants of the Most Merciful, females."
     }
    ]
   },
@@ -1185,7 +720,7 @@
    "verb": "said",
    "object": "to his father and his people",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1196,12 +731,28 @@
    ]
   },
   {
+   "id": "when you|have|settled upon them and say",
+   "subject": "when you",
+   "verb": "have",
+   "object": "settled upon them and say",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#1927-3471",
+     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
+     "text": "they would surely say, \"They were created by the Exalted in Might, the Knowing [43:10] ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ مَهۡدٗا وَجَعَلَ لَكُمۡ فِيهَا سُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Allathee jaAAala lakumu alarda mahdan wajaAAala lakum feeha subulan laAAallakum tahtadoona [The one] who has made for you the earth a bed and made for you upon it roads that you might be guided [43:11] وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ Waallathee nazzala mina alssamai maan biqadarin faansharna bihi baldatan maytan kathalika tukhrajoona And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth [43:12] وَٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا وَجَعَلَ لَكُم مِّنَ ٱلۡفُلۡكِ وَٱلۡأَنۡعَٰمِ مَا تَرۡكَبُونَ Waallathee khalaqa alazwaja kullaha wajaAAala lakum mina alfulki waalanAAami ma tarkaboona And who created the species, all of them, and has made for you of ships and animals those which you mount [43:13] لِتَسۡتَوُۥاْ عَلَىٰ ظُهُورِهِۦ ثُمَّ تَذۡكُرُواْ نِعۡمَةَ رَبِّكُمۡ إِذَا ٱسۡتَوَيۡتُمۡ عَلَيۡهِ وَتَقُولُواْ سُبۡحَٰنَ ٱلَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقۡرِنِينَ Litastawoo AAala thuhoorihi thumma tathkuroo niAAmata rabbikum itha istawaytum AAalayhi wataqooloo subhana allathee sakhkhara lana hatha wama kunna lahu muqrineena That you may settle yourselves upon their backs and then remember the favor of your Lord when you have settled upon them and say."
+    }
+   ]
+  },
+  {
    "id": "who|has|created the heavens and the earth?\"",
    "subject": "Who",
    "verb": "has",
    "object": "created the heavens and the earth?\"",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1217,7 +768,7 @@
    "verb": "have",
    "object": "worshipped them",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1226,26 +777,10 @@
      "text": "Their testimony will be recorded, and they will be questioned [43:20] وَقَالُواْ لَوۡ شَآءَ ٱلرَّحۡمَٰنُ مَا عَبَدۡنَٰهُمۗ مَّا لَهُم بِذَٰلِكَ مِنۡ عِلۡمٍۖ إِنۡ هُمۡ إِلَّا يَخۡرُصُونَ Waqaloo law shaa alrrahmanu ma AAabadnahum ma lahum bithalika min AAilmin in hum illa yakhrusoona And they said, \"If the Most Merciful had willed, we would not have worshipped them.\""
     }
    ]
-  },
-  {
-   "id": "you any|warner|into a city except that its affluent said",
-   "subject": "you any",
-   "verb": "warner",
-   "object": "into a city except that its affluent said",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt#5615-7072",
-     "ref": "14-holy-texts/quran-suras/sura-043-Az-Zukhruf.txt",
-     "text": "They are not but falsifying [43:21] أَمۡ ءَاتَيۡنَٰهُمۡ كِتَٰبٗا مِّن قَبۡلِهِۦ فَهُم بِهِۦ مُسۡتَمۡسِكُونَ Am ataynahum kitaban min qablihi fahum bihi mustamsikoona Or have We given them a book before the Qur'an to which they are adhering [43:22] بَلۡ قَالُوٓاْ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّهۡتَدُونَ Bal qaloo inna wajadna abaana AAala ommatin wainna AAala atharihim muhtadoona Rather, they say, \"Indeed, we found our fathers upon a religion, and we are in their footsteps [rightly] guided [43:23] وَكَذَٰلِكَ مَآ أَرۡسَلۡنَا مِن قَبۡلِكَ فِي قَرۡيَةٖ مِّن نَّذِيرٍ إِلَّا قَالَ مُتۡرَفُوهَآ إِنَّا وَجَدۡنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٖ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّقۡتَدُونَ Wakathalika ma arsalna min qablika fee qaryatin min natheerin illa qala mutrafooha inna wajadna abaana AAala ommatin wainna AAala atharihim muqtadoona And similarly, We did not send before you any warner into a city except that its affluent said, \"Indeed, we found our fathers upon a religion, and we are, in their footsteps, following [43:24] ۞قَٰلَ أَوَلَوۡ جِئۡتُكُم بِأَهۡدَىٰ مِمَّا وَجَدتُّمۡ عَلَيۡهِ ءَابَآءَكُمۡۖ قَالُوٓاْ إِنَّا بِمَآ أُرۡسِلۡتُم بِهِۦ كَٰفِرُونَ Qala awalaw jitukum biahda mimma wajadtum AAalayhi abaakum qaloo inna bima orsiltum bihi kafiroona [Each warner] said, \"Even if I brought you better guidance than that [religion] upon which you found your fathers?\""
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:46.180Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:46.053Z"
  }
 }

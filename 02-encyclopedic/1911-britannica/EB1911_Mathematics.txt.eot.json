@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 47873,
   "bodyOffset": 0,
   "bodyChars": 47873,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,92 +55,39 @@
   "referentEvents": 24,
   "distinctReferents": 15,
   "examined": true,
-  "edgesFound": 26,
+  "edgesFound": 11,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 8,
+   "verbs": 3,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 8
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 11,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 26,
-  "excerptOk": 26,
-  "rawChecked": 26,
-  "rawOk": 26,
+  "excerptChecked": 11,
+  "excerptOk": 11,
+  "rawChecked": 11,
+  "rawOk": 11,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 26,
-  "heard": 26,
+  "offered": 11,
+  "heard": 11,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "wikipedia|article|, quotes",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Wikipedia article , quotes",
-    "subject": "Wikipedia",
-    "verb": "article",
-    "object": ", quotes",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#0-283",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "← Mater Matuta 1911 Encyclopædia Britannica , Volume 17 Mathematics by&#160; Alfred North Whitehead Mather, Cotton → sister projects : Wikipedia article , quotes , textbook , course , Wikidata item See also Mathematics on Wikipedia ; and our 1911 Encyclopædia Britannica disclaimer ."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "wikidata|item|see also mathematics on wikipedia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Wikidata item See also Mathematics on Wikipedia",
-    "subject": "Wikidata",
-    "verb": "item",
-    "object": "See also Mathematics on Wikipedia",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#0-283",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "← Mater Matuta 1911 Encyclopædia Britannica , Volume 17 Mathematics by&#160; Alfred North Whitehead Mather, Cotton → sister projects : Wikipedia article , quotes , textbook , course , Wikidata item See also Mathematics on Wikipedia ; and our 1911 Encyclopædia Britannica disclaimer ."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "it|has|been usual to define mathematics as “the science of discrete and continuous magnitude",
@@ -139,7 +104,7 @@
     "verb": "has",
     "object": "been usual to define mathematics as “the science of discrete and continuous magnitude",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,36 +113,7 @@
       "text": "It has been usual to define mathematics as “the science of discrete and continuous magnitude.”"
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the tradition|in|thus confining the scope of mathematics properly so called",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the tradition in thus confining the scope of mathematics properly so called",
-    "subject": "the tradition",
-    "verb": "in",
-    "object": "thus confining the scope of mathematics properly so called",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#693-933",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "Even Leibnitz, &#91; 1 &#93; who initiated a more modern point of view, follows the tradition in thus confining the scope of mathematics properly so called, while apparently conceiving it as a department of a yet wider science of reasoning."
-     }
-    ],
-    "seq": 3,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -197,7 +133,7 @@
     "verb": "geometry",
     "object": "deals with points",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -206,7 +142,7 @@
       "text": "Now geometry deals with points, lines, planes and cubic contents."
      }
     ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -226,7 +162,7 @@
     "verb": "geometry",
     "object": "shows",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -235,36 +171,7 @@
       "text": "Also, as the Cartesian geometry shows, all the relations between points are expressible in terms of geometric quantities."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are expressible|in|terms of geometric quantities",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are expressible in terms of geometric quantities",
-    "subject": "are expressible",
-    "verb": "in",
-    "object": "terms of geometric quantities",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#1710-1831",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "Also, as the Cartesian geometry shows, all the relations between points are expressible in terms of geometric quantities."
-     }
-    ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -284,7 +191,7 @@
     "verb": "geometry",
     "object": "in some such way as “the science of dimensional quantity",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -293,65 +200,7 @@
       "text": "Accordingly, at first sight it seems reasonable to define geometry in some such way as “the science of dimensional quantity.”"
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "also|in|addition to the cardinal numbers there are the ordinal numbers: the fifth apple and the tenth pear claim thought",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Also in addition to the cardinal numbers there are the ordinal numbers: the fifth apple and the tenth pear claim thought",
-    "subject": "Also",
-    "verb": "in",
-    "object": "addition to the cardinal numbers there are the ordinal numbers: the fifth apple and the tenth pear claim thought",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#2368-2489",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "Also in addition to the cardinal numbers there are the ordinal numbers: the fifth apple and the tenth pear claim thought."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|in|what sense is there “a half",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But in what sense is there “a half",
-    "subject": "But",
-    "verb": "in",
-    "object": "what sense is there “a half",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#2774-2865",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "But in what sense is there “a half,” which is the same for “half a foot” as “half a pound”?"
-     }
-    ],
-    "seq": 9,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -371,7 +220,7 @@
     "verb": "has",
     "object": "nothing to reach unless the earth rotates",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -380,13 +229,13 @@
       "text": "An expedition to the North Pole has nothing to reach unless the earth rotates."
      }
     ],
-    "seq": 10,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "also|in|geometry",
+    "task_id": "measurement in|geometry|as described in the elementary textbooks and the older treatises is obscure to the last degree",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -395,70 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Also in geometry",
-    "subject": "Also",
-    "verb": "in",
-    "object": "geometry",
+    "description": "measurement in geometry as described in the elementary textbooks and the older treatises is obscure to the last degree",
+    "subject": "measurement in",
+    "verb": "geometry",
+    "object": "as described in the elementary textbooks and the older treatises is obscure to the last degree",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#3212-3246",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "Also in geometry, what is a point?"
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "keeps unaltered|in|the moving triangle?",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "keeps unaltered in the moving triangle?",
-    "subject": "keeps unaltered",
-    "verb": "in",
-    "object": "the moving triangle?",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#3439-3497",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "So what is it that keeps unaltered in the moving triangle?"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of measurement|in|geometry as described in the elementary textbooks and the older treatises is obscure to the last degree",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of measurement in geometry as described in the elementary textbooks and the older treatises is obscure to the last degree",
-    "subject": "of measurement",
-    "verb": "in",
-    "object": "geometry as described in the elementary textbooks and the older treatises is obscure to the last degree",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -467,7 +258,7 @@
       "text": "Thus the whole method of measurement in geometry as described in the elementary textbooks and the older treatises is obscure to the last degree."
      }
     ],
-    "seq": 13,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -487,7 +278,7 @@
     "verb": "has",
     "object": "evaporated",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -496,7 +287,7 @@
       "text": "All these topics require thorough discussion before we can rest content with the definition of mathematics as the general science of magnitude; and by the time they are discussed the definition has evaporated."
      }
     ],
-    "seq": 14,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -516,7 +307,7 @@
     "verb": "has",
     "object": "one and only one correlate in β",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -525,7 +316,7 @@
       "text": "&#91; 2 &#93; Cardinal Numbers .—A one-one relation between the members of two classes α and β is any method of correlating all the members of α to all the members of β , so that any member of α has one and only one correlate in β , and any member of β has one and only one correlate in α ."
      }
     ],
-    "seq": 15,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -545,7 +336,7 @@
     "verb": "has",
     "object": "one and only one correlate in α",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -554,7 +345,7 @@
       "text": "&#91; 2 &#93; Cardinal Numbers .—A one-one relation between the members of two classes α and β is any method of correlating all the members of α to all the members of β , so that any member of α has one and only one correlate in β , and any member of β has one and only one correlate in α ."
      }
     ],
-    "seq": 16,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -574,7 +365,7 @@
     "verb": "has",
     "object": "only one member",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -583,152 +374,7 @@
       "text": "Thus this cardinal number has only one member."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "no member|in|common",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "no member in common",
-    "subject": "no member",
-    "verb": "in",
-    "object": "common",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#5502-5957",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "The operations of addition and multiplication of two given cardinal numbers can be defined by taking two classes α and β , satisfying the conditions (1) that their cardinal numbers are respectively the given numbers, and (2) that they contain no member in common, and then by defining by reference to α and β two other suitable classes whose cardinal numbers are defined to be respectively the required sum and product of the cardinal numbers in question."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cardinal numbers|in|question",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "cardinal numbers in question",
-    "subject": "cardinal numbers",
-    "verb": "in",
-    "object": "question",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#5502-5957",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "The operations of addition and multiplication of two given cardinal numbers can be defined by taking two classes α and β , satisfying the conditions (1) that their cardinal numbers are respectively the given numbers, and (2) that they contain no member in common, and then by defining by reference to α and β two other suitable classes whose cardinal numbers are defined to be respectively the required sum and product of the cardinal numbers in question."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is contained|in|s",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is contained in s",
-    "subject": "is contained",
-    "verb": "in",
-    "object": "s",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#6348-6540",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "If s is any class and zero is a member of it, also if when x is a cardinal number and a member of s , also x + 1 is a member of s , then the whole class of cardinal numbers is contained in s ."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "peano|in|an historical note refers its first explicit employment",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Peano in an historical note refers its first explicit employment",
-    "subject": "Peano",
-    "verb": "in",
-    "object": "an historical note refers its first explicit employment",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#6742-6915",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "Peano in an historical note refers its first explicit employment, although without a general enunciation, to Maurolycus in his work, Arithmeticorum libri duo (Venice, 1575)."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "to maurolycus|in|his work",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "to Maurolycus in his work",
-    "subject": "to Maurolycus",
-    "verb": "in",
-    "object": "his work",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#6742-6915",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "Peano in an historical note refers its first explicit employment, although without a general enunciation, to Maurolycus in his work, Arithmeticorum libri duo (Venice, 1575)."
-     }
-    ],
-    "seq": 22,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -748,7 +394,7 @@
     "verb": "libri",
     "object": "duo (Venice",
     "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -757,70 +403,12 @@
       "text": "Peano in an historical note refers its first explicit employment, although without a general enunciation, to Maurolycus in his work, Arithmeticorum libri duo (Venice, 1575)."
      }
     ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they are|in|no sense the necessary premisses which must be proved before any other propositions of cardinal numbers can be established",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "they are in no sense the necessary premisses which must be proved before any other propositions of cardinal numbers can be established",
-    "subject": "they are",
-    "verb": "in",
-    "object": "no sense the necessary premisses which must be proved before any other propositions of cardinal numbers can be established",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#7402-7593",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "They are excellent principles of the highest value, but they are in no sense the necessary premisses which must be proved before any other propositions of cardinal numbers can be established."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be put|in|other forms",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be put in other forms",
-    "subject": "be put",
-    "verb": "in",
-    "object": "other forms",
-    "witnesses": [
-     "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#7594-7806",
-      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-      "text": "On the contrary, the premisses of arithmetic can be put in other forms, and, furthermore, an indefinite number of propositions of arithmetic can be proved directly from logical principles without mentioning them."
-     }
-    ],
-    "seq": 25,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 26,
+  "nextSeq": 11,
   "admits": [
    "NUL",
    "SEG",
@@ -835,60 +423,12 @@
  },
  "folded": [
   {
-   "id": "also|in|addition to the cardinal numbers there are the ordinal numbers: the fifth apple and the tenth pear claim thought",
-   "subject": "Also",
-   "verb": "in",
-   "object": "addition to the cardinal numbers there are the ordinal numbers: the fifth apple and the tenth pear claim thought",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#2368-2489",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "Also in addition to the cardinal numbers there are the ordinal numbers: the fifth apple and the tenth pear claim thought."
-    }
-   ]
-  },
-  {
-   "id": "also|in|geometry",
-   "subject": "Also",
-   "verb": "in",
-   "object": "geometry",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#3212-3246",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "Also in geometry, what is a point?"
-    }
-   ]
-  },
-  {
-   "id": "are expressible|in|terms of geometric quantities",
-   "subject": "are expressible",
-   "verb": "in",
-   "object": "terms of geometric quantities",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#1710-1831",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "Also, as the Cartesian geometry shows, all the relations between points are expressible in terms of geometric quantities."
-    }
-   ]
-  },
-  {
    "id": "arithmeticorum|libri|duo (venice",
    "subject": "Arithmeticorum",
    "verb": "libri",
    "object": "duo (Venice",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -899,44 +439,12 @@
    ]
   },
   {
-   "id": "be put|in|other forms",
-   "subject": "be put",
-   "verb": "in",
-   "object": "other forms",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#7594-7806",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "On the contrary, the premisses of arithmetic can be put in other forms, and, furthermore, an indefinite number of propositions of arithmetic can be proved directly from logical principles without mentioning them."
-    }
-   ]
-  },
-  {
-   "id": "but|in|what sense is there “a half",
-   "subject": "But",
-   "verb": "in",
-   "object": "what sense is there “a half",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#2774-2865",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "But in what sense is there “a half,” which is the same for “half a foot” as “half a pound”?"
-    }
-   ]
-  },
-  {
    "id": "cardinal number|has|only one member",
    "subject": "cardinal number",
    "verb": "has",
    "object": "only one member",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -947,44 +455,12 @@
    ]
   },
   {
-   "id": "cardinal numbers|in|question",
-   "subject": "cardinal numbers",
-   "verb": "in",
-   "object": "question",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#5502-5957",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "The operations of addition and multiplication of two given cardinal numbers can be defined by taking two classes α and β , satisfying the conditions (1) that their cardinal numbers are respectively the given numbers, and (2) that they contain no member in common, and then by defining by reference to α and β two other suitable classes whose cardinal numbers are defined to be respectively the required sum and product of the cardinal numbers in question."
-    }
-   ]
-  },
-  {
-   "id": "is contained|in|s",
-   "subject": "is contained",
-   "verb": "in",
-   "object": "s",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#6348-6540",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "If s is any class and zero is a member of it, also if when x is a cardinal number and a member of s , also x + 1 is a member of s , then the whole class of cardinal numbers is contained in s ."
-    }
-   ]
-  },
-  {
    "id": "it|has|been usual to define mathematics as “the science of discrete and continuous magnitude",
    "subject": "It",
    "verb": "has",
    "object": "been usual to define mathematics as “the science of discrete and continuous magnitude",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -995,34 +471,18 @@
    ]
   },
   {
-   "id": "keeps unaltered|in|the moving triangle?",
-   "subject": "keeps unaltered",
-   "verb": "in",
-   "object": "the moving triangle?",
+   "id": "measurement in|geometry|as described in the elementary textbooks and the older treatises is obscure to the last degree",
+   "subject": "measurement in",
+   "verb": "geometry",
+   "object": "as described in the elementary textbooks and the older treatises is obscure to the last degree",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#3439-3497",
+     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#3498-3642",
      "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "So what is it that keeps unaltered in the moving triangle?"
-    }
-   ]
-  },
-  {
-   "id": "no member|in|common",
-   "subject": "no member",
-   "verb": "in",
-   "object": "common",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#5502-5957",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "The operations of addition and multiplication of two given cardinal numbers can be defined by taking two classes α and β , satisfying the conditions (1) that their cardinal numbers are respectively the given numbers, and (2) that they contain no member in common, and then by defining by reference to α and β two other suitable classes whose cardinal numbers are defined to be respectively the required sum and product of the cardinal numbers in question."
+     "text": "Thus the whole method of measurement in geometry as described in the elementary textbooks and the older treatises is obscure to the last degree."
     }
    ]
   },
@@ -1032,7 +492,7 @@
    "verb": "has",
    "object": "nothing to reach unless the earth rotates",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1048,7 +508,7 @@
    "verb": "geometry",
    "object": "deals with points",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1059,28 +519,12 @@
    ]
   },
   {
-   "id": "of measurement|in|geometry as described in the elementary textbooks and the older treatises is obscure to the last degree",
-   "subject": "of measurement",
-   "verb": "in",
-   "object": "geometry as described in the elementary textbooks and the older treatises is obscure to the last degree",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#3498-3642",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "Thus the whole method of measurement in geometry as described in the elementary textbooks and the older treatises is obscure to the last degree."
-    }
-   ]
-  },
-  {
    "id": "of α|has|one and only one correlate in β",
    "subject": "of α",
    "verb": "has",
    "object": "one and only one correlate in β",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1096,7 +540,7 @@
    "verb": "has",
    "object": "one and only one correlate in α",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1107,28 +551,12 @@
    ]
   },
   {
-   "id": "peano|in|an historical note refers its first explicit employment",
-   "subject": "Peano",
-   "verb": "in",
-   "object": "an historical note refers its first explicit employment",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#6742-6915",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "Peano in an historical note refers its first explicit employment, although without a general enunciation, to Maurolycus in his work, Arithmeticorum libri duo (Venice, 1575)."
-    }
-   ]
-  },
-  {
    "id": "the cartesian|geometry|shows",
    "subject": "the Cartesian",
    "verb": "geometry",
    "object": "shows",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1144,7 +572,7 @@
    "verb": "has",
    "object": "evaporated",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1155,44 +583,12 @@
    ]
   },
   {
-   "id": "the tradition|in|thus confining the scope of mathematics properly so called",
-   "subject": "the tradition",
-   "verb": "in",
-   "object": "thus confining the scope of mathematics properly so called",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#693-933",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "Even Leibnitz, &#91; 1 &#93; who initiated a more modern point of view, follows the tradition in thus confining the scope of mathematics properly so called, while apparently conceiving it as a department of a yet wider science of reasoning."
-    }
-   ]
-  },
-  {
-   "id": "they are|in|no sense the necessary premisses which must be proved before any other propositions of cardinal numbers can be established",
-   "subject": "they are",
-   "verb": "in",
-   "object": "no sense the necessary premisses which must be proved before any other propositions of cardinal numbers can be established",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#7402-7593",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "They are excellent principles of the highest value, but they are in no sense the necessary premisses which must be proved before any other propositions of cardinal numbers can be established."
-    }
-   ]
-  },
-  {
    "id": "to define|geometry|in some such way as “the science of dimensional quantity",
    "subject": "to define",
    "verb": "geometry",
    "object": "in some such way as “the science of dimensional quantity",
    "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1201,58 +597,10 @@
      "text": "Accordingly, at first sight it seems reasonable to define geometry in some such way as “the science of dimensional quantity.”"
     }
    ]
-  },
-  {
-   "id": "to maurolycus|in|his work",
-   "subject": "to Maurolycus",
-   "verb": "in",
-   "object": "his work",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#6742-6915",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "Peano in an historical note refers its first explicit employment, although without a general enunciation, to Maurolycus in his work, Arithmeticorum libri duo (Venice, 1575)."
-    }
-   ]
-  },
-  {
-   "id": "wikidata|item|see also mathematics on wikipedia",
-   "subject": "Wikidata",
-   "verb": "item",
-   "object": "See also Mathematics on Wikipedia",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#0-283",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "← Mater Matuta 1911 Encyclopædia Britannica , Volume 17 Mathematics by&#160; Alfred North Whitehead Mather, Cotton → sister projects : Wikipedia article , quotes , textbook , course , Wikidata item See also Mathematics on Wikipedia ; and our 1911 Encyclopædia Britannica disclaimer ."
-    }
-   ]
-  },
-  {
-   "id": "wikipedia|article|, quotes",
-   "subject": "Wikipedia",
-   "verb": "article",
-   "object": ", quotes",
-   "witnesses": [
-    "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt#0-283",
-     "ref": "02-encyclopedic/1911-britannica/EB1911_Mathematics.txt",
-     "text": "← Mater Matuta 1911 Encyclopædia Britannica , Volume 17 Mathematics by&#160; Alfred North Whitehead Mather, Cotton → sister projects : Wikipedia article , quotes , textbook , course , Wikidata item See also Mathematics on Wikipedia ; and our 1911 Encyclopædia Britannica disclaimer ."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:28.310Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:12.449Z"
  }
 }

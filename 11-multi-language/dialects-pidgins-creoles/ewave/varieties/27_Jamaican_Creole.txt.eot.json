@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 19300,
   "bodyOffset": 0,
   "bodyChars": 19300,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 7,
   "distinctReferents": 7,
   "examined": true,
-  "edgesFound": 16,
-  "extractionError": null
+  "edgesFound": 13,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 10,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 20
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 13,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 16,
-  "excerptOk": 16,
-  "rawChecked": 16,
-  "rawOk": 16,
+  "excerptChecked": 13,
+  "excerptOk": 13,
+  "rawChecked": 13,
+  "rawOk": 13,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 16,
-  "heard": 16,
+  "offered": 13,
+  "heard": 13,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "a group|of|non-english speakers acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a group of non-English speakers acquired some variety of English",
-    "subject": "a group",
-    "verb": "of",
-    "object": "non-English speakers acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#33-299",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-      "text": "eWAVE variety ID: 27 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,7 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "its native|speakers|was normally very limited",
+    "task_id": "native speakers|was|normally very limited",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,12 +128,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "its native speakers was normally very limited",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "was normally very limited",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,13 +142,13 @@
       "text": "English), while exposure to its native speakers was normally very limited."
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the proportion|of|native (and l2) speakers of english was rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -156,12 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
-    "subject": "the proportion",
-    "verb": "of",
-    "object": "native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,13 +171,13 @@
       "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
      }
     ],
-    "seq": 3,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the native|language|of the majority of the population",
+    "task_id": "language situation|is|that it consists of two varieties: jamaican creole",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -185,41 +186,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the native language of the majority of the population",
-    "subject": "the native",
-    "verb": "language",
-    "object": "of the majority of the population",
+    "description": "language situation is that it consists of two varieties: Jamaican Creole",
+    "subject": "language situation",
+    "verb": "is",
+    "object": "that it consists of two varieties: Jamaican Creole",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#710-789",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-      "text": "Many creoles have become the native language of the majority of the population."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "within jamaica|of|the jamaican language situation is that it consists of two varieties: jamaican creole",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "within Jamaica of the Jamaican language situation is that it consists of two varieties: Jamaican Creole",
-    "subject": "within Jamaica",
-    "verb": "of",
-    "object": "the Jamaican language situation is that it consists of two varieties: Jamaican Creole",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,7 +200,7 @@
       "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The popular perception within Jamaica of the Jamaican language situation is that it consists of two varieties: Jamaican Creole, popularly labeled ʼPatwaʼ and Jamaican English."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +220,7 @@
     "verb": "phonology",
     "object": "represents the output of speakers of West African languages modifying the phonological shape of words coming into their speech from varieties of 17th century British English",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,7 +229,7 @@
       "text": "Historically, JamC phonology represents the output of speakers of West African languages modifying the phonological shape of words coming into their speech from varieties of 17th century British English."
      }
     ],
-    "seq": 6,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -277,7 +249,7 @@
     "verb": "is",
     "object": "the Caribbean-accented standard variety used in formal and public contexts",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -286,7 +258,7 @@
       "text": "JamE in contemporary Jamaica is the Caribbean-accented standard variety used in formal and public contexts."
      }
     ],
-    "seq": 7,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +278,7 @@
     "verb": "yu",
     "object": "a go liiv dI tInG tu chaans?\"",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,36 +287,7 @@
       "text": "\"The one shirt I have ratta cut ahm\" \"Wai yu a go liiv dI tInG tu chaans?\""
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "im|mek|you…\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "im mek you…\"",
-    "subject": "im",
-    "verb": "mek",
-    "object": "you…\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#1812-2012",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-      "text": "\"wen im kom insted a shi faas wid im\" \"Mama mek me sleep with him\" \"Mi an dis guy in di same class\" \"meself an mi pickney\" \"turn im back fi tek im long run\" \"rub ole wuman back, im mek you…\""
-     }
-    ],
-    "seq": 9,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -364,7 +307,7 @@
     "verb": "dem",
     "object": "as gyangz – diiz kruu",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,7 +316,7 @@
       "text": "\"yu refa to dem as gyangz – diiz kruu, yu si\" \"piipl yaad an piipl hoos\" \"wen dee work in di far distrik\" \"we would a mek police beat yuh\" \"if strap not good enough, she use stick\" \"di honggri ena wip mi\" \"one tracing di day up deh\" \"dem deh egg never come in like fowl egg\" \"a dis yah kind a life yuh want?\""
      }
     ],
-    "seq": 10,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +336,7 @@
     "verb": "go",
     "object": "tief off piece a Papa yam",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,7 +345,7 @@
       "text": "\"fi-Jan book\" \"piipl yaad an piipl hoos\" \"more cheaper to dem\" \"di wosis\" \"dem give di man dem di most harder work\" \"oda uman jos trosin in dem man\" \"dat time dem was wearin white blouse\" \"mi aalwiez ben a ron\" \"me did know seh tings never right\" \"Sharon don riid di buk (don)\" \"Mama dat bwail op aredi\" \"jos tek yu biitin and finish\" \"mi no ben baan dat time\" \"man had tek aaf im buut\" \"mi a go go a tong nou\" \"a waan sii if a kyan jraa wan yier nou\" \"mi suun tel yu\" \"ef im wuda gi it tu yu\" \"wi wuda mos hafi rich soon\" \"mi no sapuosi du dem tings de\" \"som a di wuman yuusi tek dem pickney\" \"dee stold a lat a thingz\" \"a cork mi ears an run down di street\" \"di ting bruk aal tu hel\" \"mi put i dong an gaan\" \"im kyari aan fi a wail siem wie\" \"chrii diez abak\" \"tell dem she a fi-me pickney\" \"me deh a mi yard a wait pon him\" \"was for conditional were\" \"kya di buk kom gi mi\" \"go a St Mary go look pon di children dem\" \"im waan mi fi go kya im kom\" \"im waan mi fi go kya im kom\" \"shi kaal ar hosban kom kom kil di siniek\" \"me no want no England boot\" \"she don't fight woman, a pure man she fight\" \"mi neva baan dat time\" \"me no want no England boot\" \"mi jos nat penichriet som a dem\" \"mek we go tief off piece a Papa yam, no?\""
      }
     ],
-    "seq": 11,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -422,7 +365,7 @@
     "verb": "go",
     "object": "a St Mary…\"",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,7 +374,7 @@
       "text": "\"she come now an hold pon di paper\" \"dee hav a gruup a man…yu hav dis poliis gai\" \"dat time a doing three job\" \"tings going hard fi people\" \"wen tings slow di man lazy\" \"me a me yard a wait pan im\" \"Pure big girls was there\" \"di man, we im waif jos dai\" \"him a wena mek naiz\" \"we have a place weh we call Atom Hole\" \"di man we im waif dai\" \"di man we im waif dai\" \"yu hav wan uman liv de niem Mieri\" \"di uman we dem tief ar biebi\" \"she start to gwan like Poco woman, which wherein she was not a Poco woman\" \"Mi neva see which way di gyal a come\" \"she tell him seh him fi go a St Mary…\""
      }
     ],
-    "seq": 12,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +394,7 @@
     "verb": "yu",
     "object": "a gwaan wit?\"",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,7 +403,7 @@
       "text": "\"a swell it swell, luk da\" \"We yu a gwaan wit?\""
      }
     ],
-    "seq": 13,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -480,7 +423,7 @@
     "verb": "yu",
     "object": "a go kom tinait?\"",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -489,7 +432,7 @@
       "text": "\"den yu a go kom tinait?\""
      }
     ],
-    "seq": 14,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -509,7 +452,7 @@
     "verb": "dem",
     "object": "blod baat rispek di man\"",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -518,12 +461,12 @@
       "text": "\"a go in di wata an go laik up to mi ches\" \"unu man da gwaan laik se dem blod baat rispek di man\""
      }
     ],
-    "seq": 15,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 16,
+  "nextSeq": 13,
   "admits": [
    "NUL",
    "SEG",
@@ -538,28 +481,12 @@
  },
  "folded": [
   {
-   "id": "a group|of|non-english speakers acquired some variety of english",
-   "subject": "a group",
-   "verb": "of",
-   "object": "non-English speakers acquired some variety of English",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#33-299",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-     "text": "eWAVE variety ID: 27 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-    }
-   ]
-  },
-  {
    "id": "contemporary jamaica|is|the caribbean-accented standard variety used in formal and public contexts",
    "subject": "contemporary Jamaica",
    "verb": "is",
    "object": "the Caribbean-accented standard variety used in formal and public contexts",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -575,7 +502,7 @@
    "verb": "yu",
    "object": "a go kom tinait?\"",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -591,7 +518,7 @@
    "verb": "go",
    "object": "a St Mary…\"",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -602,44 +529,12 @@
    ]
   },
   {
-   "id": "im|mek|you…\"",
-   "subject": "im",
-   "verb": "mek",
-   "object": "you…\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#1812-2012",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-     "text": "\"wen im kom insted a shi faas wid im\" \"Mama mek me sleep with him\" \"Mi an dis guy in di same class\" \"meself an mi pickney\" \"turn im back fi tek im long run\" \"rub ole wuman back, im mek you…\""
-    }
-   ]
-  },
-  {
-   "id": "its native|speakers|was normally very limited",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "was normally very limited",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#440-514",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-     "text": "English), while exposure to its native speakers was normally very limited."
-    }
-   ]
-  },
-  {
    "id": "jamc|phonology|represents the output of speakers of west african languages modifying the phonological shape of words coming into their speech from varieties of 17th century british english",
    "subject": "JamC",
    "verb": "phonology",
    "object": "represents the output of speakers of West African languages modifying the phonological shape of words coming into their speech from varieties of 17th century British English",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -655,7 +550,7 @@
    "verb": "dem",
    "object": "blod baat rispek di man\"",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -666,12 +561,28 @@
    ]
   },
   {
+   "id": "language situation|is|that it consists of two varieties: jamaican creole",
+   "subject": "language situation",
+   "verb": "is",
+   "object": "that it consists of two varieties: Jamaican Creole",
+   "witnesses": [
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#890-1189",
+     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
+     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The popular perception within Jamaica of the Jamaican language situation is that it consists of two varieties: Jamaican Creole, popularly labeled ʼPatwaʼ and Jamaican English."
+    }
+   ]
+  },
+  {
    "id": "mek we|go|tief off piece a papa yam",
    "subject": "mek we",
    "verb": "go",
    "object": "tief off piece a Papa yam",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -682,44 +593,28 @@
    ]
   },
   {
-   "id": "refa to|dem|as gyangz – diiz kruu",
-   "subject": "refa to",
-   "verb": "dem",
-   "object": "as gyangz – diiz kruu",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#2760-3084",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#440-514",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-     "text": "\"yu refa to dem as gyangz – diiz kruu, yu si\" \"piipl yaad an piipl hoos\" \"wen dee work in di far distrik\" \"we would a mek police beat yuh\" \"if strap not good enough, she use stick\" \"di honggri ena wip mi\" \"one tracing di day up deh\" \"dem deh egg never come in like fowl egg\" \"a dis yah kind a life yuh want?\""
+     "text": "English), while exposure to its native speakers was normally very limited."
     }
    ]
   },
   {
-   "id": "the native|language|of the majority of the population",
-   "subject": "the native",
-   "verb": "language",
-   "object": "of the majority of the population",
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+   "subject": "of English",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#710-789",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-     "text": "Many creoles have become the native language of the majority of the population."
-    }
-   ]
-  },
-  {
-   "id": "the proportion|of|native (and l2) speakers of english was rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
-   "subject": "the proportion",
-   "verb": "of",
-   "object": "native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -730,12 +625,28 @@
    ]
   },
   {
+   "id": "refa to|dem|as gyangz – diiz kruu",
+   "subject": "refa to",
+   "verb": "dem",
+   "object": "as gyangz – diiz kruu",
+   "witnesses": [
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#2760-3084",
+     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
+     "text": "\"yu refa to dem as gyangz – diiz kruu, yu si\" \"piipl yaad an piipl hoos\" \"wen dee work in di far distrik\" \"we would a mek police beat yuh\" \"if strap not good enough, she use stick\" \"di honggri ena wip mi\" \"one tracing di day up deh\" \"dem deh egg never come in like fowl egg\" \"a dis yah kind a life yuh want?\""
+    }
+   ]
+  },
+  {
    "id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
    "subject": "there",
    "verb": "was",
    "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -751,7 +662,7 @@
    "verb": "yu",
    "object": "a go liiv dI tInG tu chaans?\"",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -767,7 +678,7 @@
    "verb": "yu",
    "object": "a gwaan wit?\"",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -776,26 +687,10 @@
      "text": "\"a swell it swell, luk da\" \"We yu a gwaan wit?\""
     }
    ]
-  },
-  {
-   "id": "within jamaica|of|the jamaican language situation is that it consists of two varieties: jamaican creole",
-   "subject": "within Jamaica",
-   "verb": "of",
-   "object": "the Jamaican language situation is that it consists of two varieties: Jamaican Creole",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt#890-1189",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/27_Jamaican_Creole.txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- The popular perception within Jamaica of the Jamaican language situation is that it consists of two varieties: Jamaican Creole, popularly labeled ʼPatwaʼ and Jamaican English."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:21.782Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:27.417Z"
  }
 }

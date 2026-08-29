@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 24974,
   "bodyOffset": 0,
   "bodyChars": 24974,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 12,
   "distinctReferents": 12,
   "examined": true,
-  "edgesFound": 33,
-  "extractionError": null
+  "edgesFound": 18,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 33,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 51
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 18,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 35,
-  "excerptOk": 35,
-  "rawChecked": 35,
-  "rawOk": 35,
+  "excerptChecked": 19,
+  "excerptOk": 19,
+  "rawChecked": 19,
+  "rawOk": 19,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 33,
-  "heard": 33,
+  "offered": 18,
+  "heard": 18,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "is",
     "object": "[due] to Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -103,7 +133,7 @@
     "verb": "is",
     "object": "in the heavens and whatever is in the earth",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -123,35 +153,6 @@
    },
    {
     "kind": "propose",
-    "task_id": "and to|him|belongs [all] praise in the hereafter",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and to him belongs [all] praise in the Hereafter",
-    "subject": "and to",
-    "verb": "him",
-    "object": "belongs [all] praise in the Hereafter",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#193-622",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "[34:1] ٱلۡحَمۡدُ لِلَّهِ ٱلَّذِي لَهُۥ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ وَلَهُ ٱلۡحَمۡدُ فِي ٱلۡأٓخِرَةِۚ وَهُوَ ٱلۡحَكِيمُ ٱلۡخَبِيرُ Alhamdu lillahi allathee lahu ma fee alssamawati wama fee alardi walahu alhamdu fee alakhirati wahuwa alhakeemu alkhabeeru [All] praise is [due] to Allah, to whom belongs whatever is in the heavens and whatever is in the earth, and to Him belongs [all] praise in the Hereafter."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
     "task_id": "and he|is|the wise",
     "operator": "INS",
     "operator_basis": "produced",
@@ -166,7 +167,7 @@
     "verb": "is",
     "object": "the Wise",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -175,36 +176,7 @@
       "text": "And He is the Wise, the Acquainted [34:2] يَعۡلَمُ مَا يَلِجُ فِي ٱلۡأَرۡضِ وَمَا يَخۡرُجُ مِنۡهَا وَمَا يَنزِلُ مِنَ ٱلسَّمَآءِ وَمَا يَعۡرُجُ فِيهَاۚ وَهُوَ ٱلرَّحِيمُ ٱلۡغَفُورُ YaAAlamu ma yaliju fee alardi wama yakhruju minha wama yanzilu mina alssamai wama yaAAruju feeha wahuwa alrraheemu alghafooru He knows what penetrates into the earth and what emerges from it and what descends from the heaven and what ascends therein."
      }
     ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alrraheemu alghafooru|he|knows what penetrates into the earth and what emerges from it and what descends from the heaven and what ascends therein",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alrraheemu alghafooru he knows what penetrates into the earth and what emerges from it and what descends from the heaven and what ascends therein",
-    "subject": "alrraheemu alghafooru",
-    "verb": "he",
-    "object": "knows what penetrates into the earth and what emerges from it and what descends from the heaven and what ascends therein",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#623-1063",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "And He is the Wise, the Acquainted [34:2] يَعۡلَمُ مَا يَلِجُ فِي ٱلۡأَرۡضِ وَمَا يَخۡرُجُ مِنۡهَا وَمَا يَنزِلُ مِنَ ٱلسَّمَآءِ وَمَا يَعۡرُجُ فِيهَاۚ وَهُوَ ٱلرَّحِيمُ ٱلۡغَفُورُ YaAAlamu ma yaliju fee alardi wama yakhruju minha wama yanzilu mina alssamai wama yaAAruju feeha wahuwa alrraheemu alghafooru He knows what penetrates into the earth and what emerges from it and what descends from the heaven and what ascends therein."
-     }
-    ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -224,7 +196,7 @@
     "verb": "is",
     "object": "the Merciful",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -233,41 +205,7 @@
       "text": "And He is the Merciful, the Forgiving [34:3] وَقَالَ ٱلَّذِينَ كَفَرُواْ لَا تَأۡتِينَا ٱلسَّاعَةُۖ قُلۡ بَلَىٰ وَرَبِّي لَتَأۡتِيَنَّكُمۡ عَٰلِمِ ٱلۡغَيۡبِۖ لَا يَعۡزُبُ عَنۡهُ مِثۡقَالُ ذَرَّةٖ فِي ٱلسَّمَٰوَٰتِ وَلَا فِي ٱلۡأَرۡضِ وَلَآ أَصۡغَرُ مِن ذَٰلِكَ وَلَآ أَكۡبَرُ إِلَّا فِي كِتَٰبٖ مُّبِينٖ Waqala allatheena kafaroo la tateena alssaAAatu qul bala warabbee latatiyannakum AAalimi alghaybi la yaAAzubu AAanhu mithqalu tharratin fee alssamawati wala fee alardi wala asgharu min thalika wala akbaru illa fee kitabin mubeenin But those who disbelieve say, \"The Hour will not come to us.\""
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mubeenin\n    but|those|who disbelieve say",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mubeenin\n    But those who disbelieve say",
-    "subject": "mubeenin\n    But",
-    "verb": "those",
-    "object": "who disbelieve say",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1064-1670",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "And He is the Merciful, the Forgiving [34:3] وَقَالَ ٱلَّذِينَ كَفَرُواْ لَا تَأۡتِينَا ٱلسَّاعَةُۖ قُلۡ بَلَىٰ وَرَبِّي لَتَأۡتِيَنَّكُمۡ عَٰلِمِ ٱلۡغَيۡبِۖ لَا يَعۡزُبُ عَنۡهُ مِثۡقَالُ ذَرَّةٖ فِي ٱلسَّمَٰوَٰتِ وَلَا فِي ٱلۡأَرۡضِ وَلَآ أَصۡغَرُ مِن ذَٰلِكَ وَلَآ أَكۡبَرُ إِلَّا فِي كِتَٰبٖ مُّبِينٖ Waqala allatheena kafaroo la tateena alssaAAatu qul bala warabbee latatiyannakum AAalimi alghaybi la yaAAzubu AAanhu mithqalu tharratin fee alssamawati wala fee alardi wala asgharu min thalika wala akbaru illa fee kitabin mubeenin But those who disbelieve say, \"The Hour will not come to us.\""
-     },
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-     }
-    ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -287,7 +225,7 @@
     "verb": "will",
     "object": "not come to us",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -296,7 +234,7 @@
       "text": "And He is the Merciful, the Forgiving [34:3] وَقَالَ ٱلَّذِينَ كَفَرُواْ لَا تَأۡتِينَا ٱلسَّاعَةُۖ قُلۡ بَلَىٰ وَرَبِّي لَتَأۡتِيَنَّكُمۡ عَٰلِمِ ٱلۡغَيۡبِۖ لَا يَعۡزُبُ عَنۡهُ مِثۡقَالُ ذَرَّةٖ فِي ٱلسَّمَٰوَٰتِ وَلَا فِي ٱلۡأَرۡضِ وَلَآ أَصۡغَرُ مِن ذَٰلِكَ وَلَآ أَكۡبَرُ إِلَّا فِي كِتَٰبٖ مُّبِينٖ Waqala allatheena kafaroo la tateena alssaAAatu qul bala warabbee latatiyannakum AAalimi alghaybi la yaAAzubu AAanhu mithqalu tharratin fee alssamawati wala fee alardi wala asgharu min thalika wala akbaru illa fee kitabin mubeenin But those who disbelieve say, \"The Hour will not come to us.\""
      }
     ],
-    "seq": 7,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -316,7 +254,7 @@
     "verb": "will",
     "object": "surely come to you",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -325,13 +263,13 @@
       "text": "Say, \"Yes, by my Lord, it will surely come to you."
      }
     ],
-    "seq": 8,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the knower|of|the unseen",
+    "task_id": "from him|is|an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -340,18 +278,105 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the Knower of the unseen",
-    "subject": "the Knower",
-    "verb": "of",
-    "object": "the unseen",
+    "description": "from Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
+    "subject": "from Him",
+    "verb": "is",
+    "object": "an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1722-1759",
+      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1760-2199",
       "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "[Allah is] the Knower of the unseen.\""
+      "text": "Not absent from Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater, except that it is in a clear register [34:4] لِّيَجۡزِيَ ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِۚ أُوْلَـٰٓئِكَ لَهُم مَّغۡفِرَةٞ وَرِزۡقٞ كَرِيمٞ Liyajziya allatheena amanoo waAAamiloo alssalihati olaika lahum maghfiratun warizqun kareemun That He may reward those who believe and do righteous deeds."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that he|may|reward those who believe and do righteous deeds",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "That He may reward those who believe and do righteous deeds",
+    "subject": "That He",
+    "verb": "may",
+    "object": "reward those who believe and do righteous deeds",
+    "witnesses": [
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1760-2199",
+      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
+      "text": "Not absent from Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater, except that it is in a clear register [34:4] لِّيَجۡزِيَ ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِۚ أُوْلَـٰٓئِكَ لَهُم مَّغۡفِرَةٞ وَرِزۡقٞ كَرِيمٞ Liyajziya allatheena amanoo waAAamiloo alssalihati olaika lahum maghfiratun warizqun kareemun That He may reward those who believe and do righteous deeds."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that what|is|revealed to you from your lord is the truth",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that what is revealed to you from your Lord is the truth",
+    "subject": "that what",
+    "verb": "is",
+    "object": "revealed to you from your Lord is the truth",
+    "witnesses": [
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
+      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
+      "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "man who|will|inform you [that] when you have disintegrated in complete disintegration",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "man who will inform you [that] when you have disintegrated in complete disintegration",
+    "subject": "man who",
+    "verb": "will",
+    "object": "inform you [that] when you have disintegrated in complete disintegration",
+    "witnesses": [
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
+      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
+      "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
      }
     ],
     "seq": 9,
@@ -360,7 +385,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "not absent|from|him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
+    "task_id": "lie or|is|there in him madness?\"",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -369,166 +394,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Not absent from Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
-    "subject": "Not absent",
-    "verb": "from",
-    "object": "Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
+    "description": "lie or is there in him madness?\"",
+    "subject": "lie or",
+    "verb": "is",
+    "object": "there in him madness?\"",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1760-2199",
+      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
       "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "Not absent from Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater, except that it is in a clear register [34:4] لِّيَجۡزِيَ ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِۚ أُوْلَـٰٓئِكَ لَهُم مَّغۡفِرَةٞ وَرِزۡقٞ كَرِيمٞ Liyajziya allatheena amanoo waAAamiloo alssalihati olaika lahum maghfiratun warizqun kareemun That He may reward those who believe and do righteous deeds."
+      "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
      }
     ],
     "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kareemun\n    that|he|may reward those who believe and do righteous deeds",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "kareemun\n    That he may reward those who believe and do righteous deeds",
-    "subject": "kareemun\n    That",
-    "verb": "he",
-    "object": "may reward those who believe and do righteous deeds",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1760-2199",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "Not absent from Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater, except that it is in a clear register [34:4] لِّيَجۡزِيَ ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِۚ أُوْلَـٰٓئِكَ لَهُم مَّغۡفِرَةٞ وَرِزۡقٞ كَرِيمٞ Liyajziya allatheena amanoo waAAamiloo alssalihati olaika lahum maghfiratun warizqun kareemun That He may reward those who believe and do righteous deeds."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alhameedi\n    and|those|who have been given knowledge see that what is revealed to you from your lord is the truth",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alhameedi\n    And those who have been given knowledge see that what is revealed to you from your Lord is the truth",
-    "subject": "alhameedi\n    And",
-    "verb": "those",
-    "object": "who have been given knowledge see that what is revealed to you from your Lord is the truth",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "guides to|the|path of the exalted in might",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "guides to the path of the Exalted in Might",
-    "subject": "guides to",
-    "verb": "the",
-    "object": "path of the Exalted in Might",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shall|we|direct you to a man who will inform you [that] when you have disintegrated in complete disintegration",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration",
-    "subject": "Shall",
-    "verb": "we",
-    "object": "direct you to a man who will inform you [that] when you have disintegrated in complete disintegration",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "albaaaeedi\n    has|he|invented about allah a lie or is there in him madness?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "albaAAeedi\n    Has he invented about Allah a lie or is there in him madness?\"",
-    "subject": "albaAAeedi\n    Has",
-    "verb": "he",
-    "object": "invented about Allah a lie or is there in him madness?\"",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-     }
-    ],
-    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -548,7 +428,7 @@
     "verb": "muneebin",
     "object": "Then",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -557,7 +437,7 @@
       "text": "Rather, they who do not believe in the Hereafter will be in the punishment and [are in] extreme error [34:9] أَفَلَمۡ يَرَوۡاْ إِلَىٰ مَا بَيۡنَ أَيۡدِيهِمۡ وَمَا خَلۡفَهُم مِّنَ ٱلسَّمَآءِ وَٱلۡأَرۡضِۚ إِن نَّشَأۡ نَخۡسِفۡ بِهِمُ ٱلۡأَرۡضَ أَوۡ نُسۡقِطۡ عَلَيۡهِمۡ كِسَفٗا مِّنَ ٱلسَّمَآءِۚ إِنَّ فِي ذَٰلِكَ لَأٓيَةٗ لِّكُلِّ عَبۡدٖ مُّنِيبٖ Afalam yaraw ila ma bayna aydeehim wama khalfahum mina alssamai waalardi in nasha nakhsif bihimu alarda aw nusqit AAalayhim kisafan mina alssamai inna fee thalika laayatan likulli AAabdin muneebin Then, do they not look at what is before them and what is behind them of the heaven and earth?"
      }
     ],
-    "seq": 16,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -577,7 +457,7 @@
     "verb": "should",
     "object": "will",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -586,7 +466,7 @@
       "text": "If We should will, We could cause the earth to swallow them or [could] let fall upon them fragments from the sky."
      }
     ],
-    "seq": 17,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -606,7 +486,7 @@
     "verb": "could",
     "object": "cause the earth to swallow them or [could] let fall upon them fragments from the sky",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -615,123 +495,7 @@
       "text": "If We should will, We could cause the earth to swallow them or [could] let fall upon them fragments from the sky."
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alhadeeda\n    and|we|certainly gave david from us bounty",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alhadeeda\n    And we certainly gave David from Us bounty",
-    "subject": "alhadeeda\n    And",
-    "verb": "we",
-    "object": "certainly gave David from Us bounty",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#4592-4929",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "Indeed in that is a sign for every servant turning back [to Allah] [34:10] ۞وَلَقَدۡ ءَاتَيۡنَا دَاوُۥدَ مِنَّا فَضۡلٗاۖ يَٰجِبَالُ أَوِّبِي مَعَهُۥ وَٱلطَّيۡرَۖ وَأَلَنَّا لَهُ ٱلۡحَدِيدَ Walaqad atayna dawooda minna fadlan ya jibalu awwibee maAAahu waalttayra waalanna lahu alhadeeda And We certainly gave David from Us bounty."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|the|birds [as well]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the birds [as well]",
-    "subject": "and",
-    "verb": "the",
-    "object": "birds [as well]",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#4930-5011",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "[We said], \"O mountains, repeat [Our] praises with him, and the birds [as well].\""
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "full coats|of|mail and calculate [precisely] the links",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "full coats of mail and calculate [precisely] the links",
-    "subject": "full coats",
-    "verb": "of",
-    "object": "mail and calculate [precisely] the links",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#5012-5377",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "And We made pliable for him iron [34:11] أَنِ ٱعۡمَلۡ سَٰبِغَٰتٖ وَقَدِّرۡ فِي ٱلسَّرۡدِۖ وَٱعۡمَلُواْ صَٰلِحًاۖ إِنِّي بِمَا تَعۡمَلُونَ بَصِيرٞ Ani iAAmal sabighatin waqaddir fee alssardi waiAAmaloo salihan innee bima taAAmaloona baseerun [Commanding him], \"Make full coats of mail and calculate [precisely] the links, and work [all of you] righteousness."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "all|of|you] righteousness",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "all of you] righteousness",
-    "subject": "all",
-    "verb": "of",
-    "object": "you] righteousness",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#5012-5377",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "And We made pliable for him iron [34:11] أَنِ ٱعۡمَلۡ سَٰبِغَٰتٖ وَقَدِّرۡ فِي ٱلسَّرۡدِۖ وَٱعۡمَلُواْ صَٰلِحًاۖ إِنِّي بِمَا تَعۡمَلُونَ بَصِيرٞ Ani iAAmal sabighatin waqaddir fee alssardi waiAAmaloo salihan innee bima taAAmaloona baseerun [Commanding him], \"Make full coats of mail and calculate [precisely] the links, and work [all of you] righteousness."
-     }
-    ],
-    "seq": 22,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -751,7 +515,7 @@
     "verb": "alssaaaeeri",
     "object": "And to Solomon [We subjected] the wind - its morning [journey was that of] a month - and its afternoon [journey was that of] a month",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -760,7 +524,7 @@
       "text": "Indeed I, of what you do, am Seeing [34:12] وَلِسُلَيۡمَٰنَ ٱلرِّيحَ غُدُوُّهَا شَهۡرٞ وَرَوَاحُهَا شَهۡرٞۖ وَأَسَلۡنَا لَهُۥ عَيۡنَ ٱلۡقِطۡرِۖ وَمِنَ ٱلۡجِنِّ مَن يَعۡمَلُ بَيۡنَ يَدَيۡهِ بِإِذۡنِ رَبِّهِۦۖ وَمَن يَزِغۡ مِنۡهُمۡ عَنۡ أَمۡرِنَا نُذِقۡهُ مِنۡ عَذَابِ ٱلسَّعِيرِ Walisulaymana alrreeha ghuduwwuha shahrun warawahuha shahrun waasalna lahu AAayna alqitri wamina aljinni man yaAAmalu bayna yadayhi biithni rabbihi waman yazigh minhum AAan amrina nuthiqhu min AAathabi alssaAAeeri And to Solomon [We subjected] the wind - its morning [journey was that of] a month - and its afternoon [journey was that of] a month, and We made flow for him a spring of [liquid] copper."
      }
     ],
-    "seq": 23,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -780,7 +544,7 @@
     "verb": "made",
     "object": "flow for him a spring of [liquid] copper",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -789,36 +553,7 @@
       "text": "Indeed I, of what you do, am Seeing [34:12] وَلِسُلَيۡمَٰنَ ٱلرِّيحَ غُدُوُّهَا شَهۡرٞ وَرَوَاحُهَا شَهۡرٞۖ وَأَسَلۡنَا لَهُۥ عَيۡنَ ٱلۡقِطۡرِۖ وَمِنَ ٱلۡجِنِّ مَن يَعۡمَلُ بَيۡنَ يَدَيۡهِ بِإِذۡنِ رَبِّهِۦۖ وَمَن يَزِغۡ مِنۡهُمۡ عَنۡ أَمۡرِنَا نُذِقۡهُ مِنۡ عَذَابِ ٱلسَّعِيرِ Walisulaymana alrreeha ghuduwwuha shahrun warawahuha shahrun waasalna lahu AAayna alqitri wamina aljinni man yaAAmalu bayna yadayhi biithni rabbihi waman yazigh minhum AAan amrina nuthiqhu min AAathabi alssaAAeeri And to Solomon [We subjected] the wind - its morning [journey was that of] a month - and its afternoon [journey was that of] a month, and We made flow for him a spring of [liquid] copper."
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and among|the|jinn were those who worked for him by the permission of his lord",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And among the jinn were those who worked for him by the permission of his Lord",
-    "subject": "And among",
-    "verb": "the",
-    "object": "jinn were those who worked for him by the permission of his Lord",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#6066-6145",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "And among the jinn were those who worked for him by the permission of his Lord."
-     }
-    ],
-    "seq": 25,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -838,7 +573,7 @@
     "verb": "alshshakooru",
     "object": "They made for him what he willed of elevated chambers",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -847,13 +582,13 @@
       "text": "And whoever deviated among them from Our command - We will make him taste of the punishment of the Blaze [34:13] يَعۡمَلُونَ لَهُۥ مَا يَشَآءُ مِن مَّحَٰرِيبَ وَتَمَٰثِيلَ وَجِفَانٖ كَٱلۡجَوَابِ وَقُدُورٖ رَّاسِيَٰتٍۚ ٱعۡمَلُوٓاْ ءَالَ دَاوُۥدَ شُكۡرٗاۚ وَقَلِيلٞ مِّنۡ عِبَادِيَ ٱلشَّكُورُ YaAAmaloona lahu ma yashao min mahareeba watamatheela wajifanin kaaljawabi waqudoorin rasiyatin iAAmaloo ala dawooda shukran waqaleelun min AAibadiya alshshakooru They made for him what he willed of elevated chambers, statues, bowls like reservoirs, and stationary kettles."
      }
     ],
-    "seq": 26,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "o family|of|david",
+    "task_id": "when we|decreed|for solomon death",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -862,41 +597,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "O family of David",
-    "subject": "O family",
-    "verb": "of",
-    "object": "David",
+    "description": "when We decreed for Solomon death",
+    "subject": "when We",
+    "verb": "decreed",
+    "object": "for Solomon death",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#6720-6771",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "[We said], \"Work, O family of David, in gratitude.\""
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "almuheeni\n    and|when|we decreed for solomon death",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "almuheeni\n    And when We decreed for Solomon death",
-    "subject": "almuheeni\n    And",
-    "verb": "when",
-    "object": "We decreed for Solomon death",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -905,128 +611,12 @@
       "text": "And few of My servants are grateful [34:14] فَلَمَّا قَضَيۡنَا عَلَيۡهِ ٱلۡمَوۡتَ مَا دَلَّهُمۡ عَلَىٰ مَوۡتِهِۦٓ إِلَّا دَآبَّةُ ٱلۡأَرۡضِ تَأۡكُلُ مِنسَأَتَهُۥۖ فَلَمَّا خَرَّ تَبَيَّنَتِ ٱلۡجِنُّ أَن لَّوۡ كَانُواْ يَعۡلَمُونَ ٱلۡغَيۡبَ مَا لَبِثُواْ فِي ٱلۡعَذَابِ ٱلۡمُهِينِ Falamma qadayna AAalayhi almawta ma dallahum AAala mawtihi illa dabbatu alardi takulu minsaatahu falamma kharra tabayyanati aljinnu an law kanoo yaAAlamoona alghayba ma labithoo fee alAAathabi almuheeni And when We decreed for Solomon death, nothing indicated to the jinn his death except a creature of the earth eating his staff."
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "indicated to|the|jinn his death except a creature of the earth eating his staff",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "indicated to the jinn his death except a creature of the earth eating his staff",
-    "subject": "indicated to",
-    "verb": "the",
-    "object": "jinn his death except a creature of the earth eating his staff",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#6772-7391",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "And few of My servants are grateful [34:14] فَلَمَّا قَضَيۡنَا عَلَيۡهِ ٱلۡمَوۡتَ مَا دَلَّهُمۡ عَلَىٰ مَوۡتِهِۦٓ إِلَّا دَآبَّةُ ٱلۡأَرۡضِ تَأۡكُلُ مِنسَأَتَهُۥۖ فَلَمَّا خَرَّ تَبَيَّنَتِ ٱلۡجِنُّ أَن لَّوۡ كَانُواْ يَعۡلَمُونَ ٱلۡغَيۡبَ مَا لَبِثُواْ فِي ٱلۡعَذَابِ ٱلۡمُهِينِ Falamma qadayna AAalayhi almawta ma dallahum AAala mawtihi illa dabbatu alardi takulu minsaatahu falamma kharra tabayyanati aljinnu an law kanoo yaAAlamoona alghayba ma labithoo fee alAAathabi almuheeni And when We decreed for Solomon death, nothing indicated to the jinn his death except a creature of the earth eating his staff."
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but when|he|fell",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But when he fell",
-    "subject": "But when",
-    "verb": "he",
-    "object": "fell",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#7392-7988",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "But when he fell, it became clear to the jinn that if they had known the unseen, they would not have remained in humiliating punishment [34:15] لَقَدۡ كَانَ لِسَبَإٖ فِي مَسۡكَنِهِمۡ ءَايَةٞۖ جَنَّتَانِ عَن يَمِينٖ وَشِمَالٖۖ كُلُواْ مِن رِّزۡقِ رَبِّكُمۡ وَٱشۡكُرُواْ لَهُۥۚ بَلۡدَةٞ طَيِّبَةٞ وَرَبٌّ غَفُورٞ Laqad kana lisabain fee maskanihim ayatun jannatani AAan yameenin washimalin kuloo min rizqi rabbikum waoshkuroo lahu baldatun tayyibatun warabbun ghafoorun There was for [the tribe of] Saba' in their dwelling place a sign: two [fields of] gardens on the right and on the left."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "clear to|the|jinn that if they had known the unseen",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "clear to the jinn that if they had known the unseen",
-    "subject": "clear to",
-    "verb": "the",
-    "object": "jinn that if they had known the unseen",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#7392-7988",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "But when he fell, it became clear to the jinn that if they had known the unseen, they would not have remained in humiliating punishment [34:15] لَقَدۡ كَانَ لِسَبَإٖ فِي مَسۡكَنِهِمۡ ءَايَةٞۖ جَنَّتَانِ عَن يَمِينٖ وَشِمَالٖۖ كُلُواْ مِن رِّزۡقِ رَبِّكُمۡ وَٱشۡكُرُواْ لَهُۥۚ بَلۡدَةٞ طَيِّبَةٞ وَرَبٌّ غَفُورٞ Laqad kana lisabain fee maskanihim ayatun jannatani AAan yameenin washimalin kuloo min rizqi rabbikum waoshkuroo lahu baldatun tayyibatun warabbun ghafoorun There was for [the tribe of] Saba' in their dwelling place a sign: two [fields of] gardens on the right and on the left."
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "saba'|in|their dwelling place a sign: two [fields of] gardens on the right and on the left",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Saba' in their dwelling place a sign: two [fields of] gardens on the right and on the left",
-    "subject": "Saba'",
-    "verb": "in",
-    "object": "their dwelling place a sign: two [fields of] gardens on the right and on the left",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#7392-7988",
-      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-      "text": "But when he fell, it became clear to the jinn that if they had known the unseen, they would not have remained in humiliating punishment [34:15] لَقَدۡ كَانَ لِسَبَإٖ فِي مَسۡكَنِهِمۡ ءَايَةٞۖ جَنَّتَانِ عَن يَمِينٖ وَشِمَالٖۖ كُلُواْ مِن رِّزۡقِ رَبِّكُمۡ وَٱشۡكُرُواْ لَهُۥۚ بَلۡدَةٞ طَيِّبَةٞ وَرَبٌّ غَفُورٞ Laqad kana lisabain fee maskanihim ayatun jannatani AAan yameenin washimalin kuloo min rizqi rabbikum waoshkuroo lahu baldatun tayyibatun warabbun ghafoorun There was for [the tribe of] Saba' in their dwelling place a sign: two [fields of] gardens on the right and on the left."
-     }
-    ],
-    "seq": 32,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 33,
+  "nextSeq": 18,
   "admits": [
    "NUL",
    "SEG",
@@ -1041,124 +631,12 @@
  },
  "folded": [
   {
-   "id": "albaaaeedi\n    has|he|invented about allah a lie or is there in him madness?\"",
-   "subject": "albaAAeedi\n    Has",
-   "verb": "he",
-   "object": "invented about Allah a lie or is there in him madness?\"",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-    }
-   ]
-  },
-  {
-   "id": "alhadeeda\n    and|we|certainly gave david from us bounty",
-   "subject": "alhadeeda\n    And",
-   "verb": "we",
-   "object": "certainly gave David from Us bounty",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#4592-4929",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "Indeed in that is a sign for every servant turning back [to Allah] [34:10] ۞وَلَقَدۡ ءَاتَيۡنَا دَاوُۥدَ مِنَّا فَضۡلٗاۖ يَٰجِبَالُ أَوِّبِي مَعَهُۥ وَٱلطَّيۡرَۖ وَأَلَنَّا لَهُ ٱلۡحَدِيدَ Walaqad atayna dawooda minna fadlan ya jibalu awwibee maAAahu waalttayra waalanna lahu alhadeeda And We certainly gave David from Us bounty."
-    }
-   ]
-  },
-  {
-   "id": "alhameedi\n    and|those|who have been given knowledge see that what is revealed to you from your lord is the truth",
-   "subject": "alhameedi\n    And",
-   "verb": "those",
-   "object": "who have been given knowledge see that what is revealed to you from your Lord is the truth",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-    }
-   ]
-  },
-  {
-   "id": "all|of|you] righteousness",
-   "subject": "all",
-   "verb": "of",
-   "object": "you] righteousness",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#5012-5377",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "And We made pliable for him iron [34:11] أَنِ ٱعۡمَلۡ سَٰبِغَٰتٖ وَقَدِّرۡ فِي ٱلسَّرۡدِۖ وَٱعۡمَلُواْ صَٰلِحًاۖ إِنِّي بِمَا تَعۡمَلُونَ بَصِيرٞ Ani iAAmal sabighatin waqaddir fee alssardi waiAAmaloo salihan innee bima taAAmaloona baseerun [Commanding him], \"Make full coats of mail and calculate [precisely] the links, and work [all of you] righteousness."
-    }
-   ]
-  },
-  {
-   "id": "almuheeni\n    and|when|we decreed for solomon death",
-   "subject": "almuheeni\n    And",
-   "verb": "when",
-   "object": "We decreed for Solomon death",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#6772-7391",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "And few of My servants are grateful [34:14] فَلَمَّا قَضَيۡنَا عَلَيۡهِ ٱلۡمَوۡتَ مَا دَلَّهُمۡ عَلَىٰ مَوۡتِهِۦٓ إِلَّا دَآبَّةُ ٱلۡأَرۡضِ تَأۡكُلُ مِنسَأَتَهُۥۖ فَلَمَّا خَرَّ تَبَيَّنَتِ ٱلۡجِنُّ أَن لَّوۡ كَانُواْ يَعۡلَمُونَ ٱلۡغَيۡبَ مَا لَبِثُواْ فِي ٱلۡعَذَابِ ٱلۡمُهِينِ Falamma qadayna AAalayhi almawta ma dallahum AAala mawtihi illa dabbatu alardi takulu minsaatahu falamma kharra tabayyanati aljinnu an law kanoo yaAAlamoona alghayba ma labithoo fee alAAathabi almuheeni And when We decreed for Solomon death, nothing indicated to the jinn his death except a creature of the earth eating his staff."
-    }
-   ]
-  },
-  {
-   "id": "alrraheemu alghafooru|he|knows what penetrates into the earth and what emerges from it and what descends from the heaven and what ascends therein",
-   "subject": "alrraheemu alghafooru",
-   "verb": "he",
-   "object": "knows what penetrates into the earth and what emerges from it and what descends from the heaven and what ascends therein",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#623-1063",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "And He is the Wise, the Acquainted [34:2] يَعۡلَمُ مَا يَلِجُ فِي ٱلۡأَرۡضِ وَمَا يَخۡرُجُ مِنۡهَا وَمَا يَنزِلُ مِنَ ٱلسَّمَآءِ وَمَا يَعۡرُجُ فِيهَاۚ وَهُوَ ٱلرَّحِيمُ ٱلۡغَفُورُ YaAAlamu ma yaliju fee alardi wama yakhruju minha wama yanzilu mina alssamai wama yaAAruju feeha wahuwa alrraheemu alghafooru He knows what penetrates into the earth and what emerges from it and what descends from the heaven and what ascends therein."
-    }
-   ]
-  },
-  {
-   "id": "and among|the|jinn were those who worked for him by the permission of his lord",
-   "subject": "And among",
-   "verb": "the",
-   "object": "jinn were those who worked for him by the permission of his Lord",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#6066-6145",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "And among the jinn were those who worked for him by the permission of his Lord."
-    }
-   ]
-  },
-  {
    "id": "and he|is|the merciful",
    "subject": "And He",
    "verb": "is",
    "object": "the Merciful",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1174,7 +652,7 @@
    "verb": "is",
    "object": "the Wise",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1185,28 +663,12 @@
    ]
   },
   {
-   "id": "and to|him|belongs [all] praise in the hereafter",
-   "subject": "and to",
-   "verb": "him",
-   "object": "belongs [all] praise in the Hereafter",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#193-622",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "[34:1] ٱلۡحَمۡدُ لِلَّهِ ٱلَّذِي لَهُۥ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ وَلَهُ ٱلۡحَمۡدُ فِي ٱلۡأٓخِرَةِۚ وَهُوَ ٱلۡحَكِيمُ ٱلۡخَبِيرُ Alhamdu lillahi allathee lahu ma fee alssamawati wama fee alardi walahu alhamdu fee alakhirati wahuwa alhakeemu alkhabeeru [All] praise is [due] to Allah, to whom belongs whatever is in the heavens and whatever is in the earth, and to Him belongs [all] praise in the Hereafter."
-    }
-   ]
-  },
-  {
    "id": "and we|made|flow for him a spring of [liquid] copper",
    "subject": "and We",
    "verb": "made",
    "object": "flow for him a spring of [liquid] copper",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1217,28 +679,12 @@
    ]
   },
   {
-   "id": "and|the|birds [as well]",
-   "subject": "and",
-   "verb": "the",
-   "object": "birds [as well]",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#4930-5011",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "[We said], \"O mountains, repeat [Our] praises with him, and the birds [as well].\""
-    }
-   ]
-  },
-  {
    "id": "belongs whatever|is|in the heavens and whatever is in the earth",
    "subject": "belongs whatever",
    "verb": "is",
    "object": "in the heavens and whatever is in the earth",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1254,124 +700,12 @@
    ]
   },
   {
-   "id": "but when|he|fell",
-   "subject": "But when",
-   "verb": "he",
-   "object": "fell",
+   "id": "from him|is|an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
+   "subject": "from Him",
+   "verb": "is",
+   "object": "an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#7392-7988",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "But when he fell, it became clear to the jinn that if they had known the unseen, they would not have remained in humiliating punishment [34:15] لَقَدۡ كَانَ لِسَبَإٖ فِي مَسۡكَنِهِمۡ ءَايَةٞۖ جَنَّتَانِ عَن يَمِينٖ وَشِمَالٖۖ كُلُواْ مِن رِّزۡقِ رَبِّكُمۡ وَٱشۡكُرُواْ لَهُۥۚ بَلۡدَةٞ طَيِّبَةٞ وَرَبٌّ غَفُورٞ Laqad kana lisabain fee maskanihim ayatun jannatani AAan yameenin washimalin kuloo min rizqi rabbikum waoshkuroo lahu baldatun tayyibatun warabbun ghafoorun There was for [the tribe of] Saba' in their dwelling place a sign: two [fields of] gardens on the right and on the left."
-    }
-   ]
-  },
-  {
-   "id": "clear to|the|jinn that if they had known the unseen",
-   "subject": "clear to",
-   "verb": "the",
-   "object": "jinn that if they had known the unseen",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#7392-7988",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "But when he fell, it became clear to the jinn that if they had known the unseen, they would not have remained in humiliating punishment [34:15] لَقَدۡ كَانَ لِسَبَإٖ فِي مَسۡكَنِهِمۡ ءَايَةٞۖ جَنَّتَانِ عَن يَمِينٖ وَشِمَالٖۖ كُلُواْ مِن رِّزۡقِ رَبِّكُمۡ وَٱشۡكُرُواْ لَهُۥۚ بَلۡدَةٞ طَيِّبَةٞ وَرَبٌّ غَفُورٞ Laqad kana lisabain fee maskanihim ayatun jannatani AAan yameenin washimalin kuloo min rizqi rabbikum waoshkuroo lahu baldatun tayyibatun warabbun ghafoorun There was for [the tribe of] Saba' in their dwelling place a sign: two [fields of] gardens on the right and on the left."
-    }
-   ]
-  },
-  {
-   "id": "full coats|of|mail and calculate [precisely] the links",
-   "subject": "full coats",
-   "verb": "of",
-   "object": "mail and calculate [precisely] the links",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#5012-5377",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "And We made pliable for him iron [34:11] أَنِ ٱعۡمَلۡ سَٰبِغَٰتٖ وَقَدِّرۡ فِي ٱلسَّرۡدِۖ وَٱعۡمَلُواْ صَٰلِحًاۖ إِنِّي بِمَا تَعۡمَلُونَ بَصِيرٞ Ani iAAmal sabighatin waqaddir fee alssardi waiAAmaloo salihan innee bima taAAmaloona baseerun [Commanding him], \"Make full coats of mail and calculate [precisely] the links, and work [all of you] righteousness."
-    }
-   ]
-  },
-  {
-   "id": "guides to|the|path of the exalted in might",
-   "subject": "guides to",
-   "verb": "the",
-   "object": "path of the Exalted in Might",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-    }
-   ]
-  },
-  {
-   "id": "if we|should|will",
-   "subject": "If We",
-   "verb": "should",
-   "object": "will",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#4478-4591",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "If We should will, We could cause the earth to swallow them or [could] let fall upon them fragments from the sky."
-    }
-   ]
-  },
-  {
-   "id": "indicated to|the|jinn his death except a creature of the earth eating his staff",
-   "subject": "indicated to",
-   "verb": "the",
-   "object": "jinn his death except a creature of the earth eating his staff",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#6772-7391",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "And few of My servants are grateful [34:14] فَلَمَّا قَضَيۡنَا عَلَيۡهِ ٱلۡمَوۡتَ مَا دَلَّهُمۡ عَلَىٰ مَوۡتِهِۦٓ إِلَّا دَآبَّةُ ٱلۡأَرۡضِ تَأۡكُلُ مِنسَأَتَهُۥۖ فَلَمَّا خَرَّ تَبَيَّنَتِ ٱلۡجِنُّ أَن لَّوۡ كَانُواْ يَعۡلَمُونَ ٱلۡغَيۡبَ مَا لَبِثُواْ فِي ٱلۡعَذَابِ ٱلۡمُهِينِ Falamma qadayna AAalayhi almawta ma dallahum AAala mawtihi illa dabbatu alardi takulu minsaatahu falamma kharra tabayyanati aljinnu an law kanoo yaAAlamoona alghayba ma labithoo fee alAAathabi almuheeni And when We decreed for Solomon death, nothing indicated to the jinn his death except a creature of the earth eating his staff."
-    }
-   ]
-  },
-  {
-   "id": "it|will|surely come to you",
-   "subject": "it",
-   "verb": "will",
-   "object": "surely come to you",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1671-1721",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "Say, \"Yes, by my Lord, it will surely come to you."
-    }
-   ]
-  },
-  {
-   "id": "kareemun\n    that|he|may reward those who believe and do righteous deeds",
-   "subject": "kareemun\n    That",
-   "verb": "he",
-   "object": "may reward those who believe and do righteous deeds",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1382,12 +716,60 @@
    ]
   },
   {
+   "id": "if we|should|will",
+   "subject": "If We",
+   "verb": "should",
+   "object": "will",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#4478-4591",
+     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
+     "text": "If We should will, We could cause the earth to swallow them or [could] let fall upon them fragments from the sky."
+    }
+   ]
+  },
+  {
+   "id": "it|will|surely come to you",
+   "subject": "it",
+   "verb": "will",
+   "object": "surely come to you",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1671-1721",
+     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
+     "text": "Say, \"Yes, by my Lord, it will surely come to you."
+    }
+   ]
+  },
+  {
+   "id": "lie or|is|there in him madness?\"",
+   "subject": "lie or",
+   "verb": "is",
+   "object": "there in him madness?\"",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
+     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
+     "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
+    }
+   ]
+  },
+  {
    "id": "likulli aaabdin|muneebin|then",
    "subject": "likulli AAabdin",
    "verb": "muneebin",
    "object": "Then",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1398,12 +780,28 @@
    ]
   },
   {
+   "id": "man who|will|inform you [that] when you have disintegrated in complete disintegration",
+   "subject": "man who",
+   "verb": "will",
+   "object": "inform you [that] when you have disintegrated in complete disintegration",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
+     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
+     "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
+    }
+   ]
+  },
+  {
    "id": "min aaathabi|alssaaaeeri|and to solomon [we subjected] the wind - its morning [journey was that of] a month - and its afternoon [journey was that of] a month",
    "subject": "min AAathabi",
    "verb": "alssaaaeeri",
    "object": "And to Solomon [We subjected] the wind - its morning [journey was that of] a month - and its afternoon [journey was that of] a month",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1419,7 +817,7 @@
    "verb": "alshshakooru",
    "object": "They made for him what he willed of elevated chambers",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1430,65 +828,12 @@
    ]
   },
   {
-   "id": "mubeenin\n    but|those|who disbelieve say",
-   "subject": "mubeenin\n    But",
-   "verb": "those",
-   "object": "who disbelieve say",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1064-1670",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "And He is the Merciful, the Forgiving [34:3] وَقَالَ ٱلَّذِينَ كَفَرُواْ لَا تَأۡتِينَا ٱلسَّاعَةُۖ قُلۡ بَلَىٰ وَرَبِّي لَتَأۡتِيَنَّكُمۡ عَٰلِمِ ٱلۡغَيۡبِۖ لَا يَعۡزُبُ عَنۡهُ مِثۡقَالُ ذَرَّةٖ فِي ٱلسَّمَٰوَٰتِ وَلَا فِي ٱلۡأَرۡضِ وَلَآ أَصۡغَرُ مِن ذَٰلِكَ وَلَآ أَكۡبَرُ إِلَّا فِي كِتَٰبٖ مُّبِينٖ Waqala allatheena kafaroo la tateena alssaAAatu qul bala warabbee latatiyannakum AAalimi alghaybi la yaAAzubu AAanhu mithqalu tharratin fee alssamawati wala fee alardi wala asgharu min thalika wala akbaru illa fee kitabin mubeenin But those who disbelieve say, \"The Hour will not come to us.\""
-    },
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#2200-3831",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "Those will have forgiveness and noble provision [34:5] وَٱلَّذِينَ سَعَوۡ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٞ Waallatheena saAAaw fee ayatina muAAajizeena olaika lahum AAathabun min rijzin aleemin But those who strive against Our verses [seeking] to cause failure - for them will be a painful punishment of foul nature [34:6] وَيَرَى ٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ ٱلَّذِيٓ أُنزِلَ إِلَيۡكَ مِن رَّبِّكَ هُوَ ٱلۡحَقَّ وَيَهۡدِيٓ إِلَىٰ صِرَٰطِ ٱلۡعَزِيزِ ٱلۡحَمِيدِ Wayara allatheena ootoo alAAilma allathee onzila ilayka min rabbika huwa alhaqqa wayahdee ila sirati alAAazeezi alhameedi And those who have been given knowledge see that what is revealed to you from your Lord is the truth, and it guides to the path of the Exalted in Might, the Praiseworthy [34:7] وَقَالَ ٱلَّذِينَ كَفَرُواْ هَلۡ نَدُلُّكُمۡ عَلَىٰ رَجُلٖ يُنَبِّئُكُمۡ إِذَا مُزِّقۡتُمۡ كُلَّ مُمَزَّقٍ إِنَّكُمۡ لَفِي خَلۡقٖ جَدِيدٍ Waqala allatheena kafaroo hal nadullukum AAala rajulin yunabbiokum itha muzziqtum kulla mumazzaqin innakum lafee khalqin jadeedin But those who disbelieve say, \"Shall we direct you to a man who will inform you [that] when you have disintegrated in complete disintegration, you will [then] be [recreated] in a new creation [34:8] أَفۡتَرَىٰ عَلَى ٱللَّهِ كَذِبًا أَم بِهِۦ جِنَّةُۢۗ بَلِ ٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ فِي ٱلۡعَذَابِ وَٱلضَّلَٰلِ ٱلۡبَعِيدِ Aftara AAala Allahi kathiban am bihi jinnatun bali allatheena la yuminoona bialakhirati fee alAAathabi waalddalali albaAAeedi Has he invented about Allah a lie or is there in him madness?\""
-    }
-   ]
-  },
-  {
-   "id": "not absent|from|him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
-   "subject": "Not absent",
-   "verb": "from",
-   "object": "Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1760-2199",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "Not absent from Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater, except that it is in a clear register [34:4] لِّيَجۡزِيَ ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِۚ أُوْلَـٰٓئِكَ لَهُم مَّغۡفِرَةٞ وَرِزۡقٞ كَرِيمٞ Liyajziya allatheena amanoo waAAamiloo alssalihati olaika lahum maghfiratun warizqun kareemun That He may reward those who believe and do righteous deeds."
-    }
-   ]
-  },
-  {
-   "id": "o family|of|david",
-   "subject": "O family",
-   "verb": "of",
-   "object": "David",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#6720-6771",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "[We said], \"Work, O family of David, in gratitude.\""
-    }
-   ]
-  },
-  {
    "id": "praise|is|[due] to allah",
    "subject": "praise",
    "verb": "is",
    "object": "[due] to Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1499,28 +844,28 @@
    ]
   },
   {
-   "id": "saba'|in|their dwelling place a sign: two [fields of] gardens on the right and on the left",
-   "subject": "Saba'",
-   "verb": "in",
-   "object": "their dwelling place a sign: two [fields of] gardens on the right and on the left",
+   "id": "that he|may|reward those who believe and do righteous deeds",
+   "subject": "That He",
+   "verb": "may",
+   "object": "reward those who believe and do righteous deeds",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#7392-7988",
+     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1760-2199",
      "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "But when he fell, it became clear to the jinn that if they had known the unseen, they would not have remained in humiliating punishment [34:15] لَقَدۡ كَانَ لِسَبَإٖ فِي مَسۡكَنِهِمۡ ءَايَةٞۖ جَنَّتَانِ عَن يَمِينٖ وَشِمَالٖۖ كُلُواْ مِن رِّزۡقِ رَبِّكُمۡ وَٱشۡكُرُواْ لَهُۥۚ بَلۡدَةٞ طَيِّبَةٞ وَرَبٌّ غَفُورٞ Laqad kana lisabain fee maskanihim ayatun jannatani AAan yameenin washimalin kuloo min rizqi rabbikum waoshkuroo lahu baldatun tayyibatun warabbun ghafoorun There was for [the tribe of] Saba' in their dwelling place a sign: two [fields of] gardens on the right and on the left."
+     "text": "Not absent from Him is an atom's weight within the heavens or within the earth or [what is] smaller than that or greater, except that it is in a clear register [34:4] لِّيَجۡزِيَ ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِۚ أُوْلَـٰٓئِكَ لَهُم مَّغۡفِرَةٞ وَرِزۡقٞ كَرِيمٞ Liyajziya allatheena amanoo waAAamiloo alssalihati olaika lahum maghfiratun warizqun kareemun That He may reward those who believe and do righteous deeds."
     }
    ]
   },
   {
-   "id": "shall|we|direct you to a man who will inform you [that] when you have disintegrated in complete disintegration",
-   "subject": "Shall",
-   "verb": "we",
-   "object": "direct you to a man who will inform you [that] when you have disintegrated in complete disintegration",
+   "id": "that what|is|revealed to you from your lord is the truth",
+   "subject": "that what",
+   "verb": "is",
+   "object": "revealed to you from your Lord is the truth",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1536,7 +881,7 @@
    "verb": "will",
    "object": "not come to us",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1547,28 +892,12 @@
    ]
   },
   {
-   "id": "the knower|of|the unseen",
-   "subject": "the Knower",
-   "verb": "of",
-   "object": "the unseen",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#1722-1759",
-     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
-     "text": "[Allah is] the Knower of the unseen.\""
-    }
-   ]
-  },
-  {
    "id": "we|could|cause the earth to swallow them or [could] let fall upon them fragments from the sky",
    "subject": "We",
    "verb": "could",
    "object": "cause the earth to swallow them or [could] let fall upon them fragments from the sky",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-034-Saba.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1577,10 +906,26 @@
      "text": "If We should will, We could cause the earth to swallow them or [could] let fall upon them fragments from the sky."
     }
    ]
+  },
+  {
+   "id": "when we|decreed|for solomon death",
+   "subject": "when We",
+   "verb": "decreed",
+   "object": "for Solomon death",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-034-Saba.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-034-Saba.txt#6772-7391",
+     "ref": "14-holy-texts/quran-suras/sura-034-Saba.txt",
+     "text": "And few of My servants are grateful [34:14] فَلَمَّا قَضَيۡنَا عَلَيۡهِ ٱلۡمَوۡتَ مَا دَلَّهُمۡ عَلَىٰ مَوۡتِهِۦٓ إِلَّا دَآبَّةُ ٱلۡأَرۡضِ تَأۡكُلُ مِنسَأَتَهُۥۖ فَلَمَّا خَرَّ تَبَيَّنَتِ ٱلۡجِنُّ أَن لَّوۡ كَانُواْ يَعۡلَمُونَ ٱلۡغَيۡبَ مَا لَبِثُواْ فِي ٱلۡعَذَابِ ٱلۡمُهِينِ Falamma qadayna AAalayhi almawta ma dallahum AAala mawtihi illa dabbatu alardi takulu minsaatahu falamma kharra tabayyanati aljinnu an law kanoo yaAAlamoona alghayba ma labithoo fee alAAathabi almuheeni And when We decreed for Solomon death, nothing indicated to the jinn his death except a creature of the earth eating his staff."
+    }
+   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:45.136Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:45.272Z"
  }
 }

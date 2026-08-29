@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 16055,
   "bodyOffset": 0,
   "bodyChars": 16055,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 12,
   "distinctReferents": 11,
   "examined": true,
-  "edgesFound": 22,
-  "extractionError": null
+  "edgesFound": 14,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 8
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 14,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 22,
-  "excerptOk": 22,
-  "rawChecked": 22,
-  "rawOk": 22,
+  "excerptChecked": 14,
+  "excerptOk": 14,
+  "rawChecked": 14,
+  "rawOk": 14,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 22,
-  "heard": 22,
+  "offered": 14,
+  "heard": 14,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "the exalted|in|might",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Exalted in Might",
-    "subject": "the Exalted",
-    "verb": "in",
-    "object": "Might",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#358-466",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-      "text": "[5] AR: تَنزِيلَ ٱلْعَزِيزِ ٱلرَّحِيمِ EN: [This is] a revelation of the Exalted in Might, the Merciful,"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "the word|has|come into effect upon most of them",
@@ -103,7 +104,7 @@
     "verb": "has",
     "object": "come into effect upon most of them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,7 +113,7 @@
       "text": "[7] AR: لَقَدْ حَقَّ ٱلْقَوْلُ عَلَىٰٓ أَكْثَرِهِمْ فَهُمْ لَا يُؤْمِنُونَ EN: Already the word has come into effect upon most of them, so they do not believe."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "is",
     "object": "all the same for them whether you warn them or do not warn them - they will not believe",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,36 +142,7 @@
       "text": "[10] AR: وَسَوَآءٌ عَلَيْهِمْ ءَأَنذَرْتَهُمْ أَمْ لَمْ تُنذِرْهُمْ لَا يُؤْمِنُونَ EN: And it is all the same for them whether you warn them or do not warn them - they will not believe."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "warn one|who|follows the message and fears the most merciful unseen",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "warn one who follows the message and fears the Most Merciful unseen",
-    "subject": "warn one",
-    "verb": "who",
-    "object": "follows the message and fears the Most Merciful unseen",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#1442-1661",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-      "text": "[11] AR: إِنَّمَا تُنذِرُ مَنِ ٱتَّبَعَ ٱلذِّكْرَ وَخَشِىَ ٱلرَّحْمَٰنَ بِٱلْغَيْبِ ۖ فَبَشِّرْهُ بِمَغْفِرَةٍۢ وَأَجْرٍۢ كَرِيمٍ EN: You can only warn one who follows the message and fears the Most Merciful unseen."
-     }
-    ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +162,7 @@
     "verb": "is",
     "object": "We who bring the dead to life and record what they have put forth and what they left behind",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,36 +171,7 @@
       "text": "[12] AR: إِنَّا نَحْنُ نُحْىِ ٱلْمَوْتَىٰ وَنَكْتُبُ مَا قَدَّمُوا۟ وَءَاثَٰرَهُمْ ۚ وَكُلَّ شَىْءٍ أَحْصَيْنَٰهُ فِىٓ إِمَامٍۢ مُّبِينٍۢ EN: Indeed, it is We who bring the dead to life and record what they have put forth and what they left behind, and all things We have enumerated in a clear register."
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have enumerated|in|a clear register",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "have enumerated in a clear register",
-    "subject": "have enumerated",
-    "verb": "in",
-    "object": "a clear register",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#1721-2028",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-      "text": "[12] AR: إِنَّا نَحْنُ نُحْىِ ٱلْمَوْتَىٰ وَنَكْتُبُ مَا قَدَّمُوا۟ وَءَاثَٰرَهُمْ ۚ وَكُلَّ شَىْءٍ أَحْصَيْنَٰهُ فِىٓ إِمَامٍۢ مُّبِينٍۢ EN: Indeed, it is We who bring the dead to life and record what they have put forth and what they left behind, and all things We have enumerated in a clear register."
-     }
-    ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +191,7 @@
     "verb": "has",
     "object": "not revealed a thing",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,7 +200,7 @@
       "text": "[15] AR: قَالُوا۟ مَآ أَنتُمْ إِلَّا بَشَرٌۭ مِّثْلُنَا وَمَآ أَنزَلَ ٱلرَّحْمَٰنُ مِن شَىْءٍ إِنْ أَنتُمْ إِلَّا تَكْذِبُونَ EN: They said, \"You are not but human beings like us, and the Most Merciful has not revealed a thing."
      }
     ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -277,7 +220,7 @@
     "verb": "knows",
     "object": "that we are messengers to you",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -286,7 +229,7 @@
       "text": "[16] AR: قَالُوا۟ رَبُّنَا يَعْلَمُ إِنَّآ إِلَيْكُمْ لَمُرْسَلُونَ EN: They said, \"Our Lord knows that we are messengers to you,"
      }
     ],
-    "seq": 7,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +249,7 @@
     "verb": "is",
     "object": "with yourselves",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,65 +258,7 @@
       "text": "[19] AR: قَالُوا۟ طَٰٓئِرُكُم مَّعَكُمْ ۚ أَئِن ذُكِّرْتُم ۚ بَلْ أَنتُمْ قَوْمٌۭ مُّسْرِفُونَ EN: They said, \"Your omen is with yourselves."
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "follow those|who|do not ask of you [any] payment",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Follow those who do not ask of you [any] payment",
-    "subject": "Follow those",
-    "verb": "who",
-    "object": "do not ask of you [any] payment",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#3758-3918",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-      "text": "[21] AR: ٱتَّبِعُوا۟ مَن لَّا يَسْـَٔلُكُمْ أَجْرًۭا وَهُم مُّهْتَدُونَ EN: Follow those who do not ask of you [any] payment, and they are [rightly] guided."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "worship he|who|created me and to whom you will be returned?",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "worship He who created me and to whom you will be returned?",
-    "subject": "worship He",
-    "verb": "who",
-    "object": "created me and to whom you will be returned?",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#3920-4083",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-      "text": "[22] AR: وَمَا لِىَ لَآ أَعْبُدُ ٱلَّذِى فَطَرَنِى وَإِلَيْهِ تُرْجَعُونَ EN: And why should I not worship He who created me and to whom you will be returned?"
-     }
-    ],
-    "seq": 10,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +278,7 @@
     "verb": "intends",
     "object": "for me some adversity",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,65 +287,7 @@
       "text": "[23] AR: ءَأَتَّخِذُ مِن دُونِهِۦٓ ءَالِهَةً إِن يُرِدْنِ ٱلرَّحْمَٰنُ بِضُرٍّۢ لَّا تُغْنِ عَنِّى شَفَٰعَتُهُمْ شَيْـًۭٔا وَلَا يُنقِذُونِ EN: Should I take other than Him [false] deities [while], if the Most Merciful intends for me some adversity, their intercession will not avail me at all, nor can they save me?"
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then be|in|manifest error",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "then be in manifest error",
-    "subject": "then be",
-    "verb": "in",
-    "object": "manifest error",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#4407-4506",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-      "text": "[24] AR: إِنِّىٓ إِذًۭا لَّفِى ضَلَٰلٍۢ مُّبِينٍ EN: Indeed, I would then be in manifest error."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have believed|in|your lord",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "have believed in your Lord",
-    "subject": "have believed",
-    "verb": "in",
-    "object": "your Lord",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#4508-4622",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-      "text": "[25] AR: إِنِّىٓ ءَامَنتُ بِرَبِّكُمْ فَٱسْمَعُونِ EN: Indeed, I have believed in your Lord, so listen to me.\""
-     }
-    ],
-    "seq": 13,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -480,7 +307,7 @@
     "verb": "has",
     "object": "forgiven me and placed me among the honored",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -489,7 +316,7 @@
       "text": "[27] AR: بِمَا غَفَرَ لِى رَبِّى وَجَعَلَنِى مِنَ ٱلْمُكْرَمِينَ EN: Of how my Lord has forgiven me and placed me among the honored.\""
      }
     ],
-    "seq": 14,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -509,7 +336,7 @@
     "verb": "is",
     "object": "the dead earth",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -518,7 +345,7 @@
       "text": "[33] AR: وَءَايَةٌۭ لَّهُمُ ٱلْأَرْضُ ٱلْمَيْتَةُ أَحْيَيْنَٰهَا وَأَخْرَجْنَا مِنْهَا حَبًّۭا فَمِنْهُ يَأْكُلُونَ EN: And a sign for them is the dead earth."
      }
     ],
-    "seq": 15,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -538,7 +365,7 @@
     "verb": "is",
     "object": "He who created all pairs - from what the earth grows and from themselves and from that which they do not know",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -547,7 +374,7 @@
       "text": "[36] AR: سُبْحَٰنَ ٱلَّذِى خَلَقَ ٱلْأَزْوَٰجَ كُلَّهَا مِمَّا تُنۢبِتُ ٱلْأَرْضُ وَمِنْ أَنفُسِهِمْ وَمِمَّا لَا يَعْلَمُونَ EN: Exalted is He who created all pairs - from what the earth grows and from themselves and from that which they do not know."
      }
     ],
-    "seq": 16,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -567,7 +394,7 @@
     "verb": "is",
     "object": "the night",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -576,36 +403,7 @@
       "text": "[37] AR: وَءَايَةٌۭ لَّهُمُ ٱلَّيْلُ نَسْلَخُ مِنْهُ ٱلنَّهَارَ فَإِذَا هُم مُّظْلِمُونَ EN: And a sign for them is the night."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they are|in|darkness",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "they are in darkness",
-    "subject": "they are",
-    "verb": "in",
-    "object": "darkness",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#6929-6998",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-      "text": "We remove from it [the light of] day, so they are [left] in darkness."
-     }
-    ],
-    "seq": 18,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -625,7 +423,7 @@
     "verb": "is",
     "object": "the determination of the Exalted in Might",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -634,7 +432,7 @@
       "text": "That is the determination of the Exalted in Might, the Knowing."
      }
     ],
-    "seq": 19,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -654,7 +452,7 @@
     "verb": "is",
     "object": "not allowable for the sun to reach the moon",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -663,7 +461,7 @@
       "text": "[40] AR: لَا ٱلشَّمْسُ يَنۢبَغِى لَهَآ أَن تُدْرِكَ ٱلْقَمَرَ وَلَا ٱلَّيْلُ سَابِقُ ٱلنَّهَارِ ۚ وَكُلٌّۭ فِى فَلَكٍۢ يَسْبَحُونَ EN: It is not allowable for the sun to reach the moon, nor does the night overtake the day, but each, in an orbit, is swimming."
      }
     ],
-    "seq": 20,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -683,7 +481,7 @@
     "verb": "is",
     "object": "that We carried their forefathers in a laden ship",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -692,12 +490,12 @@
       "text": "[41] AR: وَءَايَةٌۭ لَّهُمْ أَنَّا حَمَلْنَا ذُرِّيَّتَهُمْ فِى ٱلْفُلْكِ ٱلْمَشْحُونِ EN: And a sign for them is that We carried their forefathers in a laden ship."
      }
     ],
-    "seq": 21,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 22,
+  "nextSeq": 14,
   "admits": [
    "NUL",
    "SEG",
@@ -717,7 +515,7 @@
    "verb": "is",
    "object": "all the same for them whether you warn them or do not warn them - they will not believe",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -733,7 +531,7 @@
    "verb": "is",
    "object": "He who created all pairs - from what the earth grows and from themselves and from that which they do not know",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -744,28 +542,12 @@
    ]
   },
   {
-   "id": "follow those|who|do not ask of you [any] payment",
-   "subject": "Follow those",
-   "verb": "who",
-   "object": "do not ask of you [any] payment",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#3758-3918",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-     "text": "[21] AR: ٱتَّبِعُوا۟ مَن لَّا يَسْـَٔلُكُمْ أَجْرًۭا وَهُم مُّهْتَدُونَ EN: Follow those who do not ask of you [any] payment, and they are [rightly] guided."
-    }
-   ]
-  },
-  {
    "id": "for them|is|that we carried their forefathers in a laden ship",
    "subject": "for them",
    "verb": "is",
    "object": "that We carried their forefathers in a laden ship",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -781,7 +563,7 @@
    "verb": "is",
    "object": "the dead earth",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -797,7 +579,7 @@
    "verb": "is",
    "object": "the night",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -808,44 +590,12 @@
    ]
   },
   {
-   "id": "have believed|in|your lord",
-   "subject": "have believed",
-   "verb": "in",
-   "object": "your Lord",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#4508-4622",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-     "text": "[25] AR: إِنِّىٓ ءَامَنتُ بِرَبِّكُمْ فَٱسْمَعُونِ EN: Indeed, I have believed in your Lord, so listen to me.\""
-    }
-   ]
-  },
-  {
-   "id": "have enumerated|in|a clear register",
-   "subject": "have enumerated",
-   "verb": "in",
-   "object": "a clear register",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#1721-2028",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-     "text": "[12] AR: إِنَّا نَحْنُ نُحْىِ ٱلْمَوْتَىٰ وَنَكْتُبُ مَا قَدَّمُوا۟ وَءَاثَٰرَهُمْ ۚ وَكُلَّ شَىْءٍ أَحْصَيْنَٰهُ فِىٓ إِمَامٍۢ مُّبِينٍۢ EN: Indeed, it is We who bring the dead to life and record what they have put forth and what they left behind, and all things We have enumerated in a clear register."
-    }
-   ]
-  },
-  {
    "id": "it|is|not allowable for the sun to reach the moon",
    "subject": "It",
    "verb": "is",
    "object": "not allowable for the sun to reach the moon",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -861,7 +611,7 @@
    "verb": "is",
    "object": "We who bring the dead to life and record what they have put forth and what they left behind",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -877,7 +627,7 @@
    "verb": "has",
    "object": "not revealed a thing",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -893,7 +643,7 @@
    "verb": "intends",
    "object": "for me some adversity",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -909,7 +659,7 @@
    "verb": "has",
    "object": "forgiven me and placed me among the honored",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -925,7 +675,7 @@
    "verb": "knows",
    "object": "that we are messengers to you",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -941,7 +691,7 @@
    "verb": "is",
    "object": "the determination of the Exalted in Might",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -952,28 +702,12 @@
    ]
   },
   {
-   "id": "the exalted|in|might",
-   "subject": "the Exalted",
-   "verb": "in",
-   "object": "Might",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#358-466",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-     "text": "[5] AR: تَنزِيلَ ٱلْعَزِيزِ ٱلرَّحِيمِ EN: [This is] a revelation of the Exalted in Might, the Merciful,"
-    }
-   ]
-  },
-  {
    "id": "the word|has|come into effect upon most of them",
    "subject": "the word",
    "verb": "has",
    "object": "come into effect upon most of them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -984,76 +718,12 @@
    ]
   },
   {
-   "id": "then be|in|manifest error",
-   "subject": "then be",
-   "verb": "in",
-   "object": "manifest error",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#4407-4506",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-     "text": "[24] AR: إِنِّىٓ إِذًۭا لَّفِى ضَلَٰلٍۢ مُّبِينٍ EN: Indeed, I would then be in manifest error."
-    }
-   ]
-  },
-  {
-   "id": "they are|in|darkness",
-   "subject": "they are",
-   "verb": "in",
-   "object": "darkness",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#6929-6998",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-     "text": "We remove from it [the light of] day, so they are [left] in darkness."
-    }
-   ]
-  },
-  {
-   "id": "warn one|who|follows the message and fears the most merciful unseen",
-   "subject": "warn one",
-   "verb": "who",
-   "object": "follows the message and fears the Most Merciful unseen",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#1442-1661",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-     "text": "[11] AR: إِنَّمَا تُنذِرُ مَنِ ٱتَّبَعَ ٱلذِّكْرَ وَخَشِىَ ٱلرَّحْمَٰنَ بِٱلْغَيْبِ ۖ فَبَشِّرْهُ بِمَغْفِرَةٍۢ وَأَجْرٍۢ كَرِيمٍ EN: You can only warn one who follows the message and fears the Most Merciful unseen."
-    }
-   ]
-  },
-  {
-   "id": "worship he|who|created me and to whom you will be returned?",
-   "subject": "worship He",
-   "verb": "who",
-   "object": "created me and to whom you will be returned?",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt#3920-4083",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt",
-     "text": "[22] AR: وَمَا لِىَ لَآ أَعْبُدُ ٱلَّذِى فَطَرَنِى وَإِلَيْهِ تُرْجَعُونَ EN: And why should I not worship He who created me and to whom you will be returned?"
-    }
-   ]
-  },
-  {
    "id": "your omen|is|with yourselves",
    "subject": "Your omen",
    "verb": "is",
    "object": "with yourselves",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_036_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1065,7 +735,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:55.798Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:53.215Z"
  }
 }

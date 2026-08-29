@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 19050,
   "bodyOffset": 0,
   "bodyChars": 19050,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 5,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 45,
-  "extractionError": null
+  "edgesFound": 20,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 16
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 20,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 46,
-  "excerptOk": 46,
-  "rawChecked": 46,
-  "rawOk": 46,
+  "excerptChecked": 21,
+  "excerptOk": 21,
+  "rawChecked": 21,
+  "rawOk": 21,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 45,
-  "heard": 45,
+  "offered": 20,
+  "heard": 20,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "subject": "typically developed",
-    "verb": "in",
-    "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#39-305",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "eWAVE variety ID: 66 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,36 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#306-520",
+      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
+      "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e. English), while exposure to its native speakers was normally very limited."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "native speakers|was|normally very limited",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
+    "witnesses": [
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -118,7 +148,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "while exposure|to|its native speakers was normally very limited",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,79 +157,26 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "while exposure to its native speakers was normally very limited",
-    "subject": "while exposure",
-    "verb": "to",
-    "object": "its native speakers was normally very limited",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#306-520",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e. English), while exposure to its native speakers was normally very limited."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the proportion|of|native (and l2) speakers of english was rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
-    "subject": "the proportion",
-    "verb": "of",
-    "object": "native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#521-715",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
       "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "native language|of|the majority of the population",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "native language of the majority of the population",
-    "subject": "native language",
-    "verb": "of",
-    "object": "the majority of the population",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
+     },
      {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#716-795",
+      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1224-1415",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "Many creoles have become the native language of the majority of the population."
+      "text": "Marsters ruled the island in an autocratic style: only English was allowed to be spoken and it is recorded that the children from his various wives spoke English with a strong British accent."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +196,7 @@
     "verb": "is",
     "object": "spoken by just over 50 people on a remote atoll of the Cook Islands in the South Pacific",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,13 +205,13 @@
       "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- PE is spoken by just over 50 people on a remote atoll of the Cook Islands in the South Pacific."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "on palmerston|with|several polynesian women from the northern group of the cook islands",
+    "task_id": "the speech|was|more difficult for the women than for the men because they did not have a direct female example from britain to imitate",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -243,70 +220,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "on Palmerston with several Polynesian women from the Northern Group of the Cook Islands",
-    "subject": "on Palmerston",
-    "verb": "with",
-    "object": "several Polynesian women from the Northern Group of the Cook Islands",
+    "description": "the speech was more difficult for the women than for the men because they did not have a direct female example from Britain to imitate",
+    "subject": "the speech",
+    "verb": "was",
+    "object": "more difficult for the women than for the men because they did not have a direct female example from Britain to imitate",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1083-1222",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "In 1863, the Englishman William Ma(r)sters settled on Palmerston with several Polynesian women from the Northern Group of the Cook Islands."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the island|in|an autocratic style: only english was allowed to be spoken and it is recorded that the children from his various wives spoke english with a strong british accent",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the island in an autocratic style: only English was allowed to be spoken and it is recorded that the children from his various wives spoke English with a strong British accent",
-    "subject": "the island",
-    "verb": "in",
-    "object": "an autocratic style: only English was allowed to be spoken and it is recorded that the children from his various wives spoke English with a strong British accent",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1224-1415",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "Marsters ruled the island in an autocratic style: only English was allowed to be spoken and it is recorded that the children from his various wives spoke English with a strong British accent."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the perpetuation|of|the speech was more difficult for the women than for the men because they did not have a direct female example from britain to imitate",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The perpetuation of the speech was more difficult for the women than for the men because they did not have a direct female example from Britain to imitate",
-    "subject": "The perpetuation",
-    "verb": "of",
-    "object": "the speech was more difficult for the women than for the men because they did not have a direct female example from Britain to imitate",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,94 +234,7 @@
       "text": "The perpetuation of the speech was more difficult for the women than for the men because they did not have a direct female example from Britain to imitate."
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "three branches|of|the family are now in their 8th generation and their offspring live mainly in rarotonga",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "three branches of the family are now in their 8th generation and their offspring live mainly in Rarotonga",
-    "subject": "three branches",
-    "verb": "of",
-    "object": "the family are now in their 8th generation and their offspring live mainly in Rarotonga",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1572-1849",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "The three branches of the family are now in their 8th generation and their offspring live mainly in Rarotonga, Aitutaki, New Zealand and Australia (several thousand people, with a varying degree of competence in the language, depending on the contact retained with Palmerston)."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "varying degree|of|competence in the language",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "varying degree of competence in the language",
-    "subject": "varying degree",
-    "verb": "of",
-    "object": "competence in the language",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1572-1849",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "The three branches of the family are now in their 8th generation and their offspring live mainly in Rarotonga, Aitutaki, New Zealand and Australia (several thousand people, with a varying degree of competence in the language, depending on the contact retained with Palmerston)."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "contact retained|with|palmerston)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "contact retained with Palmerston)",
-    "subject": "contact retained",
-    "verb": "with",
-    "object": "Palmerston)",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1572-1849",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "The three branches of the family are now in their 8th generation and their offspring live mainly in Rarotonga, Aitutaki, New Zealand and Australia (several thousand people, with a varying degree of competence in the language, depending on the contact retained with Palmerston)."
-     }
-    ],
-    "seq": 11,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -422,7 +254,7 @@
     "verb": "is",
     "object": "living on Aitutaki now",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,99 +263,7 @@
       "text": "\"That girl, it is living on Aitutaki now.\""
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we have|to|set ourself",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "We have to set ourself",
-    "subject": "We have",
-    "verb": "to",
-    "object": "set ourself",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#2332-2357",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"We have to set ourself.\""
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you got|to|sit on you backside",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "you got to sit on you backside",
-    "subject": "you got",
-    "verb": "to",
-    "object": "sit on you backside",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#2360-2404",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"And then you got to sit on you backside...\""
-     },
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#3653-3732",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"And then you got to sit on you backside and then you now to do you paperwork.\""
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "check|here|on me birthday",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Check here on me birthday",
-    "subject": "Check",
-    "verb": "here",
-    "object": "on me birthday",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#2431-2499",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"dem lot\" \"Check here on me birthday, cos I'll go and visit Mama.\""
-     }
-    ],
-    "seq": 15,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -543,7 +283,7 @@
     "verb": "go",
     "object": "and visit Mama",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -552,7 +292,7 @@
       "text": "\"dem lot\" \"Check here on me birthday, cos I'll go and visit Mama.\""
      }
     ],
-    "seq": 16,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -572,7 +312,7 @@
     "verb": "is",
     "object": "talking",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -581,7 +321,7 @@
       "text": "\"Us is talking.\""
      }
     ],
-    "seq": 17,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -601,7 +341,7 @@
     "verb": "is",
     "object": "going",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -610,36 +350,7 @@
       "text": "[yami = 1PL.INCL] \"We two is going...\""
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "some|of|it",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "some of it",
-    "subject": "some",
-    "verb": "of",
-    "object": "it",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#2723-2763",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"Well the trees broke down, some of it.\""
-     }
-    ],
-    "seq": 19,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -659,7 +370,7 @@
     "verb": "was",
     "object": "burnt and the controls – Ø is none controls at the bridge",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -668,7 +379,7 @@
       "text": "\"Cos engine room was burnt and the controls – Ø is none controls at the bridge.\""
      }
     ],
-    "seq": 20,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -688,7 +399,7 @@
     "verb": "is",
     "object": "still in me",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -697,7 +408,7 @@
       "text": "\"My grandfather and grandmother speaks it and that's how I pick it up and Ø is still in me.\""
      }
     ],
-    "seq": 21,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -717,7 +428,7 @@
     "verb": "was",
     "object": "counting his basket",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -726,13 +437,13 @@
       "text": "\"When he was counting his basket...\""
      }
     ],
-    "seq": 22,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "we have|here|is the half a crocodile",
+    "task_id": "have here|is|the half a crocodile",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -741,12 +452,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "we have here is the half a crocodile",
-    "subject": "we have",
-    "verb": "here",
-    "object": "is the half a crocodile",
+    "description": "have here is the half a crocodile",
+    "subject": "have here",
+    "verb": "is",
+    "object": "the half a crocodile",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -755,7 +466,7 @@
       "text": "\"The crocodile we have here is the half a crocodile.\""
      }
     ],
-    "seq": 23,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -775,7 +486,7 @@
     "verb": "go",
     "object": "in a group and get to to one place with show items and things",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -784,65 +495,7 @@
       "text": "[referring to cut up and cooked cabbage stew] \"We been go in a group and get to to one place with show items and things.\""
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "more easier|to|have time for family these days",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "more easier to have time for family these days",
-    "subject": "more easier",
-    "verb": "to",
-    "object": "have time for family these days",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#3735-3789",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"It's more easier to have time for family these days.\""
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "some|of|them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Some of them",
-    "subject": "Some",
-    "verb": "of",
-    "object": "them",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#3792-3853",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"Some of them, they catch ten, and some get lesser than ten.\""
-     }
-    ],
-    "seq": 26,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -862,7 +515,7 @@
     "verb": "was",
     "object": "someone already been there before",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -871,94 +524,7 @@
       "text": "\"There was someone already been there before.\""
      }
     ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "helped thomas|so|that one day she help tuakanamoe",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "helped Thomas so that one day she help Tuakanamoe",
-    "subject": "helped Thomas",
-    "verb": "so",
-    "object": "that one day she help Tuakanamoe",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4048-4102",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"I helped Thomas so that one day she help Tuakanamoe.\""
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "would say|to|them 'the shubble'\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "would say to them 'the shubble'\"",
-    "subject": "would say",
-    "verb": "to",
-    "object": "them 'the shubble'\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4105-4173",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"If I would say to them 'the shubble'\", they would get angry at me.\""
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dump it|in|the sea so that he can claim the land",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dump it in the sea so that he can claim the land",
-    "subject": "dump it",
-    "verb": "in",
-    "object": "the sea so that he can claim the land",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4176-4250",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"He took the anchor and dump it in the sea so that he can claim the land.\""
-     }
-    ],
-    "seq": 30,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -978,7 +544,7 @@
     "verb": "was",
     "object": "a gal",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -987,7 +553,7 @@
       "text": "\"I drinked the water from the well when I was a gal.\""
      }
     ],
-    "seq": 31,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1007,7 +573,7 @@
     "verb": "was",
     "object": "on the ground suffering",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1016,123 +582,7 @@
       "text": "\"He hit a big rock, drop down and was on the ground suffering.\""
      }
     ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "passeded him|with|his goat",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "passeded him with his goat",
-    "subject": "passeded him",
-    "verb": "with",
-    "object": "his goat",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4450-4485",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"A man passeded him with his goat.\""
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you going|to|play with the childrens?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "You going to play with the childrens?\"",
-    "subject": "You going",
-    "verb": "to",
-    "object": "play with the childrens?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4716-4755",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"You going to play with the childrens?\""
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they ø|in|the tree",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "They Ø in the tree",
-    "subject": "They Ø",
-    "verb": "in",
-    "object": "the tree",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4847-4868",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"They Ø in the tree.\""
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ø been|to|fiji",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Ø been to Fiji",
-    "subject": "Ø been",
-    "verb": "to",
-    "object": "Fiji",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4871-4897",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"Twice we Ø been to Fiji.\""
-     }
-    ],
-    "seq": 36,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1152,7 +602,7 @@
     "verb": "is",
     "object": "all mashed up on the inside",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1161,7 +611,7 @@
       "text": "\"I think you seen coconuts Ø is all mashed up on the inside.\""
      }
     ],
-    "seq": 37,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1181,7 +631,7 @@
     "verb": "was",
     "object": "went on",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1190,123 +640,7 @@
       "text": "\"...for I was went on.\""
      }
     ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "instead|of|saying 'sure' slow",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Instead of saying 'sure' slow",
-    "subject": "Instead",
-    "verb": "of",
-    "object": "saying 'sure' slow",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5121-5212",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"I went to look my uncle Edward\" \"Instead of saying 'sure' slow, we say it kind of fast.\""
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it kind|of|fast",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "it kind of fast",
-    "subject": "it kind",
-    "verb": "of",
-    "object": "fast",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5121-5212",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"I went to look my uncle Edward\" \"Instead of saying 'sure' slow, we say it kind of fast.\""
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the opposite|of|sack",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The opposite of sack",
-    "subject": "The opposite",
-    "verb": "of",
-    "object": "sack",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5237-5290",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"The opposite of sack, that's what he's going to do.\""
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he's going|to|do",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "he's going to do",
-    "subject": "he's going",
-    "verb": "to",
-    "object": "do",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5237-5290",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "\"The opposite of sack, that's what he's going to do.\""
-     }
-    ],
-    "seq": 42,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1326,7 +660,7 @@
     "verb": "was",
     "object": "you?\"",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1335,41 +669,12 @@
       "text": "\"Can you remember how old was you?\""
      }
     ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not\napplicable|to|this variety's structure",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not\napplicable to this variety's structure",
-    "subject": "not\napplicable",
-    "verb": "to",
-    "object": "this variety's structure",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5544-5918",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-      "text": "FULL MORPHOSYNTACTIC FEATURE PROFILE (all 235 eWAVE features) ---------------------------------------------------------------------- Each feature below is rated on eWAVE's six-point scale: A = pervasive or obligatory; B = attested, neither pervasive nor extremely rare; C = attested but extremely rare; D = attested absence; X = not applicable to this variety's structure; ?"
-     }
-    ],
-    "seq": 44,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 45,
+  "nextSeq": 20,
   "admits": [
    "NUL",
    "SEG",
@@ -1389,7 +694,7 @@
    "verb": "is",
    "object": "still in me",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1400,28 +705,12 @@
    ]
   },
   {
-   "id": "check|here|on me birthday",
-   "subject": "Check",
-   "verb": "here",
-   "object": "on me birthday",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#2431-2499",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"dem lot\" \"Check here on me birthday, cos I'll go and visit Mama.\""
-    }
-   ]
-  },
-  {
    "id": "coconuts ø|is|all mashed up on the inside",
    "subject": "coconuts Ø",
    "verb": "is",
    "object": "all mashed up on the inside",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1432,28 +721,12 @@
    ]
   },
   {
-   "id": "contact retained|with|palmerston)",
-   "subject": "contact retained",
-   "verb": "with",
-   "object": "Palmerston)",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1572-1849",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "The three branches of the family are now in their 8th generation and their offspring live mainly in Rarotonga, Aitutaki, New Zealand and Australia (several thousand people, with a varying degree of competence in the language, depending on the contact retained with Palmerston)."
-    }
-   ]
-  },
-  {
    "id": "cos i'll|go|and visit mama",
    "subject": "cos I'll",
    "verb": "go",
    "object": "and visit Mama",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1469,7 +742,7 @@
    "verb": "was",
    "object": "on the ground suffering",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1480,28 +753,12 @@
    ]
   },
   {
-   "id": "dump it|in|the sea so that he can claim the land",
-   "subject": "dump it",
-   "verb": "in",
-   "object": "the sea so that he can claim the land",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4176-4250",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"He took the anchor and dump it in the sea so that he can claim the land.\""
-    }
-   ]
-  },
-  {
    "id": "engine room|was|burnt and the controls – ø is none controls at the bridge",
    "subject": "engine room",
    "verb": "was",
    "object": "burnt and the controls – Ø is none controls at the bridge",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1517,7 +774,7 @@
    "verb": "was",
    "object": "went on",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1528,34 +785,18 @@
    ]
   },
   {
-   "id": "he's going|to|do",
-   "subject": "he's going",
-   "verb": "to",
-   "object": "do",
+   "id": "have here|is|the half a crocodile",
+   "subject": "have here",
+   "verb": "is",
+   "object": "the half a crocodile",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5237-5290",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#3306-3359",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"The opposite of sack, that's what he's going to do.\""
-    }
-   ]
-  },
-  {
-   "id": "helped thomas|so|that one day she help tuakanamoe",
-   "subject": "helped Thomas",
-   "verb": "so",
-   "object": "that one day she help Tuakanamoe",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4048-4102",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"I helped Thomas so that one day she help Tuakanamoe.\""
+     "text": "\"The crocodile we have here is the half a crocodile.\""
     }
    ]
   },
@@ -1565,7 +806,7 @@
    "verb": "was",
    "object": "you?\"",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1576,44 +817,12 @@
    ]
   },
   {
-   "id": "instead|of|saying 'sure' slow",
-   "subject": "Instead",
-   "verb": "of",
-   "object": "saying 'sure' slow",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5121-5212",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"I went to look my uncle Edward\" \"Instead of saying 'sure' slow, we say it kind of fast.\""
-    }
-   ]
-  },
-  {
-   "id": "it kind|of|fast",
-   "subject": "it kind",
-   "verb": "of",
-   "object": "fast",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5121-5212",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"I went to look my uncle Edward\" \"Instead of saying 'sure' slow, we say it kind of fast.\""
-    }
-   ]
-  },
-  {
    "id": "it|is|living on aitutaki now",
    "subject": "it",
    "verb": "is",
    "object": "living on Aitutaki now",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1624,98 +833,39 @@
    ]
   },
   {
-   "id": "more easier|to|have time for family these days",
-   "subject": "more easier",
-   "verb": "to",
-   "object": "have time for family these days",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#3735-3789",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#306-520",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"It's more easier to have time for family these days.\""
+     "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e. English), while exposure to its native speakers was normally very limited."
     }
    ]
   },
   {
-   "id": "native language|of|the majority of the population",
-   "subject": "native language",
-   "verb": "of",
-   "object": "the majority of the population",
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+   "subject": "of English",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#716-795",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#521-715",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "Many creoles have become the native language of the majority of the population."
-    }
-   ]
-  },
-  {
-   "id": "not\napplicable|to|this variety's structure",
-   "subject": "not\napplicable",
-   "verb": "to",
-   "object": "this variety's structure",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
+     "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
+    },
     {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5544-5918",
+     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1224-1415",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "FULL MORPHOSYNTACTIC FEATURE PROFILE (all 235 eWAVE features) ---------------------------------------------------------------------- Each feature below is rated on eWAVE's six-point scale: A = pervasive or obligatory; B = attested, neither pervasive nor extremely rare; C = attested but extremely rare; D = attested absence; X = not applicable to this variety's structure; ?"
-    }
-   ]
-  },
-  {
-   "id": "ø been|to|fiji",
-   "subject": "Ø been",
-   "verb": "to",
-   "object": "Fiji",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4871-4897",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"Twice we Ø been to Fiji.\""
-    }
-   ]
-  },
-  {
-   "id": "on palmerston|with|several polynesian women from the northern group of the cook islands",
-   "subject": "on Palmerston",
-   "verb": "with",
-   "object": "several Polynesian women from the Northern Group of the Cook Islands",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1083-1222",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "In 1863, the Englishman William Ma(r)sters settled on Palmerston with several Polynesian women from the Northern Group of the Cook Islands."
-    }
-   ]
-  },
-  {
-   "id": "passeded him|with|his goat",
-   "subject": "passeded him",
-   "verb": "with",
-   "object": "his goat",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4450-4485",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"A man passeded him with his goat.\""
+     "text": "Marsters ruled the island in an autocratic style: only English was allowed to be spoken and it is recorded that the children from his various wives spoke English with a strong British accent."
     }
    ]
   },
@@ -1725,7 +875,7 @@
    "verb": "is",
    "object": "spoken by just over 50 people on a remote atoll of the Cook Islands in the South Pacific",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1736,76 +886,12 @@
    ]
   },
   {
-   "id": "some|of|it",
-   "subject": "some",
-   "verb": "of",
-   "object": "it",
+   "id": "the speech|was|more difficult for the women than for the men because they did not have a direct female example from britain to imitate",
+   "subject": "the speech",
+   "verb": "was",
+   "object": "more difficult for the women than for the men because they did not have a direct female example from Britain to imitate",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#2723-2763",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"Well the trees broke down, some of it.\""
-    }
-   ]
-  },
-  {
-   "id": "some|of|them",
-   "subject": "Some",
-   "verb": "of",
-   "object": "them",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#3792-3853",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"Some of them, they catch ten, and some get lesser than ten.\""
-    }
-   ]
-  },
-  {
-   "id": "the island|in|an autocratic style: only english was allowed to be spoken and it is recorded that the children from his various wives spoke english with a strong british accent",
-   "subject": "the island",
-   "verb": "in",
-   "object": "an autocratic style: only English was allowed to be spoken and it is recorded that the children from his various wives spoke English with a strong British accent",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1224-1415",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "Marsters ruled the island in an autocratic style: only English was allowed to be spoken and it is recorded that the children from his various wives spoke English with a strong British accent."
-    }
-   ]
-  },
-  {
-   "id": "the opposite|of|sack",
-   "subject": "The opposite",
-   "verb": "of",
-   "object": "sack",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#5237-5290",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"The opposite of sack, that's what he's going to do.\""
-    }
-   ]
-  },
-  {
-   "id": "the perpetuation|of|the speech was more difficult for the women than for the men because they did not have a direct female example from britain to imitate",
-   "subject": "The perpetuation",
-   "verb": "of",
-   "object": "the speech was more difficult for the women than for the men because they did not have a direct female example from Britain to imitate",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1816,28 +902,12 @@
    ]
   },
   {
-   "id": "the proportion|of|native (and l2) speakers of english was rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
-   "subject": "the proportion",
-   "verb": "of",
-   "object": "native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#521-715",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
-    }
-   ]
-  },
-  {
    "id": "there|was|someone already been there before",
    "subject": "There",
    "verb": "was",
    "object": "someone already been there before",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1853,7 +923,7 @@
    "verb": "was",
    "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1864,60 +934,12 @@
    ]
   },
   {
-   "id": "they ø|in|the tree",
-   "subject": "They Ø",
-   "verb": "in",
-   "object": "the tree",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4847-4868",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"They Ø in the tree.\""
-    }
-   ]
-  },
-  {
-   "id": "three branches|of|the family are now in their 8th generation and their offspring live mainly in rarotonga",
-   "subject": "three branches",
-   "verb": "of",
-   "object": "the family are now in their 8th generation and their offspring live mainly in Rarotonga",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1572-1849",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "The three branches of the family are now in their 8th generation and their offspring live mainly in Rarotonga, Aitutaki, New Zealand and Australia (several thousand people, with a varying degree of competence in the language, depending on the contact retained with Palmerston)."
-    }
-   ]
-  },
-  {
-   "id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-   "subject": "typically developed",
-   "verb": "in",
-   "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#39-305",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "eWAVE variety ID: 66 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-    }
-   ]
-  },
-  {
    "id": "us|is|talking",
    "subject": "Us",
    "verb": "is",
    "object": "talking",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1928,28 +950,12 @@
    ]
   },
   {
-   "id": "varying degree|of|competence in the language",
-   "subject": "varying degree",
-   "verb": "of",
-   "object": "competence in the language",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#1572-1849",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "The three branches of the family are now in their 8th generation and their offspring live mainly in Rarotonga, Aitutaki, New Zealand and Australia (several thousand people, with a varying degree of competence in the language, depending on the contact retained with Palmerston)."
-    }
-   ]
-  },
-  {
    "id": "we been|go|in a group and get to to one place with show items and things",
    "subject": "We been",
    "verb": "go",
    "object": "in a group and get to to one place with show items and things",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1960,44 +966,12 @@
    ]
   },
   {
-   "id": "we have|here|is the half a crocodile",
-   "subject": "we have",
-   "verb": "here",
-   "object": "is the half a crocodile",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#3306-3359",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"The crocodile we have here is the half a crocodile.\""
-    }
-   ]
-  },
-  {
-   "id": "we have|to|set ourself",
-   "subject": "We have",
-   "verb": "to",
-   "object": "set ourself",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#2332-2357",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"We have to set ourself.\""
-    }
-   ]
-  },
-  {
    "id": "we two|is|going",
    "subject": "We two",
    "verb": "is",
    "object": "going",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2013,7 +987,7 @@
    "verb": "was",
    "object": "counting his basket",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2029,7 +1003,7 @@
    "verb": "was",
    "object": "a gal",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2038,79 +1012,10 @@
      "text": "\"I drinked the water from the well when I was a gal.\""
     }
    ]
-  },
-  {
-   "id": "while exposure|to|its native speakers was normally very limited",
-   "subject": "while exposure",
-   "verb": "to",
-   "object": "its native speakers was normally very limited",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#306-520",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e. English), while exposure to its native speakers was normally very limited."
-    }
-   ]
-  },
-  {
-   "id": "would say|to|them 'the shubble'\"",
-   "subject": "would say",
-   "verb": "to",
-   "object": "them 'the shubble'\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4105-4173",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"If I would say to them 'the shubble'\", they would get angry at me.\""
-    }
-   ]
-  },
-  {
-   "id": "you going|to|play with the childrens?\"",
-   "subject": "You going",
-   "verb": "to",
-   "object": "play with the childrens?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#4716-4755",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"You going to play with the childrens?\""
-    }
-   ]
-  },
-  {
-   "id": "you got|to|sit on you backside",
-   "subject": "you got",
-   "verb": "to",
-   "object": "sit on you backside",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#2360-2404",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"And then you got to sit on you backside...\""
-    },
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt#3653-3732",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/66_Palmerston_English.txt",
-     "text": "\"And then you got to sit on you backside and then you now to do you paperwork.\""
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:23.995Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:28.824Z"
  }
 }

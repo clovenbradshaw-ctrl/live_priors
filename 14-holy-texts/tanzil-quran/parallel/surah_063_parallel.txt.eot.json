@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 4032,
   "bodyOffset": 0,
   "bodyChars": 4032,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 4032,
   "truncated": false
  },
@@ -37,61 +55,39 @@
   "referentEvents": 7,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 21,
-  "extractionError": null
+  "edgesFound": 16,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 12
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 16,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 23,
-  "excerptOk": 23,
-  "rawChecked": 23,
-  "rawOk": 23,
+  "excerptChecked": 16,
+  "excerptOk": 16,
+  "rawChecked": 16,
+  "rawOk": 16,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 21,
-  "heard": 21,
+  "offered": 16,
+  "heard": 16,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "the messenger|of|allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Messenger of Allah",
-    "subject": "the Messenger",
-    "verb": "of",
-    "object": "Allah",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#71-403",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-      "text": "[1] AR: بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِذَا جَآءَكَ ٱلْمُنَٰفِقُونَ قَالُوا۟ نَشْهَدُ إِنَّكَ لَرَسُولُ ٱللَّهِ ۗ وَٱللَّهُ يَعْلَمُ إِنَّكَ لَرَسُولُهُۥ وَٱللَّهُ يَشْهَدُ إِنَّ ٱلْمُنَٰفِقِينَ لَكَٰذِبُونَ EN: When the hypocrites come to you, [O Muhammad], they say, \"We testify that you are the Messenger of Allah.\""
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#1530-1853",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-      "text": "[5] AR: وَإِذَا قِيلَ لَهُمْ تَعَالَوْا۟ يَسْتَغْفِرْ لَكُمْ رَسُولُ ٱللَّهِ لَوَّوْا۟ رُءُوسَهُمْ وَرَأَيْتَهُمْ يَصُدُّونَ وَهُم مُّسْتَكْبِرُونَ EN: And when it is said to them, \"Come, the Messenger of Allah will ask forgiveness for you,\" they turn their heads aside and you see them evading while they are arrogant."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "and allah|knows|that you are his messenger",
@@ -108,7 +104,7 @@
     "verb": "knows",
     "object": "that you are His Messenger",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -117,7 +113,7 @@
       "text": "And Allah knows that you are His Messenger, and Allah testifies that the hypocrites are liars."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -137,7 +133,7 @@
     "verb": "testifies",
     "object": "that the hypocrites are liars",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -146,41 +142,7 @@
       "text": "And Allah knows that you are His Messenger, and Allah testifies that the hypocrites are liars."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the way|of|allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the way of Allah",
-    "subject": "the way",
-    "verb": "of",
-    "object": "Allah",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#500-714",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-      "text": "[2] AR: ٱتَّخَذُوٓا۟ أَيْمَٰنَهُمْ جُنَّةًۭ فَصَدُّوا۟ عَن سَبِيلِ ٱللَّهِ ۚ إِنَّهُمْ سَآءَ مَا كَانُوا۟ يَعْمَلُونَ EN: They have taken their oaths as a cover, so they averted [people] from the way of Allah."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#3399-3819",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-      "text": "[10] AR: وَأَنفِقُوا۟ مِن مَّا رَزَقْنَٰكُم مِّن قَبْلِ أَن يَأْتِىَ أَحَدَكُمُ ٱلْمَوْتُ فَيَقُولَ رَبِّ لَوْلَآ أَخَّرْتَنِىٓ إِلَىٰٓ أَجَلٍۢ قَرِيبٍۢ فَأَصَّدَّقَ وَأَكُن مِّنَ ٱلصَّٰلِحِينَ EN: And spend [in the way of Allah] from what We have provided you before death approaches one of you and he says, \"My Lord, if only You would delay me for a brief term so I would give charity and be among the righteous.\""
-     }
-    ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -200,7 +162,7 @@
     "verb": "is",
     "object": "because they believed",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -209,13 +171,13 @@
       "text": "[3] AR: ذَٰلِكَ بِأَنَّهُمْ ءَامَنُوا۟ ثُمَّ كَفَرُوا۟ فَطُبِعَ عَلَىٰ قُلُوبِهِمْ فَهُمْ لَا يَفْقَهُونَ EN: That is because they believed, and then they disbelieved; so their hearts were sealed over, and they do not understand."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "were pieces|of|wood propped up - they think that every shout is against them",
+    "task_id": "every shout|is|against them",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -224,12 +186,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "were pieces of wood propped up - they think that every shout is against them",
-    "subject": "were pieces",
-    "verb": "of",
-    "object": "wood propped up - they think that every shout is against them",
+    "description": "every shout is against them",
+    "subject": "every shout",
+    "verb": "is",
+    "object": "against them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -238,36 +200,7 @@
       "text": "[They are] as if they were pieces of wood propped up - they think that every shout is against them."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "so beware|of|them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "so beware of them",
-    "subject": "so beware",
-    "verb": "of",
-    "object": "them",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#1444-1482",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-      "text": "They are the enemy, so beware of them."
-     }
-    ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -287,7 +220,7 @@
     "verb": "destroy",
     "object": "them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -296,7 +229,7 @@
       "text": "May Allah destroy them; how are they deluded?"
      }
     ],
-    "seq": 7,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -316,7 +249,7 @@
     "verb": "is",
     "object": "said to them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -325,7 +258,36 @@
       "text": "[5] AR: وَإِذَا قِيلَ لَهُمْ تَعَالَوْا۟ يَسْتَغْفِرْ لَكُمْ رَسُولُ ٱللَّهِ لَوَّوْا۟ رُءُوسَهُمْ وَرَأَيْتَهُمْ يَصُدُّونَ وَهُم مُّسْتَكْبِرُونَ EN: And when it is said to them, \"Come, the Messenger of Allah will ask forgiveness for you,\" they turn their heads aside and you see them evading while they are arrogant."
      }
     ],
-    "seq": 8,
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of allah|will|ask forgiveness for you",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of Allah will ask forgiveness for you",
+    "subject": "of Allah",
+    "verb": "will",
+    "object": "ask forgiveness for you",
+    "witnesses": [
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#1530-1853",
+      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
+      "text": "[5] AR: وَإِذَا قِيلَ لَهُمْ تَعَالَوْا۟ يَسْتَغْفِرْ لَكُمْ رَسُولُ ٱللَّهِ لَوَّوْا۟ رُءُوسَهُمْ وَرَأَيْتَهُمْ يَصُدُّونَ وَهُم مُّسْتَكْبِرُونَ EN: And when it is said to them, \"Come, the Messenger of Allah will ask forgiveness for you,\" they turn their heads aside and you see them evading while they are arrogant."
+     }
+    ],
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -345,7 +307,7 @@
     "verb": "is",
     "object": "all the same for them whether you ask forgiveness for them or do not ask forgiveness for them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -354,7 +316,7 @@
       "text": "[6] AR: سَوَآءٌ عَلَيْهِمْ أَسْتَغْفَرْتَ لَهُمْ أَمْ لَمْ تَسْتَغْفِرْ لَهُمْ لَن يَغْفِرَ ٱللَّهُ لَهُمْ ۚ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلْفَٰسِقِينَ EN: It is all the same for them whether you ask forgiveness for them or do not ask forgiveness for them; never will Allah forgive them."
      }
     ],
-    "seq": 9,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -374,7 +336,7 @@
     "verb": "will",
     "object": "Allah forgive them",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -383,7 +345,7 @@
       "text": "[6] AR: سَوَآءٌ عَلَيْهِمْ أَسْتَغْفَرْتَ لَهُمْ أَمْ لَمْ تَسْتَغْفِرْ لَهُمْ لَن يَغْفِرَ ٱللَّهُ لَهُمْ ۚ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ ٱلْفَٰسِقِينَ EN: It is all the same for them whether you ask forgiveness for them or do not ask forgiveness for them; never will Allah forgive them."
      }
     ],
-    "seq": 10,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -403,7 +365,7 @@
     "verb": "does",
     "object": "not guide the defiantly disobedient people",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -412,36 +374,7 @@
       "text": "Indeed, Allah does not guide the defiantly disobedient people."
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "who are|with|the messenger of allah until they disband",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "who are with the Messenger of Allah until they disband",
-    "subject": "who are",
-    "verb": "with",
-    "object": "the Messenger of Allah until they disband",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#2219-2528",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-      "text": "[7] AR: هُمُ ٱلَّذِينَ يَقُولُونَ لَا تُنفِقُوا۟ عَلَىٰ مَنْ عِندَ رَسُولِ ٱللَّهِ حَتَّىٰ يَنفَضُّوا۟ ۗ وَلِلَّهِ خَزَآئِنُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَلَٰكِنَّ ٱلْمُنَٰفِقِينَ لَا يَفْقَهُونَ EN: They are the ones who say, \"Do not spend on those who are with the Messenger of Allah until they disband.\""
-     }
-    ],
-    "seq": 12,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -461,7 +394,7 @@
     "verb": "belongs",
     "object": "the depositories of the heavens and the earth",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -470,7 +403,7 @@
       "text": "And to Allah belongs the depositories of the heavens and the earth, but the hypocrites do not understand."
      }
     ],
-    "seq": 13,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -490,7 +423,7 @@
     "verb": "will",
     "object": "surely expel therefrom the more humble",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -499,7 +432,7 @@
       "text": "[8] AR: يَقُولُونَ لَئِن رَّجَعْنَآ إِلَى ٱلْمَدِينَةِ لَيُخْرِجَنَّ ٱلْأَعَزُّ مِنْهَا ٱلْأَذَلَّ ۚ وَلِلَّهِ ٱلْعِزَّةُ وَلِرَسُولِهِۦ وَلِلْمُؤْمِنِينَ وَلَٰكِنَّ ٱلْمُنَٰفِقِينَ لَا يَعْلَمُونَ EN: They say, \"If we return to al-Madinah, the more honored [for power] will surely expel therefrom the more humble.\""
      }
     ],
-    "seq": 14,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -519,7 +452,7 @@
     "verb": "belongs",
     "object": "[all] honor",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -528,36 +461,7 @@
       "text": "And to Allah belongs [all] honor, and to His Messenger, and to the believers, but the hypocrites do not know."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from remembrance|of|allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "from remembrance of Allah",
-    "subject": "from remembrance",
-    "verb": "of",
-    "object": "Allah",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#3068-3346",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-      "text": "[9] AR: يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تُلْهِكُمْ أَمْوَٰلُكُمْ وَلَآ أَوْلَٰدُكُمْ عَن ذِكْرِ ٱللَّهِ ۚ وَمَن يَفْعَلْ ذَٰلِكَ فَأُو۟لَٰٓئِكَ هُمُ ٱلْخَٰسِرُونَ EN: O you who have believed, let not your wealth and your children divert you from remembrance of Allah."
-     }
-    ],
-    "seq": 16,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -577,7 +481,7 @@
     "verb": "does",
     "object": "that - then those are the losers",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -586,36 +490,7 @@
       "text": "And whoever does that - then those are the losers."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you would|delay|me for a brief term so i would give charity and be among the righteous",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "You would delay me for a brief term so I would give charity and be among the righteous",
-    "subject": "You would",
-    "verb": "delay",
-    "object": "me for a brief term so I would give charity and be among the righteous",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#3399-3819",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-      "text": "[10] AR: وَأَنفِقُوا۟ مِن مَّا رَزَقْنَٰكُم مِّن قَبْلِ أَن يَأْتِىَ أَحَدَكُمُ ٱلْمَوْتُ فَيَقُولَ رَبِّ لَوْلَآ أَخَّرْتَنِىٓ إِلَىٰٓ أَجَلٍۢ قَرِيبٍۢ فَأَصَّدَّقَ وَأَكُن مِّنَ ٱلصَّٰلِحِينَ EN: And spend [in the way of Allah] from what We have provided you before death approaches one of you and he says, \"My Lord, if only You would delay me for a brief term so I would give charity and be among the righteous.\""
-     }
-    ],
-    "seq": 18,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -635,7 +510,7 @@
     "verb": "will",
     "object": "Allah delay a soul when its time has come",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -644,7 +519,7 @@
       "text": "[11] AR: وَلَن يُؤَخِّرَ ٱللَّهُ نَفْسًا إِذَا جَآءَ أَجَلُهَا ۚ وَٱللَّهُ خَبِيرٌۢ بِمَا تَعْمَلُونَ EN: But never will Allah delay a soul when its time has come."
      }
     ],
-    "seq": 19,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -664,7 +539,7 @@
     "verb": "is",
     "object": "Acquainted with what you do",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -673,12 +548,12 @@
       "text": "And Allah is Acquainted with what you do."
      }
     ],
-    "seq": 20,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 21,
+  "nextSeq": 16,
   "admits": [
    "NUL",
    "SEG",
@@ -698,7 +573,7 @@
    "verb": "does",
    "object": "not guide the defiantly disobedient people",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -714,7 +589,7 @@
    "verb": "is",
    "object": "Acquainted with what you do",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -730,7 +605,7 @@
    "verb": "knows",
    "object": "that you are His Messenger",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -746,7 +621,7 @@
    "verb": "testifies",
    "object": "that the hypocrites are liars",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -762,7 +637,7 @@
    "verb": "does",
    "object": "that - then those are the losers",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -778,7 +653,7 @@
    "verb": "will",
    "object": "Allah delay a soul when its time has come",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -789,18 +664,18 @@
    ]
   },
   {
-   "id": "from remembrance|of|allah",
-   "subject": "from remembrance",
-   "verb": "of",
-   "object": "Allah",
+   "id": "every shout|is|against them",
+   "subject": "every shout",
+   "verb": "is",
+   "object": "against them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#3068-3346",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#1344-1443",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "[9] AR: يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تُلْهِكُمْ أَمْوَٰلُكُمْ وَلَآ أَوْلَٰدُكُمْ عَن ذِكْرِ ٱللَّهِ ۚ وَمَن يَفْعَلْ ذَٰلِكَ فَأُو۟لَٰٓئِكَ هُمُ ٱلْخَٰسِرُونَ EN: O you who have believed, let not your wealth and your children divert you from remembrance of Allah."
+     "text": "[They are] as if they were pieces of wood propped up - they think that every shout is against them."
     }
    ]
   },
@@ -810,7 +685,7 @@
    "verb": "is",
    "object": "all the same for them whether you ask forgiveness for them or do not ask forgiveness for them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -826,7 +701,7 @@
    "verb": "destroy",
    "object": "them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -842,7 +717,7 @@
    "verb": "will",
    "object": "surely expel therefrom the more humble",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -858,7 +733,7 @@
    "verb": "will",
    "object": "Allah forgive them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -869,18 +744,18 @@
    ]
   },
   {
-   "id": "so beware|of|them",
-   "subject": "so beware",
-   "verb": "of",
-   "object": "them",
+   "id": "of allah|will|ask forgiveness for you",
+   "subject": "of Allah",
+   "verb": "will",
+   "object": "ask forgiveness for you",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#1444-1482",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#1530-1853",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "They are the enemy, so beware of them."
+     "text": "[5] AR: وَإِذَا قِيلَ لَهُمْ تَعَالَوْا۟ يَسْتَغْفِرْ لَكُمْ رَسُولُ ٱللَّهِ لَوَّوْا۟ رُءُوسَهُمْ وَرَأَيْتَهُمْ يَصُدُّونَ وَهُم مُّسْتَكْبِرُونَ EN: And when it is said to them, \"Come, the Messenger of Allah will ask forgiveness for you,\" they turn their heads aside and you see them evading while they are arrogant."
     }
    ]
   },
@@ -890,7 +765,7 @@
    "verb": "is",
    "object": "because they believed",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -901,54 +776,12 @@
    ]
   },
   {
-   "id": "the messenger|of|allah",
-   "subject": "the Messenger",
-   "verb": "of",
-   "object": "Allah",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#71-403",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "[1] AR: بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِذَا جَآءَكَ ٱلْمُنَٰفِقُونَ قَالُوا۟ نَشْهَدُ إِنَّكَ لَرَسُولُ ٱللَّهِ ۗ وَٱللَّهُ يَعْلَمُ إِنَّكَ لَرَسُولُهُۥ وَٱللَّهُ يَشْهَدُ إِنَّ ٱلْمُنَٰفِقِينَ لَكَٰذِبُونَ EN: When the hypocrites come to you, [O Muhammad], they say, \"We testify that you are the Messenger of Allah.\""
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#1530-1853",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "[5] AR: وَإِذَا قِيلَ لَهُمْ تَعَالَوْا۟ يَسْتَغْفِرْ لَكُمْ رَسُولُ ٱللَّهِ لَوَّوْا۟ رُءُوسَهُمْ وَرَأَيْتَهُمْ يَصُدُّونَ وَهُم مُّسْتَكْبِرُونَ EN: And when it is said to them, \"Come, the Messenger of Allah will ask forgiveness for you,\" they turn their heads aside and you see them evading while they are arrogant."
-    }
-   ]
-  },
-  {
-   "id": "the way|of|allah",
-   "subject": "the way",
-   "verb": "of",
-   "object": "Allah",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#500-714",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "[2] AR: ٱتَّخَذُوٓا۟ أَيْمَٰنَهُمْ جُنَّةًۭ فَصَدُّوا۟ عَن سَبِيلِ ٱللَّهِ ۚ إِنَّهُمْ سَآءَ مَا كَانُوا۟ يَعْمَلُونَ EN: They have taken their oaths as a cover, so they averted [people] from the way of Allah."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#3399-3819",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "[10] AR: وَأَنفِقُوا۟ مِن مَّا رَزَقْنَٰكُم مِّن قَبْلِ أَن يَأْتِىَ أَحَدَكُمُ ٱلْمَوْتُ فَيَقُولَ رَبِّ لَوْلَآ أَخَّرْتَنِىٓ إِلَىٰٓ أَجَلٍۢ قَرِيبٍۢ فَأَصَّدَّقَ وَأَكُن مِّنَ ٱلصَّٰلِحِينَ EN: And spend [in the way of Allah] from what We have provided you before death approaches one of you and he says, \"My Lord, if only You would delay me for a brief term so I would give charity and be among the righteous.\""
-    }
-   ]
-  },
-  {
    "id": "to allah|belongs|[all] honor",
    "subject": "to Allah",
    "verb": "belongs",
    "object": "[all] honor",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -964,7 +797,7 @@
    "verb": "belongs",
    "object": "the depositories of the heavens and the earth",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -975,28 +808,12 @@
    ]
   },
   {
-   "id": "were pieces|of|wood propped up - they think that every shout is against them",
-   "subject": "were pieces",
-   "verb": "of",
-   "object": "wood propped up - they think that every shout is against them",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#1344-1443",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "[They are] as if they were pieces of wood propped up - they think that every shout is against them."
-    }
-   ]
-  },
-  {
    "id": "when it|is|said to them",
    "subject": "when it",
    "verb": "is",
    "object": "said to them",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1005,42 +822,10 @@
      "text": "[5] AR: وَإِذَا قِيلَ لَهُمْ تَعَالَوْا۟ يَسْتَغْفِرْ لَكُمْ رَسُولُ ٱللَّهِ لَوَّوْا۟ رُءُوسَهُمْ وَرَأَيْتَهُمْ يَصُدُّونَ وَهُم مُّسْتَكْبِرُونَ EN: And when it is said to them, \"Come, the Messenger of Allah will ask forgiveness for you,\" they turn their heads aside and you see them evading while they are arrogant."
     }
    ]
-  },
-  {
-   "id": "who are|with|the messenger of allah until they disband",
-   "subject": "who are",
-   "verb": "with",
-   "object": "the Messenger of Allah until they disband",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#2219-2528",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "[7] AR: هُمُ ٱلَّذِينَ يَقُولُونَ لَا تُنفِقُوا۟ عَلَىٰ مَنْ عِندَ رَسُولِ ٱللَّهِ حَتَّىٰ يَنفَضُّوا۟ ۗ وَلِلَّهِ خَزَآئِنُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَلَٰكِنَّ ٱلْمُنَٰفِقِينَ لَا يَفْقَهُونَ EN: They are the ones who say, \"Do not spend on those who are with the Messenger of Allah until they disband.\""
-    }
-   ]
-  },
-  {
-   "id": "you would|delay|me for a brief term so i would give charity and be among the righteous",
-   "subject": "You would",
-   "verb": "delay",
-   "object": "me for a brief term so I would give charity and be among the righteous",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt#3399-3819",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_063_parallel.txt",
-     "text": "[10] AR: وَأَنفِقُوا۟ مِن مَّا رَزَقْنَٰكُم مِّن قَبْلِ أَن يَأْتِىَ أَحَدَكُمُ ٱلْمَوْتُ فَيَقُولَ رَبِّ لَوْلَآ أَخَّرْتَنِىٓ إِلَىٰٓ أَجَلٍۢ قَرِيبٍۢ فَأَصَّدَّقَ وَأَكُن مِّنَ ٱلصَّٰلِحِينَ EN: And spend [in the way of Allah] from what We have provided you before death approaches one of you and he says, \"My Lord, if only You would delay me for a brief term so I would give charity and be among the righteous.\""
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:57.605Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:54.600Z"
  }
 }

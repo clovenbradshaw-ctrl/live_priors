@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 13491,
   "bodyOffset": 0,
   "bodyChars": 13491,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,63 +55,39 @@
   "referentEvents": 5,
   "distinctReferents": 3,
   "examined": true,
-  "edgesFound": 47,
+  "edgesFound": 41,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 10,
+   "verbs": 3,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 10
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 41,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 76,
-  "excerptOk": 76,
-  "rawChecked": 76,
-  "rawOk": 76,
+  "excerptChecked": 60,
+  "excerptOk": 60,
+  "rawChecked": 60,
+  "rawOk": 60,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 47,
-  "heard": 47,
+  "offered": 41,
+  "heard": 41,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "office|of|the united nations high commissioner for human rights (ohchr)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Office of the United Nations High Commissioner for Human Rights (OHCHR)",
-    "subject": "Office",
-    "verb": "of",
-    "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#0-220",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Universal Declaration of Human Rights Language: Bislama (bi) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "deklereisen|blong|raet blong evri man mo woman raon wol",
@@ -110,7 +104,7 @@
     "verb": "blong",
     "object": "Raet Blong Evri Man Mo Woman Raon Wol",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -124,65 +118,76 @@
       "text": "Deklereisen blong ol Raet blong evri Man mo Woman Raon long Wol olsem wan impoten samting we evri pipol mo evri kaontri long wol oli mas kasem, blong mekem se wanwan man mo woman insaed long sosaeti oli tingting oltaem long Deklereisen ia, bambae oli wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level, blong mekem se ol pipol blong ol Memba Kaontri mo ol pipol blong ol teritori we oli stap anda long olgeta blong oli luksave mo folem Deklereisen ia."
      }
     ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "ikwol raet|blong|man mo woman olsem stamba blong fridom",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "ikwol raet blong man mo woman olsem stamba blong fridom",
+    "subject": "ikwol raet",
+    "verb": "blong",
+    "object": "man mo woman olsem stamba blong fridom",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#300-424",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "From se Jenerol Asembli i luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom, jastis mo pis long wol,"
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#3770-3868",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong narafala man i luksave hem olsem wan man o woman we i stap anda long loa."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#4267-4449",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we Konstitusen o loa givim, oli mekem."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#5750-5839",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong loa i protektem hem agensem ol fasin blong intefea olsem o atak."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#5873-5998",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong kasem fridom blong go long weaples hemi wantem go mo blong stap insaed long eria blong wanwan steit."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#6171-6329",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong lukaotem mo stap long wan ples long wan narafala kaontri sipos hemi stap ronwe long ol fasin blong talem mo tritum nogud man o woman."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#6626-6776",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Bambae wan man o woman i nogat raet blong kiaman long wan man o woman long nasonaliti blong hem o kiaman long raet blong jenisim nasonaliti blong hem."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#6812-6938",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evri man mo woman long evri eij, nomata wanem reis, nasonaliti o rilijen, oli gat raet blong maret mo blong statem wan famili."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#7318-7410",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong onem wan propeti hemwan mo tu wetem ol narafala man o woman tugeta."
+     }
+    ],
     "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "jenerol asembli|i|luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Jenerol Asembli i luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom",
-    "subject": "Jenerol Asembli",
-    "verb": "i",
-    "object": "luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#300-424",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "From se Jenerol Asembli i luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom, jastis mo pis long wol,"
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "jastis|mo|pis long wol",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "jastis mo pis long wol",
-    "subject": "jastis",
-    "verb": "mo",
-    "object": "pis long wol",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#300-424",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "From se Jenerol Asembli i luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom, jastis mo pis long wol,"
-     }
-    ],
-    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -202,7 +207,7 @@
     "verb": "blong",
     "object": "no luksave mo no respektem ol raet blong man mo woman i mekem se i gat ol nogud aksen i tekemples we oli mekem se pipol i kros",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -216,9 +221,82 @@
       "text": "From se hemi wan impoten samting, sipos man i no fos blong lukaotem help, olsem wan las aksen we hemi save mekem, blong faet agensem rabis fasin blong spoelem no fosem pipol hemia blong mekem nomo se Loa i protektem ol raet blong man mo woman,"
      },
      {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#3501-3743",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Bambae man mo woman i no save mekem fasin blong mekem narafala man o woman i safa o mekem rabis fasin long hem, fasin we i nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman."
+     },
+     {
       "at": "06-government-legal/un-udhr/udhr-bis.txt#4476-4661",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
       "text": "Bambae man o woman i no save arestem narafala man o woman long fasin we i folem tingting blong hem nomo, fasin blong givim panismen o fasin blong mekem man i stap hemwan olsem panismen."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "long fridom|blong|toktok mo biliv blong hem",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "long fridom blong toktok mo biliv blong hem",
+    "subject": "long fridom",
+    "verb": "blong",
+    "object": "toktok mo biliv blong hem",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#432-772",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "From se fasin blong no luksave mo no respektem ol raet blong man mo woman i mekem se i gat ol nogud aksen i tekemples we oli mekem se pipol i kros, mo bambae wan taem i kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem, fridom blong no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol,"
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#4689-4913",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum, long taem blong disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "no fos|blong|lukaotem help",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "no fos blong lukaotem help",
+    "subject": "no fos",
+    "verb": "blong",
+    "object": "lukaotem help",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#780-1023",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "From se hemi wan impoten samting, sipos man i no fos blong lukaotem help, olsem wan las aksen we hemi save mekem, blong faet agensem rabis fasin blong spoelem no fosem pipol hemia blong mekem nomo se Loa i protektem ol raet blong man mo woman,"
      }
     ],
     "seq": 4,
@@ -227,7 +305,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "wan taem|i|kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem",
+    "task_id": "gat nid|blong|promotem fasin blong developem frensip wetem ol narafala kaontri",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -236,118 +314,31 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "wan taem i kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem",
-    "subject": "wan taem",
-    "verb": "i",
-    "object": "kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#432-772",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "From se fasin blong no luksave mo no respektem ol raet blong man mo woman i mekem se i gat ol nogud aksen i tekemples we oli mekem se pipol i kros, mo bambae wan taem i kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem, fridom blong no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol,"
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fridom|blong|no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fridom blong no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol",
-    "subject": "fridom",
+    "description": "gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri",
+    "subject": "gat nid",
     "verb": "blong",
-    "object": "no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol",
+    "object": "promotem fasin blong developem frensip wetem ol narafala kaontri",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#432-772",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "From se fasin blong no luksave mo no respektem ol raet blong man mo woman i mekem se i gat ol nogud aksen i tekemples we oli mekem se pipol i kros, mo bambae wan taem i kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem, fridom blong no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol,"
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sipos man|i|no fos blong lukaotem help",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sipos man i no fos blong lukaotem help",
-    "subject": "sipos man",
-    "verb": "i",
-    "object": "no fos blong lukaotem help",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#780-1023",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "From se hemi wan impoten samting, sipos man i no fos blong lukaotem help, olsem wan las aksen we hemi save mekem, blong faet agensem rabis fasin blong spoelem no fosem pipol hemia blong mekem nomo se Loa i protektem ol raet blong man mo woman,"
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#3297-3361",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Bambae man i no tekem narafala man o woman olsem slev blong hem."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from se|i|gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "From se i gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri",
-    "subject": "From se",
-    "verb": "i",
-    "object": "gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-bis.txt#1031-1120",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
       "text": "From se i gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri,"
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#4947-5217",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Eniwan we i gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#6012-6135",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong livim eni kaontri, we i minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem."
      }
     ],
-    "seq": 8,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -367,7 +358,7 @@
     "verb": "blong",
     "object": "Unaeted Neisen oli talem bakegen insaed long Jata strong tingting blong olgeta long ol stamba raet blong man mo woman",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -376,13 +367,13 @@
       "text": "From se ol pipol blong Unaeted Neisen oli talem bakegen insaed long Jata strong tingting blong olgeta long ol stamba raet blong man mo woman, respek mo valiu blong man mo woman mo long ikwol raet blong man mo woman, oli disaed blong promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom,"
      }
     ],
-    "seq": 9,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "respek|mo|valiu blong man mo woman mo long ikwol raet blong man mo woman",
+    "task_id": "mo valiu|blong|man mo woman mo long ikwol raet blong man mo woman",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -391,26 +382,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "respek mo valiu blong man mo woman mo long ikwol raet blong man mo woman",
-    "subject": "respek",
-    "verb": "mo",
-    "object": "valiu blong man mo woman mo long ikwol raet blong man mo woman",
+    "description": "mo valiu blong man mo woman mo long ikwol raet blong man mo woman",
+    "subject": "mo valiu",
+    "verb": "blong",
+    "object": "man mo woman mo long ikwol raet blong man mo woman",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-bis.txt#1128-1445",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
       "text": "From se ol pipol blong Unaeted Neisen oli talem bakegen insaed long Jata strong tingting blong olgeta long ol stamba raet blong man mo woman, respek mo valiu blong man mo woman mo long ikwol raet blong man mo woman, oli disaed blong promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom,"
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#5557-5749",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Bambae man o woman i no save intefea wetem praevet laef, famili, hom or korespondens blong narafala man o woman folem tingting blong hem, mo no save spolem hae respek mo gudfala nem blong hem."
      }
     ],
-    "seq": 10,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -430,7 +416,7 @@
     "verb": "blong",
     "object": "promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -439,7 +425,7 @@
       "text": "From se ol pipol blong Unaeted Neisen oli talem bakegen insaed long Jata strong tingting blong olgeta long ol stamba raet blong man mo woman, respek mo valiu blong man mo woman mo long ikwol raet blong man mo woman, oli disaed blong promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom,"
      }
     ],
-    "seq": 11,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -459,7 +445,7 @@
     "verb": "oli",
     "object": "mekem strong promis blong promotem respek blong ol raet blong man mo woman olbaot long wol mo gat ol stamba fridom taem we oli stap wok tugeta wetem Unaeted Neisen",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -468,7 +454,7 @@
       "text": "From se ol Memba Kaontri oli mekem strong promis blong promotem respek blong ol raet blong man mo woman olbaot long wol mo gat ol stamba fridom taem we oli stap wok tugeta wetem Unaeted Neisen,"
      }
     ],
-    "seq": 12,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -488,7 +474,7 @@
     "verb": "blong",
     "object": "evriwan i luksave ol raet mo fridom blong promis ia i save tekemples fulwan",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -497,13 +483,13 @@
       "text": "From se hemi impoten tumas blong evriwan i luksave ol raet mo fridom blong promis ia i save tekemples fulwan,"
      }
     ],
-    "seq": 13,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "jenerol asembli|i|putumaot",
+    "task_id": "long sosaeti|oli|tingting oltaem long deklereisen ia",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -512,75 +498,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "JENEROL ASEMBLI i putumaot",
-    "subject": "JENEROL ASEMBLI",
-    "verb": "i",
-    "object": "putumaot",
+    "description": "long sosaeti oli tingting oltaem long Deklereisen ia",
+    "subject": "long sosaeti",
+    "verb": "oli",
+    "object": "tingting oltaem long Deklereisen ia",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#1771-1811",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Hemi mekem se JENEROL ASEMBLI i putumaot"
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "wanwan man|mo|woman insaed long sosaeti oli tingting oltaem long deklereisen ia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "wanwan man mo woman insaed long sosaeti oli tingting oltaem long Deklereisen ia",
-    "subject": "wanwan man",
-    "verb": "mo",
-    "object": "woman insaed long sosaeti oli tingting oltaem long Deklereisen ia",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-bis.txt#1819-2365",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
       "text": "Deklereisen blong ol Raet blong evri Man mo Woman Raon long Wol olsem wan impoten samting we evri pipol mo evri kaontri long wol oli mas kasem, blong mekem se wanwan man mo woman insaed long sosaeti oli tingting oltaem long Deklereisen ia, bambae oli wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level, blong mekem se ol pipol blong ol Memba Kaontri mo ol pipol blong ol teritori we oli stap anda long olgeta blong oli luksave mo folem Deklereisen ia."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#2392-2452",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evri man mo woman i bon fri mo ikwol long respek mo ol raet."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#3501-3743",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Bambae man mo woman i no save mekem fasin blong mekem narafala man o woman i safa o mekem rabis fasin long hem, fasin we i nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#3895-4009",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evri man mo woman i semak folem loa mo oli gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#4010-4240",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evri man mo woman oli gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong Deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6812-6938",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evri man mo woman long evri eij, nomata wanem reis, nasonaliti o rilijen, oli gat raet blong maret mo blong statem wan famili."
      }
     ],
-    "seq": 15,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -600,7 +532,7 @@
     "verb": "oli",
     "object": "wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -609,7 +541,7 @@
       "text": "Deklereisen blong ol Raet blong evri Man mo Woman Raon long Wol olsem wan impoten samting we evri pipol mo evri kaontri long wol oli mas kasem, blong mekem se wanwan man mo woman insaed long sosaeti oli tingting oltaem long Deklereisen ia, bambae oli wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level, blong mekem se ol pipol blong ol Memba Kaontri mo ol pipol blong ol teritori we oli stap anda long olgeta blong oli luksave mo folem Deklereisen ia."
      }
     ],
-    "seq": 16,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -629,7 +561,7 @@
     "verb": "blong",
     "object": "ol Memba Kaontri mo ol pipol blong ol teritori we oli stap anda long olgeta blong oli luksave mo folem Deklereisen ia",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -638,13 +570,13 @@
       "text": "Deklereisen blong ol Raet blong evri Man mo Woman Raon long Wol olsem wan impoten samting we evri pipol mo evri kaontri long wol oli mas kasem, blong mekem se wanwan man mo woman insaed long sosaeti oli tingting oltaem long Deklereisen ia, bambae oli wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level, blong mekem se ol pipol blong ol Memba Kaontri mo ol pipol blong ol teritori we oli stap anda long olgeta blong oli luksave mo folem Deklereisen ia."
      }
     ],
-    "seq": 17,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "gat risen|mo|tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista",
+    "task_id": "tingting mo|oli|mas tritim wanwan long olgeta olsem ol brata mo sista",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -653,12 +585,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "gat risen mo tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista",
-    "subject": "gat risen",
-    "verb": "mo",
-    "object": "tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista",
+    "description": "tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista",
+    "subject": "tingting mo",
+    "verb": "oli",
+    "object": "mas tritim wanwan long olgeta olsem ol brata mo sista",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -667,115 +599,7 @@
       "text": "Oli gat risen mo tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista."
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "evriwan|i|gat raet long evri raet mo fridom we i stap long deklereisen ia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia",
-    "subject": "Evriwan",
-    "verb": "i",
-    "object": "gat raet long evri raet mo fridom we i stap long Deklereisen ia",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#3202-3270",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong laef, fridommo sekuriti blong man mo woman."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#3770-3868",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong narafala man i luksave hem olsem wan man o woman we i stap anda long loa."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#4689-4913",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum, long taem blong disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#5750-5839",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong loa i protektem hem agensem ol fasin blong intefea olsem o atak."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#5873-5998",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong kasem fridom blong go long weaples hemi wantem go mo blong stap insaed long eria blong wanwan steit."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6012-6135",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong livim eni kaontri, we i minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6171-6329",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong lukaotem mo stap long wan ples long wan narafala kaontri sipos hemi stap ronwe long ol fasin blong talem mo tritum nogud man o woman."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6568-6612",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong gat wan nasonaliti."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#7318-7410",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong onem wan propeti hemwan mo tu wetem ol narafala man o woman tugeta."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "olsem|long|reis",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "olsem long reis",
-    "subject": "olsem",
-    "verb": "long",
-    "object": "reis",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
-     }
-    ],
-    "seq": 20,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -795,7 +619,7 @@
     "verb": "blong",
     "object": "skin",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -804,13 +628,13 @@
       "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
      }
     ],
-    "seq": 21,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "politikol|o|narafala kaen tingting",
+    "task_id": "long saed|blong|neisen o sosol",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -819,12 +643,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "politikol o narafala kaen tingting",
-    "subject": "politikol",
-    "verb": "o",
-    "object": "narafala kaen tingting",
+    "description": "long saed blong neisen o sosol",
+    "subject": "long saed",
+    "verb": "blong",
+    "object": "neisen o sosol",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -833,13 +657,13 @@
       "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
      }
     ],
-    "seq": 22,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "we|i|kamaot long saed blong neisen o sosol",
+    "task_id": "long level|blong|politik",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -848,70 +672,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "we i kamaot long saed blong neisen o sosol",
-    "subject": "we",
-    "verb": "i",
-    "object": "kamaot long saed blong neisen o sosol",
+    "description": "long level blong politik",
+    "subject": "long level",
+    "verb": "blong",
+    "object": "politik",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we man|i|bon long hem o emi narafala sosol saed olsem",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we man i bon long hem o emi narafala sosol saed olsem",
-    "subject": "we man",
-    "verb": "i",
-    "object": "bon long hem o emi narafala sosol saed olsem",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "andap|long|hemia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Andap long hemia",
-    "subject": "Andap",
-    "verb": "long",
-    "object": "hemia",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -920,13 +686,13 @@
       "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
      }
     ],
-    "seq": 25,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "wan man|o|woman i no save mekem eni difrens long level blong politik",
+    "task_id": "intenasonol level|blong|kaontri o teritori blong narafala man o woman ia",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -935,57 +701,27 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "wan man o woman i no save mekem eni difrens long level blong politik",
-    "subject": "wan man",
-    "verb": "o",
-    "object": "woman i no save mekem eni difrens long level blong politik",
+    "description": "intenasonol level blong kaontri o teritori blong narafala man o woman ia",
+    "subject": "intenasonol level",
+    "verb": "blong",
+    "object": "kaontri o teritori blong narafala man o woman ia",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
       "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#4476-4661",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Bambae man o woman i no save arestem narafala man o woman long fasin we i folem tingting blong hem nomo, fasin blong givim panismen o fasin blong mekem man i stap hemwan olsem panismen."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#5231-5414",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Bambae man o woman i no gilti from wan rong we hemi mekem o wan aksen we hemi no mekem we i no wan rong folem nasonal mo intenasonal loa, long taem we man o woman ia i mekem aksen ia."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#5557-5749",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Bambae man o woman i no save intefea wetem praevet laef, famili, hom or korespondens blong narafala man o woman folem tingting blong hem, mo no save spolem hae respek mo gudfala nem blong hem."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6343-6532",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Man o woman i no save yusum raet ia taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong Unaeted Neisesn."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6626-6776",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Bambae wan man o woman i nogat raet blong kiaman long wan man o woman long nasonaliti blong hem o kiaman long raet blong jenisim nasonaliti blong hem."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#7424-7539",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Folem tingting blong hem, bambae wan man o woman i no save kiaman long narafala man o woman from propeti blong hem."
      }
     ],
-    "seq": 26,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "wok hem|i|kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia",
+    "task_id": "narafala arenjmen|blong|soverenti",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -994,12 +730,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia",
-    "subject": "wok hem",
-    "verb": "i",
-    "object": "kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia",
+    "description": "narafala arenjmen blong soverenti",
+    "subject": "narafala arenjmen",
+    "verb": "blong",
+    "object": "soverenti",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1008,13 +744,13 @@
       "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
      }
     ],
-    "seq": 27,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "gavening|o|anda eni narafala arenjmen blong soverenti",
+    "task_id": "gat raet|blong|laef",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1023,21 +759,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "gavening o anda eni narafala arenjmen blong soverenti",
-    "subject": "gavening",
-    "verb": "o",
-    "object": "anda eni narafala arenjmen blong soverenti",
+    "description": "gat raet blong laef",
+    "subject": "gat raet",
+    "verb": "blong",
+    "object": "laef",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#3202-3270",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
+      "text": "Evriwan i gat raet blong laef, fridommo sekuriti blong man mo woman."
      }
     ],
-    "seq": 28,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1057,21 +793,45 @@
     "verb": "blong",
     "object": "man mo woman",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-bis.txt#3202-3270",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
       "text": "Evriwan i gat raet blong laef, fridommo sekuriti blong man mo woman."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
      }
     ],
-    "seq": 29,
+    "seq": 21,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "olsem slev|blong|hem",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "olsem slev blong hem",
+    "subject": "olsem slev",
+    "verb": "blong",
+    "object": "hem",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#3297-3361",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Bambae man i no tekem narafala man o woman olsem slev blong hem."
+     }
+    ],
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1091,7 +851,7 @@
     "verb": "blong",
     "object": "eni kaen fasin blong slev mo fasin blong salem man o woman olsem slev i tekemples",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1100,13 +860,13 @@
       "text": "Bambae hemi agensem loa blong eni kaen fasin blong slev mo fasin blong salem man o woman olsem slev i tekemples."
      }
     ],
-    "seq": 30,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "fasin we|i|nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman",
+    "task_id": "loa mo|oli|gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1115,27 +875,27 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "fasin we i nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman",
-    "subject": "fasin we",
-    "verb": "i",
-    "object": "nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman",
+    "description": "loa mo oli gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta",
+    "subject": "loa mo",
+    "verb": "oli",
+    "object": "gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#3501-3743",
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#3895-4009",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Bambae man mo woman i no save mekem fasin blong mekem narafala man o woman i safa o mekem rabis fasin long hem, fasin we i nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman."
+      "text": "Evri man mo woman i semak folem loa mo oli gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta."
      }
     ],
-    "seq": 31,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "evriwan|i|gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we konstitusen o loa givim",
+    "task_id": "mo woman|oli|gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1144,27 +904,27 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Evriwan i gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we Konstitusen o loa givim",
-    "subject": "Evriwan",
-    "verb": "i",
-    "object": "gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we Konstitusen o loa givim",
+    "description": "mo woman oli gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong Deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem",
+    "subject": "mo woman",
+    "verb": "oli",
+    "object": "gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong Deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#4267-4449",
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#4010-4240",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evriwan i gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we Konstitusen o loa givim, oli mekem."
+      "text": "Evri man mo woman oli gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong Deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem."
      }
     ],
-    "seq": 32,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "long taem|blong|disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem",
+    "task_id": "folem tingting|blong|hem nomo",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1173,27 +933,66 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "long taem blong disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem",
-    "subject": "long taem",
+    "description": "folem tingting blong hem nomo",
+    "subject": "folem tingting",
     "verb": "blong",
-    "object": "disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem",
+    "object": "hem nomo",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#4476-4661",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Bambae man o woman i no save arestem narafala man o woman long fasin we i folem tingting blong hem nomo, fasin blong givim panismen o fasin blong mekem man i stap hemwan olsem panismen."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#7424-7539",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Folem tingting blong hem, bambae wan man o woman i no save kiaman long narafala man o woman from propeti blong hem."
+     }
+    ],
+    "seq": 26,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "gat raet|blong|ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "gat raet blong ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum",
+    "subject": "gat raet",
+    "verb": "blong",
+    "object": "ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-bis.txt#4689-4913",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
       "text": "Evriwan i gat raet blong ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum, long taem blong disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#6568-6612",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet blong gat wan nasonaliti."
      }
     ],
-    "seq": 33,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "eniwan we|i|gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan",
+    "task_id": "o woman|ia|i mekem aksen ia",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1202,27 +1001,27 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Eniwan we i gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan",
-    "subject": "Eniwan we",
-    "verb": "i",
-    "object": "gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan",
+    "description": "o woman ia i mekem aksen ia",
+    "subject": "o woman",
+    "verb": "ia",
+    "object": "i mekem aksen ia",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#4947-5217",
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#5231-5414",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Eniwan we i gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan."
+      "text": "Bambae man o woman i no gilti from wan rong we hemi mekem o wan aksen we hemi no mekem we i no wan rong folem nasonal mo intenasonal loa, long taem we man o woman ia i mekem aksen ia."
      }
     ],
-    "seq": 34,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "bambae|i|nogat wan panismen we i hevi bitim hemia we i aplae long taem ia we man o woman ia i bin mekem rong ia",
+    "task_id": "long taem|ia|we man o woman ia i bin mekem rong ia",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1231,26 +1030,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Bambae i nogat wan panismen we i hevi bitim hemia we i aplae long taem ia we man o woman ia i bin mekem rong ia",
-    "subject": "Bambae",
-    "verb": "i",
-    "object": "nogat wan panismen we i hevi bitim hemia we i aplae long taem ia we man o woman ia i bin mekem rong ia",
+    "description": "long taem ia we man o woman ia i bin mekem rong ia",
+    "subject": "long taem",
+    "verb": "ia",
+    "object": "we man o woman ia i bin mekem rong ia",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-bis.txt#5415-5527",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
       "text": "Bambae i nogat wan panismen we i hevi bitim hemia we i aplae long taem ia we man o woman ia i bin mekem rong ia."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#7062-7157",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Maret bambae i tekemples nomo taem we hemi tingting blong man mo woman ia blong tufala i maret."
      }
     ],
-    "seq": 35,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1270,7 +1064,7 @@
     "verb": "blong",
     "object": "narafala man o woman folem tingting blong hem",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1279,13 +1073,13 @@
       "text": "Bambae man o woman i no save intefea wetem praevet laef, famili, hom or korespondens blong narafala man o woman folem tingting blong hem, mo no save spolem hae respek mo gudfala nem blong hem."
      }
     ],
-    "seq": 36,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "we|i|minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem",
+    "task_id": "gudfala nem|blong|hem",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1294,12 +1088,41 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "we i minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem",
-    "subject": "we",
-    "verb": "i",
-    "object": "minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem",
+    "description": "gudfala nem blong hem",
+    "subject": "gudfala nem",
+    "verb": "blong",
+    "object": "hem",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#5557-5749",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Bambae man o woman i no save intefea wetem praevet laef, famili, hom or korespondens blong narafala man o woman folem tingting blong hem, mo no save spolem hae respek mo gudfala nem blong hem."
+     }
+    ],
+    "seq": 31,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "se kaontri|blong|hem tu mo blong hemi go bak long kaontri blong hem",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem",
+    "subject": "se kaontri",
+    "verb": "blong",
+    "object": "hem tu mo blong hemi go bak long kaontri blong hem",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1308,13 +1131,13 @@
       "text": "Evriwan i gat raet blong livim eni kaontri, we i minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem."
      }
     ],
-    "seq": 37,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "nasonaliti|o|rilijen",
+    "task_id": "yusum raet|ia|taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong unaeted neisesn",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1323,27 +1146,32 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "nasonaliti o rilijen",
-    "subject": "nasonaliti",
-    "verb": "o",
-    "object": "rilijen",
+    "description": "yusum raet ia taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong Unaeted Neisesn",
+    "subject": "yusum raet",
+    "verb": "ia",
+    "object": "taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong Unaeted Neisesn",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6812-6938",
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#6343-6532",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evri man mo woman long evri eij, nomata wanem reis, nasonaliti o rilijen, oli gat raet blong maret mo blong statem wan famili."
+      "text": "Man o woman i no save yusum raet ia taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong Unaeted Neisesn."
+     },
+     {
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
+      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+      "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
      }
     ],
-    "seq": 38,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "gat raet|blong|maret mo blong statem wan famili",
+    "task_id": "long saed|blong|maret",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1352,41 +1180,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "gat raet blong maret mo blong statem wan famili",
-    "subject": "gat raet",
+    "description": "long saed blong maret",
+    "subject": "long saed",
     "verb": "blong",
-    "object": "maret mo blong statem wan famili",
+    "object": "maret",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6812-6938",
-      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Evri man mo woman long evri eij, nomata wanem reis, nasonaliti o rilijen, oli gat raet blong maret mo blong statem wan famili."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gat raet|long|ikwel raet long saed blong maret",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gat raet long ikwel raet long saed blong maret",
-    "subject": "gat raet",
-    "verb": "long",
-    "object": "ikwel raet long saed blong maret",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1395,13 +1194,13 @@
       "text": "Oli gat raet long ikwel raet long saed blong maret, long taem blong maret mo long taem we oli disolvem maret."
      }
     ],
-    "seq": 40,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "long taem|blong|maret mo long taem we oli disolvem maret",
+    "task_id": "hemi tingting|blong|man mo woman ia blong tufala i maret",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1410,27 +1209,27 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "long taem blong maret mo long taem we oli disolvem maret",
-    "subject": "long taem",
+    "description": "hemi tingting blong man mo woman ia blong tufala i maret",
+    "subject": "hemi tingting",
     "verb": "blong",
-    "object": "maret mo long taem we oli disolvem maret",
+    "object": "man mo woman ia blong tufala i maret",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "06-government-legal/un-udhr/udhr-bis.txt#6939-7048",
+      "at": "06-government-legal/un-udhr/udhr-bis.txt#7062-7157",
       "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-      "text": "Oli gat raet long ikwel raet long saed blong maret, long taem blong maret mo long taem we oli disolvem maret."
+      "text": "Maret bambae i tekemples nomo taem we hemi tingting blong man mo woman ia blong tufala i maret."
      }
     ],
-    "seq": 41,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "hemi natural|mo|impoten grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
+    "task_id": "grup unit|blong|sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1439,12 +1238,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "hemi natural mo impoten grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
-    "subject": "hemi natural",
-    "verb": "mo",
-    "object": "impoten grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
+    "description": "grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
+    "subject": "grup unit",
+    "verb": "blong",
+    "object": "sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1453,13 +1252,13 @@
       "text": "Famili hemi natural mo impoten grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem."
      }
     ],
-    "seq": 42,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "folem tingting|blong|hem",
+    "task_id": "from propeti|blong|hem",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1468,12 +1267,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Folem tingting blong hem",
-    "subject": "Folem tingting",
+    "description": "from propeti blong hem",
+    "subject": "from propeti",
     "verb": "blong",
     "object": "hem",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1482,13 +1281,13 @@
       "text": "Folem tingting blong hem, bambae wan man o woman i no save kiaman long narafala man o woman from propeti blong hem."
      }
     ],
-    "seq": 43,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "raet|ia|hemi kavremap fridom blong jenisim rilijen o bilif blong hem",
+    "task_id": "long fridom|blong|tingting",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1497,12 +1296,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem",
-    "subject": "raet",
-    "verb": "ia",
-    "object": "hemi kavremap fridom blong jenisim rilijen o bilif blong hem",
+    "description": "long fridom blong tingting",
+    "subject": "long fridom",
+    "verb": "blong",
+    "object": "tingting",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1511,7 +1310,7 @@
       "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
      }
     ],
-    "seq": 44,
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    },
@@ -1531,7 +1330,7 @@
     "verb": "blong",
     "object": "hem tru long fasin we hemi tijim",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1540,13 +1339,13 @@
       "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
      }
     ],
-    "seq": 45,
+    "seq": 39,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "wosip|mo|folem ol tijing blong rilijen blong hem o biliv blong hem",
+    "task_id": "ol tijing|blong|rilijen blong hem o biliv blong hem",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1555,12 +1354,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem",
-    "subject": "wosip",
-    "verb": "mo",
-    "object": "folem ol tijing blong rilijen blong hem o biliv blong hem",
+    "description": "ol tijing blong rilijen blong hem o biliv blong hem",
+    "subject": "ol tijing",
+    "verb": "blong",
+    "object": "rilijen blong hem o biliv blong hem",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1569,12 +1368,12 @@
       "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
      }
     ],
-    "seq": 46,
+    "seq": 40,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 47,
+  "nextSeq": 41,
   "admits": [
    "NUL",
    "SEG",
@@ -1594,7 +1393,7 @@
    "verb": "blong",
    "object": "eni kaen fasin blong slev mo fasin blong salem man o woman olsem slev i tekemples",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1605,49 +1404,12 @@
    ]
   },
   {
-   "id": "andap|long|hemia",
-   "subject": "Andap",
-   "verb": "long",
-   "object": "hemia",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
-    }
-   ]
-  },
-  {
-   "id": "bambae|i|nogat wan panismen we i hevi bitim hemia we i aplae long taem ia we man o woman ia i bin mekem rong ia",
-   "subject": "Bambae",
-   "verb": "i",
-   "object": "nogat wan panismen we i hevi bitim hemia we i aplae long taem ia we man o woman ia i bin mekem rong ia",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#5415-5527",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae i nogat wan panismen we i hevi bitim hemia we i aplae long taem ia we man o woman ia i bin mekem rong ia."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#7062-7157",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Maret bambae i tekemples nomo taem we hemi tingting blong man mo woman ia blong tufala i maret."
-    }
-   ]
-  },
-  {
    "id": "bambae|oli|wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level",
    "subject": "bambae",
    "verb": "oli",
    "object": "wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1663,7 +1425,7 @@
    "verb": "blong",
    "object": "Raet Blong Evri Man Mo Woman Raon Wol",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1679,55 +1441,182 @@
    ]
   },
   {
-   "id": "eniwan we|i|gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan",
-   "subject": "Eniwan we",
-   "verb": "i",
-   "object": "gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan",
+   "id": "folem tingting|blong|hem nomo",
+   "subject": "folem tingting",
+   "verb": "blong",
+   "object": "hem nomo",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#4947-5217",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#4476-4661",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Eniwan we i gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan."
-    }
-   ]
-  },
-  {
-   "id": "evriwan|i|gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we konstitusen o loa givim",
-   "subject": "Evriwan",
-   "verb": "i",
-   "object": "gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we Konstitusen o loa givim",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#4267-4449",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we Konstitusen o loa givim, oli mekem."
-    }
-   ]
-  },
-  {
-   "id": "evriwan|i|gat raet long evri raet mo fridom we i stap long deklereisen ia",
-   "subject": "Evriwan",
-   "verb": "i",
-   "object": "gat raet long evri raet mo fridom we i stap long Deklereisen ia",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
+     "text": "Bambae man o woman i no save arestem narafala man o woman long fasin we i folem tingting blong hem nomo, fasin blong givim panismen o fasin blong mekem man i stap hemwan olsem panismen."
     },
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#7424-7539",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Folem tingting blong hem, bambae wan man o woman i no save kiaman long narafala man o woman from propeti blong hem."
+    }
+   ]
+  },
+  {
+   "id": "fridommo sekuriti|blong|man mo woman",
+   "subject": "fridommo sekuriti",
+   "verb": "blong",
+   "object": "man mo woman",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
     {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#3202-3270",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
      "text": "Evriwan i gat raet blong laef, fridommo sekuriti blong man mo woman."
+    }
+   ]
+  },
+  {
+   "id": "from propeti|blong|hem",
+   "subject": "from propeti",
+   "verb": "blong",
+   "object": "hem",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#7424-7539",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Folem tingting blong hem, bambae wan man o woman i no save kiaman long narafala man o woman from propeti blong hem."
+    }
+   ]
+  },
+  {
+   "id": "gat nid|blong|promotem fasin blong developem frensip wetem ol narafala kaontri",
+   "subject": "gat nid",
+   "verb": "blong",
+   "object": "promotem fasin blong developem frensip wetem ol narafala kaontri",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#1031-1120",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "From se i gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri,"
+    },
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#4947-5217",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Eniwan we i gat jasmen blong wan rong agensem hem hemi gat raet blong stap olsem wan inosen man o woman go kasem taem we kot i pruvum se hemi gilti from se hemi mekem rong agensem loa long wan pablik traeol we hemi bin gat evri janis we hemi nidim blong difendem hemwan."
+    },
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#6012-6135",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evriwan i gat raet blong livim eni kaontri, we i minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem."
+    }
+   ]
+  },
+  {
+   "id": "gat raet|blong|ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum",
+   "subject": "gat raet",
+   "verb": "blong",
+   "object": "ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#4689-4913",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evriwan i gat raet blong ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum, long taem blong disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem."
+    },
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#6568-6612",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evriwan i gat raet blong gat wan nasonaliti."
+    }
+   ]
+  },
+  {
+   "id": "gat raet|blong|laef",
+   "subject": "gat raet",
+   "verb": "blong",
+   "object": "laef",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#3202-3270",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evriwan i gat raet blong laef, fridommo sekuriti blong man mo woman."
+    }
+   ]
+  },
+  {
+   "id": "grup unit|blong|sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
+   "subject": "grup unit",
+   "verb": "blong",
+   "object": "sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#7171-7282",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Famili hemi natural mo impoten grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem."
+    }
+   ]
+  },
+  {
+   "id": "gudfala nem|blong|hem",
+   "subject": "gudfala nem",
+   "verb": "blong",
+   "object": "hem",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#5557-5749",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Bambae man o woman i no save intefea wetem praevet laef, famili, hom or korespondens blong narafala man o woman folem tingting blong hem, mo no save spolem hae respek mo gudfala nem blong hem."
+    }
+   ]
+  },
+  {
+   "id": "hemi tingting|blong|man mo woman ia blong tufala i maret",
+   "subject": "hemi tingting",
+   "verb": "blong",
+   "object": "man mo woman ia blong tufala i maret",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#7062-7157",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Maret bambae i tekemples nomo taem we hemi tingting blong man mo woman ia blong tufala i maret."
+    }
+   ]
+  },
+  {
+   "id": "ikwol raet|blong|man mo woman olsem stamba blong fridom",
+   "subject": "ikwol raet",
+   "verb": "blong",
+   "object": "man mo woman olsem stamba blong fridom",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#300-424",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "From se Jenerol Asembli i luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom, jastis mo pis long wol,"
     },
     {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#3770-3868",
@@ -1735,9 +1624,9 @@
      "text": "Evriwan i gat raet blong narafala man i luksave hem olsem wan man o woman we i stap anda long loa."
     },
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#4689-4913",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#4267-4449",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet blong ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum, long taem blong disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem."
+     "text": "Evriwan i gat raet blong kasem wan stret fasin blong stretem problem we ol stret nasonol traebuno blong ol akt we oli go agensem ol stamba raet we Konstitusen o loa givim, oli mekem."
     },
     {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#5750-5839",
@@ -1750,199 +1639,24 @@
      "text": "Evriwan i gat raet blong kasem fridom blong go long weaples hemi wantem go mo blong stap insaed long eria blong wanwan steit."
     },
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#6012-6135",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet blong livim eni kaontri, we i minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem."
-    },
-    {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#6171-6329",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
      "text": "Evriwan i gat raet blong lukaotem mo stap long wan ples long wan narafala kaontri sipos hemi stap ronwe long ol fasin blong talem mo tritum nogud man o woman."
     },
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#6568-6612",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#6626-6776",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet blong gat wan nasonaliti."
+     "text": "Bambae wan man o woman i nogat raet blong kiaman long wan man o woman long nasonaliti blong hem o kiaman long raet blong jenisim nasonaliti blong hem."
+    },
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#6812-6938",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evri man mo woman long evri eij, nomata wanem reis, nasonaliti o rilijen, oli gat raet blong maret mo blong statem wan famili."
     },
     {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#7318-7410",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
      "text": "Evriwan i gat raet blong onem wan propeti hemwan mo tu wetem ol narafala man o woman tugeta."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
-    }
-   ]
-  },
-  {
-   "id": "fasin we|i|nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman",
-   "subject": "fasin we",
-   "verb": "i",
-   "object": "nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#3501-3743",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae man mo woman i no save mekem fasin blong mekem narafala man o woman i safa o mekem rabis fasin long hem, fasin we i nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman."
-    }
-   ]
-  },
-  {
-   "id": "folem tingting|blong|hem",
-   "subject": "Folem tingting",
-   "verb": "blong",
-   "object": "hem",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#7424-7539",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Folem tingting blong hem, bambae wan man o woman i no save kiaman long narafala man o woman from propeti blong hem."
-    }
-   ]
-  },
-  {
-   "id": "fridom|blong|no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol",
-   "subject": "fridom",
-   "verb": "blong",
-   "object": "no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#432-772",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "From se fasin blong no luksave mo no respektem ol raet blong man mo woman i mekem se i gat ol nogud aksen i tekemples we oli mekem se pipol i kros, mo bambae wan taem i kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem, fridom blong no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol,"
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
-    }
-   ]
-  },
-  {
-   "id": "fridommo sekuriti|blong|man mo woman",
-   "subject": "fridommo sekuriti",
-   "verb": "blong",
-   "object": "man mo woman",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#3202-3270",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet blong laef, fridommo sekuriti blong man mo woman."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
-    }
-   ]
-  },
-  {
-   "id": "from se|i|gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri",
-   "subject": "From se",
-   "verb": "i",
-   "object": "gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#1031-1120",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "From se i gat nid blong promotem fasin blong developem frensip wetem ol narafala kaontri,"
-    }
-   ]
-  },
-  {
-   "id": "gat raet|blong|maret mo blong statem wan famili",
-   "subject": "gat raet",
-   "verb": "blong",
-   "object": "maret mo blong statem wan famili",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#6812-6938",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evri man mo woman long evri eij, nomata wanem reis, nasonaliti o rilijen, oli gat raet blong maret mo blong statem wan famili."
-    }
-   ]
-  },
-  {
-   "id": "gat raet|long|ikwel raet long saed blong maret",
-   "subject": "gat raet",
-   "verb": "long",
-   "object": "ikwel raet long saed blong maret",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#6939-7048",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Oli gat raet long ikwel raet long saed blong maret, long taem blong maret mo long taem we oli disolvem maret."
-    }
-   ]
-  },
-  {
-   "id": "gat risen|mo|tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista",
-   "subject": "gat risen",
-   "verb": "mo",
-   "object": "tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2453-2540",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Oli gat risen mo tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista."
-    }
-   ]
-  },
-  {
-   "id": "gavening|o|anda eni narafala arenjmen blong soverenti",
-   "subject": "gavening",
-   "verb": "o",
-   "object": "anda eni narafala arenjmen blong soverenti",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
-    }
-   ]
-  },
-  {
-   "id": "hemi natural|mo|impoten grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
-   "subject": "hemi natural",
-   "verb": "mo",
-   "object": "impoten grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#7171-7282",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Famili hemi natural mo impoten grup unit blong sosaeti mo hemi gat raet blong sosaeti mo steit i protektem hem."
     }
    ]
   },
@@ -1952,7 +1666,7 @@
    "verb": "blong",
    "object": "evriwan i luksave ol raet mo fridom blong promis ia i save tekemples fulwan",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1963,50 +1677,18 @@
    ]
   },
   {
-   "id": "jastis|mo|pis long wol",
-   "subject": "jastis",
-   "verb": "mo",
-   "object": "pis long wol",
+   "id": "intenasonol level|blong|kaontri o teritori blong narafala man o woman ia",
+   "subject": "intenasonol level",
+   "verb": "blong",
+   "object": "kaontri o teritori blong narafala man o woman ia",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#300-424",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "From se Jenerol Asembli i luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom, jastis mo pis long wol,"
-    }
-   ]
-  },
-  {
-   "id": "jenerol asembli|i|luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom",
-   "subject": "Jenerol Asembli",
-   "verb": "i",
-   "object": "luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#300-424",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "From se Jenerol Asembli i luksave respek mo ikwol raet blong man mo woman olsem stamba blong fridom, jastis mo pis long wol,"
-    }
-   ]
-  },
-  {
-   "id": "jenerol asembli|i|putumaot",
-   "subject": "JENEROL ASEMBLI",
-   "verb": "i",
-   "object": "putumaot",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#1771-1811",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Hemi mekem se JENEROL ASEMBLI i putumaot"
+     "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
     }
    ]
   },
@@ -2016,7 +1698,7 @@
    "verb": "blong",
    "object": "skin",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2027,28 +1709,86 @@
    ]
   },
   {
-   "id": "long taem|blong|disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem",
-   "subject": "long taem",
-   "verb": "blong",
-   "object": "disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem",
+   "id": "loa mo|oli|gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta",
+   "subject": "loa mo",
+   "verb": "oli",
+   "object": "gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#4689-4913",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#3895-4009",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet blong ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum, long taem blong disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem."
+     "text": "Evri man mo woman i semak folem loa mo oli gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta."
     }
    ]
   },
   {
-   "id": "long taem|blong|maret mo long taem we oli disolvem maret",
-   "subject": "long taem",
+   "id": "long fridom|blong|tingting",
+   "subject": "long fridom",
    "verb": "blong",
-   "object": "maret mo long taem we oli disolvem maret",
+   "object": "tingting",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
+    }
+   ]
+  },
+  {
+   "id": "long fridom|blong|toktok mo biliv blong hem",
+   "subject": "long fridom",
+   "verb": "blong",
+   "object": "toktok mo biliv blong hem",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#432-772",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "From se fasin blong no luksave mo no respektem ol raet blong man mo woman i mekem se i gat ol nogud aksen i tekemples we oli mekem se pipol i kros, mo bambae wan taem i kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem, fridom blong no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol,"
+    },
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#4689-4913",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evriwan i gat raet blong ful ikwaliti long wan indipenden mo fea pablik hearing we wan indipenden mo fea tribunal i putum, long taem blong disaedem ol raet mo ol obligeisen blong hem mo blong eni kriminol jasmen agensem hem."
+    },
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
+    }
+   ]
+  },
+  {
+   "id": "long level|blong|politik",
+   "subject": "long level",
+   "verb": "blong",
+   "object": "politik",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
+    }
+   ]
+  },
+  {
+   "id": "long saed|blong|maret",
+   "subject": "long saed",
+   "verb": "blong",
+   "object": "maret",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2059,12 +1799,60 @@
    ]
   },
   {
+   "id": "long saed|blong|neisen o sosol",
+   "subject": "long saed",
+   "verb": "blong",
+   "object": "neisen o sosol",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
+    }
+   ]
+  },
+  {
+   "id": "long sosaeti|oli|tingting oltaem long deklereisen ia",
+   "subject": "long sosaeti",
+   "verb": "oli",
+   "object": "tingting oltaem long Deklereisen ia",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#1819-2365",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Deklereisen blong ol Raet blong evri Man mo Woman Raon long Wol olsem wan impoten samting we evri pipol mo evri kaontri long wol oli mas kasem, blong mekem se wanwan man mo woman insaed long sosaeti oli tingting oltaem long Deklereisen ia, bambae oli wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level, blong mekem se ol pipol blong ol Memba Kaontri mo ol pipol blong ol teritori we oli stap anda long olgeta blong oli luksave mo folem Deklereisen ia."
+    }
+   ]
+  },
+  {
+   "id": "long taem|ia|we man o woman ia i bin mekem rong ia",
+   "subject": "long taem",
+   "verb": "ia",
+   "object": "we man o woman ia i bin mekem rong ia",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#5415-5527",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Bambae i nogat wan panismen we i hevi bitim hemia we i aplae long taem ia we man o woman ia i bin mekem rong ia."
+    }
+   ]
+  },
+  {
    "id": "memba kaontri|oli|mekem strong promis blong promotem respek blong ol raet blong man mo woman olbaot long wol mo gat ol stamba fridom taem we oli stap wok tugeta wetem unaeted neisen",
    "subject": "Memba Kaontri",
    "verb": "oli",
    "object": "mekem strong promis blong promotem respek blong ol raet blong man mo woman olbaot long wol mo gat ol stamba fridom taem we oli stap wok tugeta wetem Unaeted Neisen",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2075,34 +1863,82 @@
    ]
   },
   {
-   "id": "nasonaliti|o|rilijen",
-   "subject": "nasonaliti",
-   "verb": "o",
-   "object": "rilijen",
+   "id": "mo valiu|blong|man mo woman mo long ikwol raet blong man mo woman",
+   "subject": "mo valiu",
+   "verb": "blong",
+   "object": "man mo woman mo long ikwol raet blong man mo woman",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#6812-6938",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#1128-1445",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evri man mo woman long evri eij, nomata wanem reis, nasonaliti o rilijen, oli gat raet blong maret mo blong statem wan famili."
+     "text": "From se ol pipol blong Unaeted Neisen oli talem bakegen insaed long Jata strong tingting blong olgeta long ol stamba raet blong man mo woman, respek mo valiu blong man mo woman mo long ikwol raet blong man mo woman, oli disaed blong promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom,"
     }
    ]
   },
   {
-   "id": "office|of|the united nations high commissioner for human rights (ohchr)",
-   "subject": "Office",
-   "verb": "of",
-   "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
+   "id": "mo woman|oli|gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem",
+   "subject": "mo woman",
+   "verb": "oli",
+   "object": "gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong Deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#0-220",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#4010-4240",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Universal Declaration of Human Rights Language: Bislama (bi) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
+     "text": "Evri man mo woman oli gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong Deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem."
+    }
+   ]
+  },
+  {
+   "id": "narafala arenjmen|blong|soverenti",
+   "subject": "narafala arenjmen",
+   "verb": "blong",
+   "object": "soverenti",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
+    }
+   ]
+  },
+  {
+   "id": "no fos|blong|lukaotem help",
+   "subject": "no fos",
+   "verb": "blong",
+   "object": "lukaotem help",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#780-1023",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "From se hemi wan impoten samting, sipos man i no fos blong lukaotem help, olsem wan las aksen we hemi save mekem, blong faet agensem rabis fasin blong spoelem no fosem pipol hemia blong mekem nomo se Loa i protektem ol raet blong man mo woman,"
+    }
+   ]
+  },
+  {
+   "id": "o woman|ia|i mekem aksen ia",
+   "subject": "o woman",
+   "verb": "ia",
+   "object": "i mekem aksen ia",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#5231-5414",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Bambae man o woman i no gilti from wan rong we hemi mekem o wan aksen we hemi no mekem we i no wan rong folem nasonal mo intenasonal loa, long taem we man o woman ia i mekem aksen ia."
     }
    ]
   },
@@ -2112,7 +1948,7 @@
    "verb": "blong",
    "object": "ol Memba Kaontri mo ol pipol blong ol teritori we oli stap anda long olgeta blong oli luksave mo folem Deklereisen ia",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2128,7 +1964,7 @@
    "verb": "blong",
    "object": "Unaeted Neisen oli talem bakegen insaed long Jata strong tingting blong olgeta long ol stamba raet blong man mo woman",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2139,76 +1975,12 @@
    ]
   },
   {
-   "id": "oli disaed|blong|promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom",
-   "subject": "oli disaed",
+   "id": "ol tijing|blong|rilijen blong hem o biliv blong hem",
+   "subject": "ol tijing",
    "verb": "blong",
-   "object": "promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom",
+   "object": "rilijen blong hem o biliv blong hem",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#1128-1445",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "From se ol pipol blong Unaeted Neisen oli talem bakegen insaed long Jata strong tingting blong olgeta long ol stamba raet blong man mo woman, respek mo valiu blong man mo woman mo long ikwol raet blong man mo woman, oli disaed blong promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom,"
-    }
-   ]
-  },
-  {
-   "id": "olsem|long|reis",
-   "subject": "olsem",
-   "verb": "long",
-   "object": "reis",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
-    }
-   ]
-  },
-  {
-   "id": "or korespondens|blong|narafala man o woman folem tingting blong hem",
-   "subject": "or korespondens",
-   "verb": "blong",
-   "object": "narafala man o woman folem tingting blong hem",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#5557-5749",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae man o woman i no save intefea wetem praevet laef, famili, hom or korespondens blong narafala man o woman folem tingting blong hem, mo no save spolem hae respek mo gudfala nem blong hem."
-    }
-   ]
-  },
-  {
-   "id": "politikol|o|narafala kaen tingting",
-   "subject": "politikol",
-   "verb": "o",
-   "object": "narafala kaen tingting",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
-    }
-   ]
-  },
-  {
-   "id": "raet|ia|hemi kavremap fridom blong jenisim rilijen o bilif blong hem",
-   "subject": "raet",
-   "verb": "ia",
-   "object": "hemi kavremap fridom blong jenisim rilijen o bilif blong hem",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2219,19 +1991,46 @@
    ]
   },
   {
-   "id": "respek|mo|valiu blong man mo woman mo long ikwol raet blong man mo woman",
-   "subject": "respek",
-   "verb": "mo",
-   "object": "valiu blong man mo woman mo long ikwol raet blong man mo woman",
+   "id": "oli disaed|blong|promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom",
+   "subject": "oli disaed",
+   "verb": "blong",
+   "object": "promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#1128-1445",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
      "text": "From se ol pipol blong Unaeted Neisen oli talem bakegen insaed long Jata strong tingting blong olgeta long ol stamba raet blong man mo woman, respek mo valiu blong man mo woman mo long ikwol raet blong man mo woman, oli disaed blong promotem sosol progres mo ol standed blong laef we i moa gud mo we i gat moa fridom,"
-    },
+    }
+   ]
+  },
+  {
+   "id": "olsem slev|blong|hem",
+   "subject": "olsem slev",
+   "verb": "blong",
+   "object": "hem",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#3297-3361",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Bambae man i no tekem narafala man o woman olsem slev blong hem."
+    }
+   ]
+  },
+  {
+   "id": "or korespondens|blong|narafala man o woman folem tingting blong hem",
+   "subject": "or korespondens",
+   "verb": "blong",
+   "object": "narafala man o woman folem tingting blong hem",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
     {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#5557-5749",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
@@ -2245,7 +2044,7 @@
    "verb": "blong",
    "object": "no luksave mo no respektem ol raet blong man mo woman i mekem se i gat ol nogud aksen i tekemples we oli mekem se pipol i kros",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2257,131 +2056,6 @@
      "at": "06-government-legal/un-udhr/udhr-bis.txt#780-1023",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
      "text": "From se hemi wan impoten samting, sipos man i no fos blong lukaotem help, olsem wan las aksen we hemi save mekem, blong faet agensem rabis fasin blong spoelem no fosem pipol hemia blong mekem nomo se Loa i protektem ol raet blong man mo woman,"
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#4476-4661",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae man o woman i no save arestem narafala man o woman long fasin we i folem tingting blong hem nomo, fasin blong givim panismen o fasin blong mekem man i stap hemwan olsem panismen."
-    }
-   ]
-  },
-  {
-   "id": "sipos man|i|no fos blong lukaotem help",
-   "subject": "sipos man",
-   "verb": "i",
-   "object": "no fos blong lukaotem help",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#780-1023",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "From se hemi wan impoten samting, sipos man i no fos blong lukaotem help, olsem wan las aksen we hemi save mekem, blong faet agensem rabis fasin blong spoelem no fosem pipol hemia blong mekem nomo se Loa i protektem ol raet blong man mo woman,"
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#3297-3361",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae man i no tekem narafala man o woman olsem slev blong hem."
-    }
-   ]
-  },
-  {
-   "id": "soem rilijen|blong|hem tru long fasin we hemi tijim",
-   "subject": "soem rilijen",
-   "verb": "blong",
-   "object": "hem tru long fasin we hemi tijim",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
-    }
-   ]
-  },
-  {
-   "id": "wan man|o|woman i no save mekem eni difrens long level blong politik",
-   "subject": "wan man",
-   "verb": "o",
-   "object": "woman i no save mekem eni difrens long level blong politik",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#4476-4661",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae man o woman i no save arestem narafala man o woman long fasin we i folem tingting blong hem nomo, fasin blong givim panismen o fasin blong mekem man i stap hemwan olsem panismen."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#5231-5414",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae man o woman i no gilti from wan rong we hemi mekem o wan aksen we hemi no mekem we i no wan rong folem nasonal mo intenasonal loa, long taem we man o woman ia i mekem aksen ia."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#5557-5749",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae man o woman i no save intefea wetem praevet laef, famili, hom or korespondens blong narafala man o woman folem tingting blong hem, mo no save spolem hae respek mo gudfala nem blong hem."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#6343-6532",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Man o woman i no save yusum raet ia taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong Unaeted Neisesn."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#6626-6776",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Bambae wan man o woman i nogat raet blong kiaman long wan man o woman long nasonaliti blong hem o kiaman long raet blong jenisim nasonaliti blong hem."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#7424-7539",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Folem tingting blong hem, bambae wan man o woman i no save kiaman long narafala man o woman from propeti blong hem."
-    }
-   ]
-  },
-  {
-   "id": "wan taem|i|kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem",
-   "subject": "wan taem",
-   "verb": "i",
-   "object": "kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#432-772",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "From se fasin blong no luksave mo no respektem ol raet blong man mo woman i mekem se i gat ol nogud aksen i tekemples we oli mekem se pipol i kros, mo bambae wan taem i kam we pipol bambae i glad long fridom blong toktok mo biliv blong hem, fridom blong no fraet mo wantem samting hemi kamaot olsem nambawan tingting blong ol grasrut pipol,"
-    }
-   ]
-  },
-  {
-   "id": "wanwan man|mo|woman insaed long sosaeti oli tingting oltaem long deklereisen ia",
-   "subject": "wanwan man",
-   "verb": "mo",
-   "object": "woman insaed long sosaeti oli tingting oltaem long Deklereisen ia",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#1819-2365",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Deklereisen blong ol Raet blong evri Man mo Woman Raon long Wol olsem wan impoten samting we evri pipol mo evri kaontri long wol oli mas kasem, blong mekem se wanwan man mo woman insaed long sosaeti oli tingting oltaem long Deklereisen ia, bambae oli wok had tru long tijing mo edukeisen blong leftemap resek long ol raet mo fridom ia mo tru ol step we oli tekem long nasonol mo intenasonol level, blong mekem se ol pipol blong ol Memba Kaontri mo ol pipol blong ol teritori we oli stap anda long olgeta blong oli luksave mo folem Deklereisen ia."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2392-2452",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evri man mo woman i bon fri mo ikwol long respek mo ol raet."
     },
     {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#3501-3743",
@@ -2389,61 +2063,19 @@
      "text": "Bambae man mo woman i no save mekem fasin blong mekem narafala man o woman i safa o mekem rabis fasin long hem, fasin we i nogud long man o woman o tritim man o woman long fasin o panismen we i soem se man o woman i luk daon long man o woman."
     },
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#3895-4009",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#4476-4661",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evri man mo woman i semak folem loa mo oli gat semak raet wetaot eni diskrismineisen blong loa i protektem olgeta."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#4010-4240",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evri man mo woman oli gat raet blong loa ia i protektem olgeta long ikwol fasin agensem diskrimineisen long taem we man mo woman i brekem wan pat blong Deklereisen ia mo agensem eni fasin blong mekem se i gat diskrimineisen olsem."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#6812-6938",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evri man mo woman long evri eij, nomata wanem reis, nasonaliti o rilijen, oli gat raet blong maret mo blong statem wan famili."
+     "text": "Bambae man o woman i no save arestem narafala man o woman long fasin we i folem tingting blong hem nomo, fasin blong givim panismen o fasin blong mekem man i stap hemwan olsem panismen."
     }
    ]
   },
   {
-   "id": "we man|i|bon long hem o emi narafala sosol saed olsem",
-   "subject": "we man",
-   "verb": "i",
-   "object": "bon long hem o emi narafala sosol saed olsem",
+   "id": "se kaontri|blong|hem tu mo blong hemi go bak long kaontri blong hem",
+   "subject": "se kaontri",
+   "verb": "blong",
+   "object": "hem tu mo blong hemi go bak long kaontri blong hem",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
-    }
-   ]
-  },
-  {
-   "id": "we|i|kamaot long saed blong neisen o sosol",
-   "subject": "we",
-   "verb": "i",
-   "object": "kamaot long saed blong neisen o sosol",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2567-2873",
-     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Evriwan i gat raet long evri raet mo fridom we i stap long Deklereisen ia, wetaot eni kaen difrens, olsem long reis, kala blong skin, seks, langwis, rilijen, politikol o narafala kaen tingting, we i kamaot long saed blong neisen o sosol, propeti, taem we man i bon long hem o emi narafala sosol saed olsem."
-    }
-   ]
-  },
-  {
-   "id": "we|i|minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem",
-   "subject": "we",
-   "verb": "i",
-   "object": "minim se kaontri blong hem tu mo blong hemi go bak long kaontri blong hem",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2454,30 +2086,51 @@
    ]
   },
   {
-   "id": "wok hem|i|kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia",
-   "subject": "wok hem",
-   "verb": "i",
-   "object": "kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia",
+   "id": "soem rilijen|blong|hem tru long fasin we hemi tijim",
+   "subject": "soem rilijen",
+   "verb": "blong",
+   "object": "hem tru long fasin we hemi tijim",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-bis.txt#2881-3175",
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
-     "text": "Andap long hemia, bambae wan man o woman i no save mekem eni difrens long level blong politik, eria we wok hem i kavremap o intenasonol level blong kaontri o teritori blong narafala man o woman ia, nomata we hemi indipenden, tras, non-self-gavening o anda eni narafala arenjmen blong soverenti."
+     "text": "Evriwan i gat raet long fridom blong tingting, fridom blong morol tingting blong jasmen mo rilijen; raet ia hemi kavremap fridom blong jenisim rilijen o bilif blong hem, mo fridom blong hem hemwan o tugeta wetem ol narafala man o woman long komuniti mo long pablik o praevet laef, blong soem rilijen blong hem tru long fasin we hemi tijim, praktisim, wosip mo folem ol tijing blong rilijen blong hem o biliv blong hem."
     }
    ]
   },
   {
-   "id": "wosip|mo|folem ol tijing blong rilijen blong hem o biliv blong hem",
-   "subject": "wosip",
-   "verb": "mo",
-   "object": "folem ol tijing blong rilijen blong hem o biliv blong hem",
+   "id": "tingting mo|oli|mas tritim wanwan long olgeta olsem ol brata mo sista",
+   "subject": "tingting mo",
+   "verb": "oli",
+   "object": "mas tritim wanwan long olgeta olsem ol brata mo sista",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bis.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
    ],
    "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#2453-2540",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Oli gat risen mo tingting mo oli mas tritim wanwan long olgeta olsem ol brata mo sista."
+    }
+   ]
+  },
+  {
+   "id": "yusum raet|ia|taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong unaeted neisesn",
+   "subject": "yusum raet",
+   "verb": "ia",
+   "object": "taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong Unaeted Neisesn",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-bis.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-bis.txt#6343-6532",
+     "ref": "06-government-legal/un-udhr/udhr-bis.txt",
+     "text": "Man o woman i no save yusum raet ia taem i gat prosekusen we i kamaot folem ol kraem we oli no kamaot from politik o from ol aksen we oli no folem ol eim mo prinsipol blong Unaeted Neisesn."
+    },
     {
      "at": "06-government-legal/un-udhr/udhr-bis.txt#7569-7987",
      "ref": "06-government-legal/un-udhr/udhr-bis.txt",
@@ -2487,7 +2140,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:57.695Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:34.216Z"
  }
 }

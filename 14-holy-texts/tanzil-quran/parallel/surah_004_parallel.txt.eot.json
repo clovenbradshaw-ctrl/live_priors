@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 79201,
   "bodyOffset": 0,
   "bodyChars": 79201,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 5,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 35,
-  "extractionError": null
+  "edgesFound": 24,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 4,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 6
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 24,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 42,
-  "excerptOk": 42,
-  "rawChecked": 42,
-  "rawOk": 42,
+  "excerptChecked": 30,
+  "excerptOk": 30,
+  "rawChecked": 30,
+  "rawOk": 30,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 35,
-  "heard": 35,
+  "offered": 24,
+  "heard": 24,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "one soul|and|created from it its mate and dispersed from both of them many men and women",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "one soul and created from it its mate and dispersed from both of them many men and women",
-    "subject": "one soul",
-    "verb": "and",
-    "object": "created from it its mate and dispersed from both of them many men and women",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#59-521",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "[1] AR: بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ يَٰٓأَيُّهَا ٱلنَّاسُ ٱتَّقُوا۟ رَبَّكُمُ ٱلَّذِى خَلَقَكُم مِّن نَّفْسٍۢ وَٰحِدَةٍۢ وَخَلَقَ مِنْهَا زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًۭا كَثِيرًۭا وَنِسَآءًۭ ۚ وَٱتَّقُوا۟ ٱللَّهَ ٱلَّذِى تَسَآءَلُونَ بِهِۦ وَٱلْأَرْحَامَ ۚ إِنَّ ٱللَّهَ كَانَ عَلَيْكُمْ رَقِيبًۭا EN: O mankind, fear your Lord, who created you from one soul and created from it its mate and dispersed from both of them many men and women."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "indeed allah|is|ever",
@@ -103,7 +104,7 @@
     "verb": "is",
     "object": "ever",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -117,36 +118,7 @@
       "text": "Indeed, Allah is ever Knowing and Wise."
      }
     ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "their properties|and|do not substitute the defective [of your own] for the good [of theirs]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "their properties and do not substitute the defective [of your own] for the good [of theirs]",
-    "subject": "their properties",
-    "verb": "and",
-    "object": "do not substitute the defective [of your own] for the good [of theirs]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#633-943",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "[2] AR: وَءَاتُوا۟ ٱلْيَتَٰمَىٰٓ أَمْوَٰلَهُمْ ۖ وَلَا تَتَبَدَّلُوا۟ ٱلْخَبِيثَ بِٱلطَّيِّبِ ۖ وَلَا تَأْكُلُوٓا۟ أَمْوَٰلَهُمْ إِلَىٰٓ أَمْوَٰلِكُمْ ۚ إِنَّهُۥ كَانَ حُوبًۭا كَبِيرًۭا EN: And give to the orphans their properties and do not substitute the defective [of your own] for the good [of theirs]."
-     }
-    ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -166,7 +138,7 @@
     "verb": "is",
     "object": "ever a great sin",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -175,7 +147,7 @@
       "text": "Indeed, that is ever a great sin."
      }
     ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -195,7 +167,7 @@
     "verb": "will",
     "object": "not deal justly with the orphan girls",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -209,7 +181,7 @@
       "text": "But if you fear that you will not be just, then [marry only] one or those your right hand possesses."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -229,7 +201,7 @@
     "verb": "is",
     "object": "more suitable that you may not incline [to injustice]",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -238,36 +210,7 @@
       "text": "That is more suitable that you may not incline [to injustice]."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in satisfaction|and|ease",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in satisfaction and ease",
-    "subject": "in satisfaction",
-    "verb": "and",
-    "object": "ease",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#1817-1908",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "But if they give up willingly to you anything of it, then take it in satisfaction and ease."
-     }
-    ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -287,7 +230,7 @@
     "verb": "has",
     "object": "made a means of sustenance for you",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -296,65 +239,7 @@
       "text": "[5] AR: وَلَا تُؤْتُوا۟ ٱلسُّفَهَآءَ أَمْوَٰلَكُمُ ٱلَّتِى جَعَلَ ٱللَّهُ لَكُمْ قِيَٰمًۭا وَٱرْزُقُوهُمْ فِيهَا وَٱكْسُوهُمْ وَقُولُوا۟ لَهُمْ قَوْلًۭا مَّعْرُوفًۭا EN: And do not give the weak-minded your property, which Allah has made a means of sustenance for you, but provide for them with it and clothe them and speak to them words of appropriate kindness."
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with it|and|clothe them and speak to them words of appropriate kindness",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "with it and clothe them and speak to them words of appropriate kindness",
-    "subject": "with it",
-    "verb": "and",
-    "object": "clothe them and speak to them words of appropriate kindness",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#1910-2277",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "[5] AR: وَلَا تُؤْتُوا۟ ٱلسُّفَهَآءَ أَمْوَٰلَكُمُ ٱلَّتِى جَعَلَ ٱللَّهُ لَكُمْ قِيَٰمًۭا وَٱرْزُقُوهُمْ فِيهَا وَٱكْسُوهُمْ وَقُولُوا۟ لَهُمْ قَوْلًۭا مَّعْرُوفًۭا EN: And do not give the weak-minded your property, which Allah has made a means of sustenance for you, but provide for them with it and clothe them and speak to them words of appropriate kindness."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it excessively|and|quickly",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "it excessively and quickly",
-    "subject": "it excessively",
-    "verb": "and",
-    "object": "quickly",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#2844-2929",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "And do not consume it excessively and quickly, [anticipating] that they will grow up."
-     }
-    ],
-    "seq": 9,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -374,7 +259,7 @@
     "verb": "will",
     "object": "grow up",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -383,36 +268,7 @@
       "text": "And do not consume it excessively and quickly, [anticipating] that they will grow up."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "when acting|as|guardian]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "when acting as guardian]",
-    "subject": "when acting",
-    "verb": "as",
-    "object": "guardian]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#2930-3092",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "And whoever, [when acting as guardian], is self-sufficient should refrain [from taking a fee]; and whoever is poor - let him take according to what is acceptable."
-     }
-    ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -432,7 +288,7 @@
     "verb": "is",
     "object": "poor - let him take according to what is acceptable",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -441,7 +297,7 @@
       "text": "And whoever, [when acting as guardian], is self-sufficient should refrain [from taking a fee]; and whoever is poor - let him take according to what is acceptable."
      }
     ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -461,7 +317,7 @@
     "verb": "is",
     "object": "Allah as Accountant",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -470,7 +326,7 @@
       "text": "And sufficient is Allah as Accountant."
      }
     ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -490,7 +346,7 @@
     "verb": "is",
     "object": "a share of what the parents and close relatives leave",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -514,123 +370,7 @@
       "text": "But if you leave a child, then for them is an eighth of what you leave, after any bequest you [may have] made or debt."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "relatives|and|orphans and the needy are present at the [time of] division",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "relatives and orphans and the needy are present at the [time of] division",
-    "subject": "relatives",
-    "verb": "and",
-    "object": "orphans and the needy are present at the [time of] division",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#3600-3950",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "[8] AR: وَإِذَا حَضَرَ ٱلْقِسْمَةَ أُو۟لُوا۟ ٱلْقُرْبَىٰ وَٱلْيَتَٰمَىٰ وَٱلْمَسَٰكِينُ فَٱرْزُقُوهُم مِّنْهُ وَقُولُوا۟ لَهُمْ قَوْلًۭا مَّعْرُوفًۭا EN: And when [other] relatives and orphans and the needy are present at the [time of] division, then provide for them [something] out of the estate and speak to them words of appropriate kindness."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the estate|and|speak to them words of appropriate kindness",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the estate and speak to them words of appropriate kindness",
-    "subject": "the estate",
-    "verb": "and",
-    "object": "speak to them words of appropriate kindness",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#3600-3950",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "[8] AR: وَإِذَا حَضَرَ ٱلْقِسْمَةَ أُو۟لُوا۟ ٱلْقُرْبَىٰ وَٱلْيَتَٰمَىٰ وَٱلْمَسَٰكِينُ فَٱرْزُقُوهُم مِّنْهُ وَقُولُوا۟ لَهُمْ قَوْلًۭا مَّعْرُوفًۭا EN: And when [other] relatives and orphans and the needy are present at the [time of] division, then provide for them [something] out of the estate and speak to them words of appropriate kindness."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "executors|and|guardians] fear [injustice] as if they [themselves] had left weak offspring behind and feared for them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "executors and guardians] fear [injustice] as if they [themselves] had left weak offspring behind and feared for them",
-    "subject": "executors",
-    "verb": "and",
-    "object": "guardians] fear [injustice] as if they [themselves] had left weak offspring behind and feared for them",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#3952-4249",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "[9] AR: وَلْيَخْشَ ٱلَّذِينَ لَوْ تَرَكُوا۟ مِنْ خَلْفِهِمْ ذُرِّيَّةًۭ ضِعَٰفًا خَافُوا۟ عَلَيْهِمْ فَلْيَتَّقُوا۟ ٱللَّهَ وَلْيَقُولُوا۟ قَوْلًۭا سَدِيدًا EN: And let those [executors and guardians] fear [injustice] as if they [themselves] had left weak offspring behind and feared for them."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fear allah|and|speak words of appropriate justice",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fear Allah and speak words of appropriate justice",
-    "subject": "fear Allah",
-    "verb": "and",
-    "object": "speak words of appropriate justice",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#4250-4312",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "So let them fear Allah and speak words of appropriate justice."
-     }
-    ],
-    "seq": 18,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -650,7 +390,7 @@
     "verb": "will",
     "object": "be burned in a Blaze",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -659,7 +399,7 @@
       "text": "And they will be burned in a Blaze."
      }
     ],
-    "seq": 19,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -679,7 +419,7 @@
     "verb": "instructs",
     "object": "you concerning your children: for the male",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -688,7 +428,7 @@
       "text": "[11] AR: يُوصِيكُمُ ٱللَّهُ فِىٓ أَوْلَٰدِكُمْ ۖ لِلذَّكَرِ مِثْلُ حَظِّ ٱلْأُنثَيَيْنِ ۚ فَإِن كُنَّ نِسَآءًۭ فَوْقَ ٱثْنَتَيْنِ فَلَهُنَّ ثُلُثَا مَا تَرَكَ ۖ وَإِن كَانَتْ وَٰحِدَةًۭ فَلَهَا ٱلنِّصْفُ ۚ وَلِأَبَوَيْهِ لِكُلِّ وَٰحِدٍۢ مِّنْهُمَا ٱلسُّدُسُ مِمَّا تَرَكَ إِن كَانَ لَهُۥ وَلَدٌۭ ۚ فَإِن لَّمْ يَكُن لَّهُۥ وَلَدٌۭ وَوَرِثَهُۥٓ أَبَوَاهُ فَلِأُمِّهِ ٱلثُّلُثُ ۚ فَإِن كَانَ لَهُۥٓ إِخْوَةٌۭ فَلِأُمِّهِ ٱلسُّدُسُ ۚ مِنۢ بَعْدِ وَصِيَّةٍۢ يُوصِى بِهَآ أَوْ دَيْنٍ ۗ ءَابَآؤُكُمْ وَأَبْنَآؤُكُمْ لَا تَدْرُونَ أَيُّهُمْ أَقْرَبُ لَكُمْ نَفْعًۭا ۚ فَرِيضَةًۭ مِّنَ ٱللَّهِ ۗ إِنَّ ٱللَّهَ كَانَ عَلِيمًا حَكِيمًۭا EN: Allah instructs you concerning your children: for the male, what is equal to the share of two females."
      }
     ],
-    "seq": 20,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -708,7 +448,7 @@
     "verb": "is",
     "object": "equal to the share of two females",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -717,7 +457,7 @@
       "text": "[11] AR: يُوصِيكُمُ ٱللَّهُ فِىٓ أَوْلَٰدِكُمْ ۖ لِلذَّكَرِ مِثْلُ حَظِّ ٱلْأُنثَيَيْنِ ۚ فَإِن كُنَّ نِسَآءًۭ فَوْقَ ٱثْنَتَيْنِ فَلَهُنَّ ثُلُثَا مَا تَرَكَ ۖ وَإِن كَانَتْ وَٰحِدَةًۭ فَلَهَا ٱلنِّصْفُ ۚ وَلِأَبَوَيْهِ لِكُلِّ وَٰحِدٍۢ مِّنْهُمَا ٱلسُّدُسُ مِمَّا تَرَكَ إِن كَانَ لَهُۥ وَلَدٌۭ ۚ فَإِن لَّمْ يَكُن لَّهُۥ وَلَدٌۭ وَوَرِثَهُۥٓ أَبَوَاهُ فَلِأُمِّهِ ٱلثُّلُثُ ۚ فَإِن كَانَ لَهُۥٓ إِخْوَةٌۭ فَلِأُمِّهِ ٱلسُّدُسُ ۚ مِنۢ بَعْدِ وَصِيَّةٍۢ يُوصِى بِهَآ أَوْ دَيْنٍ ۗ ءَابَآؤُكُمْ وَأَبْنَآؤُكُمْ لَا تَدْرُونَ أَيُّهُمْ أَقْرَبُ لَكُمْ نَفْعًۭا ۚ فَرِيضَةًۭ مِّنَ ٱللَّهِ ۗ إِنَّ ٱللَّهَ كَانَ عَلِيمًا حَكِيمًۭا EN: Allah instructs you concerning your children: for the male, what is equal to the share of two females."
      }
     ],
-    "seq": 21,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -737,7 +477,7 @@
     "verb": "is",
     "object": "two thirds of one's estate",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -751,7 +491,7 @@
       "text": "And for one's parents, to each one of them is a sixth of his estate if he left children."
      }
     ],
-    "seq": 22,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -771,7 +511,7 @@
     "verb": "is",
     "object": "only one",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -780,7 +520,7 @@
       "text": "And if there is only one, for her is half."
      }
     ],
-    "seq": 23,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -800,7 +540,7 @@
     "verb": "is",
     "object": "half",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -809,36 +549,7 @@
       "text": "And if there is only one, for her is half."
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "no children|and|the parents [alone] inherit from him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "no children and the parents [alone] inherit from him",
-    "subject": "no children",
-    "verb": "and",
-    "object": "the parents [alone] inherit from him",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#5564-5665",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "But if he had no children and the parents [alone] inherit from him, then for his mother is one third."
-     }
-    ],
-    "seq": 25,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -858,7 +569,7 @@
     "verb": "is",
     "object": "one third",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -867,7 +578,7 @@
       "text": "But if he had no children and the parents [alone] inherit from him, then for his mother is one third."
      }
     ],
-    "seq": 26,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -887,7 +598,7 @@
     "verb": "is",
     "object": "a sixth",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -896,7 +607,7 @@
       "text": "And if he had brothers [or sisters], for his mother is a sixth, after any bequest he [may have] made or debt."
      }
     ],
-    "seq": 27,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -916,7 +627,7 @@
     "verb": "is",
     "object": "one fourth if you leave no child",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -925,7 +636,7 @@
       "text": "And for the wives is one fourth if you leave no child."
      }
     ],
-    "seq": 28,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -945,7 +656,7 @@
     "verb": "has",
     "object": "a brother or a sister",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -954,7 +665,7 @@
       "text": "And if a man or woman leaves neither ascendants nor descendants but has a brother or a sister, then for each one of them is a sixth."
      }
     ],
-    "seq": 29,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -974,7 +685,7 @@
     "verb": "is",
     "object": "a sixth",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -983,13 +694,13 @@
       "text": "And if a man or woman leaves neither ascendants nor descendants but has a brother or a sister, then for each one of them is a sixth."
      }
     ],
-    "seq": 30,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "as long|as|there is no detriment [caused]",
+    "task_id": "as there|is|no detriment [caused]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -998,12 +709,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "as long as there is no detriment [caused]",
-    "subject": "as long",
-    "verb": "as",
-    "object": "there is no detriment [caused]",
+    "description": "as there is no detriment [caused]",
+    "subject": "as there",
+    "verb": "is",
+    "object": "no detriment [caused]",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1012,7 +723,7 @@
       "text": "But if they are more than two, they share a third, after any bequest which was made or debt, as long as there is no detriment [caused]."
      }
     ],
-    "seq": 31,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1032,7 +743,7 @@
     "verb": "is",
     "object": "Knowing and Forbearing",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1041,13 +752,13 @@
       "text": "[This is] an ordinance from Allah, and Allah is Knowing and Forbearing."
      }
     ],
-    "seq": 32,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "obeys allah|and|his messenger will be admitted by him to gardens [in paradise] under which rivers flow",
+    "task_id": "his messenger|will|be admitted by him to gardens [in paradise] under which rivers flow",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1056,26 +767,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "obeys Allah and His Messenger will be admitted by Him to gardens [in Paradise] under which rivers flow",
-    "subject": "obeys Allah",
-    "verb": "and",
-    "object": "His Messenger will be admitted by Him to gardens [in Paradise] under which rivers flow",
+    "description": "His Messenger will be admitted by Him to gardens [in Paradise] under which rivers flow",
+    "subject": "His Messenger",
+    "verb": "will",
+    "object": "be admitted by Him to gardens [in Paradise] under which rivers flow",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#7385-7781",
       "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
       "text": "[13] AR: تِلْكَ حُدُودُ ٱللَّهِ ۚ وَمَن يُطِعِ ٱللَّهَ وَرَسُولَهُۥ يُدْخِلْهُ جَنَّٰتٍۢ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَٰرُ خَٰلِدِينَ فِيهَا ۚ وَذَٰلِكَ ٱلْفَوْزُ ٱلْعَظِيمُ EN: These are the limits [set by] Allah, and whoever obeys Allah and His Messenger will be admitted by Him to gardens [in Paradise] under which rivers flow, abiding eternally therein; and that is the great attainment."
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#7783-8000",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-      "text": "[14] AR: وَمَن يَعْصِ ٱللَّهَ وَرَسُولَهُۥ وَيَتَعَدَّ حُدُودَهُۥ يُدْخِلْهُ نَارًا خَٰلِدًۭا فِيهَا وَلَهُۥ عَذَابٌۭ مُّهِينٌۭ EN: And whoever disobeys Allah and His Messenger and transgresses His limits - He wil"
      }
     ],
-    "seq": 33,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1095,7 +801,7 @@
     "verb": "is",
     "object": "the great attainment",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1104,12 +810,12 @@
       "text": "[13] AR: تِلْكَ حُدُودُ ٱللَّهِ ۚ وَمَن يُطِعِ ٱللَّهَ وَرَسُولَهُۥ يُدْخِلْهُ جَنَّٰتٍۢ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَٰرُ خَٰلِدِينَ فِيهَا ۚ وَذَٰلِكَ ٱلْفَوْزُ ٱلْعَظِيمُ EN: These are the limits [set by] Allah, and whoever obeys Allah and His Messenger will be admitted by Him to gardens [in Paradise] under which rivers flow, abiding eternally therein; and that is the great attainment."
      }
     ],
-    "seq": 34,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 35,
+  "nextSeq": 24,
   "admits": [
    "NUL",
    "SEG",
@@ -1129,7 +835,7 @@
    "verb": "instructs",
    "object": "you concerning your children: for the male",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1145,7 +851,7 @@
    "verb": "is",
    "object": "Knowing and Forbearing",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1161,7 +867,7 @@
    "verb": "is",
    "object": "Allah as Accountant",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1177,7 +883,7 @@
    "verb": "is",
    "object": "the great attainment",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1193,7 +899,7 @@
    "verb": "will",
    "object": "be burned in a Blaze",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1209,7 +915,7 @@
    "verb": "is",
    "object": "poor - let him take according to what is acceptable",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1220,12 +926,12 @@
    ]
   },
   {
-   "id": "as long|as|there is no detriment [caused]",
-   "subject": "as long",
-   "verb": "as",
-   "object": "there is no detriment [caused]",
+   "id": "as there|is|no detriment [caused]",
+   "subject": "as there",
+   "verb": "is",
+   "object": "no detriment [caused]",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1241,7 +947,7 @@
    "verb": "has",
    "object": "a brother or a sister",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1252,44 +958,12 @@
    ]
   },
   {
-   "id": "executors|and|guardians] fear [injustice] as if they [themselves] had left weak offspring behind and feared for them",
-   "subject": "executors",
-   "verb": "and",
-   "object": "guardians] fear [injustice] as if they [themselves] had left weak offspring behind and feared for them",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#3952-4249",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "[9] AR: وَلْيَخْشَ ٱلَّذِينَ لَوْ تَرَكُوا۟ مِنْ خَلْفِهِمْ ذُرِّيَّةًۭ ضِعَٰفًا خَافُوا۟ عَلَيْهِمْ فَلْيَتَّقُوا۟ ٱللَّهَ وَلْيَقُولُوا۟ قَوْلًۭا سَدِيدًا EN: And let those [executors and guardians] fear [injustice] as if they [themselves] had left weak offspring behind and feared for them."
-    }
-   ]
-  },
-  {
-   "id": "fear allah|and|speak words of appropriate justice",
-   "subject": "fear Allah",
-   "verb": "and",
-   "object": "speak words of appropriate justice",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#4250-4312",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "So let them fear Allah and speak words of appropriate justice."
-    }
-   ]
-  },
-  {
    "id": "for her|is|half",
    "subject": "for her",
    "verb": "is",
    "object": "half",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1305,7 +979,7 @@
    "verb": "is",
    "object": "a share of what the parents and close relatives leave",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1336,7 +1010,7 @@
    "verb": "is",
    "object": "two thirds of one's estate",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1352,12 +1026,28 @@
    ]
   },
   {
+   "id": "his messenger|will|be admitted by him to gardens [in paradise] under which rivers flow",
+   "subject": "His Messenger",
+   "verb": "will",
+   "object": "be admitted by Him to gardens [in Paradise] under which rivers flow",
+   "witnesses": [
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#7385-7781",
+     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
+     "text": "[13] AR: تِلْكَ حُدُودُ ٱللَّهِ ۚ وَمَن يُطِعِ ٱللَّهَ وَرَسُولَهُۥ يُدْخِلْهُ جَنَّٰتٍۢ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَٰرُ خَٰلِدِينَ فِيهَا ۚ وَذَٰلِكَ ٱلْفَوْزُ ٱلْعَظِيمُ EN: These are the limits [set by] Allah, and whoever obeys Allah and His Messenger will be admitted by Him to gardens [in Paradise] under which rivers flow, abiding eternally therein; and that is the great attainment."
+    }
+   ]
+  },
+  {
    "id": "his mother|is|a sixth",
    "subject": "his mother",
    "verb": "is",
    "object": "a sixth",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1373,7 +1063,7 @@
    "verb": "is",
    "object": "one third",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1389,7 +1079,7 @@
    "verb": "is",
    "object": "only one",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1400,28 +1090,12 @@
    ]
   },
   {
-   "id": "in satisfaction|and|ease",
-   "subject": "in satisfaction",
-   "verb": "and",
-   "object": "ease",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#1817-1908",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "But if they give up willingly to you anything of it, then take it in satisfaction and ease."
-    }
-   ]
-  },
-  {
    "id": "indeed allah|is|ever",
    "subject": "Indeed Allah",
    "verb": "is",
    "object": "ever",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1437,65 +1111,12 @@
    ]
   },
   {
-   "id": "it excessively|and|quickly",
-   "subject": "it excessively",
-   "verb": "and",
-   "object": "quickly",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#2844-2929",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "And do not consume it excessively and quickly, [anticipating] that they will grow up."
-    }
-   ]
-  },
-  {
-   "id": "no children|and|the parents [alone] inherit from him",
-   "subject": "no children",
-   "verb": "and",
-   "object": "the parents [alone] inherit from him",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#5564-5665",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "But if he had no children and the parents [alone] inherit from him, then for his mother is one third."
-    }
-   ]
-  },
-  {
-   "id": "obeys allah|and|his messenger will be admitted by him to gardens [in paradise] under which rivers flow",
-   "subject": "obeys Allah",
-   "verb": "and",
-   "object": "His Messenger will be admitted by Him to gardens [in Paradise] under which rivers flow",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#7385-7781",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "[13] AR: تِلْكَ حُدُودُ ٱللَّهِ ۚ وَمَن يُطِعِ ٱللَّهَ وَرَسُولَهُۥ يُدْخِلْهُ جَنَّٰتٍۢ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَٰرُ خَٰلِدِينَ فِيهَا ۚ وَذَٰلِكَ ٱلْفَوْزُ ٱلْعَظِيمُ EN: These are the limits [set by] Allah, and whoever obeys Allah and His Messenger will be admitted by Him to gardens [in Paradise] under which rivers flow, abiding eternally therein; and that is the great attainment."
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#7783-8000",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "[14] AR: وَمَن يَعْصِ ٱللَّهَ وَرَسُولَهُۥ وَيَتَعَدَّ حُدُودَهُۥ يُدْخِلْهُ نَارًا خَٰلِدًۭا فِيهَا وَلَهُۥ عَذَابٌۭ مُّهِينٌۭ EN: And whoever disobeys Allah and His Messenger and transgresses His limits - He wil"
-    }
-   ]
-  },
-  {
    "id": "of them|is|a sixth",
    "subject": "of them",
    "verb": "is",
    "object": "a sixth",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1506,44 +1127,12 @@
    ]
   },
   {
-   "id": "one soul|and|created from it its mate and dispersed from both of them many men and women",
-   "subject": "one soul",
-   "verb": "and",
-   "object": "created from it its mate and dispersed from both of them many men and women",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#59-521",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "[1] AR: بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ يَٰٓأَيُّهَا ٱلنَّاسُ ٱتَّقُوا۟ رَبَّكُمُ ٱلَّذِى خَلَقَكُم مِّن نَّفْسٍۢ وَٰحِدَةٍۢ وَخَلَقَ مِنْهَا زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًۭا كَثِيرًۭا وَنِسَآءًۭ ۚ وَٱتَّقُوا۟ ٱللَّهَ ٱلَّذِى تَسَآءَلُونَ بِهِۦ وَٱلْأَرْحَامَ ۚ إِنَّ ٱللَّهَ كَانَ عَلَيْكُمْ رَقِيبًۭا EN: O mankind, fear your Lord, who created you from one soul and created from it its mate and dispersed from both of them many men and women."
-    }
-   ]
-  },
-  {
-   "id": "relatives|and|orphans and the needy are present at the [time of] division",
-   "subject": "relatives",
-   "verb": "and",
-   "object": "orphans and the needy are present at the [time of] division",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#3600-3950",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "[8] AR: وَإِذَا حَضَرَ ٱلْقِسْمَةَ أُو۟لُوا۟ ٱلْقُرْبَىٰ وَٱلْيَتَٰمَىٰ وَٱلْمَسَٰكِينُ فَٱرْزُقُوهُم مِّنْهُ وَقُولُوا۟ لَهُمْ قَوْلًۭا مَّعْرُوفًۭا EN: And when [other] relatives and orphans and the needy are present at the [time of] division, then provide for them [something] out of the estate and speak to them words of appropriate kindness."
-    }
-   ]
-  },
-  {
    "id": "that they|will|grow up",
    "subject": "that they",
    "verb": "will",
    "object": "grow up",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1559,7 +1148,7 @@
    "verb": "will",
    "object": "not deal justly with the orphan girls",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1580,7 +1169,7 @@
    "verb": "is",
    "object": "ever a great sin",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1596,7 +1185,7 @@
    "verb": "is",
    "object": "more suitable that you may not incline [to injustice]",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1607,28 +1196,12 @@
    ]
   },
   {
-   "id": "the estate|and|speak to them words of appropriate kindness",
-   "subject": "the estate",
-   "verb": "and",
-   "object": "speak to them words of appropriate kindness",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#3600-3950",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "[8] AR: وَإِذَا حَضَرَ ٱلْقِسْمَةَ أُو۟لُوا۟ ٱلْقُرْبَىٰ وَٱلْيَتَٰمَىٰ وَٱلْمَسَٰكِينُ فَٱرْزُقُوهُم مِّنْهُ وَقُولُوا۟ لَهُمْ قَوْلًۭا مَّعْرُوفًۭا EN: And when [other] relatives and orphans and the needy are present at the [time of] division, then provide for them [something] out of the estate and speak to them words of appropriate kindness."
-    }
-   ]
-  },
-  {
    "id": "the wives|is|one fourth if you leave no child",
    "subject": "the wives",
    "verb": "is",
    "object": "one fourth if you leave no child",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1639,28 +1212,12 @@
    ]
   },
   {
-   "id": "their properties|and|do not substitute the defective [of your own] for the good [of theirs]",
-   "subject": "their properties",
-   "verb": "and",
-   "object": "do not substitute the defective [of your own] for the good [of theirs]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#633-943",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "[2] AR: وَءَاتُوا۟ ٱلْيَتَٰمَىٰٓ أَمْوَٰلَهُمْ ۖ وَلَا تَتَبَدَّلُوا۟ ٱلْخَبِيثَ بِٱلطَّيِّبِ ۖ وَلَا تَأْكُلُوٓا۟ أَمْوَٰلَهُمْ إِلَىٰٓ أَمْوَٰلِكُمْ ۚ إِنَّهُۥ كَانَ حُوبًۭا كَبِيرًۭا EN: And give to the orphans their properties and do not substitute the defective [of your own] for the good [of theirs]."
-    }
-   ]
-  },
-  {
    "id": "what|is|equal to the share of two females",
    "subject": "what",
    "verb": "is",
    "object": "equal to the share of two females",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1671,44 +1228,12 @@
    ]
   },
   {
-   "id": "when acting|as|guardian]",
-   "subject": "when acting",
-   "verb": "as",
-   "object": "guardian]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#2930-3092",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "And whoever, [when acting as guardian], is self-sufficient should refrain [from taking a fee]; and whoever is poor - let him take according to what is acceptable."
-    }
-   ]
-  },
-  {
    "id": "which allah|has|made a means of sustenance for you",
    "subject": "which Allah",
    "verb": "has",
    "object": "made a means of sustenance for you",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt#1910-2277",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt",
-     "text": "[5] AR: وَلَا تُؤْتُوا۟ ٱلسُّفَهَآءَ أَمْوَٰلَكُمُ ٱلَّتِى جَعَلَ ٱللَّهُ لَكُمْ قِيَٰمًۭا وَٱرْزُقُوهُمْ فِيهَا وَٱكْسُوهُمْ وَقُولُوا۟ لَهُمْ قَوْلًۭا مَّعْرُوفًۭا EN: And do not give the weak-minded your property, which Allah has made a means of sustenance for you, but provide for them with it and clothe them and speak to them words of appropriate kindness."
-    }
-   ]
-  },
-  {
-   "id": "with it|and|clothe them and speak to them words of appropriate kindness",
-   "subject": "with it",
-   "verb": "and",
-   "object": "clothe them and speak to them words of appropriate kindness",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_004_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1720,7 +1245,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:53.244Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:51.362Z"
  }
 }

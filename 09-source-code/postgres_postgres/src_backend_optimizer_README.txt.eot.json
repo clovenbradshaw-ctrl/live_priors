@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 87263,
   "bodyOffset": 0,
   "bodyChars": 87263,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,85 +55,39 @@
   "referentEvents": 3,
   "distinctReferents": 3,
   "examined": true,
-  "edgesFound": 46,
-  "extractionError": null
+  "edgesFound": 8,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 2,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 13
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 8,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 49,
-  "excerptOk": 49,
-  "rawChecked": 49,
-  "rawOk": 49,
+  "excerptChecked": 8,
+  "excerptOk": 8,
+  "rawChecked": 8,
+  "rawOk": 8,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 46,
-  "heard": 46,
+  "offered": 8,
+  "heard": 8,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "the query|structure|returned by the parser",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Query structure returned by the parser",
-    "subject": "the Query",
-    "verb": "structure",
-    "object": "returned by the parser",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#51-159",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "These directories take the Query structure returned by the parser, and generate a plan used by the executor."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "preprocessing steps|for|special cases",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "preprocessing steps for special cases",
-    "subject": "preprocessing steps",
-    "verb": "for",
-    "object": "special cases",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#161-342",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "The /plan directory generates the actual output plan, the /path code generates all possible ways to join the tables, and /prep handles various preprocessing steps for special cases."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "util|is|utility stuff",
@@ -132,7 +104,7 @@
     "verb": "is",
     "object": "utility stuff",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,36 +113,7 @@
       "text": "/util is utility stuff."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the join|tree|space",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the join tree space",
-    "subject": "the join",
-    "verb": "tree",
-    "object": "space",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#368-544",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "/geqo is the separate \"genetic optimization\" planner --- it does a semi-random search through the join tree space, rather than exhaustively considering all possible join trees."
-     }
-    ],
-    "seq": 3,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +133,7 @@
     "verb": "is",
     "object": "given to /path to create paths for",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,94 +142,7 @@
       "text": "(But each join considered by /geqo is given to /path to create paths for, so we consider all possible implementation paths for each specific join pair even in GEQO mode.)"
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "implementation paths|for|each specific join pair even in geqo mode",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "implementation paths for each specific join pair even in GEQO mode",
-    "subject": "implementation paths",
-    "verb": "for",
-    "object": "each specific join pair even in GEQO mode",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#546-716",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "(But each join considered by /geqo is given to /path to create paths for, so we consider all possible implementation paths for each specific join pair even in GEQO mode.)"
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the\npath|and|plan trees",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the\nPath and Plan trees",
-    "subject": "the\nPath",
-    "verb": "and",
-    "object": "Plan trees",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#989-1212",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "(There is pretty nearly a one-to-one correspondence between the Path and Plan trees, but Path nodes omit info that won't be needed during planning, and include info needed for planning that won't be needed by the executor.)"
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "subquery subselects|that|are planned via a separate recursive invocation of the planner",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "subquery subselects that are planned via a separate recursive invocation of the planner",
-    "subject": "subquery subselects",
-    "verb": "that",
-    "object": "are planned via a separate recursive invocation of the planner",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1301-1431",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Base rels are either primitive tables, or subquery subselects that are planned via a separate recursive invocation of the planner."
-     }
-    ],
-    "seq": 7,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +162,7 @@
     "verb": "is",
     "object": "simply a combination of base rels",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,13 +171,13 @@
       "text": "A join rel is simply a combination of base rels."
      }
     ],
-    "seq": 8,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "join reloptinfo|for|any given set of baserels --- for example",
+    "task_id": "one\nthat|is|cheapest according to the planner's cost estimates",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -330,128 +186,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "join RelOptInfo for any given set of baserels --- for example",
-    "subject": "join RelOptInfo",
-    "verb": "for",
-    "object": "any given set of baserels --- for example",
+    "description": "one\nthat is cheapest according to the planner's cost estimates",
+    "subject": "one\nthat",
+    "verb": "is",
+    "object": "cheapest according to the planner's cost estimates",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1570-1828",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "There is only one join RelOptInfo for any given set of baserels --- for example, the join {A B C} is represented by the same RelOptInfo no matter whether we build it by joining A and B first and then adding C, or joining B and C first and then adding A, etc."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "joining a|and|b first and then adding c",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "joining A and B first and then adding C",
-    "subject": "joining A",
-    "verb": "and",
-    "object": "B first and then adding C",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1570-1828",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "There is only one join RelOptInfo for any given set of baserels --- for example, the join {A B C} is represented by the same RelOptInfo no matter whether we build it by joining A and B first and then adding C, or joining B and C first and then adding A, etc."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "c first|and|then adding a",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "C first and then adding A",
-    "subject": "C first",
-    "verb": "and",
-    "object": "then adding A",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1570-1828",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "There is only one join RelOptInfo for any given set of baserels --- for example, the join {A B C} is represented by the same RelOptInfo no matter whether we build it by joining A and B first and then adding C, or joining B and C first and then adding A, etc."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of paths|that|represent plausible ways to implement the scan or join of that relation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of Paths that represent plausible ways to implement the scan or join of that relation",
-    "subject": "of Paths",
-    "verb": "that",
-    "object": "represent plausible ways to implement the scan or join of that relation",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1903-2025",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "For each RelOptInfo we build a list of Paths that represent plausible ways to implement the scan or join of that relation."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "plausible paths|for|a rel",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "plausible Paths for a rel",
-    "subject": "plausible Paths",
-    "verb": "for",
-    "object": "a rel",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,65 +200,7 @@
       "text": "Once we've considered all the plausible Paths for a rel, we select the one that is cheapest according to the planner's cost estimates."
      }
     ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the one|that|is cheapest according to the planner's cost estimates",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the one that is cheapest according to the planner's cost estimates",
-    "subject": "the one",
-    "verb": "that",
-    "object": "is cheapest according to the planner's cost estimates",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2026-2160",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Once we've considered all the plausible Paths for a rel, we select the one that is cheapest according to the planner's cost estimates."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "index scans|for|any indexes that exist on the table",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "index scans for any indexes that exist on the table",
-    "subject": "index scans",
-    "verb": "for",
-    "object": "any indexes that exist on the table",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2277-2466",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Possible Paths for a primitive table relation include plain old sequential scan, plus index scans for any indexes that exist on the table, plus bitmap index scans using one or more indexes."
-     }
-    ],
-    "seq": 15,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -538,7 +220,7 @@
     "verb": "is",
     "object": "outer",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -547,13 +229,13 @@
       "text": "One is outer, the other inner."
      }
     ],
-    "seq": 16,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "outer tuple|to|find each matching inner row",
+    "task_id": "join relation|is|actually a tree structure",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -562,138 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "outer tuple to find each matching inner row",
-    "subject": "outer tuple",
-    "verb": "to",
-    "object": "find each matching inner row",
+    "description": "join relation is actually a tree structure",
+    "subject": "join relation",
+    "verb": "is",
+    "object": "actually a tree structure",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2668-2803",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "In a nested loop, lookups of values in the inner occur by scanning the inner path once per outer tuple to find each matching inner row."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "both inner|and|outer paths are scanned in-sync",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "both inner and outer paths are scanned in-sync",
-    "subject": "both inner",
-    "verb": "and",
-    "object": "outer paths are scanned in-sync",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2805-2986",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "In a mergejoin, inner and outer rows are ordered, and are accessed in order, so only one scan is required to perform the entire join: both inner and outer paths are scanned in-sync."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between inner|and|outer in a mergejoin",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between inner and outer in a mergejoin",
-    "subject": "between inner",
-    "verb": "and",
-    "object": "outer in a mergejoin",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2988-3235",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "(There's not a lot of difference between inner and outer in a mergejoin...) In a hashjoin, the inner is scanned first and all its rows are entered in a hashtable, then the outer is scanned and for each row we lookup the join key in the hashtable."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a path|for|a join relation is actually a tree structure",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "A Path for a join relation is actually a tree structure",
-    "subject": "A Path",
-    "verb": "for",
-    "object": "a join relation is actually a tree structure",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#3237-3363",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "A Path for a join relation is actually a tree structure, with the topmost Path node representing the last-applied join method."
-     },
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#5507-5586",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "We generate a Path for each feasible join method, and select the cheapest Path."
-     },
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6512-6622",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "If we only had two relations in the list, we are done: we just pick the cheapest path for the join RelOptInfo."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "topmost\npath|node|representing the last-applied join method",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "topmost\nPath node representing the last-applied join method",
-    "subject": "topmost\nPath",
-    "verb": "node",
-    "object": "representing the last-applied join method",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -702,13 +258,13 @@
       "text": "A Path for a join relation is actually a tree structure, with the topmost Path node representing the last-applied join method."
      }
     ],
-    "seq": 21,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "best path|tree|is found by a recursive process:",
+    "task_id": "path\ntree|is|found by a recursive process:",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -717,12 +273,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "best Path tree is found by a recursive process:",
-    "subject": "best Path",
-    "verb": "tree",
-    "object": "is found by a recursive process:",
+    "description": "Path\ntree is found by a recursive process:",
+    "subject": "Path\ntree",
+    "verb": "is",
+    "object": "found by a recursive process:",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -731,244 +287,7 @@
       "text": "The best Path tree is found by a recursive process:"
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a reloptinfo|structure|for it",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a RelOptInfo structure for it",
-    "subject": "a RelOptInfo",
-    "verb": "structure",
-    "object": "for it",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#3700-3780",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "1) Take each base relation in the query, and make a RelOptInfo structure for it."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "including sequential|and|index scans",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "including sequential and index scans",
-    "subject": "including sequential",
-    "verb": "and",
-    "object": "index scans",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#3782-3919",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Find each potentially useful way of accessing the relation, including sequential and index scans, and make Paths representing those ways."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sort ordering|and|parameterization of the relation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sort ordering and parameterization of the relation",
-    "subject": "sort ordering",
-    "verb": "and",
-    "object": "parameterization of the relation",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4001-4351",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "(Actually, we discard Paths that are obviously inferior alternatives before they ever get into the pathlist --- what ends up in the pathlist is the cheapest way of generating each potentially useful sort ordering and parameterization of the relation.) Also create a RelOptInfo.joininfo list including all the join clauses that involve this relation."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "both tab1|and|tab2's joininfo lists",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "both tab1 and tab2's joininfo lists",
-    "subject": "both tab1",
-    "verb": "and",
-    "object": "tab2's joininfo lists",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4353-4464",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "For example, the WHERE clause \"tab1.col1 = tab2.col1\" generates entries in both tab1 and tab2's joininfo lists."
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "if|we|have only a single base relation in the query",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "If we have only a single base relation in the query",
-    "subject": "If",
-    "verb": "we",
-    "object": "have only a single base relation in the query",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4466-4531",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "If we have only a single base relation in the query, we are done."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of relations|to|join",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of relations to join",
-    "subject": "of relations",
-    "verb": "to",
-    "object": "join",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4625-4729",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "2) Normally, any explicit JOIN clauses are \"flattened\" so that we just have a list of relations to join."
-     },
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4928-5160",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Therefore, we end up with a planning problem that contains lists of relations to be joined in any order, where any individual item might be a sub-list that has to be joined together before we can consider joining it to its siblings."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "joining it|to|its siblings",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "joining it to its siblings",
-    "subject": "joining it",
-    "verb": "to",
-    "object": "its siblings",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4928-5160",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Therefore, we end up with a planning problem that contains lists of relations to be joined in any order, where any individual item might be a sub-list that has to be joined together before we can consider joining it to its siblings."
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of relations|that|are either base rels or joinrels constructed per sub-join-lists",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of relations that are either base rels or joinrels constructed per sub-join-lists",
-    "subject": "of relations",
-    "verb": "that",
-    "object": "are either base rels or joinrels constructed per sub-join-lists",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#5588-5728",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "For each planning problem, therefore, we will have a list of relations that are either base rels or joinrels constructed per sub-join-lists."
-     }
-    ],
-    "seq": 30,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -988,7 +307,7 @@
     "verb": "is",
     "object": "a usable joinclause",
     "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -997,418 +316,12 @@
       "text": "Consider joining each RelOptInfo to each other RelOptInfo for which there is a usable joinclause, and generate a Path for each possible join method for each such pair."
      }
     ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "join method|for|each such pair",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "join method for each such pair",
-    "subject": "join method",
-    "verb": "for",
-    "object": "each such pair",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#5851-6018",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Consider joining each RelOptInfo to each other RelOptInfo for which there is a usable joinclause, and generate a Path for each possible join method for each such pair."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "if|we|have a reloptinfo with no join clauses",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "If we have a RelOptInfo with no join clauses",
-    "subject": "If",
-    "verb": "we",
-    "object": "have a RelOptInfo with no join clauses",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6020-6198",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "(If we have a RelOptInfo with no join clauses, we have no choice but to generate a clauseless Cartesian-product join; so we consider joining that rel to each other available rel."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we have|no|choice but to generate a clauseless cartesian-product join",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we have no choice but to generate a clauseless Cartesian-product join",
-    "subject": "we have",
-    "verb": "no",
-    "object": "choice but to generate a clauseless Cartesian-product join",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6020-6198",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "(If we have a RelOptInfo with no join clauses, we have no choice but to generate a clauseless Cartesian-product join; so we consider joining that rel to each other available rel."
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "so|we|consider joining that rel to each other available rel",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "so we consider joining that rel to each other available rel",
-    "subject": "so",
-    "verb": "we",
-    "object": "consider joining that rel to each other available rel",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6020-6198",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "(If we have a RelOptInfo with no join clauses, we have no choice but to generate a clauseless Cartesian-product join; so we consider joining that rel to each other available rel."
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "outer joins|and|in/exists clauses are also checked",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "outer joins and IN/EXISTS clauses are also checked",
-    "subject": "outer joins",
-    "verb": "and",
-    "object": "IN/EXISTS clauses are also checked",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6298-6510",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Note that join-order restrictions induced by outer joins and IN/EXISTS clauses are also checked, to ensure that we find a workable join order in cases where those restrictions force a clauseless join to be done.)"
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "clauseless join|to|be done",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "clauseless join to be done",
-    "subject": "clauseless join",
-    "verb": "to",
-    "object": "be done",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6298-6510",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "Note that join-order restrictions induced by outer joins and IN/EXISTS clauses are also checked, to ensure that we find a workable join order in cases where those restrictions force a clauseless join to be done.)"
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "if|we|only had two relations in the list",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "If we only had two relations in the list",
-    "subject": "If",
-    "verb": "we",
-    "object": "only had two relations in the list",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6512-6622",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "If we only had two relations in the list, we are done: we just pick the cheapest path for the join RelOptInfo."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "if|we|had more than two",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "If we had more than two",
-    "subject": "If",
-    "verb": "we",
-    "object": "had more than two",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6624-6785",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "If we had more than two, we now need to consider ways of joining join RelOptInfos to each other to make join RelOptInfos that represent more than two list items."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "join reloptinfos|that|represent more than two list items",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "join RelOptInfos that represent more than two list items",
-    "subject": "join RelOptInfos",
-    "verb": "that",
-    "object": "represent more than two list items",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6624-6785",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "If we had more than two, we now need to consider ways of joining join RelOptInfos to each other to make join RelOptInfos that represent more than two list items."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "considers ways|to|make join rels that represent exactly three list items",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "considers ways to make join rels that represent exactly three list items",
-    "subject": "considers ways",
-    "verb": "to",
-    "object": "make join rels that represent exactly three list items",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6970-7091",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "The second pass considers ways to make join rels that represent exactly three list items; the next pass, four items, etc."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as described|for|the first level",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as described for the first level",
-    "subject": "as described",
-    "verb": "for",
-    "object": "the first level",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#7308-7422",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "At each level we use joins that follow available join clauses, if possible, just as described for the first level."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "col|and|tab2",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "col and tab2",
-    "subject": "col",
-    "verb": "and",
-    "object": "tab2",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#7442-7582",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "SELECT * FROM tab1, tab2, tab3, tab4 WHERE tab1.col = tab2.col AND tab2.col = tab3.col AND tab3.col = tab4.col"
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "col|and|tab3",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "col and tab3",
-    "subject": "col",
-    "verb": "and",
-    "object": "tab3",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#7442-7582",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "SELECT * FROM tab1, tab2, tab3, tab4 WHERE tab1.col = tab2.col AND tab2.col = tab3.col AND tab3.col = tab4.col"
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "col|and|tab1",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "col and tab1",
-    "subject": "col",
-    "verb": "and",
-    "object": "tab1",
-    "witnesses": [
-     "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#7686-7826",
-      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-      "text": "SELECT * FROM tab1, tab2, tab3, tab4 WHERE tab1.col = tab2.col AND tab1.col = tab3.col AND tab1.col = tab4.col"
-     }
-    ],
-    "seq": 45,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 46,
+  "nextSeq": 8,
   "admits": [
    "NUL",
    "SEG",
@@ -1423,364 +336,18 @@
  },
  "folded": [
   {
-   "id": "a path|for|a join relation is actually a tree structure",
-   "subject": "A Path",
-   "verb": "for",
-   "object": "a join relation is actually a tree structure",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#3237-3363",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "A Path for a join relation is actually a tree structure, with the topmost Path node representing the last-applied join method."
-    },
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#5507-5586",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "We generate a Path for each feasible join method, and select the cheapest Path."
-    },
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6512-6622",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "If we only had two relations in the list, we are done: we just pick the cheapest path for the join RelOptInfo."
-    }
-   ]
-  },
-  {
-   "id": "a reloptinfo|structure|for it",
-   "subject": "a RelOptInfo",
-   "verb": "structure",
-   "object": "for it",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#3700-3780",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "1) Take each base relation in the query, and make a RelOptInfo structure for it."
-    }
-   ]
-  },
-  {
-   "id": "as described|for|the first level",
-   "subject": "as described",
-   "verb": "for",
-   "object": "the first level",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#7308-7422",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "At each level we use joins that follow available join clauses, if possible, just as described for the first level."
-    }
-   ]
-  },
-  {
-   "id": "best path|tree|is found by a recursive process:",
-   "subject": "best Path",
-   "verb": "tree",
-   "object": "is found by a recursive process:",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#3647-3698",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "The best Path tree is found by a recursive process:"
-    }
-   ]
-  },
-  {
-   "id": "between inner|and|outer in a mergejoin",
-   "subject": "between inner",
-   "verb": "and",
-   "object": "outer in a mergejoin",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2988-3235",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "(There's not a lot of difference between inner and outer in a mergejoin...) In a hashjoin, the inner is scanned first and all its rows are entered in a hashtable, then the outer is scanned and for each row we lookup the join key in the hashtable."
-    }
-   ]
-  },
-  {
-   "id": "both inner|and|outer paths are scanned in-sync",
-   "subject": "both inner",
-   "verb": "and",
-   "object": "outer paths are scanned in-sync",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2805-2986",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "In a mergejoin, inner and outer rows are ordered, and are accessed in order, so only one scan is required to perform the entire join: both inner and outer paths are scanned in-sync."
-    }
-   ]
-  },
-  {
-   "id": "both tab1|and|tab2's joininfo lists",
-   "subject": "both tab1",
-   "verb": "and",
-   "object": "tab2's joininfo lists",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4353-4464",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "For example, the WHERE clause \"tab1.col1 = tab2.col1\" generates entries in both tab1 and tab2's joininfo lists."
-    }
-   ]
-  },
-  {
-   "id": "c first|and|then adding a",
-   "subject": "C first",
-   "verb": "and",
-   "object": "then adding A",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1570-1828",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "There is only one join RelOptInfo for any given set of baserels --- for example, the join {A B C} is represented by the same RelOptInfo no matter whether we build it by joining A and B first and then adding C, or joining B and C first and then adding A, etc."
-    }
-   ]
-  },
-  {
-   "id": "clauseless join|to|be done",
-   "subject": "clauseless join",
-   "verb": "to",
-   "object": "be done",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6298-6510",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Note that join-order restrictions induced by outer joins and IN/EXISTS clauses are also checked, to ensure that we find a workable join order in cases where those restrictions force a clauseless join to be done.)"
-    }
-   ]
-  },
-  {
-   "id": "col|and|tab1",
-   "subject": "col",
-   "verb": "and",
-   "object": "tab1",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#7686-7826",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "SELECT * FROM tab1, tab2, tab3, tab4 WHERE tab1.col = tab2.col AND tab1.col = tab3.col AND tab1.col = tab4.col"
-    }
-   ]
-  },
-  {
-   "id": "col|and|tab2",
-   "subject": "col",
-   "verb": "and",
-   "object": "tab2",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#7442-7582",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "SELECT * FROM tab1, tab2, tab3, tab4 WHERE tab1.col = tab2.col AND tab2.col = tab3.col AND tab3.col = tab4.col"
-    }
-   ]
-  },
-  {
-   "id": "col|and|tab3",
-   "subject": "col",
-   "verb": "and",
-   "object": "tab3",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#7442-7582",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "SELECT * FROM tab1, tab2, tab3, tab4 WHERE tab1.col = tab2.col AND tab2.col = tab3.col AND tab3.col = tab4.col"
-    }
-   ]
-  },
-  {
-   "id": "considers ways|to|make join rels that represent exactly three list items",
-   "subject": "considers ways",
-   "verb": "to",
-   "object": "make join rels that represent exactly three list items",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6970-7091",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "The second pass considers ways to make join rels that represent exactly three list items; the next pass, four items, etc."
-    }
-   ]
-  },
-  {
    "id": "geqo|is|given to /path to create paths for",
    "subject": "geqo",
    "verb": "is",
    "object": "given to /path to create paths for",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#546-716",
      "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
      "text": "(But each join considered by /geqo is given to /path to create paths for, so we consider all possible implementation paths for each specific join pair even in GEQO mode.)"
-    }
-   ]
-  },
-  {
-   "id": "if|we|had more than two",
-   "subject": "If",
-   "verb": "we",
-   "object": "had more than two",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6624-6785",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "If we had more than two, we now need to consider ways of joining join RelOptInfos to each other to make join RelOptInfos that represent more than two list items."
-    }
-   ]
-  },
-  {
-   "id": "if|we|have a reloptinfo with no join clauses",
-   "subject": "If",
-   "verb": "we",
-   "object": "have a RelOptInfo with no join clauses",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6020-6198",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "(If we have a RelOptInfo with no join clauses, we have no choice but to generate a clauseless Cartesian-product join; so we consider joining that rel to each other available rel."
-    }
-   ]
-  },
-  {
-   "id": "if|we|have only a single base relation in the query",
-   "subject": "If",
-   "verb": "we",
-   "object": "have only a single base relation in the query",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4466-4531",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "If we have only a single base relation in the query, we are done."
-    }
-   ]
-  },
-  {
-   "id": "if|we|only had two relations in the list",
-   "subject": "If",
-   "verb": "we",
-   "object": "only had two relations in the list",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6512-6622",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "If we only had two relations in the list, we are done: we just pick the cheapest path for the join RelOptInfo."
-    }
-   ]
-  },
-  {
-   "id": "implementation paths|for|each specific join pair even in geqo mode",
-   "subject": "implementation paths",
-   "verb": "for",
-   "object": "each specific join pair even in GEQO mode",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#546-716",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "(But each join considered by /geqo is given to /path to create paths for, so we consider all possible implementation paths for each specific join pair even in GEQO mode.)"
-    }
-   ]
-  },
-  {
-   "id": "including sequential|and|index scans",
-   "subject": "including sequential",
-   "verb": "and",
-   "object": "index scans",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#3782-3919",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Find each potentially useful way of accessing the relation, including sequential and index scans, and make Paths representing those ways."
-    }
-   ]
-  },
-  {
-   "id": "index scans|for|any indexes that exist on the table",
-   "subject": "index scans",
-   "verb": "for",
-   "object": "any indexes that exist on the table",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2277-2466",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Possible Paths for a primitive table relation include plain old sequential scan, plus index scans for any indexes that exist on the table, plus bitmap index scans using one or more indexes."
-    }
-   ]
-  },
-  {
-   "id": "join method|for|each such pair",
-   "subject": "join method",
-   "verb": "for",
-   "object": "each such pair",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#5851-6018",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Consider joining each RelOptInfo to each other RelOptInfo for which there is a usable joinclause, and generate a Path for each possible join method for each such pair."
     }
    ]
   },
@@ -1790,7 +357,7 @@
    "verb": "is",
    "object": "simply a combination of base rels",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1801,321 +368,12 @@
    ]
   },
   {
-   "id": "join reloptinfo|for|any given set of baserels --- for example",
-   "subject": "join RelOptInfo",
-   "verb": "for",
-   "object": "any given set of baserels --- for example",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1570-1828",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "There is only one join RelOptInfo for any given set of baserels --- for example, the join {A B C} is represented by the same RelOptInfo no matter whether we build it by joining A and B first and then adding C, or joining B and C first and then adding A, etc."
-    }
-   ]
-  },
-  {
-   "id": "join reloptinfos|that|represent more than two list items",
-   "subject": "join RelOptInfos",
-   "verb": "that",
-   "object": "represent more than two list items",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6624-6785",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "If we had more than two, we now need to consider ways of joining join RelOptInfos to each other to make join RelOptInfos that represent more than two list items."
-    }
-   ]
-  },
-  {
-   "id": "joining a|and|b first and then adding c",
-   "subject": "joining A",
-   "verb": "and",
-   "object": "B first and then adding C",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1570-1828",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "There is only one join RelOptInfo for any given set of baserels --- for example, the join {A B C} is represented by the same RelOptInfo no matter whether we build it by joining A and B first and then adding C, or joining B and C first and then adding A, etc."
-    }
-   ]
-  },
-  {
-   "id": "joining it|to|its siblings",
-   "subject": "joining it",
-   "verb": "to",
-   "object": "its siblings",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4928-5160",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Therefore, we end up with a planning problem that contains lists of relations to be joined in any order, where any individual item might be a sub-list that has to be joined together before we can consider joining it to its siblings."
-    }
-   ]
-  },
-  {
-   "id": "of paths|that|represent plausible ways to implement the scan or join of that relation",
-   "subject": "of Paths",
-   "verb": "that",
-   "object": "represent plausible ways to implement the scan or join of that relation",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1903-2025",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "For each RelOptInfo we build a list of Paths that represent plausible ways to implement the scan or join of that relation."
-    }
-   ]
-  },
-  {
-   "id": "of relations|that|are either base rels or joinrels constructed per sub-join-lists",
-   "subject": "of relations",
-   "verb": "that",
-   "object": "are either base rels or joinrels constructed per sub-join-lists",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#5588-5728",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "For each planning problem, therefore, we will have a list of relations that are either base rels or joinrels constructed per sub-join-lists."
-    }
-   ]
-  },
-  {
-   "id": "of relations|to|join",
-   "subject": "of relations",
-   "verb": "to",
-   "object": "join",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4625-4729",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "2) Normally, any explicit JOIN clauses are \"flattened\" so that we just have a list of relations to join."
-    },
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4928-5160",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Therefore, we end up with a planning problem that contains lists of relations to be joined in any order, where any individual item might be a sub-list that has to be joined together before we can consider joining it to its siblings."
-    }
-   ]
-  },
-  {
-   "id": "one|is|outer",
-   "subject": "One",
+   "id": "join relation|is|actually a tree structure",
+   "subject": "join relation",
    "verb": "is",
-   "object": "outer",
+   "object": "actually a tree structure",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2591-2621",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "One is outer, the other inner."
-    }
-   ]
-  },
-  {
-   "id": "outer joins|and|in/exists clauses are also checked",
-   "subject": "outer joins",
-   "verb": "and",
-   "object": "IN/EXISTS clauses are also checked",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6298-6510",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Note that join-order restrictions induced by outer joins and IN/EXISTS clauses are also checked, to ensure that we find a workable join order in cases where those restrictions force a clauseless join to be done.)"
-    }
-   ]
-  },
-  {
-   "id": "outer tuple|to|find each matching inner row",
-   "subject": "outer tuple",
-   "verb": "to",
-   "object": "find each matching inner row",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2668-2803",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "In a nested loop, lookups of values in the inner occur by scanning the inner path once per outer tuple to find each matching inner row."
-    }
-   ]
-  },
-  {
-   "id": "plausible paths|for|a rel",
-   "subject": "plausible Paths",
-   "verb": "for",
-   "object": "a rel",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2026-2160",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Once we've considered all the plausible Paths for a rel, we select the one that is cheapest according to the planner's cost estimates."
-    }
-   ]
-  },
-  {
-   "id": "preprocessing steps|for|special cases",
-   "subject": "preprocessing steps",
-   "verb": "for",
-   "object": "special cases",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#161-342",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "The /plan directory generates the actual output plan, the /path code generates all possible ways to join the tables, and /prep handles various preprocessing steps for special cases."
-    }
-   ]
-  },
-  {
-   "id": "so|we|consider joining that rel to each other available rel",
-   "subject": "so",
-   "verb": "we",
-   "object": "consider joining that rel to each other available rel",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6020-6198",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "(If we have a RelOptInfo with no join clauses, we have no choice but to generate a clauseless Cartesian-product join; so we consider joining that rel to each other available rel."
-    }
-   ]
-  },
-  {
-   "id": "sort ordering|and|parameterization of the relation",
-   "subject": "sort ordering",
-   "verb": "and",
-   "object": "parameterization of the relation",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#4001-4351",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "(Actually, we discard Paths that are obviously inferior alternatives before they ever get into the pathlist --- what ends up in the pathlist is the cheapest way of generating each potentially useful sort ordering and parameterization of the relation.) Also create a RelOptInfo.joininfo list including all the join clauses that involve this relation."
-    }
-   ]
-  },
-  {
-   "id": "subquery subselects|that|are planned via a separate recursive invocation of the planner",
-   "subject": "subquery subselects",
-   "verb": "that",
-   "object": "are planned via a separate recursive invocation of the planner",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#1301-1431",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Base rels are either primitive tables, or subquery subselects that are planned via a separate recursive invocation of the planner."
-    }
-   ]
-  },
-  {
-   "id": "the\npath|and|plan trees",
-   "subject": "the\nPath",
-   "verb": "and",
-   "object": "Plan trees",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#989-1212",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "(There is pretty nearly a one-to-one correspondence between the Path and Plan trees, but Path nodes omit info that won't be needed during planning, and include info needed for planning that won't be needed by the executor.)"
-    }
-   ]
-  },
-  {
-   "id": "the join|tree|space",
-   "subject": "the join",
-   "verb": "tree",
-   "object": "space",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#368-544",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "/geqo is the separate \"genetic optimization\" planner --- it does a semi-random search through the join tree space, rather than exhaustively considering all possible join trees."
-    }
-   ]
-  },
-  {
-   "id": "the one|that|is cheapest according to the planner's cost estimates",
-   "subject": "the one",
-   "verb": "that",
-   "object": "is cheapest according to the planner's cost estimates",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2026-2160",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "Once we've considered all the plausible Paths for a rel, we select the one that is cheapest according to the planner's cost estimates."
-    }
-   ]
-  },
-  {
-   "id": "the query|structure|returned by the parser",
-   "subject": "the Query",
-   "verb": "structure",
-   "object": "returned by the parser",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#51-159",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "These directories take the Query structure returned by the parser, and generate a plan used by the executor."
-    }
-   ]
-  },
-  {
-   "id": "topmost\npath|node|representing the last-applied join method",
-   "subject": "topmost\nPath",
-   "verb": "node",
-   "object": "representing the last-applied join method",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2126,12 +384,60 @@
    ]
   },
   {
+   "id": "one\nthat|is|cheapest according to the planner's cost estimates",
+   "subject": "one\nthat",
+   "verb": "is",
+   "object": "cheapest according to the planner's cost estimates",
+   "witnesses": [
+    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2026-2160",
+     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
+     "text": "Once we've considered all the plausible Paths for a rel, we select the one that is cheapest according to the planner's cost estimates."
+    }
+   ]
+  },
+  {
+   "id": "one|is|outer",
+   "subject": "One",
+   "verb": "is",
+   "object": "outer",
+   "witnesses": [
+    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#2591-2621",
+     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
+     "text": "One is outer, the other inner."
+    }
+   ]
+  },
+  {
+   "id": "path\ntree|is|found by a recursive process:",
+   "subject": "Path\ntree",
+   "verb": "is",
+   "object": "found by a recursive process:",
+   "witnesses": [
+    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#3647-3698",
+     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
+     "text": "The best Path tree is found by a recursive process:"
+    }
+   ]
+  },
+  {
    "id": "util|is|utility stuff",
    "subject": "util",
    "verb": "is",
    "object": "utility stuff",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2142,28 +448,12 @@
    ]
   },
   {
-   "id": "we have|no|choice but to generate a clauseless cartesian-product join",
-   "subject": "we have",
-   "verb": "no",
-   "object": "choice but to generate a clauseless Cartesian-product join",
-   "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt#6020-6198",
-     "ref": "09-source-code/postgres_postgres/src_backend_optimizer_README.txt",
-     "text": "(If we have a RelOptInfo with no join clauses, we have no choice but to generate a clauseless Cartesian-product join; so we consider joining that rel to each other available rel."
-    }
-   ]
-  },
-  {
    "id": "which there|is|a usable joinclause",
    "subject": "which there",
    "verb": "is",
    "object": "a usable joinclause",
    "witnesses": [
-    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@b2de25493ccfe8e8"
+    "09-source-code/postgres_postgres/src_backend_optimizer_README.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2175,7 +465,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:53.853Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:04.267Z"
  }
 }

@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 18565,
   "bodyOffset": 0,
   "bodyChars": 18565,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 7,
   "distinctReferents": 7,
   "examined": true,
-  "edgesFound": 34,
-  "extractionError": null
+  "edgesFound": 23,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 33,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 45
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 23,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 34,
-  "excerptOk": 34,
-  "rawChecked": 34,
-  "rawOk": 34,
+  "excerptChecked": 23,
+  "excerptOk": 23,
+  "rawChecked": 23,
+  "rawOk": 23,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 34,
-  "heard": 34,
+  "offered": 23,
+  "heard": 23,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "alaaazeezi alhakeemi|the|revelation of the book is from allah",
+    "task_id": "the book|is|from allah",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "alAAazeezi alhakeemi the revelation of the Book is from Allah",
-    "subject": "alAAazeezi alhakeemi",
-    "verb": "the",
-    "object": "revelation of the Book is from Allah",
+    "description": "the Book is from Allah",
+    "subject": "the Book",
+    "verb": "is",
+    "object": "from Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the exalted|in|might",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Exalted in Might",
-    "subject": "the Exalted",
-    "verb": "in",
-    "object": "Might",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#221-853",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "[46:1] حمٓ Hameem Ha, Meem [46:2] تَنزِيلُ ٱلۡكِتَٰبِ مِنَ ٱللَّهِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Tanzeelu alkitabi mina Allahi alAAazeezi alhakeemi The revelation of the Book is from Allah, the Exalted in Might, the Wise [46:3] مَا خَلَقۡنَا ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ وَمَا بَيۡنَهُمَآ إِلَّا بِٱلۡحَقِّ وَأَجَلٖ مُّسَمّٗىۚ وَٱلَّذِينَ كَفَرُواْ عَمَّآ أُنذِرُواْ مُعۡرِضُونَ Ma khalaqna alssamawati waalarda wama baynahuma illa bialhaqqi waajalin musamman waallatheena kafaroo AAamma onthiroo muAAridoona We did not create the heavens and earth and what is between them except in truth and [for] a specified term."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "did",
     "object": "not create the heavens and earth and what is between them except in truth and [for] a specified term",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,65 +142,7 @@
       "text": "[46:1] حمٓ Hameem Ha, Meem [46:2] تَنزِيلُ ٱلۡكِتَٰبِ مِنَ ٱللَّهِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Tanzeelu alkitabi mina Allahi alAAazeezi alhakeemi The revelation of the Book is from Allah, the Exalted in Might, the Wise [46:3] مَا خَلَقۡنَا ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ وَمَا بَيۡنَهُمَآ إِلَّا بِٱلۡحَقِّ وَأَجَلٖ مُّسَمّٗىۚ وَٱلَّذِينَ كَفَرُواْ عَمَّآ أُنذِرُواْ مُعۡرِضُونَ Ma khalaqna alssamawati waalarda wama baynahuma illa bialhaqqi waajalin musamman waallatheena kafaroo AAamma onthiroo muAAridoona We did not create the heavens and earth and what is between them except in truth and [for] a specified term."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|those|who disbelieve",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But those who disbelieve",
-    "subject": "But",
-    "verb": "those",
-    "object": "who disbelieve",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#854-1435",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "But those who disbelieve, from that of which they are warned, are turning away [46:4] قُلۡ أَرَءَيۡتُم مَّا تَدۡعُونَ مِن دُونِ ٱللَّهِ أَرُونِي مَاذَا خَلَقُواْ مِنَ ٱلۡأَرۡضِ أَمۡ لَهُمۡ شِرۡكٞ فِي ٱلسَّمَٰوَٰتِۖ ٱئۡتُونِي بِكِتَٰبٖ مِّن قَبۡلِ هَٰذَآ أَوۡ أَثَٰرَةٖ مِّنۡ عِلۡمٍ إِن كُنتُمۡ صَٰدِقِينَ Qul araaytum ma tadAAoona min dooni Allahi aroonee matha khalaqoo mina alardi am lahum shirkun fee alssamawati eetoonee bikitabin min qabli hatha aw atharatin min AAilmin in kuntum sadiqeena Say, [O Muhammad], \"Have you considered that which you invoke besides Allah?"
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from that|of|which they are warned",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "from that of which they are warned",
-    "subject": "from that",
-    "verb": "of",
-    "object": "which they are warned",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#854-1435",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "But those who disbelieve, from that of which they are warned, are turning away [46:4] قُلۡ أَرَءَيۡتُم مَّا تَدۡعُونَ مِن دُونِ ٱللَّهِ أَرُونِي مَاذَا خَلَقُواْ مِنَ ٱلۡأَرۡضِ أَمۡ لَهُمۡ شِرۡكٞ فِي ٱلسَّمَٰوَٰتِۖ ٱئۡتُونِي بِكِتَٰبٖ مِّن قَبۡلِ هَٰذَآ أَوۡ أَثَٰرَةٖ مِّنۡ عِلۡمٍ إِن كُنتُمۡ صَٰدِقِينَ Qul araaytum ma tadAAoona min dooni Allahi aroonee matha khalaqoo mina alardi am lahum shirkun fee alssamawati eetoonee bikitabin min qabli hatha aw atharatin min AAilmin in kuntum sadiqeena Say, [O Muhammad], \"Have you considered that which you invoke besides Allah?"
-     }
-    ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +162,7 @@
     "verb": "have",
     "object": "created of the earth",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,7 +171,7 @@
       "text": "Show me what they have created of the earth; or did they have partnership in [creation of] the heavens?"
      }
     ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +191,7 @@
     "verb": "did",
     "object": "they have partnership in [creation of] the heavens?",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,36 +200,7 @@
       "text": "Show me what they have created of the earth; or did they have partnership in [creation of] the heavens?"
      }
     ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "trace|of|knowledge",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "trace of knowledge",
-    "subject": "trace",
-    "verb": "of",
-    "object": "knowledge",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#1540-3251",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
-     }
-    ],
-    "seq": 7,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +220,7 @@
     "verb": "is",
     "object": "more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,65 +229,7 @@
       "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and when|the|people are gathered [that day]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And when the people are gathered [that Day]",
-    "subject": "And when",
-    "verb": "the",
-    "object": "people are gathered [that Day]",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#1540-3251",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be enemies|to|them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be enemies to them",
-    "subject": "be enemies",
-    "verb": "to",
-    "object": "them",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#1540-3251",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
-     }
-    ],
-    "seq": 10,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +249,7 @@
     "verb": "verses",
     "object": "are recited to them as clear evidences",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,13 +258,13 @@
       "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
      }
     ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "disbelieve say|of|the truth when it has come to them",
+    "task_id": "when it|has|come to them",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -417,12 +273,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "disbelieve say of the truth when it has come to them",
-    "subject": "disbelieve say",
-    "verb": "of",
-    "object": "the truth when it has come to them",
+    "description": "when it has come to them",
+    "subject": "when it",
+    "verb": "has",
+    "object": "come to them",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,7 +287,7 @@
       "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
      }
     ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +307,7 @@
     "verb": "has",
     "object": "invented it?\"",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,7 +316,7 @@
       "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
      }
     ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -480,7 +336,7 @@
     "verb": "have",
     "object": "invented it",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -489,36 +345,7 @@
       "text": "Say, \"If I have invented it, you will not possess for me [the power of protection] from Allah at all."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the power|of|protection] from allah at all",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the power of protection] from Allah at all",
-    "subject": "the power",
-    "verb": "of",
-    "object": "protection] from Allah at all",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#3252-3353",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "Say, \"If I have invented it, you will not possess for me [the power of protection] from Allah at all."
-     }
-    ],
-    "seq": 15,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -538,7 +365,7 @@
     "verb": "is",
     "object": "most knowing of that in which you are involved",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -547,7 +374,7 @@
       "text": "He is most knowing of that in which you are involved."
      }
     ],
-    "seq": 16,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -567,7 +394,7 @@
     "verb": "is",
     "object": "He as Witness between me and you",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -576,36 +403,7 @@
       "text": "Sufficient is He as Witness between me and you, and He is the Forgiving the Merciful [46:9] قُلۡ مَا كُنتُ بِدۡعٗا مِّنَ ٱلرُّسُلِ وَمَآ أَدۡرِي مَا يُفۡعَلُ بِي وَلَا بِكُمۡۖ إِنۡ أَتَّبِعُ إِلَّا مَا يُوحَىٰٓ إِلَيَّ وَمَآ أَنَا۠ إِلَّا نَذِيرٞ مُّبِينٞ Qul ma kuntu bidAAan mina alrrusuli wama adree ma yufAAalu bee wala bikum in attabiAAu illa ma yooha ilayya wama ana illa natheerun mubeenun Say, \"I am not something original among the messengers, nor do I know what will be done with me or with you."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "original among|the|messengers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "original among the messengers",
-    "subject": "original among",
-    "verb": "the",
-    "object": "messengers",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#3408-3923",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "Sufficient is He as Witness between me and you, and He is the Forgiving the Merciful [46:9] قُلۡ مَا كُنتُ بِدۡعٗا مِّنَ ٱلرُّسُلِ وَمَآ أَدۡرِي مَا يُفۡعَلُ بِي وَلَا بِكُمۡۖ إِنۡ أَتَّبِعُ إِلَّا مَا يُوحَىٰٓ إِلَيَّ وَمَآ أَنَا۠ إِلَّا نَذِيرٞ مُّبِينٞ Qul ma kuntu bidAAan mina alrrusuli wama adree ma yufAAalu bee wala bikum in attabiAAu illa ma yooha ilayya wama ana illa natheerun mubeenun Say, \"I am not something original among the messengers, nor do I know what will be done with me or with you."
-     }
-    ],
-    "seq": 18,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -625,7 +423,7 @@
     "verb": "is",
     "object": "revealed to me",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -634,13 +432,13 @@
       "text": "I only follow that which is revealed to me, and I am not but a clear warner [46:10] قُلۡ أَرَءَيۡتُمۡ إِن كَانَ مِنۡ عِندِ ٱللَّهِ وَكَفَرۡتُم بِهِۦ وَشَهِدَ شَاهِدٞ مِّنۢ بَنِيٓ إِسۡرَـٰٓءِيلَ عَلَىٰ مِثۡلِهِۦ فَـَٔامَنَ وَٱسۡتَكۡبَرۡتُمۡۚ إِنَّ ٱللَّهَ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Qul araaytum in kana min AAindi Allahi wakafartum bihi washahida shahidun min banee israeela AAala mithlihi faamana waistakbartum inna Allaha la yahdee alqawma alththalimeena Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
      }
     ],
-    "seq": 19,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "if|the|qur'an was from allah",
+    "task_id": "the qur'an|was|from allah",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -649,12 +447,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "if the Qur'an was from Allah",
-    "subject": "if",
-    "verb": "the",
-    "object": "Qur'an was from Allah",
+    "description": "the Qur'an was from Allah",
+    "subject": "the Qur'an",
+    "verb": "was",
+    "object": "from Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -663,13 +461,13 @@
       "text": "I only follow that which is revealed to me, and I am not but a clear warner [46:10] قُلۡ أَرَءَيۡتُمۡ إِن كَانَ مِنۡ عِندِ ٱللَّهِ وَكَفَرۡتُم بِهِۦ وَشَهِدَ شَاهِدٞ مِّنۢ بَنِيٓ إِسۡرَـٰٓءِيلَ عَلَىٰ مِثۡلِهِۦ فَـَٔامَنَ وَٱسۡتَكۡبَرۡتُمۡۚ إِنَّ ٱللَّهَ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Qul araaytum in kana min AAindi Allahi wakafartum bihi washahida shahidun min banee israeela AAala mithlihi faamana waistakbartum inna Allaha la yahdee alqawma alththalimeena Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
      }
     ],
-    "seq": 20,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "you disbelieved|in|it while a witness from the children of israel has testified to something similar and believed while you were arrogant",
+    "task_id": "of israel|has|testified to something similar and believed while you were arrogant",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -678,12 +476,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant",
-    "subject": "you disbelieved",
-    "verb": "in",
-    "object": "it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant",
+    "description": "of Israel has testified to something similar and believed while you were arrogant",
+    "subject": "of Israel",
+    "verb": "has",
+    "object": "testified to something similar and believed while you were arrogant",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -692,36 +490,7 @@
       "text": "I only follow that which is revealed to me, and I am not but a clear warner [46:10] قُلۡ أَرَءَيۡتُمۡ إِن كَانَ مِنۡ عِندِ ٱللَّهِ وَكَفَرۡتُم بِهِۦ وَشَهِدَ شَاهِدٞ مِّنۢ بَنِيٓ إِسۡرَـٰٓءِيلَ عَلَىٰ مِثۡلِهِۦ فَـَٔامَنَ وَٱسۡتَكۡبَرۡتُمۡۚ إِنَّ ٱللَّهَ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Qul araaytum in kana min AAindi Allahi wakafartum bihi washahida shahidun min banee israeela AAala mithlihi faamana waistakbartum inna Allaha la yahdee alqawma alththalimeena Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
      }
     ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "qadeemun\n    and|those|who disbelieve say of those who believe",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "qadeemun\n    And those who disbelieve say of those who believe",
-    "subject": "qadeemun\n    And",
-    "verb": "those",
-    "object": "who disbelieve say of those who believe",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#4603-5096",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "Indeed, Allah does not guide the wrongdoing people [46:11] وَقَالَ ٱلَّذِينَ كَفَرُواْ لِلَّذِينَ ءَامَنُواْ لَوۡ كَانَ خَيۡرٗا مَّا سَبَقُونَآ إِلَيۡهِۚ وَإِذۡ لَمۡ يَهۡتَدُواْ بِهِۦ فَسَيَقُولُونَ هَٰذَآ إِفۡكٞ قَدِيمٞ Waqala allatheena kafaroo lillatheena amanoo law kana khayran ma sabaqoona ilayhi waith lam yahtadoo bihi fasayaqooloona hatha ifkun qadeemun And those who disbelieve say of those who believe, \"If it had [truly] been good, they would not have preceded us to it.\""
-     }
-    ],
-    "seq": 22,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -741,7 +510,7 @@
     "verb": "have",
     "object": "preceded us to it",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -750,7 +519,7 @@
       "text": "Indeed, Allah does not guide the wrongdoing people [46:11] وَقَالَ ٱلَّذِينَ كَفَرُواْ لِلَّذِينَ ءَامَنُواْ لَوۡ كَانَ خَيۡرٗا مَّا سَبَقُونَآ إِلَيۡهِۚ وَإِذۡ لَمۡ يَهۡتَدُواْ بِهِۦ فَسَيَقُولُونَ هَٰذَآ إِفۡكٞ قَدِيمٞ Waqala allatheena kafaroo lillatheena amanoo law kana khayran ma sabaqoona ilayhi waith lam yahtadoo bihi fasayaqooloona hatha ifkun qadeemun And those who disbelieve say of those who believe, \"If it had [truly] been good, they would not have preceded us to it.\""
      }
     ],
-    "seq": 23,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -770,7 +539,7 @@
     "verb": "was",
     "object": "the scripture of Moses to lead and as a mercy",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -779,7 +548,7 @@
       "text": "And when they are not guided by it, they will say, \"This is an ancient falsehood [46:12] وَمِن قَبۡلِهِۦ كِتَٰبُ مُوسَىٰٓ إِمَامٗا وَرَحۡمَةٗۚ وَهَٰذَا كِتَٰبٞ مُّصَدِّقٞ لِّسَانًا عَرَبِيّٗا لِّيُنذِرَ ٱلَّذِينَ ظَلَمُواْ وَبُشۡرَىٰ لِلۡمُحۡسِنِينَ Wamin qablihi kitabu moosa imaman warahmatan wahatha kitabun musaddiqun lisanan AAarabiyyan liyunthira allatheena thalamoo wabushra lilmuhsineena And before it was the scripture of Moses to lead and as a mercy."
      }
     ],
-    "seq": 24,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -799,7 +568,7 @@
     "verb": "have",
     "object": "said",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -808,7 +577,7 @@
       "text": "And this is a confirming Book in an Arabic tongue to warn those who have wronged and as good tidings to the doers of good [46:13] إِنَّ ٱلَّذِينَ قَالُواْ رَبُّنَا ٱللَّهُ ثُمَّ ٱسۡتَقَٰمُواْ فَلَا خَوۡفٌ عَلَيۡهِمۡ وَلَا هُمۡ يَحۡزَنُونَ Inna allatheena qaloo rabbuna Allahu thumma istaqamoo fala khawfun AAalayhim wala hum yahzanoona Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve [46:14] أُوْلَـٰٓئِكَ أَصۡحَٰبُ ٱلۡجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءَۢ بِمَا كَانُواْ يَعۡمَلُونَ Olaika ashabu aljannati khalideena feeha jazaan bima kanoo yaAAmaloona Those are the companions of Paradise, abiding eternally therein as reward for what they used to do [46:15] وَوَصَّيۡنَا ٱلۡإِنسَٰنَ بِوَٰلِدَيۡهِ إِحۡسَٰنًاۖ حَمَلَتۡهُ أُمُّهُۥ كُرۡهٗا وَوَضَعَتۡهُ كُرۡهٗاۖ وَحَمۡلُهُۥ وَفِصَٰلُهُۥ ثَلَٰثُونَ شَهۡرًاۚ حَتَّىٰٓ إِذَا بَلَغَ أَشُدَّهُۥ وَبَلَغَ أَرۡبَعِينَ سَنَةٗ قَالَ رَبِّ أَوۡزِعۡنِيٓ أَنۡ أَشۡكُرَ نِعۡمَتَكَ ٱلَّتِيٓ أَنۡعَمۡتَ عَلَيَّ وَعَلَىٰ وَٰلِدَيَّ وَأَنۡ أَعۡمَلَ صَٰلِحٗا تَرۡضَىٰهُ وَأَصۡلِحۡ لِي فِي ذُرِّيَّتِيٓۖ إِنِّي تُبۡتُ إِلَيۡكَ وَإِنِّي مِنَ ٱلۡمُسۡلِمِينَ Wawassayna alinsana biwalidayhi ihsanan hamalathu ommuhu kurhan wawadaAAathu kurhan wahamluhu wafisaluhu thalathoona shahran hatta itha balagha ashuddahu wabalagha arbaAAeena sanatan qala rabbi awziAAnee an ashkura niAAmataka allatee anAAamta AAalayya waAAala walidayya waan aAAmala salihan tardahu waaslih lee fee thurriyyatee innee tubtu ilayka wainnee mina almuslimeena And We have enjoined upon man, to his parents, good treatment."
      }
     ],
-    "seq": 25,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -828,7 +597,7 @@
     "verb": "is",
     "object": "Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -837,36 +606,7 @@
       "text": "And this is a confirming Book in an Arabic tongue to warn those who have wronged and as good tidings to the doers of good [46:13] إِنَّ ٱلَّذِينَ قَالُواْ رَبُّنَا ٱللَّهُ ثُمَّ ٱسۡتَقَٰمُواْ فَلَا خَوۡفٌ عَلَيۡهِمۡ وَلَا هُمۡ يَحۡزَنُونَ Inna allatheena qaloo rabbuna Allahu thumma istaqamoo fala khawfun AAalayhim wala hum yahzanoona Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve [46:14] أُوْلَـٰٓئِكَ أَصۡحَٰبُ ٱلۡجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءَۢ بِمَا كَانُواْ يَعۡمَلُونَ Olaika ashabu aljannati khalideena feeha jazaan bima kanoo yaAAmaloona Those are the companions of Paradise, abiding eternally therein as reward for what they used to do [46:15] وَوَصَّيۡنَا ٱلۡإِنسَٰنَ بِوَٰلِدَيۡهِ إِحۡسَٰنًاۖ حَمَلَتۡهُ أُمُّهُۥ كُرۡهٗا وَوَضَعَتۡهُ كُرۡهٗاۖ وَحَمۡلُهُۥ وَفِصَٰلُهُۥ ثَلَٰثُونَ شَهۡرًاۚ حَتَّىٰٓ إِذَا بَلَغَ أَشُدَّهُۥ وَبَلَغَ أَرۡبَعِينَ سَنَةٗ قَالَ رَبِّ أَوۡزِعۡنِيٓ أَنۡ أَشۡكُرَ نِعۡمَتَكَ ٱلَّتِيٓ أَنۡعَمۡتَ عَلَيَّ وَعَلَىٰ وَٰلِدَيَّ وَأَنۡ أَعۡمَلَ صَٰلِحٗا تَرۡضَىٰهُ وَأَصۡلِحۡ لِي فِي ذُرِّيَّتِيٓۖ إِنِّي تُبۡتُ إِلَيۡكَ وَإِنِّي مِنَ ٱلۡمُسۡلِمِينَ Wawassayna alinsana biwalidayhi ihsanan hamalathu ommuhu kurhan wawadaAAathu kurhan wahamluhu wafisaluhu thalathoona shahran hatta itha balagha ashuddahu wabalagha arbaAAeena sanatan qala rabbi awziAAnee an ashkura niAAmataka allatee anAAamta AAalayya waAAala walidayya waan aAAmala salihan tardahu waaslih lee fee thurriyyatee innee tubtu ilayka wainnee mina almuslimeena And We have enjoined upon man, to his parents, good treatment."
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kanoo yaaamaloona|those|are the companions of paradise",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "kanoo yaAAmaloona those are the companions of Paradise",
-    "subject": "kanoo yaAAmaloona",
-    "verb": "those",
-    "object": "are the companions of Paradise",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#5566-7211",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "And this is a confirming Book in an Arabic tongue to warn those who have wronged and as good tidings to the doers of good [46:13] إِنَّ ٱلَّذِينَ قَالُواْ رَبُّنَا ٱللَّهُ ثُمَّ ٱسۡتَقَٰمُواْ فَلَا خَوۡفٌ عَلَيۡهِمۡ وَلَا هُمۡ يَحۡزَنُونَ Inna allatheena qaloo rabbuna Allahu thumma istaqamoo fala khawfun AAalayhim wala hum yahzanoona Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve [46:14] أُوْلَـٰٓئِكَ أَصۡحَٰبُ ٱلۡجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءَۢ بِمَا كَانُواْ يَعۡمَلُونَ Olaika ashabu aljannati khalideena feeha jazaan bima kanoo yaAAmaloona Those are the companions of Paradise, abiding eternally therein as reward for what they used to do [46:15] وَوَصَّيۡنَا ٱلۡإِنسَٰنَ بِوَٰلِدَيۡهِ إِحۡسَٰنًاۖ حَمَلَتۡهُ أُمُّهُۥ كُرۡهٗا وَوَضَعَتۡهُ كُرۡهٗاۖ وَحَمۡلُهُۥ وَفِصَٰلُهُۥ ثَلَٰثُونَ شَهۡرًاۚ حَتَّىٰٓ إِذَا بَلَغَ أَشُدَّهُۥ وَبَلَغَ أَرۡبَعِينَ سَنَةٗ قَالَ رَبِّ أَوۡزِعۡنِيٓ أَنۡ أَشۡكُرَ نِعۡمَتَكَ ٱلَّتِيٓ أَنۡعَمۡتَ عَلَيَّ وَعَلَىٰ وَٰلِدَيَّ وَأَنۡ أَعۡمَلَ صَٰلِحٗا تَرۡضَىٰهُ وَأَصۡلِحۡ لِي فِي ذُرِّيَّتِيٓۖ إِنِّي تُبۡتُ إِلَيۡكَ وَإِنِّي مِنَ ٱلۡمُسۡلِمِينَ Wawassayna alinsana biwalidayhi ihsanan hamalathu ommuhu kurhan wawadaAAathu kurhan wahamluhu wafisaluhu thalathoona shahran hatta itha balagha ashuddahu wabalagha arbaAAeena sanatan qala rabbi awziAAnee an ashkura niAAmataka allatee anAAamta AAalayya waAAala walidayya waan aAAmala salihan tardahu waaslih lee fee thurriyyatee innee tubtu ilayka wainnee mina almuslimeena And We have enjoined upon man, to his parents, good treatment."
-     }
-    ],
-    "seq": 27,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -886,7 +626,7 @@
     "verb": "have",
     "object": "enjoined upon man",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -895,36 +635,7 @@
       "text": "And this is a confirming Book in an Arabic tongue to warn those who have wronged and as good tidings to the doers of good [46:13] إِنَّ ٱلَّذِينَ قَالُواْ رَبُّنَا ٱللَّهُ ثُمَّ ٱسۡتَقَٰمُواْ فَلَا خَوۡفٌ عَلَيۡهِمۡ وَلَا هُمۡ يَحۡزَنُونَ Inna allatheena qaloo rabbuna Allahu thumma istaqamoo fala khawfun AAalayhim wala hum yahzanoona Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve [46:14] أُوْلَـٰٓئِكَ أَصۡحَٰبُ ٱلۡجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءَۢ بِمَا كَانُواْ يَعۡمَلُونَ Olaika ashabu aljannati khalideena feeha jazaan bima kanoo yaAAmaloona Those are the companions of Paradise, abiding eternally therein as reward for what they used to do [46:15] وَوَصَّيۡنَا ٱلۡإِنسَٰنَ بِوَٰلِدَيۡهِ إِحۡسَٰنًاۖ حَمَلَتۡهُ أُمُّهُۥ كُرۡهٗا وَوَضَعَتۡهُ كُرۡهٗاۖ وَحَمۡلُهُۥ وَفِصَٰلُهُۥ ثَلَٰثُونَ شَهۡرًاۚ حَتَّىٰٓ إِذَا بَلَغَ أَشُدَّهُۥ وَبَلَغَ أَرۡبَعِينَ سَنَةٗ قَالَ رَبِّ أَوۡزِعۡنِيٓ أَنۡ أَشۡكُرَ نِعۡمَتَكَ ٱلَّتِيٓ أَنۡعَمۡتَ عَلَيَّ وَعَلَىٰ وَٰلِدَيَّ وَأَنۡ أَعۡمَلَ صَٰلِحٗا تَرۡضَىٰهُ وَأَصۡلِحۡ لِي فِي ذُرِّيَّتِيٓۖ إِنِّي تُبۡتُ إِلَيۡكَ وَإِنِّي مِنَ ٱلۡمُسۡلِمِينَ Wawassayna alinsana biwalidayhi ihsanan hamalathu ommuhu kurhan wawadaAAathu kurhan wahamluhu wafisaluhu thalathoona shahran hatta itha balagha ashuddahu wabalagha arbaAAeena sanatan qala rabbi awziAAnee an ashkura niAAmataka allatee anAAamta AAalayya waAAala walidayya waan aAAmala salihan tardahu waaslih lee fee thurriyyatee innee tubtu ilayka wainnee mina almuslimeena And We have enjoined upon man, to his parents, good treatment."
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gave birth|to|him with hardship",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gave birth to him with hardship",
-    "subject": "gave birth",
-    "verb": "to",
-    "object": "him with hardship",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#7212-7342",
-      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-      "text": "His mother carried him with hardship and gave birth to him with hardship, and his gestation and weaning [period] is thirty months."
-     }
-    ],
-    "seq": 29,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -944,7 +655,7 @@
     "verb": "is",
     "object": "thirty months",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -953,13 +664,13 @@
       "text": "His mother carried him with hardship and gave birth to him with hardship, and his gestation and weaning [period] is thirty months."
      }
     ],
-    "seq": 30,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "enable me|to|be grateful for your favor which you have bestowed upon me and upon my parents and to work righteousness of which you will approve and make righteous for me my offspring",
+    "task_id": "which you|have|bestowed upon me and upon my parents and to work righteousness of which you will approve and make righteous for me my offspring",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -968,12 +679,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
-    "subject": "enable me",
-    "verb": "to",
-    "object": "be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
+    "description": "which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
+    "subject": "which You",
+    "verb": "have",
+    "object": "bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -982,7 +693,7 @@
       "text": "[He grows] until, when he reaches maturity and reaches [the age of] forty years, he says, \"My Lord, enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring."
      }
     ],
-    "seq": 31,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1002,7 +713,7 @@
     "verb": "have",
     "object": "repented to You",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1011,7 +722,7 @@
       "text": "Indeed, I have repented to You, and indeed, I am of the Muslims [46:16] أُوْلَـٰٓئِكَ ٱلَّذِينَ نَتَقَبَّلُ عَنۡهُمۡ أَحۡسَنَ مَا عَمِلُواْ وَنَتَجَاوَزُ عَن سَيِّـَٔاتِهِمۡ فِيٓ أَصۡحَٰبِ ٱلۡجَنَّةِۖ وَعۡدَ ٱلصِّدۡقِ ٱلَّذِي كَانُواْ يُوعَدُونَ Olaika allatheena nataqabbalu AAanhum ahsana ma AAamiloo wanatajawazu AAan sayyiatihim fee ashabi aljannati waAAda alssidqi"
      }
     ],
-    "seq": 32,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1031,7 +742,7 @@
     "verb": "allatheena",
     "object": "nataqabbalu AAanhum ahsana ma AAamiloo wanatajawazu AAan sayyiatihim fee ashabi aljannati waAAda alssidqi",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1040,12 +751,12 @@
       "text": "Indeed, I have repented to You, and indeed, I am of the Muslims [46:16] أُوْلَـٰٓئِكَ ٱلَّذِينَ نَتَقَبَّلُ عَنۡهُمۡ أَحۡسَنَ مَا عَمِلُواْ وَنَتَجَاوَزُ عَن سَيِّـَٔاتِهِمۡ فِيٓ أَصۡحَٰبِ ٱلۡجَنَّةِۖ وَعۡدَ ٱلصِّدۡقِ ٱلَّذِي كَانُواْ يُوعَدُونَ Olaika allatheena nataqabbalu AAanhum ahsana ma AAamiloo wanatajawazu AAan sayyiatihim fee ashabi aljannati waAAda alssidqi"
      }
     ],
-    "seq": 33,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 34,
+  "nextSeq": 23,
   "admits": [
    "NUL",
    "SEG",
@@ -1060,28 +771,12 @@
  },
  "folded": [
   {
-   "id": "alaaazeezi alhakeemi|the|revelation of the book is from allah",
-   "subject": "alAAazeezi alhakeemi",
-   "verb": "the",
-   "object": "revelation of the Book is from Allah",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#221-853",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "[46:1] حمٓ Hameem Ha, Meem [46:2] تَنزِيلُ ٱلۡكِتَٰبِ مِنَ ٱللَّهِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Tanzeelu alkitabi mina Allahi alAAazeezi alhakeemi The revelation of the Book is from Allah, the Exalted in Might, the Wise [46:3] مَا خَلَقۡنَا ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ وَمَا بَيۡنَهُمَآ إِلَّا بِٱلۡحَقِّ وَأَجَلٖ مُّسَمّٗىۚ وَٱلَّذِينَ كَفَرُواْ عَمَّآ أُنذِرُواْ مُعۡرِضُونَ Ma khalaqna alssamawati waalarda wama baynahuma illa bialhaqqi waajalin musamman waallatheena kafaroo AAamma onthiroo muAAridoona We did not create the heavens and earth and what is between them except in truth and [for] a specified term."
-    }
-   ]
-  },
-  {
    "id": "and we|have|enjoined upon man",
    "subject": "And We",
    "verb": "have",
    "object": "enjoined upon man",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1097,7 +792,7 @@
    "verb": "is",
    "object": "thirty months",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1108,44 +803,12 @@
    ]
   },
   {
-   "id": "and when|the|people are gathered [that day]",
-   "subject": "And when",
-   "verb": "the",
-   "object": "people are gathered [that Day]",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#1540-3251",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
-    }
-   ]
-  },
-  {
    "id": "and who|is|more astray than he who invokes besides allah those who will not respond to him until the day of resurrection",
    "subject": "And who",
    "verb": "is",
    "object": "more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#1540-3251",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
-    }
-   ]
-  },
-  {
-   "id": "be enemies|to|them",
-   "subject": "be enemies",
-   "verb": "to",
-   "object": "them",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1161,7 +824,7 @@
    "verb": "was",
    "object": "the scripture of Moses to lead and as a mercy",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1172,92 +835,12 @@
    ]
   },
   {
-   "id": "but|those|who disbelieve",
-   "subject": "But",
-   "verb": "those",
-   "object": "who disbelieve",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#854-1435",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "But those who disbelieve, from that of which they are warned, are turning away [46:4] قُلۡ أَرَءَيۡتُم مَّا تَدۡعُونَ مِن دُونِ ٱللَّهِ أَرُونِي مَاذَا خَلَقُواْ مِنَ ٱلۡأَرۡضِ أَمۡ لَهُمۡ شِرۡكٞ فِي ٱلسَّمَٰوَٰتِۖ ٱئۡتُونِي بِكِتَٰبٖ مِّن قَبۡلِ هَٰذَآ أَوۡ أَثَٰرَةٖ مِّنۡ عِلۡمٍ إِن كُنتُمۡ صَٰدِقِينَ Qul araaytum ma tadAAoona min dooni Allahi aroonee matha khalaqoo mina alardi am lahum shirkun fee alssamawati eetoonee bikitabin min qabli hatha aw atharatin min AAilmin in kuntum sadiqeena Say, [O Muhammad], \"Have you considered that which you invoke besides Allah?"
-    }
-   ]
-  },
-  {
-   "id": "disbelieve say|of|the truth when it has come to them",
-   "subject": "disbelieve say",
-   "verb": "of",
-   "object": "the truth when it has come to them",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#1540-3251",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
-    }
-   ]
-  },
-  {
-   "id": "enable me|to|be grateful for your favor which you have bestowed upon me and upon my parents and to work righteousness of which you will approve and make righteous for me my offspring",
-   "subject": "enable me",
-   "verb": "to",
-   "object": "be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#7343-7626",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "[He grows] until, when he reaches maturity and reaches [the age of] forty years, he says, \"My Lord, enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring."
-    }
-   ]
-  },
-  {
-   "id": "from that|of|which they are warned",
-   "subject": "from that",
-   "verb": "of",
-   "object": "which they are warned",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#854-1435",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "But those who disbelieve, from that of which they are warned, are turning away [46:4] قُلۡ أَرَءَيۡتُم مَّا تَدۡعُونَ مِن دُونِ ٱللَّهِ أَرُونِي مَاذَا خَلَقُواْ مِنَ ٱلۡأَرۡضِ أَمۡ لَهُمۡ شِرۡكٞ فِي ٱلسَّمَٰوَٰتِۖ ٱئۡتُونِي بِكِتَٰبٖ مِّن قَبۡلِ هَٰذَآ أَوۡ أَثَٰرَةٖ مِّنۡ عِلۡمٍ إِن كُنتُمۡ صَٰدِقِينَ Qul araaytum ma tadAAoona min dooni Allahi aroonee matha khalaqoo mina alardi am lahum shirkun fee alssamawati eetoonee bikitabin min qabli hatha aw atharatin min AAilmin in kuntum sadiqeena Say, [O Muhammad], \"Have you considered that which you invoke besides Allah?"
-    }
-   ]
-  },
-  {
-   "id": "gave birth|to|him with hardship",
-   "subject": "gave birth",
-   "verb": "to",
-   "object": "him with hardship",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#7212-7342",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "His mother carried him with hardship and gave birth to him with hardship, and his gestation and weaning [period] is thirty months."
-    }
-   ]
-  },
-  {
    "id": "he|has|invented it?\"",
    "subject": "He",
    "verb": "has",
    "object": "invented it?\"",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1273,7 +856,7 @@
    "verb": "is",
    "object": "most knowing of that in which you are involved",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1289,7 +872,7 @@
    "verb": "have",
    "object": "repented to You",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1305,7 +888,7 @@
    "verb": "have",
    "object": "invented it",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1316,44 +899,12 @@
    ]
   },
   {
-   "id": "if|the|qur'an was from allah",
-   "subject": "if",
-   "verb": "the",
-   "object": "Qur'an was from Allah",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#3924-4602",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "I only follow that which is revealed to me, and I am not but a clear warner [46:10] قُلۡ أَرَءَيۡتُمۡ إِن كَانَ مِنۡ عِندِ ٱللَّهِ وَكَفَرۡتُم بِهِۦ وَشَهِدَ شَاهِدٞ مِّنۢ بَنِيٓ إِسۡرَـٰٓءِيلَ عَلَىٰ مِثۡلِهِۦ فَـَٔامَنَ وَٱسۡتَكۡبَرۡتُمۡۚ إِنَّ ٱللَّهَ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Qul araaytum in kana min AAindi Allahi wakafartum bihi washahida shahidun min banee israeela AAala mithlihi faamana waistakbartum inna Allaha la yahdee alqawma alththalimeena Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
-    }
-   ]
-  },
-  {
-   "id": "kanoo yaaamaloona|those|are the companions of paradise",
-   "subject": "kanoo yaAAmaloona",
-   "verb": "those",
-   "object": "are the companions of Paradise",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#5566-7211",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "And this is a confirming Book in an Arabic tongue to warn those who have wronged and as good tidings to the doers of good [46:13] إِنَّ ٱلَّذِينَ قَالُواْ رَبُّنَا ٱللَّهُ ثُمَّ ٱسۡتَقَٰمُواْ فَلَا خَوۡفٌ عَلَيۡهِمۡ وَلَا هُمۡ يَحۡزَنُونَ Inna allatheena qaloo rabbuna Allahu thumma istaqamoo fala khawfun AAalayhim wala hum yahzanoona Indeed, those who have said, \"Our Lord is Allah,\" and then remained on a right course - there will be no fear concerning them, nor will they grieve [46:14] أُوْلَـٰٓئِكَ أَصۡحَٰبُ ٱلۡجَنَّةِ خَٰلِدِينَ فِيهَا جَزَآءَۢ بِمَا كَانُواْ يَعۡمَلُونَ Olaika ashabu aljannati khalideena feeha jazaan bima kanoo yaAAmaloona Those are the companions of Paradise, abiding eternally therein as reward for what they used to do [46:15] وَوَصَّيۡنَا ٱلۡإِنسَٰنَ بِوَٰلِدَيۡهِ إِحۡسَٰنًاۖ حَمَلَتۡهُ أُمُّهُۥ كُرۡهٗا وَوَضَعَتۡهُ كُرۡهٗاۖ وَحَمۡلُهُۥ وَفِصَٰلُهُۥ ثَلَٰثُونَ شَهۡرًاۚ حَتَّىٰٓ إِذَا بَلَغَ أَشُدَّهُۥ وَبَلَغَ أَرۡبَعِينَ سَنَةٗ قَالَ رَبِّ أَوۡزِعۡنِيٓ أَنۡ أَشۡكُرَ نِعۡمَتَكَ ٱلَّتِيٓ أَنۡعَمۡتَ عَلَيَّ وَعَلَىٰ وَٰلِدَيَّ وَأَنۡ أَعۡمَلَ صَٰلِحٗا تَرۡضَىٰهُ وَأَصۡلِحۡ لِي فِي ذُرِّيَّتِيٓۖ إِنِّي تُبۡتُ إِلَيۡكَ وَإِنِّي مِنَ ٱلۡمُسۡلِمِينَ Wawassayna alinsana biwalidayhi ihsanan hamalathu ommuhu kurhan wawadaAAathu kurhan wahamluhu wafisaluhu thalathoona shahran hatta itha balagha ashuddahu wabalagha arbaAAeena sanatan qala rabbi awziAAnee an ashkura niAAmataka allatee anAAamta AAalayya waAAala walidayya waan aAAmala salihan tardahu waaslih lee fee thurriyyatee innee tubtu ilayka wainnee mina almuslimeena And We have enjoined upon man, to his parents, good treatment."
-    }
-   ]
-  },
-  {
    "id": "muaaridoona\n    we|did|not create the heavens and earth and what is between them except in truth and [for] a specified term",
    "subject": "muAAridoona\n    We",
    "verb": "did",
    "object": "not create the heavens and earth and what is between them except in truth and [for] a specified term",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1364,12 +915,28 @@
    ]
   },
   {
+   "id": "of israel|has|testified to something similar and believed while you were arrogant",
+   "subject": "of Israel",
+   "verb": "has",
+   "object": "testified to something similar and believed while you were arrogant",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#3924-4602",
+     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
+     "text": "I only follow that which is revealed to me, and I am not but a clear warner [46:10] قُلۡ أَرَءَيۡتُمۡ إِن كَانَ مِنۡ عِندِ ٱللَّهِ وَكَفَرۡتُم بِهِۦ وَشَهِدَ شَاهِدٞ مِّنۢ بَنِيٓ إِسۡرَـٰٓءِيلَ عَلَىٰ مِثۡلِهِۦ فَـَٔامَنَ وَٱسۡتَكۡبَرۡتُمۡۚ إِنَّ ٱللَّهَ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Qul araaytum in kana min AAindi Allahi wakafartum bihi washahida shahidun min banee israeela AAala mithlihi faamana waistakbartum inna Allaha la yahdee alqawma alththalimeena Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
+    }
+   ]
+  },
+  {
    "id": "olaika|allatheena|nataqabbalu aaanhum ahsana ma aaamiloo wanatajawazu aaan sayyiatihim fee ashabi aljannati waaada alssidqi",
    "subject": "Olaika",
    "verb": "allatheena",
    "object": "nataqabbalu AAanhum ahsana ma AAamiloo wanatajawazu AAan sayyiatihim fee ashabi aljannati waAAda alssidqi",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1385,7 +952,7 @@
    "verb": "did",
    "object": "they have partnership in [creation of] the heavens?",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1396,28 +963,12 @@
    ]
   },
   {
-   "id": "original among|the|messengers",
-   "subject": "original among",
-   "verb": "the",
-   "object": "messengers",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#3408-3923",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "Sufficient is He as Witness between me and you, and He is the Forgiving the Merciful [46:9] قُلۡ مَا كُنتُ بِدۡعٗا مِّنَ ٱلرُّسُلِ وَمَآ أَدۡرِي مَا يُفۡعَلُ بِي وَلَا بِكُمۡۖ إِنۡ أَتَّبِعُ إِلَّا مَا يُوحَىٰٓ إِلَيَّ وَمَآ أَنَا۠ إِلَّا نَذِيرٞ مُّبِينٞ Qul ma kuntu bidAAan mina alrrusuli wama adree ma yufAAalu bee wala bikum in attabiAAu illa ma yooha ilayya wama ana illa natheerun mubeenun Say, \"I am not something original among the messengers, nor do I know what will be done with me or with you."
-    }
-   ]
-  },
-  {
    "id": "our lord|is|allah",
    "subject": "Our Lord",
    "verb": "is",
    "object": "Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1428,28 +979,12 @@
    ]
   },
   {
-   "id": "qadeemun\n    and|those|who disbelieve say of those who believe",
-   "subject": "qadeemun\n    And",
-   "verb": "those",
-   "object": "who disbelieve say of those who believe",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#4603-5096",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "Indeed, Allah does not guide the wrongdoing people [46:11] وَقَالَ ٱلَّذِينَ كَفَرُواْ لِلَّذِينَ ءَامَنُواْ لَوۡ كَانَ خَيۡرٗا مَّا سَبَقُونَآ إِلَيۡهِۚ وَإِذۡ لَمۡ يَهۡتَدُواْ بِهِۦ فَسَيَقُولُونَ هَٰذَآ إِفۡكٞ قَدِيمٞ Waqala allatheena kafaroo lillatheena amanoo law kana khayran ma sabaqoona ilayhi waith lam yahtadoo bihi fasayaqooloona hatha ifkun qadeemun And those who disbelieve say of those who believe, \"If it had [truly] been good, they would not have preceded us to it.\""
-    }
-   ]
-  },
-  {
    "id": "sufficient|is|he as witness between me and you",
    "subject": "Sufficient",
    "verb": "is",
    "object": "He as Witness between me and you",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1465,7 +1000,7 @@
    "verb": "is",
    "object": "revealed to me",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1476,12 +1011,12 @@
    ]
   },
   {
-   "id": "the exalted|in|might",
-   "subject": "the Exalted",
-   "verb": "in",
-   "object": "Might",
+   "id": "the book|is|from allah",
+   "subject": "the Book",
+   "verb": "is",
+   "object": "from Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1492,18 +1027,18 @@
    ]
   },
   {
-   "id": "the power|of|protection] from allah at all",
-   "subject": "the power",
-   "verb": "of",
-   "object": "protection] from Allah at all",
+   "id": "the qur'an|was|from allah",
+   "subject": "the Qur'an",
+   "verb": "was",
+   "object": "from Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#3252-3353",
+     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#3924-4602",
      "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "Say, \"If I have invented it, you will not possess for me [the power of protection] from Allah at all."
+     "text": "I only follow that which is revealed to me, and I am not but a clear warner [46:10] قُلۡ أَرَءَيۡتُمۡ إِن كَانَ مِنۡ عِندِ ٱللَّهِ وَكَفَرۡتُم بِهِۦ وَشَهِدَ شَاهِدٞ مِّنۢ بَنِيٓ إِسۡرَـٰٓءِيلَ عَلَىٰ مِثۡلِهِۦ فَـَٔامَنَ وَٱسۡتَكۡبَرۡتُمۡۚ إِنَّ ٱللَّهَ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Qul araaytum in kana min AAindi Allahi wakafartum bihi washahida shahidun min banee israeela AAala mithlihi faamana waistakbartum inna Allaha la yahdee alqawma alththalimeena Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
     }
    ]
   },
@@ -1513,7 +1048,7 @@
    "verb": "have",
    "object": "said",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1524,28 +1059,12 @@
    ]
   },
   {
-   "id": "trace|of|knowledge",
-   "subject": "trace",
-   "verb": "of",
-   "object": "knowledge",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#1540-3251",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
-    }
-   ]
-  },
-  {
    "id": "what they|have|created of the earth",
    "subject": "what they",
    "verb": "have",
    "object": "created of the earth",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1556,12 +1075,12 @@
    ]
   },
   {
-   "id": "when our|verses|are recited to them as clear evidences",
-   "subject": "when Our",
-   "verb": "verses",
-   "object": "are recited to them as clear evidences",
+   "id": "when it|has|come to them",
+   "subject": "when it",
+   "verb": "has",
+   "object": "come to them",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1572,12 +1091,44 @@
    ]
   },
   {
+   "id": "when our|verses|are recited to them as clear evidences",
+   "subject": "when Our",
+   "verb": "verses",
+   "object": "are recited to them as clear evidences",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#1540-3251",
+     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
+     "text": "Bring me a scripture [revealed] before this or a [remaining] trace of knowledge, if you should be truthful [46:5] وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ Waman adallu mimman yadAAoo min dooni Allahi man la yastajeebu lahu ila yawmi alqiyamati wahum AAan duAAaihim ghafiloona And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware [46:6] وَإِذَا حُشِرَ ٱلنَّاسُ كَانُواْ لَهُمۡ أَعۡدَآءٗ وَكَانُواْ بِعِبَادَتِهِمۡ كَٰفِرِينَ Waitha hushira alnnasu kanoo lahum aAAdaan wakanoo biAAibadatihim kafireena And when the people are gathered [that Day], they [who were invoked] will be enemies to them, and they will be deniers of their worship [46:7] وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا بَيِّنَٰتٖ قَالَ ٱلَّذِينَ كَفَرُواْ لِلۡحَقِّ لَمَّا جَآءَهُمۡ هَٰذَا سِحۡرٞ مُّبِينٌ Waitha tutla AAalayhim ayatuna bayyinatin qala allatheena kafaroo lilhaqqi lamma jaahum hatha sihrun mubeenun And when Our verses are recited to them as clear evidences, those who disbelieve say of the truth when it has come to them, \"This is obvious magic [46:8] أَمۡ يَقُولُونَ ٱفۡتَرَىٰهُۖ قُلۡ إِنِ ٱفۡتَرَيۡتُهُۥ فَلَا تَمۡلِكُونَ لِي مِنَ ٱللَّهِ شَيۡـًٔاۖ هُوَ أَعۡلَمُ بِمَا تُفِيضُونَ فِيهِۚ كَفَىٰ بِهِۦ شَهِيدَۢا بَيۡنِي وَبَيۡنَكُمۡۖ وَهُوَ ٱلۡغَفُورُ ٱلرَّحِيمُ Am yaqooloona iftarahu qul ini iftaraytuhu fala tamlikoona lee mina Allahi shayan huwa aAAlamu bima tufeedoona feehi kafa bihi shaheedan baynee wabaynakum wahuwa alghafooru alrraheemu Or do they say, \"He has invented it?\""
+    }
+   ]
+  },
+  {
+   "id": "which you|have|bestowed upon me and upon my parents and to work righteousness of which you will approve and make righteous for me my offspring",
+   "subject": "which You",
+   "verb": "have",
+   "object": "bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#7343-7626",
+     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
+     "text": "[He grows] until, when he reaches maturity and reaches [the age of] forty years, he says, \"My Lord, enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to work righteousness of which You will approve and make righteous for me my offspring."
+    }
+   ]
+  },
+  {
    "id": "would not|have|preceded us to it",
    "subject": "would not",
    "verb": "have",
    "object": "preceded us to it",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1586,26 +1137,10 @@
      "text": "Indeed, Allah does not guide the wrongdoing people [46:11] وَقَالَ ٱلَّذِينَ كَفَرُواْ لِلَّذِينَ ءَامَنُواْ لَوۡ كَانَ خَيۡرٗا مَّا سَبَقُونَآ إِلَيۡهِۚ وَإِذۡ لَمۡ يَهۡتَدُواْ بِهِۦ فَسَيَقُولُونَ هَٰذَآ إِفۡكٞ قَدِيمٞ Waqala allatheena kafaroo lillatheena amanoo law kana khayran ma sabaqoona ilayhi waith lam yahtadoo bihi fasayaqooloona hatha ifkun qadeemun And those who disbelieve say of those who believe, \"If it had [truly] been good, they would not have preceded us to it.\""
     }
    ]
-  },
-  {
-   "id": "you disbelieved|in|it while a witness from the children of israel has testified to something similar and believed while you were arrogant",
-   "subject": "you disbelieved",
-   "verb": "in",
-   "object": "it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt#3924-4602",
-     "ref": "14-holy-texts/quran-suras/sura-046-Al-Ahqaf.txt",
-     "text": "I only follow that which is revealed to me, and I am not but a clear warner [46:10] قُلۡ أَرَءَيۡتُمۡ إِن كَانَ مِنۡ عِندِ ٱللَّهِ وَكَفَرۡتُم بِهِۦ وَشَهِدَ شَاهِدٞ مِّنۢ بَنِيٓ إِسۡرَـٰٓءِيلَ عَلَىٰ مِثۡلِهِۦ فَـَٔامَنَ وَٱسۡتَكۡبَرۡتُمۡۚ إِنَّ ٱللَّهَ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Qul araaytum in kana min AAindi Allahi wakafartum bihi washahida shahidun min banee israeela AAala mithlihi faamana waistakbartum inna Allaha la yahdee alqawma alththalimeena Say, \"Have you considered: if the Qur'an was from Allah, and you disbelieved in it while a witness from the Children of Israel has testified to something similar and believed while you were arrogant...?\""
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:46.482Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:46.281Z"
  }
 }

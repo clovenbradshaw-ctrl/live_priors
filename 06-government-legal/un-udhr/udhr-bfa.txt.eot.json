@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 11422,
   "bodyOffset": 0,
   "bodyChars": 11422,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,92 +55,39 @@
   "referentEvents": 19,
   "distinctReferents": 10,
   "examined": true,
-  "edgesFound": 41,
+  "edgesFound": 39,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 4,
+   "verbs": 2,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 4
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 39,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 53,
-  "excerptOk": 53,
-  "rawChecked": 53,
-  "rawOk": 53,
+  "excerptChecked": 51,
+  "excerptOk": 51,
+  "rawChecked": 51,
+  "rawOk": 51,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 41,
-  "heard": 41,
+  "offered": 39,
+  "heard": 39,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "office|of|the united nations high commissioner for human rights (ohchr)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Office of the United Nations High Commissioner for Human Rights (OHCHR)",
-    "subject": "Office",
-    "verb": "of",
-    "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bfa.txt#0-218",
-      "ref": "06-government-legal/un-udhr/udhr-bfa.txt",
-      "text": "Universal Declaration of Human Rights Language: Bari (bfa) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "universal declaration|of|human rights i kutuk na bari",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "UNIVERSAL DECLARATION of HUMAN RIGHTS I KUTUK NA BARI",
-    "subject": "UNIVERSAL DECLARATION",
-    "verb": "of",
-    "object": "HUMAN RIGHTS I KUTUK NA BARI",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-bfa.txt#220-290",
-      "ref": "06-government-legal/un-udhr/udhr-bfa.txt",
-      "text": "LÖPUKÖ/LEUSA NA UNIVERSAL DECLARATION OF HUMAN RIGHTS I KUTUK NA BARI."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "adi kugga|ko|tojojo na ’dekesi ti ŋutu liŋ nagwon bain titiki ŋutu",
@@ -139,7 +104,7 @@
     "verb": "ko",
     "object": "tojojo na ’dekesi ti ŋutu liŋ nagwon bain titiki ŋutu",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,7 +113,7 @@
       "text": "Denet nagwon adi kugga ko tojojo na ’dekesi ti ŋutu liŋ nagwon bain titiki ŋutu."
      }
     ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -168,7 +133,7 @@
     "verb": "ko",
     "object": "taliŋ i kak ’bukuluŋ",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -177,7 +142,7 @@
       "text": "Kona kwe ŋutu ti mede/’baŋ logwon gwo’diet na tolien, to’diri ko taliŋ i kak ’bukuluŋ."
      }
     ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -197,7 +162,7 @@
     "verb": "ko",
     "object": "laundya na to’diri na ŋutu aje jondia konesi narok nagwon aje toworja yeyesi ti ŋutu",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -206,7 +171,7 @@
       "text": "’Bakan na yenet ko laundya na to’diri na ŋutu aje jondia konesi narok nagwon aje toworja yeyesi ti ŋutu."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -226,7 +191,7 @@
     "verb": "ko",
     "object": "yenet ko yupet töki ko tolien akwe na kujönö ko ’dekesi aje tokoro gwoso yenet duma na ŋutu i piritön ti kak",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -235,7 +200,7 @@
       "text": "Kona kwe ’durökin na kune ’dekesi kwekindya adi anyen ŋutu liŋ ryeju tolien na jambu ko yenet ko yupet töki ko tolien akwe na kujönö ko ’dekesi aje tokoro gwoso yenet duma na ŋutu i piritön ti kak."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -255,7 +220,7 @@
     "verb": "ko",
     "object": "kasasanyanit kogwon ’dekesi ti ŋutu ködyö gagaya ko saresi ti putet",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -269,7 +234,7 @@
       "text": "Ko ködyö meta i konesi ti miri ko i tojulin na miri ko kulye jurön i saret lo momoret kode tukwöryönjin ti jurön kad'eka’de adi toro’bo gwiliŋit ko ’dekesi ti keryat logwon ti ’dumaji kaŋo anyen buya tol"
      }
     ],
-    "seq": 6,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -289,7 +254,7 @@
     "verb": "ko",
     "object": "ŋarju konesi na geleŋ",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -298,7 +263,7 @@
       "text": "’De’dekarikin parik i ’dilikindya na ’durjö na tojulin i kiden na ŋutu logwon nyanyar gwon i pirit geleŋ ko ŋarju konesi na geleŋ."
      }
     ],
-    "seq": 7,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -318,7 +283,7 @@
     "verb": "ko",
     "object": "to’durjö na gwiliŋit ko tojulin ko jurön",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -327,7 +292,7 @@
       "text": "Ködyö ’de’dekarikin adi ti ŋutu gwe ko to’durjö na gwiliŋit ko tojulin ko jurön."
      }
     ],
-    "seq": 8,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -347,7 +312,7 @@
     "verb": "ko",
     "object": "’bulit na ŋutu i tojojo na ŋutu lyan ko wate adi se agi ködyö tindu riŋit i to’durjö i pirit na geleŋ gwiliŋit lo’but i tolien duma",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -366,7 +331,7 @@
       "text": "Karen ŋuto a ’buruki ’dekesi liŋ ko tokoret ’bak nyunyumbö i gwearijin ka’deka’de gwoso adi: ’Boriköt, Kutuk ko Yupet/Yubö."
      }
     ],
-    "seq": 9,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -386,7 +351,7 @@
     "verb": "ko",
     "object": "’dutet",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -395,7 +360,7 @@
       "text": "Ŋina momoret duma tokorju ŋina kweyet na to’durjö na ’dekesi ti ŋutu liŋ i kak ’bukuluŋ gwon a temet na konaki i morja liŋ i jurön liŋ tojo ko ’dutet."
      }
     ],
-    "seq": 10,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -415,7 +380,7 @@
     "verb": "ko",
     "object": "karen mugun na laŋet kepekep ŋina tokoret diŋitan liŋ i kwe anyen tindu riŋit duma na todindyö ko todinet anyen todindyö kuket na kine ’dekesi",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -424,7 +389,7 @@
       "text": "Karen ŋutu ko karen mugun na laŋet kepekep ŋina tokoret diŋitan liŋ i kwe anyen tindu riŋit duma na todindyö ko todinet anyen todindyö kuket na kine ’dekesi."
      }
     ],
-    "seq": 11,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -444,7 +409,7 @@
     "verb": "ko",
     "object": "temet na ’durjö i Iukata ko nakaŋo na jur anyen gaju gwon nase i kak ’bukuluŋ ko anyen joŋga ’dekesi ko time nase ko laŋet na kilo jurön ko ’börik kase ako ŋutu logwon gwon kase i saresi",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -453,7 +418,7 @@
       "text": "Tolien ko temet na ’durjö i Iukata ko nakaŋo na jur anyen gaju gwon nase i kak ’bukuluŋ ko anyen joŋga ’dekesi ko time nase ko laŋet na kilo jurön ko ’börik kase ako ŋutu logwon gwon kase i saresi."
      }
     ],
-    "seq": 12,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -473,7 +438,7 @@
     "verb": "ko",
     "object": "’dekesi ko ti se tokitaki ko ’börik ko mulökötyo lo toluŋaseran",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -482,7 +447,7 @@
       "text": "Ŋutu liŋ a yuŋwe kana, jojo i to’diri ko ’dekesi ko ti se tokitaki ko ’börik ko mulökötyo lo toluŋaseran."
      }
     ],
-    "seq": 13,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -502,7 +467,7 @@
     "verb": "ko",
     "object": "denet na kulya na’but ko narok",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -511,7 +476,7 @@
       "text": "Se a ’doka ko denet na kulya na’but ko narok."
      }
     ],
-    "seq": 14,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -531,7 +496,7 @@
     "verb": "ko",
     "object": "Yupet/Yubö",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -540,7 +505,7 @@
       "text": "Karen ŋuto a ’buruki ’dekesi liŋ ko tokoret ’bak nyunyumbö i gwearijin ka’deka’de gwoso adi: ’Boriköt, Kutuk ko Yupet/Yubö."
      }
     ],
-    "seq": 15,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -560,7 +525,7 @@
     "verb": "kaŋo",
     "object": "kode jur",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -569,7 +534,7 @@
       "text": "I.aŋet kode kunie yeyesi ti lukata kode suluwet na gwoloŋ, toro’bo kode kulye gwearijin i juỳu na kine nene gelet ködyö ti kona kwöŋ kode i kiden na laŋet na miri na kaŋo kode jur, kode gwon a luwitöt, yiyiniki, ’bain ’deba mugun kode gwon ko denesi ti tolien."
      }
     ],
-    "seq": 16,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -589,7 +554,7 @@
     "verb": "ko",
     "object": "denesi ti tolien",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -603,7 +568,7 @@
       "text": "Karen ŋuto ködyö gwon ko tolien na yeyesi kanyit, ko lepeŋ yöŋö kondya nyo kweja adi teŋet ’bain bubulö yeyeju ŋo na’but ko narok ko nye a ’deggi konye töki bubulö torukökindyö ŋutu ko kulye i pirit nageleŋ kweja ad i todinesi, konesi, moỳu, kode kwakwaddu."
      }
     ],
-    "seq": 17,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -623,7 +588,7 @@
     "verb": "ko",
     "object": "to’diri na gwiliŋit adi gwon jörun ko tolien na gaya na ŋutu",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -642,7 +607,7 @@
       "text": "Karen ŋuto kata ko to’diri nagwon bubulö gwon ko toro’bo kanyit kode töki bubulö gwon i momoret ko kulye."
      }
     ],
-    "seq": 18,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -662,7 +627,7 @@
     "verb": "ko",
     "object": "saret",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -671,7 +636,7 @@
       "text": "Lepeŋ ködyö agi gaya jojo ko saret."
      }
     ],
-    "seq": 19,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -691,7 +656,7 @@
     "verb": "ko",
     "object": "gayet nageleŋ ’bak nene nyunyumet kode laŋa na kilo saresi töki kode konesi nagwon ti temakindya i kebbu na saret lo jur",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -725,7 +690,7 @@
       "text": "Se ködyö gwon ko ’dekesi kase jojo anyen bubulö toyem i diŋit yemet kode na reyan."
      }
     ],
-    "seq": 20,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -745,7 +710,7 @@
     "verb": "kaŋo",
     "object": "kanyit i jur",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -754,7 +719,7 @@
       "text": "Lele ŋuto ködyö ti bulö moka ’bakan na saret, rereka kode riköji kaŋo kanyit i jur."
      }
     ],
-    "seq": 21,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -774,7 +739,7 @@
     "verb": "ko",
     "object": "kepesi narok nagwon mokani ŋutu",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -783,7 +748,7 @@
       "text": "Ti ’duŋgö na putet gwe i denet na to’diri ko kepesi narok nagwon mokani ŋutu."
      }
     ],
-    "seq": 22,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -803,7 +768,7 @@
     "verb": "ko",
     "object": "lopeŋ a ’duŋöki putet lo liliya ko ŋutu lojore",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -812,7 +777,7 @@
       "text": "Karen ŋuto lo moka adi a torondya agi ködyö ti luŋu a katoronyanit tojo ko lopeŋ a ’duŋöki putet lo liliya ko ŋutu lojore, nagwon kweja adi nye a ryö gayesi liŋ i putet Ionyit."
      }
     ],
-    "seq": 23,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -832,7 +797,7 @@
     "verb": "ko",
     "object": "Io kaŋo jambu adi lele saret lo pömöni lele ŋutu ködyö ti bulö ri’diki i lewudya na ŋilo saret logwon gwon i kitarikin lu",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -846,7 +811,7 @@
       "text": "a) Yemet tuŋ ka’de bubulö kona i ’dekesi ti kilo logwon yöŋö kondya mede kulo (toyem) b) Mede ködyö a ŋo nagwon ŋUN lo gweja ko agi ködyö gwogwon, ko a laŋet na’dit najur kode köji ko ködyö gagaya ko köji kode ko jur ’bukuluŋ"
      }
     ],
-    "seq": 24,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -866,7 +831,7 @@
     "verb": "ko",
     "object": "lele ŋuto kadi ’bak pija kode kendya na manini na lege",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -875,7 +840,7 @@
       "text": "Lele ŋuto ködyö ti bulö ri’diki i lwönö kanyit kweja adi lubbö ko lele ŋuto kadi ’bak pija kode kendya na manini na lege, kode lyöggu na kukuet ko gwiliŋit lo'but."
      }
     ],
-    "seq": 25,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -895,7 +860,7 @@
     "verb": "ko",
     "object": "gwiliŋit lo'but",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -904,7 +869,7 @@
       "text": "Lele ŋuto ködyö ti bulö ri’diki i lwönö kanyit kweja adi lubbö ko lele ŋuto kadi ’bak pija kode kendya na manini na lege, kode lyöggu na kukuet ko gwiliŋit lo'but."
      }
     ],
-    "seq": 26,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -924,7 +889,7 @@
     "verb": "ko",
     "object": "si’da i lokokoritan ti lukata na köjinö ka’deka’de",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -933,7 +898,7 @@
       "text": "Karen ŋuto ruköki tolien na wörö ko si’da i lokokoritan ti lukata na köjinö ka’deka’de."
      }
     ],
-    "seq": 27,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -953,7 +918,7 @@
     "verb": "ko",
     "object": "’bain pondya i toron na laŋet na ’debba jur kode i saresi logwon ko tuka’de ko saresi titeŋ na momoret na jurön",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -962,7 +927,7 @@
       "text": "Kine dekesi ti bulö ruköki kode luŋu i diŋit na ’duŋöki na putet i tugwakan ko ’bain pondya i toron na laŋet na ’debba jur kode i saresi logwon ko tuka’de ko saresi titeŋ na momoret na jurön."
      }
     ],
-    "seq": 28,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -982,7 +947,7 @@
     "verb": "ko",
     "object": "wate logwon aje ’durjö ’bakan na kuniye teŋesi",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -991,7 +956,7 @@
       "text": "Ŋutu lyan ko wate logwon aje ’durjö ’bakan na kuniye teŋesi, ko ati kotumit nanyit kode gweyari kode ti yupet ködyö bubulö yema kode yemba anyen ryendu mede."
      }
     ],
-    "seq": 29,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1011,7 +976,7 @@
     "verb": "ko",
     "object": "agi ködyö gwogwon",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1020,7 +985,7 @@
       "text": "a) Yemet tuŋ ka’de bubulö kona i ’dekesi ti kilo logwon yöŋö kondya mede kulo (toyem) b) Mede ködyö a ŋo nagwon ŋUN lo gweja ko agi ködyö gwogwon, ko a laŋet na’dit najur kode köji ko ködyö gagaya ko köji kode ko jur ’bukuluŋ"
      }
     ],
-    "seq": 30,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -1040,7 +1005,7 @@
     "verb": "kaŋo",
     "object": "’bak saret",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1049,7 +1014,7 @@
       "text": "Lele ŋutu ködyö ti bulö ryaka kode joŋari toro’bo kanyit kaŋo ’bak saret."
      }
     ],
-    "seq": 31,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1069,7 +1034,7 @@
     "verb": "ko",
     "object": "narok ko nye a ’deggi konye töki bubulö torukökindyö ŋutu ko kulye i pirit nageleŋ kweja ad i todinesi",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1078,7 +1043,7 @@
       "text": "Karen ŋuto ködyö gwon ko tolien na yeyesi kanyit, ko lepeŋ yöŋö kondya nyo kweja adi teŋet ’bain bubulö yeyeju ŋo na’but ko narok ko nye a ’deggi konye töki bubulö torukökindyö ŋutu ko kulye i pirit nageleŋ kweja ad i todinesi, konesi, moỳu, kode kwakwaddu."
      }
     ],
-    "seq": 32,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -1098,7 +1063,7 @@
     "verb": "ko",
     "object": "ŋutu kata",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1107,7 +1072,7 @@
       "text": "Karen ŋuto a ’buruki i jondya kode i kwekindya na ŋutu yeyet nanyit ko ŋutu kata, ko bubulö jambu ’bak teŋet."
      }
     ],
-    "seq": 33,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -1127,7 +1092,7 @@
     "verb": "ko",
     "object": "’burit kweyet na yeyet ’bakan na teŋet kode kakalet ko lele ŋuto pija",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1136,7 +1101,7 @@
       "text": "Kine ’dekesi kode ’burusi morja ko ’burit kweyet na yeyet ’bakan na teŋet kode kakalet ko lele ŋuto pija, wuju, kode leleŋaki na kulya ko lele ŋutu kode yeyet ko nene mugun kalayianit ’bayin na dendya na lokokori."
      }
     ],
-    "seq": 34,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
@@ -1156,7 +1121,7 @@
     "verb": "ko",
     "object": "lele ŋutu kode yeyet ko nene mugun kalayianit ’bayin na dendya na lokokori",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1165,7 +1130,7 @@
       "text": "Kine ’dekesi kode ’burusi morja ko ’burit kweyet na yeyet ’bakan na teŋet kode kakalet ko lele ŋuto pija, wuju, kode leleŋaki na kulya ko lele ŋutu kode yeyet ko nene mugun kalayianit ’bayin na dendya na lokokori."
      }
     ],
-    "seq": 35,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -1185,7 +1150,7 @@
     "verb": "ko",
     "object": "taling ’bak mörö",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1194,7 +1159,7 @@
       "text": "Karen ŋuto a ’buruki kode bubulö kondya kode luŋgu momoret ko taling ’bak mörö."
      }
     ],
-    "seq": 36,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
@@ -1214,7 +1179,7 @@
     "verb": "kaŋo",
     "object": "i nene mugun na momorja anyen timundya kulyajin",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1223,7 +1188,7 @@
       "text": "Lele ŋutu ködyö ti bulö riköji kaŋo i nene mugun na momorja anyen timundya kulyajin, nye ködyö ti bulö joŋga i nene mugun nagwon yeyesi kase ti morja."
      }
     ],
-    "seq": 37,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    },
@@ -1243,7 +1208,7 @@
     "verb": "ko",
     "object": "a ti biya i kadi na wini kode todinesi ’bakan na nyunyumbö kode gelesi kanyit i jur",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1252,7 +1217,7 @@
       "text": "Karen ŋuto agi ködyö kikita i miri lo jur lonyit i lukata na miri kode wulundyö ŋutu logwon gwo’dan kase i karen i lukata na miri, a) Karen ŋuto a ’buruki i ryeju na ŋaresi ko a ti biya i kadi na wini kode todinesi ’bakan na nyunyumbö kode gelesi kanyit i jur."
      }
     ],
-    "seq": 38,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
@@ -1272,7 +1237,7 @@
     "verb": "ko",
     "object": "gayesi ko to’diri na wulet na kona ko ŋutu liŋ ti jur gwon kweja adi kona ko beiembele",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1281,7 +1246,7 @@
       "text": "Ko ŋina ka’de bubulö meta kode time ko gayesi ko to’diri na wulet na kona ko ŋutu liŋ ti jur gwon kweja adi kona ko beiembele."
      }
     ],
-    "seq": 39,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    },
@@ -1301,7 +1266,7 @@
     "verb": "ko",
     "object": "miri",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1310,12 +1275,12 @@
       "text": "Karen ŋuto gwoso lele lo laŋet agi ködyö gagaya ko miri."
      }
     ],
-    "seq": 40,
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 41,
+  "nextSeq": 39,
   "admits": [
    "NUL",
    "SEG",
@@ -1335,7 +1300,7 @@
    "verb": "ko",
    "object": "’burit kweyet na yeyet ’bakan na teŋet kode kakalet ko lele ŋuto pija",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1351,7 +1316,7 @@
    "verb": "ko",
    "object": "denet na kulya na’but ko narok",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1367,7 +1332,7 @@
    "verb": "ko",
    "object": "tojojo na ’dekesi ti ŋutu liŋ nagwon bain titiki ŋutu",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1383,7 +1348,7 @@
    "verb": "ko",
    "object": "lele ŋuto kadi ’bak pija kode kendya na manini na lege",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1399,7 +1364,7 @@
    "verb": "kaŋo",
    "object": "i nene mugun na momorja anyen timundya kulyajin",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1415,7 +1380,7 @@
    "verb": "ko",
    "object": "saret",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1431,7 +1396,7 @@
    "verb": "ko",
    "object": "’bulit na ŋutu i tojojo na ŋutu lyan ko wate adi se agi ködyö tindu riŋit i to’durjö i pirit na geleŋ gwiliŋit lo’but i tolien duma",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1457,7 +1422,7 @@
    "verb": "ko",
    "object": "’dekesi ko ti se tokitaki ko ’börik ko mulökötyo lo toluŋaseran",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1473,7 +1438,7 @@
    "verb": "ko",
    "object": "’bain pondya i toron na laŋet na ’debba jur kode i saresi logwon ko tuka’de ko saresi titeŋ na momoret na jurön",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1489,7 +1454,7 @@
    "verb": "ko",
    "object": "karen mugun na laŋet kepekep ŋina tokoret diŋitan liŋ i kwe anyen tindu riŋit duma na todindyö ko todinet anyen todindyö kuket na kine ’dekesi",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1505,7 +1470,7 @@
    "verb": "ko",
    "object": "lopeŋ a ’duŋöki putet lo liliya ko ŋutu lojore",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1521,7 +1486,7 @@
    "verb": "ko",
    "object": "denesi ti tolien",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1542,7 +1507,7 @@
    "verb": "kaŋo",
    "object": "kanyit i jur",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1558,7 +1523,7 @@
    "verb": "ko",
    "object": "gayesi ko to’diri na wulet na kona ko ŋutu liŋ ti jur gwon kweja adi kona ko beiembele",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1574,7 +1539,7 @@
    "verb": "ko",
    "object": "miri",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1590,7 +1555,7 @@
    "verb": "ko",
    "object": "gayet nageleŋ ’bak nene nyunyumet kode laŋa na kilo saresi töki kode konesi nagwon ti temakindya i kebbu na saret lo jur",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1631,7 +1596,7 @@
    "verb": "ko",
    "object": "to’diri na gwiliŋit adi gwon jörun ko tolien na gaya na ŋutu",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1657,7 +1622,7 @@
    "verb": "ko",
    "object": "Yupet/Yubö",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1673,7 +1638,7 @@
    "verb": "ko",
    "object": "’dutet",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1689,7 +1654,7 @@
    "verb": "ko",
    "object": "agi ködyö gwogwon",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1705,7 +1670,7 @@
    "verb": "ko",
    "object": "Io kaŋo jambu adi lele saret lo pömöni lele ŋutu ködyö ti bulö ri’diki i lewudya na ŋilo saret logwon gwon i kitarikin lu",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1726,7 +1691,7 @@
    "verb": "ko",
    "object": "taling ’bak mörö",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1742,7 +1707,7 @@
    "verb": "ko",
    "object": "kasasanyanit kogwon ’dekesi ti ŋutu ködyö gagaya ko saresi ti putet",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1763,7 +1728,7 @@
    "verb": "kaŋo",
    "object": "kode jur",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1779,7 +1744,7 @@
    "verb": "ko",
    "object": "yenet ko yupet töki ko tolien akwe na kujönö ko ’dekesi aje tokoro gwoso yenet duma na ŋutu i piritön ti kak",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1795,7 +1760,7 @@
    "verb": "ko",
    "object": "gwiliŋit lo'but",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1811,7 +1776,7 @@
    "verb": "ko",
    "object": "lele ŋutu kode yeyet ko nene mugun kalayianit ’bayin na dendya na lokokori",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1827,7 +1792,7 @@
    "verb": "ko",
    "object": "a ti biya i kadi na wini kode todinesi ’bakan na nyunyumbö kode gelesi kanyit i jur",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1843,7 +1808,7 @@
    "verb": "ko",
    "object": "kepesi narok nagwon mokani ŋutu",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1859,7 +1824,7 @@
    "verb": "ko",
    "object": "si’da i lokokoritan ti lukata na köjinö ka’deka’de",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1875,7 +1840,7 @@
    "verb": "ko",
    "object": "laundya na to’diri na ŋutu aje jondia konesi narok nagwon aje toworja yeyesi ti ŋutu",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1891,7 +1856,7 @@
    "verb": "ko",
    "object": "narok ko nye a ’deggi konye töki bubulö torukökindyö ŋutu ko kulye i pirit nageleŋ kweja ad i todinesi",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1907,7 +1872,7 @@
    "verb": "ko",
    "object": "to’durjö na gwiliŋit ko tojulin ko jurön",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1923,7 +1888,7 @@
    "verb": "ko",
    "object": "wate logwon aje ’durjö ’bakan na kuniye teŋesi",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1934,28 +1899,12 @@
    ]
   },
   {
-   "id": "office|of|the united nations high commissioner for human rights (ohchr)",
-   "subject": "Office",
-   "verb": "of",
-   "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bfa.txt#0-218",
-     "ref": "06-government-legal/un-udhr/udhr-bfa.txt",
-     "text": "Universal Declaration of Human Rights Language: Bari (bfa) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-    }
-   ]
-  },
-  {
    "id": "pirit geleŋ|ko|ŋarju konesi na geleŋ",
    "subject": "pirit geleŋ",
    "verb": "ko",
    "object": "ŋarju konesi na geleŋ",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1971,7 +1920,7 @@
    "verb": "ko",
    "object": "taliŋ i kak ’bukuluŋ",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1987,7 +1936,7 @@
    "verb": "ko",
    "object": "temet na ’durjö i Iukata ko nakaŋo na jur anyen gaju gwon nase i kak ’bukuluŋ ko anyen joŋga ’dekesi ko time nase ko laŋet na kilo jurön ko ’börik kase ako ŋutu logwon gwon kase i saresi",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2003,7 +1952,7 @@
    "verb": "kaŋo",
    "object": "’bak saret",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2014,28 +1963,12 @@
    ]
   },
   {
-   "id": "universal declaration|of|human rights i kutuk na bari",
-   "subject": "UNIVERSAL DECLARATION",
-   "verb": "of",
-   "object": "HUMAN RIGHTS I KUTUK NA BARI",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-bfa.txt#220-290",
-     "ref": "06-government-legal/un-udhr/udhr-bfa.txt",
-     "text": "LÖPUKÖ/LEUSA NA UNIVERSAL DECLARATION OF HUMAN RIGHTS I KUTUK NA BARI."
-    }
-   ]
-  },
-  {
    "id": "yeyet nanyit|ko|ŋutu kata",
    "subject": "yeyet nanyit",
    "verb": "ko",
    "object": "ŋutu kata",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-bfa.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-bfa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2047,7 +1980,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:57.530Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:34.038Z"
  }
 }

@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 31309,
   "bodyOffset": 0,
   "bodyChars": 31309,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 12,
   "distinctReferents": 10,
   "examined": true,
-  "edgesFound": 36,
-  "extractionError": null
+  "edgesFound": 20,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 16,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 27
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 20,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 38,
-  "excerptOk": 38,
-  "rawChecked": 38,
-  "rawOk": 38,
+  "excerptChecked": 20,
+  "excerptOk": 20,
+  "rawChecked": 20,
+  "rawOk": 20,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 36,
-  "heard": 36,
+  "offered": 20,
+  "heard": 20,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "with 28|ethnic|groups and languages",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "With 28 ethnic groups and languages",
-    "subject": "With 28",
-    "verb": "ethnic",
-    "object": "groups and languages",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#130-258",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Background <p>With 28 ethnic groups and languages, Liberia is one of the most ethnically diverse countries in the world."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "liberia|is|one of the most ethnically diverse countries in the world",
@@ -103,7 +104,7 @@
     "verb": "is",
     "object": "one of the most ethnically diverse countries in the world",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "### Background <p>With 28 ethnic groups and languages, Liberia is one of the most ethnically diverse countries in the world."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the mali|and|songhai empires claimed most of liberia",
+    "task_id": "songhai empires|claimed|most of liberia",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,12 +128,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the Mali and Songhai Empires claimed most of Liberia",
-    "subject": "the Mali",
-    "verb": "and",
-    "object": "Songhai Empires claimed most of Liberia",
+    "description": "Songhai Empires claimed most of Liberia",
+    "subject": "Songhai Empires",
+    "verb": "claimed",
+    "object": "most of Liberia",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,36 +142,7 @@
       "text": "For hundreds of years, the Mali and Songhai Empires claimed most of Liberia."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "beginning|in|the 15th century",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Beginning in the 15th century",
-    "subject": "Beginning",
-    "verb": "in",
-    "object": "the 15th century",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#336-437",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "Beginning in the 15th century, European traders began establishing outposts along the Liberian coast."
-     }
-    ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +162,7 @@
     "verb": "began",
     "object": "establishing outposts along the Liberian coast",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,7 +171,7 @@
       "text": "Beginning in the 15th century, European traders began establishing outposts along the Liberian coast."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +191,7 @@
     "verb": "did",
     "object": "not fall under European colonial rule",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,7 +200,7 @@
       "text": "Unlike its neighbors, however, Liberia did not fall under European colonial rule."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +220,7 @@
     "verb": "began",
     "object": "sending freed enslaved people and other people of color to Liberia to establish settlements",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,7 +229,7 @@
       "text": "In the early 19th century, the US began sending freed enslaved people and other people of color to Liberia to establish settlements."
      }
     ],
-    "seq": 6,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -277,7 +249,7 @@
     "verb": "settlers",
     "object": "declared independence from the US",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -286,71 +258,13 @@
       "text": "In 1847, these settlers declared independence from the US, writing their own constitution and establishing Africa’s first republic.</p> <p>Early in Liberia’s history, tensions arose between the Americo-Liberian settlers and the indigenous population."
      }
     ],
-    "seq": 7,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "own constitution|and|establishing africa’s first republic",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "own constitution and establishing Africa’s first republic",
-    "subject": "own constitution",
-    "verb": "and",
-    "object": "establishing Africa’s first republic",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#653-903",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "In 1847, these settlers declared independence from the US, writing their own constitution and establishing Africa’s first republic.</p> <p>Early in Liberia’s history, tensions arose between the Americo-Liberian settlers and the indigenous population."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "early|in|liberia’s history",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Early in Liberia’s history",
-    "subject": "Early",
-    "verb": "in",
-    "object": "Liberia’s history",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#653-903",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "In 1847, these settlers declared independence from the US, writing their own constitution and establishing Africa’s first republic.</p> <p>Early in Liberia’s history, tensions arose between the Americo-Liberian settlers and the indigenous population."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "liberian settlers|and|the indigenous population",
+    "task_id": "liberian|settlers|and the indigenous population",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -360,11 +274,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Liberian settlers and the indigenous population",
-    "subject": "Liberian settlers",
-    "verb": "and",
-    "object": "the indigenous population",
+    "subject": "Liberian",
+    "verb": "settlers",
+    "object": "and the indigenous population",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,7 +287,7 @@
       "text": "In 1847, these settlers declared independence from the US, writing their own constitution and establishing Africa’s first republic.</p> <p>Early in Liberia’s history, tensions arose between the Americo-Liberian settlers and the indigenous population."
      }
     ],
-    "seq": 10,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -393,7 +307,7 @@
     "verb": "was",
     "object": "from the indigenous population",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,36 +316,7 @@
       "text": "In 1980, Samuel DOE, who was from the indigenous population, led a military coup and ushered in a decade of authoritarian rule."
      }
     ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "military coup|and|ushered in a decade of authoritarian rule",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "military coup and ushered in a decade of authoritarian rule",
-    "subject": "military coup",
-    "verb": "and",
-    "object": "ushered in a decade of authoritarian rule",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#904-1031",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "In 1980, Samuel DOE, who was from the indigenous population, led a military coup and ushered in a decade of authoritarian rule."
-     }
-    ],
-    "seq": 12,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +336,7 @@
     "verb": "launched",
     "object": "a rebellion that led to a prolonged civil war in which DOE was killed",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,65 +345,7 @@
       "text": "In 1989, Charles TAYLOR launched a rebellion that led to a prolonged civil war in which DOE was killed."
      }
     ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "relative peace|in|1997 permitted an election that brought taylor to power",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "relative peace in 1997 permitted an election that brought TAYLOR to power",
-    "subject": "relative peace",
-    "verb": "in",
-    "object": "1997 permitted an election that brought TAYLOR to power",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#1136-1222",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "A period of relative peace in 1997 permitted an election that brought TAYLOR to power."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the war|and|prompted taylor’s resignation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the war and prompted TAYLOR’s resignation",
-    "subject": "the war",
-    "verb": "and",
-    "object": "prompted TAYLOR’s resignation",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#1250-1321",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "A 2003 peace agreement ended the war and prompted TAYLOR’s resignation."
-     }
-    ],
-    "seq": 15,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -538,7 +365,7 @@
     "verb": "was",
     "object": "later convicted by the UN-backed Special Court for Sierra Leone in The Hague for his involvement in Sierra Leone's civil war",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -547,7 +374,7 @@
       "text": "He was later convicted by the UN-backed Special Court for Sierra Leone in The Hague for his involvement in Sierra Leone's civil war."
      }
     ],
-    "seq": 16,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -567,7 +394,7 @@
     "verb": "became",
     "object": "president after two years of transitional governments",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -576,7 +403,7 @@
       "text": "<br><br>In 2005, Ellen JOHNSON SIRLEAF became president after two years of transitional governments; she was the first female head of state in Africa."
      }
     ],
-    "seq": 17,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -596,7 +423,7 @@
     "verb": "was",
     "object": "the first female head of state in Africa",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -605,7 +432,7 @@
       "text": "<br><br>In 2005, Ellen JOHNSON SIRLEAF became president after two years of transitional governments; she was the first female head of state in Africa."
      }
     ],
-    "seq": 18,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -625,7 +452,7 @@
     "verb": "won",
     "object": "reelection but struggled to rebuild Liberia's economy -- particularly after the 2014-15 Ebola epidemic -- and to reconcile a nation still recovering from 14 years of fighting",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -634,7 +461,7 @@
       "text": "In 2011, JOHNSON SIRLEAF won reelection but struggled to rebuild Liberia's economy -- particularly after the 2014-15 Ebola epidemic -- and to reconcile a nation still recovering from 14 years of fighting."
      }
     ],
-    "seq": 19,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -654,7 +481,7 @@
     "verb": "won",
     "object": "the presidential runoff election",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -663,42 +490,13 @@
       "text": "In 2017, former soccer star George WEAH won the presidential runoff election, marking the first successful transfer of power from one democratically elected government to another since the end of Liberia’s civil wars."
      }
     ],
-    "seq": 20,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "elected government|to|another since the end of liberia’s civil wars",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "elected government to another since the end of Liberia’s civil wars",
-    "subject": "elected government",
-    "verb": "to",
-    "object": "another since the end of Liberia’s civil wars",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#1811-2028",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "In 2017, former soccer star George WEAH won the presidential runoff election, marking the first successful transfer of power from one democratically elected government to another since the end of Liberia’s civil wars."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "weah struggled|to|improve the country’s economy",
+    "task_id": "weah|struggled|to improve the country’s economy",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -708,11 +506,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "WEAH struggled to improve the country’s economy",
-    "subject": "WEAH struggled",
-    "verb": "to",
-    "object": "improve the country’s economy",
+    "subject": "WEAH",
+    "verb": "struggled",
+    "object": "to improve the country’s economy",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -721,7 +519,7 @@
       "text": "Like his predecessor, WEAH struggled to improve the country’s economy."
      }
     ],
-    "seq": 22,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -741,7 +539,7 @@
     "verb": "was",
     "object": "elected president",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -750,36 +548,7 @@
       "text": "In 2023, former Vice President Joseph BOAKAI was elected president, edging out WEAH by a thin margin, the first time since 1927 that an incumbent was not re-elected after one term."
      }
     ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "out weah|by|a thin margin",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "out WEAH by a thin margin",
-    "subject": "out WEAH",
-    "verb": "by",
-    "object": "a thin margin",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#2100-2280",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "In 2023, former Vice President Joseph BOAKAI was elected president, edging out WEAH by a thin margin, the first time since 1927 that an incumbent was not re-elected after one term."
-     }
-    ],
-    "seq": 24,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -799,7 +568,7 @@
     "verb": "was",
     "object": "not re-elected after one term",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -808,7 +577,7 @@
       "text": "In 2023, former Vice President Joseph BOAKAI was elected president, edging out WEAH by a thin margin, the first time since 1927 that an incumbent was not re-elected after one term."
      }
     ],
-    "seq": 25,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -828,7 +597,7 @@
     "verb": "d'ivoire",
     "object": "and Sierra Leone",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -837,7 +606,7 @@
       "text": "### Location Western Africa, bordering the North Atlantic Ocean, between Cote d'Ivoire and Sierra Leone"
      }
     ],
-    "seq": 26,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -857,7 +626,7 @@
     "verb": "d'ivoire",
     "object": "778 km",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -866,162 +635,7 @@
       "text": "### Land boundaries total: 1,667 km border countries: Guinea 590 km; Cote d'Ivoire 778 km; Sierra Leone 299 km"
      }
     ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hot days|and|cool to cold nights",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hot days and cool to cold nights",
-    "subject": "hot days",
-    "verb": "and",
-    "object": "cool to cold nights",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#2961-3097",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Climate tropical; hot, humid; dry winters with hot days and cool to cold nights; wet, cloudy summers with frequent heavy showers"
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mostly flat|to|rolling coastal plains rising to rolling plateau and low mountains in northeast",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mostly flat to rolling coastal plains rising to rolling plateau and low mountains in northeast",
-    "subject": "mostly flat",
-    "verb": "to",
-    "object": "rolling coastal plains rising to rolling plateau and low mountains in northeast",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#3099-3209",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Terrain mostly flat to rolling coastal plains rising to rolling plateau and low mountains in northeast"
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "population lives|in|urban areas",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "population lives in urban areas",
-    "subject": "population lives",
-    "verb": "in",
-    "object": "urban areas",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#3808-4019",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Population distribution more than half of the population lives in urban areas, with approximately one third living within an 80-km (50-mi) radius of Monrovia, as shown in this population distribution map"
-     },
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#5799-6010",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Population distribution more than half of the population lives in urban areas, with approximately one third living within an 80-km (50-mi) radius of Monrovia, as shown in this population distribution map"
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as shown|in|this population distribution map",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as shown in this population distribution map",
-    "subject": "as shown",
-    "verb": "in",
-    "object": "this population distribution map",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#3808-4019",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Population distribution more than half of the population lives in urban areas, with approximately one third living within an 80-km (50-mi) radius of Monrovia, as shown in this population distribution map"
-     },
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#5799-6010",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Population distribution more than half of the population lives in urban areas, with approximately one third living within an 80-km (50-mi) radius of Monrovia, as shown in this population distribution map"
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "december|to|march)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "December to March)",
-    "subject": "December",
-    "verb": "to",
-    "object": "March)",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#4021-4112",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Natural hazards dust-laden harmattan winds blow from the Sahara (December to March)"
-     }
-    ],
-    "seq": 32,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1041,7 +655,7 @@
     "verb": "is",
     "object": "characterized by lagoons",
     "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1050,70 +664,12 @@
       "text": "### Geography - note facing the Atlantic Ocean, the coastline is characterized by lagoons, mangrove swamps, and river-deposited sandbars; the inland grassy plateau supports limited agriculture"
      }
     ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#4312-4333",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "other liberian|ethnic|group 0",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "other Liberian ethnic group 0",
-    "subject": "other Liberian",
-    "verb": "ethnic",
-    "object": "group 0",
-    "witnesses": [
-     "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/africa_li.txt#4509-4810",
-      "ref": "06-government-legal/world-factbook/africa_li.txt",
-      "text": "### Ethnic groups Kpelle 20.2%, Bassa 13.6%, Grebo 9.9%, Gio 7.9%, Mano 7.2%, Kru 5.5%, Lorma 4.8%, Krahn 4.5%, Kissi, 4.3%, Mandingo 4.2%, Vai 3.8%, Gola 3.8%, Gbandi 2.9%, Mende 1.7%, Sapo 1%, Belle 0.7%, Dey 0.3%, other Liberian ethnic group 0.4%, other African 3%, non-African 0.2% (2022 est.)"
-     }
-    ],
-    "seq": 35,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 36,
+  "nextSeq": 20,
   "admits": [
    "NUL",
    "SEG",
@@ -1133,7 +689,7 @@
    "verb": "was",
    "object": "not re-elected after one term",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1144,49 +700,12 @@
    ]
   },
   {
-   "id": "as shown|in|this population distribution map",
-   "subject": "as shown",
-   "verb": "in",
-   "object": "this population distribution map",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#3808-4019",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Population distribution more than half of the population lives in urban areas, with approximately one third living within an 80-km (50-mi) radius of Monrovia, as shown in this population distribution map"
-    },
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#5799-6010",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Population distribution more than half of the population lives in urban areas, with approximately one third living within an 80-km (50-mi) radius of Monrovia, as shown in this population distribution map"
-    }
-   ]
-  },
-  {
-   "id": "beginning|in|the 15th century",
-   "subject": "Beginning",
-   "verb": "in",
-   "object": "the 15th century",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#336-437",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "Beginning in the 15th century, European traders began establishing outposts along the Liberian coast."
-    }
-   ]
-  },
-  {
    "id": "between cote|d'ivoire|and sierra leone",
    "subject": "between Cote",
    "verb": "d'ivoire",
    "object": "and Sierra Leone",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1202,7 +721,7 @@
    "verb": "launched",
    "object": "a rebellion that led to a prolonged civil war in which DOE was killed",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1218,7 +737,7 @@
    "verb": "d'ivoire",
    "object": "778 km",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1229,60 +748,12 @@
    ]
   },
   {
-   "id": "december|to|march)",
-   "subject": "December",
-   "verb": "to",
-   "object": "March)",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#4021-4112",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Natural hazards dust-laden harmattan winds blow from the Sahara (December to March)"
-    }
-   ]
-  },
-  {
-   "id": "early|in|liberia’s history",
-   "subject": "Early",
-   "verb": "in",
-   "object": "Liberia’s history",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#653-903",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "In 1847, these settlers declared independence from the US, writing their own constitution and establishing Africa’s first republic.</p> <p>Early in Liberia’s history, tensions arose between the Americo-Liberian settlers and the indigenous population."
-    }
-   ]
-  },
-  {
-   "id": "elected government|to|another since the end of liberia’s civil wars",
-   "subject": "elected government",
-   "verb": "to",
-   "object": "another since the end of Liberia’s civil wars",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#1811-2028",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "In 2017, former soccer star George WEAH won the presidential runoff election, marking the first successful transfer of power from one democratically elected government to another since the end of Liberia’s civil wars."
-    }
-   ]
-  },
-  {
    "id": "european traders|began|establishing outposts along the liberian coast",
    "subject": "European traders",
    "verb": "began",
    "object": "establishing outposts along the Liberian coast",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1298,7 +769,7 @@
    "verb": "won",
    "object": "the presidential runoff election",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1314,7 +785,7 @@
    "verb": "was",
    "object": "later convicted by the UN-backed Special Court for Sierra Leone in The Hague for his involvement in Sierra Leone's civil war",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1325,28 +796,12 @@
    ]
   },
   {
-   "id": "hot days|and|cool to cold nights",
-   "subject": "hot days",
-   "verb": "and",
-   "object": "cool to cold nights",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#2961-3097",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Climate tropical; hot, humid; dry winters with hot days and cool to cold nights; wet, cloudy summers with frequent heavy showers"
-    }
-   ]
-  },
-  {
    "id": "johnson sirleaf|became|president after two years of transitional governments",
    "subject": "JOHNSON SIRLEAF",
    "verb": "became",
    "object": "president after two years of transitional governments",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1362,7 +817,7 @@
    "verb": "won",
    "object": "reelection but struggled to rebuild Liberia's economy -- particularly after the 2014-15 Ebola epidemic -- and to reconcile a nation still recovering from 14 years of fighting",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1378,7 +833,7 @@
    "verb": "was",
    "object": "elected president",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1394,7 +849,7 @@
    "verb": "did",
    "object": "not fall under European colonial rule",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1410,7 +865,7 @@
    "verb": "is",
    "object": "one of the most ethnically diverse countries in the world",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1421,151 +876,18 @@
    ]
   },
   {
-   "id": "liberian settlers|and|the indigenous population",
-   "subject": "Liberian settlers",
-   "verb": "and",
-   "object": "the indigenous population",
+   "id": "liberian|settlers|and the indigenous population",
+   "subject": "Liberian",
+   "verb": "settlers",
+   "object": "and the indigenous population",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/world-factbook/africa_li.txt#653-903",
      "ref": "06-government-legal/world-factbook/africa_li.txt",
      "text": "In 1847, these settlers declared independence from the US, writing their own constitution and establishing Africa’s first republic.</p> <p>Early in Liberia’s history, tensions arose between the Americo-Liberian settlers and the indigenous population."
-    }
-   ]
-  },
-  {
-   "id": "military coup|and|ushered in a decade of authoritarian rule",
-   "subject": "military coup",
-   "verb": "and",
-   "object": "ushered in a decade of authoritarian rule",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#904-1031",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "In 1980, Samuel DOE, who was from the indigenous population, led a military coup and ushered in a decade of authoritarian rule."
-    }
-   ]
-  },
-  {
-   "id": "mostly flat|to|rolling coastal plains rising to rolling plateau and low mountains in northeast",
-   "subject": "mostly flat",
-   "verb": "to",
-   "object": "rolling coastal plains rising to rolling plateau and low mountains in northeast",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#3099-3209",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Terrain mostly flat to rolling coastal plains rising to rolling plateau and low mountains in northeast"
-    }
-   ]
-  },
-  {
-   "id": "other liberian|ethnic|group 0",
-   "subject": "other Liberian",
-   "verb": "ethnic",
-   "object": "group 0",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#4509-4810",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Ethnic groups Kpelle 20.2%, Bassa 13.6%, Grebo 9.9%, Gio 7.9%, Mano 7.2%, Kru 5.5%, Lorma 4.8%, Krahn 4.5%, Kissi, 4.3%, Mandingo 4.2%, Vai 3.8%, Gola 3.8%, Gbandi 2.9%, Mende 1.7%, Sapo 1%, Belle 0.7%, Dey 0.3%, other Liberian ethnic group 0.4%, other African 3%, non-African 0.2% (2022 est.)"
-    }
-   ]
-  },
-  {
-   "id": "out weah|by|a thin margin",
-   "subject": "out WEAH",
-   "verb": "by",
-   "object": "a thin margin",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#2100-2280",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "In 2023, former Vice President Joseph BOAKAI was elected president, edging out WEAH by a thin margin, the first time since 1927 that an incumbent was not re-elected after one term."
-    }
-   ]
-  },
-  {
-   "id": "own constitution|and|establishing africa’s first republic",
-   "subject": "own constitution",
-   "verb": "and",
-   "object": "establishing Africa’s first republic",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#653-903",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "In 1847, these settlers declared independence from the US, writing their own constitution and establishing Africa’s first republic.</p> <p>Early in Liberia’s history, tensions arose between the Americo-Liberian settlers and the indigenous population."
-    }
-   ]
-  },
-  {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#4312-4333",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
-   "id": "population lives|in|urban areas",
-   "subject": "population lives",
-   "verb": "in",
-   "object": "urban areas",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#3808-4019",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Population distribution more than half of the population lives in urban areas, with approximately one third living within an 80-km (50-mi) radius of Monrovia, as shown in this population distribution map"
-    },
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#5799-6010",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Population distribution more than half of the population lives in urban areas, with approximately one third living within an 80-km (50-mi) radius of Monrovia, as shown in this population distribution map"
-    }
-   ]
-  },
-  {
-   "id": "relative peace|in|1997 permitted an election that brought taylor to power",
-   "subject": "relative peace",
-   "verb": "in",
-   "object": "1997 permitted an election that brought TAYLOR to power",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#1136-1222",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "A period of relative peace in 1997 permitted an election that brought TAYLOR to power."
     }
    ]
   },
@@ -1575,7 +897,7 @@
    "verb": "was",
    "object": "the first female head of state in Africa",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1586,28 +908,12 @@
    ]
   },
   {
-   "id": "the coastline|is|characterized by lagoons",
-   "subject": "the coastline",
-   "verb": "is",
-   "object": "characterized by lagoons",
+   "id": "songhai empires|claimed|most of liberia",
+   "subject": "Songhai Empires",
+   "verb": "claimed",
+   "object": "most of Liberia",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#4114-4310",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Geography - note facing the Atlantic Ocean, the coastline is characterized by lagoons, mangrove swamps, and river-deposited sandbars; the inland grassy plateau supports limited agriculture"
-    }
-   ]
-  },
-  {
-   "id": "the mali|and|songhai empires claimed most of liberia",
-   "subject": "the Mali",
-   "verb": "and",
-   "object": "Songhai Empires claimed most of Liberia",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1618,12 +924,28 @@
    ]
   },
   {
+   "id": "the coastline|is|characterized by lagoons",
+   "subject": "the coastline",
+   "verb": "is",
+   "object": "characterized by lagoons",
+   "witnesses": [
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/africa_li.txt#4114-4310",
+     "ref": "06-government-legal/world-factbook/africa_li.txt",
+     "text": "### Geography - note facing the Atlantic Ocean, the coastline is characterized by lagoons, mangrove swamps, and river-deposited sandbars; the inland grassy plateau supports limited agriculture"
+    }
+   ]
+  },
+  {
    "id": "the us|began|sending freed enslaved people and other people of color to liberia to establish settlements",
    "subject": "the US",
    "verb": "began",
    "object": "sending freed enslaved people and other people of color to Liberia to establish settlements",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1634,28 +956,12 @@
    ]
   },
   {
-   "id": "the war|and|prompted taylor’s resignation",
-   "subject": "the war",
-   "verb": "and",
-   "object": "prompted TAYLOR’s resignation",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#1250-1321",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "A 2003 peace agreement ended the war and prompted TAYLOR’s resignation."
-    }
-   ]
-  },
-  {
    "id": "these|settlers|declared independence from the us",
    "subject": "these",
    "verb": "settlers",
    "object": "declared independence from the US",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1666,12 +972,12 @@
    ]
   },
   {
-   "id": "weah struggled|to|improve the country’s economy",
-   "subject": "WEAH struggled",
-   "verb": "to",
-   "object": "improve the country’s economy",
+   "id": "weah|struggled|to improve the country’s economy",
+   "subject": "WEAH",
+   "verb": "struggled",
+   "object": "to improve the country’s economy",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1687,7 +993,7 @@
    "verb": "was",
    "object": "from the indigenous population",
    "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/africa_li.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1696,26 +1002,10 @@
      "text": "In 1980, Samuel DOE, who was from the indigenous population, led a military coup and ushered in a decade of authoritarian rule."
     }
    ]
-  },
-  {
-   "id": "with 28|ethnic|groups and languages",
-   "subject": "With 28",
-   "verb": "ethnic",
-   "object": "groups and languages",
-   "witnesses": [
-    "06-government-legal/world-factbook/africa_li.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/africa_li.txt#130-258",
-     "ref": "06-government-legal/world-factbook/africa_li.txt",
-     "text": "### Background <p>With 28 ethnic groups and languages, Liberia is one of the most ethnically diverse countries in the world."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:21.680Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:51.832Z"
  }
 }

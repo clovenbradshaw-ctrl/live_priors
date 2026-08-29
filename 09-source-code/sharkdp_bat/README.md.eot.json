@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 33914,
   "bodyOffset": 0,
   "bodyChars": 33914,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 5,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 8,
-  "extractionError": null
+  "edgesFound": 5,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 1,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 3
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 5,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 10,
-  "excerptOk": 10,
-  "rawChecked": 10,
-  "rawOk": 10,
+  "excerptChecked": 7,
+  "excerptOk": 7,
+  "rawChecked": 7,
+  "rawOk": 7,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 8,
-  "heard": 8,
+  "offered": 5,
+  "heard": 5,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "syntax",
     "object": "highlighting and Git integration",
     "witnesses": [
-     "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+     "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -99,64 +129,6 @@
    },
    {
     "kind": "propose",
-    "task_id": "command line|or|in your configuration file",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "command line or in your configuration file",
-    "subject": "command line",
-    "verb": "or",
-    "object": "in your configuration file",
-    "witnesses": [
-     "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/sharkdp_bat/README.md#1679-1855",
-      "ref": "09-source-code/sharkdp_bat/README.md",
-      "text": "If you would rather `bat` work like `cat` all the time (never page output), you can set `--paging=never` as an option, either on the command line or in your configuration file."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "another process|or|into a file)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "another process or into a file)",
-    "subject": "another process",
-    "verb": "or",
-    "object": "into a file)",
-    "witnesses": [
-     "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/sharkdp_bat/README.md#2160-2356",
-      "ref": "09-source-code/sharkdp_bat/README.md",
-      "text": "when you pipe into another process or into a file), `bat` will act as a drop-in replacement for `cat` and fall back to printing the plain file contents, regardless of the `--pager` option's value."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
     "task_id": "determine the|syntax|automatically (note",
     "operator": "INS",
     "operator_basis": "produced",
@@ -171,7 +143,7 @@
     "verb": "syntax",
     "object": "automatically (note",
     "witnesses": [
-     "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+     "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -180,7 +152,7 @@
       "text": "Read from stdin, determine the syntax automatically (note, highlighting will only work if the syntax can be determined from the first line of the file, usually through a shebang such as `#!/bin/sh`)"
      }
     ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -200,7 +172,7 @@
     "verb": "syntax",
     "object": "can be determined from the first line of the file",
     "witnesses": [
-     "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+     "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -209,7 +181,7 @@
       "text": "Read from stdin, determine the syntax automatically (note, highlighting will only work if the syntax can be determined from the first line of the file, usually through a shebang such as `#!/bin/sh`)"
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -229,7 +201,7 @@
     "verb": "syntax",
     "object": "explicitly (`-l log`)",
     "witnesses": [
-     "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+     "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -238,36 +210,7 @@
       "text": "We have also specified the syntax explicitly (`-l log`), as it can not be auto-detected in this case."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "older debian|or|ubuntu releases",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "older Debian or Ubuntu releases",
-    "subject": "older Debian",
-    "verb": "or",
-    "object": "Ubuntu releases",
-    "witnesses": [
-     "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/sharkdp_bat/README.md#5623-5769",
-      "ref": "09-source-code/sharkdp_bat/README.md",
-      "text": "```bash export MANPAGER=\"bat -plman\" man 2 select ``` (on some older Debian or Ubuntu releases, the executable is named `batcat` instead of `bat`)"
-     }
-    ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -287,7 +230,7 @@
     "verb": "syntax",
     "object": "in [this repository](https://github",
     "witnesses": [
-     "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+     "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -296,12 +239,12 @@
       "text": "Please report any issues with the help syntax in [this repository](https://github.com/victor-gp/cmd-help-sublime-syntax)."
      }
     ],
-    "seq": 7,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 8,
+  "nextSeq": 5,
   "admits": [
    "NUL",
    "SEG",
@@ -316,28 +259,12 @@
  },
  "folded": [
   {
-   "id": "another process|or|into a file)",
-   "subject": "another process",
-   "verb": "or",
-   "object": "into a file)",
-   "witnesses": [
-    "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/sharkdp_bat/README.md#2160-2356",
-     "ref": "09-source-code/sharkdp_bat/README.md",
-     "text": "when you pipe into another process or into a file), `bat` will act as a drop-in replacement for `cat` and fall back to printing the plain file contents, regardless of the `--pager` option's value."
-    }
-   ]
-  },
-  {
    "id": "clone with|syntax|highlighting and git integration",
    "subject": "clone with",
    "verb": "syntax",
    "object": "highlighting and Git integration",
    "witnesses": [
-    "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+    "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -358,28 +285,12 @@
    ]
   },
   {
-   "id": "command line|or|in your configuration file",
-   "subject": "command line",
-   "verb": "or",
-   "object": "in your configuration file",
-   "witnesses": [
-    "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/sharkdp_bat/README.md#1679-1855",
-     "ref": "09-source-code/sharkdp_bat/README.md",
-     "text": "If you would rather `bat` work like `cat` all the time (never page output), you can set `--paging=never` as an option, either on the command line or in your configuration file."
-    }
-   ]
-  },
-  {
    "id": "determine the|syntax|automatically (note",
    "subject": "determine the",
    "verb": "syntax",
    "object": "automatically (note",
    "witnesses": [
-    "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+    "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -395,7 +306,7 @@
    "verb": "syntax",
    "object": "can be determined from the first line of the file",
    "witnesses": [
-    "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+    "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -406,28 +317,12 @@
    ]
   },
   {
-   "id": "older debian|or|ubuntu releases",
-   "subject": "older Debian",
-   "verb": "or",
-   "object": "Ubuntu releases",
-   "witnesses": [
-    "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/sharkdp_bat/README.md#5623-5769",
-     "ref": "09-source-code/sharkdp_bat/README.md",
-     "text": "```bash export MANPAGER=\"bat -plman\" man 2 select ``` (on some older Debian or Ubuntu releases, the executable is named `batcat` instead of `bat`)"
-    }
-   ]
-  },
-  {
    "id": "specified the|syntax|explicitly (`-l log`)",
    "subject": "specified the",
    "verb": "syntax",
    "object": "explicitly (`-l log`)",
    "witnesses": [
-    "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+    "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -443,7 +338,7 @@
    "verb": "syntax",
    "object": "in [this repository](https://github",
    "witnesses": [
-    "09-source-code/sharkdp_bat/README.md@b2de25493ccfe8e8"
+    "09-source-code/sharkdp_bat/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -455,7 +350,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:54.064Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:04.439Z"
  }
 }

@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 30466,
   "bodyOffset": 0,
   "bodyChars": 30466,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 14,
   "distinctReferents": 11,
   "examined": true,
-  "edgesFound": 34,
-  "extractionError": null
+  "edgesFound": 6,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 9,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 26
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 6,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 37,
-  "excerptOk": 37,
-  "rawChecked": 37,
-  "rawOk": 37,
+  "excerptChecked": 6,
+  "excerptOk": 6,
+  "rawChecked": 6,
+  "rawOk": 6,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 34,
-  "heard": 34,
+  "offered": 6,
+  "heard": 6,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "the inhabitants|of|the area of present-day oman have long prospered from indian ocean trade",
+    "task_id": "day oman|have|long prospered from indian ocean trade",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The inhabitants of the area of present-day Oman have long prospered from Indian Ocean trade",
-    "subject": "The inhabitants",
-    "verb": "of",
-    "object": "the area of present-day Oman have long prospered from Indian Ocean trade",
+    "description": "day Oman have long prospered from Indian Ocean trade",
+    "subject": "day Oman",
+    "verb": "have",
+    "object": "long prospered from Indian Ocean trade",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -89,7 +119,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "nascent sultanate|in|muscat signed the first in a series of friendship treaties with britain",
+    "task_id": "in muscat|signed|the first in a series of friendship treaties with britain",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -98,12 +128,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "nascent sultanate in Muscat signed the first in a series of friendship treaties with Britain",
-    "subject": "nascent sultanate",
-    "verb": "in",
-    "object": "Muscat signed the first in a series of friendship treaties with Britain",
+    "description": "in Muscat signed the first in a series of friendship treaties with Britain",
+    "subject": "in Muscat",
+    "verb": "signed",
+    "object": "the first in a series of friendship treaties with Britain",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -118,7 +148,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "on british|political|and military advisors increased",
+    "task_id": "al said|overthrew|his father and ruled as sultan for the next five decades",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,41 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "on British political and military advisors increased",
-    "subject": "on British",
-    "verb": "political",
-    "object": "and military advisors increased",
+    "description": "Al Said overthrew his father and ruled as sultan for the next five decades",
+    "subject": "Al Said",
+    "verb": "overthrew",
+    "object": "his father and ruled as sultan for the next five decades",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#371-507",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "Over time, Oman's dependence on British political and military advisors increased, although the sultanate never became a British colony."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "qaboos|bin|said al said overthrew his father and ruled as sultan for the next five decades",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "QABOOS bin Said Al Said overthrew his father and ruled as sultan for the next five decades",
-    "subject": "QABOOS",
-    "verb": "bin",
-    "object": "Said Al Said overthrew his father and ruled as sultan for the next five decades",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,123 +171,36 @@
       "text": "In 1970, QABOOS bin Said Al Said overthrew his father and ruled as sultan for the next five decades."
      }
     ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "north africa|inspired|demonstrations in oman that called for more jobs and economic benefits and an end to corruption",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption",
+    "subject": "North Africa",
+    "verb": "inspired",
+    "object": "demonstrations in Oman that called for more jobs and economic benefits and an end to corruption",
+    "witnesses": [
+     "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/world-factbook/middle-east_mu.txt#686-1059",
+      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
+      "text": "He prioritized strategic ties to the UK and US, and his moderate, independent foreign policy allowed Oman to maintain good relations with its neighbors and avoid external entanglements.<br><br>In 2011, the popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption."
+     }
+    ],
     "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the country|to|the outside world",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the country to the outside world",
-    "subject": "the country",
-    "verb": "to",
-    "object": "the outside world",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#609-685",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "His extensive modernization program opened the country to the outside world."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "strategic ties|to|the uk and us",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "strategic ties to the UK and US",
-    "subject": "strategic ties",
-    "verb": "to",
-    "object": "the UK and US",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#686-1059",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "He prioritized strategic ties to the UK and US, and his moderate, independent foreign policy allowed Oman to maintain good relations with its neighbors and avoid external entanglements.<br><br>In 2011, the popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "allowed oman|to|maintain good relations with its neighbors and avoid external entanglements",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "allowed Oman to maintain good relations with its neighbors and avoid external entanglements",
-    "subject": "allowed Oman",
-    "verb": "to",
-    "object": "maintain good relations with its neighbors and avoid external entanglements",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#686-1059",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "He prioritized strategic ties to the UK and US, and his moderate, independent foreign policy allowed Oman to maintain good relations with its neighbors and avoid external entanglements.<br><br>In 2011, the popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "popular uprisings|that|swept the middle east and north africa inspired demonstrations in oman that called for more jobs and economic benefits and an end to corruption",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption",
-    "subject": "popular uprisings",
-    "verb": "that",
-    "object": "swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#686-1059",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "He prioritized strategic ties to the UK and US, and his moderate, independent foreign policy allowed Oman to maintain good relations with its neighbors and avoid external entanglements.<br><br>In 2011, the popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption."
-     }
-    ],
-    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +220,7 @@
     "verb": "implemented",
     "object": "economic and political reforms such as granting Oman’s legislative body more power and authorizing direct elections for its lower house",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,13 +229,13 @@
       "text": "In response, QABOOS implemented economic and political reforms such as granting Oman’s legislative body more power and authorizing direct elections for its lower house."
      }
     ],
-    "seq": 8,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "unemployment benefits|and|issued a royal directive mandating a national public- and private-sector job creation plan",
+    "task_id": "and sunni|sects|each constitute about 45% and shia about 5%)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -330,607 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "unemployment benefits and issued a royal directive mandating a national public- and private-sector job creation plan",
-    "subject": "unemployment benefits",
-    "verb": "and",
-    "object": "issued a royal directive mandating a national public- and private-sector job creation plan",
+    "description": "and Sunni sects each constitute about 45% and Shia about 5%)",
+    "subject": "and Sunni",
+    "verb": "sects",
+    "object": "each constitute about 45% and Shia about 5%)",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1229-1381",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "Additionally, the sultan increased unemployment benefits and issued a royal directive mandating a national public- and private-sector job creation plan."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as part|of|the government's efforts to decentralize authority and allow greater citizen participation in local governance",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "As part of the government's efforts to decentralize authority and allow greater citizen participation in local governance",
-    "subject": "As part",
-    "verb": "of",
-    "object": "the government's efforts to decentralize authority and allow greater citizen participation in local governance",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1382-1579",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "As part of the government's efforts to decentralize authority and allow greater citizen participation in local governance, Oman successfully conducted its first municipal council elections in 2012."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "oman|successfully|conducted its first municipal council elections in 2012",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Oman successfully conducted its first municipal council elections in 2012",
-    "subject": "Oman",
-    "verb": "successfully",
-    "object": "conducted its first municipal council elections in 2012",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1382-1579",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "As part of the government's efforts to decentralize authority and allow greater citizen participation in local governance, Oman successfully conducted its first municipal council elections in 2012."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "died|in|2020",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "died in 2020",
-    "subject": "died",
-    "verb": "in",
-    "object": "2020",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1580-1634",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "QABOOS, Oman's longest reigning monarch, died in 2020."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "haytham|bin|tariq al said",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "HAYTHAM bin Tariq Al Said",
-    "subject": "HAYTHAM",
-    "verb": "bin",
-    "object": "Tariq Al Said",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1635-1766",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "His cousin, HAYTHAM bin Tariq Al Said, former Minister of Heritage and Culture, was sworn in as Oman's new sultan the same day.</p>"
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "former minister|of|heritage and culture",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "former Minister of Heritage and Culture",
-    "subject": "former Minister",
-    "verb": "of",
-    "object": "Heritage and Culture",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1635-1766",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "His cousin, HAYTHAM bin Tariq Al Said, former Minister of Heritage and Culture, was sworn in as Oman's new sultan the same day.</p>"
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was sworn|in|as oman's new sultan the same day",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was sworn in as Oman's new sultan the same day",
-    "subject": "was sworn",
-    "verb": "in",
-    "object": "as Oman's new sultan the same day",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1635-1766",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "His cousin, HAYTHAM bin Tariq Al Said, former Minister of Heritage and Culture, was sworn in as Oman's new sultan the same day.</p>"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gulf|of|oman",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Gulf of Oman",
-    "subject": "Gulf",
-    "verb": "of",
-    "object": "Oman",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1782-1896",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Location Middle East, bordering the Arabian Sea, Gulf of Oman, and Persian Gulf, between Yemen and the UAE"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between yemen|and|the uae",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between Yemen and the UAE",
-    "subject": "between Yemen",
-    "verb": "and",
-    "object": "the UAE",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#1782-1896",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Location Middle East, bordering the Arabian Sea, Gulf of Oman, and Persian Gulf, between Yemen and the UAE"
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the size|of|georgia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the size of Georgia",
-    "subject": "the size",
-    "verb": "of",
-    "object": "Georgia",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#2074-2126",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Area - comparative twice the size of Georgia"
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "summer monsoon|in|far south",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "summer monsoon in far south",
-    "subject": "summer monsoon",
-    "verb": "in",
-    "object": "far south",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#2396-2530",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Climate dry desert; hot, humid along coast; hot, dry interior; strong southwest summer monsoon (May to September) in far south"
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "rugged mountains|in|north and south",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "rugged mountains in north and south",
-    "subject": "rugged mountains",
-    "verb": "in",
-    "object": "north and south",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#2532-2605",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Terrain central desert plain, rugged mountains in north and south"
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "vast majority|of|the population is located in and around the al hagar mountains in the north",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "vast majority of the population is located in and around the Al Hagar Mountains in the north",
-    "subject": "vast majority",
-    "verb": "of",
-    "object": "the population is located in and around the Al Hagar Mountains in the north",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#3285-3539",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-     },
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#5592-5846",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the city|of|salalah in the far south",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the city of Salalah in the far south",
-    "subject": "the city",
-    "verb": "of",
-    "object": "Salalah in the far south",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#3285-3539",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-     },
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#5592-5846",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "most|of|the country remains sparsely populated",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "most of the country remains sparsely populated",
-    "subject": "most",
-    "verb": "of",
-    "object": "the country remains sparsely populated",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#3285-3539",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-     },
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#5592-5846",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "large sandstorms|and|dust storms in interior",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "large sandstorms and dust storms in interior",
-    "subject": "large sandstorms",
-    "verb": "and",
-    "object": "dust storms in interior",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#3541-3653",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Natural hazards summer winds often raise large sandstorms and dust storms in interior; periodic droughts"
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "note\n    consists|of|oman proper and two northern exclaves",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "note\n    consists of Oman proper and two northern exclaves",
-    "subject": "note\n    consists",
-    "verb": "of",
-    "object": "Oman proper and two northern exclaves",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#3655-3848",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Geography - note consists of Oman proper and two northern exclaves, Musandam and Al Madhah; the former is a peninsula that occupies a strategic location adjacent to the Strait of Hormuz"
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "musandam|and|al madhah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Musandam and Al Madhah",
-    "subject": "Musandam",
-    "verb": "and",
-    "object": "Al Madhah",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#3655-3848",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Geography - note consists of Oman proper and two northern exclaves, Musandam and Al Madhah; the former is a peninsula that occupies a strategic location adjacent to the Strait of Hormuz"
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a peninsula|that|occupies a strategic location adjacent to the strait of hormuz",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a peninsula that occupies a strategic location adjacent to the Strait of Hormuz",
-    "subject": "a peninsula",
-    "verb": "that",
-    "object": "occupies a strategic location adjacent to the Strait of Hormuz",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#3655-3848",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Geography - note consists of Oman proper and two northern exclaves, Musandam and Al Madhah; the former is a peninsula that occupies a strategic location adjacent to the Strait of Hormuz"
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#3850-3871",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "other|and|unaffiliated 2% (2020 est",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "other and unaffiliated 2% (2020 est",
-    "subject": "other",
-    "verb": "and",
-    "object": "unaffiliated 2% (2020 est",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -939,128 +258,12 @@
       "text": "### Religions Muslim 85.9%, Christian 6.4%, Hindu 5.7%, other and unaffiliated 2% (2020 est.) note: <strong>note:</strong> Omani citizens represent approximately 56.4% of the population and are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%); Christians, Hindus, and Buddhists account for roughly 5% of Omani citizens"
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "omani|citizens|represent approximately 56",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Omani citizens represent approximately 56",
-    "subject": "Omani",
-    "verb": "citizens",
-    "object": "represent approximately 56",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#4441-4811",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Religions Muslim 85.9%, Christian 6.4%, Hindu 5.7%, other and unaffiliated 2% (2020 est.) note: <strong>note:</strong> Omani citizens represent approximately 56.4% of the population and are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%); Christians, Hindus, and Buddhists account for roughly 5% of Omani citizens"
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the population|and|are overwhelming muslim (ibadhi and sunni sects each constitute about 45% and shia about 5%)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the population and are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%)",
-    "subject": "the population",
-    "verb": "and",
-    "object": "are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%)",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#4441-4811",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Religions Muslim 85.9%, Christian 6.4%, Hindu 5.7%, other and unaffiliated 2% (2020 est.) note: <strong>note:</strong> Omani citizens represent approximately 56.4% of the population and are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%); Christians, Hindus, and Buddhists account for roughly 5% of Omani citizens"
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and buddhists|account|for roughly 5% of omani citizens",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and Buddhists account for roughly 5% of Omani citizens",
-    "subject": "and Buddhists",
-    "verb": "account",
-    "object": "for roughly 5% of Omani citizens",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#4441-4811",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Religions Muslim 85.9%, Christian 6.4%, Hindu 5.7%, other and unaffiliated 2% (2020 est.) note: <strong>note:</strong> Omani citizens represent approximately 56.4% of the population and are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%); Christians, Hindus, and Buddhists account for roughly 5% of Omani citizens"
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "annual rate|of|change (2020-25 est",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "annual rate of change (2020-25 est",
-    "subject": "annual rate",
-    "verb": "of",
-    "object": "change (2020-25 est",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_mu.txt#5848-5996",
-      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-      "text": "### Urbanization urban population: 88.4% of total population (2023) rate of urbanization: 2.32% annual rate of change (2020-25 est.)"
-     }
-    ],
-    "seq": 33,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 34,
+  "nextSeq": 6,
   "admits": [
    "NUL",
    "SEG",
@@ -1075,353 +278,12 @@
  },
  "folded": [
   {
-   "id": "a peninsula|that|occupies a strategic location adjacent to the strait of hormuz",
-   "subject": "a peninsula",
-   "verb": "that",
-   "object": "occupies a strategic location adjacent to the Strait of Hormuz",
+   "id": "al said|overthrew|his father and ruled as sultan for the next five decades",
+   "subject": "Al Said",
+   "verb": "overthrew",
+   "object": "his father and ruled as sultan for the next five decades",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#3655-3848",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Geography - note consists of Oman proper and two northern exclaves, Musandam and Al Madhah; the former is a peninsula that occupies a strategic location adjacent to the Strait of Hormuz"
-    }
-   ]
-  },
-  {
-   "id": "allowed oman|to|maintain good relations with its neighbors and avoid external entanglements",
-   "subject": "allowed Oman",
-   "verb": "to",
-   "object": "maintain good relations with its neighbors and avoid external entanglements",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#686-1059",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "He prioritized strategic ties to the UK and US, and his moderate, independent foreign policy allowed Oman to maintain good relations with its neighbors and avoid external entanglements.<br><br>In 2011, the popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption."
-    }
-   ]
-  },
-  {
-   "id": "and buddhists|account|for roughly 5% of omani citizens",
-   "subject": "and Buddhists",
-   "verb": "account",
-   "object": "for roughly 5% of Omani citizens",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#4441-4811",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Religions Muslim 85.9%, Christian 6.4%, Hindu 5.7%, other and unaffiliated 2% (2020 est.) note: <strong>note:</strong> Omani citizens represent approximately 56.4% of the population and are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%); Christians, Hindus, and Buddhists account for roughly 5% of Omani citizens"
-    }
-   ]
-  },
-  {
-   "id": "annual rate|of|change (2020-25 est",
-   "subject": "annual rate",
-   "verb": "of",
-   "object": "change (2020-25 est",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#5848-5996",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Urbanization urban population: 88.4% of total population (2023) rate of urbanization: 2.32% annual rate of change (2020-25 est.)"
-    }
-   ]
-  },
-  {
-   "id": "as part|of|the government's efforts to decentralize authority and allow greater citizen participation in local governance",
-   "subject": "As part",
-   "verb": "of",
-   "object": "the government's efforts to decentralize authority and allow greater citizen participation in local governance",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1382-1579",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "As part of the government's efforts to decentralize authority and allow greater citizen participation in local governance, Oman successfully conducted its first municipal council elections in 2012."
-    }
-   ]
-  },
-  {
-   "id": "between yemen|and|the uae",
-   "subject": "between Yemen",
-   "verb": "and",
-   "object": "the UAE",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1782-1896",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Location Middle East, bordering the Arabian Sea, Gulf of Oman, and Persian Gulf, between Yemen and the UAE"
-    }
-   ]
-  },
-  {
-   "id": "died|in|2020",
-   "subject": "died",
-   "verb": "in",
-   "object": "2020",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1580-1634",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "QABOOS, Oman's longest reigning monarch, died in 2020."
-    }
-   ]
-  },
-  {
-   "id": "former minister|of|heritage and culture",
-   "subject": "former Minister",
-   "verb": "of",
-   "object": "Heritage and Culture",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1635-1766",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "His cousin, HAYTHAM bin Tariq Al Said, former Minister of Heritage and Culture, was sworn in as Oman's new sultan the same day.</p>"
-    }
-   ]
-  },
-  {
-   "id": "gulf|of|oman",
-   "subject": "Gulf",
-   "verb": "of",
-   "object": "Oman",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1782-1896",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Location Middle East, bordering the Arabian Sea, Gulf of Oman, and Persian Gulf, between Yemen and the UAE"
-    }
-   ]
-  },
-  {
-   "id": "haytham|bin|tariq al said",
-   "subject": "HAYTHAM",
-   "verb": "bin",
-   "object": "Tariq Al Said",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1635-1766",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "His cousin, HAYTHAM bin Tariq Al Said, former Minister of Heritage and Culture, was sworn in as Oman's new sultan the same day.</p>"
-    }
-   ]
-  },
-  {
-   "id": "large sandstorms|and|dust storms in interior",
-   "subject": "large sandstorms",
-   "verb": "and",
-   "object": "dust storms in interior",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#3541-3653",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Natural hazards summer winds often raise large sandstorms and dust storms in interior; periodic droughts"
-    }
-   ]
-  },
-  {
-   "id": "most|of|the country remains sparsely populated",
-   "subject": "most",
-   "verb": "of",
-   "object": "the country remains sparsely populated",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#3285-3539",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-    },
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#5592-5846",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-    }
-   ]
-  },
-  {
-   "id": "musandam|and|al madhah",
-   "subject": "Musandam",
-   "verb": "and",
-   "object": "Al Madhah",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#3655-3848",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Geography - note consists of Oman proper and two northern exclaves, Musandam and Al Madhah; the former is a peninsula that occupies a strategic location adjacent to the Strait of Hormuz"
-    }
-   ]
-  },
-  {
-   "id": "nascent sultanate|in|muscat signed the first in a series of friendship treaties with britain",
-   "subject": "nascent sultanate",
-   "verb": "in",
-   "object": "Muscat signed the first in a series of friendship treaties with Britain",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#247-370",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "In the late 18th century, the nascent sultanate in Muscat signed the first in a series of friendship treaties with Britain."
-    }
-   ]
-  },
-  {
-   "id": "note\n    consists|of|oman proper and two northern exclaves",
-   "subject": "note\n    consists",
-   "verb": "of",
-   "object": "Oman proper and two northern exclaves",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#3655-3848",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Geography - note consists of Oman proper and two northern exclaves, Musandam and Al Madhah; the former is a peninsula that occupies a strategic location adjacent to the Strait of Hormuz"
-    }
-   ]
-  },
-  {
-   "id": "oman|successfully|conducted its first municipal council elections in 2012",
-   "subject": "Oman",
-   "verb": "successfully",
-   "object": "conducted its first municipal council elections in 2012",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1382-1579",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "As part of the government's efforts to decentralize authority and allow greater citizen participation in local governance, Oman successfully conducted its first municipal council elections in 2012."
-    }
-   ]
-  },
-  {
-   "id": "omani|citizens|represent approximately 56",
-   "subject": "Omani",
-   "verb": "citizens",
-   "object": "represent approximately 56",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#4441-4811",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Religions Muslim 85.9%, Christian 6.4%, Hindu 5.7%, other and unaffiliated 2% (2020 est.) note: <strong>note:</strong> Omani citizens represent approximately 56.4% of the population and are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%); Christians, Hindus, and Buddhists account for roughly 5% of Omani citizens"
-    }
-   ]
-  },
-  {
-   "id": "on british|political|and military advisors increased",
-   "subject": "on British",
-   "verb": "political",
-   "object": "and military advisors increased",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#371-507",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "Over time, Oman's dependence on British political and military advisors increased, although the sultanate never became a British colony."
-    }
-   ]
-  },
-  {
-   "id": "other|and|unaffiliated 2% (2020 est",
-   "subject": "other",
-   "verb": "and",
-   "object": "unaffiliated 2% (2020 est",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#4441-4811",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Religions Muslim 85.9%, Christian 6.4%, Hindu 5.7%, other and unaffiliated 2% (2020 est.) note: <strong>note:</strong> Omani citizens represent approximately 56.4% of the population and are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%); Christians, Hindus, and Buddhists account for roughly 5% of Omani citizens"
-    }
-   ]
-  },
-  {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#3850-3871",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
-   "id": "popular uprisings|that|swept the middle east and north africa inspired demonstrations in oman that called for more jobs and economic benefits and an end to corruption",
-   "subject": "popular uprisings",
-   "verb": "that",
-   "object": "swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#686-1059",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "He prioritized strategic ties to the UK and US, and his moderate, independent foreign policy allowed Oman to maintain good relations with its neighbors and avoid external entanglements.<br><br>In 2011, the popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption."
-    }
-   ]
-  },
-  {
-   "id": "qaboos|bin|said al said overthrew his father and ruled as sultan for the next five decades",
-   "subject": "QABOOS",
-   "verb": "bin",
-   "object": "Said Al Said overthrew his father and ruled as sultan for the next five decades",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1432,129 +294,12 @@
    ]
   },
   {
-   "id": "qaboos|implemented|economic and political reforms such as granting oman’s legislative body more power and authorizing direct elections for its lower house",
-   "subject": "QABOOS",
-   "verb": "implemented",
-   "object": "economic and political reforms such as granting Oman’s legislative body more power and authorizing direct elections for its lower house",
+   "id": "and sunni|sects|each constitute about 45% and shia about 5%)",
+   "subject": "and Sunni",
+   "verb": "sects",
+   "object": "each constitute about 45% and Shia about 5%)",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1060-1228",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "In response, QABOOS implemented economic and political reforms such as granting Oman’s legislative body more power and authorizing direct elections for its lower house."
-    }
-   ]
-  },
-  {
-   "id": "rugged mountains|in|north and south",
-   "subject": "rugged mountains",
-   "verb": "in",
-   "object": "north and south",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#2532-2605",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Terrain central desert plain, rugged mountains in north and south"
-    }
-   ]
-  },
-  {
-   "id": "strategic ties|to|the uk and us",
-   "subject": "strategic ties",
-   "verb": "to",
-   "object": "the UK and US",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#686-1059",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "He prioritized strategic ties to the UK and US, and his moderate, independent foreign policy allowed Oman to maintain good relations with its neighbors and avoid external entanglements.<br><br>In 2011, the popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption."
-    }
-   ]
-  },
-  {
-   "id": "summer monsoon|in|far south",
-   "subject": "summer monsoon",
-   "verb": "in",
-   "object": "far south",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#2396-2530",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Climate dry desert; hot, humid along coast; hot, dry interior; strong southwest summer monsoon (May to September) in far south"
-    }
-   ]
-  },
-  {
-   "id": "the city|of|salalah in the far south",
-   "subject": "the city",
-   "verb": "of",
-   "object": "Salalah in the far south",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#3285-3539",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-    },
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#5592-5846",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-    }
-   ]
-  },
-  {
-   "id": "the country|to|the outside world",
-   "subject": "the country",
-   "verb": "to",
-   "object": "the outside world",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#609-685",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "His extensive modernization program opened the country to the outside world."
-    }
-   ]
-  },
-  {
-   "id": "the inhabitants|of|the area of present-day oman have long prospered from indian ocean trade",
-   "subject": "The inhabitants",
-   "verb": "of",
-   "object": "the area of present-day Oman have long prospered from Indian Ocean trade",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#132-246",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Background <p>The inhabitants of the area of present-day Oman have long prospered from Indian Ocean trade."
-    }
-   ]
-  },
-  {
-   "id": "the population|and|are overwhelming muslim (ibadhi and sunni sects each constitute about 45% and shia about 5%)",
-   "subject": "the population",
-   "verb": "and",
-   "object": "are overwhelming Muslim (Ibadhi and Sunni sects each constitute about 45% and Shia about 5%)",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1565,77 +310,72 @@
    ]
   },
   {
-   "id": "the size|of|georgia",
-   "subject": "the size",
-   "verb": "of",
-   "object": "Georgia",
+   "id": "day oman|have|long prospered from indian ocean trade",
+   "subject": "day Oman",
+   "verb": "have",
+   "object": "long prospered from Indian Ocean trade",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#2074-2126",
+     "at": "06-government-legal/world-factbook/middle-east_mu.txt#132-246",
      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Area - comparative twice the size of Georgia"
+     "text": "### Background <p>The inhabitants of the area of present-day Oman have long prospered from Indian Ocean trade."
     }
    ]
   },
   {
-   "id": "unemployment benefits|and|issued a royal directive mandating a national public- and private-sector job creation plan",
-   "subject": "unemployment benefits",
-   "verb": "and",
-   "object": "issued a royal directive mandating a national public- and private-sector job creation plan",
+   "id": "in muscat|signed|the first in a series of friendship treaties with britain",
+   "subject": "in Muscat",
+   "verb": "signed",
+   "object": "the first in a series of friendship treaties with Britain",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1229-1381",
+     "at": "06-government-legal/world-factbook/middle-east_mu.txt#247-370",
      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "Additionally, the sultan increased unemployment benefits and issued a royal directive mandating a national public- and private-sector job creation plan."
+     "text": "In the late 18th century, the nascent sultanate in Muscat signed the first in a series of friendship treaties with Britain."
     }
    ]
   },
   {
-   "id": "vast majority|of|the population is located in and around the al hagar mountains in the north",
-   "subject": "vast majority",
-   "verb": "of",
-   "object": "the population is located in and around the Al Hagar Mountains in the north",
+   "id": "north africa|inspired|demonstrations in oman that called for more jobs and economic benefits and an end to corruption",
+   "subject": "North Africa",
+   "verb": "inspired",
+   "object": "demonstrations in Oman that called for more jobs and economic benefits and an end to corruption",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#3285-3539",
+     "at": "06-government-legal/world-factbook/middle-east_mu.txt#686-1059",
      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
-    },
-    {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#5592-5846",
-     "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "### Population distribution the vast majority of the population is located in and around the Al Hagar Mountains in the north; another smaller cluster is found around the city of Salalah in the far south; most of the country remains sparsely populated"
+     "text": "He prioritized strategic ties to the UK and US, and his moderate, independent foreign policy allowed Oman to maintain good relations with its neighbors and avoid external entanglements.<br><br>In 2011, the popular uprisings that swept the Middle East and North Africa inspired demonstrations in Oman that called for more jobs and economic benefits and an end to corruption."
     }
    ]
   },
   {
-   "id": "was sworn|in|as oman's new sultan the same day",
-   "subject": "was sworn",
-   "verb": "in",
-   "object": "as Oman's new sultan the same day",
+   "id": "qaboos|implemented|economic and political reforms such as granting oman’s legislative body more power and authorizing direct elections for its lower house",
+   "subject": "QABOOS",
+   "verb": "implemented",
+   "object": "economic and political reforms such as granting Oman’s legislative body more power and authorizing direct elections for its lower house",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_mu.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_mu.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1635-1766",
+     "at": "06-government-legal/world-factbook/middle-east_mu.txt#1060-1228",
      "ref": "06-government-legal/world-factbook/middle-east_mu.txt",
-     "text": "His cousin, HAYTHAM bin Tariq Al Said, former Minister of Heritage and Culture, was sworn in as Oman's new sultan the same day.</p>"
+     "text": "In response, QABOOS implemented economic and political reforms such as granting Oman’s legislative body more power and authorizing direct elections for its lower house."
     }
    ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:54.088Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:15.968Z"
  }
 }

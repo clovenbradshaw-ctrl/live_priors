@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 11190,
   "bodyOffset": 0,
   "bodyChars": 11190,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,85 +55,39 @@
   "referentEvents": 2,
   "distinctReferents": 1,
   "examined": true,
-  "edgesFound": 30,
-  "extractionError": null
+  "edgesFound": 19,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 1,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 3
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 19,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 40,
-  "excerptOk": 40,
-  "rawChecked": 40,
-  "rawOk": 40,
+  "excerptChecked": 29,
+  "excerptOk": 29,
+  "rawChecked": 29,
+  "rawOk": 29,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 30,
-  "heard": 30,
+  "offered": 19,
+  "heard": 19,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "office|of|the united nations high commissioner for human rights (ohchr)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Office of the United Nations High Commissioner for Human Rights (OHCHR)",
-    "subject": "Office",
-    "verb": "of",
-    "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#0-231",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "Universal Declaration of Human Rights Language: Norwegian, Nynorsk (nn) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "umissande rettar|for|alle menneske på jorda er grunnlaget for fridom",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "umissande rettar for alle menneske på jorda er grunnlaget for fridom",
-    "subject": "umissande rettar",
-    "verb": "for",
-    "object": "alle menneske på jorda er grunnlaget for fridom",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#305-460",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "Då det å godkjenne det naturlege menneskeverdet med like og umissande rettar for alle menneske på jorda er grunnlaget for fridom, rettferd og fred i verda,"
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "mot menneskerettane|har|ført til barbariske handlingar som har skaka samvitet til menneskeretta",
@@ -132,7 +104,7 @@
     "verb": "har",
     "object": "ført til barbariske handlingar som har skaka samvitet til menneskeretta",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,65 +113,7 @@
       "text": "og då hån og vørdsløyse mot menneskerettane har ført til barbariske handlingar som har skaka samvitet til menneskeretta, er framvoksteren i den verda der menneska skal ha talefridom og trusfridom og vere løyste frå otte og naud, kunngjord som det høgste målet for kvart menneske,"
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "høgste målet|for|kvart menneske",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "høgste målet for kvart menneske",
-    "subject": "høgste målet",
-    "verb": "for",
-    "object": "kvart menneske",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#468-747",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "og då hån og vørdsløyse mot menneskerettane har ført til barbariske handlingar som har skaka samvitet til menneskeretta, er framvoksteren i den verda der menneska skal ha talefridom og trusfridom og vere løyste frå otte og naud, kunngjord som det høgste målet for kvart menneske,"
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "å arbeide|for|betre tilhøve mellom nasjonane",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "å arbeide for betre tilhøve mellom nasjonane",
-    "subject": "å arbeide",
-    "verb": "for",
-    "object": "betre tilhøve mellom nasjonane",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#934-1002",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "og då det er nødvendig å arbeide for betre tilhøve mellom nasjonane,"
-     }
-    ],
-    "seq": 4,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +133,7 @@
     "verb": "har",
     "object": "stadfest trua si i denne pakta",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,36 +142,7 @@
       "text": "og då folka i Dei Sameinte Nasjonane har stadfest trua si i denne pakta, på grunnleggjande menneskerettar, på menneskeverd og på same rett for mann og kvinne, og har vedteke å arbeide for sosiale framsteg og betre levevilkår i større fridom,"
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "same rett|for|mann og kvinne",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "same rett for mann og kvinne",
-    "subject": "same rett",
-    "verb": "for",
-    "object": "mann og kvinne",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#1010-1251",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "og då folka i Dei Sameinte Nasjonane har stadfest trua si i denne pakta, på grunnleggjande menneskerettar, på menneskeverd og på same rett for mann og kvinne, og har vedteke å arbeide for sosiale framsteg og betre levevilkår i større fridom,"
-     }
-    ],
-    "seq": 6,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -277,7 +162,7 @@
     "verb": "har",
     "object": "vedteke å arbeide for sosiale framsteg og betre levevilkår i større fridom",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -286,7 +171,7 @@
       "text": "og då folka i Dei Sameinte Nasjonane har stadfest trua si i denne pakta, på grunnleggjande menneskerettar, på menneskeverd og på same rett for mann og kvinne, og har vedteke å arbeide for sosiale framsteg og betre levevilkår i større fridom,"
      }
     ],
-    "seq": 7,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +191,7 @@
     "verb": "har",
     "object": "bunde seg til å fremje allmenn vørdnad for pakta og halde seg etter menneskerettane og den grunnleggjande fridomen i samarbeid med Dei Sameinte Nasjonane",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,94 +200,7 @@
       "text": "og då medlemsstatane har bunde seg til å fremje allmenn vørdnad for pakta og halde seg etter menneskerettane og den grunnleggjande fridomen i samarbeid med Dei Sameinte Nasjonane,"
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sams mål|for|alle folk og nasjonar",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sams mål for alle folk og nasjonar",
-    "subject": "sams mål",
-    "verb": "for",
-    "object": "alle folk og nasjonar",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#1581-1687",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "DEN INTERNASJONALE FRÅSEGNA OM MENNESKERETTANE, som skal peike mot eit sams mål for alle folk og nasjonar."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "styrkje vørdnaden|for|rett og fridom gjennom undervisning og oppseding",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "styrkje vørdnaden for rett og fridom gjennom undervisning og oppseding",
-    "subject": "styrkje vørdnaden",
-    "verb": "for",
-    "object": "rett og fridom gjennom undervisning og oppseding",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#1688-1843",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "Fråsegna må alltid vere i tankane til den einskilde og dei styrande og få dei til å styrkje vørdnaden for rett og fridom gjennom undervisning og oppseding."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "skal syte|for|at fråsegna blir allment kjend og etterlevd både i medlemslanda og i tilsynsområda",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "skal syte for at fråsegna blir allment kjend og etterlevd både i medlemslanda og i tilsynsområda",
-    "subject": "skal syte",
-    "verb": "for",
-    "object": "at fråsegna blir allment kjend og etterlevd både i medlemslanda og i tilsynsområda",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#1844-2020",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "Dei skal syte for at fråsegna blir allment kjend og etterlevd både i medlemslanda og i tilsynsområda, og arbeide trufast med dette både på nasjonalt og internasjonalt grunnlag."
-     }
-    ],
-    "seq": 11,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -422,7 +220,7 @@
     "verb": "har",
     "object": "fått fornuft og samvit og skal leve med kvarandre som brør",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,7 +229,7 @@
       "text": "Dei har fått fornuft og samvit og skal leve med kvarandre som brør."
      }
     ],
-    "seq": 12,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +249,7 @@
     "verb": "har",
     "object": "krav på all den rett og fridom som fråsegna nemner",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,7 +258,7 @@
       "text": "Kvar einskild har krav på all den rett og fridom som fråsegna nemner, utan skilnad av noko slag på grunn av rase, farge, kjønn, språk, religion, politisk syn eller anna meining, nasjonalt eller sosialt opphav, eigedom, fødsel eller andre tilhøve."
      }
     ],
-    "seq": 13,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -480,7 +278,7 @@
     "verb": "har",
     "object": "sjølvstende",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -489,7 +287,7 @@
       "text": "Den politiske stoda, lovverket eller dei internasjonale påboda eit land lever under, kan ikkje vere påskott til at det blir gjort skilnad på nokon i det landet eller området han høyrer til, anten landet har sjølvstende, står under tilsyn, er ikkje-sjølvstyrt eller sjølvstyret er avgrensa på nokon annan måte."
      }
     ],
-    "seq": 14,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -509,7 +307,7 @@
     "verb": "har",
     "object": "rett til liv",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -563,13 +361,13 @@
       "text": "Alle har rett til arbeid, til fritt å velje yrke, til rettferdige og gode arbeidstilhøve og vern"
      }
     ],
-    "seq": 15,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "er like|for|lova og har krav på same rettsvern",
+    "task_id": "lova og|har|krav på same rettsvern",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -578,12 +376,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "er like for lova og har krav på same rettsvern",
-    "subject": "er like",
-    "verb": "for",
-    "object": "lova og har krav på same rettsvern",
+    "description": "lova og har krav på same rettsvern",
+    "subject": "lova og",
+    "verb": "har",
+    "object": "krav på same rettsvern",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -592,7 +390,7 @@
       "text": "Alle er like for lova og har krav på same rettsvern, utan skilnad av noko slag."
      }
     ],
-    "seq": 16,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -612,7 +410,7 @@
     "verb": "har",
     "object": "krav på same vern mot at det blir gjort skilnad på folk i strid med denne fråsegna",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -626,36 +424,7 @@
       "text": "Alle har krav på at lova vernar dei mot slik innblanding eller slike åtak."
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "er klaga|for|ei straffbar handling",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "er klaga for ei straffbar handling",
-    "subject": "er klaga",
-    "verb": "for",
-    "object": "ei straffbar handling",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#4077-4285",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "Den som er klaga for ei straffbar handling, har rett til å bli rekna som skuldlaus til ein offentleg domstol, der han har fått full trygd for retten til å forsvare seg, har prova at han er skuldig etter lova."
-     }
-    ],
-    "seq": 18,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -675,7 +444,7 @@
     "verb": "har",
     "object": "fått full trygd for retten til å forsvare seg",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -684,7 +453,7 @@
       "text": "Den som er klaga for ei straffbar handling, har rett til å bli rekna som skuldlaus til ein offentleg domstol, der han har fått full trygd for retten til å forsvare seg, har prova at han er skuldig etter lova."
      }
     ],
-    "seq": 19,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -704,7 +473,7 @@
     "verb": "har",
     "object": "gjort eller forsømt ikkje streid mot nasjonal lov eller folkeretten på den tida det hende",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -713,7 +482,7 @@
       "text": "Ingen skal kjennast skuldig i ei straffbar handling når det han har gjort eller forsømt ikkje streid mot nasjonal lov eller folkeretten på den tida det hende."
      }
     ],
-    "seq": 20,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -733,7 +502,7 @@
     "verb": "har",
     "object": "rett til å søkje og ta imot asyl i eit anna land",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -742,7 +511,7 @@
       "text": "Alle som blir forfølgde har rett til å søkje og ta imot asyl i eit anna land."
      }
     ],
-    "seq": 21,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -762,7 +531,7 @@
     "verb": "har",
     "object": "røynleg grunnlag i upolitiske brotsverk eller handlingar som strir mot formålet og prinsippet til Dei Sameinte Nasjonane",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -771,7 +540,7 @@
       "text": "Denne retten gjeld ikkje i rettssakar som har røynleg grunnlag i upolitiske brotsverk eller handlingar som strir mot formålet og prinsippet til Dei Sameinte Nasjonane."
      }
     ],
-    "seq": 22,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -791,7 +560,7 @@
     "verb": "har",
     "object": "rett til å gifte seg og skipe familie utan avgrensing av noko slag på grunn av rase",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -800,7 +569,7 @@
       "text": "Vaksne menn og kvinner har rett til å gifte seg og skipe familie utan avgrensing av noko slag på grunn av rase, nasjonalitet eller religion."
      }
     ],
-    "seq": 23,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -820,7 +589,7 @@
     "verb": "har",
     "object": "krav på dei same rettane når det gjeld ekteskapet",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -829,7 +598,7 @@
       "text": "Dei har krav på dei same rettane når det gjeld ekteskapet, både så lenge ekteskapet varer og medan det blir løyst opp."
      }
     ],
-    "seq": 24,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -849,7 +618,7 @@
     "verb": "har",
     "object": "krav på at staten og samfunnet vernar om det",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -858,36 +627,7 @@
       "text": "Familien er den naturlege og grunnleggjande eininga i samfunnet og har krav på at staten og samfunnet vernar om det."
      }
     ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "vere grunnlaget|for|den makta som er lagd til styremaktene",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "vere grunnlaget for den makta som er lagd til styremaktene",
-    "subject": "vere grunnlaget",
-    "verb": "for",
-    "object": "den makta som er lagd til styremaktene",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#7265-7341",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "Folkeviljen skal vere grunnlaget for den makta som er lagd til styremaktene."
-     }
-    ],
-    "seq": 26,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -907,7 +647,7 @@
     "verb": "har",
     "object": "rett til sosial tryggleik",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -916,7 +656,7 @@
       "text": "Kvar einskild medlem i samfunnet har rett til sosial tryggleik, og har krav på at dei økonomiske, sosiale og kulturelle godane, som han ikkje kan vere utan om han skal ha vørdnad for seg sjølv og styrke den personlege karakteren sin, blir løyste gjennom nasjonale tiltak og internasjonalt samarbeid i samsvar med det kvar stat maktar."
      }
     ],
-    "seq": 27,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -936,7 +676,7 @@
     "verb": "har",
     "object": "krav på at dei økonomiske",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -945,41 +685,12 @@
       "text": "Kvar einskild medlem i samfunnet har rett til sosial tryggleik, og har krav på at dei økonomiske, sosiale og kulturelle godane, som han ikkje kan vere utan om han skal ha vørdnad for seg sjølv og styrke den personlege karakteren sin, blir løyste gjennom nasjonale tiltak og internasjonalt samarbeid i samsvar med det kvar stat maktar."
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ha vørdnad|for|seg sjølv og styrke den personlege karakteren sin",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ha vørdnad for seg sjølv og styrke den personlege karakteren sin",
-    "subject": "ha vørdnad",
-    "verb": "for",
-    "object": "seg sjølv og styrke den personlege karakteren sin",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-nno.txt#7533-7867",
-      "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-      "text": "Kvar einskild medlem i samfunnet har rett til sosial tryggleik, og har krav på at dei økonomiske, sosiale og kulturelle godane, som han ikkje kan vere utan om han skal ha vørdnad for seg sjølv og styrke den personlege karakteren sin, blir løyste gjennom nasjonale tiltak og internasjonalt samarbeid i samsvar med det kvar stat maktar."
-     }
-    ],
-    "seq": 29,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 30,
+  "nextSeq": 19,
   "admits": [
    "NUL",
    "SEG",
@@ -994,28 +705,12 @@
  },
  "folded": [
   {
-   "id": "å arbeide|for|betre tilhøve mellom nasjonane",
-   "subject": "å arbeide",
-   "verb": "for",
-   "object": "betre tilhøve mellom nasjonane",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#934-1002",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "og då det er nødvendig å arbeide for betre tilhøve mellom nasjonane,"
-    }
-   ]
-  },
-  {
    "id": "alle|har|krav på same vern mot at det blir gjort skilnad på folk i strid med denne fråsegna",
    "subject": "Alle",
    "verb": "har",
    "object": "krav på same vern mot at det blir gjort skilnad på folk i strid med denne fråsegna",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1036,7 +731,7 @@
    "verb": "har",
    "object": "rett til liv",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1097,7 +792,7 @@
    "verb": "har",
    "object": "sjølvstende",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1113,7 +808,7 @@
    "verb": "har",
    "object": "rett til å søkje og ta imot asyl i eit anna land",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1129,7 +824,7 @@
    "verb": "har",
    "object": "bunde seg til å fremje allmenn vørdnad for pakta og halde seg etter menneskerettane og den grunnleggjande fridomen i samarbeid med Dei Sameinte Nasjonane",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1145,7 +840,7 @@
    "verb": "har",
    "object": "fått fornuft og samvit og skal leve med kvarandre som brør",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1161,7 +856,7 @@
    "verb": "har",
    "object": "krav på dei same rettane når det gjeld ekteskapet",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1177,7 +872,7 @@
    "verb": "har",
    "object": "fått full trygd for retten til å forsvare seg",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1193,7 +888,7 @@
    "verb": "har",
    "object": "gjort eller forsømt ikkje streid mot nasjonal lov eller folkeretten på den tida det hende",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1204,76 +899,12 @@
    ]
   },
   {
-   "id": "er klaga|for|ei straffbar handling",
-   "subject": "er klaga",
-   "verb": "for",
-   "object": "ei straffbar handling",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#4077-4285",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "Den som er klaga for ei straffbar handling, har rett til å bli rekna som skuldlaus til ein offentleg domstol, der han har fått full trygd for retten til å forsvare seg, har prova at han er skuldig etter lova."
-    }
-   ]
-  },
-  {
-   "id": "er like|for|lova og har krav på same rettsvern",
-   "subject": "er like",
-   "verb": "for",
-   "object": "lova og har krav på same rettsvern",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#3245-3324",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "Alle er like for lova og har krav på same rettsvern, utan skilnad av noko slag."
-    }
-   ]
-  },
-  {
-   "id": "ha vørdnad|for|seg sjølv og styrke den personlege karakteren sin",
-   "subject": "ha vørdnad",
-   "verb": "for",
-   "object": "seg sjølv og styrke den personlege karakteren sin",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#7533-7867",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "Kvar einskild medlem i samfunnet har rett til sosial tryggleik, og har krav på at dei økonomiske, sosiale og kulturelle godane, som han ikkje kan vere utan om han skal ha vørdnad for seg sjølv og styrke den personlege karakteren sin, blir løyste gjennom nasjonale tiltak og internasjonalt samarbeid i samsvar med det kvar stat maktar."
-    }
-   ]
-  },
-  {
-   "id": "høgste målet|for|kvart menneske",
-   "subject": "høgste målet",
-   "verb": "for",
-   "object": "kvart menneske",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#468-747",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "og då hån og vørdsløyse mot menneskerettane har ført til barbariske handlingar som har skaka samvitet til menneskeretta, er framvoksteren i den verda der menneska skal ha talefridom og trusfridom og vere løyste frå otte og naud, kunngjord som det høgste målet for kvart menneske,"
-    }
-   ]
-  },
-  {
    "id": "i samfunnet|har|rett til sosial tryggleik",
    "subject": "i samfunnet",
    "verb": "har",
    "object": "rett til sosial tryggleik",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1289,7 +920,7 @@
    "verb": "har",
    "object": "krav på all den rett og fridom som fråsegna nemner",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1300,12 +931,28 @@
    ]
   },
   {
+   "id": "lova og|har|krav på same rettsvern",
+   "subject": "lova og",
+   "verb": "har",
+   "object": "krav på same rettsvern",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-nno.txt#3245-3324",
+     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
+     "text": "Alle er like for lova og har krav på same rettsvern, utan skilnad av noko slag."
+    }
+   ]
+  },
+  {
    "id": "mot menneskerettane|har|ført til barbariske handlingar som har skaka samvitet til menneskeretta",
    "subject": "mot menneskerettane",
    "verb": "har",
    "object": "ført til barbariske handlingar som har skaka samvitet til menneskeretta",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1316,28 +963,12 @@
    ]
   },
   {
-   "id": "office|of|the united nations high commissioner for human rights (ohchr)",
-   "subject": "Office",
-   "verb": "of",
-   "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#0-231",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "Universal Declaration of Human Rights Language: Norwegian, Nynorsk (nn) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-    }
-   ]
-  },
-  {
    "id": "og kvinner|har|rett til å gifte seg og skipe familie utan avgrensing av noko slag på grunn av rase",
    "subject": "og kvinner",
    "verb": "har",
    "object": "rett til å gifte seg og skipe familie utan avgrensing av noko slag på grunn av rase",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1353,7 +984,7 @@
    "verb": "har",
    "object": "krav på at dei økonomiske",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1369,7 +1000,7 @@
    "verb": "har",
    "object": "vedteke å arbeide for sosiale framsteg og betre levevilkår i større fridom",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1385,7 +1016,7 @@
    "verb": "har",
    "object": "røynleg grunnlag i upolitiske brotsverk eller handlingar som strir mot formålet og prinsippet til Dei Sameinte Nasjonane",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1396,28 +1027,12 @@
    ]
   },
   {
-   "id": "same rett|for|mann og kvinne",
-   "subject": "same rett",
-   "verb": "for",
-   "object": "mann og kvinne",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#1010-1251",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "og då folka i Dei Sameinte Nasjonane har stadfest trua si i denne pakta, på grunnleggjande menneskerettar, på menneskeverd og på same rett for mann og kvinne, og har vedteke å arbeide for sosiale framsteg og betre levevilkår i større fridom,"
-    }
-   ]
-  },
-  {
    "id": "sameinte nasjonane|har|stadfest trua si i denne pakta",
    "subject": "Sameinte Nasjonane",
    "verb": "har",
    "object": "stadfest trua si i denne pakta",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1433,7 +1048,7 @@
    "verb": "har",
    "object": "krav på at staten og samfunnet vernar om det",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-nno.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1442,90 +1057,10 @@
      "text": "Familien er den naturlege og grunnleggjande eininga i samfunnet og har krav på at staten og samfunnet vernar om det."
     }
    ]
-  },
-  {
-   "id": "sams mål|for|alle folk og nasjonar",
-   "subject": "sams mål",
-   "verb": "for",
-   "object": "alle folk og nasjonar",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#1581-1687",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "DEN INTERNASJONALE FRÅSEGNA OM MENNESKERETTANE, som skal peike mot eit sams mål for alle folk og nasjonar."
-    }
-   ]
-  },
-  {
-   "id": "skal syte|for|at fråsegna blir allment kjend og etterlevd både i medlemslanda og i tilsynsområda",
-   "subject": "skal syte",
-   "verb": "for",
-   "object": "at fråsegna blir allment kjend og etterlevd både i medlemslanda og i tilsynsområda",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#1844-2020",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "Dei skal syte for at fråsegna blir allment kjend og etterlevd både i medlemslanda og i tilsynsområda, og arbeide trufast med dette både på nasjonalt og internasjonalt grunnlag."
-    }
-   ]
-  },
-  {
-   "id": "styrkje vørdnaden|for|rett og fridom gjennom undervisning og oppseding",
-   "subject": "styrkje vørdnaden",
-   "verb": "for",
-   "object": "rett og fridom gjennom undervisning og oppseding",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#1688-1843",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "Fråsegna må alltid vere i tankane til den einskilde og dei styrande og få dei til å styrkje vørdnaden for rett og fridom gjennom undervisning og oppseding."
-    }
-   ]
-  },
-  {
-   "id": "umissande rettar|for|alle menneske på jorda er grunnlaget for fridom",
-   "subject": "umissande rettar",
-   "verb": "for",
-   "object": "alle menneske på jorda er grunnlaget for fridom",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#305-460",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "Då det å godkjenne det naturlege menneskeverdet med like og umissande rettar for alle menneske på jorda er grunnlaget for fridom, rettferd og fred i verda,"
-    }
-   ]
-  },
-  {
-   "id": "vere grunnlaget|for|den makta som er lagd til styremaktene",
-   "subject": "vere grunnlaget",
-   "verb": "for",
-   "object": "den makta som er lagd til styremaktene",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-nno.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-nno.txt#7265-7341",
-     "ref": "06-government-legal/un-udhr/udhr-nno.txt",
-     "text": "Folkeviljen skal vere grunnlaget for den makta som er lagd til styremaktene."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:11.096Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:43.329Z"
  }
 }

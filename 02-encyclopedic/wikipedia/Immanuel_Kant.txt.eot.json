@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 102626,
   "bodyOffset": 0,
   "bodyChars": 102626,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,28 +55,33 @@
   "referentEvents": 19,
   "distinctReferents": 16,
   "examined": true,
-  "edgesFound": 72,
+  "edgesFound": 30,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 47,
+   "verbs": 19,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 47
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 30,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 75,
-  "excerptOk": 75,
-  "rawChecked": 75,
-  "rawOk": 75,
+  "excerptChecked": 33,
+  "excerptOk": 33,
+  "rawChecked": 33,
+  "rawOk": 33,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 72,
-  "heard": 72,
+  "offered": 30,
+  "heard": 30,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -81,7 +104,7 @@
     "verb": "written",
     "object": "in ink in a flowing script",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -91,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "born|in|königsberg in the kingdom of prussia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Born in Königsberg in the Kingdom of Prussia",
-    "subject": "Born",
-    "verb": "in",
-    "object": "Königsberg in the Kingdom of Prussia",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#869-1001",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Born in Königsberg in the Kingdom of Prussia, he is considered one of the central thinkers of the Age of EnlightenmentEnlightenment."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -139,7 +133,7 @@
     "verb": "considered",
     "object": "one of the central thinkers of the Age of EnlightenmentEnlightenment",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,36 +142,7 @@
       "text": "Born in Königsberg in the Kingdom of Prussia, he is considered one of the central thinkers of the Age of EnlightenmentEnlightenment."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "his comprehensive|and|systematic works in epistemology",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "His comprehensive and systematic works in epistemology",
-    "subject": "His comprehensive",
-    "verb": "and",
-    "object": "systematic works in epistemology",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1002-1267",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "His comprehensive and systematic works in epistemology, metaphysics, logic, ethics, aesthetics, Political philosophypolitical theory, and the philosophy of religion have made him one of the most influential and highly discussed figures in modern Western philosophy."
-     }
-    ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -197,7 +162,7 @@
     "verb": "philosophypolitical",
     "object": "theory",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -206,36 +171,7 @@
       "text": "His comprehensive and systematic works in epistemology, metaphysics, logic, ethics, aesthetics, Political philosophypolitical theory, and the philosophy of religion have made him one of the most influential and highly discussed figures in modern Western philosophy."
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and the|philosophy|of religion have made him one of the most influential and highly discussed figures in modern western philosophy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the philosophy of religion have made him one of the most influential and highly discussed figures in modern Western philosophy",
-    "subject": "and the",
-    "verb": "philosophy",
-    "object": "of religion have made him one of the most influential and highly discussed figures in modern Western philosophy",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1002-1267",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "His comprehensive and systematic works in epistemology, metaphysics, logic, ethics, aesthetics, Political philosophypolitical theory, and the philosophy of religion have made him one of the most influential and highly discussed figures in modern Western philosophy."
-     }
-    ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -255,7 +191,7 @@
     "verb": "is",
     "object": "centered on the human subject and motivated by the desire to secure the possibility of both knowledge and morality against the threats of skepticism and determinism",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -269,42 +205,13 @@
       "text": "Kant is best known for his work in the philosophy of ethics and metaphysics, but he made significant contributions to other disciplines."
      }
     ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the critique|of|pure reason (1781/1787)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Critique of Pure Reason (1781/1787)",
-    "subject": "the Critique",
-    "verb": "of",
-    "object": "Pure Reason (1781/1787)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1456-1757",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In the Critique of Pure Reason (1781/1787), Kant argues for transcendental idealism, the doctrine that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kant argues|for|transcendental idealism",
+    "task_id": "kant|argues|for transcendental idealism",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -314,84 +221,26 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Kant argues for transcendental idealism",
-    "subject": "Kant argues",
-    "verb": "for",
-    "object": "transcendental idealism",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1456-1757",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In the Critique of Pure Reason (1781/1787), Kant argues for transcendental idealism, the doctrine that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "that space|and|time are mere \"forms of anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of thing-in-itselfthings in themselves",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves",
-    "subject": "that space",
-    "verb": "and",
-    "object": "time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1456-1757",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In the Critique of Pure Reason (1781/1787), Kant argues for transcendental idealism, the doctrine that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kant|drew|a parallel to the copernican revolutionmetaphorical usagecopernican revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of anschauungintuition and the category (kant)categories of the understanding",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Kant drew a parallel to the Copernican RevolutionMetaphorical usageCopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding",
     "subject": "Kant",
-    "verb": "drew",
-    "object": "a parallel to the Copernican RevolutionMetaphorical usageCopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding",
+    "verb": "argues",
+    "object": "for transcendental idealism",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1758-2120",
+      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1456-1757",
       "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Kant drew a parallel to the Copernican RevolutionMetaphorical usageCopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding, instead of the traditional method of showing how the mind might conform to its objects."
+      "text": "In the Critique of Pure Reason (1781/1787), Kant argues for transcendental idealism, the doctrine that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves."
      }
     ],
-    "seq": 10,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "instead|of|the traditional method of showing how the mind might conform to its objects",
+    "task_id": "copernican revolutionmetaphorical|usagecopernican|revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of anschauungintuition and the category (kant)categories of the understanding",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -400,12 +249,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "instead of the traditional method of showing how the mind might conform to its objects",
-    "subject": "instead",
-    "verb": "of",
-    "object": "the traditional method of showing how the mind might conform to its objects",
+    "description": "Copernican RevolutionMetaphorical usagecopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding",
+    "subject": "Copernican RevolutionMetaphorical",
+    "verb": "usagecopernican",
+    "object": "Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -414,7 +263,7 @@
       "text": "Kant drew a parallel to the Copernican RevolutionMetaphorical usageCopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding, instead of the traditional method of showing how the mind might conform to its objects."
      }
     ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -434,7 +283,7 @@
     "verb": "believed",
     "object": "that reason is the source of morality and that the categorical imperative binds all rational agents",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -448,7 +297,7 @@
       "text": "Kant believed that true religion is grounded on morality."
      }
     ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -468,7 +317,7 @@
     "verb": "believed",
     "object": "that aesthetics arises from a faculty of disinterested judgment",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -477,7 +326,7 @@
       "text": "He believed that aesthetics arises from a faculty of disinterested judgment."
      }
     ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -497,7 +346,7 @@
     "verb": "hoped",
     "object": "that perpetual peace could be secured through an international federation of Republicanismrepublican states and Multilateralisminternational cooperation",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -506,13 +355,13 @@
       "text": "Kant hoped that perpetual peace could be secured through an international federation of Republicanismrepublican states and Multilateralisminternational cooperation."
      }
     ],
-    "seq": 14,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "exact nature|of|his religious views is a matter of dispute",
+    "task_id": "religious views|is|a matter of dispute",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -521,12 +370,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "exact nature of his religious views is a matter of dispute",
-    "subject": "exact nature",
-    "verb": "of",
-    "object": "his religious views is a matter of dispute",
+    "description": "religious views is a matter of dispute",
+    "subject": "religious views",
+    "verb": "is",
+    "object": "a matter of dispute",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -535,7 +384,7 @@
       "text": "The exact nature of his religious views is a matter of dispute."
      }
     ],
-    "seq": 15,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -555,7 +404,7 @@
     "verb": "was",
     "object": "born on 22 April 1724 into a Prussian German family of LutheranismLutheran faith in Königsberg in East Prussia (now Kaliningrad Oblast",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -569,36 +418,7 @@
       "text": "Kant was baptized as Emanuel, changing the spelling of his name to Immanuel after learning Hebrew languageHebrew."
      }
     ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was born|in|königsberg to a father from nuremberg",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was born in Königsberg to a father from Nuremberg",
-    "subject": "was born",
-    "verb": "in",
-    "object": "Königsberg to a father from Nuremberg",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#2777-2859",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "His mother, Anna Regina Reuter, was born in Königsberg to a father from Nuremberg."
-     }
-    ],
-    "seq": 17,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -618,7 +438,7 @@
     "verb": "is",
     "object": "sometimes erroneously given as Porter",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -627,36 +447,7 @@
       "text": "Her surname is sometimes erroneously given as Porter."
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "maker|from|klaipėdamemel",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "maker from KlaipėdaMemel",
-    "subject": "maker",
-    "verb": "from",
-    "object": "KlaipėdaMemel",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#2914-3066",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Kant's father, Johann Georg Kant, was a German harness-maker from KlaipėdaMemel, at the time Prussia's most northeastern city (now Klaipėda, Lithuania)."
-     }
-    ],
-    "seq": 19,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -676,7 +467,7 @@
     "verb": "believed",
     "object": "his family to be of Scottish descent",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -685,65 +476,7 @@
       "text": "Kant believed his family to be of Scottish descent, although this has not been verified by genealogical research.R."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the origin|of|immanuel kant's family name\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The Origin of Immanuel Kant's Family Name\"",
-    "subject": "The Origin",
-    "verb": "of",
-    "object": "Immanuel Kant's Family Name\"",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3186-3276",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Murray, \"The Origin of Immanuel Kant's Family Name\", Kantian Review 13(1), March 2008, pp."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the spelling|of|his name to immanuel after learning hebrew languagehebrew",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the spelling of his name to Immanuel after learning Hebrew languageHebrew",
-    "subject": "the spelling",
-    "verb": "of",
-    "object": "his name to Immanuel after learning Hebrew languageHebrew",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3287-3400",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Kant was baptized as Emanuel, changing the spelling of his name to Immanuel after learning Hebrew languageHebrew."
-     }
-    ],
-    "seq": 22,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -763,7 +496,7 @@
     "verb": "was",
     "object": "the fourth of nine children (six of whom reached adulthood)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -772,65 +505,7 @@
       "text": "He was the fourth of nine children (six of whom reached adulthood)."
      }
     ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the kant|household|stressed the pietist values of religious devotion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The Kant household stressed the Pietist values of religious devotion",
-    "subject": "The Kant",
-    "verb": "household",
-    "object": "stressed the Pietist values of religious devotion",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3469-3591",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "The Kant household stressed the Pietist values of religious devotion, humility, and a literal interpretation of the Bible."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "literal interpretation|of|the bible",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "literal interpretation of the Bible",
-    "subject": "literal interpretation",
-    "verb": "of",
-    "object": "the Bible",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3469-3591",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "The Kant household stressed the Pietist values of religious devotion, humility, and a literal interpretation of the Bible."
-     }
-    ],
-    "seq": 25,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -850,7 +525,7 @@
     "verb": "was",
     "object": "strict",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -859,65 +534,7 @@
       "text": "Immanuel Kant's early education was strict, punitive, and highly disciplinary, with an emphasis on Latin and religious instruction rather than mathematics and science."
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "an emphasis|on|latin and religious instruction rather than mathematics and science",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "an emphasis on Latin and religious instruction rather than mathematics and science",
-    "subject": "an emphasis",
-    "verb": "on",
-    "object": "Latin and religious instruction rather than mathematics and science",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3592-3759",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Immanuel Kant's early education was strict, punitive, and highly disciplinary, with an emphasis on Latin and religious instruction rather than mathematics and science."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in his|later|years",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "In his later years",
-    "subject": "In his",
-    "verb": "later",
-    "object": "years",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3761-3816",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In his later years, Kant lived a strictly ordered life."
-     }
-    ],
-    "seq": 28,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -937,7 +554,7 @@
     "verb": "lived",
     "object": "a strictly ordered life",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -946,7 +563,7 @@
       "text": "In his later years, Kant lived a strictly ordered life."
      }
     ],
-    "seq": 29,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -966,7 +583,7 @@
     "verb": "was",
     "object": "said that neighbors would set their watches by his daily walks",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -975,7 +592,7 @@
       "text": "It was said that neighbors would set their watches by his daily walks."
      }
     ],
-    "seq": 30,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -995,7 +612,7 @@
     "verb": "considered",
     "object": "marriage twice",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1004,13 +621,13 @@
       "text": "Kant considered marriage twice, first to a widow and then to a Westphalian girl, but on both occasions waited too long."
      }
     ],
-    "seq": 31,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "first|to|a widow and then to a westphalian girl",
+    "task_id": "to have|had|a rewarding social life",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1019,70 +636,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "first to a widow and then to a Westphalian girl",
-    "subject": "first",
-    "verb": "to",
-    "object": "a widow and then to a Westphalian girl",
+    "description": "to have had a rewarding social life",
+    "subject": "to have",
+    "verb": "had",
+    "object": "a rewarding social life",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3888-4007",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Kant considered marriage twice, first to a widow and then to a Westphalian girl, but on both occasions waited too long."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|on|both occasions waited too long",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "but on both occasions waited too long",
-    "subject": "but",
-    "verb": "on",
-    "object": "both occasions waited too long",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3888-4007",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Kant considered marriage twice, first to a widow and then to a Westphalian girl, but on both occasions waited too long."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he seems|to|have had a rewarding social life",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "he seems to have had a rewarding social life",
-    "subject": "he seems",
-    "verb": "to",
-    "object": "have had a rewarding social life",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1091,7 +650,7 @@
       "text": "Though he never married, he seems to have had a rewarding social life; he was a popular teacher as well as a modestly successful author, even before starting on his major philosophical works."
      }
     ],
-    "seq": 34,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1111,7 +670,7 @@
     "verb": "was",
     "object": "a popular teacher as well as a modestly successful author",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1120,36 +679,7 @@
       "text": "Though he never married, he seems to have had a rewarding social life; he was a popular teacher as well as a modestly successful author, even before starting on his major philosophical works."
      }
     ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "before starting|on|his major philosophical works",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "before starting on his major philosophical works",
-    "subject": "before starting",
-    "verb": "on",
-    "object": "his major philosophical works",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4008-4199",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Though he never married, he seems to have had a rewarding social life; he was a popular teacher as well as a modestly successful author, even before starting on his major philosophical works."
-     }
-    ],
-    "seq": 36,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1169,7 +699,7 @@
     "verb": "demonstrated",
     "object": "an early aptitude for study",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1178,123 +708,7 @@
       "text": "Kant demonstrated an early aptitude for study."
      }
     ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the end|of|the summer of 1740",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the end of the summer of 1740",
-    "subject": "the end",
-    "verb": "of",
-    "object": "the summer of 1740",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4263-4407",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "He first attended the Collegium Fridericianum (then directed by Franz Albert Schultz), from which he graduated at the end of the summer of 1740."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the university|of|königsberg",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the University of Königsberg",
-    "subject": "the University",
-    "verb": "of",
-    "object": "Königsberg",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4408-4619",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In 1740, aged 16, he enrolled at the University of Königsberg, where he would later remain for the rest of his professional life.The American International Encyclopedia (New York: J.J. Little & Ives, 1954), Vol."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he would|later|remain for the rest of his professional life",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "he would later remain for the rest of his professional life",
-    "subject": "he would",
-    "verb": "later",
-    "object": "remain for the rest of his professional life",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4408-4619",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In 1740, aged 16, he enrolled at the University of Königsberg, where he would later remain for the rest of his professional life.The American International Encyclopedia (New York: J.J. Little & Ives, 1954), Vol."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "studied the|philosophy|of gottfried leibniz and christian wolff (philosopher)christian wolff under martin knutzen (associate professor of logic and metaphysics from 1734 until he died in 1751)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "studied the philosophy of Gottfried Leibniz and Christian Wolff (philosopher)Christian Wolff under Martin Knutzen (Associate Professor of Logic and Metaphysics from 1734 until he died in 1751)",
-    "subject": "studied the",
-    "verb": "philosophy",
-    "object": "of Gottfried Leibniz and Christian Wolff (philosopher)Christian Wolff under Martin Knutzen (Associate Professor of Logic and Metaphysics from 1734 until he died in 1751)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4624-4988",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "He studied the philosophy of Gottfried Leibniz and Christian Wolff (philosopher)Christian Wolff under Martin Knutzen (Associate Professor of Logic and Metaphysics from 1734 until he died in 1751), a rationalismrationalist who was also familiar with developments in British philosophy and science and introduced Kant to the new mathematical physics of Isaac Newton."
-     }
-    ],
-    "seq": 41,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1314,7 +728,7 @@
     "verb": "was",
     "object": "also familiar with developments in British philosophy and science and introduced Kant to the new mathematical physics of Isaac Newton",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1323,94 +737,7 @@
       "text": "He studied the philosophy of Gottfried Leibniz and Christian Wolff (philosopher)Christian Wolff under Martin Knutzen (Associate Professor of Logic and Metaphysics from 1734 until he died in 1751), a rationalismrationalist who was also familiar with developments in British philosophy and science and introduced Kant to the new mathematical physics of Isaac Newton."
      }
     ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dissuaded kant|from|the theory of pre-established harmony",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dissuaded Kant from the theory of pre-established harmony",
-    "subject": "dissuaded Kant",
-    "verb": "from",
-    "object": "the theory of pre-established harmony",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4989-5108",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Knutzen dissuaded Kant from the theory of pre-established harmony, which he regarded as \"the pillow for the lazy mind\"."
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the pillow|for|the lazy mind\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the pillow for the lazy mind\"",
-    "subject": "the pillow",
-    "verb": "for",
-    "object": "the lazy mind\"",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4989-5108",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Knutzen dissuaded Kant from the theory of pre-established harmony, which he regarded as \"the pillow for the lazy mind\"."
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dissuaded kant|from|idealism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dissuaded Kant from idealism",
-    "subject": "dissuaded Kant",
-    "verb": "from",
-    "object": "idealism",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5109-5251",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "He also dissuaded Kant from idealism, the idea that reality is purely mental, which most philosophers in the 18th century regarded negatively."
-     }
-    ],
-    "seq": 45,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1430,7 +757,7 @@
     "verb": "is",
     "object": "purely mental",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1439,13 +766,13 @@
       "text": "He also dissuaded Kant from idealism, the idea that reality is purely mental, which most philosophers in the 18th century regarded negatively."
      }
     ],
-    "seq": 46,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "most philosophers|in|the 18th century regarded negatively",
+    "task_id": "pure reason|was|developed partially in opposition to traditional idealism",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1454,41 +781,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "most philosophers in the 18th century regarded negatively",
-    "subject": "most philosophers",
-    "verb": "in",
-    "object": "the 18th century regarded negatively",
+    "description": "Pure Reason was developed partially in opposition to traditional idealism",
+    "subject": "Pure Reason",
+    "verb": "was",
+    "object": "developed partially in opposition to traditional idealism",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5109-5251",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "He also dissuaded Kant from idealism, the idea that reality is purely mental, which most philosophers in the 18th century regarded negatively."
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the theory|of|transcendental idealism that kant later included in the critique of pure reason was developed partially in opposition to traditional idealism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The theory of transcendental idealism that Kant later included in the Critique of Pure Reason was developed partially in opposition to traditional idealism",
-    "subject": "The theory",
-    "verb": "of",
-    "object": "transcendental idealism that Kant later included in the Critique of Pure Reason was developed partially in opposition to traditional idealism",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1497,7 +795,7 @@
       "text": "The theory of transcendental idealism that Kant later included in the Critique of Pure Reason was developed partially in opposition to traditional idealism."
      }
     ],
-    "seq": 48,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1517,7 +815,7 @@
     "verb": "had",
     "object": "contacts with students",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1526,181 +824,7 @@
       "text": "Kant had contacts with students, colleagues, friends and diners who frequented the local Masonic lodge."
      }
     ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "friends|and|diners who frequented the local masonic lodge",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "friends and diners who frequented the local Masonic lodge",
-    "subject": "friends",
-    "verb": "and",
-    "object": "diners who frequented the local Masonic lodge",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5409-5512",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Kant had contacts with students, colleagues, friends and diners who frequented the local Masonic lodge."
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "europa in|der|frühen neuzeit: unbekannte quellen",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Europa in der frühen Neuzeit: Unbekannte Quellen",
-    "subject": "Europa in",
-    "verb": "der",
-    "object": "frühen Neuzeit: Unbekannte Quellen",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5513-5646",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "His main publisher, Johann Friedrich Hartknoch, was also a Freemason.Erich Donnert, Europa in der frühen Neuzeit: Unbekannte Quellen."
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "und fortwirken|der|frühneuzeit in und um europa",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "und Fortwirken der Frühneuzeit in und um Europa",
-    "subject": "und Fortwirken",
-    "verb": "der",
-    "object": "Frühneuzeit in und um Europa",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5647-5739",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Aufsätze zu Entwicklung, Vorstufen, Grenzen und Fortwirken der Frühneuzeit in und um Europa."
-     }
-    ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "inhaltsverzeichnisse|der|bände 1-6",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Inhaltsverzeichnisse der Bände 1-6",
-    "subject": "Inhaltsverzeichnisse",
-    "verb": "der",
-    "object": "Bände 1-6",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5740-5775",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Inhaltsverzeichnisse der Bände 1-6."
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "personenregister|der|bände 1-7",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Personenregister der Bände 1-7",
-    "subject": "Personenregister",
-    "verb": "der",
-    "object": "Bände 1-7",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5776-5807",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Personenregister der Bände 1-7."
-     }
-    ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "father's stroke|and|subsequent death in 1746 interrupted his studies",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "father's stroke and subsequent death in 1746 interrupted his studies",
-    "subject": "father's stroke",
-    "verb": "and",
-    "object": "subsequent death in 1746 interrupted his studies",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5959-6032",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "His father's stroke and subsequent death in 1746 interrupted his studies."
-     }
-    ],
-    "seq": 55,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1720,7 +844,7 @@
     "verb": "left",
     "object": "Königsberg shortly after August 1748",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1729,181 +853,7 @@
       "text": "Kant left Königsberg shortly after August 1748; he would return there in August 1754."
      }
     ],
-    "seq": 56,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "return there|in|august 1754",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "return there in August 1754",
-    "subject": "return there",
-    "verb": "in",
-    "object": "August 1754",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6033-6118",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Kant left Königsberg shortly after August 1748; he would return there in August 1754."
-     }
-    ],
-    "seq": 57,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "private tutor|in|the towns surrounding königsberg",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "private tutor in the towns surrounding Königsberg",
-    "subject": "private tutor",
-    "verb": "in",
-    "object": "the towns surrounding Königsberg",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6119-6219",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "He became a private tutor in the towns surrounding Königsberg, but continued his scholarly research."
-     }
-    ],
-    "seq": 58,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "thoughts|on|the true estimation of living forces (written in 1745–1747)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Thoughts on the True Estimation of Living Forces (written in 1745–1747)",
-    "subject": "Thoughts",
-    "verb": "on",
-    "object": "the True Estimation of Living Forces (written in 1745–1747)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6220-6573",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In 1749, he published his first philosophical work, Thoughts on the True Estimation of Living Forces (written in 1745–1747).Eric Watkins (philosopher)Eric Watkins (ed.), Immanuel Kant: Natural Science, Cambridge University Press, 2012: [http://assets.cambridge.org/97805213/63945/excerpt/9780521363945_excerpt.pdf \"Thoughts on the true estimation...\"] ."
-     }
-    ],
-    "seq": 59,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "russian occupation|of|königsberg during the seven years' war (1758–1762) improved kant's financial circumstances",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Russian occupation of Königsberg during the Seven Years' War (1758–1762) improved Kant's financial circumstances",
-    "subject": "Russian occupation",
-    "verb": "of",
-    "object": "Königsberg during the Seven Years' War (1758–1762) improved Kant's financial circumstances",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6575-6825",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Russian occupation of Königsberg during the Seven Years' War (1758–1762) improved Kant's financial circumstances, as he obtained a number of well-paid tutoring assignments from Russian military officers and civil administrators stationed in the city."
-     }
-    ],
-    "seq": 60,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a number|of|well-paid tutoring assignments from russian military officers and civil administrators stationed in the city",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a number of well-paid tutoring assignments from Russian military officers and civil administrators stationed in the city",
-    "subject": "a number",
-    "verb": "of",
-    "object": "well-paid tutoring assignments from Russian military officers and civil administrators stationed in the city",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6575-6825",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Russian occupation of Königsberg during the Seven Years' War (1758–1762) improved Kant's financial circumstances, as he obtained a number of well-paid tutoring assignments from Russian military officers and civil administrators stationed in the city."
-     }
-    ],
-    "seq": 61,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the death|of|johann david kypke",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the death of Johann David Kypke",
-    "subject": "the death",
-    "verb": "of",
-    "object": "Johann David Kypke",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6826-7080",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In December 1758, after the death of Johann David Kypke, Kant petitioned Empress Elizabeth of RussiaElizabeth for appointment to the vacant chair of logic and metaphysics at the University of Königsberg, but the position was awarded to another candidate."
-     }
-    ],
-    "seq": 62,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1923,7 +873,7 @@
     "verb": "petitioned",
     "object": "Empress Elizabeth of RussiaElizabeth for appointment to the vacant chair of logic and metaphysics at the University of Königsberg",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1932,7 +882,7 @@
       "text": "In December 1758, after the death of Johann David Kypke, Kant petitioned Empress Elizabeth of RussiaElizabeth for appointment to the vacant chair of logic and metaphysics at the University of Königsberg, but the position was awarded to another candidate."
      }
     ],
-    "seq": 63,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1952,7 +902,7 @@
     "verb": "was",
     "object": "awarded to another candidate",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1961,94 +911,7 @@
       "text": "In December 1758, after the death of Johann David Kypke, Kant petitioned Empress Elizabeth of RussiaElizabeth for appointment to the vacant chair of logic and metaphysics at the University of Königsberg, but the position was awarded to another candidate."
      }
     ],
-    "seq": 64,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "significant contributions|to|other disciplines",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "significant contributions to other disciplines",
-    "subject": "significant contributions",
-    "verb": "to",
-    "object": "other disciplines",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7097-7233",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Kant is best known for his work in the philosophy of ethics and metaphysics, but he made significant contributions to other disciplines."
-     }
-    ],
-    "seq": 65,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prussian academy|of|sciencesberlin academy about the problem of earth's rotation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Prussian Academy of SciencesBerlin Academy about the problem of Earth's rotation",
-    "subject": "Prussian Academy",
-    "verb": "of",
-    "object": "SciencesBerlin Academy about the problem of Earth's rotation",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7234-7436",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "In 1754, while contemplating a prize question by the Prussian Academy of SciencesBerlin Academy about the problem of Earth's rotation, he argued that the Moon's gravity would slow down the Earth's spin."
-     }
-    ],
-    "seq": 66,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tidal locking|to|orbital resonancecoincide with the earth's rotation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "tidal locking to orbital resonancecoincide with the Earth's rotation",
-    "subject": "tidal locking",
-    "verb": "to",
-    "object": "orbital resonancecoincide with the Earth's rotation",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7437-7585",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "He also put forth the argument that gravity would eventually cause the Moon's tidal locking to orbital resonancecoincide with the Earth's rotation.."
-     }
-    ],
-    "seq": 67,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -2068,7 +931,7 @@
     "verb": "was",
     "object": "instead awarded in 1756 to P",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2077,65 +940,7 @@
       "text": "The prize was instead awarded in 1756 to P."
      }
     ],
-    "seq": 68,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "slowing down|of|the spin",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "slowing down of the spin",
-    "subject": "slowing down",
-    "verb": "of",
-    "object": "the spin",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7630-7852",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Frisi, who incorrectly argued against the slowing down of the spin.}} The next year, he expanded this reasoning to the formation and evolution of the Solar System in his Universal Natural History and Theory of the Heavens."
-     }
-    ],
-    "seq": 69,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "this reasoning|to|the formation and evolution of the solar system in his universal natural history and theory of the heavens",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "this reasoning to the formation and evolution of the Solar System in his Universal Natural History and Theory of the Heavens",
-    "subject": "this reasoning",
-    "verb": "to",
-    "object": "the formation and evolution of the Solar System in his Universal Natural History and Theory of the Heavens",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7630-7852",
-      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-      "text": "Frisi, who incorrectly argued against the slowing down of the spin.}} The next year, he expanded this reasoning to the formation and evolution of the Solar System in his Universal Natural History and Theory of the Heavens."
-     }
-    ],
-    "seq": 70,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -2155,7 +960,7 @@
     "verb": "received",
     "object": "a license to lecture at the University of Königsberg and began lecturing on a variety of topics including mathematics",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2164,12 +969,12 @@
       "text": "In 1755, Kant received a license to lecture at the University of Königsberg and began lecturing on a variety of topics including mathematics, physi"
      }
     ],
-    "seq": 71,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 72,
+  "nextSeq": 30,
   "admits": [
    "NUL",
    "SEG",
@@ -2184,130 +989,18 @@
  },
  "folded": [
   {
-   "id": "a number|of|well-paid tutoring assignments from russian military officers and civil administrators stationed in the city",
-   "subject": "a number",
-   "verb": "of",
-   "object": "well-paid tutoring assignments from Russian military officers and civil administrators stationed in the city",
+   "id": "copernican revolutionmetaphorical|usagecopernican|revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of anschauungintuition and the category (kant)categories of the understanding",
+   "subject": "Copernican RevolutionMetaphorical",
+   "verb": "usagecopernican",
+   "object": "Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6575-6825",
+     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1758-2120",
      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Russian occupation of Königsberg during the Seven Years' War (1758–1762) improved Kant's financial circumstances, as he obtained a number of well-paid tutoring assignments from Russian military officers and civil administrators stationed in the city."
-    }
-   ]
-  },
-  {
-   "id": "an emphasis|on|latin and religious instruction rather than mathematics and science",
-   "subject": "an emphasis",
-   "verb": "on",
-   "object": "Latin and religious instruction rather than mathematics and science",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3592-3759",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Immanuel Kant's early education was strict, punitive, and highly disciplinary, with an emphasis on Latin and religious instruction rather than mathematics and science."
-    }
-   ]
-  },
-  {
-   "id": "and the|philosophy|of religion have made him one of the most influential and highly discussed figures in modern western philosophy",
-   "subject": "and the",
-   "verb": "philosophy",
-   "object": "of religion have made him one of the most influential and highly discussed figures in modern Western philosophy",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1002-1267",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "His comprehensive and systematic works in epistemology, metaphysics, logic, ethics, aesthetics, Political philosophypolitical theory, and the philosophy of religion have made him one of the most influential and highly discussed figures in modern Western philosophy."
-    }
-   ]
-  },
-  {
-   "id": "before starting|on|his major philosophical works",
-   "subject": "before starting",
-   "verb": "on",
-   "object": "his major philosophical works",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4008-4199",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Though he never married, he seems to have had a rewarding social life; he was a popular teacher as well as a modestly successful author, even before starting on his major philosophical works."
-    }
-   ]
-  },
-  {
-   "id": "born|in|königsberg in the kingdom of prussia",
-   "subject": "Born",
-   "verb": "in",
-   "object": "Königsberg in the Kingdom of Prussia",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#869-1001",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Born in Königsberg in the Kingdom of Prussia, he is considered one of the central thinkers of the Age of EnlightenmentEnlightenment."
-    }
-   ]
-  },
-  {
-   "id": "but|on|both occasions waited too long",
-   "subject": "but",
-   "verb": "on",
-   "object": "both occasions waited too long",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3888-4007",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant considered marriage twice, first to a widow and then to a Westphalian girl, but on both occasions waited too long."
-    }
-   ]
-  },
-  {
-   "id": "dissuaded kant|from|idealism",
-   "subject": "dissuaded Kant",
-   "verb": "from",
-   "object": "idealism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5109-5251",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "He also dissuaded Kant from idealism, the idea that reality is purely mental, which most philosophers in the 18th century regarded negatively."
-    }
-   ]
-  },
-  {
-   "id": "dissuaded kant|from|the theory of pre-established harmony",
-   "subject": "dissuaded Kant",
-   "verb": "from",
-   "object": "the theory of pre-established harmony",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4989-5108",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Knutzen dissuaded Kant from the theory of pre-established harmony, which he regarded as \"the pillow for the lazy mind\"."
+     "text": "Kant drew a parallel to the Copernican RevolutionMetaphorical usageCopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding, instead of the traditional method of showing how the mind might conform to its objects."
     }
    ]
   },
@@ -2317,7 +1010,7 @@
    "verb": "was",
    "object": "strict",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2328,92 +1021,12 @@
    ]
   },
   {
-   "id": "europa in|der|frühen neuzeit: unbekannte quellen",
-   "subject": "Europa in",
-   "verb": "der",
-   "object": "frühen Neuzeit: Unbekannte Quellen",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5513-5646",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "His main publisher, Johann Friedrich Hartknoch, was also a Freemason.Erich Donnert, Europa in der frühen Neuzeit: Unbekannte Quellen."
-    }
-   ]
-  },
-  {
-   "id": "exact nature|of|his religious views is a matter of dispute",
-   "subject": "exact nature",
-   "verb": "of",
-   "object": "his religious views is a matter of dispute",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#2537-2600",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "The exact nature of his religious views is a matter of dispute."
-    }
-   ]
-  },
-  {
-   "id": "father's stroke|and|subsequent death in 1746 interrupted his studies",
-   "subject": "father's stroke",
-   "verb": "and",
-   "object": "subsequent death in 1746 interrupted his studies",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5959-6032",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "His father's stroke and subsequent death in 1746 interrupted his studies."
-    }
-   ]
-  },
-  {
-   "id": "first|to|a widow and then to a westphalian girl",
-   "subject": "first",
-   "verb": "to",
-   "object": "a widow and then to a Westphalian girl",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3888-4007",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant considered marriage twice, first to a widow and then to a Westphalian girl, but on both occasions waited too long."
-    }
-   ]
-  },
-  {
-   "id": "friends|and|diners who frequented the local masonic lodge",
-   "subject": "friends",
-   "verb": "and",
-   "object": "diners who frequented the local Masonic lodge",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5409-5512",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant had contacts with students, colleagues, friends and diners who frequented the local Masonic lodge."
-    }
-   ]
-  },
-  {
    "id": "he is|considered|one of the central thinkers of the age of enlightenmentenlightenment",
    "subject": "he is",
    "verb": "considered",
    "object": "one of the central thinkers of the Age of EnlightenmentEnlightenment",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2424,44 +1037,12 @@
    ]
   },
   {
-   "id": "he seems|to|have had a rewarding social life",
-   "subject": "he seems",
-   "verb": "to",
-   "object": "have had a rewarding social life",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4008-4199",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Though he never married, he seems to have had a rewarding social life; he was a popular teacher as well as a modestly successful author, even before starting on his major philosophical works."
-    }
-   ]
-  },
-  {
-   "id": "he would|later|remain for the rest of his professional life",
-   "subject": "he would",
-   "verb": "later",
-   "object": "remain for the rest of his professional life",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4408-4619",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In 1740, aged 16, he enrolled at the University of Königsberg, where he would later remain for the rest of his professional life.The American International Encyclopedia (New York: J.J. Little & Ives, 1954), Vol."
-    }
-   ]
-  },
-  {
    "id": "he|believed|that aesthetics arises from a faculty of disinterested judgment",
    "subject": "He",
    "verb": "believed",
    "object": "that aesthetics arises from a faculty of disinterested judgment",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2477,7 +1058,7 @@
    "verb": "was",
    "object": "a popular teacher as well as a modestly successful author",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2493,7 +1074,7 @@
    "verb": "was",
    "object": "the fourth of nine children (six of whom reached adulthood)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2509,7 +1090,7 @@
    "verb": "is",
    "object": "sometimes erroneously given as Porter",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2520,28 +1101,12 @@
    ]
   },
   {
-   "id": "his comprehensive|and|systematic works in epistemology",
-   "subject": "His comprehensive",
-   "verb": "and",
-   "object": "systematic works in epistemology",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1002-1267",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "His comprehensive and systematic works in epistemology, metaphysics, logic, ethics, aesthetics, Political philosophypolitical theory, and the philosophy of religion have made him one of the most influential and highly discussed figures in modern Western philosophy."
-    }
-   ]
-  },
-  {
    "id": "immanuel kant|was|born on 22 april 1724 into a prussian german family of lutheranismlutheran faith in königsberg in east prussia (now kaliningrad oblast",
    "subject": "Immanuel Kant",
    "verb": "was",
    "object": "born on 22 April 1724 into a Prussian German family of LutheranismLutheran faith in Königsberg in East Prussia (now Kaliningrad Oblast",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2557,60 +1122,12 @@
    ]
   },
   {
-   "id": "in his|later|years",
-   "subject": "In his",
-   "verb": "later",
-   "object": "years",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3761-3816",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In his later years, Kant lived a strictly ordered life."
-    }
-   ]
-  },
-  {
-   "id": "inhaltsverzeichnisse|der|bände 1-6",
-   "subject": "Inhaltsverzeichnisse",
-   "verb": "der",
-   "object": "Bände 1-6",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5740-5775",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Inhaltsverzeichnisse der Bände 1-6."
-    }
-   ]
-  },
-  {
-   "id": "instead|of|the traditional method of showing how the mind might conform to its objects",
-   "subject": "instead",
-   "verb": "of",
-   "object": "the traditional method of showing how the mind might conform to its objects",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1758-2120",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant drew a parallel to the Copernican RevolutionMetaphorical usageCopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding, instead of the traditional method of showing how the mind might conform to its objects."
-    }
-   ]
-  },
-  {
    "id": "it|was|said that neighbors would set their watches by his daily walks",
    "subject": "It",
    "verb": "was",
    "object": "said that neighbors would set their watches by his daily walks",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2621,28 +1138,12 @@
    ]
   },
   {
-   "id": "kant argues|for|transcendental idealism",
-   "subject": "Kant argues",
-   "verb": "for",
-   "object": "transcendental idealism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1456-1757",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In the Critique of Pure Reason (1781/1787), Kant argues for transcendental idealism, the doctrine that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves."
-    }
-   ]
-  },
-  {
    "id": "kant's philosophy|is|centered on the human subject and motivated by the desire to secure the possibility of both knowledge and morality against the threats of skepticism and determinism",
    "subject": "Kant's philosophy",
    "verb": "is",
    "object": "centered on the human subject and motivated by the desire to secure the possibility of both knowledge and morality against the threats of skepticism and determinism",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2658,12 +1159,28 @@
    ]
   },
   {
+   "id": "kant|argues|for transcendental idealism",
+   "subject": "Kant",
+   "verb": "argues",
+   "object": "for transcendental idealism",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1456-1757",
+     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
+     "text": "In the Critique of Pure Reason (1781/1787), Kant argues for transcendental idealism, the doctrine that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves."
+    }
+   ]
+  },
+  {
    "id": "kant|believed|his family to be of scottish descent",
    "subject": "Kant",
    "verb": "believed",
    "object": "his family to be of Scottish descent",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2679,7 +1196,7 @@
    "verb": "believed",
    "object": "that reason is the source of morality and that the categorical imperative binds all rational agents",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2700,7 +1217,7 @@
    "verb": "considered",
    "object": "marriage twice",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2716,7 +1233,7 @@
    "verb": "demonstrated",
    "object": "an early aptitude for study",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2727,28 +1244,12 @@
    ]
   },
   {
-   "id": "kant|drew|a parallel to the copernican revolutionmetaphorical usagecopernican revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of anschauungintuition and the category (kant)categories of the understanding",
-   "subject": "Kant",
-   "verb": "drew",
-   "object": "a parallel to the Copernican RevolutionMetaphorical usageCopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1758-2120",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant drew a parallel to the Copernican RevolutionMetaphorical usageCopernican Revolution in his proposal to think of the objects of experience as conforming to people's spatial and temporal forms of Anschauungintuition and the Category (Kant)categories of the understanding, instead of the traditional method of showing how the mind might conform to its objects."
-    }
-   ]
-  },
-  {
    "id": "kant|had|contacts with students",
    "subject": "Kant",
    "verb": "had",
    "object": "contacts with students",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2764,7 +1265,7 @@
    "verb": "hoped",
    "object": "that perpetual peace could be secured through an international federation of Republicanismrepublican states and Multilateralisminternational cooperation",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2780,7 +1281,7 @@
    "verb": "left",
    "object": "Königsberg shortly after August 1748",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2796,7 +1297,7 @@
    "verb": "lived",
    "object": "a strictly ordered life",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2812,7 +1313,7 @@
    "verb": "petitioned",
    "object": "Empress Elizabeth of RussiaElizabeth for appointment to the vacant chair of logic and metaphysics at the University of Königsberg",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2828,7 +1329,7 @@
    "verb": "received",
    "object": "a license to lecture at the University of Königsberg and began lecturing on a variety of topics including mathematics",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2839,76 +1340,12 @@
    ]
   },
   {
-   "id": "literal interpretation|of|the bible",
-   "subject": "literal interpretation",
-   "verb": "of",
-   "object": "the Bible",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3469-3591",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "The Kant household stressed the Pietist values of religious devotion, humility, and a literal interpretation of the Bible."
-    }
-   ]
-  },
-  {
-   "id": "maker|from|klaipėdamemel",
-   "subject": "maker",
-   "verb": "from",
-   "object": "KlaipėdaMemel",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#2914-3066",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant's father, Johann Georg Kant, was a German harness-maker from KlaipėdaMemel, at the time Prussia's most northeastern city (now Klaipėda, Lithuania)."
-    }
-   ]
-  },
-  {
-   "id": "most philosophers|in|the 18th century regarded negatively",
-   "subject": "most philosophers",
-   "verb": "in",
-   "object": "the 18th century regarded negatively",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5109-5251",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "He also dissuaded Kant from idealism, the idea that reality is purely mental, which most philosophers in the 18th century regarded negatively."
-    }
-   ]
-  },
-  {
-   "id": "personenregister|der|bände 1-7",
-   "subject": "Personenregister",
-   "verb": "der",
-   "object": "Bände 1-7",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5776-5807",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Personenregister der Bände 1-7."
-    }
-   ]
-  },
-  {
    "id": "political|philosophypolitical|theory",
    "subject": "Political",
    "verb": "philosophypolitical",
    "object": "theory",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2919,34 +1356,18 @@
    ]
   },
   {
-   "id": "private tutor|in|the towns surrounding königsberg",
-   "subject": "private tutor",
-   "verb": "in",
-   "object": "the towns surrounding Königsberg",
+   "id": "pure reason|was|developed partially in opposition to traditional idealism",
+   "subject": "Pure Reason",
+   "verb": "was",
+   "object": "developed partially in opposition to traditional idealism",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6119-6219",
+     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5252-5408",
      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "He became a private tutor in the towns surrounding Königsberg, but continued his scholarly research."
-    }
-   ]
-  },
-  {
-   "id": "prussian academy|of|sciencesberlin academy about the problem of earth's rotation",
-   "subject": "Prussian Academy",
-   "verb": "of",
-   "object": "SciencesBerlin Academy about the problem of Earth's rotation",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7234-7436",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In 1754, while contemplating a prize question by the Prussian Academy of SciencesBerlin Academy about the problem of Earth's rotation, he argued that the Moon's gravity would slow down the Earth's spin."
+     "text": "The theory of transcendental idealism that Kant later included in the Critique of Pure Reason was developed partially in opposition to traditional idealism."
     }
    ]
   },
@@ -2956,7 +1377,7 @@
    "verb": "was",
    "object": "also familiar with developments in British philosophy and science and introduced Kant to the new mathematical physics of Isaac Newton",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2967,82 +1388,18 @@
    ]
   },
   {
-   "id": "return there|in|august 1754",
-   "subject": "return there",
-   "verb": "in",
-   "object": "August 1754",
+   "id": "religious views|is|a matter of dispute",
+   "subject": "religious views",
+   "verb": "is",
+   "object": "a matter of dispute",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6033-6118",
+     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#2537-2600",
      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant left Königsberg shortly after August 1748; he would return there in August 1754."
-    }
-   ]
-  },
-  {
-   "id": "russian occupation|of|königsberg during the seven years' war (1758–1762) improved kant's financial circumstances",
-   "subject": "Russian occupation",
-   "verb": "of",
-   "object": "Königsberg during the Seven Years' War (1758–1762) improved Kant's financial circumstances",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6575-6825",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Russian occupation of Königsberg during the Seven Years' War (1758–1762) improved Kant's financial circumstances, as he obtained a number of well-paid tutoring assignments from Russian military officers and civil administrators stationed in the city."
-    }
-   ]
-  },
-  {
-   "id": "significant contributions|to|other disciplines",
-   "subject": "significant contributions",
-   "verb": "to",
-   "object": "other disciplines",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7097-7233",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant is best known for his work in the philosophy of ethics and metaphysics, but he made significant contributions to other disciplines."
-    }
-   ]
-  },
-  {
-   "id": "slowing down|of|the spin",
-   "subject": "slowing down",
-   "verb": "of",
-   "object": "the spin",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7630-7852",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Frisi, who incorrectly argued against the slowing down of the spin.}} The next year, he expanded this reasoning to the formation and evolution of the Solar System in his Universal Natural History and Theory of the Heavens."
-    }
-   ]
-  },
-  {
-   "id": "studied the|philosophy|of gottfried leibniz and christian wolff (philosopher)christian wolff under martin knutzen (associate professor of logic and metaphysics from 1734 until he died in 1751)",
-   "subject": "studied the",
-   "verb": "philosophy",
-   "object": "of Gottfried Leibniz and Christian Wolff (philosopher)Christian Wolff under Martin Knutzen (Associate Professor of Logic and Metaphysics from 1734 until he died in 1751)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4624-4988",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "He studied the philosophy of Gottfried Leibniz and Christian Wolff (philosopher)Christian Wolff under Martin Knutzen (Associate Professor of Logic and Metaphysics from 1734 until he died in 1751), a rationalismrationalist who was also familiar with developments in British philosophy and science and introduced Kant to the new mathematical physics of Isaac Newton."
+     "text": "The exact nature of his religious views is a matter of dispute."
     }
    ]
   },
@@ -3052,7 +1409,7 @@
    "verb": "written",
    "object": "in ink in a flowing script",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3068,7 +1425,7 @@
    "verb": "is",
    "object": "purely mental",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3079,124 +1436,12 @@
    ]
   },
   {
-   "id": "that space|and|time are mere \"forms of anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of thing-in-itselfthings in themselves",
-   "subject": "that space",
-   "verb": "and",
-   "object": "time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1456-1757",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In the Critique of Pure Reason (1781/1787), Kant argues for transcendental idealism, the doctrine that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves."
-    }
-   ]
-  },
-  {
-   "id": "the critique|of|pure reason (1781/1787)",
-   "subject": "the Critique",
-   "verb": "of",
-   "object": "Pure Reason (1781/1787)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#1456-1757",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In the Critique of Pure Reason (1781/1787), Kant argues for transcendental idealism, the doctrine that space and time are mere \"forms of Anschauungintuition\" () that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of Thing-in-itselfthings in themselves."
-    }
-   ]
-  },
-  {
-   "id": "the death|of|johann david kypke",
-   "subject": "the death",
-   "verb": "of",
-   "object": "Johann David Kypke",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6826-7080",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In December 1758, after the death of Johann David Kypke, Kant petitioned Empress Elizabeth of RussiaElizabeth for appointment to the vacant chair of logic and metaphysics at the University of Königsberg, but the position was awarded to another candidate."
-    }
-   ]
-  },
-  {
-   "id": "the end|of|the summer of 1740",
-   "subject": "the end",
-   "verb": "of",
-   "object": "the summer of 1740",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4263-4407",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "He first attended the Collegium Fridericianum (then directed by Franz Albert Schultz), from which he graduated at the end of the summer of 1740."
-    }
-   ]
-  },
-  {
-   "id": "the kant|household|stressed the pietist values of religious devotion",
-   "subject": "The Kant",
-   "verb": "household",
-   "object": "stressed the Pietist values of religious devotion",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3469-3591",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "The Kant household stressed the Pietist values of religious devotion, humility, and a literal interpretation of the Bible."
-    }
-   ]
-  },
-  {
-   "id": "the origin|of|immanuel kant's family name\"",
-   "subject": "The Origin",
-   "verb": "of",
-   "object": "Immanuel Kant's Family Name\"",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3186-3276",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Murray, \"The Origin of Immanuel Kant's Family Name\", Kantian Review 13(1), March 2008, pp."
-    }
-   ]
-  },
-  {
-   "id": "the pillow|for|the lazy mind\"",
-   "subject": "the pillow",
-   "verb": "for",
-   "object": "the lazy mind\"",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4989-5108",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Knutzen dissuaded Kant from the theory of pre-established harmony, which he regarded as \"the pillow for the lazy mind\"."
-    }
-   ]
-  },
-  {
    "id": "the position|was|awarded to another candidate",
    "subject": "the position",
    "verb": "was",
    "object": "awarded to another candidate",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3212,7 +1457,7 @@
    "verb": "was",
    "object": "instead awarded in 1756 to P",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3223,136 +1468,24 @@
    ]
   },
   {
-   "id": "the spelling|of|his name to immanuel after learning hebrew languagehebrew",
-   "subject": "the spelling",
-   "verb": "of",
-   "object": "his name to Immanuel after learning Hebrew languageHebrew",
+   "id": "to have|had|a rewarding social life",
+   "subject": "to have",
+   "verb": "had",
+   "object": "a rewarding social life",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#3287-3400",
+     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4008-4199",
      "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Kant was baptized as Emanuel, changing the spelling of his name to Immanuel after learning Hebrew languageHebrew."
-    }
-   ]
-  },
-  {
-   "id": "the theory|of|transcendental idealism that kant later included in the critique of pure reason was developed partially in opposition to traditional idealism",
-   "subject": "The theory",
-   "verb": "of",
-   "object": "transcendental idealism that Kant later included in the Critique of Pure Reason was developed partially in opposition to traditional idealism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5252-5408",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "The theory of transcendental idealism that Kant later included in the Critique of Pure Reason was developed partially in opposition to traditional idealism."
-    }
-   ]
-  },
-  {
-   "id": "the university|of|königsberg",
-   "subject": "the University",
-   "verb": "of",
-   "object": "Königsberg",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#4408-4619",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In 1740, aged 16, he enrolled at the University of Königsberg, where he would later remain for the rest of his professional life.The American International Encyclopedia (New York: J.J. Little & Ives, 1954), Vol."
-    }
-   ]
-  },
-  {
-   "id": "this reasoning|to|the formation and evolution of the solar system in his universal natural history and theory of the heavens",
-   "subject": "this reasoning",
-   "verb": "to",
-   "object": "the formation and evolution of the Solar System in his Universal Natural History and Theory of the Heavens",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7630-7852",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Frisi, who incorrectly argued against the slowing down of the spin.}} The next year, he expanded this reasoning to the formation and evolution of the Solar System in his Universal Natural History and Theory of the Heavens."
-    }
-   ]
-  },
-  {
-   "id": "thoughts|on|the true estimation of living forces (written in 1745–1747)",
-   "subject": "Thoughts",
-   "verb": "on",
-   "object": "the True Estimation of Living Forces (written in 1745–1747)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#6220-6573",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "In 1749, he published his first philosophical work, Thoughts on the True Estimation of Living Forces (written in 1745–1747).Eric Watkins (philosopher)Eric Watkins (ed.), Immanuel Kant: Natural Science, Cambridge University Press, 2012: [http://assets.cambridge.org/97805213/63945/excerpt/9780521363945_excerpt.pdf \"Thoughts on the true estimation...\"] ."
-    }
-   ]
-  },
-  {
-   "id": "tidal locking|to|orbital resonancecoincide with the earth's rotation",
-   "subject": "tidal locking",
-   "verb": "to",
-   "object": "orbital resonancecoincide with the Earth's rotation",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#7437-7585",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "He also put forth the argument that gravity would eventually cause the Moon's tidal locking to orbital resonancecoincide with the Earth's rotation.."
-    }
-   ]
-  },
-  {
-   "id": "und fortwirken|der|frühneuzeit in und um europa",
-   "subject": "und Fortwirken",
-   "verb": "der",
-   "object": "Frühneuzeit in und um Europa",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#5647-5739",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "Aufsätze zu Entwicklung, Vorstufen, Grenzen und Fortwirken der Frühneuzeit in und um Europa."
-    }
-   ]
-  },
-  {
-   "id": "was born|in|königsberg to a father from nuremberg",
-   "subject": "was born",
-   "verb": "in",
-   "object": "Königsberg to a father from Nuremberg",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Immanuel_Kant.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Immanuel_Kant.txt#2777-2859",
-     "ref": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
-     "text": "His mother, Anna Regina Reuter, was born in Königsberg to a father from Nuremberg."
+     "text": "Though he never married, he seems to have had a rewarding social life; he was a popular teacher as well as a modestly successful author, even before starting on his major philosophical works."
     }
    ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:36.299Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:17.980Z"
  }
 }

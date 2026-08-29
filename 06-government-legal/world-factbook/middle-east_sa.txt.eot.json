@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 37318,
   "bodyOffset": 0,
   "bodyChars": 37318,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 22,
   "distinctReferents": 16,
   "examined": true,
-  "edgesFound": 57,
-  "extractionError": null
+  "edgesFound": 23,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 19,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 40
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 23,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 59,
-  "excerptOk": 59,
-  "rawChecked": 59,
-  "rawOk": 59,
+  "excerptChecked": 23,
+  "excerptOk": 23,
+  "rawChecked": 23,
+  "rawOk": 23,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 57,
-  "heard": 57,
+  "offered": 23,
+  "heard": 23,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "is",
     "object": "the birthplace of Islam and home to Islam's two holiest shrines in Mecca and Medina",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -103,7 +133,7 @@
     "verb": "is",
     "object": "the Custodian of the Two Holy Mosques",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -118,7 +148,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "aziz|bin|abd al-rahman al saud (ibn saud) founded the modern saudi state in 1932 after a 30-year campaign to unify most of the arabian peninsula",
+    "task_id": "al saud|founded|the modern saudi state in 1932 after a 30-year campaign to unify most of the arabian peninsula",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,12 +157,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "AZIZ bin Abd al-Rahman AL SAUD (Ibn Saud) founded the modern Saudi state in 1932 after a 30-year campaign to unify most of the Arabian Peninsula",
-    "subject": "AZIZ",
-    "verb": "bin",
-    "object": "Abd al-Rahman AL SAUD (Ibn Saud) founded the modern Saudi state in 1932 after a 30-year campaign to unify most of the Arabian Peninsula",
+    "description": "AL SAUD founded the modern Saudi state in 1932 after a 30-year campaign to unify most of the Arabian Peninsula",
+    "subject": "AL SAUD",
+    "verb": "founded",
+    "object": "the modern Saudi state in 1932 after a 30-year campaign to unify most of the Arabian Peninsula",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -142,64 +172,6 @@
      }
     ],
     "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "one|of|his male descendants rules the country today",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "One of his male descendants rules the country today",
-    "subject": "One",
-    "verb": "of",
-    "object": "his male descendants rules the country today",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#484-581",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "One of his male descendants rules the country today, as required by the country's 1992 Basic Law."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "required by|the|country's 1992 basic law",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "required by the country's 1992 Basic Law",
-    "subject": "required by",
-    "verb": "the",
-    "object": "country's 1992 Basic Law",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#484-581",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "One of his male descendants rules the country today, as required by the country's 1992 Basic Law."
-     }
-    ],
-    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +191,7 @@
     "verb": "invaded",
     "object": "Kuwait in 1990",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,7 +200,7 @@
       "text": "After Iraq invaded Kuwait in 1990, Saudi Arabia took in the Kuwaiti royal family and 400,000 refugees, while allowing Western and Arab troops to deploy on its soil and liberate Kuwait the following year."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +220,7 @@
     "verb": "took",
     "object": "in the Kuwaiti royal family and 400",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,13 +229,13 @@
       "text": "After Iraq invaded Kuwait in 1990, Saudi Arabia took in the Kuwaiti royal family and 400,000 refugees, while allowing Western and Arab troops to deploy on its soil and liberate Kuwait the following year."
      }
     ],
-    "seq": 6,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "allowing western|and|arab troops to deploy on its soil and liberate kuwait the following year",
+    "task_id": "al saud|incrementally|modernized the kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -272,70 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "allowing Western and Arab troops to deploy on its soil and liberate Kuwait the following year",
-    "subject": "allowing Western",
-    "verb": "and",
-    "object": "Arab troops to deploy on its soil and liberate Kuwait the following year",
+    "description": "Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
+    "subject": "Al Saud",
+    "verb": "incrementally",
+    "object": "modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#582-785",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "After Iraq invaded Kuwait in 1990, Saudi Arabia took in the Kuwaiti royal family and 400,000 refugees, while allowing Western and Arab troops to deploy on its soil and liberate Kuwait the following year."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "terrorist attacks|in|2003 spurred a strong ongoing campaign against domestic terrorism and extremism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "terrorist attacks in 2003 spurred a strong ongoing campaign against domestic terrorism and extremism",
-    "subject": "terrorist attacks",
-    "verb": "in",
-    "object": "2003 spurred a strong ongoing campaign against domestic terrorism and extremism",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#786-893",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "Major terrorist attacks in 2003 spurred a strong ongoing campaign against domestic terrorism and extremism."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "us|troops|returned to the kingdom in 2019 after attacks on saudi oil infrastructure",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure",
-    "subject": "US",
-    "verb": "troops",
-    "object": "returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -344,128 +258,7 @@
       "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from 2005|to|2015",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "From 2005 to 2015",
-    "subject": "From 2005",
-    "verb": "to",
-    "object": "2015",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#894-1334",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "king abdallah|bin|abd al-aziz al saud incrementally modernized the kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
-    "subject": "King ABDALLAH",
-    "verb": "bin",
-    "object": "Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#894-1334",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
-     },
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#1746-2017",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "King ABDALLAH's reforms accelerated under King SALMAN bin Abd al-Aziz, who ascended to the throne in 2015 and lifted the Kingdom's ban on women driving, implemented education reforms, funded green initiatives, and allowed cinemas to operate for the first time in decades."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "increasing|the|private sector's role in the economy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "increasing the private sector's role in the economy",
-    "subject": "increasing",
-    "verb": "the",
-    "object": "private sector's role in the economy",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#894-1334",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and discouraging|the|hiring of foreign workers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and discouraging the hiring of foreign workers",
-    "subject": "and discouraging",
-    "verb": "the",
-    "object": "hiring of foreign workers",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#894-1334",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
-     }
-    ],
-    "seq": 13,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -485,7 +278,7 @@
     "verb": "saw",
     "object": "some protests during the 2011 Arab Spring but not the level of bloodshed seen in protests elsewhere in the region",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -494,7 +287,7 @@
       "text": "Saudi Arabia saw some protests during the 2011 Arab Spring but not the level of bloodshed seen in protests elsewhere in the region; Riyadh took a cautious but firm approach, arresting and quickly releasing some protesters and using its state-sponsored clerics to counter political and Islamist activism."
      }
     ],
-    "seq": 14,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -514,7 +307,7 @@
     "verb": "took",
     "object": "a cautious but firm approach",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -523,65 +316,7 @@
       "text": "Saudi Arabia saw some protests during the 2011 Arab Spring but not the level of bloodshed seen in protests elsewhere in the region; Riyadh took a cautious but firm approach, arresting and quickly releasing some protesters and using its state-sponsored clerics to counter political and Islamist activism."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "arresting|and|quickly releasing some protesters and using its state-sponsored clerics to counter political and islamist activism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "arresting and quickly releasing some protesters and using its state-sponsored clerics to counter political and Islamist activism",
-    "subject": "arresting",
-    "verb": "and",
-    "object": "quickly releasing some protesters and using its state-sponsored clerics to counter political and Islamist activism",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#1335-1638",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "Saudi Arabia saw some protests during the 2011 Arab Spring but not the level of bloodshed seen in protests elsewhere in the region; Riyadh took a cautious but firm approach, arresting and quickly releasing some protesters and using its state-sponsored clerics to counter political and Islamist activism."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ever elections|in|2005 and 2011",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ever elections in 2005 and 2011",
-    "subject": "ever elections",
-    "verb": "in",
-    "object": "2005 and 2011",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#1639-1745",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "The government held its first-ever elections in 2005 and 2011, when Saudis voted for municipal councilors."
-     }
-    ],
-    "seq": 17,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -601,7 +336,7 @@
     "verb": "voted",
     "object": "for municipal councilors",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -610,215 +345,7 @@
       "text": "The government held its first-ever elections in 2005 and 2011, when Saudis voted for municipal councilors."
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "who ascended|to|the throne in 2015 and lifted the kingdom's ban on women driving",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "who ascended to the throne in 2015 and lifted the Kingdom's ban on women driving",
-    "subject": "who ascended",
-    "verb": "to",
-    "object": "the throne in 2015 and lifted the Kingdom's ban on women driving",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#1746-2017",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "King ABDALLAH's reforms accelerated under King SALMAN bin Abd al-Aziz, who ascended to the throne in 2015 and lifted the Kingdom's ban on women driving, implemented education reforms, funded green initiatives, and allowed cinemas to operate for the first time in decades."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "allowed cinemas|to|operate for the first time in decades",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "allowed cinemas to operate for the first time in decades",
-    "subject": "allowed cinemas",
-    "verb": "to",
-    "object": "operate for the first time in decades",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#1746-2017",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "King ABDALLAH's reforms accelerated under King SALMAN bin Abd al-Aziz, who ascended to the throne in 2015 and lifted the Kingdom's ban on women driving, implemented education reforms, funded green initiatives, and allowed cinemas to operate for the first time in decades."
-     },
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#2018-2149",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "In 2015, women were allowed to vote and stand as candidates for the first time in municipal elections, with 19 women winning seats."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "king salman|initially|named his nephew",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "King SALMAN initially named his nephew",
-    "subject": "King SALMAN",
-    "verb": "initially",
-    "object": "named his nephew",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "muhammad|bin|nayif bin abd al-aziz al saud",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "MUHAMMAD bin NAYIF bin Abd al-Aziz Al Saud",
-    "subject": "MUHAMMAD",
-    "verb": "bin",
-    "object": "NAYIF bin Abd al-Aziz Al Saud",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as|the|crown prince",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as the Crown Prince",
-    "subject": "as",
-    "verb": "the",
-    "object": "Crown Prince",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "palace coup|in|2017 resulted in king salman's son",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "palace coup in 2017 resulted in King SALMAN's son",
-    "subject": "palace coup",
-    "verb": "in",
-    "object": "2017 resulted in King SALMAN's son",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "taking over|as|crown prince",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "taking over as Crown Prince",
-    "subject": "taking over",
-    "verb": "as",
-    "object": "Crown Prince",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-     }
-    ],
-    "seq": 25,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -838,7 +365,7 @@
     "verb": "appointed",
     "object": "MUHAMMAD BIN SALMAN as prime minister in 2022",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -847,7 +374,7 @@
       "text": "King SALMAN appointed MUHAMMAD BIN SALMAN as prime minister in 2022.<br><br>In 2015, Saudi Arabia led a coalition of 10 countries in a military campaign to restore Yemen's legitimate government, which had been ousted by Houthi forces."
      }
     ],
-    "seq": 26,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -867,7 +394,7 @@
     "verb": "led",
     "object": "a coalition of 10 countries in a military campaign to restore Yemen's legitimate government",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -876,13 +403,13 @@
       "text": "King SALMAN appointed MUHAMMAD BIN SALMAN as prime minister in 2022.<br><br>In 2015, Saudi Arabia led a coalition of 10 countries in a military campaign to restore Yemen's legitimate government, which had been ousted by Houthi forces."
      }
     ],
-    "seq": 27,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the war|in|yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
+    "task_id": "in yemen|has|drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -891,12 +418,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The war in Yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
-    "subject": "The war",
-    "verb": "in",
-    "object": "Yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
+    "description": "in Yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
+    "subject": "in Yemen",
+    "verb": "has",
+    "object": "drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -905,13 +432,13 @@
       "text": "The war in Yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation."
      }
     ],
-    "seq": 28,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "muhammad|bin|salman announced that saudi arabia would lead a multi-nation islamic coalition to fight terrorism",
+    "task_id": "bin salman|announced|that saudi arabia would lead a multi-nation islamic coalition to fight terrorism",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -920,12 +447,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "MUHAMMAD bin SALMAN announced that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism",
-    "subject": "MUHAMMAD",
-    "verb": "bin",
-    "object": "SALMAN announced that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism",
+    "description": "BIN SALMAN announced that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism",
+    "subject": "BIN SALMAN",
+    "verb": "announced",
+    "object": "that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -934,36 +461,7 @@
       "text": "The same year, MUHAMMAD BIN SALMAN announced that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism, and in 2017, Saudi Arabia inaugurated the Global Center for Combatting Extremist Ideology (also known as \"Etidal\")."
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|in|2017",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and in 2017",
-    "subject": "and",
-    "verb": "in",
-    "object": "2017",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#2777-3019",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "The same year, MUHAMMAD BIN SALMAN announced that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism, and in 2017, Saudi Arabia inaugurated the Global Center for Combatting Extremist Ideology (also known as \"Etidal\")."
-     }
-    ],
-    "seq": 30,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -983,7 +481,7 @@
     "verb": "inaugurated",
     "object": "the Global Center for Combatting Extremist Ideology (also known as \"Etidal\")",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -992,65 +490,7 @@
       "text": "The same year, MUHAMMAD BIN SALMAN announced that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism, and in 2017, Saudi Arabia inaugurated the Global Center for Combatting Extremist Ideology (also known as \"Etidal\")."
      }
     ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "leading producer|of|oil and natural gas and holds about 17% of the world's proven oil reserves as of 2020",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "leading producer of oil and natural gas and holds about 17% of the world's proven oil reserves as of 2020",
-    "subject": "leading producer",
-    "verb": "of",
-    "object": "oil and natural gas and holds about 17% of the world's proven oil reserves as of 2020",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#3020-3156",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "</p> <p>The country remains a leading producer of oil and natural gas and holds about 17% of the world's proven oil reserves as of 2020."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "government continues|to|pursue economic reform and diversification -- particularly since saudi arabia's accession to the wto in 2005 -- and promotes foreign investment in the kingdom",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "government continues to pursue economic reform and diversification -- particularly since Saudi Arabia's accession to the WTO in 2005 -- and promotes foreign investment in the Kingdom",
-    "subject": "government continues",
-    "verb": "to",
-    "object": "pursue economic reform and diversification -- particularly since Saudi Arabia's accession to the WTO in 2005 -- and promotes foreign investment in the Kingdom",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#3157-3344",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "The government continues to pursue economic reform and diversification -- particularly since Saudi Arabia's accession to the WTO in 2005 -- and promotes foreign investment in the Kingdom."
-     }
-    ],
-    "seq": 33,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1070,7 +510,7 @@
     "verb": "announced",
     "object": "broad socio-economic reforms known as Vision 2030",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1079,94 +519,7 @@
       "text": "In 2016, the Saudi Government announced broad socio-economic reforms known as Vision 2030."
      }
     ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "oil prices|in|2015 and 2016 significantly lowered saudi arabia’s governmental revenue",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "oil prices in 2015 and 2016 significantly lowered Saudi Arabia’s governmental revenue",
-    "subject": "oil prices",
-    "verb": "in",
-    "object": "2015 and 2016 significantly lowered Saudi Arabia’s governmental revenue",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#3436-3660",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "Low global oil prices in 2015 and 2016 significantly lowered Saudi Arabia’s governmental revenue, prompting cuts to subsidies on water, electricity, and gasoline; reduced government-employee compensation; and new land taxes."
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prompting cuts|to|subsidies on water",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "prompting cuts to subsidies on water",
-    "subject": "prompting cuts",
-    "verb": "to",
-    "object": "subsidies on water",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#3436-3660",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "Low global oil prices in 2015 and 2016 significantly lowered Saudi Arabia’s governmental revenue, prompting cuts to subsidies on water, electricity, and gasoline; reduced government-employee compensation; and new land taxes."
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with opec|and|some key non-opec countries",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "with OPEC and some key non-OPEC countries",
-    "subject": "with OPEC",
-    "verb": "and",
-    "object": "some key non-OPEC countries",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#3661-3814",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "In coordination with OPEC and some key non-OPEC countries, Saudi Arabia agreed to cut oil output in 2017 to regulate supply and help boost global prices."
-     }
-    ],
-    "seq": 37,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1186,7 +539,7 @@
     "verb": "agreed",
     "object": "to cut oil output in 2017 to regulate supply and help boost global prices",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1195,7 +548,7 @@
       "text": "In coordination with OPEC and some key non-OPEC countries, Saudi Arabia agreed to cut oil output in 2017 to regulate supply and help boost global prices."
      }
     ],
-    "seq": 38,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1215,7 +568,7 @@
     "verb": "launched",
     "object": "a price war by flooding the market with low-priced oil before returning to the negotiating table to agree to a major output cut that helped buoy prices",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1224,123 +577,7 @@
       "text": "In 2020, this agreement collapsed, and Saudi Arabia launched a price war by flooding the market with low-priced oil before returning to the negotiating table to agree to a major output cut that helped buoy prices."
      }
     ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bordering|the|persian gulf and the red sea",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "bordering the Persian Gulf and the Red Sea",
-    "subject": "bordering",
-    "verb": "the",
-    "object": "Persian Gulf and the Red Sea",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#4049-4137",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Location Middle East, bordering the Persian Gulf and the Red Sea, north of Yemen"
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "north|of|yemen",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "north of Yemen",
-    "subject": "north",
-    "verb": "of",
-    "object": "Yemen",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#4049-4137",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Location Middle East, bordering the Persian Gulf and the Red Sea, north of Yemen"
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fifth|the|size of the us",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fifth the size of the US",
-    "subject": "fifth",
-    "verb": "the",
-    "object": "size of the US",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#4319-4393",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Area - comparative slightly more than one-fifth the size of the US"
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tigris|and|euphrates (918",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Tigris and Euphrates (918",
-    "subject": "Tigris",
-    "verb": "and",
-    "object": "Euphrates (918",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#5424-5549",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Major watersheds (area sq km) Indian Ocean drainage: <em>(Persian Gulf)</em> Tigris and Euphrates (918,044 sq km)"
-     }
-    ],
-    "seq": 43,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1360,7 +597,7 @@
     "verb": "has",
     "object": "become more settled since oil was discovered in the 1930s",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1369,13 +606,13 @@
       "text": "### Population distribution historically a population that was mostly nomadic or semi-nomadic, the Saudi population has become more settled since oil was discovered in the 1930s; most of the country's population is now concentrated in a wide area across the middle of the peninsula, from Ad Dammam in the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea"
      }
     ],
-    "seq": 44,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "most of|the|country's population is now concentrated in a wide area across the middle of the peninsula",
+    "task_id": "country's population|is|now concentrated in a wide area across the middle of the peninsula",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1384,12 +621,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "most of the country's population is now concentrated in a wide area across the middle of the peninsula",
-    "subject": "most of",
-    "verb": "the",
-    "object": "country's population is now concentrated in a wide area across the middle of the peninsula",
+    "description": "country's population is now concentrated in a wide area across the middle of the peninsula",
+    "subject": "country's population",
+    "verb": "is",
+    "object": "now concentrated in a wide area across the middle of the peninsula",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1398,65 +635,7 @@
       "text": "### Population distribution historically a population that was mostly nomadic or semi-nomadic, the Saudi population has become more settled since oil was discovered in the 1930s; most of the country's population is now concentrated in a wide area across the middle of the peninsula, from Ad Dammam in the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea"
      }
     ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ad dammam|in|the east through riyadh in the interior to mecca-medina in the west near the red sea",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Ad Dammam in the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea",
-    "subject": "Ad Dammam",
-    "verb": "in",
-    "object": "the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#5598-5987",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Population distribution historically a population that was mostly nomadic or semi-nomadic, the Saudi population has become more settled since oil was discovered in the 1930s; most of the country's population is now concentrated in a wide area across the middle of the peninsula, from Ad Dammam in the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea"
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "frequent sand|and|dust storms <br><br><strong>volcanism:</strong> little activity in the past few centuries",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "frequent sand and dust storms <br><br><strong>volcanism:</strong> little activity in the past few centuries",
-    "subject": "frequent sand",
-    "verb": "and",
-    "object": "dust storms <br><br><strong>volcanism:</strong> little activity in the past few centuries",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#5989-6234",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Natural hazards frequent sand and dust storms <br><br><strong>volcanism:</strong> little activity in the past few centuries, despite many volcanic formations; volcanoes include Harrat Rahat, Harrat Khaybar, Harrat Lunayyir, and Jabal Yar"
-     }
-    ],
-    "seq": 47,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1476,7 +655,7 @@
     "verb": "is",
     "object": "the largest country in the world without a river",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1485,123 +664,7 @@
       "text": "### Geography - note Saudi Arabia is the largest country in the world without a river; extensive coastlines on the Persian Gulf and Red Sea allow&nbsp;for considerable&nbsp;shipping (especially of crude oil) through the Persian Gulf and Suez Canal"
      }
     ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "coastlines on|the|persian gulf and red sea allow&nbsp",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "coastlines on the Persian Gulf and Red Sea allow&nbsp",
-    "subject": "coastlines on",
-    "verb": "the",
-    "object": "Persian Gulf and Red Sea allow&nbsp",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#6236-6487",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Geography - note Saudi Arabia is the largest country in the world without a river; extensive coastlines on the Persian Gulf and Red Sea allow&nbsp;for considerable&nbsp;shipping (especially of crude oil) through the Persian Gulf and Suez Canal"
-     }
-    ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shipping|through|the persian gulf and suez canal",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "shipping through the Persian Gulf and Suez Canal",
-    "subject": "shipping",
-    "verb": "through",
-    "object": "the Persian Gulf and Suez Canal",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#6236-6487",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Geography - note Saudi Arabia is the largest country in the world without a river; extensive coastlines on the Persian Gulf and Red Sea allow&nbsp;for considerable&nbsp;shipping (especially of crude oil) through the Persian Gulf and Suez Canal"
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#6489-6510",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "indispensable source|for|basic information",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "indispensable source for basic information",
-    "subject": "indispensable source",
-    "verb": "for",
-    "object": "basic information",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#6748-6992",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Languages Languages: Arabic (official) major-language sample(s): <br>كتاب حقائق العالم، المصدر الذي لا يمكن الاستغناء عنه للمعلومات الأساسية (Arabic)<br><br>The World Factbook, the indispensable source for basic information."
-     }
-    ],
-    "seq": 52,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1621,7 +684,7 @@
     "verb": "are",
     "object": "85-90% Sunni and 10-12% Shia)",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1630,13 +693,13 @@
       "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
      }
     ],
-    "seq": 53,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "expatriate community|of|various faiths (more than 30% of the population)",
+    "task_id": "sunni islam|are|restricted",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1645,12 +708,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "expatriate community of various faiths (more than 30% of the population)",
-    "subject": "expatriate community",
-    "verb": "of",
-    "object": "various faiths (more than 30% of the population)",
+    "description": "Sunni Islam are restricted",
+    "subject": "Sunni Islam",
+    "verb": "are",
+    "object": "restricted",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1659,36 +722,7 @@
       "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
      }
     ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "most forms|of|public religious expression inconsistent with the government-sanctioned interpretation of sunni islam are restricted",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted",
-    "subject": "most forms",
-    "verb": "of",
-    "object": "public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_sa.txt#6994-7560",
-      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-      "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
-     }
-    ],
-    "seq": 55,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1708,7 +742,7 @@
     "verb": "are",
     "object": "not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1717,12 +751,12 @@
       "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
      }
     ],
-    "seq": 56,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 57,
+  "nextSeq": 23,
   "admits": [
    "NUL",
    "SEG",
@@ -1737,28 +771,12 @@
  },
  "folded": [
   {
-   "id": "ad dammam|in|the east through riyadh in the interior to mecca-medina in the west near the red sea",
-   "subject": "Ad Dammam",
-   "verb": "in",
-   "object": "the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#5598-5987",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Population distribution historically a population that was mostly nomadic or semi-nomadic, the Saudi population has become more settled since oil was discovered in the 1930s; most of the country's population is now concentrated in a wide area across the middle of the peninsula, from Ad Dammam in the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea"
-    }
-   ]
-  },
-  {
    "id": "after iraq|invaded|kuwait in 1990",
    "subject": "After Iraq",
    "verb": "invaded",
    "object": "Kuwait in 1990",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1769,113 +787,12 @@
    ]
   },
   {
-   "id": "allowed cinemas|to|operate for the first time in decades",
-   "subject": "allowed cinemas",
-   "verb": "to",
-   "object": "operate for the first time in decades",
+   "id": "al saud|founded|the modern saudi state in 1932 after a 30-year campaign to unify most of the arabian peninsula",
+   "subject": "AL SAUD",
+   "verb": "founded",
+   "object": "the modern Saudi state in 1932 after a 30-year campaign to unify most of the Arabian Peninsula",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#1746-2017",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King ABDALLAH's reforms accelerated under King SALMAN bin Abd al-Aziz, who ascended to the throne in 2015 and lifted the Kingdom's ban on women driving, implemented education reforms, funded green initiatives, and allowed cinemas to operate for the first time in decades."
-    },
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2018-2149",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "In 2015, women were allowed to vote and stand as candidates for the first time in municipal elections, with 19 women winning seats."
-    }
-   ]
-  },
-  {
-   "id": "allowing western|and|arab troops to deploy on its soil and liberate kuwait the following year",
-   "subject": "allowing Western",
-   "verb": "and",
-   "object": "Arab troops to deploy on its soil and liberate Kuwait the following year",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#582-785",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "After Iraq invaded Kuwait in 1990, Saudi Arabia took in the Kuwaiti royal family and 400,000 refugees, while allowing Western and Arab troops to deploy on its soil and liberate Kuwait the following year."
-    }
-   ]
-  },
-  {
-   "id": "and discouraging|the|hiring of foreign workers",
-   "subject": "and discouraging",
-   "verb": "the",
-   "object": "hiring of foreign workers",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#894-1334",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
-    }
-   ]
-  },
-  {
-   "id": "and|in|2017",
-   "subject": "and",
-   "verb": "in",
-   "object": "2017",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2777-3019",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "The same year, MUHAMMAD BIN SALMAN announced that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism, and in 2017, Saudi Arabia inaugurated the Global Center for Combatting Extremist Ideology (also known as \"Etidal\")."
-    }
-   ]
-  },
-  {
-   "id": "arresting|and|quickly releasing some protesters and using its state-sponsored clerics to counter political and islamist activism",
-   "subject": "arresting",
-   "verb": "and",
-   "object": "quickly releasing some protesters and using its state-sponsored clerics to counter political and Islamist activism",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#1335-1638",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "Saudi Arabia saw some protests during the 2011 Arab Spring but not the level of bloodshed seen in protests elsewhere in the region; Riyadh took a cautious but firm approach, arresting and quickly releasing some protesters and using its state-sponsored clerics to counter political and Islamist activism."
-    }
-   ]
-  },
-  {
-   "id": "as|the|crown prince",
-   "subject": "as",
-   "verb": "the",
-   "object": "Crown Prince",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-    }
-   ]
-  },
-  {
-   "id": "aziz|bin|abd al-rahman al saud (ibn saud) founded the modern saudi state in 1932 after a 30-year campaign to unify most of the arabian peninsula",
-   "subject": "AZIZ",
-   "verb": "bin",
-   "object": "Abd al-Rahman AL SAUD (Ibn Saud) founded the modern Saudi state in 1932 after a 30-year campaign to unify most of the Arabian Peninsula",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1886,124 +803,12 @@
    ]
   },
   {
-   "id": "bordering|the|persian gulf and the red sea",
-   "subject": "bordering",
-   "verb": "the",
-   "object": "Persian Gulf and the Red Sea",
+   "id": "al saud|incrementally|modernized the kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
+   "subject": "Al Saud",
+   "verb": "incrementally",
+   "object": "modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#4049-4137",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Location Middle East, bordering the Persian Gulf and the Red Sea, north of Yemen"
-    }
-   ]
-  },
-  {
-   "id": "citizens|are|85-90% sunni and 10-12% shia)",
-   "subject": "citizens",
-   "verb": "are",
-   "object": "85-90% Sunni and 10-12% Shia)",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6994-7560",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
-    }
-   ]
-  },
-  {
-   "id": "coastlines on|the|persian gulf and red sea allow&nbsp",
-   "subject": "coastlines on",
-   "verb": "the",
-   "object": "Persian Gulf and Red Sea allow&nbsp",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6236-6487",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Geography - note Saudi Arabia is the largest country in the world without a river; extensive coastlines on the Persian Gulf and Red Sea allow&nbsp;for considerable&nbsp;shipping (especially of crude oil) through the Persian Gulf and Suez Canal"
-    }
-   ]
-  },
-  {
-   "id": "ever elections|in|2005 and 2011",
-   "subject": "ever elections",
-   "verb": "in",
-   "object": "2005 and 2011",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#1639-1745",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "The government held its first-ever elections in 2005 and 2011, when Saudis voted for municipal councilors."
-    }
-   ]
-  },
-  {
-   "id": "expatriate community|of|various faiths (more than 30% of the population)",
-   "subject": "expatriate community",
-   "verb": "of",
-   "object": "various faiths (more than 30% of the population)",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6994-7560",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
-    }
-   ]
-  },
-  {
-   "id": "fifth|the|size of the us",
-   "subject": "fifth",
-   "verb": "the",
-   "object": "size of the US",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#4319-4393",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Area - comparative slightly more than one-fifth the size of the US"
-    }
-   ]
-  },
-  {
-   "id": "frequent sand|and|dust storms <br><br><strong>volcanism:</strong> little activity in the past few centuries",
-   "subject": "frequent sand",
-   "verb": "and",
-   "object": "dust storms <br><br><strong>volcanism:</strong> little activity in the past few centuries",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#5989-6234",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Natural hazards frequent sand and dust storms <br><br><strong>volcanism:</strong> little activity in the past few centuries, despite many volcanic formations; volcanoes include Harrat Rahat, Harrat Khaybar, Harrat Lunayyir, and Jabal Yar"
-    }
-   ]
-  },
-  {
-   "id": "from 2005|to|2015",
-   "subject": "From 2005",
-   "verb": "to",
-   "object": "2015",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2014,177 +819,12 @@
    ]
   },
   {
-   "id": "government continues|to|pursue economic reform and diversification -- particularly since saudi arabia's accession to the wto in 2005 -- and promotes foreign investment in the kingdom",
-   "subject": "government continues",
-   "verb": "to",
-   "object": "pursue economic reform and diversification -- particularly since Saudi Arabia's accession to the WTO in 2005 -- and promotes foreign investment in the Kingdom",
+   "id": "bin salman|announced|that saudi arabia would lead a multi-nation islamic coalition to fight terrorism",
+   "subject": "BIN SALMAN",
+   "verb": "announced",
+   "object": "that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#3157-3344",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "The government continues to pursue economic reform and diversification -- particularly since Saudi Arabia's accession to the WTO in 2005 -- and promotes foreign investment in the Kingdom."
-    }
-   ]
-  },
-  {
-   "id": "increasing|the|private sector's role in the economy",
-   "subject": "increasing",
-   "verb": "the",
-   "object": "private sector's role in the economy",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#894-1334",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
-    }
-   ]
-  },
-  {
-   "id": "indispensable source|for|basic information",
-   "subject": "indispensable source",
-   "verb": "for",
-   "object": "basic information",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6748-6992",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Languages Languages: Arabic (official) major-language sample(s): <br>كتاب حقائق العالم، المصدر الذي لا يمكن الاستغناء عنه للمعلومات الأساسية (Arabic)<br><br>The World Factbook, the indispensable source for basic information."
-    }
-   ]
-  },
-  {
-   "id": "king abdallah|bin|abd al-aziz al saud incrementally modernized the kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
-   "subject": "King ABDALLAH",
-   "verb": "bin",
-   "object": "Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#894-1334",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
-    },
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#1746-2017",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King ABDALLAH's reforms accelerated under King SALMAN bin Abd al-Aziz, who ascended to the throne in 2015 and lifted the Kingdom's ban on women driving, implemented education reforms, funded green initiatives, and allowed cinemas to operate for the first time in decades."
-    }
-   ]
-  },
-  {
-   "id": "king salman|appointed|muhammad bin salman as prime minister in 2022",
-   "subject": "King SALMAN",
-   "verb": "appointed",
-   "object": "MUHAMMAD BIN SALMAN as prime minister in 2022",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2406-2640",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King SALMAN appointed MUHAMMAD BIN SALMAN as prime minister in 2022.<br><br>In 2015, Saudi Arabia led a coalition of 10 countries in a military campaign to restore Yemen's legitimate government, which had been ousted by Houthi forces."
-    }
-   ]
-  },
-  {
-   "id": "king salman|initially|named his nephew",
-   "subject": "King SALMAN",
-   "verb": "initially",
-   "object": "named his nephew",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-    }
-   ]
-  },
-  {
-   "id": "leading producer|of|oil and natural gas and holds about 17% of the world's proven oil reserves as of 2020",
-   "subject": "leading producer",
-   "verb": "of",
-   "object": "oil and natural gas and holds about 17% of the world's proven oil reserves as of 2020",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#3020-3156",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "</p> <p>The country remains a leading producer of oil and natural gas and holds about 17% of the world's proven oil reserves as of 2020."
-    }
-   ]
-  },
-  {
-   "id": "most forms|of|public religious expression inconsistent with the government-sanctioned interpretation of sunni islam are restricted",
-   "subject": "most forms",
-   "verb": "of",
-   "object": "public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6994-7560",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
-    }
-   ]
-  },
-  {
-   "id": "most of|the|country's population is now concentrated in a wide area across the middle of the peninsula",
-   "subject": "most of",
-   "verb": "the",
-   "object": "country's population is now concentrated in a wide area across the middle of the peninsula",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#5598-5987",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Population distribution historically a population that was mostly nomadic or semi-nomadic, the Saudi population has become more settled since oil was discovered in the 1930s; most of the country's population is now concentrated in a wide area across the middle of the peninsula, from Ad Dammam in the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea"
-    }
-   ]
-  },
-  {
-   "id": "muhammad|bin|nayif bin abd al-aziz al saud",
-   "subject": "MUHAMMAD",
-   "verb": "bin",
-   "object": "NAYIF bin Abd al-Aziz Al Saud",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-    }
-   ]
-  },
-  {
-   "id": "muhammad|bin|salman announced that saudi arabia would lead a multi-nation islamic coalition to fight terrorism",
-   "subject": "MUHAMMAD",
-   "verb": "bin",
-   "object": "SALMAN announced that Saudi Arabia would lead a multi-nation Islamic Coalition to fight terrorism",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2195,12 +835,12 @@
    ]
   },
   {
-   "id": "muslims|are|not allowed to have saudi citizenship and non-muslim places of worship are not permitted (2013)",
-   "subject": "Muslims",
+   "id": "citizens|are|85-90% sunni and 10-12% shia)",
+   "subject": "citizens",
    "verb": "are",
-   "object": "not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)",
+   "object": "85-90% Sunni and 10-12% Shia)",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2211,18 +851,66 @@
    ]
   },
   {
-   "id": "north|of|yemen",
-   "subject": "north",
-   "verb": "of",
-   "object": "Yemen",
+   "id": "country's population|is|now concentrated in a wide area across the middle of the peninsula",
+   "subject": "country's population",
+   "verb": "is",
+   "object": "now concentrated in a wide area across the middle of the peninsula",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#4049-4137",
+     "at": "06-government-legal/world-factbook/middle-east_sa.txt#5598-5987",
      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Location Middle East, bordering the Persian Gulf and the Red Sea, north of Yemen"
+     "text": "### Population distribution historically a population that was mostly nomadic or semi-nomadic, the Saudi population has become more settled since oil was discovered in the 1930s; most of the country's population is now concentrated in a wide area across the middle of the peninsula, from Ad Dammam in the east through Riyadh in the interior to Mecca-Medina in the west near the Red Sea"
+    }
+   ]
+  },
+  {
+   "id": "in yemen|has|drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
+   "subject": "in Yemen",
+   "verb": "has",
+   "object": "drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
+   "witnesses": [
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2641-2776",
+     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
+     "text": "The war in Yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation."
+    }
+   ]
+  },
+  {
+   "id": "king salman|appointed|muhammad bin salman as prime minister in 2022",
+   "subject": "King SALMAN",
+   "verb": "appointed",
+   "object": "MUHAMMAD BIN SALMAN as prime minister in 2022",
+   "witnesses": [
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2406-2640",
+     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
+     "text": "King SALMAN appointed MUHAMMAD BIN SALMAN as prime minister in 2022.<br><br>In 2015, Saudi Arabia led a coalition of 10 countries in a military campaign to restore Yemen's legitimate government, which had been ousted by Houthi forces."
+    }
+   ]
+  },
+  {
+   "id": "muslims|are|not allowed to have saudi citizenship and non-muslim places of worship are not permitted (2013)",
+   "subject": "Muslims",
+   "verb": "are",
+   "object": "not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)",
+   "witnesses": [
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6994-7560",
+     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
+     "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
     }
    ]
   },
@@ -2232,7 +920,7 @@
    "verb": "is",
    "object": "the Custodian of the Two Holy Mosques",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2243,108 +931,12 @@
    ]
   },
   {
-   "id": "oil prices|in|2015 and 2016 significantly lowered saudi arabia’s governmental revenue",
-   "subject": "oil prices",
-   "verb": "in",
-   "object": "2015 and 2016 significantly lowered Saudi Arabia’s governmental revenue",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#3436-3660",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "Low global oil prices in 2015 and 2016 significantly lowered Saudi Arabia’s governmental revenue, prompting cuts to subsidies on water, electricity, and gasoline; reduced government-employee compensation; and new land taxes."
-    }
-   ]
-  },
-  {
-   "id": "one|of|his male descendants rules the country today",
-   "subject": "One",
-   "verb": "of",
-   "object": "his male descendants rules the country today",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#484-581",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "One of his male descendants rules the country today, as required by the country's 1992 Basic Law."
-    }
-   ]
-  },
-  {
-   "id": "palace coup|in|2017 resulted in king salman's son",
-   "subject": "palace coup",
-   "verb": "in",
-   "object": "2017 resulted in King SALMAN's son",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-    }
-   ]
-  },
-  {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6489-6510",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
-   "id": "prompting cuts|to|subsidies on water",
-   "subject": "prompting cuts",
-   "verb": "to",
-   "object": "subsidies on water",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#3436-3660",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "Low global oil prices in 2015 and 2016 significantly lowered Saudi Arabia’s governmental revenue, prompting cuts to subsidies on water, electricity, and gasoline; reduced government-employee compensation; and new land taxes."
-    }
-   ]
-  },
-  {
-   "id": "required by|the|country's 1992 basic law",
-   "subject": "required by",
-   "verb": "the",
-   "object": "country's 1992 Basic Law",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#484-581",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "One of his male descendants rules the country today, as required by the country's 1992 Basic Law."
-    }
-   ]
-  },
-  {
    "id": "riyadh|took|a cautious but firm approach",
    "subject": "Riyadh",
    "verb": "took",
    "object": "a cautious but firm approach",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2360,7 +952,7 @@
    "verb": "agreed",
    "object": "to cut oil output in 2017 to regulate supply and help boost global prices",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2376,7 +968,7 @@
    "verb": "inaugurated",
    "object": "the Global Center for Combatting Extremist Ideology (also known as \"Etidal\")",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2392,7 +984,7 @@
    "verb": "is",
    "object": "the birthplace of Islam and home to Islam's two holiest shrines in Mecca and Medina",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2408,7 +1000,7 @@
    "verb": "is",
    "object": "the largest country in the world without a river",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2424,7 +1016,7 @@
    "verb": "launched",
    "object": "a price war by flooding the market with low-priced oil before returning to the negotiating table to agree to a major output cut that helped buoy prices",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2440,7 +1032,7 @@
    "verb": "led",
    "object": "a coalition of 10 countries in a military campaign to restore Yemen's legitimate government",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2456,7 +1048,7 @@
    "verb": "saw",
    "object": "some protests during the 2011 Arab Spring but not the level of bloodshed seen in protests elsewhere in the region",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2472,7 +1064,7 @@
    "verb": "took",
    "object": "in the Kuwaiti royal family and 400",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2488,7 +1080,7 @@
    "verb": "announced",
    "object": "broad socio-economic reforms known as Vision 2030",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2504,7 +1096,7 @@
    "verb": "has",
    "object": "become more settled since oil was discovered in the 1930s",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2515,98 +1107,18 @@
    ]
   },
   {
-   "id": "shipping|through|the persian gulf and suez canal",
-   "subject": "shipping",
-   "verb": "through",
-   "object": "the Persian Gulf and Suez Canal",
+   "id": "sunni islam|are|restricted",
+   "subject": "Sunni Islam",
+   "verb": "are",
+   "object": "restricted",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6236-6487",
+     "at": "06-government-legal/world-factbook/middle-east_sa.txt#6994-7560",
      "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Geography - note Saudi Arabia is the largest country in the world without a river; extensive coastlines on the Persian Gulf and Red Sea allow&nbsp;for considerable&nbsp;shipping (especially of crude oil) through the Persian Gulf and Suez Canal"
-    }
-   ]
-  },
-  {
-   "id": "taking over|as|crown prince",
-   "subject": "taking over",
-   "verb": "as",
-   "object": "Crown Prince",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2150-2405",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King SALMAN initially named his nephew, MUHAMMAD BIN NAYIF bin Abd al-Aziz Al Saud, as the Crown Prince, but a palace coup in 2017 resulted in King SALMAN's son, Deputy Crown Prince MUHAMMAD BIN SALMAN bin Abd al-Aziz Al Saud, taking over as Crown Prince."
-    }
-   ]
-  },
-  {
-   "id": "terrorist attacks|in|2003 spurred a strong ongoing campaign against domestic terrorism and extremism",
-   "subject": "terrorist attacks",
-   "verb": "in",
-   "object": "2003 spurred a strong ongoing campaign against domestic terrorism and extremism",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#786-893",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "Major terrorist attacks in 2003 spurred a strong ongoing campaign against domestic terrorism and extremism."
-    }
-   ]
-  },
-  {
-   "id": "the war|in|yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
-   "subject": "The war",
-   "verb": "in",
-   "object": "Yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#2641-2776",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "The war in Yemen has drawn international criticism for civilian casualties and its effect on the country’s dire humanitarian situation."
-    }
-   ]
-  },
-  {
-   "id": "tigris|and|euphrates (918",
-   "subject": "Tigris",
-   "verb": "and",
-   "object": "Euphrates (918",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#5424-5549",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "### Major watersheds (area sq km) Indian Ocean drainage: <em>(Persian Gulf)</em> Tigris and Euphrates (918,044 sq km)"
-    }
-   ]
-  },
-  {
-   "id": "us|troops|returned to the kingdom in 2019 after attacks on saudi oil infrastructure",
-   "subject": "US",
-   "verb": "troops",
-   "object": "returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#894-1334",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "US troops returned to the Kingdom in 2019 after attacks on Saudi oil infrastructure.</p> <p>From 2005 to 2015, King ABDALLAH bin Abd al-Aziz Al Saud incrementally modernized the Kingdom through a series of social and economic initiatives that included expanding employment and social opportunities for women, attracting foreign investment, increasing the private sector's role in the economy, and discouraging the hiring of foreign workers."
+     "text": "### Religions Muslim (official; citizens are 85-90% Sunni and 10-12% Shia), other (includes Eastern Orthodox, Protestant, Roman Catholic, Jewish, Hindu, Buddhist, and Sikh) (2020 est.) note: <strong>note:</strong> despite having a large expatriate community of various faiths (more than 30% of the population), most forms of public religious expression inconsistent with the government-sanctioned interpretation of Sunni Islam are restricted; non-Muslims are not allowed to have Saudi citizenship and non-Muslim places of worship are not permitted (2013)"
     }
    ]
   },
@@ -2616,7 +1128,7 @@
    "verb": "voted",
    "object": "for municipal councilors",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_sa.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2625,42 +1137,10 @@
      "text": "The government held its first-ever elections in 2005 and 2011, when Saudis voted for municipal councilors."
     }
    ]
-  },
-  {
-   "id": "who ascended|to|the throne in 2015 and lifted the kingdom's ban on women driving",
-   "subject": "who ascended",
-   "verb": "to",
-   "object": "the throne in 2015 and lifted the Kingdom's ban on women driving",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#1746-2017",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "King ABDALLAH's reforms accelerated under King SALMAN bin Abd al-Aziz, who ascended to the throne in 2015 and lifted the Kingdom's ban on women driving, implemented education reforms, funded green initiatives, and allowed cinemas to operate for the first time in decades."
-    }
-   ]
-  },
-  {
-   "id": "with opec|and|some key non-opec countries",
-   "subject": "with OPEC",
-   "verb": "and",
-   "object": "some key non-OPEC countries",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_sa.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_sa.txt#3661-3814",
-     "ref": "06-government-legal/world-factbook/middle-east_sa.txt",
-     "text": "In coordination with OPEC and some key non-OPEC countries, Saudi Arabia agreed to cut oil output in 2017 to regulate supply and help boost global prices."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:54.453Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:16.228Z"
  }
 }

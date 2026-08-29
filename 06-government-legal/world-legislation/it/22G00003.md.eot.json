@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 52025,
   "bodyOffset": 0,
   "bodyChars": 52025,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 10,
   "distinctReferents": 9,
   "examined": true,
-  "edgesFound": 44,
-  "extractionError": null
+  "edgesFound": 18,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 10
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 18,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 56,
-  "excerptOk": 56,
-  "rawChecked": 56,
-  "rawOk": 56,
+  "excerptChecked": 29,
+  "excerptOk": 29,
+  "rawChecked": 29,
+  "rawOk": 29,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 44,
-  "heard": 44,
+  "offered": 18,
+  "heard": 18,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "decreto|del|presidente del consiglio dei ministri 18 novembre 2021",
+    "task_id": "del consiglio|dei|ministri 18 novembre 2021",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,18 +99,28 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "DECRETO del PRESIDENTE DEL CONSIGLIO DEI MINISTRI 18 novembre 2021",
-    "subject": "DECRETO",
-    "verb": "del",
-    "object": "PRESIDENTE DEL CONSIGLIO DEI MINISTRI 18 novembre 2021",
+    "description": "DEL CONSIGLIO dei MINISTRI 18 novembre 2021",
+    "subject": "DEL CONSIGLIO",
+    "verb": "dei",
+    "object": "MINISTRI 18 novembre 2021",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/world-legislation/it/22G00003.md#0-507",
       "ref": "06-government-legal/world-legislation/it/22G00003.md",
       "text": "--- title: \"DECRETO DEL PRESIDENTE DEL CONSIGLIO DEI MINISTRI 18 novembre 2021, n. 239\" identifier: \"22G00003\" country: \"it\" rank: \"decreto_presidente_consiglio\" publication_date: \"2021-11-18\" last_updated: \"2022-01-18\" status: \"in_force\" source: \"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto_presidente_consiglio:2021-11-18;239\" act_type_code: \"PCM_DPC\" act_number: \"239\" gu_date: \"2022-01-18\" gu_number: \"13\" --- # DECRETO DEL PRESIDENTE DEL CONSIGLIO DEI MINISTRI 18 novembre 2021, n. 239"
+     },
+     {
+      "at": "06-government-legal/world-legislation/it/22G00003.md#577-603",
+      "ref": "06-government-legal/world-legislation/it/22G00003.md",
+      "text": "DEL CONSIGLIO DEI MINISTRI"
+     },
+     {
+      "at": "06-government-legal/world-legislation/it/22G00003.md#956-1165",
+      "ref": "06-government-legal/world-legislation/it/22G00003.md",
+      "text": "Visto il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303), recante «Ordinamento della Presidenza del Consiglio dei ministri»;"
      },
      {
       "at": "06-government-legal/world-legislation/it/22G00003.md#1635-1906",
@@ -93,14 +133,24 @@
       "text": "Visto il decreto del Presidente del Consiglio dei ministri 1° ottobre 2012, recante «Ordinamento delle strutture generali della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 288 dell'11 dicembre 2012;"
      },
      {
+      "at": "06-government-legal/world-legislation/it/22G00003.md#2169-2357",
+      "ref": "06-government-legal/world-legislation/it/22G00003.md",
+      "text": "Visti i contratti collettivi nazionali di lavoro del personale non dirigenziale del comparto della Presidenza del Consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009;"
+     },
+     {
       "at": "06-government-legal/world-legislation/it/22G00003.md#2359-2586",
       "ref": "06-government-legal/world-legislation/it/22G00003.md",
       "text": "Visto il decreto del Presidente del Consiglio dei ministri 16 settembre 2014, recante «Codice di comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»;"
      },
      {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#2927-3410",
+      "at": "06-government-legal/world-legislation/it/22G00003.md#4512-4612",
       "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "10, comma 3, del testo unico delle disposizioni sulla promulgazione delle leggi, sull'emanazione dei decreti del Presidente della Repubblica italiana e sulle pubblicazioni ufficiali della Repubblica italiana, approvato con [decreto del Presidente della Repubblica 28 dicembre 1985, n. 1092](http://www.normattiva.it/uri-res/N2Ls?urn:nir:presidente.repubblica:decreto:1985-12-28;1092), al solo fine di facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio."
+      "text": "Essi debbono essere comunicati al Presidente del Consiglio dei ministri prima della loro emanazione."
+     },
+     {
+      "at": "06-government-legal/world-legislation/it/22G00003.md#4936-5166",
+      "ref": "06-government-legal/world-legislation/it/22G00003.md",
+      "text": "- Il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303) (Ordinamento della Presidenza del Consiglio dei Ministri, a norma dell'[articolo 11 della L."
      }
     ],
     "seq": 0,
@@ -109,65 +159,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "in vigore|del|provvedimento: 02/02/2022",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in vigore del provvedimento: 02/02/2022",
-    "subject": "in vigore",
-    "verb": "del",
-    "object": "provvedimento: 02/02/2022",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#509-556",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Entrata in vigore del provvedimento: 02/02/2022"
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "del consiglio|dei|ministri",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "DEL CONSIGLIO dei MINISTRI",
-    "subject": "DEL CONSIGLIO",
-    "verb": "dei",
-    "object": "MINISTRI",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#577-603",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "DEL CONSIGLIO DEI MINISTRI"
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "disciplina dell'attivita'|di|governo e ordinamento della presidenza del consiglio dei ministri»",
+    "task_id": "disciplina|dell'attivita'|di governo e ordinamento della presidenza del consiglio dei ministri»",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -177,11 +169,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Disciplina dell'attivita' di Governo e ordinamento della Presidenza del Consiglio dei ministri»",
-    "subject": "Disciplina dell'attivita'",
-    "verb": "di",
-    "object": "Governo e ordinamento della Presidenza del Consiglio dei ministri»",
+    "subject": "Disciplina",
+    "verb": "dell'attivita'",
+    "object": "di Governo e ordinamento della Presidenza del Consiglio dei ministri»",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -195,41 +187,7 @@
       "text": "Note alle premesse - Si riporta il testo dell'[articolo 17, commi 3](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1988-08-23;400~art17-com3) e [4, della legge 23 agosto 1988, n. 400](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1988-08-23;400~art17-com4) (Disciplina dell'attivita' di Governo e ordinamento della Presidenza del Consiglio dei Ministri), pubblicata nella Gazzetta Ufficiale 12 settembre 1988, n. 214, S.O."
      }
     ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ordinamento|della|presidenza del consiglio dei ministri»",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Ordinamento della Presidenza del Consiglio dei ministri»",
-    "subject": "Ordinamento",
-    "verb": "della",
-    "object": "Presidenza del Consiglio dei ministri»",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#956-1165",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Visto il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303), recante «Ordinamento della Presidenza del Consiglio dei ministri»;"
-     },
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#4936-5166",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "- Il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303) (Ordinamento della Presidenza del Consiglio dei Ministri, a norma dell'[articolo 11 della L."
-     }
-    ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -249,7 +207,7 @@
     "verb": "dei",
     "object": "contratti pubblici](http://www",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -263,7 +221,7 @@
       "text": "- Si riporta il testo dell'[articolo 113 del decreto legislativo 18 aprile 2016, n. 50](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art113) ([Codice dei contratti pubblici](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2006-04-12;163)), pubblicato nella Gazzetta Ufficiale 19 aprile 2016, n. 91, S.O."
      }
     ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -283,7 +241,7 @@
     "verb": "dell'autonomia",
     "object": "finanziaria e contabile della Presidenza del Consiglio dei ministri»",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -292,13 +250,13 @@
       "text": "Visto il decreto del Presidente del Consiglio dei ministri 22 novembre 2010, recante «Disciplina dell'autonomia finanziaria e contabile della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 286 del 7 dicembre 2010;"
      }
     ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "gazzetta ufficiale|della|repubblica italiana n",
+    "task_id": "della repubblica|italiana|n",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -307,12 +265,41 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Gazzetta Ufficiale della Repubblica italiana n",
-    "subject": "Gazzetta Ufficiale",
-    "verb": "della",
-    "object": "Repubblica italiana n",
+    "description": "della Repubblica italiana n",
+    "subject": "della Repubblica",
+    "verb": "italiana",
+    "object": "n",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/world-legislation/it/22G00003.md#1635-1906",
+      "ref": "06-government-legal/world-legislation/it/22G00003.md",
+      "text": "Visto il decreto del Presidente del Consiglio dei ministri 22 novembre 2010, recante «Disciplina dell'autonomia finanziaria e contabile della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 286 del 7 dicembre 2010;"
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "supersede",
+    "task_id": "della repubblica|italiana|n",
+    "operator": "SYN",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "SYN·Figure",
+    "stance": "Making",
+    "terrain": "Link",
+    "mode": "Generate",
+    "domain": "Structure",
+    "description": "heard again: della Repubblica italiana n",
+    "subject": "della Repubblica",
+    "verb": "italiana",
+    "object": "n",
+    "witnesses": [
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -326,13 +313,13 @@
       "text": "Visto il decreto del Presidente del Consiglio dei ministri 1° ottobre 2012, recante «Ordinamento delle strutture generali della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 288 dell'11 dicembre 2012;"
      }
     ],
-    "seq": 7,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "286|del|7 dicembre 2010",
+    "task_id": "e dell'etica|dei|dirigenti e dei dipendenti della presidenza del consiglio dei ministri»",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -341,99 +328,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "286 del 7 dicembre 2010",
-    "subject": "286",
-    "verb": "del",
-    "object": "7 dicembre 2010",
+    "description": "e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»",
+    "subject": "e dell'etica",
+    "verb": "dei",
+    "object": "dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#1635-1906",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Visto il decreto del Presidente del Consiglio dei ministri 22 novembre 2010, recante «Disciplina dell'autonomia finanziaria e contabile della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 286 del 7 dicembre 2010;"
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "strutture generali|della|presidenza del consiglio dei ministri»",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "strutture generali della Presidenza del Consiglio dei ministri»",
-    "subject": "strutture generali",
-    "verb": "della",
-    "object": "Presidenza del Consiglio dei ministri»",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#1908-2167",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Visto il decreto del Presidente del Consiglio dei ministri 1° ottobre 2012, recante «Ordinamento delle strutture generali della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 288 dell'11 dicembre 2012;"
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "collettivi nazionali|di|lavoro del personale non dirigenziale del comparto della presidenza del consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "collettivi nazionali di lavoro del personale non dirigenziale del comparto della Presidenza del Consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009",
-    "subject": "collettivi nazionali",
-    "verb": "di",
-    "object": "lavoro del personale non dirigenziale del comparto della Presidenza del Consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#2169-2357",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Visti i contratti collettivi nazionali di lavoro del personale non dirigenziale del comparto della Presidenza del Consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009;"
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "codice|di|comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della presidenza del consiglio dei ministri»",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Codice di comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»",
-    "subject": "Codice",
-    "verb": "di",
-    "object": "comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -442,13 +342,13 @@
       "text": "Visto il decreto del Presidente del Consiglio dei ministri 16 settembre 2014, recante «Codice di comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»;"
      }
     ],
-    "seq": 11,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "il parere|del|consiglio di stato espresso dalla sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021",
+    "task_id": "dalla sezione|consultiva|per gli atti normativi nell'adunanza del 20 luglio 2021",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -457,55 +357,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "il parere del Consiglio di Stato espresso dalla Sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021",
-    "subject": "il parere",
-    "verb": "del",
-    "object": "Consiglio di Stato espresso dalla Sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021",
+    "description": "dalla Sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021",
+    "subject": "dalla Sezione",
+    "verb": "consultiva",
+    "object": "per gli atti normativi nell'adunanza del 20 luglio 2021",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/world-legislation/it/22G00003.md#2588-2717",
       "ref": "06-government-legal/world-legislation/it/22G00003.md",
       "text": "Udito il parere del Consiglio di Stato espresso dalla Sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021;"
-     },
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#4616-4907",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "o t|e|avvertenza: - il testo delle note qui pubblicato e' stato redatto dall'amministrazione competente per materia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "O T e Avvertenza: - Il testo delle note qui pubblicato e' stato redatto dall'Amministrazione competente per materia",
-    "subject": "O T",
-    "verb": "e",
-    "object": "Avvertenza: - Il testo delle note qui pubblicato e' stato redatto dall'Amministrazione competente per materia",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#2789-2926",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "N O T E Avvertenza: - Il testo delle note qui pubblicato e' stato redatto dall'Amministrazione competente per materia, ai sensi dell'art."
-     }
-    ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -525,7 +391,7 @@
     "verb": "dei",
     "object": "decreti del Presidente della Repubblica italiana e sulle pubblicazioni ufficiali della Repubblica italiana",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -534,128 +400,7 @@
       "text": "10, comma 3, del testo unico delle disposizioni sulla promulgazione delle leggi, sull'emanazione dei decreti del Presidente della Repubblica italiana e sulle pubblicazioni ufficiali della Repubblica italiana, approvato con [decreto del Presidente della Repubblica 28 dicembre 1985, n. 1092](http://www.normattiva.it/uri-res/N2Ls?urn:nir:presidente.repubblica:decreto:1985-12-28;1092), al solo fine di facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "solo fine|di|facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "solo fine di facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio",
-    "subject": "solo fine",
-    "verb": "di",
-    "object": "facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#2927-3410",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "10, comma 3, del testo unico delle disposizioni sulla promulgazione delle leggi, sull'emanazione dei decreti del Presidente della Repubblica italiana e sulle pubblicazioni ufficiali della Repubblica italiana, approvato con [decreto del Presidente della Repubblica 28 dicembre 1985, n. 1092](http://www.normattiva.it/uri-res/N2Ls?urn:nir:presidente.repubblica:decreto:1985-12-28;1092), al solo fine di facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "il valore|e|l'efficacia degli atti legislativi qui trascritti",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "il valore e l'efficacia degli atti legislativi qui trascritti",
-    "subject": "il valore",
-    "verb": "e",
-    "object": "l'efficacia degli atti legislativi qui trascritti",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#3411-3491",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Restano invariati il valore e l'efficacia degli atti legislativi qui trascritti."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "nelle materie|di|competenza del ministro o di autorita' sottordinate al ministro",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "nelle materie di competenza del ministro o di autorita' sottordinate al ministro",
-    "subject": "nelle materie",
-    "verb": "di",
-    "object": "competenza del ministro o di autorita' sottordinate al ministro",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#3990-4186",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Con decreto ministeriale possono essere adottati regolamenti nelle materie di competenza del ministro o di autorita' sottordinate al ministro, quando la legge espressamente conferisca tale potere."
-     },
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#4187-4381",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Tali regolamenti, per materie di competenza di piu' ministri, possono essere adottati con decreti interministeriali, ferma restando la necessita' di apposita autorizzazione da parte della legge."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la necessita'|di|apposita autorizzazione da parte della legge",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la necessita' di apposita autorizzazione da parte della legge",
-    "subject": "la necessita'",
-    "verb": "di",
-    "object": "apposita autorizzazione da parte della legge",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#4187-4381",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Tali regolamenti, per materie di competenza di piu' ministri, possono essere adottati con decreti interministeriali, ferma restando la necessita' di apposita autorizzazione da parte della legge."
-     }
-    ],
-    "seq": 18,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -675,7 +420,7 @@
     "verb": "dei",
     "object": "regolamenti emanati dal Governo",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -684,13 +429,13 @@
       "text": "I regolamenti ministeriali ed interministeriali non possono dettare norme contrarie a quelle dei regolamenti emanati dal Governo."
      }
     ],
-    "seq": 19,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "al presidente|del|consiglio dei ministri prima della loro emanazione",
+    "task_id": "della corte|dei|conti e pubblicati nella gazzetta ufficiale",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -699,41 +444,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "al Presidente del Consiglio dei ministri prima della loro emanazione",
-    "subject": "al Presidente",
-    "verb": "del",
-    "object": "Consiglio dei ministri prima della loro emanazione",
+    "description": "della Corte dei conti e pubblicati nella Gazzetta Ufficiale",
+    "subject": "della Corte",
+    "verb": "dei",
+    "object": "conti e pubblicati nella Gazzetta Ufficiale",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#4512-4612",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Essi debbono essere comunicati al Presidente del Consiglio dei ministri prima della loro emanazione."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "i regolamenti|di|cui al comma 1 ed i regolamenti ministeriali ed interministeriali",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali",
-    "subject": "I regolamenti",
-    "verb": "di",
-    "object": "cui al comma 1 ed i regolamenti ministeriali ed interministeriali",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -742,94 +458,7 @@
       "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
      }
     ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la denominazione|di|«regolamento»",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la denominazione di «regolamento»",
-    "subject": "la denominazione",
-    "verb": "di",
-    "object": "«regolamento»",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#4616-4907",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alla registrazione|della|corte dei conti e pubblicati nella gazzetta ufficiale",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale",
-    "subject": "alla registrazione",
-    "verb": "della",
-    "object": "Corte dei conti e pubblicati nella Gazzetta Ufficiale",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#4616-4907",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "articolo 11|della|l",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "articolo 11 della L",
-    "subject": "articolo 11",
-    "verb": "della",
-    "object": "L",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#4936-5166",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "- Il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303) (Ordinamento della Presidenza del Consiglio dei Ministri, a norma dell'[articolo 11 della L."
-     }
-    ],
-    "seq": 24,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -849,7 +478,7 @@
     "verb": "1º",
     "object": "settembre 1999",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -858,36 +487,7 @@
       "text": "15 marzo 1997, n.59](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1997-03-15;59~art11)), e' pubblicato nella Gazzetta Ufficiale 1º settembre 1999, n. 250, S.O."
      }
     ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "articolo 113|del|decreto legislativo 18 aprile 2016",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "articolo 113 del decreto legislativo 18 aprile 2016",
-    "subject": "articolo 113",
-    "verb": "del",
-    "object": "decreto legislativo 18 aprile 2016",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#5348-5716",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "- Si riporta il testo dell'[articolo 113 del decreto legislativo 18 aprile 2016, n. 50](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art113) ([Codice dei contratti pubblici](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2006-04-12;163)), pubblicato nella Gazzetta Ufficiale 19 aprile 2016, n. 91, S.O."
-     }
-    ],
-    "seq": 26,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -907,7 +507,7 @@
     "verb": "dei",
     "object": "lavori ovvero al direttore dell'esecuzione",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -921,65 +521,7 @@
       "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
      }
     ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "collaudi tecnici|e|amministrativi ovvero alle verifiche di conformita'",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "collaudi tecnici e amministrativi ovvero alle verifiche di conformita'",
-    "subject": "collaudi tecnici",
-    "verb": "e",
-    "object": "amministrativi ovvero alle verifiche di conformita'",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#5774-6510",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "agli studi|e|alle ricerche connessi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "agli studi e alle ricerche connessi",
-    "subject": "agli studi",
-    "verb": "e",
-    "object": "alle ricerche connessi",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#5774-6510",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
-     }
-    ],
-    "seq": 29,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -999,7 +541,7 @@
     "verb": "dei",
     "object": "piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1008,99 +550,7 @@
       "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
      }
     ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prestazioni professionali|e|specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori",
-    "subject": "prestazioni professionali",
-    "verb": "e",
-    "object": "specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#5774-6510",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "servizi|e|forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti",
-    "subject": "servizi",
-    "verb": "e",
-    "object": "forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#5774-6510",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
-     },
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#6514-7345",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sugli stanziamenti|di|cui al comma 1",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sugli stanziamenti di cui al comma 1",
-    "subject": "sugli stanziamenti",
-    "verb": "di",
-    "object": "cui al comma 1",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#6514-7345",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
-     }
-    ],
-    "seq": 33,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1120,7 +570,7 @@
     "verb": "dei",
     "object": "lavori",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1129,36 +579,7 @@
       "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
      }
     ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a base|di|gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti",
-    "subject": "a base",
-    "verb": "di",
-    "object": "gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#6514-7345",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
-     }
-    ],
-    "seq": 35,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1178,7 +599,7 @@
     "verb": "dei",
     "object": "progetti",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1187,13 +608,13 @@
       "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
      }
     ],
-    "seq": 36,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "di predisposizione|e|di controllo delle procedure di gara e di esecuzione dei contratti pubblici",
+    "task_id": "di esecuzione|dei|contratti pubblici",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1202,12 +623,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici",
-    "subject": "di predisposizione",
-    "verb": "e",
-    "object": "di controllo delle procedure di gara e di esecuzione dei contratti pubblici",
+    "description": "di esecuzione dei contratti pubblici",
+    "subject": "di esecuzione",
+    "verb": "dei",
+    "object": "contratti pubblici",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1216,13 +637,13 @@
       "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
      }
     ],
-    "seq": 37,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "consentire l'esecuzione|del|contratto nel rispetto dei documenti a base di gara",
+    "task_id": "nel rispetto|dei|documenti a base di gara",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1231,12 +652,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara",
-    "subject": "consentire l'esecuzione",
-    "verb": "del",
-    "object": "contratto nel rispetto dei documenti a base di gara",
+    "description": "nel rispetto dei documenti a base di gara",
+    "subject": "nel rispetto",
+    "verb": "dei",
+    "object": "documenti a base di gara",
     "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1245,157 +666,12 @@
       "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
      }
     ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dei tempi|e|costi prestabiliti",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dei tempi e costi prestabiliti",
-    "subject": "dei tempi",
-    "verb": "e",
-    "object": "costi prestabiliti",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#6514-7345",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "da parte|di|quelle amministrazioni aggiudicatrici per le quali sono in essere contratti o convenzioni che prevedono modalita' diverse per la retribuzione delle funzioni tecniche svolte dai propri dipendenti",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "da parte di quelle amministrazioni aggiudicatrici per le quali sono in essere contratti o convenzioni che prevedono modalita' diverse per la retribuzione delle funzioni tecniche svolte dai propri dipendenti",
-    "subject": "da parte",
-    "verb": "di",
-    "object": "quelle amministrazioni aggiudicatrici per le quali sono in essere contratti o convenzioni che prevedono modalita' diverse per la retribuzione delle funzioni tecniche svolte dai propri dipendenti",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#7346-7580",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Tale fondo non e' previsto da parte di quelle amministrazioni aggiudicatrici per le quali sono in essere contratti o convenzioni che prevedono modalita' diverse per la retribuzione delle funzioni tecniche svolte dai propri dipendenti."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "si avvalgono|di|una centrale di committenza possono destinare il fondo o parte di esso ai dipendenti di tale centrale",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "si avvalgono di una centrale di committenza possono destinare il fondo o parte di esso ai dipendenti di tale centrale",
-    "subject": "si avvalgono",
-    "verb": "di",
-    "object": "una centrale di committenza possono destinare il fondo o parte di esso ai dipendenti di tale centrale",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#7581-7728",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "Gli enti che costituiscono o si avvalgono di una centrale di committenza possono destinare il fondo o parte di esso ai dipendenti di tale centrale."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la disposizione|di|cui al presente comma si applica agli appalti relativi a servizi o forniture nel caso in cui e' nominato il direttore dell'esecuzione",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "La disposizione di cui al presente comma si applica agli appalti relativi a servizi o forniture nel caso in cui e' nominato il direttore dell'esecuzione",
-    "subject": "La disposizione",
-    "verb": "di",
-    "object": "cui al presente comma si applica agli appalti relativi a servizi o forniture nel caso in cui e' nominato il direttore dell'esecuzione",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#7729-7882",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "La disposizione di cui al presente comma si applica agli appalti relativi a servizi o forniture nel caso in cui e' nominato il direttore dell'esecuzione."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "risorse finanziarie|del|fondo costituito ai sensi del comma 2 e' ripartito",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "risorse finanziarie del fondo costituito ai sensi del comma 2 e' ripartito",
-    "subject": "risorse finanziarie",
-    "verb": "del",
-    "object": "fondo costituito ai sensi del comma 2 e' ripartito",
-    "witnesses": [
-     "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/it/22G00003.md#7886-8000",
-      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-      "text": "L'ottanta per cento delle risorse finanziarie del fondo costituito ai sensi del comma 2 e' ripartito, per ciascuna"
-     }
-    ],
-    "seq": 43,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 44,
+  "nextSeq": 18,
   "admits": [
    "NUL",
    "SEG",
@@ -1410,44 +686,12 @@
  },
  "folded": [
   {
-   "id": "286|del|7 dicembre 2010",
-   "subject": "286",
-   "verb": "del",
-   "object": "7 dicembre 2010",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#1635-1906",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Visto il decreto del Presidente del Consiglio dei ministri 22 novembre 2010, recante «Disciplina dell'autonomia finanziaria e contabile della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 286 del 7 dicembre 2010;"
-    }
-   ]
-  },
-  {
-   "id": "a base|di|gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti",
-   "subject": "a base",
-   "verb": "di",
-   "object": "gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#6514-7345",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
-    }
-   ]
-  },
-  {
    "id": "a quelle|dei|regolamenti emanati dal governo",
    "subject": "a quelle",
    "verb": "dei",
    "object": "regolamenti emanati dal Governo",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1458,44 +702,12 @@
    ]
   },
   {
-   "id": "agli studi|e|alle ricerche connessi",
-   "subject": "agli studi",
-   "verb": "e",
-   "object": "alle ricerche connessi",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#5774-6510",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
-    }
-   ]
-  },
-  {
-   "id": "al presidente|del|consiglio dei ministri prima della loro emanazione",
-   "subject": "al Presidente",
-   "verb": "del",
-   "object": "Consiglio dei ministri prima della loro emanazione",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4512-4612",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Essi debbono essere comunicati al Presidente del Consiglio dei ministri prima della loro emanazione."
-    }
-   ]
-  },
-  {
    "id": "alla direzione|dei|lavori ovvero al direttore dell'esecuzione",
    "subject": "alla direzione",
    "verb": "dei",
    "object": "lavori ovvero al direttore dell'esecuzione",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1516,7 +728,7 @@
    "verb": "dei",
    "object": "piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1527,60 +739,12 @@
    ]
   },
   {
-   "id": "alla registrazione|della|corte dei conti e pubblicati nella gazzetta ufficiale",
-   "subject": "alla registrazione",
-   "verb": "della",
-   "object": "Corte dei conti e pubblicati nella Gazzetta Ufficiale",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4616-4907",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
-    }
-   ]
-  },
-  {
-   "id": "articolo 11|della|l",
-   "subject": "articolo 11",
-   "verb": "della",
-   "object": "L",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4936-5166",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "- Il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303) (Ordinamento della Presidenza del Consiglio dei Ministri, a norma dell'[articolo 11 della L."
-    }
-   ]
-  },
-  {
-   "id": "articolo 113|del|decreto legislativo 18 aprile 2016",
-   "subject": "articolo 113",
-   "verb": "del",
-   "object": "decreto legislativo 18 aprile 2016",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#5348-5716",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "- Si riporta il testo dell'[articolo 113 del decreto legislativo 18 aprile 2016, n. 50](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art113) ([Codice dei contratti pubblici](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2006-04-12;163)), pubblicato nella Gazzetta Ufficiale 19 aprile 2016, n. 91, S.O."
-    }
-   ]
-  },
-  {
    "id": "codice|dei|contratti pubblici](http://www",
    "subject": "Codice",
    "verb": "dei",
    "object": "contratti pubblici](http://www",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1596,98 +760,44 @@
    ]
   },
   {
-   "id": "codice|di|comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della presidenza del consiglio dei ministri»",
-   "subject": "Codice",
-   "verb": "di",
-   "object": "comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»",
+   "id": "dalla sezione|consultiva|per gli atti normativi nell'adunanza del 20 luglio 2021",
+   "subject": "dalla Sezione",
+   "verb": "consultiva",
+   "object": "per gli atti normativi nell'adunanza del 20 luglio 2021",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#2359-2586",
+     "at": "06-government-legal/world-legislation/it/22G00003.md#2588-2717",
      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Visto il decreto del Presidente del Consiglio dei ministri 16 settembre 2014, recante «Codice di comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»;"
+     "text": "Udito il parere del Consiglio di Stato espresso dalla Sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021;"
     }
    ]
   },
   {
-   "id": "collaudi tecnici|e|amministrativi ovvero alle verifiche di conformita'",
-   "subject": "collaudi tecnici",
-   "verb": "e",
-   "object": "amministrativi ovvero alle verifiche di conformita'",
+   "id": "del consiglio|dei|ministri 18 novembre 2021",
+   "subject": "DEL CONSIGLIO",
+   "verb": "dei",
+   "object": "MINISTRI 18 novembre 2021",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#5774-6510",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
-    }
-   ]
-  },
-  {
-   "id": "collettivi nazionali|di|lavoro del personale non dirigenziale del comparto della presidenza del consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009",
-   "subject": "collettivi nazionali",
-   "verb": "di",
-   "object": "lavoro del personale non dirigenziale del comparto della Presidenza del Consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#2169-2357",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Visti i contratti collettivi nazionali di lavoro del personale non dirigenziale del comparto della Presidenza del Consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009;"
-    }
-   ]
-  },
-  {
-   "id": "consentire l'esecuzione|del|contratto nel rispetto dei documenti a base di gara",
-   "subject": "consentire l'esecuzione",
-   "verb": "del",
-   "object": "contratto nel rispetto dei documenti a base di gara",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#6514-7345",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
-    }
-   ]
-  },
-  {
-   "id": "da parte|di|quelle amministrazioni aggiudicatrici per le quali sono in essere contratti o convenzioni che prevedono modalita' diverse per la retribuzione delle funzioni tecniche svolte dai propri dipendenti",
-   "subject": "da parte",
-   "verb": "di",
-   "object": "quelle amministrazioni aggiudicatrici per le quali sono in essere contratti o convenzioni che prevedono modalita' diverse per la retribuzione delle funzioni tecniche svolte dai propri dipendenti",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#7346-7580",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Tale fondo non e' previsto da parte di quelle amministrazioni aggiudicatrici per le quali sono in essere contratti o convenzioni che prevedono modalita' diverse per la retribuzione delle funzioni tecniche svolte dai propri dipendenti."
-    }
-   ]
-  },
-  {
-   "id": "decreto|del|presidente del consiglio dei ministri 18 novembre 2021",
-   "subject": "DECRETO",
-   "verb": "del",
-   "object": "PRESIDENTE DEL CONSIGLIO DEI MINISTRI 18 novembre 2021",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/world-legislation/it/22G00003.md#0-507",
      "ref": "06-government-legal/world-legislation/it/22G00003.md",
      "text": "--- title: \"DECRETO DEL PRESIDENTE DEL CONSIGLIO DEI MINISTRI 18 novembre 2021, n. 239\" identifier: \"22G00003\" country: \"it\" rank: \"decreto_presidente_consiglio\" publication_date: \"2021-11-18\" last_updated: \"2022-01-18\" status: \"in_force\" source: \"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto_presidente_consiglio:2021-11-18;239\" act_type_code: \"PCM_DPC\" act_number: \"239\" gu_date: \"2022-01-18\" gu_number: \"13\" --- # DECRETO DEL PRESIDENTE DEL CONSIGLIO DEI MINISTRI 18 novembre 2021, n. 239"
+    },
+    {
+     "at": "06-government-legal/world-legislation/it/22G00003.md#577-603",
+     "ref": "06-government-legal/world-legislation/it/22G00003.md",
+     "text": "DEL CONSIGLIO DEI MINISTRI"
+    },
+    {
+     "at": "06-government-legal/world-legislation/it/22G00003.md#956-1165",
+     "ref": "06-government-legal/world-legislation/it/22G00003.md",
+     "text": "Visto il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303), recante «Ordinamento della Presidenza del Consiglio dei ministri»;"
     },
     {
      "at": "06-government-legal/world-legislation/it/22G00003.md#1635-1906",
@@ -1700,56 +810,71 @@
      "text": "Visto il decreto del Presidente del Consiglio dei ministri 1° ottobre 2012, recante «Ordinamento delle strutture generali della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 288 dell'11 dicembre 2012;"
     },
     {
+     "at": "06-government-legal/world-legislation/it/22G00003.md#2169-2357",
+     "ref": "06-government-legal/world-legislation/it/22G00003.md",
+     "text": "Visti i contratti collettivi nazionali di lavoro del personale non dirigenziale del comparto della Presidenza del Consiglio dei ministri sottoscritti il 17 maggio 2004 e il 31 luglio 2009;"
+    },
+    {
      "at": "06-government-legal/world-legislation/it/22G00003.md#2359-2586",
      "ref": "06-government-legal/world-legislation/it/22G00003.md",
      "text": "Visto il decreto del Presidente del Consiglio dei ministri 16 settembre 2014, recante «Codice di comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»;"
     },
     {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#2927-3410",
+     "at": "06-government-legal/world-legislation/it/22G00003.md#4512-4612",
      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "10, comma 3, del testo unico delle disposizioni sulla promulgazione delle leggi, sull'emanazione dei decreti del Presidente della Repubblica italiana e sulle pubblicazioni ufficiali della Repubblica italiana, approvato con [decreto del Presidente della Repubblica 28 dicembre 1985, n. 1092](http://www.normattiva.it/uri-res/N2Ls?urn:nir:presidente.repubblica:decreto:1985-12-28;1092), al solo fine di facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio."
-    }
-   ]
-  },
-  {
-   "id": "dei tempi|e|costi prestabiliti",
-   "subject": "dei tempi",
-   "verb": "e",
-   "object": "costi prestabiliti",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
+     "text": "Essi debbono essere comunicati al Presidente del Consiglio dei ministri prima della loro emanazione."
+    },
     {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#6514-7345",
+     "at": "06-government-legal/world-legislation/it/22G00003.md#4936-5166",
      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
+     "text": "- Il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303) (Ordinamento della Presidenza del Consiglio dei Ministri, a norma dell'[articolo 11 della L."
     }
    ]
   },
   {
-   "id": "del consiglio|dei|ministri",
-   "subject": "DEL CONSIGLIO",
+   "id": "della corte|dei|conti e pubblicati nella gazzetta ufficiale",
+   "subject": "della Corte",
    "verb": "dei",
-   "object": "MINISTRI",
+   "object": "conti e pubblicati nella Gazzetta Ufficiale",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#577-603",
+     "at": "06-government-legal/world-legislation/it/22G00003.md#4616-4907",
      "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "DEL CONSIGLIO DEI MINISTRI"
+     "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
     }
    ]
   },
   {
-   "id": "di predisposizione|e|di controllo delle procedure di gara e di esecuzione dei contratti pubblici",
-   "subject": "di predisposizione",
-   "verb": "e",
-   "object": "di controllo delle procedure di gara e di esecuzione dei contratti pubblici",
+   "id": "della repubblica|italiana|n",
+   "subject": "della Repubblica",
+   "verb": "italiana",
+   "object": "n",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/it/22G00003.md#1635-1906",
+     "ref": "06-government-legal/world-legislation/it/22G00003.md",
+     "text": "Visto il decreto del Presidente del Consiglio dei ministri 22 novembre 2010, recante «Disciplina dell'autonomia finanziaria e contabile della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 286 del 7 dicembre 2010;"
+    },
+    {
+     "at": "06-government-legal/world-legislation/it/22G00003.md#1908-2167",
+     "ref": "06-government-legal/world-legislation/it/22G00003.md",
+     "text": "Visto il decreto del Presidente del Consiglio dei ministri 1° ottobre 2012, recante «Ordinamento delle strutture generali della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 288 dell'11 dicembre 2012;"
+    }
+   ]
+  },
+  {
+   "id": "di esecuzione|dei|contratti pubblici",
+   "subject": "di esecuzione",
+   "verb": "dei",
+   "object": "contratti pubblici",
+   "witnesses": [
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1760,12 +885,12 @@
    ]
   },
   {
-   "id": "disciplina dell'attivita'|di|governo e ordinamento della presidenza del consiglio dei ministri»",
-   "subject": "Disciplina dell'attivita'",
-   "verb": "di",
-   "object": "Governo e ordinamento della Presidenza del Consiglio dei ministri»",
+   "id": "disciplina|dell'attivita'|di governo e ordinamento della presidenza del consiglio dei ministri»",
+   "subject": "Disciplina",
+   "verb": "dell'attivita'",
+   "object": "di Governo e ordinamento della Presidenza del Consiglio dei ministri»",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1786,7 +911,7 @@
    "verb": "dell'autonomia",
    "object": "finanziaria e contabile della Presidenza del Consiglio dei ministri»",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1797,12 +922,28 @@
    ]
   },
   {
+   "id": "e dell'etica|dei|dirigenti e dei dipendenti della presidenza del consiglio dei ministri»",
+   "subject": "e dell'etica",
+   "verb": "dei",
+   "object": "dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»",
+   "witnesses": [
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/it/22G00003.md#2359-2586",
+     "ref": "06-government-legal/world-legislation/it/22G00003.md",
+     "text": "Visto il decreto del Presidente del Consiglio dei ministri 16 settembre 2014, recante «Codice di comportamento e di tutela della dignita' e dell'etica dei dirigenti e dei dipendenti della Presidenza del Consiglio dei ministri»;"
+    }
+   ]
+  },
+  {
    "id": "gazzetta ufficiale|1º|settembre 1999",
    "subject": "Gazzetta Ufficiale",
    "verb": "1º",
    "object": "settembre 1999",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1813,150 +954,12 @@
    ]
   },
   {
-   "id": "gazzetta ufficiale|della|repubblica italiana n",
-   "subject": "Gazzetta Ufficiale",
-   "verb": "della",
-   "object": "Repubblica italiana n",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#1635-1906",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Visto il decreto del Presidente del Consiglio dei ministri 22 novembre 2010, recante «Disciplina dell'autonomia finanziaria e contabile della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 286 del 7 dicembre 2010;"
-    },
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#1908-2167",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Visto il decreto del Presidente del Consiglio dei ministri 1° ottobre 2012, recante «Ordinamento delle strutture generali della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 288 dell'11 dicembre 2012;"
-    }
-   ]
-  },
-  {
-   "id": "i regolamenti|di|cui al comma 1 ed i regolamenti ministeriali ed interministeriali",
-   "subject": "I regolamenti",
-   "verb": "di",
-   "object": "cui al comma 1 ed i regolamenti ministeriali ed interministeriali",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4616-4907",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
-    }
-   ]
-  },
-  {
-   "id": "il parere|del|consiglio di stato espresso dalla sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021",
-   "subject": "il parere",
-   "verb": "del",
-   "object": "Consiglio di Stato espresso dalla Sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#2588-2717",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Udito il parere del Consiglio di Stato espresso dalla Sezione consultiva per gli atti normativi nell'adunanza del 20 luglio 2021;"
-    },
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4616-4907",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
-    }
-   ]
-  },
-  {
-   "id": "il valore|e|l'efficacia degli atti legislativi qui trascritti",
-   "subject": "il valore",
-   "verb": "e",
-   "object": "l'efficacia degli atti legislativi qui trascritti",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#3411-3491",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Restano invariati il valore e l'efficacia degli atti legislativi qui trascritti."
-    }
-   ]
-  },
-  {
-   "id": "in vigore|del|provvedimento: 02/02/2022",
-   "subject": "in vigore",
-   "verb": "del",
-   "object": "provvedimento: 02/02/2022",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#509-556",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Entrata in vigore del provvedimento: 02/02/2022"
-    }
-   ]
-  },
-  {
-   "id": "la denominazione|di|«regolamento»",
-   "subject": "la denominazione",
-   "verb": "di",
-   "object": "«regolamento»",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4616-4907",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "I regolamenti di cui al comma 1 ed i regolamenti ministeriali ed interministeriali, che devono recare la denominazione di «regolamento», sono adottati previo parere del Consiglio di Stato, sottoposti al visto ed alla registrazione della Corte dei conti e pubblicati nella Gazzetta Ufficiale."
-    }
-   ]
-  },
-  {
-   "id": "la disposizione|di|cui al presente comma si applica agli appalti relativi a servizi o forniture nel caso in cui e' nominato il direttore dell'esecuzione",
-   "subject": "La disposizione",
-   "verb": "di",
-   "object": "cui al presente comma si applica agli appalti relativi a servizi o forniture nel caso in cui e' nominato il direttore dell'esecuzione",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#7729-7882",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "La disposizione di cui al presente comma si applica agli appalti relativi a servizi o forniture nel caso in cui e' nominato il direttore dell'esecuzione."
-    }
-   ]
-  },
-  {
-   "id": "la necessita'|di|apposita autorizzazione da parte della legge",
-   "subject": "la necessita'",
-   "verb": "di",
-   "object": "apposita autorizzazione da parte della legge",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4187-4381",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Tali regolamenti, per materie di competenza di piu' ministri, possono essere adottati con decreti interministeriali, ferma restando la necessita' di apposita autorizzazione da parte della legge."
-    }
-   ]
-  },
-  {
    "id": "modulate sull'importo|dei|lavori",
    "subject": "modulate sull'importo",
    "verb": "dei",
    "object": "lavori",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1967,171 +970,12 @@
    ]
   },
   {
-   "id": "nelle materie|di|competenza del ministro o di autorita' sottordinate al ministro",
-   "subject": "nelle materie",
-   "verb": "di",
-   "object": "competenza del ministro o di autorita' sottordinate al ministro",
+   "id": "nel rispetto|dei|documenti a base di gara",
+   "subject": "nel rispetto",
+   "verb": "dei",
+   "object": "documenti a base di gara",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#3990-4186",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Con decreto ministeriale possono essere adottati regolamenti nelle materie di competenza del ministro o di autorita' sottordinate al ministro, quando la legge espressamente conferisca tale potere."
-    },
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4187-4381",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Tali regolamenti, per materie di competenza di piu' ministri, possono essere adottati con decreti interministeriali, ferma restando la necessita' di apposita autorizzazione da parte della legge."
-    }
-   ]
-  },
-  {
-   "id": "o t|e|avvertenza: - il testo delle note qui pubblicato e' stato redatto dall'amministrazione competente per materia",
-   "subject": "O T",
-   "verb": "e",
-   "object": "Avvertenza: - Il testo delle note qui pubblicato e' stato redatto dall'Amministrazione competente per materia",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#2789-2926",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "N O T E Avvertenza: - Il testo delle note qui pubblicato e' stato redatto dall'Amministrazione competente per materia, ai sensi dell'art."
-    }
-   ]
-  },
-  {
-   "id": "ordinamento|della|presidenza del consiglio dei ministri»",
-   "subject": "Ordinamento",
-   "verb": "della",
-   "object": "Presidenza del Consiglio dei ministri»",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#956-1165",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Visto il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303), recante «Ordinamento della Presidenza del Consiglio dei ministri»;"
-    },
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#4936-5166",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "- Il [decreto legislativo 30 luglio 1999, n. 303](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;303) (Ordinamento della Presidenza del Consiglio dei Ministri, a norma dell'[articolo 11 della L."
-    }
-   ]
-  },
-  {
-   "id": "prestazioni professionali|e|specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori",
-   "subject": "prestazioni professionali",
-   "verb": "e",
-   "object": "specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#5774-6510",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
-    }
-   ]
-  },
-  {
-   "id": "risorse finanziarie|del|fondo costituito ai sensi del comma 2 e' ripartito",
-   "subject": "risorse finanziarie",
-   "verb": "del",
-   "object": "fondo costituito ai sensi del comma 2 e' ripartito",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#7886-8000",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "L'ottanta per cento delle risorse finanziarie del fondo costituito ai sensi del comma 2 e' ripartito, per ciascuna"
-    }
-   ]
-  },
-  {
-   "id": "servizi|e|forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti",
-   "subject": "servizi",
-   "verb": "e",
-   "object": "forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#5774-6510",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Gli oneri inerenti alla progettazione, alla direzione dei lavori ovvero al direttore dell'esecuzione, alla vigilanza, ai collaudi tecnici e amministrativi ovvero alle verifiche di conformita', al collaudo statico, agli studi e alle ricerche connessi, alla progettazione dei piani di sicurezza e di coordinamento e al coordinamento della sicurezza in fase di esecuzione quando previsti ai sensi deldecreto legislativo 9 aprile 2008 n. 81, alle prestazioni professionali e specialistiche necessari per la redazione di un progetto esecutivo completo in ogni dettaglio fanno carico agli stanziamenti previsti per i singoli appalti di lavori, servizi e forniture negli stati di previsione della spesa o nei bilanci delle stazioni appaltanti."
-    },
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#6514-7345",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "A valere sugli stanziamenti di cui al comma 1, le amministrazioni aggiudicatrici destinano ad un apposito fondo risorse finanziarie in misura non superiore al 2 per cento modulate sull'importo dei lavori, servizi e forniture, posti a base di gara per le funzioni tecniche svolte dai dipendenti delle stesse esclusivamente per le attivita' di programmazione della spesa per investimenti, di valutazione preventiva dei progetti, di predisposizione e di controllo delle procedure di gara e di esecuzione dei contratti pubblici, di RUP, di direzione dei lavori ovvero direzione dell'esecuzione e di collaudo tecnico amministrativo ovvero di verifica di conformita', di collaudatore statico ove necessario per consentire l'esecuzione del contratto nel rispetto dei documenti a base di gara, del progetto, dei tempi e costi prestabiliti."
-    }
-   ]
-  },
-  {
-   "id": "si avvalgono|di|una centrale di committenza possono destinare il fondo o parte di esso ai dipendenti di tale centrale",
-   "subject": "si avvalgono",
-   "verb": "di",
-   "object": "una centrale di committenza possono destinare il fondo o parte di esso ai dipendenti di tale centrale",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#7581-7728",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Gli enti che costituiscono o si avvalgono di una centrale di committenza possono destinare il fondo o parte di esso ai dipendenti di tale centrale."
-    }
-   ]
-  },
-  {
-   "id": "solo fine|di|facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio",
-   "subject": "solo fine",
-   "verb": "di",
-   "object": "facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#2927-3410",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "10, comma 3, del testo unico delle disposizioni sulla promulgazione delle leggi, sull'emanazione dei decreti del Presidente della Repubblica italiana e sulle pubblicazioni ufficiali della Repubblica italiana, approvato con [decreto del Presidente della Repubblica 28 dicembre 1985, n. 1092](http://www.normattiva.it/uri-res/N2Ls?urn:nir:presidente.repubblica:decreto:1985-12-28;1092), al solo fine di facilitare la lettura delle disposizioni di legge alle quali e' operato il rinvio."
-    }
-   ]
-  },
-  {
-   "id": "strutture generali|della|presidenza del consiglio dei ministri»",
-   "subject": "strutture generali",
-   "verb": "della",
-   "object": "Presidenza del Consiglio dei ministri»",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/it/22G00003.md#1908-2167",
-     "ref": "06-government-legal/world-legislation/it/22G00003.md",
-     "text": "Visto il decreto del Presidente del Consiglio dei ministri 1° ottobre 2012, recante «Ordinamento delle strutture generali della Presidenza del Consiglio dei ministri», pubblicato nella Gazzetta Ufficiale della Repubblica italiana n. 288 dell'11 dicembre 2012;"
-    }
-   ]
-  },
-  {
-   "id": "sugli stanziamenti|di|cui al comma 1",
-   "subject": "sugli stanziamenti",
-   "verb": "di",
-   "object": "cui al comma 1",
-   "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2147,7 +991,7 @@
    "verb": "dei",
    "object": "decreti del Presidente della Repubblica italiana e sulle pubblicazioni ufficiali della Repubblica italiana",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2163,7 +1007,7 @@
    "verb": "dei",
    "object": "progetti",
    "witnesses": [
-    "06-government-legal/world-legislation/it/22G00003.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/it/22G00003.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2175,7 +1019,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:33.635Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:49.369Z"
  }
 }

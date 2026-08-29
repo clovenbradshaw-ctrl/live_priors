@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 106704,
   "bodyOffset": 0,
   "bodyChars": 106704,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,28 +55,33 @@
   "referentEvents": 25,
   "distinctReferents": 24,
   "examined": true,
-  "edgesFound": 83,
+  "edgesFound": 38,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 65,
+   "verbs": 39,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 65
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 38,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 83,
-  "excerptOk": 83,
-  "rawChecked": 83,
-  "rawOk": 83,
+  "excerptChecked": 38,
+  "excerptOk": 38,
+  "rawChecked": 38,
+  "rawOk": 38,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 83,
-  "heard": 83,
+  "offered": 38,
+  "heard": 38,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -67,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "this is|a|modern convention",
+    "task_id": "the empire|continued|to be seen as a single state even after the supposed \"split\" of 395",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -76,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "This is a modern convention",
-    "subject": "This is",
-    "verb": "a",
-    "object": "modern convention",
+    "description": "the Empire continued to be seen as a single state even after the supposed \"split\" of 395",
+    "subject": "the Empire",
+    "verb": "continued",
+    "object": "to be seen as a single state even after the supposed \"split\" of 395",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -96,36 +119,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "as|the|empire continued to be seen as a single state even after the supposed \"split\" of 395",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as the Empire continued to be seen as a single state even after the supposed \"split\" of 395",
-    "subject": "as",
-    "verb": "the",
-    "object": "Empire continued to be seen as a single state even after the supposed \"split\" of 395",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4-554",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "which was|in|fact one of many splits since 286",
+    "task_id": "which|was|in fact one of many splits since 286",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -135,11 +129,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "which was in fact one of many splits since 286",
-    "subject": "which was",
-    "verb": "in",
-    "object": "fact one of many splits since 286",
+    "subject": "which",
+    "verb": "was",
+    "object": "in fact one of many splits since 286",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,94 +142,7 @@
       "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "animated map|of|the roman territorial evolution from the rise of the city-state of rome to the fall of the western roman empire",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire",
-    "subject": "Animated map",
-    "verb": "of",
-    "object": "the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4-554",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gif\n roman|territorial|evolution from the rise of the city-state of rome to the fall of the western roman empire",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gif\n Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire",
-    "subject": "gif\n Roman",
-    "verb": "territorial",
-    "object": "evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4-554",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "although|the|halves were independent in practice",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Although the halves were independent in practice",
-    "subject": "Although",
-    "verb": "the",
-    "object": "halves were independent in practice",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#558-775",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Rome AD 476) Although the halves were independent in practice, the Romans continued to consider the Roman Empire to be a single undivided state with two co-equal emperors until the fall of the western half in 476/480."
-     }
-    ],
-    "seq": 5,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -255,7 +162,7 @@
     "verb": "continued",
     "object": "to consider the Roman Empire to be a single undivided state with two co-equal emperors until the fall of the western half in 476/480",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -264,42 +171,13 @@
       "text": "Rome AD 476) Although the halves were independent in practice, the Romans continued to consider the Roman Empire to be a single undivided state with two co-equal emperors until the fall of the western half in 476/480."
      }
     ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "although emperors|at|times governed from other cities (notably mediolanum and ravenna in the west and nicomedia in the east)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Although emperors at times governed from other cities (notably Mediolanum and Ravenna in the West and Nicomedia in the East)",
-    "subject": "Although emperors",
-    "verb": "at",
-    "object": "times governed from other cities (notably Mediolanum and Ravenna in the West and Nicomedia in the East)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#776-963",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Although emperors at times governed from other cities (notably Mediolanum and Ravenna in the West and Nicomedia in the East), Rome remained the de jure capital of the entire Roman Empire."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "rome remained|the|de jure capital of the entire roman empire",
+    "task_id": "rome|remained|the de jure capital of the entire roman empire",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -309,11 +187,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Rome remained the de jure capital of the entire Roman Empire",
-    "subject": "Rome remained",
-    "verb": "the",
-    "object": "de jure capital of the entire Roman Empire",
+    "subject": "Rome",
+    "verb": "remained",
+    "object": "the de jure capital of the entire Roman Empire",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -322,100 +200,13 @@
       "text": "Although emperors at times governed from other cities (notably Mediolanum and Ravenna in the West and Nicomedia in the East), Rome remained the de jure capital of the entire Roman Empire."
      }
     ],
-    "seq": 8,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "emperor constantine|the|greatconstantine i made constantinople a second and new capital of the empire (\"second rome\" or \"new rome\")",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Emperor Constantine the GreatConstantine I made Constantinople a second and new capital of the empire (\"Second Rome\" or \"New Rome\")",
-    "subject": "Emperor Constantine",
-    "verb": "the",
-    "object": "GreatConstantine I made Constantinople a second and new capital of the empire (\"Second Rome\" or \"New Rome\")",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#964-1104",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "In 330, Emperor Constantine the GreatConstantine I made Constantinople a second and new capital of the empire (\"Second Rome\" or \"New Rome\")."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "for|a|time",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "For a time",
-    "subject": "For",
-    "verb": "a",
-    "object": "time",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1105-1287",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "For a time, mostly over the course of the later decades of the fourth century, Rome continued to hold greater symbolic status on account of its greater antiquity as imperial capital."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mostly over|the|course of the later decades of the fourth century",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mostly over the course of the later decades of the fourth century",
-    "subject": "mostly over",
-    "verb": "the",
-    "object": "course of the later decades of the fourth century",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1105-1287",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "For a time, mostly over the course of the later decades of the fourth century, Rome continued to hold greater symbolic status on account of its greater antiquity as imperial capital."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "rome continued|to|hold greater symbolic status on account of its greater antiquity as imperial capital",
+    "task_id": "rome|continued|to hold greater symbolic status on account of its greater antiquity as imperial capital",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -425,11 +216,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Rome continued to hold greater symbolic status on account of its greater antiquity as imperial capital",
-    "subject": "Rome continued",
-    "verb": "to",
-    "object": "hold greater symbolic status on account of its greater antiquity as imperial capital",
+    "subject": "Rome",
+    "verb": "continued",
+    "object": "to hold greater symbolic status on account of its greater antiquity as imperial capital",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -438,13 +229,13 @@
       "text": "For a time, mostly over the course of the later decades of the fourth century, Rome continued to hold greater symbolic status on account of its greater antiquity as imperial capital."
      }
     ],
-    "seq": 12,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "from|at|least 361 onwards",
+    "task_id": "the byzantine|senatenew|senate in constantinople enjoyed the same status and privileges as senators of the roman senate",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -453,12 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "From at least 361 onwards",
-    "subject": "From",
-    "verb": "at",
-    "object": "least 361 onwards",
+    "description": "the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate",
+    "subject": "the Byzantine",
+    "verb": "senatenew",
+    "object": "senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -467,13 +258,13 @@
       "text": "From at least 361 onwards, senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate, to which the new senate was largely identical."
      }
     ],
-    "seq": 13,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "senators belonging|to|the byzantine senatenew senate in constantinople enjoyed the same status and privileges as senators of the roman senate",
+    "task_id": "new senate|was|largely identical",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -482,12 +273,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate",
-    "subject": "senators belonging",
-    "verb": "to",
-    "object": "the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate",
+    "description": "new senate was largely identical",
+    "subject": "new senate",
+    "verb": "was",
+    "object": "largely identical",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -496,36 +287,7 @@
       "text": "From at least 361 onwards, senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate, to which the new senate was largely identical."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "to which|the|new senate was largely identical",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "to which the new senate was largely identical",
-    "subject": "to which",
-    "verb": "the",
-    "object": "new senate was largely identical",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1288-1504",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "From at least 361 onwards, senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate, to which the new senate was largely identical."
-     }
-    ],
-    "seq": 15,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -545,7 +307,7 @@
     "verb": "was",
     "object": "much grander in size and adornment than Rome and unquestionably senior in status",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -554,7 +316,7 @@
       "text": "By 450, Constantinople was much grander in size and adornment than Rome and unquestionably senior in status.}}}} Constantinople Whether there was an interregnum at all is debatable given that the crusaders envisioned the Latin Empire to be the same empire as its predecessor (and not a new state).}}"
      }
     ],
-    "seq": 16,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -574,7 +336,7 @@
     "verb": "was",
     "object": "an interregnum at all is debatable given that the crusaders envisioned the Latin Empire to be the same empire as its predecessor (and not a new state)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -583,65 +345,7 @@
       "text": "By 450, Constantinople was much grander in size and adornment than Rome and unquestionably senior in status.}}}} Constantinople Whether there was an interregnum at all is debatable given that the crusaders envisioned the Latin Empire to be the same empire as its predecessor (and not a new state).}}"
      }
     ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "languages of|the|roman empireregional languages",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Languages of the Roman EmpireRegional languages",
-    "subject": "Languages of",
-    "verb": "the",
-    "object": "Roman EmpireRegional languages",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1811-1946",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Official: initially Latin, increasingly Greek languageGreek as well or instead Other: Languages of the Roman EmpireRegional languages"
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "classical era|to|late middle ages(timeline of roman historytimeline)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Classical era to Late Middle Ages(Timeline of Roman historyTimeline)",
-    "subject": "Classical era",
-    "verb": "to",
-    "object": "Late Middle Ages(Timeline of Roman historyTimeline)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2051-2188",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Autocracy Roman emperorTitlesEmperor (List of Roman emperorsList) Classical era to Late Middle Ages(Timeline of Roman historyTimeline)"
-     }
-    ],
-    "seq": 19,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -661,7 +365,7 @@
     "verb": "was",
     "object": "a state that dominated the Mediterranean SeaMediterranean and much of Europe",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -670,36 +374,7 @@
       "text": "The Roman Empire was a state that dominated the Mediterranean SeaMediterranean and much of Europe, Western Asia, and North Africa during the classical antiquityclassical period."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "north africa|during|the classical antiquityclassical period",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "North Africa during the classical antiquityclassical period",
-    "subject": "North Africa",
-    "verb": "during",
-    "object": "the classical antiquityclassical period",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2334-2511",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The Roman Empire was a state that dominated the Mediterranean SeaMediterranean and much of Europe, Western Asia, and North Africa during the classical antiquityclassical period."
-     }
-    ],
-    "seq": 21,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -719,7 +394,7 @@
     "verb": "had",
     "object": "previously conquered most of these territories",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -728,65 +403,7 @@
       "text": "The Roman Republic had previously conquered most of these territories, which later came under permanent single-person rule following Octavian's Rise of Augustusrise to power and the establishment of the PrincipateAugustan Principate in 27 BC."
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "octavian's rise|of|augustusrise to power and the establishment of the principateaugustan principate in 27 bc",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Octavian's Rise of Augustusrise to power and the establishment of the PrincipateAugustan Principate in 27 BC",
-    "subject": "Octavian's Rise",
-    "verb": "of",
-    "object": "Augustusrise to power and the establishment of the PrincipateAugustan Principate in 27 BC",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2512-2754",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The Roman Republic had previously conquered most of these territories, which later came under permanent single-person rule following Octavian's Rise of Augustusrise to power and the establishment of the PrincipateAugustan Principate in 27 BC."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "by|the|late 3rd century ad",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "By the late 3rd century AD",
-    "subject": "By",
-    "verb": "the",
-    "object": "late 3rd century AD",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2755-2822",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "By the late 3rd century AD, the empire had been divided many times."
-     }
-    ],
-    "seq": 24,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -806,7 +423,7 @@
     "verb": "had",
     "object": "been divided many times",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -815,13 +432,13 @@
       "text": "By the late 3rd century AD, the empire had been divided many times."
      }
     ],
-    "seq": 25,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the fall|of|the western roman empirewestern roman empire collapsed in 476 ad",
+    "task_id": "of rome|had|ancient romeexpanded its rule from the italian peninsula to most of the mediterranean and beyond",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -830,70 +447,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The Fall of the Western Roman EmpireWestern Roman Empire collapsed in 476 AD",
-    "subject": "The Fall",
-    "verb": "of",
-    "object": "the Western Roman EmpireWestern Roman Empire collapsed in 476 AD",
+    "description": "of Rome had Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond",
+    "subject": "of Rome",
+    "verb": "had",
+    "object": "Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2823-3038",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The Fall of the Western Roman EmpireWestern Roman Empire collapsed in 476 AD, whereas the Byzantine EmpireEastern Roman Empire (also known as the Byzantine Empire) persisted until the fall of Constantinople in 1453."
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "whereas|the|byzantine empireeastern roman empire (also known as the byzantine empire) persisted until the fall of constantinople in 1453",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "whereas the Byzantine EmpireEastern Roman Empire (also known as the Byzantine Empire) persisted until the fall of Constantinople in 1453",
-    "subject": "whereas",
-    "verb": "the",
-    "object": "Byzantine EmpireEastern Roman Empire (also known as the Byzantine Empire) persisted until the fall of Constantinople in 1453",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2823-3038",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The Fall of the Western Roman EmpireWestern Roman Empire collapsed in 476 AD, whereas the Byzantine EmpireEastern Roman Empire (also known as the Byzantine Empire) persisted until the fall of Constantinople in 1453."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the city|of|rome had ancient romeexpanded its rule from the italian peninsula to most of the mediterranean and beyond",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the city of Rome had Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond",
-    "subject": "the city",
-    "verb": "of",
-    "object": "Rome had Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -902,7 +461,7 @@
       "text": "By 100 BC, the city of Rome had Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond."
      }
     ],
-    "seq": 28,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -922,7 +481,7 @@
     "verb": "was",
     "object": "severely destabilised by List of Roman civil wars and revoltscivil wars and political conflicts",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -931,65 +490,7 @@
       "text": "However, it was severely destabilised by List of Roman civil wars and revoltscivil wars and political conflicts, which culminated in the War of Actiumvictory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC, and the subsequent conquest of the Ptolemaic Kingdom in Egypt."
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "which culminated|in|the war of actiumvictory of octavian over mark antony and cleopatra at the battle of actium in 31 bc",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "which culminated in the War of Actiumvictory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC",
-    "subject": "which culminated",
-    "verb": "in",
-    "object": "the War of Actiumvictory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3170-3467",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "However, it was severely destabilised by List of Roman civil wars and revoltscivil wars and political conflicts, which culminated in the War of Actiumvictory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC, and the subsequent conquest of the Ptolemaic Kingdom in Egypt."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|the|subsequent conquest of the ptolemaic kingdom in egypt",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the subsequent conquest of the Ptolemaic Kingdom in Egypt",
-    "subject": "and",
-    "verb": "the",
-    "object": "subsequent conquest of the Ptolemaic Kingdom in Egypt",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3170-3467",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "However, it was severely destabilised by List of Roman civil wars and revoltscivil wars and political conflicts, which culminated in the War of Actiumvictory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC, and the subsequent conquest of the Ptolemaic Kingdom in Egypt."
-     }
-    ],
-    "seq": 31,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1009,7 +510,7 @@
     "verb": "granted",
     "object": "Octavian overarching military power () and the new title of Augustus (title)Augustus",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1018,7 +519,7 @@
       "text": "In 27 BC, the Roman Senate granted Octavian overarching military power () and the new title of Augustus (title)Augustus, marking Constitutional reforms of Augustushis accession as the Reign of Augustusfirst Roman emperor."
      }
     ],
-    "seq": 32,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1038,7 +539,7 @@
     "verb": "reforms",
     "object": "of Augustushis accession as the Reign of Augustusfirst Roman emperor",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1047,7 +548,7 @@
       "text": "In 27 BC, the Roman Senate granted Octavian overarching military power () and the new title of Augustus (title)Augustus, marking Constitutional reforms of Augustushis accession as the Reign of Augustusfirst Roman emperor."
      }
     ],
-    "seq": 33,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1067,7 +568,7 @@
     "verb": "peopleroman",
     "object": "territories were organized into senatorial provinces",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1076,7 +577,7 @@
       "text": "The vast Roman peopleRoman territories were organized into senatorial provinces, governed by proconsuls who were appointed by lot annually, and Imperial provinceimperial provinces, which belonged to the emperor but were Legatus Augusti pro praetoregoverned by Legatuslegates."
      }
     ],
-    "seq": 34,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1096,7 +597,7 @@
     "verb": "imperial",
     "object": "provinceimperial provinces",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1105,71 +606,13 @@
       "text": "The vast Roman peopleRoman territories were organized into senatorial provinces, governed by proconsuls who were appointed by lot annually, and Imperial provinceimperial provinces, which belonged to the emperor but were Legatus Augusti pro praetoregoverned by Legatuslegates."
      }
     ],
-    "seq": 35,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "which belonged|to|the emperor but were legatus augusti pro praetoregoverned by legatuslegates",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "which belonged to the emperor but were Legatus Augusti pro praetoregoverned by Legatuslegates",
-    "subject": "which belonged",
-    "verb": "to",
-    "object": "the emperor but were Legatus Augusti pro praetoregoverned by Legatuslegates",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3690-3965",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The vast Roman peopleRoman territories were organized into senatorial provinces, governed by proconsuls who were appointed by lot annually, and Imperial provinceimperial provinces, which belonged to the emperor but were Legatus Augusti pro praetoregoverned by Legatuslegates."
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the history|of|the roman empirefirst two centuries of the empire saw unprecedented stability and prosperity known as the  ()",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The History of the Roman Empirefirst two centuries of the Empire saw unprecedented stability and prosperity known as the  ()",
-    "subject": "The History",
-    "verb": "of",
-    "object": "the Roman Empirefirst two centuries of the Empire saw unprecedented stability and prosperity known as the  ()",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3967-4092",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The History of the Roman Empirefirst two centuries of the Empire saw unprecedented stability and prosperity known as the ()."
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "rome reached|its|borders of the roman empiregreatest territorial extent under trajan ()",
+    "task_id": "rome|reached|its borders of the roman empiregreatest territorial extent under trajan ()",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1179,11 +622,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Rome reached its Borders of the Roman Empiregreatest territorial extent under Trajan ()",
-    "subject": "Rome reached",
-    "verb": "its",
-    "object": "Borders of the Roman Empiregreatest territorial extent under Trajan ()",
+    "subject": "Rome",
+    "verb": "reached",
+    "object": "its Borders of the Roman Empiregreatest territorial extent under Trajan ()",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1192,13 +635,13 @@
       "text": "Rome reached its Borders of the Roman Empiregreatest territorial extent under Trajan (), but increasing trouble and decline began under Commodus ()."
      }
     ],
-    "seq": 38,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "increasing trouble|and|decline began under commodus ()",
+    "task_id": "palmyrene empirepalmyrene|empires|broke away and a series of barracks emperorshort-lived emperors led the empire",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1207,128 +650,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "increasing trouble and decline began under Commodus ()",
-    "subject": "increasing trouble",
-    "verb": "and",
-    "object": "decline began under Commodus ()",
+    "description": "Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire",
+    "subject": "Palmyrene EmpirePalmyrene",
+    "verb": "empires",
+    "object": "broke away and a series of Barracks emperorshort-lived emperors led the Empire",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4093-4241",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Rome reached its Borders of the Roman Empiregreatest territorial extent under Trajan (), but increasing trouble and decline began under Commodus ()."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in|the|3rd century",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "In the 3rd century",
-    "subject": "In",
-    "verb": "the",
-    "object": "3rd century",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4242-4424",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "In the 3rd century, the Empire underwent a Crisis of the Third Century50-year crisis that threatened its existence due to civil war, Plague of Cyprianplagues and barbarian invasions."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "empire underwent|a|crisis of the third century50-year crisis that threatened its existence due to civil war",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Empire underwent a Crisis of the Third Century50-year crisis that threatened its existence due to civil war",
-    "subject": "Empire underwent",
-    "verb": "a",
-    "object": "Crisis of the Third Century50-year crisis that threatened its existence due to civil war",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4242-4424",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "In the 3rd century, the Empire underwent a Crisis of the Third Century50-year crisis that threatened its existence due to civil war, Plague of Cyprianplagues and barbarian invasions."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "plague|of|cyprianplagues and barbarian invasions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Plague of Cyprianplagues and barbarian invasions",
-    "subject": "Plague",
-    "verb": "of",
-    "object": "Cyprianplagues and barbarian invasions",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4242-4424",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "In the 3rd century, the Empire underwent a Crisis of the Third Century50-year crisis that threatened its existence due to civil war, Plague of Cyprianplagues and barbarian invasions."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gallic empiregallic|and|palmyrene empirepalmyrene empires broke away and a series of barracks emperorshort-lived emperors led the empire",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Gallic EmpireGallic and Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire",
-    "subject": "Gallic EmpireGallic",
-    "verb": "and",
-    "object": "Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1337,7 +664,7 @@
       "text": "The Gallic EmpireGallic and Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire, which was later reunified under Aurelian ()."
      }
     ],
-    "seq": 43,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -1357,7 +684,7 @@
     "verb": "was",
     "object": "later reunified under Aurelian ()",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1366,13 +693,13 @@
       "text": "The Gallic EmpireGallic and Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire, which was later reunified under Aurelian ()."
      }
     ],
-    "seq": 44,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the|civil|wars ended with the victory of diocletian ()",
+    "task_id": "two different|imperial|courts in the greek east and latin west",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1381,12 +708,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The civil wars ended with the victory of Diocletian ()",
-    "subject": "The",
-    "verb": "civil",
-    "object": "wars ended with the victory of Diocletian ()",
+    "description": "two different imperial courts in the Greek East and Latin West",
+    "subject": "two different",
+    "verb": "imperial",
+    "object": "courts in the Greek East and Latin West",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1395,65 +722,7 @@
       "text": "The civil wars ended with the victory of Diocletian (), who set up two different imperial courts in the Greek East and Latin West."
      }
     ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "set up|two|different imperial courts in the greek east and latin west",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "set up two different imperial courts in the Greek East and Latin West",
-    "subject": "set up",
-    "verb": "two",
-    "object": "different imperial courts in the Greek East and Latin West",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4612-4742",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The civil wars ended with the victory of Diocletian (), who set up two different imperial courts in the Greek East and Latin West."
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "constantine|the|great ()",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Constantine the Great ()",
-    "subject": "Constantine",
-    "verb": "the",
-    "object": "Great ()",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4743-4938",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Constantine the Great (), the first Constantine the Great and ChristianityChristian emperor, moved the imperial seat from Rome to Names of IstanbulByzantium in 330, and renamed it Constantinople."
-     }
-    ],
-    "seq": 47,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1473,7 +742,7 @@
     "verb": "imperial",
     "object": "seat from Rome to Names of IstanbulByzantium in 330",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1482,7 +751,7 @@
       "text": "Constantine the Great (), the first Constantine the Great and ChristianityChristian emperor, moved the imperial seat from Rome to Names of IstanbulByzantium in 330, and renamed it Constantinople."
      }
     ],
-    "seq": 48,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1502,7 +771,7 @@
     "verb": "contactslarge",
     "object": "invasions by Germanic peoples and the Huns",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1511,13 +780,13 @@
       "text": "The Migration Period, involving Germanic–Roman contactslarge invasions by Germanic peoples and the Huns, led to the decline of the Western Roman Empire."
      }
     ],
-    "seq": 49,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "led to|the|decline of the western roman empire",
+    "task_id": "of constantinoplethe|city's|fall in 1453",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1526,99 +795,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "led to the decline of the Western Roman Empire",
-    "subject": "led to",
-    "verb": "the",
-    "object": "decline of the Western Roman Empire",
+    "description": "of Constantinoplethe city's fall in 1453",
+    "subject": "of Constantinoplethe",
+    "verb": "city's",
+    "object": "fall in 1453",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4939-5091",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The Migration Period, involving Germanic–Roman contactslarge invasions by Germanic peoples and the Huns, led to the decline of the Western Roman Empire."
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with|the|battle of ravenna (476)fall of ravenna to the heruligermanic herulians and the deposition of romulus augustus in 476 by odoacer",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "With the Battle of Ravenna (476)fall of Ravenna to the HeruliGermanic Herulians and the deposition of Romulus Augustus in 476 by Odoacer",
-    "subject": "With",
-    "verb": "the",
-    "object": "Battle of Ravenna (476)fall of Ravenna to the HeruliGermanic Herulians and the deposition of Romulus Augustus in 476 by Odoacer",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5092-5267",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "With the Battle of Ravenna (476)fall of Ravenna to the HeruliGermanic Herulians and the deposition of Romulus Augustus in 476 by Odoacer, the Western Empire finally collapsed."
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "western empire|finally|collapsed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Western Empire finally collapsed",
-    "subject": "Western Empire",
-    "verb": "finally",
-    "object": "collapsed",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5092-5267",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "With the Battle of Ravenna (476)fall of Ravenna to the HeruliGermanic Herulians and the deposition of Romulus Augustus in 476 by Odoacer, the Western Empire finally collapsed."
-     }
-    ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with constantinople|as|its centres of governance in the roman empiresole capital",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "with Constantinople as its Centres of governance in the Roman Empiresole capital",
-    "subject": "with Constantinople",
-    "verb": "as",
-    "object": "its Centres of governance in the Roman Empiresole capital",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1627,13 +809,13 @@
       "text": "The Eastern Roman EmpireByzantine (Eastern Roman) Empire survived for another millennium with Constantinople as its Centres of governance in the Roman Empiresole capital, until Fall of Constantinoplethe city's fall in 1453.)."
      }
     ],
-    "seq": 53,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "until fall|of|constantinoplethe city's fall in 1453",
+    "task_id": "and culture|had|legacy of the roman empirea lasting influence on the development of history of latinlanguage",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1642,70 +824,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "until Fall of Constantinoplethe city's fall in 1453",
-    "subject": "until Fall",
-    "verb": "of",
-    "object": "Constantinoplethe city's fall in 1453",
+    "description": "and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage",
+    "subject": "and culture",
+    "verb": "had",
+    "object": "legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5268-5493",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The Eastern Roman EmpireByzantine (Eastern Roman) Empire survived for another millennium with Constantinople as its Centres of governance in the Roman Empiresole capital, until Fall of Constantinoplethe city's fall in 1453.)."
-     }
-    ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "argued that|a|\"roman\" empire survived until the early 20th century",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "argued that a \"Roman\" Empire survived until the early 20th century",
-    "subject": "argued that",
-    "verb": "a",
-    "object": "\"Roman\" Empire survived until the early 20th century",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5494-5590",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "In this sense, it could be argued that a \"Roman\" Empire survived until the early 20th century.}}"
-     }
-    ],
-    "seq": 55,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "due to|the|empire's extent and endurance",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Due to the Empire's extent and endurance",
-    "subject": "Due to",
-    "verb": "the",
-    "object": "Empire's extent and endurance",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1714,65 +838,7 @@
       "text": "Due to the Empire's extent and endurance, its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage, religion in ancient Romereligion, Roman artart, Ancient Roman architecturearchitecture, Latin literatureliterature, Ancient Roman philosophyphilosophy, Roman lawlaw, and Roman magistrateforms of government across its territories."
      }
     ],
-    "seq": 56,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "its institutions|and|culture had legacy of the roman empirea lasting influence on the development of history of latinlanguage",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage",
-    "subject": "its institutions",
-    "verb": "and",
-    "object": "culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5592-5990",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Due to the Empire's extent and endurance, its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage, religion in ancient Romereligion, Roman artart, Ancient Roman architecturearchitecture, Latin literatureliterature, Ancient Roman philosophyphilosophy, Roman lawlaw, and Roman magistrateforms of government across its territories."
-     }
-    ],
-    "seq": 57,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "religion|in|ancient romereligion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "religion in ancient Romereligion",
-    "subject": "religion",
-    "verb": "in",
-    "object": "ancient Romereligion",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5592-5990",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Due to the Empire's extent and endurance, its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage, religion in ancient Romereligion, Roman artart, Ancient Roman architecturearchitecture, Latin literatureliterature, Ancient Roman philosophyphilosophy, Roman lawlaw, and Roman magistrateforms of government across its territories."
-     }
-    ],
-    "seq": 58,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1792,7 +858,7 @@
     "verb": "magistrateforms",
     "object": "of government across its territories",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1801,13 +867,13 @@
       "text": "Due to the Empire's extent and endurance, its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage, religion in ancient Romereligion, Roman artart, Ancient Roman architecturearchitecture, Latin literatureliterature, Ancient Roman philosophyphilosophy, Roman lawlaw, and Roman magistrateforms of government across its territories."
      }
     ],
-    "seq": 59,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the rediscovery|of|science in classical antiquityclassical science and ancient roman technologytechnology (which formed the basis for science in the medieval islamic worldislamic science) in medieval europe contributed to the science in the renaissancescientific renaissance and scientific revolution",
+    "task_id": "ancient roman|technologytechnology|(which formed the basis for science in the medieval islamic worldislamic science) in medieval europe contributed to the science in the renaissancescientific renaissance and scientific revolution",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1816,12 +882,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The rediscovery of Science in classical antiquityclassical science and Ancient Roman technologytechnology (which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution",
-    "subject": "The rediscovery",
-    "verb": "of",
-    "object": "Science in classical antiquityclassical science and Ancient Roman technologytechnology (which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution",
+    "description": "Ancient Roman technologytechnology (which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution",
+    "subject": "Ancient Roman",
+    "verb": "technologytechnology",
+    "object": "(which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1830,13 +896,13 @@
       "text": "The rediscovery of Science in classical antiquityclassical science and Ancient Roman technologytechnology (which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution."
      }
     ],
-    "seq": 60,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "have influenced|the|maritime republicsitalian city-state republics of the medieval period",
+    "task_id": "the maritime|republicsitalian|city-state republics of the medieval period",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1845,12 +911,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "have influenced the Maritime republicsItalian city-state republics of the medieval period",
-    "subject": "have influenced",
-    "verb": "the",
-    "object": "Maritime republicsItalian city-state republics of the medieval period",
+    "description": "the Maritime republicsitalian city-state republics of the medieval period",
+    "subject": "the Maritime",
+    "verb": "republicsitalian",
+    "object": "city-state republics of the medieval period",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1859,65 +925,7 @@
       "text": "Rome's republican institutions have influenced the Maritime republicsItalian city-state republics of the medieval period, the early United States, and modern democratic republics."
      }
     ],
-    "seq": 61,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "until the|fall|of its last remnant (the byzantine empire) in 1453]]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "until the fall of its last remnant (the Byzantine Empire) in 1453]]",
-    "subject": "until the",
-    "verb": "fall",
-    "object": "of its last remnant (the Byzantine Empire) in 1453]]",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6484-6551",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "until the fall of its last remnant (the Byzantine Empire) in 1453]]"
-     }
-    ],
-    "seq": 62,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from republic|to|empire",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "from Republic to Empire",
-    "subject": "from Republic",
-    "verb": "to",
-    "object": "Empire",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6553-6587",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Transition from Republic to Empire"
-     }
-    ],
-    "seq": 63,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -1937,7 +945,7 @@
     "verb": "had",
     "object": "begun expanding shortly after the founding of the Roman Republic in the 6th century BC",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1946,36 +954,7 @@
       "text": "'']] Rome had begun expanding shortly after the founding of the Roman Republic in the 6th century BC, though not outside the Italian Peninsula until the 3rd century BC."
      }
     ],
-    "seq": 64,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not outside|the|italian peninsula until the 3rd century bc",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not outside the Italian Peninsula until the 3rd century BC",
-    "subject": "not outside",
-    "verb": "the",
-    "object": "Italian Peninsula until the 3rd century BC",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6589-6757",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "'']] Rome had begun expanding shortly after the founding of the Roman Republic in the 6th century BC, though not outside the Italian Peninsula until the 3rd century BC."
-     }
-    ],
-    "seq": 65,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1995,7 +974,7 @@
     "verb": "was",
     "object": "not a nation-state in the modern sense",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2004,36 +983,7 @@
       "text": "The Republic was not a nation-state in the modern sense, but a network of self-ruled towns (with varying degrees of independence from the Roman SenateSenate) and provinces administered by military commanders."
      }
     ],
-    "seq": 66,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but|a|network of self-ruled towns (with varying degrees of independence from the roman senatesenate) and provinces administered by military commanders",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "but a network of self-ruled towns (with varying degrees of independence from the Roman SenateSenate) and provinces administered by military commanders",
-    "subject": "but",
-    "verb": "a",
-    "object": "network of self-ruled towns (with varying degrees of independence from the Roman SenateSenate) and provinces administered by military commanders",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6758-6966",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The Republic was not a nation-state in the modern sense, but a network of self-ruled towns (with varying degrees of independence from the Roman SenateSenate) and provinces administered by military commanders."
-     }
-    ],
-    "seq": 67,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -2053,7 +1003,7 @@
     "verb": "was",
     "object": "governed by annually elected Roman magistratemagistrates (Roman consuls above all) in conjunction with the Senate",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2062,7 +1012,7 @@
       "text": "It was governed by annually elected Roman magistratemagistrates (Roman consuls above all) in conjunction with the Senate."
      }
     ],
-    "seq": 68,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -2082,7 +1032,7 @@
     "verb": "was",
     "object": "a time of political and military upheaval",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2091,94 +1041,7 @@
       "text": "The 1st century BC was a time of political and military upheaval, which ultimately led to rule by emperors.; The consuls' military power rested in the Roman legal concept of imperium, meaning \"command\" (typically in a military sense)."
      }
     ],
-    "seq": 69,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ultimately led|to|rule by emperors",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ultimately led to rule by emperors",
-    "subject": "ultimately led",
-    "verb": "to",
-    "object": "rule by emperors",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7089-7324",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The 1st century BC was a time of political and military upheaval, which ultimately led to rule by emperors.; The consuls' military power rested in the Roman legal concept of imperium, meaning \"command\" (typically in a military sense)."
-     }
-    ],
-    "seq": 70,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "power rested|in|the roman legal concept of imperium",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "power rested in the Roman legal concept of imperium",
-    "subject": "power rested",
-    "verb": "in",
-    "object": "the Roman legal concept of imperium",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7089-7324",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The 1st century BC was a time of political and military upheaval, which ultimately led to rule by emperors.; The consuls' military power rested in the Roman legal concept of imperium, meaning \"command\" (typically in a military sense)."
-     }
-    ],
-    "seq": 71,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "typically in|a|military sense)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "typically in a military sense)",
-    "subject": "typically in",
-    "verb": "a",
-    "object": "military sense)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7089-7324",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "The 1st century BC was a time of political and military upheaval, which ultimately led to rule by emperors.; The consuls' military power rested in the Roman legal concept of imperium, meaning \"command\" (typically in a military sense)."
-     }
-    ],
-    "seq": 72,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
@@ -2198,7 +1061,7 @@
     "verb": "consuls",
     "object": "or generals were given the honorary title imperator (commander)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2207,36 +1070,7 @@
       "text": "Occasionally, successful consuls or generals were given the honorary title imperator (commander); this is the origin of the word emperor, since this title was always bestowed to the early emperors."
      }
     ],
-    "seq": 73,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "this is|the|origin of the word emperor",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "this is the origin of the word emperor",
-    "subject": "this is",
-    "verb": "the",
-    "object": "origin of the word emperor",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7325-7522",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Occasionally, successful consuls or generals were given the honorary title imperator (commander); this is the origin of the word emperor, since this title was always bestowed to the early emperors."
-     }
-    ],
-    "seq": 74,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -2256,7 +1090,7 @@
     "verb": "was",
     "object": "always bestowed to the early emperors",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2265,13 +1099,13 @@
       "text": "Occasionally, successful consuls or generals were given the honorary title imperator (commander); this is the origin of the word emperor, since this title was always bestowed to the early emperors."
      }
     ],
-    "seq": 75,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "caesar|and|augustus (title)augustus evolved into formal titles",
+    "task_id": "augustus|evolved|into formal titles",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2280,12 +1114,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Caesar and Augustus (title)Augustus evolved into formal titles",
-    "subject": "Caesar",
-    "verb": "and",
-    "object": "Augustus (title)Augustus evolved into formal titles",
+    "description": "Augustus evolved into formal titles",
+    "subject": "Augustus",
+    "verb": "evolved",
+    "object": "into formal titles",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2294,42 +1128,13 @@
       "text": "Both Caesar (title)Caesar and Augustus (title)Augustus evolved into formal titles, the former denoting the heir and the latter the monarch."
      }
     ],
-    "seq": 76,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "former denoting|the|heir and the latter the monarch",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "former denoting the heir and the latter the monarch",
-    "subject": "former denoting",
-    "verb": "the",
-    "object": "heir and the latter the monarch",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7523-7662",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Both Caesar (title)Caesar and Augustus (title)Augustus evolved into formal titles, the former denoting the heir and the latter the monarch."
-     }
-    ],
-    "seq": 77,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "caesar became|the|origin of the word \"emperor\"",
+    "task_id": "caesar|became|the origin of the word \"emperor\"",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2339,11 +1144,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Caesar became the origin of the word \"emperor\"",
-    "subject": "Caesar became",
-    "verb": "the",
-    "object": "origin of the word \"emperor\"",
+    "subject": "Caesar",
+    "verb": "became",
+    "object": "the origin of the word \"emperor\"",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2352,42 +1157,13 @@
       "text": "In some languages, Caesar became the origin of the word \"emperor\", such as in German (Kaiser) and some Slavic languages (Tsar).}}"
      }
     ],
-    "seq": 78,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "such as|in|german (kaiser) and some slavic languages (tsar)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "such as in German (Kaiser) and some Slavic languages (Tsar)",
-    "subject": "such as",
-    "verb": "in",
-    "object": "German (Kaiser) and some Slavic languages (Tsar)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7663-7792",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "In some languages, Caesar became the origin of the word \"emperor\", such as in German (Kaiser) and some Slavic languages (Tsar).}}"
-     }
-    ],
-    "seq": 79,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "rome suffered|a|long series of internal conflicts",
+    "task_id": "rome|suffered|a long series of internal conflicts",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2397,11 +1173,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Rome suffered a long series of internal conflicts",
-    "subject": "Rome suffered",
-    "verb": "a",
-    "object": "long series of internal conflicts",
+    "subject": "Rome",
+    "verb": "suffered",
+    "object": "a long series of internal conflicts",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2410,70 +1186,12 @@
       "text": "Rome suffered a long series of internal conflicts, conspiracies, and Roman civil warscivil wars from the late second century BC, (see Crisis of the Roman Republic) while greatly extending its power beyond I"
      }
     ],
-    "seq": 80,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and roman|civil|warscivil wars from the late second century bc",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and Roman civil warscivil wars from the late second century BC",
-    "subject": "and Roman",
-    "verb": "civil",
-    "object": "warscivil wars from the late second century BC",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7794-8000",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Rome suffered a long series of internal conflicts, conspiracies, and Roman civil warscivil wars from the late second century BC, (see Crisis of the Roman Republic) while greatly extending its power beyond I"
-     }
-    ],
-    "seq": 81,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "see crisis|of|the roman republic) while greatly extending its power beyond i",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "see Crisis of the Roman Republic) while greatly extending its power beyond I",
-    "subject": "see Crisis",
-    "verb": "of",
-    "object": "the Roman Republic) while greatly extending its power beyond I",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7794-8000",
-      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-      "text": "Rome suffered a long series of internal conflicts, conspiracies, and Roman civil warscivil wars from the late second century BC, (see Crisis of the Roman Republic) while greatly extending its power beyond I"
-     }
-    ],
-    "seq": 82,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 83,
+  "nextSeq": 38,
   "admits": [
    "NUL",
    "SEG",
@@ -2488,50 +1206,34 @@
  },
  "folded": [
   {
-   "id": "although emperors|at|times governed from other cities (notably mediolanum and ravenna in the west and nicomedia in the east)",
-   "subject": "Although emperors",
-   "verb": "at",
-   "object": "times governed from other cities (notably Mediolanum and Ravenna in the West and Nicomedia in the East)",
+   "id": "ancient roman|technologytechnology|(which formed the basis for science in the medieval islamic worldislamic science) in medieval europe contributed to the science in the renaissancescientific renaissance and scientific revolution",
+   "subject": "Ancient Roman",
+   "verb": "technologytechnology",
+   "object": "(which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#776-963",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5991-6292",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Although emperors at times governed from other cities (notably Mediolanum and Ravenna in the West and Nicomedia in the East), Rome remained the de jure capital of the entire Roman Empire."
+     "text": "The rediscovery of Science in classical antiquityclassical science and Ancient Roman technologytechnology (which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution."
     }
    ]
   },
   {
-   "id": "although|the|halves were independent in practice",
-   "subject": "Although",
-   "verb": "the",
-   "object": "halves were independent in practice",
+   "id": "and culture|had|legacy of the roman empirea lasting influence on the development of history of latinlanguage",
+   "subject": "and culture",
+   "verb": "had",
+   "object": "legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#558-775",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5592-5990",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Rome AD 476) Although the halves were independent in practice, the Romans continued to consider the Roman Empire to be a single undivided state with two co-equal emperors until the fall of the western half in 476/480."
-    }
-   ]
-  },
-  {
-   "id": "and roman|civil|warscivil wars from the late second century bc",
-   "subject": "and Roman",
-   "verb": "civil",
-   "object": "warscivil wars from the late second century BC",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7794-8000",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Rome suffered a long series of internal conflicts, conspiracies, and Roman civil warscivil wars from the late second century BC, (see Crisis of the Roman Republic) while greatly extending its power beyond I"
+     "text": "Due to the Empire's extent and endurance, its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage, religion in ancient Romereligion, Roman artart, Ancient Roman architecturearchitecture, Latin literatureliterature, Ancient Roman philosophyphilosophy, Roman lawlaw, and Roman magistrateforms of government across its territories."
     }
    ]
   },
@@ -2541,7 +1243,7 @@
    "verb": "magistrateforms",
    "object": "of government across its territories",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2557,7 +1259,7 @@
    "verb": "imperial",
    "object": "provinceimperial provinces",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2568,108 +1270,28 @@
    ]
   },
   {
-   "id": "and|the|subsequent conquest of the ptolemaic kingdom in egypt",
-   "subject": "and",
-   "verb": "the",
-   "object": "subsequent conquest of the Ptolemaic Kingdom in Egypt",
+   "id": "augustus|evolved|into formal titles",
+   "subject": "Augustus",
+   "verb": "evolved",
+   "object": "into formal titles",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3170-3467",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7523-7662",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "However, it was severely destabilised by List of Roman civil wars and revoltscivil wars and political conflicts, which culminated in the War of Actiumvictory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC, and the subsequent conquest of the Ptolemaic Kingdom in Egypt."
+     "text": "Both Caesar (title)Caesar and Augustus (title)Augustus evolved into formal titles, the former denoting the heir and the latter the monarch."
     }
    ]
   },
   {
-   "id": "animated map|of|the roman territorial evolution from the rise of the city-state of rome to the fall of the western roman empire",
-   "subject": "Animated map",
-   "verb": "of",
-   "object": "the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire",
+   "id": "caesar|became|the origin of the word \"emperor\"",
+   "subject": "Caesar",
+   "verb": "became",
+   "object": "the origin of the word \"emperor\"",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4-554",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
-    }
-   ]
-  },
-  {
-   "id": "argued that|a|\"roman\" empire survived until the early 20th century",
-   "subject": "argued that",
-   "verb": "a",
-   "object": "\"Roman\" Empire survived until the early 20th century",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5494-5590",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "In this sense, it could be argued that a \"Roman\" Empire survived until the early 20th century.}}"
-    }
-   ]
-  },
-  {
-   "id": "as|the|empire continued to be seen as a single state even after the supposed \"split\" of 395",
-   "subject": "as",
-   "verb": "the",
-   "object": "Empire continued to be seen as a single state even after the supposed \"split\" of 395",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4-554",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
-    }
-   ]
-  },
-  {
-   "id": "but|a|network of self-ruled towns (with varying degrees of independence from the roman senatesenate) and provinces administered by military commanders",
-   "subject": "but",
-   "verb": "a",
-   "object": "network of self-ruled towns (with varying degrees of independence from the Roman SenateSenate) and provinces administered by military commanders",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6758-6966",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Republic was not a nation-state in the modern sense, but a network of self-ruled towns (with varying degrees of independence from the Roman SenateSenate) and provinces administered by military commanders."
-    }
-   ]
-  },
-  {
-   "id": "by|the|late 3rd century ad",
-   "subject": "By",
-   "verb": "the",
-   "object": "late 3rd century AD",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2755-2822",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "By the late 3rd century AD, the empire had been divided many times."
-    }
-   ]
-  },
-  {
-   "id": "caesar became|the|origin of the word \"emperor\"",
-   "subject": "Caesar became",
-   "verb": "the",
-   "object": "origin of the word \"emperor\"",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2680,28 +1302,12 @@
    ]
   },
   {
-   "id": "caesar|and|augustus (title)augustus evolved into formal titles",
-   "subject": "Caesar",
-   "verb": "and",
-   "object": "Augustus (title)Augustus evolved into formal titles",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7523-7662",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Both Caesar (title)Caesar and Augustus (title)Augustus evolved into formal titles, the former denoting the heir and the latter the monarch."
-    }
-   ]
-  },
-  {
    "id": "century bc|was|a time of political and military upheaval",
    "subject": "century BC",
    "verb": "was",
    "object": "a time of political and military upheaval",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2712,44 +1318,12 @@
    ]
   },
   {
-   "id": "classical era|to|late middle ages(timeline of roman historytimeline)",
-   "subject": "Classical era",
-   "verb": "to",
-   "object": "Late Middle Ages(Timeline of Roman historyTimeline)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2051-2188",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Autocracy Roman emperorTitlesEmperor (List of Roman emperorsList) Classical era to Late Middle Ages(Timeline of Roman historyTimeline)"
-    }
-   ]
-  },
-  {
-   "id": "constantine|the|great ()",
-   "subject": "Constantine",
-   "verb": "the",
-   "object": "Great ()",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4743-4938",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Constantine the Great (), the first Constantine the Great and ChristianityChristian emperor, moved the imperial seat from Rome to Names of IstanbulByzantium in 330, and renamed it Constantinople."
-    }
-   ]
-  },
-  {
    "id": "constantinople|was|much grander in size and adornment than rome and unquestionably senior in status",
    "subject": "Constantinople",
    "verb": "was",
    "object": "much grander in size and adornment than Rome and unquestionably senior in status",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2760,204 +1334,12 @@
    ]
   },
   {
-   "id": "due to|the|empire's extent and endurance",
-   "subject": "Due to",
-   "verb": "the",
-   "object": "Empire's extent and endurance",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5592-5990",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Due to the Empire's extent and endurance, its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage, religion in ancient Romereligion, Roman artart, Ancient Roman architecturearchitecture, Latin literatureliterature, Ancient Roman philosophyphilosophy, Roman lawlaw, and Roman magistrateforms of government across its territories."
-    }
-   ]
-  },
-  {
-   "id": "emperor constantine|the|greatconstantine i made constantinople a second and new capital of the empire (\"second rome\" or \"new rome\")",
-   "subject": "Emperor Constantine",
-   "verb": "the",
-   "object": "GreatConstantine I made Constantinople a second and new capital of the empire (\"Second Rome\" or \"New Rome\")",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#964-1104",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "In 330, Emperor Constantine the GreatConstantine I made Constantinople a second and new capital of the empire (\"Second Rome\" or \"New Rome\")."
-    }
-   ]
-  },
-  {
-   "id": "empire underwent|a|crisis of the third century50-year crisis that threatened its existence due to civil war",
-   "subject": "Empire underwent",
-   "verb": "a",
-   "object": "Crisis of the Third Century50-year crisis that threatened its existence due to civil war",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4242-4424",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "In the 3rd century, the Empire underwent a Crisis of the Third Century50-year crisis that threatened its existence due to civil war, Plague of Cyprianplagues and barbarian invasions."
-    }
-   ]
-  },
-  {
-   "id": "for|a|time",
-   "subject": "For",
-   "verb": "a",
-   "object": "time",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1105-1287",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "For a time, mostly over the course of the later decades of the fourth century, Rome continued to hold greater symbolic status on account of its greater antiquity as imperial capital."
-    }
-   ]
-  },
-  {
-   "id": "former denoting|the|heir and the latter the monarch",
-   "subject": "former denoting",
-   "verb": "the",
-   "object": "heir and the latter the monarch",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7523-7662",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Both Caesar (title)Caesar and Augustus (title)Augustus evolved into formal titles, the former denoting the heir and the latter the monarch."
-    }
-   ]
-  },
-  {
-   "id": "from republic|to|empire",
-   "subject": "from Republic",
-   "verb": "to",
-   "object": "Empire",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6553-6587",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Transition from Republic to Empire"
-    }
-   ]
-  },
-  {
-   "id": "from|at|least 361 onwards",
-   "subject": "From",
-   "verb": "at",
-   "object": "least 361 onwards",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1288-1504",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "From at least 361 onwards, senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate, to which the new senate was largely identical."
-    }
-   ]
-  },
-  {
-   "id": "gallic empiregallic|and|palmyrene empirepalmyrene empires broke away and a series of barracks emperorshort-lived emperors led the empire",
-   "subject": "Gallic EmpireGallic",
-   "verb": "and",
-   "object": "Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4425-4611",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Gallic EmpireGallic and Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire, which was later reunified under Aurelian ()."
-    }
-   ]
-  },
-  {
-   "id": "gif\n roman|territorial|evolution from the rise of the city-state of rome to the fall of the western roman empire",
-   "subject": "gif\n Roman",
-   "verb": "territorial",
-   "object": "evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4-554",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
-    }
-   ]
-  },
-  {
-   "id": "have influenced|the|maritime republicsitalian city-state republics of the medieval period",
-   "subject": "have influenced",
-   "verb": "the",
-   "object": "Maritime republicsItalian city-state republics of the medieval period",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6293-6472",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Rome's republican institutions have influenced the Maritime republicsItalian city-state republics of the medieval period, the early United States, and modern democratic republics."
-    }
-   ]
-  },
-  {
-   "id": "in|the|3rd century",
-   "subject": "In",
-   "verb": "the",
-   "object": "3rd century",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4242-4424",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "In the 3rd century, the Empire underwent a Crisis of the Third Century50-year crisis that threatened its existence due to civil war, Plague of Cyprianplagues and barbarian invasions."
-    }
-   ]
-  },
-  {
-   "id": "increasing trouble|and|decline began under commodus ()",
-   "subject": "increasing trouble",
-   "verb": "and",
-   "object": "decline began under Commodus ()",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4093-4241",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Rome reached its Borders of the Roman Empiregreatest territorial extent under Trajan (), but increasing trouble and decline began under Commodus ()."
-    }
-   ]
-  },
-  {
    "id": "it|was|governed by annually elected roman magistratemagistrates (roman consuls above all) in conjunction with the senate",
    "subject": "It",
    "verb": "was",
    "object": "governed by annually elected Roman magistratemagistrates (Roman consuls above all) in conjunction with the Senate",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2973,7 +1355,7 @@
    "verb": "was",
    "object": "severely destabilised by List of Roman civil wars and revoltscivil wars and political conflicts",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2984,60 +1366,12 @@
    ]
   },
   {
-   "id": "its institutions|and|culture had legacy of the roman empirea lasting influence on the development of history of latinlanguage",
-   "subject": "its institutions",
-   "verb": "and",
-   "object": "culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5592-5990",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Due to the Empire's extent and endurance, its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage, religion in ancient Romereligion, Roman artart, Ancient Roman architecturearchitecture, Latin literatureliterature, Ancient Roman philosophyphilosophy, Roman lawlaw, and Roman magistrateforms of government across its territories."
-    }
-   ]
-  },
-  {
-   "id": "languages of|the|roman empireregional languages",
-   "subject": "Languages of",
-   "verb": "the",
-   "object": "Roman EmpireRegional languages",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1811-1946",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Official: initially Latin, increasingly Greek languageGreek as well or instead Other: Languages of the Roman EmpireRegional languages"
-    }
-   ]
-  },
-  {
-   "id": "led to|the|decline of the western roman empire",
-   "subject": "led to",
-   "verb": "the",
-   "object": "decline of the Western Roman Empire",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4939-5091",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Migration Period, involving Germanic–Roman contactslarge invasions by Germanic peoples and the Huns, led to the decline of the Western Roman Empire."
-    }
-   ]
-  },
-  {
    "id": "marking constitutional|reforms|of augustushis accession as the reign of augustusfirst roman emperor",
    "subject": "marking Constitutional",
    "verb": "reforms",
    "object": "of Augustushis accession as the Reign of Augustusfirst Roman emperor",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3048,28 +1382,12 @@
    ]
   },
   {
-   "id": "mostly over|the|course of the later decades of the fourth century",
-   "subject": "mostly over",
-   "verb": "the",
-   "object": "course of the later decades of the fourth century",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1105-1287",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "For a time, mostly over the course of the later decades of the fourth century, Rome continued to hold greater symbolic status on account of its greater antiquity as imperial capital."
-    }
-   ]
-  },
-  {
    "id": "moved the|imperial|seat from rome to names of istanbulbyzantium in 330",
    "subject": "moved the",
    "verb": "imperial",
    "object": "seat from Rome to Names of IstanbulByzantium in 330",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3080,98 +1398,66 @@
    ]
   },
   {
-   "id": "north africa|during|the classical antiquityclassical period",
-   "subject": "North Africa",
-   "verb": "during",
-   "object": "the classical antiquityclassical period",
+   "id": "new senate|was|largely identical",
+   "subject": "new senate",
+   "verb": "was",
+   "object": "largely identical",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2334-2511",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1288-1504",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Roman Empire was a state that dominated the Mediterranean SeaMediterranean and much of Europe, Western Asia, and North Africa during the classical antiquityclassical period."
+     "text": "From at least 361 onwards, senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate, to which the new senate was largely identical."
     }
    ]
   },
   {
-   "id": "not outside|the|italian peninsula until the 3rd century bc",
-   "subject": "not outside",
-   "verb": "the",
-   "object": "Italian Peninsula until the 3rd century BC",
+   "id": "of constantinoplethe|city's|fall in 1453",
+   "subject": "of Constantinoplethe",
+   "verb": "city's",
+   "object": "fall in 1453",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6589-6757",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5268-5493",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "'']] Rome had begun expanding shortly after the founding of the Roman Republic in the 6th century BC, though not outside the Italian Peninsula until the 3rd century BC."
+     "text": "The Eastern Roman EmpireByzantine (Eastern Roman) Empire survived for another millennium with Constantinople as its Centres of governance in the Roman Empiresole capital, until Fall of Constantinoplethe city's fall in 1453.)."
     }
    ]
   },
   {
-   "id": "octavian's rise|of|augustusrise to power and the establishment of the principateaugustan principate in 27 bc",
-   "subject": "Octavian's Rise",
-   "verb": "of",
-   "object": "Augustusrise to power and the establishment of the PrincipateAugustan Principate in 27 BC",
+   "id": "of rome|had|ancient romeexpanded its rule from the italian peninsula to most of the mediterranean and beyond",
+   "subject": "of Rome",
+   "verb": "had",
+   "object": "Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2512-2754",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3040-3169",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Roman Republic had previously conquered most of these territories, which later came under permanent single-person rule following Octavian's Rise of Augustusrise to power and the establishment of the PrincipateAugustan Principate in 27 BC."
+     "text": "By 100 BC, the city of Rome had Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond."
     }
    ]
   },
   {
-   "id": "plague|of|cyprianplagues and barbarian invasions",
-   "subject": "Plague",
-   "verb": "of",
-   "object": "Cyprianplagues and barbarian invasions",
+   "id": "palmyrene empirepalmyrene|empires|broke away and a series of barracks emperorshort-lived emperors led the empire",
+   "subject": "Palmyrene EmpirePalmyrene",
+   "verb": "empires",
+   "object": "broke away and a series of Barracks emperorshort-lived emperors led the Empire",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4242-4424",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4425-4611",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "In the 3rd century, the Empire underwent a Crisis of the Third Century50-year crisis that threatened its existence due to civil war, Plague of Cyprianplagues and barbarian invasions."
-    }
-   ]
-  },
-  {
-   "id": "power rested|in|the roman legal concept of imperium",
-   "subject": "power rested",
-   "verb": "in",
-   "object": "the Roman legal concept of imperium",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7089-7324",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The 1st century BC was a time of political and military upheaval, which ultimately led to rule by emperors.; The consuls' military power rested in the Roman legal concept of imperium, meaning \"command\" (typically in a military sense)."
-    }
-   ]
-  },
-  {
-   "id": "religion|in|ancient romereligion",
-   "subject": "religion",
-   "verb": "in",
-   "object": "ancient Romereligion",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5592-5990",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Due to the Empire's extent and endurance, its institutions and culture had legacy of the Roman Empirea lasting influence on the development of history of Latinlanguage, religion in ancient Romereligion, Roman artart, Ancient Roman architecturearchitecture, Latin literatureliterature, Ancient Roman philosophyphilosophy, Roman lawlaw, and Roman magistrateforms of government across its territories."
+     "text": "The Gallic EmpireGallic and Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire, which was later reunified under Aurelian ()."
     }
    ]
   },
@@ -3181,7 +1467,7 @@
    "verb": "was",
    "object": "a state that dominated the Mediterranean SeaMediterranean and much of Europe",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3197,7 +1483,7 @@
    "verb": "had",
    "object": "previously conquered most of these territories",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3213,7 +1499,7 @@
    "verb": "granted",
    "object": "Octavian overarching military power () and the new title of Augustus (title)Augustus",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3229,7 +1515,7 @@
    "verb": "contactslarge",
    "object": "invasions by Germanic peoples and the Huns",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3240,12 +1526,12 @@
    ]
   },
   {
-   "id": "rome continued|to|hold greater symbolic status on account of its greater antiquity as imperial capital",
-   "subject": "Rome continued",
-   "verb": "to",
-   "object": "hold greater symbolic status on account of its greater antiquity as imperial capital",
+   "id": "rome|continued|to hold greater symbolic status on account of its greater antiquity as imperial capital",
+   "subject": "Rome",
+   "verb": "continued",
+   "object": "to hold greater symbolic status on account of its greater antiquity as imperial capital",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3256,60 +1542,12 @@
    ]
   },
   {
-   "id": "rome reached|its|borders of the roman empiregreatest territorial extent under trajan ()",
-   "subject": "Rome reached",
-   "verb": "its",
-   "object": "Borders of the Roman Empiregreatest territorial extent under Trajan ()",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4093-4241",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Rome reached its Borders of the Roman Empiregreatest territorial extent under Trajan (), but increasing trouble and decline began under Commodus ()."
-    }
-   ]
-  },
-  {
-   "id": "rome remained|the|de jure capital of the entire roman empire",
-   "subject": "Rome remained",
-   "verb": "the",
-   "object": "de jure capital of the entire Roman Empire",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#776-963",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Although emperors at times governed from other cities (notably Mediolanum and Ravenna in the West and Nicomedia in the East), Rome remained the de jure capital of the entire Roman Empire."
-    }
-   ]
-  },
-  {
-   "id": "rome suffered|a|long series of internal conflicts",
-   "subject": "Rome suffered",
-   "verb": "a",
-   "object": "long series of internal conflicts",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7794-8000",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Rome suffered a long series of internal conflicts, conspiracies, and Roman civil warscivil wars from the late second century BC, (see Crisis of the Roman Republic) while greatly extending its power beyond I"
-    }
-   ]
-  },
-  {
    "id": "rome|had|begun expanding shortly after the founding of the roman republic in the 6th century bc",
    "subject": "Rome",
    "verb": "had",
    "object": "begun expanding shortly after the founding of the Roman Republic in the 6th century BC",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3320,12 +1558,44 @@
    ]
   },
   {
-   "id": "see crisis|of|the roman republic) while greatly extending its power beyond i",
-   "subject": "see Crisis",
-   "verb": "of",
-   "object": "the Roman Republic) while greatly extending its power beyond I",
+   "id": "rome|reached|its borders of the roman empiregreatest territorial extent under trajan ()",
+   "subject": "Rome",
+   "verb": "reached",
+   "object": "its Borders of the Roman Empiregreatest territorial extent under Trajan ()",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4093-4241",
+     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
+     "text": "Rome reached its Borders of the Roman Empiregreatest territorial extent under Trajan (), but increasing trouble and decline began under Commodus ()."
+    }
+   ]
+  },
+  {
+   "id": "rome|remained|the de jure capital of the entire roman empire",
+   "subject": "Rome",
+   "verb": "remained",
+   "object": "the de jure capital of the entire Roman Empire",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#776-963",
+     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
+     "text": "Although emperors at times governed from other cities (notably Mediolanum and Ravenna in the West and Nicomedia in the East), Rome remained the de jure capital of the entire Roman Empire."
+    }
+   ]
+  },
+  {
+   "id": "rome|suffered|a long series of internal conflicts",
+   "subject": "Rome",
+   "verb": "suffered",
+   "object": "a long series of internal conflicts",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3336,44 +1606,12 @@
    ]
   },
   {
-   "id": "senators belonging|to|the byzantine senatenew senate in constantinople enjoyed the same status and privileges as senators of the roman senate",
-   "subject": "senators belonging",
-   "verb": "to",
-   "object": "the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1288-1504",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "From at least 361 onwards, senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate, to which the new senate was largely identical."
-    }
-   ]
-  },
-  {
-   "id": "set up|two|different imperial courts in the greek east and latin west",
-   "subject": "set up",
-   "verb": "two",
-   "object": "different imperial courts in the Greek East and Latin West",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4612-4742",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The civil wars ended with the victory of Diocletian (), who set up two different imperial courts in the Greek East and Latin West."
-    }
-   ]
-  },
-  {
    "id": "successful|consuls|or generals were given the honorary title imperator (commander)",
    "subject": "successful",
    "verb": "consuls",
    "object": "or generals were given the honorary title imperator (commander)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3384,34 +1622,34 @@
    ]
   },
   {
-   "id": "such as|in|german (kaiser) and some slavic languages (tsar)",
-   "subject": "such as",
-   "verb": "in",
-   "object": "German (Kaiser) and some Slavic languages (Tsar)",
+   "id": "the byzantine|senatenew|senate in constantinople enjoyed the same status and privileges as senators of the roman senate",
+   "subject": "the Byzantine",
+   "verb": "senatenew",
+   "object": "senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7663-7792",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1288-1504",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "In some languages, Caesar became the origin of the word \"emperor\", such as in German (Kaiser) and some Slavic languages (Tsar).}}"
+     "text": "From at least 361 onwards, senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate, to which the new senate was largely identical."
     }
    ]
   },
   {
-   "id": "the city|of|rome had ancient romeexpanded its rule from the italian peninsula to most of the mediterranean and beyond",
-   "subject": "the city",
-   "verb": "of",
-   "object": "Rome had Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond",
+   "id": "the empire|continued|to be seen as a single state even after the supposed \"split\" of 395",
+   "subject": "the Empire",
+   "verb": "continued",
+   "object": "to be seen as a single state even after the supposed \"split\" of 395",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3040-3169",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4-554",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "By 100 BC, the city of Rome had Ancient Romeexpanded its rule from the Italian peninsula to most of the Mediterranean and beyond."
+     "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
     }
    ]
   },
@@ -3421,7 +1659,7 @@
    "verb": "had",
    "object": "been divided many times",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3432,50 +1670,18 @@
    ]
   },
   {
-   "id": "the fall|of|the western roman empirewestern roman empire collapsed in 476 ad",
-   "subject": "The Fall",
-   "verb": "of",
-   "object": "the Western Roman EmpireWestern Roman Empire collapsed in 476 AD",
+   "id": "the maritime|republicsitalian|city-state republics of the medieval period",
+   "subject": "the Maritime",
+   "verb": "republicsitalian",
+   "object": "city-state republics of the medieval period",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2823-3038",
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6293-6472",
      "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Fall of the Western Roman EmpireWestern Roman Empire collapsed in 476 AD, whereas the Byzantine EmpireEastern Roman Empire (also known as the Byzantine Empire) persisted until the fall of Constantinople in 1453."
-    }
-   ]
-  },
-  {
-   "id": "the history|of|the roman empirefirst two centuries of the empire saw unprecedented stability and prosperity known as the  ()",
-   "subject": "The History",
-   "verb": "of",
-   "object": "the Roman Empirefirst two centuries of the Empire saw unprecedented stability and prosperity known as the  ()",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3967-4092",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The History of the Roman Empirefirst two centuries of the Empire saw unprecedented stability and prosperity known as the ()."
-    }
-   ]
-  },
-  {
-   "id": "the rediscovery|of|science in classical antiquityclassical science and ancient roman technologytechnology (which formed the basis for science in the medieval islamic worldislamic science) in medieval europe contributed to the science in the renaissancescientific renaissance and scientific revolution",
-   "subject": "The rediscovery",
-   "verb": "of",
-   "object": "Science in classical antiquityclassical science and Ancient Roman technologytechnology (which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5991-6292",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The rediscovery of Science in classical antiquityclassical science and Ancient Roman technologytechnology (which formed the basis for Science in the medieval Islamic worldIslamic science) in medieval Europe contributed to the Science in the RenaissanceScientific Renaissance and Scientific Revolution."
+     "text": "Rome's republican institutions have influenced the Maritime republicsItalian city-state republics of the medieval period, the early United States, and modern democratic republics."
     }
    ]
   },
@@ -3485,7 +1691,7 @@
    "verb": "was",
    "object": "not a nation-state in the modern sense",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3501,7 +1707,7 @@
    "verb": "continued",
    "object": "to consider the Roman Empire to be a single undivided state with two co-equal emperors until the fall of the western half in 476/480",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3512,12 +1718,28 @@
    ]
   },
   {
-   "id": "the|civil|wars ended with the victory of diocletian ()",
-   "subject": "The",
-   "verb": "civil",
-   "object": "wars ended with the victory of Diocletian ()",
+   "id": "this title|was|always bestowed to the early emperors",
+   "subject": "this title",
+   "verb": "was",
+   "object": "always bestowed to the early emperors",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7325-7522",
+     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
+     "text": "Occasionally, successful consuls or generals were given the honorary title imperator (commander); this is the origin of the word emperor, since this title was always bestowed to the early emperors."
+    }
+   ]
+  },
+  {
+   "id": "two different|imperial|courts in the greek east and latin west",
+   "subject": "two different",
+   "verb": "imperial",
+   "object": "courts in the Greek East and Latin West",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3528,140 +1750,12 @@
    ]
   },
   {
-   "id": "this is|a|modern convention",
-   "subject": "This is",
-   "verb": "a",
-   "object": "modern convention",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#4-554",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "AD 395 }}; This is a modern convention, as the Empire continued to be seen as a single state even after the supposed \"split\" of 395, which was in fact one of many splits since 286.}}476/480 }} }} Roman Republic Western Roman Empire Byzantine EmpireEastern Roman Empire Roman Empire Trajan 117AD.png }} Animated map of the Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire.gif Roman territorial evolution from the rise of the city-state of Rome to the fall of the Western Roman Empire"
-    }
-   ]
-  },
-  {
-   "id": "this is|the|origin of the word emperor",
-   "subject": "this is",
-   "verb": "the",
-   "object": "origin of the word emperor",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7325-7522",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Occasionally, successful consuls or generals were given the honorary title imperator (commander); this is the origin of the word emperor, since this title was always bestowed to the early emperors."
-    }
-   ]
-  },
-  {
-   "id": "this title|was|always bestowed to the early emperors",
-   "subject": "this title",
-   "verb": "was",
-   "object": "always bestowed to the early emperors",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7325-7522",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "Occasionally, successful consuls or generals were given the honorary title imperator (commander); this is the origin of the word emperor, since this title was always bestowed to the early emperors."
-    }
-   ]
-  },
-  {
-   "id": "to which|the|new senate was largely identical",
-   "subject": "to which",
-   "verb": "the",
-   "object": "new senate was largely identical",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#1288-1504",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "From at least 361 onwards, senators belonging to the Byzantine senatenew senate in Constantinople enjoyed the same status and privileges as senators of the Roman Senate, to which the new senate was largely identical."
-    }
-   ]
-  },
-  {
-   "id": "typically in|a|military sense)",
-   "subject": "typically in",
-   "verb": "a",
-   "object": "military sense)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7089-7324",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The 1st century BC was a time of political and military upheaval, which ultimately led to rule by emperors.; The consuls' military power rested in the Roman legal concept of imperium, meaning \"command\" (typically in a military sense)."
-    }
-   ]
-  },
-  {
-   "id": "ultimately led|to|rule by emperors",
-   "subject": "ultimately led",
-   "verb": "to",
-   "object": "rule by emperors",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#7089-7324",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The 1st century BC was a time of political and military upheaval, which ultimately led to rule by emperors.; The consuls' military power rested in the Roman legal concept of imperium, meaning \"command\" (typically in a military sense)."
-    }
-   ]
-  },
-  {
-   "id": "until fall|of|constantinoplethe city's fall in 1453",
-   "subject": "until Fall",
-   "verb": "of",
-   "object": "Constantinoplethe city's fall in 1453",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5268-5493",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Eastern Roman EmpireByzantine (Eastern Roman) Empire survived for another millennium with Constantinople as its Centres of governance in the Roman Empiresole capital, until Fall of Constantinoplethe city's fall in 1453.)."
-    }
-   ]
-  },
-  {
-   "id": "until the|fall|of its last remnant (the byzantine empire) in 1453]]",
-   "subject": "until the",
-   "verb": "fall",
-   "object": "of its last remnant (the Byzantine Empire) in 1453]]",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#6484-6551",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "until the fall of its last remnant (the Byzantine Empire) in 1453]]"
-    }
-   ]
-  },
-  {
    "id": "vast roman|peopleroman|territories were organized into senatorial provinces",
    "subject": "vast Roman",
    "verb": "peopleroman",
    "object": "territories were organized into senatorial provinces",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3672,44 +1766,12 @@
    ]
   },
   {
-   "id": "western empire|finally|collapsed",
-   "subject": "Western Empire",
-   "verb": "finally",
-   "object": "collapsed",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5092-5267",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "With the Battle of Ravenna (476)fall of Ravenna to the HeruliGermanic Herulians and the deposition of Romulus Augustus in 476 by Odoacer, the Western Empire finally collapsed."
-    }
-   ]
-  },
-  {
-   "id": "whereas|the|byzantine empireeastern roman empire (also known as the byzantine empire) persisted until the fall of constantinople in 1453",
-   "subject": "whereas",
-   "verb": "the",
-   "object": "Byzantine EmpireEastern Roman Empire (also known as the Byzantine Empire) persisted until the fall of Constantinople in 1453",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#2823-3038",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Fall of the Western Roman EmpireWestern Roman Empire collapsed in 476 AD, whereas the Byzantine EmpireEastern Roman Empire (also known as the Byzantine Empire) persisted until the fall of Constantinople in 1453."
-    }
-   ]
-  },
-  {
    "id": "whether there|was|an interregnum at all is debatable given that the crusaders envisioned the latin empire to be the same empire as its predecessor (and not a new state)",
    "subject": "Whether there",
    "verb": "was",
    "object": "an interregnum at all is debatable given that the crusaders envisioned the Latin Empire to be the same empire as its predecessor (and not a new state)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3720,44 +1782,12 @@
    ]
   },
   {
-   "id": "which belonged|to|the emperor but were legatus augusti pro praetoregoverned by legatuslegates",
-   "subject": "which belonged",
-   "verb": "to",
-   "object": "the emperor but were Legatus Augusti pro praetoregoverned by Legatuslegates",
+   "id": "which|was|in fact one of many splits since 286",
+   "subject": "which",
+   "verb": "was",
+   "object": "in fact one of many splits since 286",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3690-3965",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The vast Roman peopleRoman territories were organized into senatorial provinces, governed by proconsuls who were appointed by lot annually, and Imperial provinceimperial provinces, which belonged to the emperor but were Legatus Augusti pro praetoregoverned by Legatuslegates."
-    }
-   ]
-  },
-  {
-   "id": "which culminated|in|the war of actiumvictory of octavian over mark antony and cleopatra at the battle of actium in 31 bc",
-   "subject": "which culminated",
-   "verb": "in",
-   "object": "the War of Actiumvictory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#3170-3467",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "However, it was severely destabilised by List of Roman civil wars and revoltscivil wars and political conflicts, which culminated in the War of Actiumvictory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC, and the subsequent conquest of the Ptolemaic Kingdom in Egypt."
-    }
-   ]
-  },
-  {
-   "id": "which was|in|fact one of many splits since 286",
-   "subject": "which was",
-   "verb": "in",
-   "object": "fact one of many splits since 286",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3773,7 +1803,7 @@
    "verb": "was",
    "object": "later reunified under Aurelian ()",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Roman_Empire.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3782,42 +1812,10 @@
      "text": "The Gallic EmpireGallic and Palmyrene EmpirePalmyrene empires broke away and a series of Barracks emperorshort-lived emperors led the Empire, which was later reunified under Aurelian ()."
     }
    ]
-  },
-  {
-   "id": "with constantinople|as|its centres of governance in the roman empiresole capital",
-   "subject": "with Constantinople",
-   "verb": "as",
-   "object": "its Centres of governance in the Roman Empiresole capital",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5268-5493",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "The Eastern Roman EmpireByzantine (Eastern Roman) Empire survived for another millennium with Constantinople as its Centres of governance in the Roman Empiresole capital, until Fall of Constantinoplethe city's fall in 1453.)."
-    }
-   ]
-  },
-  {
-   "id": "with|the|battle of ravenna (476)fall of ravenna to the heruligermanic herulians and the deposition of romulus augustus in 476 by odoacer",
-   "subject": "With",
-   "verb": "the",
-   "object": "Battle of Ravenna (476)fall of Ravenna to the HeruliGermanic Herulians and the deposition of Romulus Augustus in 476 by Odoacer",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Roman_Empire.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Roman_Empire.txt#5092-5267",
-     "ref": "02-encyclopedic/wikipedia/Roman_Empire.txt",
-     "text": "With the Battle of Ravenna (476)fall of Ravenna to the HeruliGermanic Herulians and the deposition of Romulus Augustus in 476 by Odoacer, the Western Empire finally collapsed."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:44.413Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:24.012Z"
  }
 }

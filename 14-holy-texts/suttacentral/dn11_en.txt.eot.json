@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 10943,
   "bodyOffset": 0,
   "bodyChars": 10943,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 20,
   "distinctReferents": 17,
   "examined": true,
-  "edgesFound": 56,
-  "extractionError": null
+  "edgesFound": 14,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 9,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 16
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 14,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 83,
-  "excerptOk": 83,
-  "rawChecked": 83,
-  "rawOk": 83,
+  "excerptChecked": 18,
+  "excerptOk": 18,
+  "rawChecked": 18,
+  "rawOk": 18,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 56,
-  "heard": 56,
+  "offered": 14,
+  "heard": 14,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "was",
     "object": "staying near Nāḷandā in Pāvārika’s Mango Grove",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -103,7 +133,7 @@
     "verb": "went",
     "object": "up to the Buddha",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -118,36 +148,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "sat down|to|one side",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sat down to one side",
-    "subject": "sat down",
-    "verb": "to",
-    "object": "one side",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and said|to|him",
+    "task_id": "and|said|to him",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -157,69 +158,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "and said to him",
-    "subject": "and said",
-    "verb": "to",
-    "object": "him",
+    "subject": "and",
+    "verb": "said",
+    "object": "to him",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is successful|and|prosperous",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is successful and prosperous",
-    "subject": "is successful",
-    "verb": "and",
-    "object": "prosperous",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "populous|and|full of people",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "populous and full of people",
-    "subject": "populous",
-    "verb": "and",
-    "object": "full of people",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,80 +171,12 @@
       "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
      },
      {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#662-856",
+      "at": "14-holy-texts/suttacentral/dn11_en.txt#6849-7050",
       "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "For a second time, Kevaḍḍha made the same request, “Sir, I am not teaching you the Dhamma, but nonetheless I say: ‘Sir, this Nāḷandā is successful and prosperous, populous and full of people."
+      "text": "Then that mendicant approached the Great Divinity and said to him, ‘Respectable sir, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a mendicant|to|perform a superhuman demonstration of psychic power",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a mendicant to perform a superhuman demonstration of psychic power",
-    "subject": "a mendicant",
-    "verb": "to",
-    "object": "perform a superhuman demonstration of psychic power",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#308-389",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Please direct a mendicant to perform a superhuman demonstration of psychic power."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#858-939",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Please direct a mendicant to perform a superhuman demonstration of psychic power."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "more devoted|to|the buddha!”",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "more devoted to the Buddha!”",
-    "subject": "more devoted",
-    "verb": "to",
-    "object": "the Buddha!”",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#391-449",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then Nāḷandā will become even more devoted to the Buddha!”"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#941-1000",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then Nāḷandā will become even more devoted to the Buddha!’”"
-     }
-    ],
-    "seq": 7,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -321,7 +196,7 @@
     "verb": "said",
     "object": "this",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -330,36 +205,7 @@
       "text": "When he said this, the Buddha said, “Kevaḍḍha, I do not teach Dhamma to the mendicants like this: ‘Come now, mendicants, perform a superhuman demonstration of psychic power for the white-clothed laypeople.’”"
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "superhuman demonstration|of|psychic power for the white-clothed laypeople",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "superhuman demonstration of psychic power for the white-clothed laypeople",
-    "subject": "superhuman demonstration",
-    "verb": "of",
-    "object": "psychic power for the white-clothed laypeople",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#451-660",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "When he said this, the Buddha said, “Kevaḍḍha, I do not teach Dhamma to the mendicants like this: ‘Come now, mendicants, perform a superhuman demonstration of psychic power for the white-clothed laypeople.’”"
-     }
-    ],
-    "seq": 9,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -379,7 +225,7 @@
     "verb": "made",
     "object": "the same request",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -393,41 +239,7 @@
       "text": "For a third time, Kevaḍḍha made the same request,"
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "is successful|and|prosperous",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: is successful and prosperous",
-    "subject": "is successful",
-    "verb": "and",
-    "object": "prosperous",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#662-856",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "For a second time, Kevaḍḍha made the same request, “Sir, I am not teaching you the Dhamma, but nonetheless I say: ‘Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-     }
-    ],
-    "seq": 11,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -447,7 +259,7 @@
     "verb": "gave",
     "object": "the same answer",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -456,7 +268,7 @@
       "text": "But for a second time, the Buddha gave the same answer."
      }
     ],
-    "seq": 12,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -476,7 +288,7 @@
     "verb": "said",
     "object": "the following",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -485,521 +297,7 @@
       "text": "at which the Buddha said the following."
      }
     ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "three kinds|of|demonstration",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "three kinds of demonstration",
-    "subject": "three kinds",
-    "verb": "of",
-    "object": "demonstration",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1160-1304",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The Demonstration of Psychic Power “Kevaḍḍha, there are three kinds of demonstration, which I declare having realized them with my own insight."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4475-4587",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "These, Kevaḍḍha, are the three kinds of demonstration, which I declare having realized them with my own insight."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the demonstration|of|psychic power",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The demonstration of psychic power",
-    "subject": "The demonstration",
-    "verb": "of",
-    "object": "psychic power",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1319-1424",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The demonstration of psychic power, the demonstration of revealing, and the demonstration of instruction."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1426-1473",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "And what is the demonstration of psychic power?"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the demonstration|of|revealing",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the demonstration of revealing",
-    "subject": "the demonstration",
-    "verb": "of",
-    "object": "revealing",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1319-1424",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The demonstration of psychic power, the demonstration of revealing, and the demonstration of instruction."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#3843-3891",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "This is called the demonstration of instruction."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4046-4094",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "This is called the demonstration of instruction."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4186-4238",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "This too is called the demonstration of instruction."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4304-4356",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "This too is called the demonstration of instruction."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4421-4473",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "This too is called the demonstration of instruction."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "many kinds|of|psychic power: multiplying themselves and becoming one again",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "many kinds of psychic power: multiplying themselves and becoming one again",
-    "subject": "many kinds",
-    "verb": "of",
-    "object": "psychic power: multiplying themselves and becoming one again",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "materializing|and|dematerializing",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "materializing and dematerializing",
-    "subject": "materializing",
-    "verb": "and",
-    "object": "dematerializing",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "diving in|and|out of the earth as if it were water",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "diving in and out of the earth as if it were water",
-    "subject": "diving in",
-    "verb": "and",
-    "object": "out of the earth as if it were water",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "touching|and|stroking with the hand the sun and moon",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "touching and stroking with the hand the sun and moon",
-    "subject": "touching",
-    "verb": "and",
-    "object": "stroking with the hand the sun and moon",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "so mighty|and|powerful",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "so mighty and powerful",
-    "subject": "so mighty",
-    "verb": "and",
-    "object": "powerful",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the realm|of|divinity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the realm of divinity",
-    "subject": "the realm",
-    "verb": "of",
-    "object": "divinity",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "with faith|and|confidence sees that mendicant performing those superhuman feats",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "with faith and confidence sees that mendicant performing those superhuman feats",
-    "subject": "with faith",
-    "verb": "and",
-    "object": "confidence sees that mendicant performing those superhuman feats",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#1971-2059",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Someone with faith and confidence sees that mendicant performing those superhuman feats."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#2911-3005",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Someone with faith and confidence sees that mendicant revealing another individual’s thoughts."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "psychic power|and|might!",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "psychic power and might!",
-    "subject": "psychic power",
-    "verb": "and",
-    "object": "might!",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#2156-2201",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The ascetic has such psychic power and might!"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#3103-3148",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The ascetic has such psychic power and might!"
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "by demonstrations|of|psychic power",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "by demonstrations of psychic power",
-    "subject": "by demonstrations",
-    "verb": "of",
-    "object": "psychic power",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#2517-2631",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "“Seeing this drawback in psychic power, I’m horrified, repelled, and disgusted by demonstrations of psychic power."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of revealing|and|what is the demonstration of revealing?",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of Revealing and what is the demonstration of revealing?",
-    "subject": "of Revealing",
-    "verb": "and",
-    "object": "what is the demonstration of revealing?",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#2636-2711",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The Demonstration of Revealing And what is the demonstration of revealing?"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#3589-3668",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The Demonstration of Instruction And what is the demonstration of instruction?"
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "your state|of|mind",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "your state of mind",
-    "subject": "your state",
-    "verb": "of",
-    "object": "mind",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#2713-2909",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "It’s when a mendicant reveals the mind, mentality, thoughts, and reflections of other beings and individuals: ‘This is what you’re thinking, such is your thought, and thus is your state of mind.’"
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the thoughts|of|another individual!’",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the thoughts of another individual!’",
-    "subject": "the thoughts",
-    "verb": "of",
-    "object": "another individual!’",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#3150-3214",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "I saw him myself, revealing the thoughts of another individual!’"
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "by demonstrations|of|revealing",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "by demonstrations of revealing",
-    "subject": "by demonstrations",
-    "verb": "of",
-    "object": "revealing",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#3478-3584",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "“Seeing this drawback in revealing, I’m horrified, repelled, and disgusted by demonstrations of revealing."
-     }
-    ],
-    "seq": 29,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -1019,7 +317,7 @@
     "verb": "arises",
     "object": "in the world …",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1028,70 +326,7 @@
       "text": "Furthermore, a Realized One arises in the world …"
      }
     ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they enter|and|remain in the first absorption …",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "They enter and remain in the first absorption …",
-    "subject": "They enter",
-    "verb": "and",
-    "object": "remain in the first absorption …",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#3997-4044",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "They enter and remain in the first absorption …"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4096-4144",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "They enter and remain in the second absorption …"
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they project|and|extend the mind toward knowledge and vision …",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "They project and extend the mind toward knowledge and vision …",
-    "subject": "They project",
-    "verb": "and",
-    "object": "extend the mind toward knowledge and vision …",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4240-4302",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "They project and extend the mind toward knowledge and vision …"
-     }
-    ],
-    "seq": 32,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -1111,7 +346,7 @@
     "verb": "had",
     "object": "the following thought",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1120,119 +355,7 @@
       "text": "On the Mendicant in Search of the Cessation of Being Once upon a time, Kevaḍḍha, a mendicant in this very Saṅgha had the following thought, ‘Where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
      }
     ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the elements|of|earth",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the elements of earth",
-    "subject": "the elements",
-    "verb": "of",
-    "object": "earth",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4592-4850",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "On the Mendicant in Search of the Cessation of Being Once upon a time, Kevaḍḍha, a mendicant in this very Saṅgha had the following thought, ‘Where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4942-5139",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then he approached the gods of the four great kings and said, ‘Respectable sirs, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5908-6104",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then he approached the gods of the Divinity’s host and said, ‘Respectable sirs, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#6849-7050",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then that mendicant approached the Great Divinity and said to him, ‘Respectable sir, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a state|of|immersion such that a path to the gods appeared",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a state of immersion such that a path to the gods appeared",
-    "subject": "a state",
-    "verb": "of",
-    "object": "immersion such that a path to the gods appeared",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4852-4940",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then that mendicant attained a state of immersion such that a path to the gods appeared."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5818-5906",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then that mendicant attained a state of immersion such that a path to divinity appeared."
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "approached the|gods|of the four great kings and said",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "approached the gods of the four great kings and said",
-    "subject": "approached the",
-    "verb": "gods",
-    "object": "of the four great kings and said",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#4942-5139",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then he approached the gods of the four great kings and said, ‘Respectable sirs, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5908-6104",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then he approached the gods of the Divinity’s host and said, ‘Respectable sirs, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-     }
-    ],
-    "seq": 36,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -1252,7 +375,7 @@
     "verb": "said",
     "object": "this",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1266,7 +389,7 @@
       "text": "When he said this, those gods said to him, ‘Mendicant, we too do not know this."
      }
     ],
-    "seq": 37,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -1286,7 +409,7 @@
     "verb": "said",
     "object": "to him",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1295,36 +418,7 @@
       "text": "When he said this, those gods said to him, ‘Mendicant, we too do not know this."
      }
     ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "great kings|and|asked the same question",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "great kings and asked the same question",
-    "subject": "great kings",
-    "verb": "and",
-    "object": "asked the same question",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5289-5357",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then he approached the four great kings and asked the same question."
-     }
-    ],
-    "seq": 39,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -1344,7 +438,7 @@
     "verb": "said",
     "object": "to him",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1358,380 +452,7 @@
       "text": "But they also said to him, ‘Mendicant, we too do not know this."
      }
     ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but the|gods|of the thirty-three …",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But the gods of the thirty-three …",
-    "subject": "But the",
-    "verb": "gods",
-    "object": "of the thirty-three …",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5427-5461",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "But the gods of the thirty-three …"
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lord of|gods|…",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lord of gods …",
-    "subject": "lord of",
-    "verb": "gods",
-    "object": "…",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5470-5491",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Sakka, lord of gods …"
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the gods|of|yama …",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the gods of Yama …",
-    "subject": "the gods",
-    "verb": "of",
-    "object": "Yama …",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5500-5518",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "the gods of Yama …"
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the joyful|gods|…",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Joyful gods …",
-    "subject": "the Joyful",
-    "verb": "gods",
-    "object": "…",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5548-5565",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "the Joyful gods …"
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the|gods|who love to create …",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the gods who love to create …",
-    "subject": "the",
-    "verb": "gods",
-    "object": "who love to create …",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5599-5628",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "the gods who love to create …"
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the|gods|who control the creation of others …",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the gods who control the creation of others …",
-    "subject": "the",
-    "verb": "gods",
-    "object": "who control the creation of others …",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5661-5706",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "the gods who control the creation of others …"
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the gods|of|the divinity’s host are our superiors",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the gods of the Divinity’s host are our superiors",
-    "subject": "the gods",
-    "verb": "of",
-    "object": "the Divinity’s host are our superiors",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#5746-5796",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "the gods of the Divinity’s host are our superiors."
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the wielder|of|power",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Wielder of Power",
-    "subject": "the Wielder",
-    "verb": "of",
-    "object": "Power",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#6173-6439",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "But there is the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#7052-7345",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born.’"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#7794-7999",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "For a second time, the Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator,"
-     }
-    ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the father|of|those who have been born and those yet to be born",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Father of those who have been born and those yet to be born",
-    "subject": "the Father",
-    "verb": "of",
-    "object": "those who have been born and those yet to be born",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#6173-6439",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "But there is the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#7052-7345",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born.’"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#7347-7718",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "For a second time, that mendicant said to the Great Divinity, ‘Respectable sir, I am not asking you whether you are the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-     }
-    ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "light arising|and|radiance appearing—we know that divinity will appear",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "light arising and radiance appearing—we know that divinity will appear",
-    "subject": "light arising",
-    "verb": "and",
-    "object": "radiance appearing—we know that divinity will appear",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#6586-6688",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "But by the signs that are seen—light arising and radiance appearing—we know that divinity will appear."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#6689-6796",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "For this is the harbinger for the appearance of the Divinity, namely light arising and radiance appearing.’"
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the appearance|of|the divinity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the appearance of the Divinity",
-    "subject": "the appearance",
-    "verb": "of",
-    "object": "the Divinity",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#6689-6796",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "For this is the harbinger for the appearance of the Divinity, namely light arising and radiance appearing.’"
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "great divinity|and|said to him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Great Divinity and said to him",
-    "subject": "Great Divinity",
-    "verb": "and",
-    "object": "said to him",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#6849-7050",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "Then that mendicant approached the Great Divinity and said to him, ‘Respectable sir, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-     }
-    ],
-    "seq": 52,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -1751,7 +472,7 @@
     "verb": "said",
     "object": "to him",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1765,7 +486,7 @@
       "text": "For a second time, the Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator,"
      }
     ],
-    "seq": 53,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -1785,7 +506,7 @@
     "verb": "said",
     "object": "to the Great Divinity",
     "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+     "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1794,56 +515,12 @@
       "text": "For a second time, that mendicant said to the Great Divinity, ‘Respectable sir, I am not asking you whether you are the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
      }
     ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "supersede",
-    "task_id": "the wielder|of|power",
-    "operator": "SYN",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "SYN·Figure",
-    "stance": "Making",
-    "terrain": "Link",
-    "mode": "Generate",
-    "domain": "Structure",
-    "description": "heard again: the Wielder of Power",
-    "subject": "the Wielder",
-    "verb": "of",
-    "object": "Power",
-    "witnesses": [
-     "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#6173-6439",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "But there is the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#7052-7345",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "The Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born.’"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#7794-7999",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "For a second time, the Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator,"
-     },
-     {
-      "at": "14-holy-texts/suttacentral/dn11_en.txt#7347-7718",
-      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-      "text": "For a second time, that mendicant said to the Great Divinity, ‘Respectable sir, I am not asking you whether you are the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-     }
-    ],
-    "seq": 55,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 56,
+  "nextSeq": 14,
   "admits": [
    "NUL",
    "SEG",
@@ -1858,157 +535,19 @@
  },
  "folded": [
   {
-   "id": "a mendicant|to|perform a superhuman demonstration of psychic power",
-   "subject": "a mendicant",
-   "verb": "to",
-   "object": "perform a superhuman demonstration of psychic power",
+   "id": "and|said|to him",
+   "subject": "and",
+   "verb": "said",
+   "object": "to him",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#308-389",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Please direct a mendicant to perform a superhuman demonstration of psychic power."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#858-939",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Please direct a mendicant to perform a superhuman demonstration of psychic power."
-    }
-   ]
-  },
-  {
-   "id": "a state|of|immersion such that a path to the gods appeared",
-   "subject": "a state",
-   "verb": "of",
-   "object": "immersion such that a path to the gods appeared",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4852-4940",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then that mendicant attained a state of immersion such that a path to the gods appeared."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5818-5906",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then that mendicant attained a state of immersion such that a path to divinity appeared."
-    }
-   ]
-  },
-  {
-   "id": "and said|to|him",
-   "subject": "and said",
-   "verb": "to",
-   "object": "him",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
      "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-    }
-   ]
-  },
-  {
-   "id": "approached the|gods|of the four great kings and said",
-   "subject": "approached the",
-   "verb": "gods",
-   "object": "of the four great kings and said",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4942-5139",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then he approached the gods of the four great kings and said, ‘Respectable sirs, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
     },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5908-6104",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then he approached the gods of the Divinity’s host and said, ‘Respectable sirs, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-    }
-   ]
-  },
-  {
-   "id": "but the|gods|of the thirty-three …",
-   "subject": "But the",
-   "verb": "gods",
-   "object": "of the thirty-three …",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5427-5461",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "But the gods of the thirty-three …"
-    }
-   ]
-  },
-  {
-   "id": "by demonstrations|of|psychic power",
-   "subject": "by demonstrations",
-   "verb": "of",
-   "object": "psychic power",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#2517-2631",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "“Seeing this drawback in psychic power, I’m horrified, repelled, and disgusted by demonstrations of psychic power."
-    }
-   ]
-  },
-  {
-   "id": "by demonstrations|of|revealing",
-   "subject": "by demonstrations",
-   "verb": "of",
-   "object": "revealing",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#3478-3584",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "“Seeing this drawback in revealing, I’m horrified, repelled, and disgusted by demonstrations of revealing."
-    }
-   ]
-  },
-  {
-   "id": "diving in|and|out of the earth as if it were water",
-   "subject": "diving in",
-   "verb": "and",
-   "object": "out of the earth as if it were water",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-    }
-   ]
-  },
-  {
-   "id": "great divinity|and|said to him",
-   "subject": "Great Divinity",
-   "verb": "and",
-   "object": "said to him",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
     {
      "at": "14-holy-texts/suttacentral/dn11_en.txt#6849-7050",
      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
@@ -2022,7 +561,7 @@
    "verb": "said",
    "object": "to him",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2038,55 +577,18 @@
    ]
   },
   {
-   "id": "great kings|and|asked the same question",
-   "subject": "great kings",
-   "verb": "and",
-   "object": "asked the same question",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5289-5357",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then he approached the four great kings and asked the same question."
-    }
-   ]
-  },
-  {
    "id": "householder kevaḍḍha|went|up to the buddha",
    "subject": "householder Kevaḍḍha",
    "verb": "went",
    "object": "up to the Buddha",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
      "ref": "14-holy-texts/suttacentral/dn11_en.txt",
      "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-    }
-   ]
-  },
-  {
-   "id": "is successful|and|prosperous",
-   "subject": "is successful",
-   "verb": "and",
-   "object": "prosperous",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#662-856",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "For a second time, Kevaḍḍha made the same request, “Sir, I am not teaching you the Dhamma, but nonetheless I say: ‘Sir, this Nāḷandā is successful and prosperous, populous and full of people."
     }
    ]
   },
@@ -2096,7 +598,7 @@
    "verb": "made",
    "object": "the same request",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2112,165 +614,12 @@
    ]
   },
   {
-   "id": "light arising|and|radiance appearing—we know that divinity will appear",
-   "subject": "light arising",
-   "verb": "and",
-   "object": "radiance appearing—we know that divinity will appear",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#6586-6688",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "But by the signs that are seen—light arising and radiance appearing—we know that divinity will appear."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#6689-6796",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "For this is the harbinger for the appearance of the Divinity, namely light arising and radiance appearing.’"
-    }
-   ]
-  },
-  {
-   "id": "lord of|gods|…",
-   "subject": "lord of",
-   "verb": "gods",
-   "object": "…",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5470-5491",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Sakka, lord of gods …"
-    }
-   ]
-  },
-  {
-   "id": "many kinds|of|psychic power: multiplying themselves and becoming one again",
-   "subject": "many kinds",
-   "verb": "of",
-   "object": "psychic power: multiplying themselves and becoming one again",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-    }
-   ]
-  },
-  {
-   "id": "materializing|and|dematerializing",
-   "subject": "materializing",
-   "verb": "and",
-   "object": "dematerializing",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-    }
-   ]
-  },
-  {
-   "id": "more devoted|to|the buddha!”",
-   "subject": "more devoted",
-   "verb": "to",
-   "object": "the Buddha!”",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#391-449",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then Nāḷandā will become even more devoted to the Buddha!”"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#941-1000",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then Nāḷandā will become even more devoted to the Buddha!’”"
-    }
-   ]
-  },
-  {
-   "id": "of revealing|and|what is the demonstration of revealing?",
-   "subject": "of Revealing",
-   "verb": "and",
-   "object": "what is the demonstration of revealing?",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#2636-2711",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The Demonstration of Revealing And what is the demonstration of revealing?"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#3589-3668",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The Demonstration of Instruction And what is the demonstration of instruction?"
-    }
-   ]
-  },
-  {
-   "id": "populous|and|full of people",
-   "subject": "populous",
-   "verb": "and",
-   "object": "full of people",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#662-856",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "For a second time, Kevaḍḍha made the same request, “Sir, I am not teaching you the Dhamma, but nonetheless I say: ‘Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-    }
-   ]
-  },
-  {
-   "id": "psychic power|and|might!",
-   "subject": "psychic power",
-   "verb": "and",
-   "object": "might!",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#2156-2201",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The ascetic has such psychic power and might!"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#3103-3148",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The ascetic has such psychic power and might!"
-    }
-   ]
-  },
-  {
    "id": "realized one|arises|in the world …",
    "subject": "Realized One",
    "verb": "arises",
    "object": "in the world …",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2281,60 +630,12 @@
    ]
   },
   {
-   "id": "sat down|to|one side",
-   "subject": "sat down",
-   "verb": "to",
-   "object": "one side",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#129-306",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then the householder Kevaḍḍha went up to the Buddha, bowed, sat down to one side, and said to him, “Sir, this Nāḷandā is successful and prosperous, populous and full of people."
-    }
-   ]
-  },
-  {
-   "id": "so mighty|and|powerful",
-   "subject": "so mighty",
-   "verb": "and",
-   "object": "powerful",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-    }
-   ]
-  },
-  {
-   "id": "superhuman demonstration|of|psychic power for the white-clothed laypeople",
-   "subject": "superhuman demonstration",
-   "verb": "of",
-   "object": "psychic power for the white-clothed laypeople",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#451-660",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "When he said this, the Buddha said, “Kevaḍḍha, I do not teach Dhamma to the mendicants like this: ‘Come now, mendicants, perform a superhuman demonstration of psychic power for the white-clothed laypeople.’”"
-    }
-   ]
-  },
-  {
    "id": "that mendicant|said|to the great divinity",
    "subject": "that mendicant",
    "verb": "said",
    "object": "to the Great Divinity",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2345,28 +646,12 @@
    ]
   },
   {
-   "id": "the appearance|of|the divinity",
-   "subject": "the appearance",
-   "verb": "of",
-   "object": "the Divinity",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#6689-6796",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "For this is the harbinger for the appearance of the Divinity, namely light arising and radiance appearing.’"
-    }
-   ]
-  },
-  {
    "id": "the buddha|gave|the same answer",
    "subject": "the Buddha",
    "verb": "gave",
    "object": "the same answer",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2382,7 +667,7 @@
    "verb": "said",
    "object": "the following",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2398,7 +683,7 @@
    "verb": "was",
    "object": "staying near Nāḷandā in Pāvārika’s Mango Grove",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2409,274 +694,12 @@
    ]
   },
   {
-   "id": "the demonstration|of|psychic power",
-   "subject": "The demonstration",
-   "verb": "of",
-   "object": "psychic power",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1319-1424",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The demonstration of psychic power, the demonstration of revealing, and the demonstration of instruction."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1426-1473",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "And what is the demonstration of psychic power?"
-    }
-   ]
-  },
-  {
-   "id": "the demonstration|of|revealing",
-   "subject": "the demonstration",
-   "verb": "of",
-   "object": "revealing",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1319-1424",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The demonstration of psychic power, the demonstration of revealing, and the demonstration of instruction."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#3843-3891",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "This is called the demonstration of instruction."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4046-4094",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "This is called the demonstration of instruction."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4186-4238",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "This too is called the demonstration of instruction."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4304-4356",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "This too is called the demonstration of instruction."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4421-4473",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "This too is called the demonstration of instruction."
-    }
-   ]
-  },
-  {
-   "id": "the elements|of|earth",
-   "subject": "the elements",
-   "verb": "of",
-   "object": "earth",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4592-4850",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "On the Mendicant in Search of the Cessation of Being Once upon a time, Kevaḍḍha, a mendicant in this very Saṅgha had the following thought, ‘Where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4942-5139",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then he approached the gods of the four great kings and said, ‘Respectable sirs, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5908-6104",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then he approached the gods of the Divinity’s host and said, ‘Respectable sirs, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#6849-7050",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Then that mendicant approached the Great Divinity and said to him, ‘Respectable sir, where do these four principal states cease without remainder, namely, the elements of earth, water, fire, and air?’"
-    }
-   ]
-  },
-  {
-   "id": "the father|of|those who have been born and those yet to be born",
-   "subject": "the Father",
-   "verb": "of",
-   "object": "those who have been born and those yet to be born",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#6173-6439",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "But there is the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#7052-7345",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born.’"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#7347-7718",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "For a second time, that mendicant said to the Great Divinity, ‘Respectable sir, I am not asking you whether you are the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-    }
-   ]
-  },
-  {
-   "id": "the gods|of|the divinity’s host are our superiors",
-   "subject": "the gods",
-   "verb": "of",
-   "object": "the Divinity’s host are our superiors",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5746-5796",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "the gods of the Divinity’s host are our superiors."
-    }
-   ]
-  },
-  {
-   "id": "the gods|of|yama …",
-   "subject": "the gods",
-   "verb": "of",
-   "object": "Yama …",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5500-5518",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "the gods of Yama …"
-    }
-   ]
-  },
-  {
-   "id": "the joyful|gods|…",
-   "subject": "the Joyful",
-   "verb": "gods",
-   "object": "…",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5548-5565",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "the Joyful gods …"
-    }
-   ]
-  },
-  {
-   "id": "the realm|of|divinity",
-   "subject": "the realm",
-   "verb": "of",
-   "object": "divinity",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-    }
-   ]
-  },
-  {
-   "id": "the thoughts|of|another individual!’",
-   "subject": "the thoughts",
-   "verb": "of",
-   "object": "another individual!’",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#3150-3214",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "I saw him myself, revealing the thoughts of another individual!’"
-    }
-   ]
-  },
-  {
-   "id": "the wielder|of|power",
-   "subject": "the Wielder",
-   "verb": "of",
-   "object": "Power",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#6173-6439",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "But there is the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#7052-7345",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born.’"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#7794-7999",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "For a second time, the Great Divinity said to him, ‘I am the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator,"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#7347-7718",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "For a second time, that mendicant said to the Great Divinity, ‘Respectable sir, I am not asking you whether you are the Divinity, the Great Divinity, the Vanquisher, the Unvanquished, the Universal Seer, the Wielder of Power, God Almighty, the Maker, the Creator, the First, the Begetter, the Controller, the Father of those who have been born and those yet to be born."
-    }
-   ]
-  },
-  {
-   "id": "the|gods|who control the creation of others …",
-   "subject": "the",
-   "verb": "gods",
-   "object": "who control the creation of others …",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5661-5706",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "the gods who control the creation of others …"
-    }
-   ]
-  },
-  {
-   "id": "the|gods|who love to create …",
-   "subject": "the",
-   "verb": "gods",
-   "object": "who love to create …",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#5599-5628",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "the gods who love to create …"
-    }
-   ]
-  },
-  {
    "id": "they also|said|to him",
    "subject": "they also",
    "verb": "said",
    "object": "to him",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2692,49 +715,12 @@
    ]
   },
   {
-   "id": "they enter|and|remain in the first absorption …",
-   "subject": "They enter",
-   "verb": "and",
-   "object": "remain in the first absorption …",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#3997-4044",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "They enter and remain in the first absorption …"
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4096-4144",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "They enter and remain in the second absorption …"
-    }
-   ]
-  },
-  {
-   "id": "they project|and|extend the mind toward knowledge and vision …",
-   "subject": "They project",
-   "verb": "and",
-   "object": "extend the mind toward knowledge and vision …",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4240-4302",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "They project and extend the mind toward knowledge and vision …"
-    }
-   ]
-  },
-  {
    "id": "those gods|said|to him",
    "subject": "those gods",
    "verb": "said",
    "object": "to him",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2745,49 +731,12 @@
    ]
   },
   {
-   "id": "three kinds|of|demonstration",
-   "subject": "three kinds",
-   "verb": "of",
-   "object": "demonstration",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1160-1304",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "The Demonstration of Psychic Power “Kevaḍḍha, there are three kinds of demonstration, which I declare having realized them with my own insight."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#4475-4587",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "These, Kevaḍḍha, are the three kinds of demonstration, which I declare having realized them with my own insight."
-    }
-   ]
-  },
-  {
-   "id": "touching|and|stroking with the hand the sun and moon",
-   "subject": "touching",
-   "verb": "and",
-   "object": "stroking with the hand the sun and moon",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1475-1969",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "It’s a mendicant who wields the many kinds of psychic power: multiplying themselves and becoming one again; materializing and dematerializing; going unobstructed through a wall, a rampart, or a mountain as if through space; diving in and out of the earth as if it were water; walking on water as if it were earth; flying cross-legged through the sky like a bird; touching and stroking with the hand the sun and moon, so mighty and powerful; controlling the body as far as the realm of divinity."
-    }
-   ]
-  },
-  {
    "id": "very saṅgha|had|the following thought",
    "subject": "very Saṅgha",
    "verb": "had",
    "object": "the following thought",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2803,7 +752,7 @@
    "verb": "said",
    "object": "this",
    "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
+    "14-holy-texts/suttacentral/dn11_en.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2817,47 +766,10 @@
      "text": "When he said this, those gods said to him, ‘Mendicant, we too do not know this."
     }
    ]
-  },
-  {
-   "id": "with faith|and|confidence sees that mendicant performing those superhuman feats",
-   "subject": "with faith",
-   "verb": "and",
-   "object": "confidence sees that mendicant performing those superhuman feats",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#1971-2059",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Someone with faith and confidence sees that mendicant performing those superhuman feats."
-    },
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#2911-3005",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "Someone with faith and confidence sees that mendicant revealing another individual’s thoughts."
-    }
-   ]
-  },
-  {
-   "id": "your state|of|mind",
-   "subject": "your state",
-   "verb": "of",
-   "object": "mind",
-   "witnesses": [
-    "14-holy-texts/suttacentral/dn11_en.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/suttacentral/dn11_en.txt#2713-2909",
-     "ref": "14-holy-texts/suttacentral/dn11_en.txt",
-     "text": "It’s when a mendicant reveals the mind, mentality, thoughts, and reflections of other beings and individuals: ‘This is what you’re thinking, such is your thought, and thus is your state of mind.’"
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:51.910Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:50.418Z"
  }
 }

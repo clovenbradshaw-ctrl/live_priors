@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 14462,
   "bodyOffset": 0,
   "bodyChars": 14462,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 11,
   "distinctReferents": 10,
   "examined": true,
-  "edgesFound": 22,
-  "extractionError": null
+  "edgesFound": 19,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 44,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 61
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 19,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 22,
-  "excerptOk": 22,
-  "rawChecked": 22,
-  "rawOk": 22,
+  "excerptChecked": 19,
+  "excerptOk": 19,
+  "rawChecked": 19,
+  "rawOk": 19,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 22,
-  "heard": 22,
+  "offered": 19,
+  "heard": 19,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "alaaazeezi alhakeemi|the|revelation of the book is from allah",
+    "task_id": "the book|is|from allah",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "alAAazeezi alhakeemi the revelation of the Book is from Allah",
-    "subject": "alAAazeezi alhakeemi",
-    "verb": "the",
-    "object": "revelation of the Book is from Allah",
+    "description": "the Book is from Allah",
+    "subject": "the Book",
+    "verb": "is",
+    "object": "from Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the exalted|in|might",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Exalted in Might",
-    "subject": "the Exalted",
-    "verb": "in",
-    "object": "Might",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#212-1799",
-      "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-      "text": "[45:1] حمٓ Hameem Ha, Meem [45:2] تَنزِيلُ ٱلۡكِتَٰبِ مِنَ ٱللَّهِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Tanzeelu alkitabi mina Allahi alAAazeezi alhakeemi The revelation of the Book is from Allah, the Exalted in Might, the Wise [45:3] إِنَّ فِي ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِ لَأٓيَٰتٖ لِّلۡمُؤۡمِنِينَ Inna fee alssamawati waalardi laayatin lilmumineena Indeed, within the heavens and earth are signs for the believers [45:4] وَفِي خَلۡقِكُمۡ وَمَا يَبُثُّ مِن دَآبَّةٍ ءَايَٰتٞ لِّقَوۡمٖ يُوقِنُونَ Wafee khalqikum wama yabuththu min dabbatin ayatun liqawmin yooqinoona And in the creation of yourselves and what He disperses of moving creatures are signs for people who are certain [in faith] [45:5] وَٱخۡتِلَٰفِ ٱلَّيۡلِ وَٱلنَّهَارِ وَمَآ أَنزَلَ ٱللَّهُ مِنَ ٱلسَّمَآءِ مِن رِّزۡقٖ فَأَحۡيَا بِهِ ٱلۡأَرۡضَ بَعۡدَ مَوۡتِهَا وَتَصۡرِيفِ ٱلرِّيَٰحِ ءَايَٰتٞ لِّقَوۡمٖ يَعۡقِلُونَ Waikhtilafi allayli waalnnahari wama anzala Allahu mina alssamai min rizqin faahya bihi alarda baAAda mawtiha watasreefi alrriyahi ayatun liqawmin yaAAqiloona And [in] the alternation of night and day and [in] what Allah sends down from the sky of provision and gives life thereby to the earth after its lifelessness and [in His] directing of the winds are signs for a people who reason [45:6] تِلۡكَ ءَايَٰتُ ٱللَّهِ نَتۡلُوهَا عَلَيۡكَ بِٱلۡحَقِّۖ فَبِأَيِّ حَدِيثِۭ بَعۡدَ ٱللَّهِ وَءَايَٰتِهِۦ يُؤۡمِنُونَ Tilka ayatu Allahi natlooha AAalayka bialhaqqi fabiayyi hadeethin baAAda Allahi waayatihi yuminoona These are the verses of Allah which We recite to you in truth."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "are",
     "object": "the verses of Allah which We recite to you in truth",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,65 +142,36 @@
       "text": "[45:1] حمٓ Hameem Ha, Meem [45:2] تَنزِيلُ ٱلۡكِتَٰبِ مِنَ ٱللَّهِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Tanzeelu alkitabi mina Allahi alAAazeezi alhakeemi The revelation of the Book is from Allah, the Exalted in Might, the Wise [45:3] إِنَّ فِي ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِ لَأٓيَٰتٖ لِّلۡمُؤۡمِنِينَ Inna fee alssamawati waalardi laayatin lilmumineena Indeed, within the heavens and earth are signs for the believers [45:4] وَفِي خَلۡقِكُمۡ وَمَا يَبُثُّ مِن دَآبَّةٍ ءَايَٰتٞ لِّقَوۡمٖ يُوقِنُونَ Wafee khalqikum wama yabuththu min dabbatin ayatun liqawmin yooqinoona And in the creation of yourselves and what He disperses of moving creatures are signs for people who are certain [in faith] [45:5] وَٱخۡتِلَٰفِ ٱلَّيۡلِ وَٱلنَّهَارِ وَمَآ أَنزَلَ ٱللَّهُ مِنَ ٱلسَّمَآءِ مِن رِّزۡقٖ فَأَحۡيَا بِهِ ٱلۡأَرۡضَ بَعۡدَ مَوۡتِهَا وَتَصۡرِيفِ ٱلرِّيَٰحِ ءَايَٰتٞ لِّقَوۡمٖ يَعۡقِلُونَ Waikhtilafi allayli waalnnahari wama anzala Allahu mina alssamai min rizqin faahya bihi alarda baAAda mawtiha watasreefi alrriyahi ayatun liqawmin yaAAqiloona And [in] the alternation of night and day and [in] what Allah sends down from the sky of provision and gives life thereby to the earth after its lifelessness and [in His] directing of the winds are signs for a people who reason [45:6] تِلۡكَ ءَايَٰتُ ٱللَّهِ نَتۡلُوهَا عَلَيۡكَ بِٱلۡحَقِّۖ فَبِأَيِّ حَدِيثِۭ بَعۡدَ ٱللَّهِ وَءَايَٰتِهِۦ يُؤۡمِنُونَ Tilka ayatu Allahi natlooha AAalayka bialhaqqi fabiayyi hadeethin baAAda Allahi waayatihi yuminoona These are the verses of Allah which We recite to you in truth."
      }
     ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "hears the|verses|of allah recited to him",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "hears the verses of Allah recited to him",
+    "subject": "hears the",
+    "verb": "verses",
+    "object": "of Allah recited to him",
+    "witnesses": [
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#1800-2330",
+      "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
+      "text": "Then in what statement after Allah and His verses will they believe [45:7] وَيۡلٞ لِّكُلِّ أَفَّاكٍ أَثِيمٖ Waylun likulli affakin atheemin Woe to every sinful liar [45:8] يَسۡمَعُ ءَايَٰتِ ٱللَّهِ تُتۡلَىٰ عَلَيۡهِ ثُمَّ يُصِرُّ مُسۡتَكۡبِرٗا كَأَن لَّمۡ يَسۡمَعۡهَاۖ فَبَشِّرۡهُ بِعَذَابٍ أَلِيمٖ YasmaAAu ayati Allahi tutla AAalayhi thumma yusirru mustakbiran kaan lam yasmaAAha fabashshirhu biAAathabin aleemin Who hears the verses of Allah recited to him, then persists arrogantly as if he had not heard them."
+     }
+    ],
     "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "biaaathabin aleemin|who|hears the verses of allah recited to him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "biAAathabin aleemin who hears the verses of Allah recited to him",
-    "subject": "biAAathabin aleemin",
-    "verb": "who",
-    "object": "hears the verses of Allah recited to him",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#1800-2330",
-      "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-      "text": "Then in what statement after Allah and His verses will they believe [45:7] وَيۡلٞ لِّكُلِّ أَفَّاكٍ أَثِيمٖ Waylun likulli affakin atheemin Woe to every sinful liar [45:8] يَسۡمَعُ ءَايَٰتِ ٱللَّهِ تُتۡلَىٰ عَلَيۡهِ ثُمَّ يُصِرُّ مُسۡتَكۡبِرٗا كَأَن لَّمۡ يَسۡمَعۡهَاۖ فَبَشِّرۡهُ بِعَذَابٍ أَلِيمٖ YasmaAAu ayati Allahi tutla AAalayhi thumma yusirru mustakbiran kaan lam yasmaAAha fabashshirhu biAAathabin aleemin Who hears the verses of Allah recited to him, then persists arrogantly as if he had not heard them."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "persists arrogantly|as|if he had not heard them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "persists arrogantly as if he had not heard them",
-    "subject": "persists arrogantly",
-    "verb": "as",
-    "object": "if he had not heard them",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#1800-2330",
-      "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-      "text": "Then in what statement after Allah and His verses will they believe [45:7] وَيۡلٞ لِّكُلِّ أَفَّاكٍ أَثِيمٖ Waylun likulli affakin atheemin Woe to every sinful liar [45:8] يَسۡمَعُ ءَايَٰتِ ٱللَّهِ تُتۡلَىٰ عَلَيۡهِ ثُمَّ يُصِرُّ مُسۡتَكۡبِرٗا كَأَن لَّمۡ يَسۡمَعۡهَاۖ فَبَشِّرۡهُ بِعَذَابٍ أَلِيمٖ YasmaAAu ayati Allahi tutla AAalayhi thumma yusirru mustakbiran kaan lam yasmaAAha fabashshirhu biAAathabin aleemin Who hears the verses of Allah recited to him, then persists arrogantly as if he had not heard them."
-     }
-    ],
-    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +191,7 @@
     "verb": "muheenun",
     "object": "And when he knows anything of Our verses",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,36 +200,7 @@
       "text": "So give him tidings of a painful punishment [45:9] وَإِذَا عَلِمَ مِنۡ ءَايَٰتِنَا شَيۡـًٔا ٱتَّخَذَهَا هُزُوًاۚ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مُّهِينٞ Waitha AAalima min ayatina shayan ittakhathaha huzuwan olaika lahum AAathabun muheenun And when he knows anything of Our verses, he takes them in ridicule."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "takes them|in|ridicule",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "takes them in ridicule",
-    "subject": "takes them",
-    "verb": "in",
-    "object": "ridicule",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#2331-2645",
-      "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-      "text": "So give him tidings of a painful punishment [45:9] وَإِذَا عَلِمَ مِنۡ ءَايَٰتِنَا شَيۡـًٔا ٱتَّخَذَهَا هُزُوًاۚ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مُّهِينٞ Waitha AAalima min ayatina shayan ittakhathaha huzuwan olaika lahum AAathabun muheenun And when he knows anything of Our verses, he takes them in ridicule."
-     }
-    ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -277,7 +220,7 @@
     "verb": "is",
     "object": "Hell",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -286,7 +229,7 @@
       "text": "Those will have a humiliating punishment [45:10] مِّن وَرَآئِهِمۡ جَهَنَّمُۖ وَلَا يُغۡنِي عَنۡهُم مَّا كَسَبُواْ شَيۡـٔٗا وَلَا مَا ٱتَّخَذُواْ مِن دُونِ ٱللَّهِ أَوۡلِيَآءَۖ وَلَهُمۡ عَذَابٌ عَظِيمٌ Min waraihim jahannamu wala yughnee AAanhum ma kasaboo shayan wala ma ittakhathoo min dooni Allahi awliyaa walahum AAathabun AAatheemun Before them is Hell, and what they had earned will not avail them at all nor what they had taken besides Allah as allies."
      }
     ],
-    "seq": 7,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +249,7 @@
     "verb": "will",
     "object": "not avail them at all nor what they had taken besides Allah as allies",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,7 +258,7 @@
       "text": "Those will have a humiliating punishment [45:10] مِّن وَرَآئِهِمۡ جَهَنَّمُۖ وَلَا يُغۡنِي عَنۡهُم مَّا كَسَبُواْ شَيۡـٔٗا وَلَا مَا ٱتَّخَذُواْ مِن دُونِ ٱللَّهِ أَوۡلِيَآءَۖ وَلَهُمۡ عَذَابٌ عَظِيمٌ Min waraihim jahannamu wala yughnee AAanhum ma kasaboo shayan wala ma ittakhathoo min dooni Allahi awliyaa walahum AAathabun AAatheemun Before them is Hell, and what they had earned will not avail them at all nor what they had taken besides Allah as allies."
      }
     ],
-    "seq": 8,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -335,7 +278,7 @@
     "verb": "is",
     "object": "guidance",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -344,7 +287,7 @@
       "text": "And they will have a great punishment [45:11] هَٰذَا هُدٗىۖ وَٱلَّذِينَ كَفَرُواْ بِـَٔايَٰتِ رَبِّهِمۡ لَهُمۡ عَذَابٞ مِّن رِّجۡزٍ أَلِيمٌ Hatha hudan waallatheena kafaroo biayati rabbihim lahum AAathabun min rijzin aleemin This [Qur'an] is guidance."
      }
     ],
-    "seq": 9,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -364,7 +307,7 @@
     "verb": "is",
     "object": "Allah who subjected to you the sea so that ships may sail upon it by His command and that you may seek of His bounty",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,13 +316,13 @@
       "text": "And those who have disbelieved in the verses of their Lord will have a painful punishment of foul nature [45:12] ۞ٱللَّهُ ٱلَّذِي سَخَّرَ لَكُمُ ٱلۡبَحۡرَ لِتَجۡرِيَ ٱلۡفُلۡكُ فِيهِ بِأَمۡرِهِۦ وَلِتَبۡتَغُواْ مِن فَضۡلِهِۦ وَلَعَلَّكُمۡ تَشۡكُرُونَ Allahu allathee sakhkhara lakumu albahra litajriya alfulku feehi biamrihi walitabtaghoo min fadlihi walaAAallakum tashkuroona It is Allah who subjected to you the sea so that ships may sail upon it by His command and that you may seek of His bounty; and perhaps you will be grateful [45:13] وَسَخَّرَ لَكُم مَّا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ جَمِيعٗا مِّنۡهُۚ إِنَّ فِي ذَٰلِكَ لَأٓيَٰتٖ لِّقَوۡمٖ يَتَفَكَّرُونَ Wasakhkhara lakum ma fee alssamawati wama fee alardi jameeAAan minhu inna fee thalika laayatin liqawmin yatafakkaroona And He has subjected to you whatever is in the heavens and whatever is on the earth - all from Him."
      }
     ],
-    "seq": 10,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "liqawmin yatafakkaroona|and|he has subjected to you whatever is in the heavens and whatever is on the earth - all from him",
+    "task_id": "and he|has|subjected to you whatever is in the heavens and whatever is on the earth - all from him",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -388,12 +331,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "liqawmin yatafakkaroona and He has subjected to you whatever is in the heavens and whatever is on the earth - all from Him",
-    "subject": "liqawmin yatafakkaroona",
-    "verb": "and",
-    "object": "He has subjected to you whatever is in the heavens and whatever is on the earth - all from Him",
+    "description": "And He has subjected to you whatever is in the heavens and whatever is on the earth - all from Him",
+    "subject": "And He",
+    "verb": "has",
+    "object": "subjected to you whatever is in the heavens and whatever is on the earth - all from Him",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -402,7 +345,7 @@
       "text": "And those who have disbelieved in the verses of their Lord will have a painful punishment of foul nature [45:12] ۞ٱللَّهُ ٱلَّذِي سَخَّرَ لَكُمُ ٱلۡبَحۡرَ لِتَجۡرِيَ ٱلۡفُلۡكُ فِيهِ بِأَمۡرِهِۦ وَلِتَبۡتَغُواْ مِن فَضۡلِهِۦ وَلَعَلَّكُمۡ تَشۡكُرُونَ Allahu allathee sakhkhara lakumu albahra litajriya alfulku feehi biamrihi walitabtaghoo min fadlihi walaAAallakum tashkuroona It is Allah who subjected to you the sea so that ships may sail upon it by His command and that you may seek of His bounty; and perhaps you will be grateful [45:13] وَسَخَّرَ لَكُم مَّا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ جَمِيعٗا مِّنۡهُۚ إِنَّ فِي ذَٰلِكَ لَأٓيَٰتٖ لِّقَوۡمٖ يَتَفَكَّرُونَ Wasakhkhara lakum ma fee alssamawati wama fee alardi jameeAAan minhu inna fee thalika laayatin liqawmin yatafakkaroona And He has subjected to you whatever is in the heavens and whatever is on the earth - all from Him."
      }
     ],
-    "seq": 11,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -422,7 +365,7 @@
     "verb": "is",
     "object": "for himself",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,7 +374,7 @@
       "text": "Indeed in that are signs for a people who give thought [45:14] قُل لِّلَّذِينَ ءَامَنُواْ يَغۡفِرُواْ لِلَّذِينَ لَا يَرۡجُونَ أَيَّامَ ٱللَّهِ لِيَجۡزِيَ قَوۡمَۢا بِمَا كَانُواْ يَكۡسِبُونَ Qul lillatheena amanoo yaghfiroo lillatheena la yarjoona ayyama Allahi liyajziya qawman bima kanoo yaksiboona Say, [O Muhammad], to those who have believed that they [should] forgive those who expect not the days of Allah so that He may recompense a people for what they used to earn [45:15] مَنۡ عَمِلَ صَٰلِحٗا فَلِنَفۡسِهِۦۖ وَمَنۡ أَسَآءَ فَعَلَيۡهَاۖ ثُمَّ إِلَىٰ رَبِّكُمۡ تُرۡجَعُونَ Man AAamila salihan falinafsihi waman asaa faAAalayha thumma ila rabbikum turjaAAoona Whoever does a good deed - it is for himself; and whoever does evil - it is against the self."
      }
     ],
-    "seq": 12,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +394,7 @@
     "verb": "is",
     "object": "against the self",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,7 +403,7 @@
       "text": "Indeed in that are signs for a people who give thought [45:14] قُل لِّلَّذِينَ ءَامَنُواْ يَغۡفِرُواْ لِلَّذِينَ لَا يَرۡجُونَ أَيَّامَ ٱللَّهِ لِيَجۡزِيَ قَوۡمَۢا بِمَا كَانُواْ يَكۡسِبُونَ Qul lillatheena amanoo yaghfiroo lillatheena la yarjoona ayyama Allahi liyajziya qawman bima kanoo yaksiboona Say, [O Muhammad], to those who have believed that they [should] forgive those who expect not the days of Allah so that He may recompense a people for what they used to earn [45:15] مَنۡ عَمِلَ صَٰلِحٗا فَلِنَفۡسِهِۦۖ وَمَنۡ أَسَآءَ فَعَلَيۡهَاۖ ثُمَّ إِلَىٰ رَبِّكُمۡ تُرۡجَعُونَ Man AAamila salihan falinafsihi waman asaa faAAalayha thumma ila rabbikum turjaAAoona Whoever does a good deed - it is for himself; and whoever does evil - it is against the self."
      }
     ],
-    "seq": 13,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -480,7 +423,7 @@
     "verb": "alaaalameena",
     "object": "And We did certainly give the Children of Israel the Scripture and judgement and prophethood",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -489,13 +432,13 @@
       "text": "Then to your Lord you will be returned [45:16] وَلَقَدۡ ءَاتَيۡنَا بَنِيٓ إِسۡرَـٰٓءِيلَ ٱلۡكِتَٰبَ وَٱلۡحُكۡمَ وَٱلنُّبُوَّةَ وَرَزَقۡنَٰهُم مِّنَ ٱلطَّيِّبَٰتِ وَفَضَّلۡنَٰهُمۡ عَلَى ٱلۡعَٰلَمِينَ Walaqad atayna banee israeela alkitaba waalhukma waalnnubuwwata warazaqnahum mina alttayyibati wafaddalnahum AAala alAAalameena And We did certainly give the Children of Israel the Scripture and judgement and prophethood, and We provided them with good things and preferred them over the worlds [45:17] وَءَاتَيۡنَٰهُم بَيِّنَٰتٖ مِّنَ ٱلۡأَمۡرِۖ فَمَا ٱخۡتَلَفُوٓاْ إِلَّا مِنۢ بَعۡدِ مَا جَآءَهُمُ ٱلۡعِلۡمُ بَغۡيَۢا بَيۡنَهُمۡۚ إِنَّ رَبَّكَ يَقۡضِي بَيۡنَهُمۡ يَوۡمَ ٱلۡقِيَٰمَةِ فِيمَا كَانُواْ فِيهِ يَخۡتَلِفُونَ Waataynahum bayyinatin mina alamri fama ikhtalafoo illa min baAAdi ma jaahumu alAAilmu baghyan baynahum inna rabbaka yaqdee baynahum yawma alqiyamati feema kanoo feehi yakhtalifoona And We gave them clear proofs of the matter [of religion]."
      }
     ],
-    "seq": 14,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "feehi yakhtalifoona|and|we gave them clear proofs of the matter [of religion]",
+    "task_id": "and we|gave|them clear proofs of the matter [of religion]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -504,12 +447,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "feehi yakhtalifoona and We gave them clear proofs of the matter [of religion]",
-    "subject": "feehi yakhtalifoona",
-    "verb": "and",
-    "object": "We gave them clear proofs of the matter [of religion]",
+    "description": "And We gave them clear proofs of the matter [of religion]",
+    "subject": "And We",
+    "verb": "gave",
+    "object": "them clear proofs of the matter [of religion]",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -518,7 +461,7 @@
       "text": "Then to your Lord you will be returned [45:16] وَلَقَدۡ ءَاتَيۡنَا بَنِيٓ إِسۡرَـٰٓءِيلَ ٱلۡكِتَٰبَ وَٱلۡحُكۡمَ وَٱلنُّبُوَّةَ وَرَزَقۡنَٰهُم مِّنَ ٱلطَّيِّبَٰتِ وَفَضَّلۡنَٰهُمۡ عَلَى ٱلۡعَٰلَمِينَ Walaqad atayna banee israeela alkitaba waalhukma waalnnubuwwata warazaqnahum mina alttayyibati wafaddalnahum AAala alAAalameena And We did certainly give the Children of Israel the Scripture and judgement and prophethood, and We provided them with good things and preferred them over the worlds [45:17] وَءَاتَيۡنَٰهُم بَيِّنَٰتٖ مِّنَ ٱلۡأَمۡرِۖ فَمَا ٱخۡتَلَفُوٓاْ إِلَّا مِنۢ بَعۡدِ مَا جَآءَهُمُ ٱلۡعِلۡمُ بَغۡيَۢا بَيۡنَهُمۡۚ إِنَّ رَبَّكَ يَقۡضِي بَيۡنَهُمۡ يَوۡمَ ٱلۡقِيَٰمَةِ فِيمَا كَانُواْ فِيهِ يَخۡتَلِفُونَ Waataynahum bayyinatin mina alamri fama ikhtalafoo illa min baAAdi ma jaahumu alAAilmu baghyan baynahum inna rabbaka yaqdee baynahum yawma alqiyamati feema kanoo feehi yakhtalifoona And We gave them clear proofs of the matter [of religion]."
      }
     ],
-    "seq": 15,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -538,7 +481,7 @@
     "verb": "did",
     "object": "not differ except after knowledge had come to them - out of jealous animosity between themselves",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -547,7 +490,7 @@
       "text": "And they did not differ except after knowledge had come to them - out of jealous animosity between themselves."
      }
     ],
-    "seq": 16,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -567,7 +510,7 @@
     "verb": "put",
     "object": "you",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -576,7 +519,7 @@
       "text": "Indeed, your Lord will judge between them on the Day of Resurrection concerning that over which they used to differ [45:18] ثُمَّ جَعَلۡنَٰكَ عَلَىٰ شَرِيعَةٖ مِّنَ ٱلۡأَمۡرِ فَٱتَّبِعۡهَا وَلَا تَتَّبِعۡ أَهۡوَآءَ ٱلَّذِينَ لَا يَعۡلَمُونَ Thumma jaAAalnaka AAala shareeAAatin mina alamri faittabiAAha wala tattabiAA ahwaa allatheena la yaAAlamoona Then We put you, [O Muhammad], on an ordained way concerning the matter [of religion]; so follow it and do not follow the inclinations of those who do not know [45:19] إِنَّهُمۡ لَن يُغۡنُواْ عَنكَ مِنَ ٱللَّهِ شَيۡـٔٗاۚ وَإِنَّ ٱلظَّـٰلِمِينَ بَعۡضُهُمۡ أَوۡلِيَآءُ بَعۡضٖۖ وَٱللَّهُ وَلِيُّ ٱلۡمُتَّقِينَ Innahum lan yughnoo AAanka mina Allahi shayan wainna alththalimeena baAAduhum awliyao baAAdin waAllahu waliyyu almuttaqeena Indeed, they will never avail you against Allah at all."
      }
     ],
-    "seq": 17,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -596,7 +539,7 @@
     "verb": "concerning",
     "object": "the matter [of religion]",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -605,7 +548,7 @@
       "text": "Indeed, your Lord will judge between them on the Day of Resurrection concerning that over which they used to differ [45:18] ثُمَّ جَعَلۡنَٰكَ عَلَىٰ شَرِيعَةٖ مِّنَ ٱلۡأَمۡرِ فَٱتَّبِعۡهَا وَلَا تَتَّبِعۡ أَهۡوَآءَ ٱلَّذِينَ لَا يَعۡلَمُونَ Thumma jaAAalnaka AAala shareeAAatin mina alamri faittabiAAha wala tattabiAA ahwaa allatheena la yaAAlamoona Then We put you, [O Muhammad], on an ordained way concerning the matter [of religion]; so follow it and do not follow the inclinations of those who do not know [45:19] إِنَّهُمۡ لَن يُغۡنُواْ عَنكَ مِنَ ٱللَّهِ شَيۡـٔٗاۚ وَإِنَّ ٱلظَّـٰلِمِينَ بَعۡضُهُمۡ أَوۡلِيَآءُ بَعۡضٖۖ وَٱللَّهُ وَلِيُّ ٱلۡمُتَّقِينَ Innahum lan yughnoo AAanka mina Allahi shayan wainna alththalimeena baAAduhum awliyao baAAdin waAllahu waliyyu almuttaqeena Indeed, they will never avail you against Allah at all."
      }
     ],
-    "seq": 18,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -625,7 +568,7 @@
     "verb": "will",
     "object": "never avail you against Allah at all",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -634,7 +577,7 @@
       "text": "Indeed, your Lord will judge between them on the Day of Resurrection concerning that over which they used to differ [45:18] ثُمَّ جَعَلۡنَٰكَ عَلَىٰ شَرِيعَةٖ مِّنَ ٱلۡأَمۡرِ فَٱتَّبِعۡهَا وَلَا تَتَّبِعۡ أَهۡوَآءَ ٱلَّذِينَ لَا يَعۡلَمُونَ Thumma jaAAalnaka AAala shareeAAatin mina alamri faittabiAAha wala tattabiAA ahwaa allatheena la yaAAlamoona Then We put you, [O Muhammad], on an ordained way concerning the matter [of religion]; so follow it and do not follow the inclinations of those who do not know [45:19] إِنَّهُمۡ لَن يُغۡنُواْ عَنكَ مِنَ ٱللَّهِ شَيۡـٔٗاۚ وَإِنَّ ٱلظَّـٰلِمِينَ بَعۡضُهُمۡ أَوۡلِيَآءُ بَعۡضٖۖ وَٱللَّهُ وَلِيُّ ٱلۡمُتَّقِينَ Innahum lan yughnoo AAanka mina Allahi shayan wainna alththalimeena baAAduhum awliyao baAAdin waAllahu waliyyu almuttaqeena Indeed, they will never avail you against Allah at all."
      }
     ],
-    "seq": 19,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -654,7 +597,7 @@
     "verb": "are",
     "object": "allies of one another",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -663,7 +606,7 @@
       "text": "And indeed, the wrongdoers are allies of one another; but Allah is the protector of the righteous [45:20] هَٰذَا بَصَـٰٓئِرُ لِلنَّاسِ وَهُدٗى وَرَحۡمَةٞ لِّقَوۡمٖ يُوقِنُونَ Hatha basairu lilnnasi wahudan warahmatun liqawmin yooqinoona This [Qur'an] is enlightenment for mankind and guidance and mercy for a people who are certain [in faith] [45:21] أَمۡ حَسِبَ ٱلَّذِينَ ٱجۡتَرَحُواْ ٱلسَّيِّـَٔاتِ أَن نَّجۡعَلَهُمۡ كَٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِ سَوَآءٗ مَّحۡيَاهُمۡ وَمَمَاتُهُمۡۚ سَآءَ مَا يَحۡكُمُونَ Am hasiba allatheena ijtarahoo alssayyiati an najAAalahum kaallatheena amanoo waAAamiloo alssalihati sawaan mahyahum wamamatuhum saa ma yahkumoona Or do those who commit evils think We will make them like those who have believed and done righteous deeds - [make them] equal in their life and their death?"
      }
     ],
-    "seq": 20,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -683,7 +626,7 @@
     "verb": "do",
     "object": "those who commit evils think We will make them like those who have believed and done righteous deeds - [make them] equal in their life and their death?",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -692,12 +635,12 @@
       "text": "And indeed, the wrongdoers are allies of one another; but Allah is the protector of the righteous [45:20] هَٰذَا بَصَـٰٓئِرُ لِلنَّاسِ وَهُدٗى وَرَحۡمَةٞ لِّقَوۡمٖ يُوقِنُونَ Hatha basairu lilnnasi wahudan warahmatun liqawmin yooqinoona This [Qur'an] is enlightenment for mankind and guidance and mercy for a people who are certain [in faith] [45:21] أَمۡ حَسِبَ ٱلَّذِينَ ٱجۡتَرَحُواْ ٱلسَّيِّـَٔاتِ أَن نَّجۡعَلَهُمۡ كَٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِ سَوَآءٗ مَّحۡيَاهُمۡ وَمَمَاتُهُمۡۚ سَآءَ مَا يَحۡكُمُونَ Am hasiba allatheena ijtarahoo alssayyiati an najAAalahum kaallatheena amanoo waAAamiloo alssalihati sawaan mahyahum wamamatuhum saa ma yahkumoona Or do those who commit evils think We will make them like those who have believed and done righteous deeds - [make them] equal in their life and their death?"
      }
     ],
-    "seq": 21,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 22,
+  "nextSeq": 19,
   "admits": [
    "NUL",
    "SEG",
@@ -712,28 +655,12 @@
  },
  "folded": [
   {
-   "id": "alaaazeezi alhakeemi|the|revelation of the book is from allah",
-   "subject": "alAAazeezi alhakeemi",
-   "verb": "the",
-   "object": "revelation of the Book is from Allah",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#212-1799",
-     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-     "text": "[45:1] حمٓ Hameem Ha, Meem [45:2] تَنزِيلُ ٱلۡكِتَٰبِ مِنَ ٱللَّهِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Tanzeelu alkitabi mina Allahi alAAazeezi alhakeemi The revelation of the Book is from Allah, the Exalted in Might, the Wise [45:3] إِنَّ فِي ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِ لَأٓيَٰتٖ لِّلۡمُؤۡمِنِينَ Inna fee alssamawati waalardi laayatin lilmumineena Indeed, within the heavens and earth are signs for the believers [45:4] وَفِي خَلۡقِكُمۡ وَمَا يَبُثُّ مِن دَآبَّةٍ ءَايَٰتٞ لِّقَوۡمٖ يُوقِنُونَ Wafee khalqikum wama yabuththu min dabbatin ayatun liqawmin yooqinoona And in the creation of yourselves and what He disperses of moving creatures are signs for people who are certain [in faith] [45:5] وَٱخۡتِلَٰفِ ٱلَّيۡلِ وَٱلنَّهَارِ وَمَآ أَنزَلَ ٱللَّهُ مِنَ ٱلسَّمَآءِ مِن رِّزۡقٖ فَأَحۡيَا بِهِ ٱلۡأَرۡضَ بَعۡدَ مَوۡتِهَا وَتَصۡرِيفِ ٱلرِّيَٰحِ ءَايَٰتٞ لِّقَوۡمٖ يَعۡقِلُونَ Waikhtilafi allayli waalnnahari wama anzala Allahu mina alssamai min rizqin faahya bihi alarda baAAda mawtiha watasreefi alrriyahi ayatun liqawmin yaAAqiloona And [in] the alternation of night and day and [in] what Allah sends down from the sky of provision and gives life thereby to the earth after its lifelessness and [in His] directing of the winds are signs for a people who reason [45:6] تِلۡكَ ءَايَٰتُ ٱللَّهِ نَتۡلُوهَا عَلَيۡكَ بِٱلۡحَقِّۖ فَبِأَيِّ حَدِيثِۭ بَعۡدَ ٱللَّهِ وَءَايَٰتِهِۦ يُؤۡمِنُونَ Tilka ayatu Allahi natlooha AAalayka bialhaqqi fabiayyi hadeethin baAAda Allahi waayatihi yuminoona These are the verses of Allah which We recite to you in truth."
-    }
-   ]
-  },
-  {
    "id": "aleemin\n    this|is|guidance",
    "subject": "aleemin\n    This",
    "verb": "is",
    "object": "guidance",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -744,12 +671,28 @@
    ]
   },
   {
+   "id": "and he|has|subjected to you whatever is in the heavens and whatever is on the earth - all from him",
+   "subject": "And He",
+   "verb": "has",
+   "object": "subjected to you whatever is in the heavens and whatever is on the earth - all from Him",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#3375-4280",
+     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
+     "text": "And those who have disbelieved in the verses of their Lord will have a painful punishment of foul nature [45:12] ۞ٱللَّهُ ٱلَّذِي سَخَّرَ لَكُمُ ٱلۡبَحۡرَ لِتَجۡرِيَ ٱلۡفُلۡكُ فِيهِ بِأَمۡرِهِۦ وَلِتَبۡتَغُواْ مِن فَضۡلِهِۦ وَلَعَلَّكُمۡ تَشۡكُرُونَ Allahu allathee sakhkhara lakumu albahra litajriya alfulku feehi biamrihi walitabtaghoo min fadlihi walaAAallakum tashkuroona It is Allah who subjected to you the sea so that ships may sail upon it by His command and that you may seek of His bounty; and perhaps you will be grateful [45:13] وَسَخَّرَ لَكُم مَّا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ جَمِيعٗا مِّنۡهُۚ إِنَّ فِي ذَٰلِكَ لَأٓيَٰتٖ لِّقَوۡمٖ يَتَفَكَّرُونَ Wasakhkhara lakum ma fee alssamawati wama fee alardi jameeAAan minhu inna fee thalika laayatin liqawmin yatafakkaroona And He has subjected to you whatever is in the heavens and whatever is on the earth - all from Him."
+    }
+   ]
+  },
+  {
    "id": "and they|did|not differ except after knowledge had come to them - out of jealous animosity between themselves",
    "subject": "And they",
    "verb": "did",
    "object": "not differ except after knowledge had come to them - out of jealous animosity between themselves",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -760,44 +703,12 @@
    ]
   },
   {
-   "id": "before them|is|hell",
-   "subject": "Before them",
-   "verb": "is",
-   "object": "Hell",
+   "id": "and we|gave|them clear proofs of the matter [of religion]",
+   "subject": "And We",
+   "verb": "gave",
+   "object": "them clear proofs of the matter [of religion]",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#2646-3114",
-     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-     "text": "Those will have a humiliating punishment [45:10] مِّن وَرَآئِهِمۡ جَهَنَّمُۖ وَلَا يُغۡنِي عَنۡهُم مَّا كَسَبُواْ شَيۡـٔٗا وَلَا مَا ٱتَّخَذُواْ مِن دُونِ ٱللَّهِ أَوۡلِيَآءَۖ وَلَهُمۡ عَذَابٌ عَظِيمٌ Min waraihim jahannamu wala yughnee AAanhum ma kasaboo shayan wala ma ittakhathoo min dooni Allahi awliyaa walahum AAathabun AAatheemun Before them is Hell, and what they had earned will not avail them at all nor what they had taken besides Allah as allies."
-    }
-   ]
-  },
-  {
-   "id": "biaaathabin aleemin|who|hears the verses of allah recited to him",
-   "subject": "biAAathabin aleemin",
-   "verb": "who",
-   "object": "hears the verses of Allah recited to him",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#1800-2330",
-     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-     "text": "Then in what statement after Allah and His verses will they believe [45:7] وَيۡلٞ لِّكُلِّ أَفَّاكٍ أَثِيمٖ Waylun likulli affakin atheemin Woe to every sinful liar [45:8] يَسۡمَعُ ءَايَٰتِ ٱللَّهِ تُتۡلَىٰ عَلَيۡهِ ثُمَّ يُصِرُّ مُسۡتَكۡبِرٗا كَأَن لَّمۡ يَسۡمَعۡهَاۖ فَبَشِّرۡهُ بِعَذَابٍ أَلِيمٖ YasmaAAu ayati Allahi tutla AAalayhi thumma yusirru mustakbiran kaan lam yasmaAAha fabashshirhu biAAathabin aleemin Who hears the verses of Allah recited to him, then persists arrogantly as if he had not heard them."
-    }
-   ]
-  },
-  {
-   "id": "feehi yakhtalifoona|and|we gave them clear proofs of the matter [of religion]",
-   "subject": "feehi yakhtalifoona",
-   "verb": "and",
-   "object": "We gave them clear proofs of the matter [of religion]",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -808,12 +719,12 @@
    ]
   },
   {
-   "id": "had earned|will|not avail them at all nor what they had taken besides allah as allies",
-   "subject": "had earned",
-   "verb": "will",
-   "object": "not avail them at all nor what they had taken besides Allah as allies",
+   "id": "before them|is|hell",
+   "subject": "Before them",
+   "verb": "is",
+   "object": "Hell",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -824,12 +735,44 @@
    ]
   },
   {
+   "id": "had earned|will|not avail them at all nor what they had taken besides allah as allies",
+   "subject": "had earned",
+   "verb": "will",
+   "object": "not avail them at all nor what they had taken besides Allah as allies",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#2646-3114",
+     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
+     "text": "Those will have a humiliating punishment [45:10] مِّن وَرَآئِهِمۡ جَهَنَّمُۖ وَلَا يُغۡنِي عَنۡهُم مَّا كَسَبُواْ شَيۡـٔٗا وَلَا مَا ٱتَّخَذُواْ مِن دُونِ ٱللَّهِ أَوۡلِيَآءَۖ وَلَهُمۡ عَذَابٌ عَظِيمٌ Min waraihim jahannamu wala yughnee AAanhum ma kasaboo shayan wala ma ittakhathoo min dooni Allahi awliyaa walahum AAathabun AAatheemun Before them is Hell, and what they had earned will not avail them at all nor what they had taken besides Allah as allies."
+    }
+   ]
+  },
+  {
+   "id": "hears the|verses|of allah recited to him",
+   "subject": "hears the",
+   "verb": "verses",
+   "object": "of Allah recited to him",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#1800-2330",
+     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
+     "text": "Then in what statement after Allah and His verses will they believe [45:7] وَيۡلٞ لِّكُلِّ أَفَّاكٍ أَثِيمٖ Waylun likulli affakin atheemin Woe to every sinful liar [45:8] يَسۡمَعُ ءَايَٰتِ ٱللَّهِ تُتۡلَىٰ عَلَيۡهِ ثُمَّ يُصِرُّ مُسۡتَكۡبِرٗا كَأَن لَّمۡ يَسۡمَعۡهَاۖ فَبَشِّرۡهُ بِعَذَابٍ أَلِيمٖ YasmaAAu ayati Allahi tutla AAalayhi thumma yusirru mustakbiran kaan lam yasmaAAha fabashshirhu biAAathabin aleemin Who hears the verses of Allah recited to him, then persists arrogantly as if he had not heard them."
+    }
+   ]
+  },
+  {
    "id": "it|is|against the self",
    "subject": "it",
    "verb": "is",
    "object": "against the self",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -845,7 +788,7 @@
    "verb": "is",
    "object": "for himself",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -861,7 +804,7 @@
    "verb": "muheenun",
    "object": "And when he knows anything of Our verses",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -872,28 +815,12 @@
    ]
   },
   {
-   "id": "liqawmin yatafakkaroona|and|he has subjected to you whatever is in the heavens and whatever is on the earth - all from him",
-   "subject": "liqawmin yatafakkaroona",
-   "verb": "and",
-   "object": "He has subjected to you whatever is in the heavens and whatever is on the earth - all from Him",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#3375-4280",
-     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-     "text": "And those who have disbelieved in the verses of their Lord will have a painful punishment of foul nature [45:12] ۞ٱللَّهُ ٱلَّذِي سَخَّرَ لَكُمُ ٱلۡبَحۡرَ لِتَجۡرِيَ ٱلۡفُلۡكُ فِيهِ بِأَمۡرِهِۦ وَلِتَبۡتَغُواْ مِن فَضۡلِهِۦ وَلَعَلَّكُمۡ تَشۡكُرُونَ Allahu allathee sakhkhara lakumu albahra litajriya alfulku feehi biamrihi walitabtaghoo min fadlihi walaAAallakum tashkuroona It is Allah who subjected to you the sea so that ships may sail upon it by His command and that you may seek of His bounty; and perhaps you will be grateful [45:13] وَسَخَّرَ لَكُم مَّا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ جَمِيعٗا مِّنۡهُۚ إِنَّ فِي ذَٰلِكَ لَأٓيَٰتٖ لِّقَوۡمٖ يَتَفَكَّرُونَ Wasakhkhara lakum ma fee alssamawati wama fee alardi jameeAAan minhu inna fee thalika laayatin liqawmin yatafakkaroona And He has subjected to you whatever is in the heavens and whatever is on the earth - all from Him."
-    }
-   ]
-  },
-  {
    "id": "ordained way|concerning|the matter [of religion]",
    "subject": "ordained way",
    "verb": "concerning",
    "object": "the matter [of religion]",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -904,44 +831,12 @@
    ]
   },
   {
-   "id": "persists arrogantly|as|if he had not heard them",
-   "subject": "persists arrogantly",
-   "verb": "as",
-   "object": "if he had not heard them",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#1800-2330",
-     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-     "text": "Then in what statement after Allah and His verses will they believe [45:7] وَيۡلٞ لِّكُلِّ أَفَّاكٍ أَثِيمٖ Waylun likulli affakin atheemin Woe to every sinful liar [45:8] يَسۡمَعُ ءَايَٰتِ ٱللَّهِ تُتۡلَىٰ عَلَيۡهِ ثُمَّ يُصِرُّ مُسۡتَكۡبِرٗا كَأَن لَّمۡ يَسۡمَعۡهَاۖ فَبَشِّرۡهُ بِعَذَابٍ أَلِيمٖ YasmaAAu ayati Allahi tutla AAalayhi thumma yusirru mustakbiran kaan lam yasmaAAha fabashshirhu biAAathabin aleemin Who hears the verses of Allah recited to him, then persists arrogantly as if he had not heard them."
-    }
-   ]
-  },
-  {
-   "id": "takes them|in|ridicule",
-   "subject": "takes them",
-   "verb": "in",
-   "object": "ridicule",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt#2331-2645",
-     "ref": "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt",
-     "text": "So give him tidings of a painful punishment [45:9] وَإِذَا عَلِمَ مِنۡ ءَايَٰتِنَا شَيۡـًٔا ٱتَّخَذَهَا هُزُوًاۚ أُوْلَـٰٓئِكَ لَهُمۡ عَذَابٞ مُّهِينٞ Waitha AAalima min ayatina shayan ittakhathaha huzuwan olaika lahum AAathabun muheenun And when he knows anything of Our verses, he takes them in ridicule."
-    }
-   ]
-  },
-  {
    "id": "tashkuroona\n    it|is|allah who subjected to you the sea so that ships may sail upon it by his command and that you may seek of his bounty",
    "subject": "tashkuroona\n    It",
    "verb": "is",
    "object": "Allah who subjected to you the sea so that ships may sail upon it by His command and that you may seek of His bounty",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -952,12 +847,12 @@
    ]
   },
   {
-   "id": "the exalted|in|might",
-   "subject": "the Exalted",
-   "verb": "in",
-   "object": "Might",
+   "id": "the book|is|from allah",
+   "subject": "the Book",
+   "verb": "is",
+   "object": "from Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -973,7 +868,7 @@
    "verb": "are",
    "object": "allies of one another",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -989,7 +884,7 @@
    "verb": "put",
    "object": "you",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1005,7 +900,7 @@
    "verb": "will",
    "object": "never avail you against Allah at all",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1021,7 +916,7 @@
    "verb": "alaaalameena",
    "object": "And We did certainly give the Children of Israel the Scripture and judgement and prophethood",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1037,7 +932,7 @@
    "verb": "do",
    "object": "those who commit evils think We will make them like those who have believed and done righteous deeds - [make them] equal in their life and their death?",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1053,7 +948,7 @@
    "verb": "are",
    "object": "the verses of Allah which We recite to you in truth",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-045-Al-Jathiyah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1065,7 +960,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:46.403Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:46.225Z"
  }
 }

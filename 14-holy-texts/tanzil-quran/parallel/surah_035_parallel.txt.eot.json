@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 16273,
   "bodyOffset": 0,
   "bodyChars": 16273,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 8,
   "distinctReferents": 8,
   "examined": true,
-  "edgesFound": 44,
-  "extractionError": null
+  "edgesFound": 27,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 9,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 13
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 27,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 46,
-  "excerptOk": 46,
-  "rawChecked": 46,
-  "rawOk": 46,
+  "excerptChecked": 30,
+  "excerptOk": 30,
+  "rawChecked": 30,
+  "rawOk": 30,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 44,
-  "heard": 44,
+  "offered": 27,
+  "heard": 27,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "is",
     "object": "[due] to Allah",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -89,36 +119,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "creator|of|the heavens and the earth",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Creator of the heavens and the earth",
-    "subject": "Creator",
-    "verb": "of",
-    "object": "the heavens and the earth",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#62-473",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "[1] AR: بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ٱلْحَمْدُ لِلَّهِ فَاطِرِ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ جَاعِلِ ٱلْمَلَٰٓئِكَةِ رُسُلًا أُو۟لِىٓ أَجْنِحَةٍۢ مَّثْنَىٰ وَثُلَٰثَ وَرُبَٰعَ ۚ يَزِيدُ فِى ٱلْخَلْقِ مَا يَشَآءُ ۚ إِنَّ ٱللَّهَ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌۭ EN: [All] praise is [due] to Allah, Creator of the heavens and the earth, [who] made the angels messengers having wings, two or three or four."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he increases|in|creation what he wills",
+    "task_id": "he|increases|in creation what he wills",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -128,11 +129,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "He increases in creation what He wills",
-    "subject": "He increases",
-    "verb": "in",
-    "object": "creation what He wills",
+    "subject": "He",
+    "verb": "increases",
+    "object": "in creation what He wills",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,7 +142,7 @@
       "text": "He increases in creation what He wills."
      }
     ],
-    "seq": 2,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -161,7 +162,7 @@
     "verb": "is",
     "object": "over all things competent",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,13 +171,13 @@
       "text": "Indeed, Allah is over all things competent."
      }
     ],
-    "seq": 3,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "to people|of|mercy - none can withhold it",
+    "task_id": "none|can|withhold it",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -185,21 +186,26 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "to people of mercy - none can withhold it",
-    "subject": "to people",
-    "verb": "of",
-    "object": "mercy - none can withhold it",
+    "description": "none can withhold it",
+    "subject": "none",
+    "verb": "can",
+    "object": "withhold it",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#559-851",
       "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
       "text": "[2] AR: مَّا يَفْتَحِ ٱللَّهُ لِلنَّاسِ مِن رَّحْمَةٍۢ فَلَا مُمْسِكَ لَهَا ۖ وَمَا يُمْسِكْ فَلَا مُرْسِلَ لَهُۥ مِنۢ بَعْدِهِۦ ۚ وَهُوَ ٱلْعَزِيزُ ٱلْحَكِيمُ EN: Whatever Allah grants to people of mercy - none can withhold it; and whatever He withholds - none can release it thereafter."
+     },
+     {
+      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5863-5928",
+      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
+      "text": "And none can inform you like [one] Acquainted [with all matters]."
      }
     ],
-    "seq": 4,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +225,7 @@
     "verb": "withholds",
     "object": "- none can release it thereafter",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,7 +234,7 @@
       "text": "[2] AR: مَّا يَفْتَحِ ٱللَّهُ لِلنَّاسِ مِن رَّحْمَةٍۢ فَلَا مُمْسِكَ لَهَا ۖ وَمَا يُمْسِكْ فَلَا مُرْسِلَ لَهُۥ مِنۢ بَعْدِهِۦ ۚ وَهُوَ ٱلْعَزِيزُ ٱلْحَكِيمُ EN: Whatever Allah grants to people of mercy - none can withhold it; and whatever He withholds - none can release it thereafter."
      }
     ],
-    "seq": 5,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +254,7 @@
     "verb": "is",
     "object": "the Exalted in Might",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,36 +263,7 @@
       "text": "And He is the Exalted in Might, the Wise."
      }
     ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the favor|of|allah upon you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the favor of Allah upon you",
-    "subject": "the favor",
-    "verb": "of",
-    "object": "Allah upon you",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#895-1148",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "[3] AR: يَٰٓأَيُّهَا ٱلنَّاسُ ٱذْكُرُوا۟ نِعْمَتَ ٱللَّهِ عَلَيْكُمْ ۚ هَلْ مِنْ خَٰلِقٍ غَيْرُ ٱللَّهِ يَرْزُقُكُم مِّنَ ٱلسَّمَآءِ وَٱلْأَرْضِ ۚ لَآ إِلَٰهَ إِلَّا هُوَ ۖ فَأَنَّىٰ تُؤْفَكُونَ EN: O mankind, remember the favor of Allah upon you."
-     }
-    ],
-    "seq": 7,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +283,7 @@
     "verb": "is",
     "object": "no deity except Him",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -315,13 +292,13 @@
       "text": "There is no deity except Him, so how are you deluded?"
      }
     ],
-    "seq": 8,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the promise|of|allah is truth",
+    "task_id": "of allah|is|truth",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -330,12 +307,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the promise of Allah is truth",
-    "subject": "the promise",
-    "verb": "of",
-    "object": "Allah is truth",
+    "description": "of Allah is truth",
+    "subject": "of Allah",
+    "verb": "is",
+    "object": "truth",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -344,7 +321,7 @@
       "text": "[5] AR: يَٰٓأَيُّهَا ٱلنَّاسُ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ ۖ فَلَا تَغُرَّنَّكُمُ ٱلْحَيَوٰةُ ٱلدُّنْيَا ۖ وَلَا يَغُرَّنَّكُم بِٱللَّهِ ٱلْغَرُورُ EN: O mankind, indeed the promise of Allah is truth, so let not the worldly life delude you and be not deceived about Allah by the Deceiver."
      }
     ],
-    "seq": 9,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -364,7 +341,7 @@
     "verb": "is",
     "object": "an enemy to you",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -373,36 +350,7 @@
       "text": "[6] AR: إِنَّ ٱلشَّيْطَٰنَ لَكُمْ عَدُوٌّۭ فَٱتَّخِذُوهُ عَدُوًّا ۚ إِنَّمَا يَدْعُوا۟ حِزْبَهُۥ لِيَكُونُوا۟ مِنْ أَصْحَٰبِ ٱلسَّعِيرِ EN: Indeed, Satan is an enemy to you; so take him as an enemy."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he|only|invites his party to be among the companions of the blaze",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "He only invites his party to be among the companions of the Blaze",
-    "subject": "He",
-    "verb": "only",
-    "object": "invites his party to be among the companions of the Blaze",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#2020-2086",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "He only invites his party to be among the companions of the Blaze."
-     }
-    ],
-    "seq": 11,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -422,7 +370,7 @@
     "verb": "have",
     "object": "a severe punishment",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -436,7 +384,7 @@
       "text": "But they who plot evil deeds will have a severe punishment, and the plotting of those - it will perish."
      }
     ],
-    "seq": 12,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -456,7 +404,7 @@
     "verb": "have",
     "object": "forgiveness and great reward",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -465,7 +413,7 @@
       "text": "[7] AR: ٱلَّذِينَ كَفَرُوا۟ لَهُمْ عَذَابٌۭ شَدِيدٌۭ ۖ وَٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّٰلِحَٰتِ لَهُم مَّغْفِرَةٌۭ وَأَجْرٌۭ كَبِيرٌ EN: Those who disbelieve will have a severe punishment, and those who believe and do righteous deeds will have forgiveness and great reward."
      }
     ],
-    "seq": 13,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -485,7 +433,7 @@
     "verb": "is",
     "object": "one to whom the evil of his deed has been made attractive so he considers it good [like one rightly guided]?",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -494,7 +442,7 @@
       "text": "[8] AR: أَفَمَن زُيِّنَ لَهُۥ سُوٓءُ عَمَلِهِۦ فَرَءَاهُ حَسَنًۭا ۖ فَإِنَّ ٱللَّهَ يُضِلُّ مَن يَشَآءُ وَيَهْدِى مَن يَشَآءُ ۖ فَلَا تَذْهَبْ نَفْسُكَ عَلَيْهِمْ حَسَرَٰتٍ ۚ إِنَّ ٱللَّهَ عَلِيمٌۢ بِمَا يَصْنَعُونَ EN: Then is one to whom the evil of his deed has been made attractive so he considers it good [like one rightly guided]?"
      }
     ],
-    "seq": 14,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -514,7 +462,7 @@
     "verb": "wills",
     "object": "and guides whom He wills",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -523,36 +471,7 @@
       "text": "For indeed, Allah sends astray whom He wills and guides whom He wills."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "over them|in|regret",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "over them in regret",
-    "subject": "over them",
-    "verb": "in",
-    "object": "regret",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#2789-2839",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "So do not let yourself perish over them in regret."
-     }
-    ],
-    "seq": 16,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -572,7 +491,7 @@
     "verb": "is",
     "object": "Knowing of what they do",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -581,7 +500,7 @@
       "text": "Indeed, Allah is Knowing of what they do."
      }
     ],
-    "seq": 17,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -601,7 +520,7 @@
     "verb": "is",
     "object": "Allah who sends the winds",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -615,7 +534,7 @@
       "text": "[17] AR: وَمَا ذَٰلِكَ عَلَى ٱللَّهِ بِعَزِيزٍۢ EN: And that is for Allah not difficult."
      }
     ],
-    "seq": 18,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -635,7 +554,7 @@
     "verb": "drive",
     "object": "them to a dead land and give life thereby to the earth after its lifelessness",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -644,7 +563,7 @@
       "text": "[9] AR: وَٱللَّهُ ٱلَّذِىٓ أَرْسَلَ ٱلرِّيَٰحَ فَتُثِيرُ سَحَابًۭا فَسُقْنَٰهُ إِلَىٰ بَلَدٍۢ مَّيِّتٍۢ فَأَحْيَيْنَا بِهِ ٱلْأَرْضَ بَعْدَ مَوْتِهَا ۚ كَذَٰلِكَ ٱلنُّشُورُ EN: And it is Allah who sends the winds, and they stir the clouds, and We drive them to a dead land and give life thereby to the earth after its lifelessness."
      }
     ],
-    "seq": 19,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -664,7 +583,7 @@
     "verb": "is",
     "object": "the resurrection",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -673,36 +592,7 @@
       "text": "Thus is the resurrection."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the plotting|of|those - it will perish",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the plotting of those - it will perish",
-    "subject": "the plotting",
-    "verb": "of",
-    "object": "those - it will perish",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#3632-3735",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "But they who plot evil deeds will have a severe punishment, and the plotting of those - it will perish."
-     }
-    ],
-    "seq": 21,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -722,7 +612,7 @@
     "verb": "made",
     "object": "you mates",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -731,7 +621,7 @@
       "text": "[11] AR: وَٱللَّهُ خَلَقَكُم مِّن تُرَابٍۢ ثُمَّ مِن نُّطْفَةٍۢ ثُمَّ جَعَلَكُمْ أَزْوَٰجًۭا ۚ وَمَا تَحْمِلُ مِنْ أُنثَىٰ وَلَا تَضَعُ إِلَّا بِعِلْمِهِۦ ۚ وَمَا يُعَمَّرُ مِن مُّعَمَّرٍۢ وَلَا يُنقَصُ مِنْ عُمُرِهِۦٓ إِلَّا فِى كِتَٰبٍ ۚ إِنَّ ذَٰلِكَ عَلَى ٱللَّهِ يَسِيرٌۭ EN: And Allah created you from dust, then from a sperm-drop; then He made you mates."
      }
     ],
-    "seq": 22,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -751,7 +641,7 @@
     "verb": "is",
     "object": "granted [additional] life nor is his lifespan lessened but that it is in a register",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -760,7 +650,7 @@
       "text": "And no aged person is granted [additional] life nor is his lifespan lessened but that it is in a register."
      }
     ],
-    "seq": 23,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -780,7 +670,7 @@
     "verb": "is",
     "object": "easy",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -789,36 +679,7 @@
       "text": "Indeed, that for Allah is easy."
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "two bodies|of|water",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "two bodies of water",
-    "subject": "two bodies",
-    "verb": "of",
-    "object": "water",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#4318-4655",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "[12] AR: وَمَا يَسْتَوِى ٱلْبَحْرَانِ هَٰذَا عَذْبٌۭ فُرَاتٌۭ سَآئِغٌۭ شَرَابُهُۥ وَهَٰذَا مِلْحٌ أُجَاجٌۭ ۖ وَمِن كُلٍّۢ تَأْكُلُونَ لَحْمًۭا طَرِيًّۭا وَتَسْتَخْرِجُونَ حِلْيَةًۭ تَلْبَسُونَهَا ۖ وَتَرَى ٱلْفُلْكَ فِيهِ مَوَاخِرَ لِتَبْتَغُوا۟ مِن فَضْلِهِۦ وَلَعَلَّكُمْ تَشْكُرُونَ EN: And not alike are the two bodies of water."
-     }
-    ],
-    "seq": 25,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -838,7 +699,7 @@
     "verb": "is",
     "object": "fresh and sweet",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -847,65 +708,7 @@
       "text": "One is fresh and sweet, palatable for drinking, and one is salty and bitter."
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "might seek|of|his bounty",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "might seek of His bounty",
-    "subject": "might seek",
-    "verb": "of",
-    "object": "His bounty",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#4733-4918",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "And from each you eat tender meat and extract ornaments which you wear, and you see the ships plowing through [them] that you might seek of His bounty; and perhaps you will be grateful."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he|causes|the night to enter the day",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "He causes the night to enter the day",
-    "subject": "He",
-    "verb": "causes",
-    "object": "the night to enter the day",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#4920-5350",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "[13] AR: يُولِجُ ٱلَّيْلَ فِى ٱلنَّهَارِ وَيُولِجُ ٱلنَّهَارَ فِى ٱلَّيْلِ وَسَخَّرَ ٱلشَّمْسَ وَٱلْقَمَرَ كُلٌّۭ يَجْرِى لِأَجَلٍۢ مُّسَمًّۭى ۚ ذَٰلِكُمُ ٱللَّهُ رَبُّكُمْ لَهُ ٱلْمُلْكُ ۚ وَٱلَّذِينَ تَدْعُونَ مِن دُونِهِۦ مَا يَمْلِكُونَ مِن قِطْمِيرٍ EN: He causes the night to enter the day, and He causes the day to enter the night and has subjected the sun and the moon - each running [its course] for a specified term."
-     }
-    ],
-    "seq": 28,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -925,7 +728,7 @@
     "verb": "is",
     "object": "Allah",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -934,123 +737,7 @@
       "text": "That is Allah, your Lord; to Him belongs sovereignty."
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the membrane|of|a date seed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the membrane of a date seed",
-    "subject": "the membrane",
-    "verb": "of",
-    "object": "a date seed",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5405-5502",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "And those whom you invoke other than Him do not possess [as much as] the membrane of a date seed."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the day|of|resurrection they will deny your association",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Day of Resurrection they will deny your association",
-    "subject": "the Day",
-    "verb": "of",
-    "object": "Resurrection they will deny your association",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5799-5862",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "And on the Day of Resurrection they will deny your association."
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and none|can|inform you like [one] acquainted [with all matters]",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And none can inform you like [one] Acquainted [with all matters]",
-    "subject": "And none",
-    "verb": "can",
-    "object": "inform you like [one] Acquainted [with all matters]",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5863-5928",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "And none can inform you like [one] Acquainted [with all matters]."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are those|in|need of allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are those in need of Allah",
-    "subject": "are those",
-    "verb": "in",
-    "object": "need of Allah",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5930-6139",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "[15] AR: ۞ يَٰٓأَيُّهَا ٱلنَّاسُ أَنتُمُ ٱلْفُقَرَآءُ إِلَى ٱللَّهِ ۖ وَٱللَّهُ هُوَ ٱلْغَنِىُّ ٱلْحَمِيدُ EN: O mankind, you are those in need of Allah, while Allah is the Free of need, the Praiseworthy."
-     }
-    ],
-    "seq": 33,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1070,7 +757,7 @@
     "verb": "is",
     "object": "the Free of need",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1079,7 +766,7 @@
       "text": "[15] AR: ۞ يَٰٓأَيُّهَا ٱلنَّاسُ أَنتُمُ ٱلْفُقَرَآءُ إِلَى ٱللَّهِ ۖ وَٱللَّهُ هُوَ ٱلْغَنِىُّ ٱلْحَمِيدُ EN: O mankind, you are those in need of Allah, while Allah is the Free of need, the Praiseworthy."
      }
     ],
-    "seq": 34,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1099,7 +786,7 @@
     "verb": "can",
     "object": "do away with you and bring forth a new creation",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1108,71 +795,13 @@
       "text": "[16] AR: إِن يَشَأْ يُذْهِبْكُمْ وَيَأْتِ بِخَلْقٍۢ جَدِيدٍۢ EN: If He wills, He can do away with you and bring forth a new creation."
      }
     ],
-    "seq": 35,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "no bearer|of|burdens will bear the burden of another",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "no bearer of burdens will bear the burden of another",
-    "subject": "no bearer",
-    "verb": "of",
-    "object": "burdens will bear the burden of another",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#6374-6754",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "[18] AR: وَلَا تَزِرُ وَازِرَةٌۭ وِزْرَ أُخْرَىٰ ۚ وَإِن تَدْعُ مُثْقَلَةٌ إِلَىٰ حِمْلِهَا لَا يُحْمَلْ مِنْهُ شَىْءٌۭ وَلَوْ كَانَ ذَا قُرْبَىٰٓ ۗ إِنَّمَا تُنذِرُ ٱلَّذِينَ يَخْشَوْنَ رَبَّهُم بِٱلْغَيْبِ وَأَقَامُوا۟ ٱلصَّلَوٰةَ ۚ وَمَن تَزَكَّىٰ فَإِنَّمَا يَتَزَكَّىٰ لِنَفْسِهِۦ ۚ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ EN: And no bearer of burdens will bear the burden of another."
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "nothing|of|it will be carried",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "nothing of it will be carried",
-    "subject": "nothing",
-    "verb": "of",
-    "object": "it will be carried",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#6755-6897",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "And if a heavily laden soul calls [another] to [carry some of] its load, nothing of it will be carried, even if he should be a close relative."
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you can|only|warn those who fear their lord unseen and have established prayer",
+    "task_id": "you|can|only warn those who fear their lord unseen and have established prayer",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1182,11 +811,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "You can only warn those who fear their Lord unseen and have established prayer",
-    "subject": "You can",
-    "verb": "only",
-    "object": "warn those who fear their Lord unseen and have established prayer",
+    "subject": "You",
+    "verb": "can",
+    "object": "only warn those who fear their Lord unseen and have established prayer",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1195,36 +824,7 @@
       "text": "You can only warn those who fear their Lord unseen and have established prayer."
      }
     ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "purifies himself|only|purifies himself for [the benefit of] his soul",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "purifies himself only purifies himself for [the benefit of] his soul",
-    "subject": "purifies himself",
-    "verb": "only",
-    "object": "purifies himself for [the benefit of] his soul",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#6978-7059",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "And whoever purifies himself only purifies himself for [the benefit of] his soul."
-     }
-    ],
-    "seq": 39,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1244,7 +844,7 @@
     "verb": "is",
     "object": "the [final] destination",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1253,65 +853,7 @@
       "text": "And to Allah is the [final] destination."
      }
     ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "allah|causes|to hear whom he wills",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Allah causes to hear whom He wills",
-    "subject": "Allah",
-    "verb": "causes",
-    "object": "to hear whom He wills",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#7567-7656",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "Indeed, Allah causes to hear whom He wills, but you cannot make hear those in the graves."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hear those|in|the graves",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hear those in the graves",
-    "subject": "hear those",
-    "verb": "in",
-    "object": "the graves",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#7567-7656",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-      "text": "Indeed, Allah causes to hear whom He wills, but you cannot make hear those in the graves."
-     }
-    ],
-    "seq": 42,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1331,7 +873,7 @@
     "verb": "have",
     "object": "sent you with the truth as a bringer of good tidings and a warner",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1340,12 +882,12 @@
       "text": "[24] AR: إِنَّآ أَرْسَلْنَٰكَ بِٱلْحَقِّ بَشِيرًۭا وَنَذِيرًۭا ۚ وَإِن مِّنْ أُمَّةٍ إِلَّا خَلَا فِيهَا نَذِيرٌۭ EN: Indeed, We have sent you with the truth as a bringer of good tidings and a warner."
      }
     ],
-    "seq": 43,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 44,
+  "nextSeq": 27,
   "admits": [
    "NUL",
    "SEG",
@@ -1365,7 +907,7 @@
    "verb": "is",
    "object": "granted [additional] life nor is his lifespan lessened but that it is in a register",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1376,28 +918,12 @@
    ]
   },
   {
-   "id": "allah|causes|to hear whom he wills",
-   "subject": "Allah",
-   "verb": "causes",
-   "object": "to hear whom He wills",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#7567-7656",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "Indeed, Allah causes to hear whom He wills, but you cannot make hear those in the graves."
-    }
-   ]
-  },
-  {
    "id": "allah|is|knowing of what they do",
    "subject": "Allah",
    "verb": "is",
    "object": "Knowing of what they do",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1413,7 +939,7 @@
    "verb": "is",
    "object": "over all things competent",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1429,7 +955,7 @@
    "verb": "is",
    "object": "the Exalted in Might",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1445,7 +971,7 @@
    "verb": "is",
    "object": "Allah who sends the winds",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1461,28 +987,12 @@
    ]
   },
   {
-   "id": "and none|can|inform you like [one] acquainted [with all matters]",
-   "subject": "And none",
-   "verb": "can",
-   "object": "inform you like [one] Acquainted [with all matters]",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5863-5928",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "And none can inform you like [one] Acquainted [with all matters]."
-    }
-   ]
-  },
-  {
    "id": "and we|drive|them to a dead land and give life thereby to the earth after its lifelessness",
    "subject": "and We",
    "verb": "drive",
    "object": "them to a dead land and give life thereby to the earth after its lifelessness",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1493,44 +1003,12 @@
    ]
   },
   {
-   "id": "are those|in|need of allah",
-   "subject": "are those",
-   "verb": "in",
-   "object": "need of Allah",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5930-6139",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "[15] AR: ۞ يَٰٓأَيُّهَا ٱلنَّاسُ أَنتُمُ ٱلْفُقَرَآءُ إِلَى ٱللَّهِ ۖ وَٱللَّهُ هُوَ ٱلْغَنِىُّ ٱلْحَمِيدُ EN: O mankind, you are those in need of Allah, while Allah is the Free of need, the Praiseworthy."
-    }
-   ]
-  },
-  {
-   "id": "creator|of|the heavens and the earth",
-   "subject": "Creator",
-   "verb": "of",
-   "object": "the heavens and the earth",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#62-473",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "[1] AR: بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ٱلْحَمْدُ لِلَّهِ فَاطِرِ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ جَاعِلِ ٱلْمَلَٰٓئِكَةِ رُسُلًا أُو۟لِىٓ أَجْنِحَةٍۢ مَّثْنَىٰ وَثُلَٰثَ وَرُبَٰعَ ۚ يَزِيدُ فِى ٱلْخَلْقِ مَا يَشَآءُ ۚ إِنَّ ٱللَّهَ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌۭ EN: [All] praise is [due] to Allah, Creator of the heavens and the earth, [who] made the angels messengers having wings, two or three or four."
-    }
-   ]
-  },
-  {
    "id": "deeds will|have|forgiveness and great reward",
    "subject": "deeds will",
    "verb": "have",
    "object": "forgiveness and great reward",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1546,7 +1024,7 @@
    "verb": "have",
    "object": "a severe punishment",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1567,7 +1045,7 @@
    "verb": "is",
    "object": "easy",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1578,28 +1056,12 @@
    ]
   },
   {
-   "id": "he increases|in|creation what he wills",
-   "subject": "He increases",
-   "verb": "in",
-   "object": "creation what He wills",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#474-513",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "He increases in creation what He wills."
-    }
-   ]
-  },
-  {
    "id": "he|can|do away with you and bring forth a new creation",
    "subject": "He",
    "verb": "can",
    "object": "do away with you and bring forth a new creation",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1610,98 +1072,55 @@
    ]
   },
   {
-   "id": "he|causes|the night to enter the day",
+   "id": "he|increases|in creation what he wills",
    "subject": "He",
-   "verb": "causes",
-   "object": "the night to enter the day",
+   "verb": "increases",
+   "object": "in creation what He wills",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#4920-5350",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#474-513",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "[13] AR: يُولِجُ ٱلَّيْلَ فِى ٱلنَّهَارِ وَيُولِجُ ٱلنَّهَارَ فِى ٱلَّيْلِ وَسَخَّرَ ٱلشَّمْسَ وَٱلْقَمَرَ كُلٌّۭ يَجْرِى لِأَجَلٍۢ مُّسَمًّۭى ۚ ذَٰلِكُمُ ٱللَّهُ رَبُّكُمْ لَهُ ٱلْمُلْكُ ۚ وَٱلَّذِينَ تَدْعُونَ مِن دُونِهِۦ مَا يَمْلِكُونَ مِن قِطْمِيرٍ EN: He causes the night to enter the day, and He causes the day to enter the night and has subjected the sun and the moon - each running [its course] for a specified term."
+     "text": "He increases in creation what He wills."
     }
    ]
   },
   {
-   "id": "he|only|invites his party to be among the companions of the blaze",
-   "subject": "He",
-   "verb": "only",
-   "object": "invites his party to be among the companions of the Blaze",
+   "id": "none|can|withhold it",
+   "subject": "none",
+   "verb": "can",
+   "object": "withhold it",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#2020-2086",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#559-851",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "He only invites his party to be among the companions of the Blaze."
+     "text": "[2] AR: مَّا يَفْتَحِ ٱللَّهُ لِلنَّاسِ مِن رَّحْمَةٍۢ فَلَا مُمْسِكَ لَهَا ۖ وَمَا يُمْسِكْ فَلَا مُرْسِلَ لَهُۥ مِنۢ بَعْدِهِۦ ۚ وَهُوَ ٱلْعَزِيزُ ٱلْحَكِيمُ EN: Whatever Allah grants to people of mercy - none can withhold it; and whatever He withholds - none can release it thereafter."
+    },
+    {
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5863-5928",
+     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
+     "text": "And none can inform you like [one] Acquainted [with all matters]."
     }
    ]
   },
   {
-   "id": "hear those|in|the graves",
-   "subject": "hear those",
-   "verb": "in",
-   "object": "the graves",
+   "id": "of allah|is|truth",
+   "subject": "of Allah",
+   "verb": "is",
+   "object": "truth",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#7567-7656",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#1524-1815",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "Indeed, Allah causes to hear whom He wills, but you cannot make hear those in the graves."
-    }
-   ]
-  },
-  {
-   "id": "might seek|of|his bounty",
-   "subject": "might seek",
-   "verb": "of",
-   "object": "His bounty",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#4733-4918",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "And from each you eat tender meat and extract ornaments which you wear, and you see the ships plowing through [them] that you might seek of His bounty; and perhaps you will be grateful."
-    }
-   ]
-  },
-  {
-   "id": "no bearer|of|burdens will bear the burden of another",
-   "subject": "no bearer",
-   "verb": "of",
-   "object": "burdens will bear the burden of another",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#6374-6754",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "[18] AR: وَلَا تَزِرُ وَازِرَةٌۭ وِزْرَ أُخْرَىٰ ۚ وَإِن تَدْعُ مُثْقَلَةٌ إِلَىٰ حِمْلِهَا لَا يُحْمَلْ مِنْهُ شَىْءٌۭ وَلَوْ كَانَ ذَا قُرْبَىٰٓ ۗ إِنَّمَا تُنذِرُ ٱلَّذِينَ يَخْشَوْنَ رَبَّهُم بِٱلْغَيْبِ وَأَقَامُوا۟ ٱلصَّلَوٰةَ ۚ وَمَن تَزَكَّىٰ فَإِنَّمَا يَتَزَكَّىٰ لِنَفْسِهِۦ ۚ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ EN: And no bearer of burdens will bear the burden of another."
-    }
-   ]
-  },
-  {
-   "id": "nothing|of|it will be carried",
-   "subject": "nothing",
-   "verb": "of",
-   "object": "it will be carried",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#6755-6897",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "And if a heavily laden soul calls [another] to [carry some of] its load, nothing of it will be carried, even if he should be a close relative."
+     "text": "[5] AR: يَٰٓأَيُّهَا ٱلنَّاسُ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ ۖ فَلَا تَغُرَّنَّكُمُ ٱلْحَيَوٰةُ ٱلدُّنْيَا ۖ وَلَا يَغُرَّنَّكُم بِٱللَّهِ ٱلْغَرُورُ EN: O mankind, indeed the promise of Allah is truth, so let not the worldly life delude you and be not deceived about Allah by the Deceiver."
     }
    ]
   },
@@ -1711,7 +1130,7 @@
    "verb": "is",
    "object": "fresh and sweet",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1722,28 +1141,12 @@
    ]
   },
   {
-   "id": "over them|in|regret",
-   "subject": "over them",
-   "verb": "in",
-   "object": "regret",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#2789-2839",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "So do not let yourself perish over them in regret."
-    }
-   ]
-  },
-  {
    "id": "praise|is|[due] to allah",
    "subject": "praise",
    "verb": "is",
    "object": "[due] to Allah",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1754,28 +1157,12 @@
    ]
   },
   {
-   "id": "purifies himself|only|purifies himself for [the benefit of] his soul",
-   "subject": "purifies himself",
-   "verb": "only",
-   "object": "purifies himself for [the benefit of] his soul",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#6978-7059",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "And whoever purifies himself only purifies himself for [the benefit of] his soul."
-    }
-   ]
-  },
-  {
    "id": "satan|is|an enemy to you",
    "subject": "Satan",
    "verb": "is",
    "object": "an enemy to you",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1791,7 +1178,7 @@
    "verb": "is",
    "object": "Allah",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1802,92 +1189,12 @@
    ]
   },
   {
-   "id": "the day|of|resurrection they will deny your association",
-   "subject": "the Day",
-   "verb": "of",
-   "object": "Resurrection they will deny your association",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5799-5862",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "And on the Day of Resurrection they will deny your association."
-    }
-   ]
-  },
-  {
-   "id": "the favor|of|allah upon you",
-   "subject": "the favor",
-   "verb": "of",
-   "object": "Allah upon you",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#895-1148",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "[3] AR: يَٰٓأَيُّهَا ٱلنَّاسُ ٱذْكُرُوا۟ نِعْمَتَ ٱللَّهِ عَلَيْكُمْ ۚ هَلْ مِنْ خَٰلِقٍ غَيْرُ ٱللَّهِ يَرْزُقُكُم مِّنَ ٱلسَّمَآءِ وَٱلْأَرْضِ ۚ لَآ إِلَٰهَ إِلَّا هُوَ ۖ فَأَنَّىٰ تُؤْفَكُونَ EN: O mankind, remember the favor of Allah upon you."
-    }
-   ]
-  },
-  {
-   "id": "the membrane|of|a date seed",
-   "subject": "the membrane",
-   "verb": "of",
-   "object": "a date seed",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#5405-5502",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "And those whom you invoke other than Him do not possess [as much as] the membrane of a date seed."
-    }
-   ]
-  },
-  {
-   "id": "the plotting|of|those - it will perish",
-   "subject": "the plotting",
-   "verb": "of",
-   "object": "those - it will perish",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#3632-3735",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "But they who plot evil deeds will have a severe punishment, and the plotting of those - it will perish."
-    }
-   ]
-  },
-  {
-   "id": "the promise|of|allah is truth",
-   "subject": "the promise",
-   "verb": "of",
-   "object": "Allah is truth",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#1524-1815",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "[5] AR: يَٰٓأَيُّهَا ٱلنَّاسُ إِنَّ وَعْدَ ٱللَّهِ حَقٌّۭ ۖ فَلَا تَغُرَّنَّكُمُ ٱلْحَيَوٰةُ ٱلدُّنْيَا ۖ وَلَا يَغُرَّنَّكُم بِٱللَّهِ ٱلْغَرُورُ EN: O mankind, indeed the promise of Allah is truth, so let not the worldly life delude you and be not deceived about Allah by the Deceiver."
-    }
-   ]
-  },
-  {
    "id": "then he|made|you mates",
    "subject": "then He",
    "verb": "made",
    "object": "you mates",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1903,7 +1210,7 @@
    "verb": "is",
    "object": "one to whom the evil of his deed has been made attractive so he considers it good [like one rightly guided]?",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1919,7 +1226,7 @@
    "verb": "is",
    "object": "no deity except Him",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1935,7 +1242,7 @@
    "verb": "is",
    "object": "the resurrection",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1951,7 +1258,7 @@
    "verb": "is",
    "object": "the [final] destination",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1962,44 +1269,12 @@
    ]
   },
   {
-   "id": "to people|of|mercy - none can withhold it",
-   "subject": "to people",
-   "verb": "of",
-   "object": "mercy - none can withhold it",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#559-851",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "[2] AR: مَّا يَفْتَحِ ٱللَّهُ لِلنَّاسِ مِن رَّحْمَةٍۢ فَلَا مُمْسِكَ لَهَا ۖ وَمَا يُمْسِكْ فَلَا مُرْسِلَ لَهُۥ مِنۢ بَعْدِهِۦ ۚ وَهُوَ ٱلْعَزِيزُ ٱلْحَكِيمُ EN: Whatever Allah grants to people of mercy - none can withhold it; and whatever He withholds - none can release it thereafter."
-    }
-   ]
-  },
-  {
-   "id": "two bodies|of|water",
-   "subject": "two bodies",
-   "verb": "of",
-   "object": "water",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt#4318-4655",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt",
-     "text": "[12] AR: وَمَا يَسْتَوِى ٱلْبَحْرَانِ هَٰذَا عَذْبٌۭ فُرَاتٌۭ سَآئِغٌۭ شَرَابُهُۥ وَهَٰذَا مِلْحٌ أُجَاجٌۭ ۖ وَمِن كُلٍّۢ تَأْكُلُونَ لَحْمًۭا طَرِيًّۭا وَتَسْتَخْرِجُونَ حِلْيَةًۭ تَلْبَسُونَهَا ۖ وَتَرَى ٱلْفُلْكَ فِيهِ مَوَاخِرَ لِتَبْتَغُوا۟ مِن فَضْلِهِۦ وَلَعَلَّكُمْ تَشْكُرُونَ EN: And not alike are the two bodies of water."
-    }
-   ]
-  },
-  {
    "id": "we|have|sent you with the truth as a bringer of good tidings and a warner",
    "subject": "We",
    "verb": "have",
    "object": "sent you with the truth as a bringer of good tidings and a warner",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2015,7 +1290,7 @@
    "verb": "withholds",
    "object": "- none can release it thereafter",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2031,7 +1306,7 @@
    "verb": "is",
    "object": "the Free of need",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2047,7 +1322,7 @@
    "verb": "wills",
    "object": "and guides whom He wills",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2058,12 +1333,12 @@
    ]
   },
   {
-   "id": "you can|only|warn those who fear their lord unseen and have established prayer",
-   "subject": "You can",
-   "verb": "only",
-   "object": "warn those who fear their Lord unseen and have established prayer",
+   "id": "you|can|only warn those who fear their lord unseen and have established prayer",
+   "subject": "You",
+   "verb": "can",
+   "object": "only warn those who fear their Lord unseen and have established prayer",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_035_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2075,7 +1350,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:55.749Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:53.171Z"
  }
 }

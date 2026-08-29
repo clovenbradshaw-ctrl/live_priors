@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 54255,
   "bodyOffset": 0,
   "bodyChars": 54255,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 11,
   "distinctReferents": 11,
   "examined": true,
-  "edgesFound": 31,
-  "extractionError": null
+  "edgesFound": 22,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 42,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 55
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 22,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 32,
-  "excerptOk": 32,
-  "rawChecked": 32,
-  "rawOk": 32,
+  "excerptChecked": 24,
+  "excerptOk": 24,
+  "rawChecked": 24,
+  "rawOk": 24,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 31,
-  "heard": 31,
+  "offered": 22,
+  "heard": 22,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "yushrikoona",
     "object": "The command of Allah is coming",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -103,7 +133,7 @@
     "verb": "sends",
     "object": "down the angels",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -113,35 +143,6 @@
      }
     ],
     "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the inspiration|of|his command",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the inspiration of His command",
-    "subject": "the inspiration",
-    "verb": "of",
-    "object": "His command",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#441-1157",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "Exalted is He and high above what they associate with Him [16:2] يُنَزِّلُ ٱلۡمَلَـٰٓئِكَةَ بِٱلرُّوحِ مِنۡ أَمۡرِهِۦ عَلَىٰ مَن يَشَآءُ مِنۡ عِبَادِهِۦٓ أَنۡ أَنذِرُوٓاْ أَنَّهُۥ لَآ إِلَٰهَ إِلَّآ أَنَا۠ فَٱتَّقُونِ Yunazzilu almalaikata bialrroohi min amrihi AAala man yashao min AAibadihi an anthiroo annahu la ilaha illa ana faittaqooni He sends down the angels, with the inspiration of His command, upon whom He wills of His servants, [telling them], \"Warn that there is no deity except Me; so fear Me [16:3] خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بِٱلۡحَقِّۚ تَعَٰلَىٰ عَمَّا يُشۡرِكُونَ Khalaqa alssamawati waalarda bialhaqqi taAAala AAamma yushrikoona He created the heavens and earth in truth."
-     }
-    ],
-    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -161,7 +162,36 @@
     "verb": "wills",
     "object": "of His servants",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#441-1157",
+      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
+      "text": "Exalted is He and high above what they associate with Him [16:2] يُنَزِّلُ ٱلۡمَلَـٰٓئِكَةَ بِٱلرُّوحِ مِنۡ أَمۡرِهِۦ عَلَىٰ مَن يَشَآءُ مِنۡ عِبَادِهِۦٓ أَنۡ أَنذِرُوٓاْ أَنَّهُۥ لَآ إِلَٰهَ إِلَّآ أَنَا۠ فَٱتَّقُونِ Yunazzilu almalaikata bialrroohi min amrihi AAala man yashao min AAibadihi an anthiroo annahu la ilaha illa ana faittaqooni He sends down the angels, with the inspiration of His command, upon whom He wills of His servants, [telling them], \"Warn that there is no deity except Me; so fear Me [16:3] خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بِٱلۡحَقِّۚ تَعَٰلَىٰ عَمَّا يُشۡرِكُونَ Khalaqa alssamawati waalarda bialhaqqi taAAala AAamma yushrikoona He created the heavens and earth in truth."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that there|is|no deity except me",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that there is no deity except Me",
+    "subject": "that there",
+    "verb": "is",
+    "object": "no deity except Me",
+    "witnesses": [
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -171,35 +201,6 @@
      }
     ],
     "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "warn|that|there is no deity except me",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Warn that there is no deity except Me",
-    "subject": "Warn",
-    "verb": "that",
-    "object": "there is no deity except Me",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#441-1157",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "Exalted is He and high above what they associate with Him [16:2] يُنَزِّلُ ٱلۡمَلَـٰٓئِكَةَ بِٱلرُّوحِ مِنۡ أَمۡرِهِۦ عَلَىٰ مَن يَشَآءُ مِنۡ عِبَادِهِۦٓ أَنۡ أَنذِرُوٓاْ أَنَّهُۥ لَآ إِلَٰهَ إِلَّآ أَنَا۠ فَٱتَّقُونِ Yunazzilu almalaikata bialrroohi min amrihi AAala man yashao min AAibadihi an anthiroo annahu la ilaha illa ana faittaqooni He sends down the angels, with the inspiration of His command, upon whom He wills of His servants, [telling them], \"Warn that there is no deity except Me; so fear Me [16:3] خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بِٱلۡحَقِّۚ تَعَٰلَىٰ عَمَّا يُشۡرِكُونَ Khalaqa alssamawati waalarda bialhaqqi taAAala AAamma yushrikoona He created the heavens and earth in truth."
-     }
-    ],
-    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -219,7 +220,7 @@
     "verb": "yushrikoona",
     "object": "He created the heavens and earth in truth",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -228,7 +229,7 @@
       "text": "Exalted is He and high above what they associate with Him [16:2] يُنَزِّلُ ٱلۡمَلَـٰٓئِكَةَ بِٱلرُّوحِ مِنۡ أَمۡرِهِۦ عَلَىٰ مَن يَشَآءُ مِنۡ عِبَادِهِۦٓ أَنۡ أَنذِرُوٓاْ أَنَّهُۥ لَآ إِلَٰهَ إِلَّآ أَنَا۠ فَٱتَّقُونِ Yunazzilu almalaikata bialrroohi min amrihi AAala man yashao min AAibadihi an anthiroo annahu la ilaha illa ana faittaqooni He sends down the angels, with the inspiration of His command, upon whom He wills of His servants, [telling them], \"Warn that there is no deity except Me; so fear Me [16:3] خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بِٱلۡحَقِّۚ تَعَٰلَىٰ عَمَّا يُشۡرِكُونَ Khalaqa alssamawati waalarda bialhaqqi taAAala AAamma yushrikoona He created the heavens and earth in truth."
      }
     ],
-    "seq": 5,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +249,7 @@
     "verb": "created",
     "object": "man from a sperm-drop",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,13 +258,13 @@
       "text": "High is He above what they associate with Him [16:4] خَلَقَ ٱلۡإِنسَٰنَ مِن نُّطۡفَةٖ فَإِذَا هُوَ خَصِيمٞ مُّبِينٞ Khalaqa alinsana min nutfatin faitha huwa khaseemun mubeenun He created man from a sperm-drop; then at once, he is a clear adversary [16:5] وَٱلۡأَنۡعَٰمَ خَلَقَهَاۖ لَكُمۡ فِيهَا دِفۡءٞ وَمَنَٰفِعُ وَمِنۡهَا تَأۡكُلُونَ WaalanAAama khalaqaha lakum feeha difon wamanafiAAu waminha takuloona And the grazing livestock He has created for you; in them is warmth and [numerous] benefits, and from them you eat [16:6] وَلَكُمۡ فِيهَا جَمَالٌ حِينَ تُرِيحُونَ وَحِينَ تَسۡرَحُونَ Walakum feeha jamalun heena tureehoona waheena tasrahoona And for you in them is [the enjoyment of] beauty when you bring them in [for the evening] and when you send them out [to pasture] [16:7] وَتَحۡمِلُ أَثۡقَالَكُمۡ إِلَىٰ بَلَدٖ لَّمۡ تَكُونُواْ بَٰلِغِيهِ إِلَّا بِشِقِّ ٱلۡأَنفُسِۚ إِنَّ رَبَّكُمۡ لَرَءُوفٞ رَّحِيمٞ Watahmilu athqalakum ila baladin lam takoonoo baligheehi illa bishiqqi alanfusi inna rabbakum laraoofun raheemun And they carry your loads to a land you could not have reached except with difficulty to yourselves."
      }
     ],
-    "seq": 6,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "waminha takuloona|and|the grazing livestock he has created for you",
+    "task_id": "livestock he|has|created for you",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -272,21 +273,31 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "waminha takuloona and the grazing livestock He has created for you",
-    "subject": "waminha takuloona",
-    "verb": "and",
-    "object": "the grazing livestock He has created for you",
+    "description": "livestock He has created for you",
+    "subject": "livestock He",
+    "verb": "has",
+    "object": "created for you",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#1158-2317",
       "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
       "text": "High is He above what they associate with Him [16:4] خَلَقَ ٱلۡإِنسَٰنَ مِن نُّطۡفَةٖ فَإِذَا هُوَ خَصِيمٞ مُّبِينٞ Khalaqa alinsana min nutfatin faitha huwa khaseemun mubeenun He created man from a sperm-drop; then at once, he is a clear adversary [16:5] وَٱلۡأَنۡعَٰمَ خَلَقَهَاۖ لَكُمۡ فِيهَا دِفۡءٞ وَمَنَٰفِعُ وَمِنۡهَا تَأۡكُلُونَ WaalanAAama khalaqaha lakum feeha difon wamanafiAAu waminha takuloona And the grazing livestock He has created for you; in them is warmth and [numerous] benefits, and from them you eat [16:6] وَلَكُمۡ فِيهَا جَمَالٌ حِينَ تُرِيحُونَ وَحِينَ تَسۡرَحُونَ Walakum feeha jamalun heena tureehoona waheena tasrahoona And for you in them is [the enjoyment of] beauty when you bring them in [for the evening] and when you send them out [to pasture] [16:7] وَتَحۡمِلُ أَثۡقَالَكُمۡ إِلَىٰ بَلَدٖ لَّمۡ تَكُونُواْ بَٰلِغِيهِ إِلَّا بِشِقِّ ٱلۡأَنفُسِۚ إِنَّ رَبَّكُمۡ لَرَءُوفٞ رَّحِيمٞ Watahmilu athqalakum ila baladin lam takoonoo baligheehi illa bishiqqi alanfusi inna rabbakum laraoofun raheemun And they carry your loads to a land you could not have reached except with difficulty to yourselves."
+     },
+     {
+      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#3757-4242",
+      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
+      "text": "Indeed in that is a sign for a people who give thought [16:12] وَسَخَّرَ لَكُمُ ٱلَّيۡلَ وَٱلنَّهَارَ وَٱلشَّمۡسَ وَٱلۡقَمَرَۖ وَٱلنُّجُومُ مُسَخَّرَٰتُۢ بِأَمۡرِهِۦٓۚ إِنَّ فِي ذَٰلِكَ لَأٓيَٰتٖ لِّقَوۡمٖ يَعۡقِلُونَ Wasakhkhara lakumu allayla waalnnahara waalshshamsa waalqamara waalnnujoomu musakhkharatun biamrihi inna fee thalika laayatin liqawmin yaAAqiloona And He has subjected for you the night and day and the sun and moon, and the stars are subjected by His command."
+     },
+     {
+      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#4243-4606",
+      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
+      "text": "Indeed in that are signs for a people who reason [16:13] وَمَا ذَرَأَ لَكُمۡ فِي ٱلۡأَرۡضِ مُخۡتَلِفًا أَلۡوَٰنُهُۥٓۚ إِنَّ فِي ذَٰلِكَ لَأٓيَةٗ لِّقَوۡمٖ يَذَّكَّرُونَ Wama tharaa lakum fee alardi mukhtalifan alwanuhu inna fee thalika laayatan liqawmin yaththakkaroona And [He has subjected] whatever He multiplied for you on the earth of varying colors."
      }
     ],
-    "seq": 7,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -306,7 +317,36 @@
     "verb": "is",
     "object": "warmth and [numerous] benefits",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#1158-2317",
+      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
+      "text": "High is He above what they associate with Him [16:4] خَلَقَ ٱلۡإِنسَٰنَ مِن نُّطۡفَةٖ فَإِذَا هُوَ خَصِيمٞ مُّبِينٞ Khalaqa alinsana min nutfatin faitha huwa khaseemun mubeenun He created man from a sperm-drop; then at once, he is a clear adversary [16:5] وَٱلۡأَنۡعَٰمَ خَلَقَهَاۖ لَكُمۡ فِيهَا دِفۡءٞ وَمَنَٰفِعُ وَمِنۡهَا تَأۡكُلُونَ WaalanAAama khalaqaha lakum feeha difon wamanafiAAu waminha takuloona And the grazing livestock He has created for you; in them is warmth and [numerous] benefits, and from them you eat [16:6] وَلَكُمۡ فِيهَا جَمَالٌ حِينَ تُرِيحُونَ وَحِينَ تَسۡرَحُونَ Walakum feeha jamalun heena tureehoona waheena tasrahoona And for you in them is [the enjoyment of] beauty when you bring them in [for the evening] and when you send them out [to pasture] [16:7] وَتَحۡمِلُ أَثۡقَالَكُمۡ إِلَىٰ بَلَدٖ لَّمۡ تَكُونُواْ بَٰلِغِيهِ إِلَّا بِشِقِّ ٱلۡأَنفُسِۚ إِنَّ رَبَّكُمۡ لَرَءُوفٞ رَّحِيمٞ Watahmilu athqalakum ila baladin lam takoonoo baligheehi illa bishiqqi alanfusi inna rabbakum laraoofun raheemun And they carry your loads to a land you could not have reached except with difficulty to yourselves."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "land you|could|not have reached except with difficulty to yourselves",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "land you could not have reached except with difficulty to yourselves",
+    "subject": "land you",
+    "verb": "could",
+    "object": "not have reached except with difficulty to yourselves",
+    "witnesses": [
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -321,7 +361,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "laraoofun raheemun|and|they carry your loads to a land you could not have reached except with difficulty to yourselves",
+    "task_id": "upon allah|is|the direction of the [right] way",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -330,99 +370,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "laraoofun raheemun and they carry your loads to a land you could not have reached except with difficulty to yourselves",
-    "subject": "laraoofun raheemun",
-    "verb": "and",
-    "object": "they carry your loads to a land you could not have reached except with difficulty to yourselves",
+    "description": "upon Allah is the direction of the [right] way",
+    "subject": "upon Allah",
+    "verb": "is",
+    "object": "the direction of the [right] way",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#1158-2317",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "High is He above what they associate with Him [16:4] خَلَقَ ٱلۡإِنسَٰنَ مِن نُّطۡفَةٖ فَإِذَا هُوَ خَصِيمٞ مُّبِينٞ Khalaqa alinsana min nutfatin faitha huwa khaseemun mubeenun He created man from a sperm-drop; then at once, he is a clear adversary [16:5] وَٱلۡأَنۡعَٰمَ خَلَقَهَاۖ لَكُمۡ فِيهَا دِفۡءٞ وَمَنَٰفِعُ وَمِنۡهَا تَأۡكُلُونَ WaalanAAama khalaqaha lakum feeha difon wamanafiAAu waminha takuloona And the grazing livestock He has created for you; in them is warmth and [numerous] benefits, and from them you eat [16:6] وَلَكُمۡ فِيهَا جَمَالٌ حِينَ تُرِيحُونَ وَحِينَ تَسۡرَحُونَ Walakum feeha jamalun heena tureehoona waheena tasrahoona And for you in them is [the enjoyment of] beauty when you bring them in [for the evening] and when you send them out [to pasture] [16:7] وَتَحۡمِلُ أَثۡقَالَكُمۡ إِلَىٰ بَلَدٖ لَّمۡ تَكُونُواْ بَٰلِغِيهِ إِلَّا بِشِقِّ ٱلۡأَنفُسِۚ إِنَّ رَبَّكُمۡ لَرَءُوفٞ رَّحِيمٞ Watahmilu athqalakum ila baladin lam takoonoo baligheehi illa bishiqqi alanfusi inna rabbakum laraoofun raheemun And they carry your loads to a land you could not have reached except with difficulty to yourselves."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la taaalamoona|and|[he created] the horses",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la taAAlamoona and [He created] the horses",
-    "subject": "la taAAlamoona",
-    "verb": "and",
-    "object": "[He created] the horses",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#2318-2637",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "Indeed, your Lord is Kind and Merciful [16:8] وَٱلۡخَيۡلَ وَٱلۡبِغَالَ وَٱلۡحَمِيرَ لِتَرۡكَبُوهَا وَزِينَةٗۚ وَيَخۡلُقُ مَا لَا تَعۡلَمُونَ Waalkhayla waalbighala waalhameera litarkabooha wazeenatan wayakhluqu ma la taAAlamoona And [He created] the horses, mules and donkeys for you to ride and [as] adornment."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mules|and|donkeys for you to ride and [as] adornment",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mules and donkeys for you to ride and [as] adornment",
-    "subject": "mules",
-    "verb": "and",
-    "object": "donkeys for you to ride and [as] adornment",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#2318-2637",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "Indeed, your Lord is Kind and Merciful [16:8] وَٱلۡخَيۡلَ وَٱلۡبِغَالَ وَٱلۡحَمِيرَ لِتَرۡكَبُوهَا وَزِينَةٗۚ وَيَخۡلُقُ مَا لَا تَعۡلَمُونَ Waalkhayla waalbighala waalhameera litarkabooha wazeenatan wayakhluqu ma la taAAlamoona And [He created] the horses, mules and donkeys for you to ride and [as] adornment."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lahadakum ajmaaaeena|and|upon allah is the direction of the [right] way",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lahadakum ajmaAAeena and upon Allah is the direction of the [right] way",
-    "subject": "lahadakum ajmaAAeena",
-    "verb": "and",
-    "object": "upon Allah is the direction of the [right] way",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -431,7 +384,7 @@
       "text": "And He creates that which you do not know [16:9] وَعَلَى ٱللَّهِ قَصۡدُ ٱلسَّبِيلِ وَمِنۡهَا جَآئِرٞۚ وَلَوۡ شَآءَ لَهَدَىٰكُمۡ أَجۡمَعِينَ WaAAala Allahi qasdu alssabeeli waminha jairun walaw shaa lahadakum ajmaAAeena And upon Allah is the direction of the [right] way, and among the various paths are those deviating."
      }
     ],
-    "seq": 12,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -451,7 +404,7 @@
     "verb": "is",
     "object": "He who sends down rain from the sky",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -460,70 +413,7 @@
       "text": "And if He willed, He could have guided you all [16:10] هُوَ ٱلَّذِيٓ أَنزَلَ مِنَ ٱلسَّمَآءِ مَآءٗۖ لَّكُم مِّنۡهُ شَرَابٞ وَمِنۡهُ شَجَرٞ فِيهِ تُسِيمُونَ Huwa allathee anzala mina alssamai maan lakum minhu sharabun waminhu shajarun feehi tuseemoona It is He who sends down rain from the sky; from it is drink and from it is foliage in which you pasture [animals] [16:11] يُنۢبِتُ لَكُم بِهِ ٱلزَّرۡعَ وَٱلزَّيۡتُونَ وَٱلنَّخِيلَ وَٱلۡأَعۡنَٰبَ وَمِن كُلِّ ٱلثَّمَرَٰتِۚ إِنَّ فِي ذَٰلِكَ لَأٓيَةٗ لِّقَوۡمٖ يَتَفَكَّرُونَ Yunbitu lakum bihi alzzarAAa waalzzaytoona waalnnakheela waalaAAnaba wamin kulli alththamarati inna fee thalika laayatan liqawmin yatafakkaroona He causes to grow for you thereby the crops, olives, palm trees, grapevines, and from all the fruits."
      }
     ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "yatafakkaroona\n    he|causes|to grow for you thereby the crops",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "yatafakkaroona\n    He causes to grow for you thereby the crops",
-    "subject": "yatafakkaroona\n    He",
-    "verb": "causes",
-    "object": "to grow for you thereby the crops",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#2968-3756",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "And if He willed, He could have guided you all [16:10] هُوَ ٱلَّذِيٓ أَنزَلَ مِنَ ٱلسَّمَآءِ مَآءٗۖ لَّكُم مِّنۡهُ شَرَابٞ وَمِنۡهُ شَجَرٞ فِيهِ تُسِيمُونَ Huwa allathee anzala mina alssamai maan lakum minhu sharabun waminhu shajarun feehi tuseemoona It is He who sends down rain from the sky; from it is drink and from it is foliage in which you pasture [animals] [16:11] يُنۢبِتُ لَكُم بِهِ ٱلزَّرۡعَ وَٱلزَّيۡتُونَ وَٱلنَّخِيلَ وَٱلۡأَعۡنَٰبَ وَمِن كُلِّ ٱلثَّمَرَٰتِۚ إِنَّ فِي ذَٰلِكَ لَأٓيَةٗ لِّقَوۡمٖ يَتَفَكَّرُونَ Yunbitu lakum bihi alzzarAAa waalzzaytoona waalnnakheela waalaAAnaba wamin kulli alththamarati inna fee thalika laayatan liqawmin yatafakkaroona He causes to grow for you thereby the crops, olives, palm trees, grapevines, and from all the fruits."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "liqawmin yaaaqiloona|and|he has subjected for you the night and day and the sun and moon",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "liqawmin yaAAqiloona and He has subjected for you the night and day and the sun and moon",
-    "subject": "liqawmin yaAAqiloona",
-    "verb": "and",
-    "object": "He has subjected for you the night and day and the sun and moon",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#3757-4242",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "Indeed in that is a sign for a people who give thought [16:12] وَسَخَّرَ لَكُمُ ٱلَّيۡلَ وَٱلنَّهَارَ وَٱلشَّمۡسَ وَٱلۡقَمَرَۖ وَٱلنُّجُومُ مُسَخَّرَٰتُۢ بِأَمۡرِهِۦٓۚ إِنَّ فِي ذَٰلِكَ لَأٓيَٰتٖ لِّقَوۡمٖ يَعۡقِلُونَ Wasakhkhara lakumu allayla waalnnahara waalshshamsa waalqamara waalnnujoomu musakhkharatun biamrihi inna fee thalika laayatin liqawmin yaAAqiloona And He has subjected for you the night and day and the sun and moon, and the stars are subjected by His command."
-     },
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#4243-4606",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "Indeed in that are signs for a people who reason [16:13] وَمَا ذَرَأَ لَكُمۡ فِي ٱلۡأَرۡضِ مُخۡتَلِفًا أَلۡوَٰنُهُۥٓۚ إِنَّ فِي ذَٰلِكَ لَأٓيَةٗ لِّقَوۡمٖ يَذَّكَّرُونَ Wama tharaa lakum fee alardi mukhtalifan alwanuhu inna fee thalika laayatan liqawmin yaththakkaroona And [He has subjected] whatever He multiplied for you on the earth of varying colors."
-     }
-    ],
-    "seq": 15,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -543,7 +433,7 @@
     "verb": "subjected",
     "object": "by His command",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -552,13 +442,13 @@
       "text": "Indeed in that is a sign for a people who give thought [16:12] وَسَخَّرَ لَكُمُ ٱلَّيۡلَ وَٱلنَّهَارَ وَٱلشَّمۡسَ وَٱلۡقَمَرَۖ وَٱلنُّجُومُ مُسَخَّرَٰتُۢ بِأَمۡرِهِۦٓۚ إِنَّ فِي ذَٰلِكَ لَأٓيَٰتٖ لِّقَوۡمٖ يَعۡقِلُونَ Wasakhkhara lakumu allayla waalnnahara waalshshamsa waalqamara waalnnujoomu musakhkharatun biamrihi inna fee thalika laayatin liqawmin yaAAqiloona And He has subjected for you the night and day and the sun and moon, and the stars are subjected by His command."
      }
     ],
-    "seq": 16,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "walaaaallakum tashkuroona|and|it is he who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
+    "task_id": "and it|is|he who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -567,12 +457,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "walaAAallakum tashkuroona and it is He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
-    "subject": "walaAAallakum tashkuroona",
-    "verb": "and",
-    "object": "it is He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
+    "description": "And it is He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
+    "subject": "And it",
+    "verb": "is",
+    "object": "He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -581,13 +471,13 @@
       "text": "Indeed in that is a sign for a people who remember [16:14] وَهُوَ ٱلَّذِي سَخَّرَ ٱلۡبَحۡرَ لِتَأۡكُلُواْ مِنۡهُ لَحۡمٗا طَرِيّٗا وَتَسۡتَخۡرِجُواْ مِنۡهُ حِلۡيَةٗ تَلۡبَسُونَهَاۖ وَتَرَى ٱلۡفُلۡكَ مَوَاخِرَ فِيهِ وَلِتَبۡتَغُواْ مِن فَضۡلِهِۦ وَلَعَلَّكُمۡ تَشۡكُرُونَ Wahuwa allathee sakhkhara albahra litakuloo minhu lahman tariyyan watastakhrijoo minhu hilyatan talbasoonaha watara alfulka mawakhira feehi walitabtaghoo min fadlihi walaAAallakum tashkuroona And it is He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear."
      }
     ],
-    "seq": 17,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and|that|you may seek of his bounty",
+    "task_id": "he|subjected|it] that you may seek of his bounty",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -596,12 +486,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "and that you may seek of His bounty",
-    "subject": "and",
-    "verb": "that",
-    "object": "you may seek of His bounty",
+    "description": "He subjected it] that you may seek of His bounty",
+    "subject": "He",
+    "verb": "subjected",
+    "object": "it] that you may seek of His bounty",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -610,13 +500,13 @@
       "text": "And you see the ships plowing through it, and [He subjected it] that you may seek of His bounty; and perhaps you will be grateful [16:15] وَأَلۡقَىٰ فِي ٱلۡأَرۡضِ رَوَٰسِيَ أَن تَمِيدَ بِكُمۡ وَأَنۡهَٰرٗا وَسُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Waalqa fee alardi rawasiya an tameeda bikum waanharan wasubulan laAAallakum tahtadoona And He has cast into the earth firmly set mountains, lest it shift with you, and [made] rivers and roads, that you may be guided [16:16] وَعَلَٰمَٰتٖۚ وَبِٱلنَّجۡمِ هُمۡ يَهۡتَدُونَ WaAAalamatin wabialnnajmi hum yahtadoona And landmarks."
      }
     ],
-    "seq": 18,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "laaaallakum tahtadoona|and|he has cast into the earth firmly set mountains",
+    "task_id": "and he|has|cast into the earth firmly set mountains",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -625,12 +515,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "laAAallakum tahtadoona and He has cast into the earth firmly set mountains",
-    "subject": "laAAallakum tahtadoona",
-    "verb": "and",
-    "object": "He has cast into the earth firmly set mountains",
+    "description": "And He has cast into the earth firmly set mountains",
+    "subject": "And He",
+    "verb": "has",
+    "object": "cast into the earth firmly set mountains",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -639,65 +529,7 @@
       "text": "And you see the ships plowing through it, and [He subjected it] that you may seek of His bounty; and perhaps you will be grateful [16:15] وَأَلۡقَىٰ فِي ٱلۡأَرۡضِ رَوَٰسِيَ أَن تَمِيدَ بِكُمۡ وَأَنۡهَٰرٗا وَسُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Waalqa fee alardi rawasiya an tameeda bikum waanharan wasubulan laAAallakum tahtadoona And He has cast into the earth firmly set mountains, lest it shift with you, and [made] rivers and roads, that you may be guided [16:16] وَعَلَٰمَٰتٖۚ وَبِٱلنَّجۡمِ هُمۡ يَهۡتَدُونَ WaAAalamatin wabialnnajmi hum yahtadoona And landmarks."
      }
     ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "rivers|and|roads",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "rivers and roads",
-    "subject": "rivers",
-    "verb": "and",
-    "object": "roads",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#5196-5776",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "And you see the ships plowing through it, and [He subjected it] that you may seek of His bounty; and perhaps you will be grateful [16:15] وَأَلۡقَىٰ فِي ٱلۡأَرۡضِ رَوَٰسِيَ أَن تَمِيدَ بِكُمۡ وَأَنۡهَٰرٗا وَسُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Waalqa fee alardi rawasiya an tameeda bikum waanharan wasubulan laAAallakum tahtadoona And He has cast into the earth firmly set mountains, lest it shift with you, and [made] rivers and roads, that you may be guided [16:16] وَعَلَٰمَٰتٖۚ وَبِٱلنَّجۡمِ هُمۡ يَهۡتَدُونَ WaAAalamatin wabialnnajmi hum yahtadoona And landmarks."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hum yahtadoona|and|landmarks",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hum yahtadoona and landmarks",
-    "subject": "hum yahtadoona",
-    "verb": "and",
-    "object": "landmarks",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#5196-5776",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "And you see the ships plowing through it, and [He subjected it] that you may seek of His bounty; and perhaps you will be grateful [16:15] وَأَلۡقَىٰ فِي ٱلۡأَرۡضِ رَوَٰسِيَ أَن تَمِيدَ بِكُمۡ وَأَنۡهَٰرٗا وَسُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Waalqa fee alardi rawasiya an tameeda bikum waanharan wasubulan laAAallakum tahtadoona And He has cast into the earth firmly set mountains, lest it shift with you, and [made] rivers and roads, that you may be guided [16:16] وَعَلَٰمَٰتٖۚ وَبِٱلنَّجۡمِ هُمۡ يَهۡتَدُونَ WaAAalamatin wabialnnajmi hum yahtadoona And landmarks."
-     }
-    ],
-    "seq": 21,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -717,7 +549,7 @@
     "verb": "is",
     "object": "He who creates like one who does not create?",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -726,36 +558,7 @@
       "text": "And by the stars they are [also] guided [16:17] أَفَمَن يَخۡلُقُ كَمَن لَّا يَخۡلُقُۚ أَفَلَا تَذَكَّرُونَ Afaman yakhluqu kaman la yakhluqu afala tathakkaroona Then is He who creates like one who does not create?"
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "laghafoorun raheemun|and|if you should count the favors of allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "laghafoorun raheemun and if you should count the favors of Allah",
-    "subject": "laghafoorun raheemun",
-    "verb": "and",
-    "object": "if you should count the favors of Allah",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#5999-6277",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "So will you not be reminded [16:18] وَإِن تَعُدُّواْ نِعۡمَةَ ٱللَّهِ لَا تُحۡصُوهَآۗ إِنَّ ٱللَّهَ لَغَفُورٞ رَّحِيمٞ Wain taAAuddoo niAAmata Allahi la tuhsooha inna Allaha laghafoorun raheemun And if you should count the favors of Allah, you could not enumerate them."
-     }
-    ],
-    "seq": 23,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -775,7 +578,7 @@
     "verb": "could",
     "object": "not enumerate them",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -784,13 +587,13 @@
       "text": "So will you not be reminded [16:18] وَإِن تَعُدُّواْ نِعۡمَةَ ٱللَّهِ لَا تُحۡصُوهَآۗ إِنَّ ٱللَّهَ لَغَفُورٞ رَّحِيمٞ Wain taAAuddoo niAAmata Allahi la tuhsooha inna Allaha laghafoorun raheemun And if you should count the favors of Allah, you could not enumerate them."
      }
     ],
-    "seq": 24,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "wahum yukhlaqoona|and|those they invoke other than allah create nothing",
+    "task_id": "than allah|create|nothing",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -799,12 +602,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "wahum yukhlaqoona and those they invoke other than Allah create nothing",
-    "subject": "wahum yukhlaqoona",
-    "verb": "and",
-    "object": "those they invoke other than Allah create nothing",
+    "description": "than Allah create nothing",
+    "subject": "than Allah",
+    "verb": "create",
+    "object": "nothing",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -813,7 +616,7 @@
       "text": "Indeed, Allah is Forgiving and Merciful [16:19] وَٱللَّهُ يَعۡلَمُ مَا تُسِرُّونَ وَمَا تُعۡلِنُونَ WaAllahu yaAAlamu ma tusirroona wama tuAAlinoona And Allah knows what you conceal and what you declare [16:20] وَٱلَّذِينَ يَدۡعُونَ مِن دُونِ ٱللَّهِ لَا يَخۡلُقُونَ شَيۡـٔٗا وَهُمۡ يُخۡلَقُونَ Waallatheena yadAAoona min dooni Allahi la yakhluqoona shayan wahum yukhlaqoona And those they invoke other than Allah create nothing, and they [themselves] are created [16:21] أَمۡوَٰتٌ غَيۡرُ أَحۡيَآءٖۖ وَمَا يَشۡعُرُونَ أَيَّانَ يُبۡعَثُونَ Amwatun ghayru ahyain wama yashAAuroona ayyana yubAAathoona They are, [in fact], dead, not alive, and they do not perceive when they will be resurrected [16:22] إِلَٰهُكُمۡ إِلَٰهٞ وَٰحِدٞۚ فَٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ قُلُوبُهُم مُّنكِرَةٞ وَهُم مُّسۡتَكۡبِرُونَ Ilahukum ilahun wahidun faallatheena la yuminoona bialakhirati quloobuhum munkiratun wahum mustakbiroona Your god is one God."
      }
     ],
-    "seq": 25,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -833,7 +636,7 @@
     "verb": "is",
     "object": "one God",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -842,36 +645,7 @@
       "text": "Indeed, Allah is Forgiving and Merciful [16:19] وَٱللَّهُ يَعۡلَمُ مَا تُسِرُّونَ وَمَا تُعۡلِنُونَ WaAllahu yaAAlamu ma tusirroona wama tuAAlinoona And Allah knows what you conceal and what you declare [16:20] وَٱلَّذِينَ يَدۡعُونَ مِن دُونِ ٱللَّهِ لَا يَخۡلُقُونَ شَيۡـٔٗا وَهُمۡ يُخۡلَقُونَ Waallatheena yadAAoona min dooni Allahi la yakhluqoona shayan wahum yukhlaqoona And those they invoke other than Allah create nothing, and they [themselves] are created [16:21] أَمۡوَٰتٌ غَيۡرُ أَحۡيَآءٖۖ وَمَا يَشۡعُرُونَ أَيَّانَ يُبۡعَثُونَ Amwatun ghayru ahyain wama yashAAuroona ayyana yubAAathoona They are, [in fact], dead, not alive, and they do not perceive when they will be resurrected [16:22] إِلَٰهُكُمۡ إِلَٰهٞ وَٰحِدٞۚ فَٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ قُلُوبُهُم مُّنكِرَةٞ وَهُم مُّسۡتَكۡبِرُونَ Ilahukum ilahun wahidun faallatheena la yuminoona bialakhirati quloobuhum munkiratun wahum mustakbiroona Your god is one God."
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "but those|who|do not believe in the hereafter - their hearts are disapproving",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "But those who do not believe in the Hereafter - their hearts are disapproving",
-    "subject": "But those",
-    "verb": "who",
-    "object": "do not believe in the Hereafter - their hearts are disapproving",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#7253-7637",
-      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-      "text": "But those who do not believe in the Hereafter - their hearts are disapproving, and they are arrogant [16:23] لَا جَرَمَ أَنَّ ٱللَّهَ يَعۡلَمُ مَا يُسِرُّونَ وَمَا يُعۡلِنُونَۚ إِنَّهُۥ لَا يُحِبُّ ٱلۡمُسۡتَكۡبِرِينَ La jarama anna Allaha yaAAlamu ma yusirroona wama yuAAlinoona innahu la yuhibbu almustakbireena Assuredly, Allah knows what they conceal and what they declare."
-     }
-    ],
-    "seq": 27,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -891,7 +665,7 @@
     "verb": "knows",
     "object": "what they conceal and what they declare",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -900,13 +674,13 @@
       "text": "But those who do not believe in the Hereafter - their hearts are disapproving, and they are arrogant [16:23] لَا جَرَمَ أَنَّ ٱللَّهَ يَعۡلَمُ مَا يُسِرُّونَ وَمَا يُعۡلِنُونَۚ إِنَّهُۥ لَا يُحِبُّ ٱلۡمُسۡتَكۡبِرِينَ La jarama anna Allaha yaAAlamu ma yusirroona wama yuAAlinoona innahu la yuhibbu almustakbireena Assuredly, Allah knows what they conceal and what they declare."
      }
     ],
-    "seq": 28,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "asateeru alawwaleena|and|when it is said to them",
+    "task_id": "when it|is|said to them",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -915,12 +689,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "asateeru alawwaleena and when it is said to them",
-    "subject": "asateeru alawwaleena",
-    "verb": "and",
-    "object": "when it is said to them",
+    "description": "when it is said to them",
+    "subject": "when it",
+    "verb": "is",
+    "object": "said to them",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -929,7 +703,7 @@
       "text": "Indeed, He does not like the arrogant [16:24] وَإِذَا قِيلَ لَهُم مَّاذَآ أَنزَلَ رَبُّكُمۡ قَالُوٓاْ أَسَٰطِيرُ ٱلۡأَوَّلِينَ Waitha qeela lahum matha anzala rabbukum qaloo asateeru alawwaleena And when it is said to them, \"What has your Lord sent down?\""
      }
     ],
-    "seq": 29,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -949,7 +723,7 @@
     "verb": "has",
     "object": "your Lord sent down?\"",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -958,12 +732,12 @@
       "text": "Indeed, He does not like the arrogant [16:24] وَإِذَا قِيلَ لَهُم مَّاذَآ أَنزَلَ رَبُّكُمۡ قَالُوٓاْ أَسَٰطِيرُ ٱلۡأَوَّلِينَ Waitha qeela lahum matha anzala rabbukum qaloo asateeru alawwaleena And when it is said to them, \"What has your Lord sent down?\""
      }
     ],
-    "seq": 30,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 31,
+  "nextSeq": 22,
   "admits": [
    "NUL",
    "SEG",
@@ -983,7 +757,7 @@
    "verb": "knows",
    "object": "what they conceal and what they declare",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -994,12 +768,12 @@
    ]
   },
   {
-   "id": "and|that|you may seek of his bounty",
-   "subject": "and",
-   "verb": "that",
-   "object": "you may seek of His bounty",
+   "id": "and he|has|cast into the earth firmly set mountains",
+   "subject": "And He",
+   "verb": "has",
+   "object": "cast into the earth firmly set mountains",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1010,34 +784,18 @@
    ]
   },
   {
-   "id": "asateeru alawwaleena|and|when it is said to them",
-   "subject": "asateeru alawwaleena",
-   "verb": "and",
-   "object": "when it is said to them",
+   "id": "and it|is|he who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
+   "subject": "And it",
+   "verb": "is",
+   "object": "He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#7638-7902",
+     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#4607-5195",
      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "Indeed, He does not like the arrogant [16:24] وَإِذَا قِيلَ لَهُم مَّاذَآ أَنزَلَ رَبُّكُمۡ قَالُوٓاْ أَسَٰطِيرُ ٱلۡأَوَّلِينَ Waitha qeela lahum matha anzala rabbukum qaloo asateeru alawwaleena And when it is said to them, \"What has your Lord sent down?\""
-    }
-   ]
-  },
-  {
-   "id": "but those|who|do not believe in the hereafter - their hearts are disapproving",
-   "subject": "But those",
-   "verb": "who",
-   "object": "do not believe in the Hereafter - their hearts are disapproving",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#7253-7637",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "But those who do not believe in the Hereafter - their hearts are disapproving, and they are arrogant [16:23] لَا جَرَمَ أَنَّ ٱللَّهَ يَعۡلَمُ مَا يُسِرُّونَ وَمَا يُعۡلِنُونَۚ إِنَّهُۥ لَا يُحِبُّ ٱلۡمُسۡتَكۡبِرِينَ La jarama anna Allaha yaAAlamu ma yusirroona wama yuAAlinoona innahu la yuhibbu almustakbireena Assuredly, Allah knows what they conceal and what they declare."
+     "text": "Indeed in that is a sign for a people who remember [16:14] وَهُوَ ٱلَّذِي سَخَّرَ ٱلۡبَحۡرَ لِتَأۡكُلُواْ مِنۡهُ لَحۡمٗا طَرِيّٗا وَتَسۡتَخۡرِجُواْ مِنۡهُ حِلۡيَةٗ تَلۡبَسُونَهَاۖ وَتَرَى ٱلۡفُلۡكَ مَوَاخِرَ فِيهِ وَلِتَبۡتَغُواْ مِن فَضۡلِهِۦ وَلَعَلَّكُمۡ تَشۡكُرُونَ Wahuwa allathee sakhkhara albahra litakuloo minhu lahman tariyyan watastakhrijoo minhu hilyatan talbasoonaha watara alfulka mawakhira feehi walitabtaghoo min fadlihi walaAAallakum tashkuroona And it is He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear."
     }
    ]
   },
@@ -1047,7 +805,7 @@
    "verb": "sends",
    "object": "down the angels",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1058,12 +816,12 @@
    ]
   },
   {
-   "id": "hum yahtadoona|and|landmarks",
-   "subject": "hum yahtadoona",
-   "verb": "and",
-   "object": "landmarks",
+   "id": "he|subjected|it] that you may seek of his bounty",
+   "subject": "He",
+   "verb": "subjected",
+   "object": "it] that you may seek of His bounty",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1079,7 +837,7 @@
    "verb": "is",
    "object": "warmth and [numerous] benefits",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1090,76 +848,12 @@
    ]
   },
   {
-   "id": "la taaalamoona|and|[he created] the horses",
-   "subject": "la taAAlamoona",
-   "verb": "and",
-   "object": "[He created] the horses",
+   "id": "land you|could|not have reached except with difficulty to yourselves",
+   "subject": "land you",
+   "verb": "could",
+   "object": "not have reached except with difficulty to yourselves",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#2318-2637",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "Indeed, your Lord is Kind and Merciful [16:8] وَٱلۡخَيۡلَ وَٱلۡبِغَالَ وَٱلۡحَمِيرَ لِتَرۡكَبُوهَا وَزِينَةٗۚ وَيَخۡلُقُ مَا لَا تَعۡلَمُونَ Waalkhayla waalbighala waalhameera litarkabooha wazeenatan wayakhluqu ma la taAAlamoona And [He created] the horses, mules and donkeys for you to ride and [as] adornment."
-    }
-   ]
-  },
-  {
-   "id": "laaaallakum tahtadoona|and|he has cast into the earth firmly set mountains",
-   "subject": "laAAallakum tahtadoona",
-   "verb": "and",
-   "object": "He has cast into the earth firmly set mountains",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#5196-5776",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "And you see the ships plowing through it, and [He subjected it] that you may seek of His bounty; and perhaps you will be grateful [16:15] وَأَلۡقَىٰ فِي ٱلۡأَرۡضِ رَوَٰسِيَ أَن تَمِيدَ بِكُمۡ وَأَنۡهَٰرٗا وَسُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Waalqa fee alardi rawasiya an tameeda bikum waanharan wasubulan laAAallakum tahtadoona And He has cast into the earth firmly set mountains, lest it shift with you, and [made] rivers and roads, that you may be guided [16:16] وَعَلَٰمَٰتٖۚ وَبِٱلنَّجۡمِ هُمۡ يَهۡتَدُونَ WaAAalamatin wabialnnajmi hum yahtadoona And landmarks."
-    }
-   ]
-  },
-  {
-   "id": "laghafoorun raheemun|and|if you should count the favors of allah",
-   "subject": "laghafoorun raheemun",
-   "verb": "and",
-   "object": "if you should count the favors of Allah",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#5999-6277",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "So will you not be reminded [16:18] وَإِن تَعُدُّواْ نِعۡمَةَ ٱللَّهِ لَا تُحۡصُوهَآۗ إِنَّ ٱللَّهَ لَغَفُورٞ رَّحِيمٞ Wain taAAuddoo niAAmata Allahi la tuhsooha inna Allaha laghafoorun raheemun And if you should count the favors of Allah, you could not enumerate them."
-    }
-   ]
-  },
-  {
-   "id": "lahadakum ajmaaaeena|and|upon allah is the direction of the [right] way",
-   "subject": "lahadakum ajmaAAeena",
-   "verb": "and",
-   "object": "upon Allah is the direction of the [right] way",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#2638-2967",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "And He creates that which you do not know [16:9] وَعَلَى ٱللَّهِ قَصۡدُ ٱلسَّبِيلِ وَمِنۡهَا جَآئِرٞۚ وَلَوۡ شَآءَ لَهَدَىٰكُمۡ أَجۡمَعِينَ WaAAala Allahi qasdu alssabeeli waminha jairun walaw shaa lahadakum ajmaAAeena And upon Allah is the direction of the [right] way, and among the various paths are those deviating."
-    }
-   ]
-  },
-  {
-   "id": "laraoofun raheemun|and|they carry your loads to a land you could not have reached except with difficulty to yourselves",
-   "subject": "laraoofun raheemun",
-   "verb": "and",
-   "object": "they carry your loads to a land you could not have reached except with difficulty to yourselves",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1170,14 +864,19 @@
    ]
   },
   {
-   "id": "liqawmin yaaaqiloona|and|he has subjected for you the night and day and the sun and moon",
-   "subject": "liqawmin yaAAqiloona",
-   "verb": "and",
-   "object": "He has subjected for you the night and day and the sun and moon",
+   "id": "livestock he|has|created for you",
+   "subject": "livestock He",
+   "verb": "has",
+   "object": "created for you",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#1158-2317",
+     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
+     "text": "High is He above what they associate with Him [16:4] خَلَقَ ٱلۡإِنسَٰنَ مِن نُّطۡفَةٖ فَإِذَا هُوَ خَصِيمٞ مُّبِينٞ Khalaqa alinsana min nutfatin faitha huwa khaseemun mubeenun He created man from a sperm-drop; then at once, he is a clear adversary [16:5] وَٱلۡأَنۡعَٰمَ خَلَقَهَاۖ لَكُمۡ فِيهَا دِفۡءٞ وَمَنَٰفِعُ وَمِنۡهَا تَأۡكُلُونَ WaalanAAama khalaqaha lakum feeha difon wamanafiAAu waminha takuloona And the grazing livestock He has created for you; in them is warmth and [numerous] benefits, and from them you eat [16:6] وَلَكُمۡ فِيهَا جَمَالٌ حِينَ تُرِيحُونَ وَحِينَ تَسۡرَحُونَ Walakum feeha jamalun heena tureehoona waheena tasrahoona And for you in them is [the enjoyment of] beauty when you bring them in [for the evening] and when you send them out [to pasture] [16:7] وَتَحۡمِلُ أَثۡقَالَكُمۡ إِلَىٰ بَلَدٖ لَّمۡ تَكُونُواْ بَٰلِغِيهِ إِلَّا بِشِقِّ ٱلۡأَنفُسِۚ إِنَّ رَبَّكُمۡ لَرَءُوفٞ رَّحِيمٞ Watahmilu athqalakum ila baladin lam takoonoo baligheehi illa bishiqqi alanfusi inna rabbakum laraoofun raheemun And they carry your loads to a land you could not have reached except with difficulty to yourselves."
+    },
     {
      "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#3757-4242",
      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
@@ -1196,7 +895,7 @@
    "verb": "created",
    "object": "man from a sperm-drop",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1207,44 +906,12 @@
    ]
   },
   {
-   "id": "mules|and|donkeys for you to ride and [as] adornment",
-   "subject": "mules",
-   "verb": "and",
-   "object": "donkeys for you to ride and [as] adornment",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#2318-2637",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "Indeed, your Lord is Kind and Merciful [16:8] وَٱلۡخَيۡلَ وَٱلۡبِغَالَ وَٱلۡحَمِيرَ لِتَرۡكَبُوهَا وَزِينَةٗۚ وَيَخۡلُقُ مَا لَا تَعۡلَمُونَ Waalkhayla waalbighala waalhameera litarkabooha wazeenatan wayakhluqu ma la taAAlamoona And [He created] the horses, mules and donkeys for you to ride and [as] adornment."
-    }
-   ]
-  },
-  {
-   "id": "rivers|and|roads",
-   "subject": "rivers",
-   "verb": "and",
-   "object": "roads",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#5196-5776",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "And you see the ships plowing through it, and [He subjected it] that you may seek of His bounty; and perhaps you will be grateful [16:15] وَأَلۡقَىٰ فِي ٱلۡأَرۡضِ رَوَٰسِيَ أَن تَمِيدَ بِكُمۡ وَأَنۡهَٰرٗا وَسُبُلٗا لَّعَلَّكُمۡ تَهۡتَدُونَ Waalqa fee alardi rawasiya an tameeda bikum waanharan wasubulan laAAallakum tahtadoona And He has cast into the earth firmly set mountains, lest it shift with you, and [made] rivers and roads, that you may be guided [16:16] وَعَلَٰمَٰتٖۚ وَبِٱلنَّجۡمِ هُمۡ يَهۡتَدُونَ WaAAalamatin wabialnnajmi hum yahtadoona And landmarks."
-    }
-   ]
-  },
-  {
    "id": "stars are|subjected|by his command",
    "subject": "stars are",
    "verb": "subjected",
    "object": "by His command",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1260,7 +927,7 @@
    "verb": "yushrikoona",
    "object": "He created the heavens and earth in truth",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1276,7 +943,7 @@
    "verb": "is",
    "object": "He who creates like one who does not create?",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1287,12 +954,28 @@
    ]
   },
   {
-   "id": "the inspiration|of|his command",
-   "subject": "the inspiration",
-   "verb": "of",
-   "object": "His command",
+   "id": "than allah|create|nothing",
+   "subject": "than Allah",
+   "verb": "create",
+   "object": "nothing",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#6278-7252",
+     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
+     "text": "Indeed, Allah is Forgiving and Merciful [16:19] وَٱللَّهُ يَعۡلَمُ مَا تُسِرُّونَ وَمَا تُعۡلِنُونَ WaAllahu yaAAlamu ma tusirroona wama tuAAlinoona And Allah knows what you conceal and what you declare [16:20] وَٱلَّذِينَ يَدۡعُونَ مِن دُونِ ٱللَّهِ لَا يَخۡلُقُونَ شَيۡـٔٗا وَهُمۡ يُخۡلَقُونَ Waallatheena yadAAoona min dooni Allahi la yakhluqoona shayan wahum yukhlaqoona And those they invoke other than Allah create nothing, and they [themselves] are created [16:21] أَمۡوَٰتٌ غَيۡرُ أَحۡيَآءٖۖ وَمَا يَشۡعُرُونَ أَيَّانَ يُبۡعَثُونَ Amwatun ghayru ahyain wama yashAAuroona ayyana yubAAathoona They are, [in fact], dead, not alive, and they do not perceive when they will be resurrected [16:22] إِلَٰهُكُمۡ إِلَٰهٞ وَٰحِدٞۚ فَٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ قُلُوبُهُم مُّنكِرَةٞ وَهُم مُّسۡتَكۡبِرُونَ Ilahukum ilahun wahidun faallatheena la yuminoona bialakhirati quloobuhum munkiratun wahum mustakbiroona Your god is one God."
+    }
+   ]
+  },
+  {
+   "id": "that there|is|no deity except me",
+   "subject": "that there",
+   "verb": "is",
+   "object": "no deity except Me",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1308,7 +991,7 @@
    "verb": "is",
    "object": "He who sends down rain from the sky",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1319,66 +1002,18 @@
    ]
   },
   {
-   "id": "wahum yukhlaqoona|and|those they invoke other than allah create nothing",
-   "subject": "wahum yukhlaqoona",
-   "verb": "and",
-   "object": "those they invoke other than Allah create nothing",
+   "id": "upon allah|is|the direction of the [right] way",
+   "subject": "upon Allah",
+   "verb": "is",
+   "object": "the direction of the [right] way",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#6278-7252",
+     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#2638-2967",
      "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "Indeed, Allah is Forgiving and Merciful [16:19] وَٱللَّهُ يَعۡلَمُ مَا تُسِرُّونَ وَمَا تُعۡلِنُونَ WaAllahu yaAAlamu ma tusirroona wama tuAAlinoona And Allah knows what you conceal and what you declare [16:20] وَٱلَّذِينَ يَدۡعُونَ مِن دُونِ ٱللَّهِ لَا يَخۡلُقُونَ شَيۡـٔٗا وَهُمۡ يُخۡلَقُونَ Waallatheena yadAAoona min dooni Allahi la yakhluqoona shayan wahum yukhlaqoona And those they invoke other than Allah create nothing, and they [themselves] are created [16:21] أَمۡوَٰتٌ غَيۡرُ أَحۡيَآءٖۖ وَمَا يَشۡعُرُونَ أَيَّانَ يُبۡعَثُونَ Amwatun ghayru ahyain wama yashAAuroona ayyana yubAAathoona They are, [in fact], dead, not alive, and they do not perceive when they will be resurrected [16:22] إِلَٰهُكُمۡ إِلَٰهٞ وَٰحِدٞۚ فَٱلَّذِينَ لَا يُؤۡمِنُونَ بِٱلۡأٓخِرَةِ قُلُوبُهُم مُّنكِرَةٞ وَهُم مُّسۡتَكۡبِرُونَ Ilahukum ilahun wahidun faallatheena la yuminoona bialakhirati quloobuhum munkiratun wahum mustakbiroona Your god is one God."
-    }
-   ]
-  },
-  {
-   "id": "walaaaallakum tashkuroona|and|it is he who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
-   "subject": "walaAAallakum tashkuroona",
-   "verb": "and",
-   "object": "it is He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#4607-5195",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "Indeed in that is a sign for a people who remember [16:14] وَهُوَ ٱلَّذِي سَخَّرَ ٱلۡبَحۡرَ لِتَأۡكُلُواْ مِنۡهُ لَحۡمٗا طَرِيّٗا وَتَسۡتَخۡرِجُواْ مِنۡهُ حِلۡيَةٗ تَلۡبَسُونَهَاۖ وَتَرَى ٱلۡفُلۡكَ مَوَاخِرَ فِيهِ وَلِتَبۡتَغُواْ مِن فَضۡلِهِۦ وَلَعَلَّكُمۡ تَشۡكُرُونَ Wahuwa allathee sakhkhara albahra litakuloo minhu lahman tariyyan watastakhrijoo minhu hilyatan talbasoonaha watara alfulka mawakhira feehi walitabtaghoo min fadlihi walaAAallakum tashkuroona And it is He who subjected the sea for you to eat from it tender meat and to extract from it ornaments which you wear."
-    }
-   ]
-  },
-  {
-   "id": "waminha takuloona|and|the grazing livestock he has created for you",
-   "subject": "waminha takuloona",
-   "verb": "and",
-   "object": "the grazing livestock He has created for you",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#1158-2317",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "High is He above what they associate with Him [16:4] خَلَقَ ٱلۡإِنسَٰنَ مِن نُّطۡفَةٖ فَإِذَا هُوَ خَصِيمٞ مُّبِينٞ Khalaqa alinsana min nutfatin faitha huwa khaseemun mubeenun He created man from a sperm-drop; then at once, he is a clear adversary [16:5] وَٱلۡأَنۡعَٰمَ خَلَقَهَاۖ لَكُمۡ فِيهَا دِفۡءٞ وَمَنَٰفِعُ وَمِنۡهَا تَأۡكُلُونَ WaalanAAama khalaqaha lakum feeha difon wamanafiAAu waminha takuloona And the grazing livestock He has created for you; in them is warmth and [numerous] benefits, and from them you eat [16:6] وَلَكُمۡ فِيهَا جَمَالٌ حِينَ تُرِيحُونَ وَحِينَ تَسۡرَحُونَ Walakum feeha jamalun heena tureehoona waheena tasrahoona And for you in them is [the enjoyment of] beauty when you bring them in [for the evening] and when you send them out [to pasture] [16:7] وَتَحۡمِلُ أَثۡقَالَكُمۡ إِلَىٰ بَلَدٖ لَّمۡ تَكُونُواْ بَٰلِغِيهِ إِلَّا بِشِقِّ ٱلۡأَنفُسِۚ إِنَّ رَبَّكُمۡ لَرَءُوفٞ رَّحِيمٞ Watahmilu athqalakum ila baladin lam takoonoo baligheehi illa bishiqqi alanfusi inna rabbakum laraoofun raheemun And they carry your loads to a land you could not have reached except with difficulty to yourselves."
-    }
-   ]
-  },
-  {
-   "id": "warn|that|there is no deity except me",
-   "subject": "Warn",
-   "verb": "that",
-   "object": "there is no deity except Me",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#441-1157",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "Exalted is He and high above what they associate with Him [16:2] يُنَزِّلُ ٱلۡمَلَـٰٓئِكَةَ بِٱلرُّوحِ مِنۡ أَمۡرِهِۦ عَلَىٰ مَن يَشَآءُ مِنۡ عِبَادِهِۦٓ أَنۡ أَنذِرُوٓاْ أَنَّهُۥ لَآ إِلَٰهَ إِلَّآ أَنَا۠ فَٱتَّقُونِ Yunazzilu almalaikata bialrroohi min amrihi AAala man yashao min AAibadihi an anthiroo annahu la ilaha illa ana faittaqooni He sends down the angels, with the inspiration of His command, upon whom He wills of His servants, [telling them], \"Warn that there is no deity except Me; so fear Me [16:3] خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بِٱلۡحَقِّۚ تَعَٰلَىٰ عَمَّا يُشۡرِكُونَ Khalaqa alssamawati waalarda bialhaqqi taAAala AAamma yushrikoona He created the heavens and earth in truth."
+     "text": "And He creates that which you do not know [16:9] وَعَلَى ٱللَّهِ قَصۡدُ ٱلسَّبِيلِ وَمِنۡهَا جَآئِرٞۚ وَلَوۡ شَآءَ لَهَدَىٰكُمۡ أَجۡمَعِينَ WaAAala Allahi qasdu alssabeeli waminha jairun walaw shaa lahadakum ajmaAAeena And upon Allah is the direction of the [right] way, and among the various paths are those deviating."
     }
    ]
   },
@@ -1388,7 +1023,7 @@
    "verb": "yushrikoona",
    "object": "The command of Allah is coming",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1404,7 +1039,23 @@
    "verb": "has",
    "object": "your Lord sent down?\"",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#7638-7902",
+     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
+     "text": "Indeed, He does not like the arrogant [16:24] وَإِذَا قِيلَ لَهُم مَّاذَآ أَنزَلَ رَبُّكُمۡ قَالُوٓاْ أَسَٰطِيرُ ٱلۡأَوَّلِينَ Waitha qeela lahum matha anzala rabbukum qaloo asateeru alawwaleena And when it is said to them, \"What has your Lord sent down?\""
+    }
+   ]
+  },
+  {
+   "id": "when it|is|said to them",
+   "subject": "when it",
+   "verb": "is",
+   "object": "said to them",
+   "witnesses": [
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1420,7 +1071,7 @@
    "verb": "wills",
    "object": "of His servants",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1431,28 +1082,12 @@
    ]
   },
   {
-   "id": "yatafakkaroona\n    he|causes|to grow for you thereby the crops",
-   "subject": "yatafakkaroona\n    He",
-   "verb": "causes",
-   "object": "to grow for you thereby the crops",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt#2968-3756",
-     "ref": "14-holy-texts/quran-suras/sura-016-An-Nahl.txt",
-     "text": "And if He willed, He could have guided you all [16:10] هُوَ ٱلَّذِيٓ أَنزَلَ مِنَ ٱلسَّمَآءِ مَآءٗۖ لَّكُم مِّنۡهُ شَرَابٞ وَمِنۡهُ شَجَرٞ فِيهِ تُسِيمُونَ Huwa allathee anzala mina alssamai maan lakum minhu sharabun waminhu shajarun feehi tuseemoona It is He who sends down rain from the sky; from it is drink and from it is foliage in which you pasture [animals] [16:11] يُنۢبِتُ لَكُم بِهِ ٱلزَّرۡعَ وَٱلزَّيۡتُونَ وَٱلنَّخِيلَ وَٱلۡأَعۡنَٰبَ وَمِن كُلِّ ٱلثَّمَرَٰتِۚ إِنَّ فِي ذَٰلِكَ لَأٓيَةٗ لِّقَوۡمٖ يَتَفَكَّرُونَ Yunbitu lakum bihi alzzarAAa waalzzaytoona waalnnakheela waalaAAnaba wamin kulli alththamarati inna fee thalika laayatan liqawmin yatafakkaroona He causes to grow for you thereby the crops, olives, palm trees, grapevines, and from all the fruits."
-    }
-   ]
-  },
-  {
    "id": "you|could|not enumerate them",
    "subject": "you",
    "verb": "could",
    "object": "not enumerate them",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1468,7 +1103,7 @@
    "verb": "is",
    "object": "one God",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-016-An-Nahl.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1480,7 +1115,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:43.239Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:43.674Z"
  }
 }

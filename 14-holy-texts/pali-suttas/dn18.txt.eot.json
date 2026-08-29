@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 48315,
   "bodyOffset": 0,
   "bodyChars": 48315,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 10,
   "distinctReferents": 8,
   "examined": true,
-  "edgesFound": 42,
-  "extractionError": null
+  "edgesFound": 20,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 17
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 20,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 51,
-  "excerptOk": 51,
-  "rawChecked": 51,
-  "rawOk": 51,
+  "excerptChecked": 23,
+  "excerptOk": 23,
+  "rawChecked": 23,
+  "rawOk": 23,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 42,
-  "heard": 42,
+  "offered": 20,
+  "heard": 20,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "one time|the|buddha was staying at ñātika in the brick house",
+    "task_id": "the buddha|was|staying at ñātika in the brick house",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,23 +99,18 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "one time the Buddha was staying at Ñātika in the brick house",
-    "subject": "one time",
-    "verb": "the",
-    "object": "Buddha was staying at Ñātika in the brick house",
+    "description": "the Buddha was staying at Ñātika in the brick house",
+    "subject": "the Buddha",
+    "verb": "was",
+    "object": "staying at Ñātika in the brick house",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/pali-suttas/dn18.txt#449-513",
       "ref": "14-holy-texts/pali-suttas/dn18.txt",
       "text": "At one time the Buddha was staying at Ñātika in the brick house."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
      }
     ],
     "seq": 0,
@@ -94,7 +119,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "the kāsis|and|kosalans",
+    "task_id": "the buddha|was|explaining the rebirths of devotees all over the nations",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -103,12 +128,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the Kāsis and Kosalans",
-    "subject": "the Kāsis",
-    "verb": "and",
-    "object": "Kosalans",
+    "description": "the Buddha was explaining the rebirths of devotees all over the nations",
+    "subject": "the Buddha",
+    "verb": "was",
+    "object": "explaining the rebirths of devotees all over the nations",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -118,93 +143,6 @@
      }
     ],
     "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "vajjis|and|mallas",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Vajjis and Mallas",
-    "subject": "Vajjis",
-    "verb": "and",
-    "object": "Mallas",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cetīs|and|vacchas",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Cetīs and Vacchas",
-    "subject": "Cetīs",
-    "verb": "and",
-    "object": "Vacchas",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kurus|and|pañcālas",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Kurus and Pañcālas",
-    "subject": "Kurus",
-    "verb": "and",
-    "object": "Pañcālas",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
-     }
-    ],
-    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -224,7 +162,7 @@
     "verb": "was",
     "object": "reborn here",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -233,7 +171,7 @@
       "text": "“This one was reborn here, while that one was reborn there."
      }
     ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -253,7 +191,7 @@
     "verb": "devotees",
     "object": "in Ñātika have passed away having ended the five lower fetters",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -262,7 +200,7 @@
       "text": "Over fifty devotees in Ñātika have passed away having ended the five lower fetters."
      }
     ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -282,7 +220,7 @@
     "verb": "been",
     "object": "reborn spontaneously",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -291,36 +229,7 @@
       "text": "They’ve been reborn spontaneously, and will be extinguished there, not liable to return from that world."
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not liable|to|return from that world",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not liable to return from that world",
-    "subject": "not liable",
-    "verb": "to",
-    "object": "return from that world",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#1245-1349",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "They’ve been reborn spontaneously, and will be extinguished there, not liable to return from that world."
-     }
-    ],
-    "seq": 8,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -340,7 +249,7 @@
     "verb": "devotees",
     "object": "in Ñātika have passed away having ended three fetters",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -349,7 +258,7 @@
       "text": "More than ninety devotees in Ñātika have passed away having ended three fetters, and weakened greed, hate, and delusion."
      }
     ],
-    "seq": 9,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -369,7 +278,7 @@
     "verb": "come",
     "object": "back to this world once only",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -378,36 +287,7 @@
       "text": "They’re once-returners, who will come back to this world once only, then make an end of suffering."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "an end|of|suffering",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "an end of suffering",
-    "subject": "an end",
-    "verb": "of",
-    "object": "suffering",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#1653-1751",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "They’re once-returners, who will come back to this world once only, then make an end of suffering."
-     }
-    ],
-    "seq": 11,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -427,7 +307,7 @@
     "verb": "devotees",
     "object": "in Ñātika have passed away having ended three fetters",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -436,65 +316,7 @@
       "text": "More than five hundred devotees in Ñātika have passed away having ended three fetters."
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not liable|to|be reborn in the underworld",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not liable to be reborn in the underworld",
-    "subject": "not liable",
-    "verb": "to",
-    "object": "be reborn in the underworld",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#1991-2092",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "They’re stream-enterers, not liable to be reborn in the underworld, assured, destined for awakening.”"
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in front|of|me",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in front of me",
-    "subject": "in front",
-    "verb": "of",
-    "object": "me",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#2177-2288",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "“After making himself heard while invisible, Ānanda, an exceptionally beautiful spirit appeared in front of me."
-     }
-    ],
-    "seq": 14,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -514,7 +336,7 @@
     "verb": "known",
     "object": "that I won’t be reborn in the underworld",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -523,70 +345,7 @@
       "text": "For a long time I’ve known that I won’t be reborn in the underworld, but that I still hope to become a once-returner.’"
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "still hope|to|become a once-returner",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "still hope to become a once-returner",
-    "subject": "still hope",
-    "verb": "to",
-    "object": "become a once-returner",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#2402-2520",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "For a long time I’ve known that I won’t be reborn in the underworld, but that I still hope to become a once-returner.’"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#4142-4296",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "From the day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld, but that I still hope to become a once-returner."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it’s incredible|and|amazing that you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "It’s incredible and amazing that you",
-    "subject": "It’s incredible",
-    "verb": "and",
-    "object": "amazing that you",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#2624-2927",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "‘It’s incredible and amazing that you, the venerable spirit Janavasabha, should say: ‘Dīgharattaṁ kho ahaṁ, bhante, avinipāto avinipātaṁ sañjānāmī’ti ca vadesi, ‘āsā ca pana me santiṭṭhati sakadāgāmitāyā’ti ca vadesi, kutonidānaṁ panāyasmā janavasabho yakkho evarūpaṁ uḷāraṁ visesādhigamaṁ sañjānātī”ti?"
-     }
-    ],
-    "seq": 17,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -606,7 +365,7 @@
     "verb": "been",
     "object": "aware that I won’t be reborn in the underworld” and also “But I still hope to become a once-returner",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -615,13 +374,13 @@
       "text": "“For a long time I’ve been aware that I won’t be reborn in the underworld” and also “But I still hope to become a once-returner.”"
      }
     ],
-    "seq": 18,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "this is|the|seventh time i am reborn in the company of the great king vessavaṇa",
+    "task_id": "i have|known|that i won’t be reborn in the underworld",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -630,104 +389,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "This is the seventh time I am reborn in the company of the Great King Vessavaṇa",
-    "subject": "This is",
-    "verb": "the",
-    "object": "seventh time I am reborn in the company of the Great King Vessavaṇa",
+    "description": "I have known that I won’t be reborn in the underworld",
+    "subject": "I have",
+    "verb": "known",
+    "object": "that I won’t be reborn in the underworld",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#3455-3535",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "This is the seventh time I am reborn in the company of the Great King Vessavaṇa."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a king|of|men",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a king of men",
-    "subject": "a king",
-    "verb": "of",
-    "object": "men",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#3536-3591",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "When I pass away from here, I can become a king of men."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "none|other|than the blessed one’s instruction!",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "None other than the Blessed One’s instruction!",
-    "subject": "None",
-    "verb": "other",
-    "object": "than the Blessed One’s instruction!",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#3807-3927",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "“‘Na aññatra, bhagavā, tava sāsanā, na aññatra, sugata, tava sāsanā; ‘None other than the Blessed One’s instruction!"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#3928-3971",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "None other than the Holy One’s instruction!"
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "from|the|day i had absolute devotion to the buddha i have known that i won’t be reborn in the underworld",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "From the day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld",
-    "subject": "From",
-    "verb": "the",
-    "object": "day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -736,7 +403,7 @@
       "text": "From the day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld, but that I still hope to become a once-returner."
      }
     ],
-    "seq": 22,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -756,7 +423,7 @@
     "verb": "been",
     "object": "sent out by the great king Vessavaṇa to the great king Virūḷhaka’s presence on some business",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -765,13 +432,13 @@
       "text": "Idhāhaṁ, bhante, vessavaṇena mahārājena pesito virūḷhakassa mahārājassa santike kenacideva karaṇīyena addasaṁ bhagavantaṁ antarāmagge giñjakāvasathaṁ pavisitvā māgadhake paricārake ārabbha aṭṭhiṁ katvā manasikatvā sabbaṁ cetasā samannāharitvā nisinnaṁ: Just now, sir, I had been sent out by the great king Vessavaṇa to the great king Virūḷhaka’s presence on some business, and on the way I saw the Buddha giving his attention to the fate of the Magadhan devotees."
      }
     ],
-    "seq": 23,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and on|the|way i saw the buddha giving his attention to the fate of the magadhan devotees",
+    "task_id": "the buddha|giving|his attention to the fate of the magadhan devotees",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -780,12 +447,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "and on the way I saw the Buddha giving his attention to the fate of the Magadhan devotees",
-    "subject": "and on",
-    "verb": "the",
-    "object": "way I saw the Buddha giving his attention to the fate of the Magadhan devotees",
+    "description": "the Buddha giving his attention to the fate of the Magadhan devotees",
+    "subject": "the Buddha",
+    "verb": "giving",
+    "object": "his attention to the fate of the Magadhan devotees",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -794,13 +461,13 @@
       "text": "Idhāhaṁ, bhante, vessavaṇena mahārājena pesito virūḷhakassa mahārājassa santike kenacideva karaṇīyena addasaṁ bhagavantaṁ antarāmagge giñjakāvasathaṁ pavisitvā māgadhake paricārake ārabbha aṭṭhiṁ katvā manasikatvā sabbaṁ cetasā samannāharitvā nisinnaṁ: Just now, sir, I had been sent out by the great king Vessavaṇa to the great king Virūḷhaka’s presence on some business, and on the way I saw the Buddha giving his attention to the fate of the Magadhan devotees."
      }
     ],
-    "seq": 24,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "it comes|as|no surprise that i have heard and learned the fate of the magadhan devotees in the presence of the great king vessavaṇa as he was speaking to his assembly",
+    "task_id": "the magadhan|devotees|in the presence of the great king vessavaṇa as he was speaking to his assembly",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -809,12 +476,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "it comes as no surprise that I have heard and learned the fate of the Magadhan devotees in the presence of the great king Vessavaṇa as he was speaking to his assembly",
-    "subject": "it comes",
-    "verb": "as",
-    "object": "no surprise that I have heard and learned the fate of the Magadhan devotees in the presence of the great king Vessavaṇa as he was speaking to his assembly",
+    "description": "the Magadhan devotees in the presence of the great king Vessavaṇa as he was speaking to his assembly",
+    "subject": "the Magadhan",
+    "verb": "devotees",
+    "object": "in the presence of the great king Vessavaṇa as he was speaking to his assembly",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -823,13 +490,13 @@
       "text": "Anacchariyaṁ kho panetaṁ, bhante, yaṁ vessavaṇassa mahārājassa tassaṁ parisāyaṁ bhāsato sammukhā sutaṁ sammukhā paṭiggahitaṁ: But it comes as no surprise that I have heard and learned the fate of the Magadhan devotees in the presence of the great king Vessavaṇa as he was speaking to his assembly."
      }
     ],
-    "seq": 25,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "it occurred|to|me",
+    "task_id": "reasons i’ve|come|to see the buddha",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -838,70 +505,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "It occurred to me",
-    "subject": "It occurred",
-    "verb": "to",
-    "object": "me",
+    "description": "reasons I’ve come to see the Buddha",
+    "subject": "reasons I’ve",
+    "verb": "come",
+    "object": "to see the Buddha",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#5193-5305",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Tassa mayhaṁ, bhante, etadahosi: It occurred to me, “bhagavantañca dakkhāmi, idañca bhagavato ārocessāmī”ti."
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shall see|the|buddha and inform him of this",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "shall see the Buddha and inform him of this",
-    "subject": "shall see",
-    "verb": "the",
-    "object": "Buddha and inform him of this",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#5310-5358",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "“I shall see the Buddha and inform him of this.”"
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "these are|the|two reasons i’ve come to see the buddha",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "These are the two reasons I’ve come to see the Buddha",
-    "subject": "These are",
-    "verb": "the",
-    "object": "two reasons I’ve come to see the Buddha",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -910,7 +519,7 @@
       "text": "These are the two reasons I’ve come to see the Buddha."
      }
     ],
-    "seq": 28,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -930,7 +539,7 @@
     "verb": "was",
     "object": "more than a few days ago—on the fifteenth day sabbath on the full moon day at the entry to the rainy season—when all the gods of the thirty-three were sitting together in the Hall of Clear Right",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -939,13 +548,13 @@
       "text": "Sir, it was more than a few days ago—on the fifteenth day sabbath on the full moon day at the entry to the rainy season—when all the gods of the thirty-three were sitting together in the Hall of Clear Right."
      }
     ],
-    "seq": 29,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the gods|of|the thirty-three became uplifted and overjoyed at that",
+    "task_id": "of gods|was|sitting all around",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -954,99 +563,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The gods of the thirty-three became uplifted and overjoyed at that",
-    "subject": "The gods",
-    "verb": "of",
-    "object": "the thirty-three became uplifted and overjoyed at that",
+    "description": "of gods was sitting all around",
+    "subject": "of gods",
+    "verb": "was",
+    "object": "sitting all around",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#5929-6173",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Tena sudaṁ, bhante, devā tāvatiṁsā attamanā honti pamuditā pītisomanassajātā: The gods of the thirty-three became uplifted and overjoyed at that, full of rapture and happiness, saying, “dibbā vata bho kāyā paripūrenti, hāyanti asurakāyā”ti."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "full|of|rapture and happiness",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "full of rapture and happiness",
-    "subject": "full",
-    "verb": "of",
-    "object": "rapture and happiness",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#5929-6173",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Tena sudaṁ, bhante, devā tāvatiṁsā attamanā honti pamuditā pītisomanassajātā: The gods of the thirty-three became uplifted and overjoyed at that, full of rapture and happiness, saying, “dibbā vata bho kāyā paripūrenti, hāyanti asurakāyā”ti."
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "while|the|titan hosts dwindle!”",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "while the titan hosts dwindle!”",
-    "subject": "while",
-    "verb": "the",
-    "object": "titan hosts dwindle!”",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#6178-6236",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "“The heavenly hosts swell, while the titan hosts dwindle!”"
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "large assembly|of|gods was sitting all around",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "large assembly of gods was sitting all around",
-    "subject": "large assembly",
-    "verb": "of",
-    "object": "gods was sitting all around",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1055,36 +577,7 @@
       "text": "A large assembly of gods was sitting all around, and the four great kings were seated at the four quarters."
      }
     ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|the|four great kings were seated at the four quarters",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the four great kings were seated at the four quarters",
-    "subject": "and",
-    "verb": "the",
-    "object": "four great kings were seated at the four quarters",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#6335-6442",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "A large assembly of gods was sitting all around, and the four great kings were seated at the four quarters."
-     }
-    ],
-    "seq": 34,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1104,7 +597,7 @@
     "verb": "was",
     "object": "seated to the east",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1128,80 +621,7 @@
       "text": "The Great King Vessavaṇa was seated to the north, facing south, in front of his gods."
      }
     ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in front|of|his gods",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in front of his gods",
-    "subject": "in front",
-    "verb": "of",
-    "object": "his gods",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#6443-6621",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Puratthimāya disāya dhataraṭṭho mahārājā pacchimābhimukho nisinno hoti deve purakkhatvā; The Great King Dhataraṭṭha was seated to the east, facing west, in front of his gods."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#6622-6794",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "dakkhiṇāya disāya virūḷhako mahārājā uttarābhimukho nisinno hoti deve purakkhatvā; The Great King Virūḷhaka was seated to the south, facing north, in front of his gods."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#6795-6969",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "pacchimāya disāya virūpakkho mahārājā puratthābhimukho nisinno hoti deve purakkhatvā; The Great King Virūpakkha was seated to the west, facing east, in front of his gods."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#7057-7142",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "The Great King Vessavaṇa was seated to the north, facing south, in front of his gods."
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "when|the|gods of the thirty-three have a gathering like this",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "When the gods of the thirty-three have a gathering like this",
-    "subject": "When",
-    "verb": "the",
-    "object": "gods of the thirty-three have a gathering like this",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#7332-7453",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Idaṁ nesaṁ hoti āsanasmiṁ; When the gods of the thirty-three have a gathering like this, that is how they are seated."
-     }
-    ],
-    "seq": 37,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1221,7 +641,7 @@
     "verb": "come",
     "object": "our seats",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1230,7 +650,7 @@
       "text": "After that come our seats."
      }
     ],
-    "seq": 38,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1250,7 +670,7 @@
     "verb": "been",
     "object": "recently reborn in the company of the thirty-three after leading the spiritual life under the Buddha outshone the other gods in beauty and glory",
     "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1259,70 +679,12 @@
       "text": "Sir, those gods who had been recently reborn in the company of the thirty-three after leading the spiritual life under the Buddha outshone the other gods in beauty and glory."
      }
     ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "seeing|the|joy of those gods",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Seeing the joy of those gods",
-    "subject": "Seeing",
-    "verb": "the",
-    "object": "joy of those gods",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#7827-8000",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Atha kho, bhante, sakko devānamindo devānaṁ tāvatiṁsānaṁ sampasādaṁ viditvā imāhi gāthāhi anumodi: Seeing the joy of those gods, Sakka, lord of gods, celebrated with the"
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lord|of|gods",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lord of gods",
-    "subject": "lord",
-    "verb": "of",
-    "object": "gods",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/dn18.txt#7827-8000",
-      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-      "text": "Atha kho, bhante, sakko devānamindo devānaṁ tāvatiṁsānaṁ sampasādaṁ viditvā imāhi gāthāhi anumodi: Seeing the joy of those gods, Sakka, lord of gods, celebrated with the"
-     }
-    ],
-    "seq": 41,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 42,
+  "nextSeq": 20,
   "admits": [
    "NUL",
    "SEG",
@@ -1337,28 +699,12 @@
  },
  "folded": [
   {
-   "id": "a king|of|men",
-   "subject": "a king",
-   "verb": "of",
-   "object": "men",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#3536-3591",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "When I pass away from here, I can become a king of men."
-    }
-   ]
-  },
-  {
    "id": "after that|come|our seats",
    "subject": "After that",
    "verb": "come",
    "object": "our seats",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1369,76 +715,12 @@
    ]
   },
   {
-   "id": "an end|of|suffering",
-   "subject": "an end",
-   "verb": "of",
-   "object": "suffering",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#1653-1751",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "They’re once-returners, who will come back to this world once only, then make an end of suffering."
-    }
-   ]
-  },
-  {
-   "id": "and on|the|way i saw the buddha giving his attention to the fate of the magadhan devotees",
-   "subject": "and on",
-   "verb": "the",
-   "object": "way I saw the Buddha giving his attention to the fate of the Magadhan devotees",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#4297-4764",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Idhāhaṁ, bhante, vessavaṇena mahārājena pesito virūḷhakassa mahārājassa santike kenacideva karaṇīyena addasaṁ bhagavantaṁ antarāmagge giñjakāvasathaṁ pavisitvā māgadhake paricārake ārabbha aṭṭhiṁ katvā manasikatvā sabbaṁ cetasā samannāharitvā nisinnaṁ: Just now, sir, I had been sent out by the great king Vessavaṇa to the great king Virūḷhaka’s presence on some business, and on the way I saw the Buddha giving his attention to the fate of the Magadhan devotees."
-    }
-   ]
-  },
-  {
-   "id": "and|the|four great kings were seated at the four quarters",
-   "subject": "and",
-   "verb": "the",
-   "object": "four great kings were seated at the four quarters",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#6335-6442",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "A large assembly of gods was sitting all around, and the four great kings were seated at the four quarters."
-    }
-   ]
-  },
-  {
-   "id": "cetīs|and|vacchas",
-   "subject": "Cetīs",
-   "verb": "and",
-   "object": "Vacchas",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
-    }
-   ]
-  },
-  {
    "id": "five hundred|devotees|in ñātika have passed away having ended three fetters",
    "subject": "five hundred",
    "verb": "devotees",
    "object": "in Ñātika have passed away having ended three fetters",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1449,44 +731,12 @@
    ]
   },
   {
-   "id": "from|the|day i had absolute devotion to the buddha i have known that i won’t be reborn in the underworld",
-   "subject": "From",
-   "verb": "the",
-   "object": "day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#4142-4296",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "From the day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld, but that I still hope to become a once-returner."
-    }
-   ]
-  },
-  {
-   "id": "full|of|rapture and happiness",
-   "subject": "full",
-   "verb": "of",
-   "object": "rapture and happiness",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#5929-6173",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Tena sudaṁ, bhante, devā tāvatiṁsā attamanā honti pamuditā pītisomanassajātā: The gods of the thirty-three became uplifted and overjoyed at that, full of rapture and happiness, saying, “dibbā vata bho kāyā paripūrenti, hāyanti asurakāyā”ti."
-    }
-   ]
-  },
-  {
    "id": "i had|been|sent out by the great king vessavaṇa to the great king virūḷhaka’s presence on some business",
    "subject": "I had",
    "verb": "been",
    "object": "sent out by the great king Vessavaṇa to the great king Virūḷhaka’s presence on some business",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1497,97 +747,18 @@
    ]
   },
   {
-   "id": "in front|of|his gods",
-   "subject": "in front",
-   "verb": "of",
-   "object": "his gods",
+   "id": "i have|known|that i won’t be reborn in the underworld",
+   "subject": "I have",
+   "verb": "known",
+   "object": "that I won’t be reborn in the underworld",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#6443-6621",
+     "at": "14-holy-texts/pali-suttas/dn18.txt#4142-4296",
      "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Puratthimāya disāya dhataraṭṭho mahārājā pacchimābhimukho nisinno hoti deve purakkhatvā; The Great King Dhataraṭṭha was seated to the east, facing west, in front of his gods."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#6622-6794",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "dakkhiṇāya disāya virūḷhako mahārājā uttarābhimukho nisinno hoti deve purakkhatvā; The Great King Virūḷhaka was seated to the south, facing north, in front of his gods."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#6795-6969",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "pacchimāya disāya virūpakkho mahārājā puratthābhimukho nisinno hoti deve purakkhatvā; The Great King Virūpakkha was seated to the west, facing east, in front of his gods."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#7057-7142",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "The Great King Vessavaṇa was seated to the north, facing south, in front of his gods."
-    }
-   ]
-  },
-  {
-   "id": "in front|of|me",
-   "subject": "in front",
-   "verb": "of",
-   "object": "me",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#2177-2288",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "“After making himself heard while invisible, Ānanda, an exceptionally beautiful spirit appeared in front of me."
-    }
-   ]
-  },
-  {
-   "id": "it comes|as|no surprise that i have heard and learned the fate of the magadhan devotees in the presence of the great king vessavaṇa as he was speaking to his assembly",
-   "subject": "it comes",
-   "verb": "as",
-   "object": "no surprise that I have heard and learned the fate of the Magadhan devotees in the presence of the great king Vessavaṇa as he was speaking to his assembly",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#4847-5148",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Anacchariyaṁ kho panetaṁ, bhante, yaṁ vessavaṇassa mahārājassa tassaṁ parisāyaṁ bhāsato sammukhā sutaṁ sammukhā paṭiggahitaṁ: But it comes as no surprise that I have heard and learned the fate of the Magadhan devotees in the presence of the great king Vessavaṇa as he was speaking to his assembly."
-    }
-   ]
-  },
-  {
-   "id": "it occurred|to|me",
-   "subject": "It occurred",
-   "verb": "to",
-   "object": "me",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#5193-5305",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Tassa mayhaṁ, bhante, etadahosi: It occurred to me, “bhagavantañca dakkhāmi, idañca bhagavato ārocessāmī”ti."
-    }
-   ]
-  },
-  {
-   "id": "it’s incredible|and|amazing that you",
-   "subject": "It’s incredible",
-   "verb": "and",
-   "object": "amazing that you",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#2624-2927",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "‘It’s incredible and amazing that you, the venerable spirit Janavasabha, should say: ‘Dīgharattaṁ kho ahaṁ, bhante, avinipāto avinipātaṁ sañjānāmī’ti ca vadesi, ‘āsā ca pana me santiṭṭhati sakadāgāmitāyā’ti ca vadesi, kutonidānaṁ panāyasmā janavasabho yakkho evarūpaṁ uḷāraṁ visesādhigamaṁ sañjānātī”ti?"
+     "text": "From the day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld, but that I still hope to become a once-returner."
     }
    ]
   },
@@ -1597,7 +768,7 @@
    "verb": "was",
    "object": "more than a few days ago—on the fifteenth day sabbath on the full moon day at the entry to the rainy season—when all the gods of the thirty-three were sitting together in the Hall of Clear Right",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1613,7 +784,7 @@
    "verb": "was",
    "object": "seated to the east",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1639,28 +810,12 @@
    ]
   },
   {
-   "id": "kurus|and|pañcālas",
-   "subject": "Kurus",
-   "verb": "and",
-   "object": "Pañcālas",
+   "id": "of gods|was|sitting all around",
+   "subject": "of gods",
+   "verb": "was",
+   "object": "sitting all around",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
-    }
-   ]
-  },
-  {
-   "id": "large assembly|of|gods was sitting all around",
-   "subject": "large assembly",
-   "verb": "of",
-   "object": "gods was sitting all around",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1671,102 +826,12 @@
    ]
   },
   {
-   "id": "lord|of|gods",
-   "subject": "lord",
-   "verb": "of",
-   "object": "gods",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#7827-8000",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Atha kho, bhante, sakko devānamindo devānaṁ tāvatiṁsānaṁ sampasādaṁ viditvā imāhi gāthāhi anumodi: Seeing the joy of those gods, Sakka, lord of gods, celebrated with the"
-    }
-   ]
-  },
-  {
-   "id": "none|other|than the blessed one’s instruction!",
-   "subject": "None",
-   "verb": "other",
-   "object": "than the Blessed One’s instruction!",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#3807-3927",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "“‘Na aññatra, bhagavā, tava sāsanā, na aññatra, sugata, tava sāsanā; ‘None other than the Blessed One’s instruction!"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#3928-3971",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "None other than the Holy One’s instruction!"
-    }
-   ]
-  },
-  {
-   "id": "not liable|to|be reborn in the underworld",
-   "subject": "not liable",
-   "verb": "to",
-   "object": "be reborn in the underworld",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#1991-2092",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "They’re stream-enterers, not liable to be reborn in the underworld, assured, destined for awakening.”"
-    }
-   ]
-  },
-  {
-   "id": "not liable|to|return from that world",
-   "subject": "not liable",
-   "verb": "to",
-   "object": "return from that world",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#1245-1349",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "They’ve been reborn spontaneously, and will be extinguished there, not liable to return from that world."
-    }
-   ]
-  },
-  {
-   "id": "one time|the|buddha was staying at ñātika in the brick house",
-   "subject": "one time",
-   "verb": "the",
-   "object": "Buddha was staying at Ñātika in the brick house",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#449-513",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "At one time the Buddha was staying at Ñātika in the brick house."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
-    }
-   ]
-  },
-  {
    "id": "over fifty|devotees|in ñātika have passed away having ended the five lower fetters",
    "subject": "Over fifty",
    "verb": "devotees",
    "object": "in Ñātika have passed away having ended the five lower fetters",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1777,113 +842,12 @@
    ]
   },
   {
-   "id": "seeing|the|joy of those gods",
-   "subject": "Seeing",
-   "verb": "the",
-   "object": "joy of those gods",
+   "id": "reasons i’ve|come|to see the buddha",
+   "subject": "reasons I’ve",
+   "verb": "come",
+   "object": "to see the Buddha",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#7827-8000",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Atha kho, bhante, sakko devānamindo devānaṁ tāvatiṁsānaṁ sampasādaṁ viditvā imāhi gāthāhi anumodi: Seeing the joy of those gods, Sakka, lord of gods, celebrated with the"
-    }
-   ]
-  },
-  {
-   "id": "shall see|the|buddha and inform him of this",
-   "subject": "shall see",
-   "verb": "the",
-   "object": "Buddha and inform him of this",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#5310-5358",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "“I shall see the Buddha and inform him of this.”"
-    }
-   ]
-  },
-  {
-   "id": "still hope|to|become a once-returner",
-   "subject": "still hope",
-   "verb": "to",
-   "object": "become a once-returner",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#2402-2520",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "For a long time I’ve known that I won’t be reborn in the underworld, but that I still hope to become a once-returner.’"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#4142-4296",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "From the day I had absolute devotion to the Buddha I have known that I won’t be reborn in the underworld, but that I still hope to become a once-returner."
-    }
-   ]
-  },
-  {
-   "id": "than ninety|devotees|in ñātika have passed away having ended three fetters",
-   "subject": "than ninety",
-   "verb": "devotees",
-   "object": "in Ñātika have passed away having ended three fetters",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#1532-1652",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "More than ninety devotees in Ñātika have passed away having ended three fetters, and weakened greed, hate, and delusion."
-    }
-   ]
-  },
-  {
-   "id": "the gods|of|the thirty-three became uplifted and overjoyed at that",
-   "subject": "The gods",
-   "verb": "of",
-   "object": "the thirty-three became uplifted and overjoyed at that",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#5929-6173",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Tena sudaṁ, bhante, devā tāvatiṁsā attamanā honti pamuditā pītisomanassajātā: The gods of the thirty-three became uplifted and overjoyed at that, full of rapture and happiness, saying, “dibbā vata bho kāyā paripūrenti, hāyanti asurakāyā”ti."
-    }
-   ]
-  },
-  {
-   "id": "the kāsis|and|kosalans",
-   "subject": "the Kāsis",
-   "verb": "and",
-   "object": "Kosalans",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
-    }
-   ]
-  },
-  {
-   "id": "these are|the|two reasons i’ve come to see the buddha",
-   "subject": "These are",
-   "verb": "the",
-   "object": "two reasons I’ve come to see the Buddha",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1894,12 +858,92 @@
    ]
   },
   {
+   "id": "than ninety|devotees|in ñātika have passed away having ended three fetters",
+   "subject": "than ninety",
+   "verb": "devotees",
+   "object": "in Ñātika have passed away having ended three fetters",
+   "witnesses": [
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/pali-suttas/dn18.txt#1532-1652",
+     "ref": "14-holy-texts/pali-suttas/dn18.txt",
+     "text": "More than ninety devotees in Ñātika have passed away having ended three fetters, and weakened greed, hate, and delusion."
+    }
+   ]
+  },
+  {
+   "id": "the buddha|giving|his attention to the fate of the magadhan devotees",
+   "subject": "the Buddha",
+   "verb": "giving",
+   "object": "his attention to the fate of the Magadhan devotees",
+   "witnesses": [
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/pali-suttas/dn18.txt#4297-4764",
+     "ref": "14-holy-texts/pali-suttas/dn18.txt",
+     "text": "Idhāhaṁ, bhante, vessavaṇena mahārājena pesito virūḷhakassa mahārājassa santike kenacideva karaṇīyena addasaṁ bhagavantaṁ antarāmagge giñjakāvasathaṁ pavisitvā māgadhake paricārake ārabbha aṭṭhiṁ katvā manasikatvā sabbaṁ cetasā samannāharitvā nisinnaṁ: Just now, sir, I had been sent out by the great king Vessavaṇa to the great king Virūḷhaka’s presence on some business, and on the way I saw the Buddha giving his attention to the fate of the Magadhan devotees."
+    }
+   ]
+  },
+  {
+   "id": "the buddha|was|explaining the rebirths of devotees all over the nations",
+   "subject": "the Buddha",
+   "verb": "was",
+   "object": "explaining the rebirths of devotees all over the nations",
+   "witnesses": [
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
+     "ref": "14-holy-texts/pali-suttas/dn18.txt",
+     "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
+    }
+   ]
+  },
+  {
+   "id": "the buddha|was|staying at ñātika in the brick house",
+   "subject": "the Buddha",
+   "verb": "was",
+   "object": "staying at Ñātika in the brick house",
+   "witnesses": [
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/pali-suttas/dn18.txt#449-513",
+     "ref": "14-holy-texts/pali-suttas/dn18.txt",
+     "text": "At one time the Buddha was staying at Ñātika in the brick house."
+    }
+   ]
+  },
+  {
+   "id": "the magadhan|devotees|in the presence of the great king vessavaṇa as he was speaking to his assembly",
+   "subject": "the Magadhan",
+   "verb": "devotees",
+   "object": "in the presence of the great king Vessavaṇa as he was speaking to his assembly",
+   "witnesses": [
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "14-holy-texts/pali-suttas/dn18.txt#4847-5148",
+     "ref": "14-holy-texts/pali-suttas/dn18.txt",
+     "text": "Anacchariyaṁ kho panetaṁ, bhante, yaṁ vessavaṇassa mahārājassa tassaṁ parisāyaṁ bhāsato sammukhā sutaṁ sammukhā paṭiggahitaṁ: But it comes as no surprise that I have heard and learned the fate of the Magadhan devotees in the presence of the great king Vessavaṇa as he was speaking to his assembly."
+    }
+   ]
+  },
+  {
    "id": "they’ve|been|reborn spontaneously",
    "subject": "They’ve",
    "verb": "been",
    "object": "reborn spontaneously",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1910,28 +954,12 @@
    ]
   },
   {
-   "id": "this is|the|seventh time i am reborn in the company of the great king vessavaṇa",
-   "subject": "This is",
-   "verb": "the",
-   "object": "seventh time I am reborn in the company of the Great King Vessavaṇa",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#3455-3535",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "This is the seventh time I am reborn in the company of the Great King Vessavaṇa."
-    }
-   ]
-  },
-  {
    "id": "this one|was|reborn here",
    "subject": "This one",
    "verb": "was",
    "object": "reborn here",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1947,7 +975,7 @@
    "verb": "been",
    "object": "aware that I won’t be reborn in the underworld” and also “But I still hope to become a once-returner",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1963,7 +991,7 @@
    "verb": "known",
    "object": "that I won’t be reborn in the underworld",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1974,60 +1002,12 @@
    ]
   },
   {
-   "id": "vajjis|and|mallas",
-   "subject": "Vajjis",
-   "verb": "and",
-   "object": "Mallas",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#514-933",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Tena kho pana samayena bhagavā parito parito janapadesu paricārake abbhatīte kālaṅkate upapattīsu byākaroti kāsikosalesu vajjimallesu cetivaṁsesu kurupañcālesu majjhasūrasenesu: Now at that time the Buddha was explaining the rebirths of devotees all over the nations; the Kāsis and Kosalans, Vajjis and Mallas, Cetīs and Vacchas, Kurus and Pañcālas, Macchas and Sūrasenas: “asu amutra upapanno, asu amutra upapanno."
-    }
-   ]
-  },
-  {
-   "id": "when|the|gods of the thirty-three have a gathering like this",
-   "subject": "When",
-   "verb": "the",
-   "object": "gods of the thirty-three have a gathering like this",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#7332-7453",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "Idaṁ nesaṁ hoti āsanasmiṁ; When the gods of the thirty-three have a gathering like this, that is how they are seated."
-    }
-   ]
-  },
-  {
-   "id": "while|the|titan hosts dwindle!”",
-   "subject": "while",
-   "verb": "the",
-   "object": "titan hosts dwindle!”",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/dn18.txt#6178-6236",
-     "ref": "14-holy-texts/pali-suttas/dn18.txt",
-     "text": "“The heavenly hosts swell, while the titan hosts dwindle!”"
-    }
-   ]
-  },
-  {
    "id": "who had|been|recently reborn in the company of the thirty-three after leading the spiritual life under the buddha outshone the other gods in beauty and glory",
    "subject": "who had",
    "verb": "been",
    "object": "recently reborn in the company of the thirty-three after leading the spiritual life under the Buddha outshone the other gods in beauty and glory",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2043,7 +1023,7 @@
    "verb": "come",
    "object": "back to this world once only",
    "witnesses": [
-    "14-holy-texts/pali-suttas/dn18.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/dn18.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2055,7 +1035,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:32.243Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:34.566Z"
  }
 }

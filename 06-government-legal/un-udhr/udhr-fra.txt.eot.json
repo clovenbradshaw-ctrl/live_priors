@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 13061,
   "bodyOffset": 0,
   "bodyChars": 13061,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 4,
   "distinctReferents": 3,
   "examined": true,
-  "edgesFound": 47,
-  "extractionError": null
+  "edgesFound": 16,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 4,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 7
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 16,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 51,
-  "excerptOk": 51,
-  "rawChecked": 51,
-  "rawOk": 51,
+  "excerptChecked": 19,
+  "excerptOk": 19,
+  "rawChecked": 19,
+  "rawOk": 19,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 47,
-  "heard": 47,
+  "offered": 16,
+  "heard": 16,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "office|of|the united nations high commissioner for human rights (ohchr)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Office of the United Nations High Commissioner for Human Rights (OHCHR)",
-    "subject": "Office",
-    "verb": "of",
-    "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#0-219",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Universal Declaration of Human Rights Language: French (fr) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "déclaration|universelle|des droits de l’homme",
@@ -103,7 +104,7 @@
     "verb": "universelle",
     "object": "des droits de l’homme",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -117,7 +118,7 @@
       "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -137,7 +138,7 @@
     "verb": "les",
     "object": "membres de la famille humaine et de leurs droits égaux et inaliénables constitue le fondement de la liberté",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -156,94 +157,36 @@
       "text": "Chacun peut se prévaloir de tous les droits et de toutes les libertés proclamés dans la présente Déclaration, sans distinction aucune, notamment de race, de couleur, de sexe, de langue, de religion, d’opinion politique ou de toute autre opinion, d’origine nationale ou sociale, de fortune, de naissance ou de toute autre situation."
      }
     ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "de l’homme|ont|conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
+    "subject": "de l’homme",
+    "verb": "ont",
+    "object": "conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-fra.txt#520-852",
+      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
+      "text": "Considérant que la méconnaissance et le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire, libérés de la terreur et de la misère, a été proclamé comme la plus haute aspiration de l’homme,"
+     }
+    ],
     "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la justice|et|de la paix dans le monde",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la justice et de la paix dans le monde",
-    "subject": "la justice",
-    "verb": "et",
-    "object": "de la paix dans le monde",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#292-512",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant que la reconnaissance de la dignité inhérente à tous les membres de la famille humaine et de leurs droits égaux et inaliénables constitue le fondement de la liberté, de la justice et de la paix dans le monde,"
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la méconnaissance|et|le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la méconnaissance et le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
-    "subject": "la méconnaissance",
-    "verb": "et",
-    "object": "le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#520-852",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant que la méconnaissance et le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire, libérés de la terreur et de la misère, a été proclamé comme la plus haute aspiration de l’homme,"
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la terreur|et|de la misère",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la terreur et de la misère",
-    "subject": "la terreur",
-    "verb": "et",
-    "object": "de la misère",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#520-852",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant que la méconnaissance et le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire, libérés de la terreur et de la misère, a été proclamé comme la plus haute aspiration de l’homme,"
-     }
-    ],
-    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -263,7 +206,7 @@
     "verb": "les",
     "object": "droits de l’homme soient protégés par un régime de droit pour que l’homme ne soit pas contraint",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -272,36 +215,7 @@
       "text": "Considérant qu’il est essentiel que les droits de l’homme soient protégés par un régime de droit pour que l’homme ne soit pas contraint, en suprême recours, à la révolte contre la tyrannie et l’oppression,"
      }
     ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la tyrannie|et|l’oppression",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la tyrannie et l’oppression",
-    "subject": "la tyrannie",
-    "verb": "et",
-    "object": "l’oppression",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#860-1065",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant qu’il est essentiel que les droits de l’homme soient protégés par un régime de droit pour que l’homme ne soit pas contraint, en suprême recours, à la révolte contre la tyrannie et l’oppression,"
-     }
-    ],
-    "seq": 7,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -321,7 +235,7 @@
     "verb": "les",
     "object": "peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -330,94 +244,7 @@
       "text": "Considérant que dans la Charte les peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine, dans l’égalité des droits des hommes et des femmes, et qu’ils se sont déclarés résolus à favoriser le progrès social et à instaurer de meilleures conditions de vie dans une liberté plus grande,"
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la dignité|et|la valeur de la personne humaine",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la dignité et la valeur de la personne humaine",
-    "subject": "la dignité",
-    "verb": "et",
-    "object": "la valeur de la personne humaine",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1179-1559",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant que dans la Charte les peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine, dans l’égalité des droits des hommes et des femmes, et qu’ils se sont déclarés résolus à favoriser le progrès social et à instaurer de meilleures conditions de vie dans une liberté plus grande,"
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "des hommes|et|des femmes",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "des hommes et des femmes",
-    "subject": "des hommes",
-    "verb": "et",
-    "object": "des femmes",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1179-1559",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant que dans la Charte les peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine, dans l’égalité des droits des hommes et des femmes, et qu’ils se sont déclarés résolus à favoriser le progrès social et à instaurer de meilleures conditions de vie dans une liberté plus grande,"
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "progrès social|et|à instaurer de meilleures conditions de vie dans une liberté plus grande",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "progrès social et à instaurer de meilleures conditions de vie dans une liberté plus grande",
-    "subject": "progrès social",
-    "verb": "et",
-    "object": "à instaurer de meilleures conditions de vie dans une liberté plus grande",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1179-1559",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant que dans la Charte les peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine, dans l’égalité des droits des hommes et des femmes, et qu’ils se sont déclarés résolus à favoriser le progrès social et à instaurer de meilleures conditions de vie dans une liberté plus grande,"
-     }
-    ],
-    "seq": 11,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -437,7 +264,7 @@
     "verb": "les",
     "object": "États Membres se sont engagés à assurer",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -446,70 +273,7 @@
       "text": "Considérant que les États Membres se sont engagés à assurer, en coopération avec l’Organisation des Nations Unies, le respect universel et effectif des droits de l’homme et des libertés fondamentales,"
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "respect universel|et|effectif des droits de l’homme et des libertés fondamentales",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "respect universel et effectif des droits de l’homme et des libertés fondamentales",
-    "subject": "respect universel",
-    "verb": "et",
-    "object": "effectif des droits de l’homme et des libertés fondamentales",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1567-1767",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant que les États Membres se sont engagés à assurer, en coopération avec l’Organisation des Nations Unies, le respect universel et effectif des droits de l’homme et des libertés fondamentales,"
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ces droits|et|libertés est de la plus haute importance pour remplir pleinement cet engagement",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ces droits et libertés est de la plus haute importance pour remplir pleinement cet engagement",
-    "subject": "ces droits",
-    "verb": "et",
-    "object": "libertés est de la plus haute importance pour remplir pleinement cet engagement",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1775-1910",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Considérant qu’une conception commune de ces droits et libertés est de la plus haute importance pour remplir pleinement cet engagement,"
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-     }
-    ],
-    "seq": 14,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -529,7 +293,7 @@
     "verb": "constamment",
     "object": "à l’esprit",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -538,94 +302,7 @@
       "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "par l’enseignement|et|l’éducation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "par l’enseignement et l’éducation",
-    "subject": "par l’enseignement",
-    "verb": "et",
-    "object": "l’éducation",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "d’ordre national|et|international",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "d’ordre national et international",
-    "subject": "d’ordre national",
-    "verb": "et",
-    "object": "international",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la reconnaissance|et|l’application universelles et effectives",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la reconnaissance et l’application universelles et effectives",
-    "subject": "la reconnaissance",
-    "verb": "et",
-    "object": "l’application universelles et effectives",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-     }
-    ],
-    "seq": 18,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -645,7 +322,7 @@
     "verb": "les",
     "object": "populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -654,13 +331,13 @@
       "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
      }
     ],
-    "seq": 19,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "de raison|et|de conscience et doivent agir les uns envers les autres dans un esprit de fraternité",
+    "task_id": "doivent agir|les|uns envers les autres dans un esprit de fraternité",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -669,12 +346,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "de raison et de conscience et doivent agir les uns envers les autres dans un esprit de fraternité",
-    "subject": "de raison",
-    "verb": "et",
-    "object": "de conscience et doivent agir les uns envers les autres dans un esprit de fraternité",
+    "description": "doivent agir les uns envers les autres dans un esprit de fraternité",
+    "subject": "doivent agir",
+    "verb": "les",
+    "object": "uns envers les autres dans un esprit de fraternité",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -683,13 +360,13 @@
       "text": "Ils sont doués de raison et de conscience et doivent agir les uns envers les autres dans un esprit de fraternité."
      }
     ],
-    "seq": 20,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "la liberté|et|à la sûreté de sa personne",
+    "task_id": "loi et|ont|droit sans distinction à une égale protection de la loi",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -698,70 +375,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "la liberté et à la sûreté de sa personne",
-    "subject": "la liberté",
-    "verb": "et",
-    "object": "à la sûreté de sa personne",
+    "description": "loi et ont droit sans distinction à une égale protection de la loi",
+    "subject": "loi et",
+    "verb": "ont",
+    "object": "droit sans distinction à une égale protection de la loi",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#3466-3541",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Tout individu a droit à la vie, à la liberté et à la sûreté de sa personne."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "l’esclavage|et|la traite des esclaves sont interdits sous toutes leurs formes",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "l’esclavage et la traite des esclaves sont interdits sous toutes leurs formes",
-    "subject": "l’esclavage",
-    "verb": "et",
-    "object": "la traite des esclaves sont interdits sous toutes leurs formes",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#3569-3695",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Nul ne sera tenu en esclavage ni en servitude ; l’esclavage et la traite des esclaves sont interdits sous toutes leurs formes."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la loi|et|ont droit sans distinction à une égale protection de la loi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la loi et ont droit sans distinction à une égale protection de la loi",
-    "subject": "la loi",
-    "verb": "et",
-    "object": "ont droit sans distinction à une égale protection de la loi",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -770,7 +389,7 @@
       "text": "Tous sont égaux devant la loi et ont droit sans distinction à une égale protection de la loi."
      }
     ],
-    "seq": 23,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -790,7 +409,7 @@
     "verb": "ont",
     "object": "droit à une protection égale contre toute discrimination qui violerait la présente Déclaration et contre toute provocation à une telle discrimination",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -799,7 +418,7 @@
       "text": "Tous ont droit à une protection égale contre toute discrimination qui violerait la présente Déclaration et contre toute provocation à une telle discrimination."
      }
     ],
-    "seq": 24,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -819,7 +438,7 @@
     "verb": "les",
     "object": "juridictions nationales compétentes contre les actes violant les droits fondamentaux qui lui sont reconnus par la constitution ou par la loi",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -828,65 +447,7 @@
       "text": "Toute personne a droit à un recours effectif devant les juridictions nationales compétentes contre les actes violant les droits fondamentaux qui lui sont reconnus par la constitution ou par la loi."
      }
     ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "entendue équitablement|et|publiquement par un tribunal indépendant et impartial",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "entendue équitablement et publiquement par un tribunal indépendant et impartial",
-    "subject": "entendue équitablement",
-    "verb": "et",
-    "object": "publiquement par un tribunal indépendant et impartial",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#4547-4820",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Toute personne a droit, en pleine égalité, à ce que sa cause soit entendue équitablement et publiquement par un tribunal indépendant et impartial, qui décidera, soit de ses droits et obligations, soit du bien fondé de toute accusation en matière pénale dirigée contre elle."
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ses droits|et|obligations",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ses droits et obligations",
-    "subject": "ses droits",
-    "verb": "et",
-    "object": "obligations",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#4547-4820",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Toute personne a droit, en pleine égalité, à ce que sa cause soit entendue équitablement et publiquement par un tribunal indépendant et impartial, qui décidera, soit de ses droits et obligations, soit du bien fondé de toute accusation en matière pénale dirigée contre elle."
-     }
-    ],
-    "seq": 27,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -906,7 +467,7 @@
     "verb": "les",
     "object": "garanties nécessaires à sa défense lui auront été assurées",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -915,7 +476,7 @@
       "text": "Toute personne accusée d’un acte délictueux est présumée innocente jusqu’à ce que sa culpabilité ait été légalement établie au cours d’un procès public où toutes les garanties nécessaires à sa défense lui auront été assurées."
      }
     ],
-    "seq": 28,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -935,7 +496,7 @@
     "verb": "ont",
     "object": "été commises",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -944,181 +505,7 @@
       "text": "Nul ne sera condamné pour des actions ou omissions qui, au moment où elles ont été commises, ne constituaient pas un acte délictueux d’après le droit national ou international."
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "son honneur|et|à sa réputation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "son honneur et à sa réputation",
-    "subject": "son honneur",
-    "verb": "et",
-    "object": "à sa réputation",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#5429-5589",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Nul ne sera l’objet d’immixtions arbitraires dans sa vie privée, sa famille, son domicile ou sa correspondance, ni d’atteintes à son honneur et à sa réputation."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "circuler librement|et|de choisir sa résidence à l’intérieur d’un état",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "circuler librement et de choisir sa résidence à l’intérieur d’un État",
-    "subject": "circuler librement",
-    "verb": "et",
-    "object": "de choisir sa résidence à l’intérieur d’un État",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#5725-5824",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Toute personne a le droit de circuler librement et de choisir sa résidence à l’intérieur d’un État."
-     }
-    ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "chercher asile|et|de bénéficier de l’asile en d’autres pays",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "chercher asile et de bénéficier de l’asile en d’autres pays",
-    "subject": "chercher asile",
-    "verb": "et",
-    "object": "de bénéficier de l’asile en d’autres pays",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#5970-6082",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Devant la persécution, toute personne a le droit de chercher asile et de bénéficier de l’asile en d’autres pays."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "aux buts|et|aux principes des nations unies",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "aux buts et aux principes des Nations Unies",
-    "subject": "aux buts",
-    "verb": "et",
-    "object": "aux principes des Nations Unies",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#6096-6278",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Ce droit ne peut être invoqué dans le cas de poursuites réellement fondées sur un crime de droit commun ou sur des agissements contraires aux buts et aux principes des Nations Unies."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "l’homme|et|la femme",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "l’homme et la femme",
-    "subject": "l’homme",
-    "verb": "et",
-    "object": "la femme",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#6501-6671",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "A partir de l’âge nubile, l’homme et la femme, sans aucune restriction quant à la race, la nationalité ou la religion, ont le droit de se marier et de fonder une famille."
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "se marier|et|de fonder une famille",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "se marier et de fonder une famille",
-    "subject": "se marier",
-    "verb": "et",
-    "object": "de fonder une famille",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#6501-6671",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "A partir de l’âge nubile, l’homme et la femme, sans aucune restriction quant à la race, la nationalité ou la religion, ont le droit de se marier et de fonder une famille."
-     }
-    ],
-    "seq": 35,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1138,7 +525,7 @@
     "verb": "ont",
     "object": "des droits égaux au regard du mariage",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1147,13 +534,13 @@
       "text": "Ils ont des droits égaux au regard du mariage, durant le mariage et lors de sa dissolution."
      }
     ],
-    "seq": 36,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "le mariage|et|lors de sa dissolution",
+    "task_id": "informations et|les|idées par quelque moyen d’expression que ce soit",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1162,157 +549,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "le mariage et lors de sa dissolution",
-    "subject": "le mariage",
-    "verb": "et",
-    "object": "lors de sa dissolution",
+    "description": "informations et les idées par quelque moyen d’expression que ce soit",
+    "subject": "informations et",
+    "verb": "les",
+    "object": "idées par quelque moyen d’expression que ce soit",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#6672-6763",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Ils ont des droits égaux au regard du mariage, durant le mariage et lors de sa dissolution."
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "le libre|et|plein consentement des futurs époux",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "le libre et plein consentement des futurs époux",
-    "subject": "le libre",
-    "verb": "et",
-    "object": "plein consentement des futurs époux",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#6777-6864",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Le mariage ne peut être conclu qu’avec le libre et plein consentement des futurs époux."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "l’élément naturel|et|fondamental de la société et a droit à la protection de la société et de l’état",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "l’élément naturel et fondamental de la société et a droit à la protection de la société et de l’État",
-    "subject": "l’élément naturel",
-    "verb": "et",
-    "object": "fondamental de la société et a droit à la protection de la société et de l’État",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#6878-6994",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "La famille est l’élément naturel et fondamental de la société et a droit à la protection de la société et de l’État."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "de conscience|et|de religion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "de conscience et de religion",
-    "subject": "de conscience",
-    "verb": "et",
-    "object": "de religion",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#7206-7541",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Toute personne a droit à la liberté de pensée, de conscience et de religion ; ce droit implique la liberté de changer de religion ou de conviction ainsi que la liberté de manifester sa religion ou sa conviction, seule ou en commun, tant en public qu’en privé, par l’enseignement, les pratiques, le culte et l’accomplissement des rites."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "le culte|et|l’accomplissement des rites",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "le culte et l’accomplissement des rites",
-    "subject": "le culte",
-    "verb": "et",
-    "object": "l’accomplissement des rites",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#7206-7541",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Toute personne a droit à la liberté de pensée, de conscience et de religion ; ce droit implique la liberté de changer de religion ou de conviction ainsi que la liberté de manifester sa religion ou sa conviction, seule ou en commun, tant en public qu’en privé, par l’enseignement, les pratiques, le culte et l’accomplissement des rites."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "liberté d’opinion|et|d’expression",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "liberté d’opinion et d’expression",
-    "subject": "liberté d’opinion",
-    "verb": "et",
-    "object": "d’expression",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1321,128 +563,12 @@
       "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
      }
     ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ses opinions|et|celui de chercher",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ses opinions et celui de chercher",
-    "subject": "ses opinions",
-    "verb": "et",
-    "object": "celui de chercher",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#7570-7857",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "de recevoir|et|de répandre",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "de recevoir et de répandre",
-    "subject": "de recevoir",
-    "verb": "et",
-    "object": "de répandre",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#7570-7857",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "les informations|et|les idées par quelque moyen d’expression que ce soit",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "les informations et les idées par quelque moyen d’expression que ce soit",
-    "subject": "les informations",
-    "verb": "et",
-    "object": "les idées par quelque moyen d’expression que ce soit",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#7570-7857",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "de réunion|et|d’association pacifiques",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "de réunion et d’association pacifiques",
-    "subject": "de réunion",
-    "verb": "et",
-    "object": "d’association pacifiques",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-fra.txt#7892-7967",
-      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-      "text": "Toute personne a droit à la liberté de réunion et d’association pacifiques."
-     }
-    ],
-    "seq": 46,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 47,
+  "nextSeq": 16,
   "admits": [
    "NUL",
    "SEG",
@@ -1462,7 +588,7 @@
    "verb": "les",
    "object": "membres de la famille humaine et de leurs droits égaux et inaliénables constitue le fondement de la liberté",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1483,87 +609,18 @@
    ]
   },
   {
-   "id": "aux buts|et|aux principes des nations unies",
-   "subject": "aux buts",
-   "verb": "et",
-   "object": "aux principes des Nations Unies",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#6096-6278",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Ce droit ne peut être invoqué dans le cas de poursuites réellement fondées sur un crime de droit commun ou sur des agissements contraires aux buts et aux principes des Nations Unies."
-    }
-   ]
-  },
-  {
-   "id": "ces droits|et|libertés est de la plus haute importance pour remplir pleinement cet engagement",
-   "subject": "ces droits",
-   "verb": "et",
-   "object": "libertés est de la plus haute importance pour remplir pleinement cet engagement",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1775-1910",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant qu’une conception commune de ces droits et libertés est de la plus haute importance pour remplir pleinement cet engagement,"
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-    }
-   ]
-  },
-  {
    "id": "cette déclaration|constamment|à l’esprit",
    "subject": "cette Déclaration",
    "verb": "constamment",
    "object": "à l’esprit",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
      "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-    }
-   ]
-  },
-  {
-   "id": "chercher asile|et|de bénéficier de l’asile en d’autres pays",
-   "subject": "chercher asile",
-   "verb": "et",
-   "object": "de bénéficier de l’asile en d’autres pays",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#5970-6082",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Devant la persécution, toute personne a le droit de chercher asile et de bénéficier de l’asile en d’autres pays."
-    }
-   ]
-  },
-  {
-   "id": "circuler librement|et|de choisir sa résidence à l’intérieur d’un état",
-   "subject": "circuler librement",
-   "verb": "et",
-   "object": "de choisir sa résidence à l’intérieur d’un État",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#5725-5824",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Toute personne a le droit de circuler librement et de choisir sa résidence à l’intérieur d’un État."
     }
    ]
   },
@@ -1573,7 +630,7 @@
    "verb": "les",
    "object": "États Membres se sont engagés à assurer",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1584,82 +641,18 @@
    ]
   },
   {
-   "id": "d’ordre national|et|international",
-   "subject": "d’ordre national",
-   "verb": "et",
-   "object": "international",
+   "id": "de l’homme|ont|conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
+   "subject": "de l’homme",
+   "verb": "ont",
+   "object": "conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
+     "at": "06-government-legal/un-udhr/udhr-fra.txt#520-852",
      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-    }
-   ]
-  },
-  {
-   "id": "de conscience|et|de religion",
-   "subject": "de conscience",
-   "verb": "et",
-   "object": "de religion",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#7206-7541",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Toute personne a droit à la liberté de pensée, de conscience et de religion ; ce droit implique la liberté de changer de religion ou de conviction ainsi que la liberté de manifester sa religion ou sa conviction, seule ou en commun, tant en public qu’en privé, par l’enseignement, les pratiques, le culte et l’accomplissement des rites."
-    }
-   ]
-  },
-  {
-   "id": "de raison|et|de conscience et doivent agir les uns envers les autres dans un esprit de fraternité",
-   "subject": "de raison",
-   "verb": "et",
-   "object": "de conscience et doivent agir les uns envers les autres dans un esprit de fraternité",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#2667-2780",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Ils sont doués de raison et de conscience et doivent agir les uns envers les autres dans un esprit de fraternité."
-    }
-   ]
-  },
-  {
-   "id": "de recevoir|et|de répandre",
-   "subject": "de recevoir",
-   "verb": "et",
-   "object": "de répandre",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#7570-7857",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
-    }
-   ]
-  },
-  {
-   "id": "de réunion|et|d’association pacifiques",
-   "subject": "de réunion",
-   "verb": "et",
-   "object": "d’association pacifiques",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#7892-7967",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Toute personne a droit à la liberté de réunion et d’association pacifiques."
+     "text": "Considérant que la méconnaissance et le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire, libérés de la terreur et de la misère, a été proclamé comme la plus haute aspiration de l’homme,"
     }
    ]
   },
@@ -1669,7 +662,7 @@
    "verb": "universelle",
    "object": "des droits de l’homme",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1685,18 +678,18 @@
    ]
   },
   {
-   "id": "des hommes|et|des femmes",
-   "subject": "des hommes",
-   "verb": "et",
-   "object": "des femmes",
+   "id": "doivent agir|les|uns envers les autres dans un esprit de fraternité",
+   "subject": "doivent agir",
+   "verb": "les",
+   "object": "uns envers les autres dans un esprit de fraternité",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1179-1559",
+     "at": "06-government-legal/un-udhr/udhr-fra.txt#2667-2780",
      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant que dans la Charte les peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine, dans l’égalité des droits des hommes et des femmes, et qu’ils se sont déclarés résolus à favoriser le progrès social et à instaurer de meilleures conditions de vie dans une liberté plus grande,"
+     "text": "Ils sont doués de raison et de conscience et doivent agir les uns envers les autres dans un esprit de fraternité."
     }
    ]
   },
@@ -1706,7 +699,7 @@
    "verb": "les",
    "object": "juridictions nationales compétentes contre les actes violant les droits fondamentaux qui lui sont reconnus par la constitution ou par la loi",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1717,28 +710,12 @@
    ]
   },
   {
-   "id": "entendue équitablement|et|publiquement par un tribunal indépendant et impartial",
-   "subject": "entendue équitablement",
-   "verb": "et",
-   "object": "publiquement par un tribunal indépendant et impartial",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#4547-4820",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Toute personne a droit, en pleine égalité, à ce que sa cause soit entendue équitablement et publiquement par un tribunal indépendant et impartial, qui décidera, soit de ses droits et obligations, soit du bien fondé de toute accusation en matière pénale dirigée contre elle."
-    }
-   ]
-  },
-  {
    "id": "essentiel que|les|droits de l’homme soient protégés par un régime de droit pour que l’homme ne soit pas contraint",
    "subject": "essentiel que",
    "verb": "les",
    "object": "droits de l’homme soient protégés par un régime de droit pour que l’homme ne soit pas contraint",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1754,7 +731,7 @@
    "verb": "ont",
    "object": "des droits égaux au regard du mariage",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1765,50 +742,18 @@
    ]
   },
   {
-   "id": "l’élément naturel|et|fondamental de la société et a droit à la protection de la société et de l’état",
-   "subject": "l’élément naturel",
-   "verb": "et",
-   "object": "fondamental de la société et a droit à la protection de la société et de l’État",
+   "id": "informations et|les|idées par quelque moyen d’expression que ce soit",
+   "subject": "informations et",
+   "verb": "les",
+   "object": "idées par quelque moyen d’expression que ce soit",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#6878-6994",
+     "at": "06-government-legal/un-udhr/udhr-fra.txt#7570-7857",
      "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "La famille est l’élément naturel et fondamental de la société et a droit à la protection de la société et de l’État."
-    }
-   ]
-  },
-  {
-   "id": "l’esclavage|et|la traite des esclaves sont interdits sous toutes leurs formes",
-   "subject": "l’esclavage",
-   "verb": "et",
-   "object": "la traite des esclaves sont interdits sous toutes leurs formes",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#3569-3695",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Nul ne sera tenu en esclavage ni en servitude ; l’esclavage et la traite des esclaves sont interdits sous toutes leurs formes."
-    }
-   ]
-  },
-  {
-   "id": "l’homme|et|la femme",
-   "subject": "l’homme",
-   "verb": "et",
-   "object": "la femme",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#6501-6671",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "A partir de l’âge nubile, l’homme et la femme, sans aucune restriction quant à la race, la nationalité ou la religion, ont le droit de se marier et de fonder une famille."
+     "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
     }
    ]
   },
@@ -1818,7 +763,7 @@
    "verb": "les",
    "object": "peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1829,60 +774,12 @@
    ]
   },
   {
-   "id": "la dignité|et|la valeur de la personne humaine",
-   "subject": "la dignité",
-   "verb": "et",
-   "object": "la valeur de la personne humaine",
+   "id": "loi et|ont|droit sans distinction à une égale protection de la loi",
+   "subject": "loi et",
+   "verb": "ont",
+   "object": "droit sans distinction à une égale protection de la loi",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1179-1559",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant que dans la Charte les peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine, dans l’égalité des droits des hommes et des femmes, et qu’ils se sont déclarés résolus à favoriser le progrès social et à instaurer de meilleures conditions de vie dans une liberté plus grande,"
-    }
-   ]
-  },
-  {
-   "id": "la justice|et|de la paix dans le monde",
-   "subject": "la justice",
-   "verb": "et",
-   "object": "de la paix dans le monde",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#292-512",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant que la reconnaissance de la dignité inhérente à tous les membres de la famille humaine et de leurs droits égaux et inaliénables constitue le fondement de la liberté, de la justice et de la paix dans le monde,"
-    }
-   ]
-  },
-  {
-   "id": "la liberté|et|à la sûreté de sa personne",
-   "subject": "la liberté",
-   "verb": "et",
-   "object": "à la sûreté de sa personne",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#3466-3541",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Tout individu a droit à la vie, à la liberté et à la sûreté de sa personne."
-    }
-   ]
-  },
-  {
-   "id": "la loi|et|ont droit sans distinction à une égale protection de la loi",
-   "subject": "la loi",
-   "verb": "et",
-   "object": "ont droit sans distinction à une égale protection de la loi",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1893,172 +790,12 @@
    ]
   },
   {
-   "id": "la méconnaissance|et|le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
-   "subject": "la méconnaissance",
-   "verb": "et",
-   "object": "le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#520-852",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant que la méconnaissance et le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire, libérés de la terreur et de la misère, a été proclamé comme la plus haute aspiration de l’homme,"
-    }
-   ]
-  },
-  {
-   "id": "la reconnaissance|et|l’application universelles et effectives",
-   "subject": "la reconnaissance",
-   "verb": "et",
-   "object": "l’application universelles et effectives",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-    }
-   ]
-  },
-  {
-   "id": "la terreur|et|de la misère",
-   "subject": "la terreur",
-   "verb": "et",
-   "object": "de la misère",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#520-852",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant que la méconnaissance et le mépris des droits de l’homme ont conduit à des actes de barbarie qui révoltent la conscience de l’humanité et que l’avènement d’un monde où les êtres humains seront libres de parler et de croire, libérés de la terreur et de la misère, a été proclamé comme la plus haute aspiration de l’homme,"
-    }
-   ]
-  },
-  {
-   "id": "la tyrannie|et|l’oppression",
-   "subject": "la tyrannie",
-   "verb": "et",
-   "object": "l’oppression",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#860-1065",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant qu’il est essentiel que les droits de l’homme soient protégés par un régime de droit pour que l’homme ne soit pas contraint, en suprême recours, à la révolte contre la tyrannie et l’oppression,"
-    }
-   ]
-  },
-  {
-   "id": "le culte|et|l’accomplissement des rites",
-   "subject": "le culte",
-   "verb": "et",
-   "object": "l’accomplissement des rites",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#7206-7541",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Toute personne a droit à la liberté de pensée, de conscience et de religion ; ce droit implique la liberté de changer de religion ou de conviction ainsi que la liberté de manifester sa religion ou sa conviction, seule ou en commun, tant en public qu’en privé, par l’enseignement, les pratiques, le culte et l’accomplissement des rites."
-    }
-   ]
-  },
-  {
-   "id": "le libre|et|plein consentement des futurs époux",
-   "subject": "le libre",
-   "verb": "et",
-   "object": "plein consentement des futurs époux",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#6777-6864",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Le mariage ne peut être conclu qu’avec le libre et plein consentement des futurs époux."
-    }
-   ]
-  },
-  {
-   "id": "le mariage|et|lors de sa dissolution",
-   "subject": "le mariage",
-   "verb": "et",
-   "object": "lors de sa dissolution",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#6672-6763",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Ils ont des droits égaux au regard du mariage, durant le mariage et lors de sa dissolution."
-    }
-   ]
-  },
-  {
-   "id": "les informations|et|les idées par quelque moyen d’expression que ce soit",
-   "subject": "les informations",
-   "verb": "et",
-   "object": "les idées par quelque moyen d’expression que ce soit",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#7570-7857",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
-    }
-   ]
-  },
-  {
-   "id": "liberté d’opinion|et|d’expression",
-   "subject": "liberté d’opinion",
-   "verb": "et",
-   "object": "d’expression",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#7570-7857",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
-    }
-   ]
-  },
-  {
-   "id": "office|of|the united nations high commissioner for human rights (ohchr)",
-   "subject": "Office",
-   "verb": "of",
-   "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#0-219",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Universal Declaration of Human Rights Language: French (fr) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-    }
-   ]
-  },
-  {
    "id": "où elles|ont|été commises",
    "subject": "où elles",
    "verb": "ont",
    "object": "été commises",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2074,7 +811,7 @@
    "verb": "les",
    "object": "garanties nécessaires à sa défense lui auront été assurées",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2085,124 +822,12 @@
    ]
   },
   {
-   "id": "par l’enseignement|et|l’éducation",
-   "subject": "par l’enseignement",
-   "verb": "et",
-   "object": "l’éducation",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1946-2560",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Proclame la présente Déclaration universelle des droits de l’homme comme l’idéal commun à atteindre par tous les peuples et toutes les nations afin que tous les individus et tous les organes de la société, ayant cette Déclaration constamment à l’esprit, s’efforcent, par l’enseignement et l’éducation, de développer le respect de ces droits et libertés et d’en assurer, par des mesures progressives d’ordre national et international, la reconnaissance et l’application universelles et effectives, tant parmi les populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction."
-    }
-   ]
-  },
-  {
-   "id": "progrès social|et|à instaurer de meilleures conditions de vie dans une liberté plus grande",
-   "subject": "progrès social",
-   "verb": "et",
-   "object": "à instaurer de meilleures conditions de vie dans une liberté plus grande",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1179-1559",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant que dans la Charte les peuples des Nations Unies ont proclamé à nouveau leur foi dans les droits fondamentaux de l’homme, dans la dignité et la valeur de la personne humaine, dans l’égalité des droits des hommes et des femmes, et qu’ils se sont déclarés résolus à favoriser le progrès social et à instaurer de meilleures conditions de vie dans une liberté plus grande,"
-    }
-   ]
-  },
-  {
-   "id": "respect universel|et|effectif des droits de l’homme et des libertés fondamentales",
-   "subject": "respect universel",
-   "verb": "et",
-   "object": "effectif des droits de l’homme et des libertés fondamentales",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#1567-1767",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Considérant que les États Membres se sont engagés à assurer, en coopération avec l’Organisation des Nations Unies, le respect universel et effectif des droits de l’homme et des libertés fondamentales,"
-    }
-   ]
-  },
-  {
-   "id": "se marier|et|de fonder une famille",
-   "subject": "se marier",
-   "verb": "et",
-   "object": "de fonder une famille",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#6501-6671",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "A partir de l’âge nubile, l’homme et la femme, sans aucune restriction quant à la race, la nationalité ou la religion, ont le droit de se marier et de fonder une famille."
-    }
-   ]
-  },
-  {
-   "id": "ses droits|et|obligations",
-   "subject": "ses droits",
-   "verb": "et",
-   "object": "obligations",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#4547-4820",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Toute personne a droit, en pleine égalité, à ce que sa cause soit entendue équitablement et publiquement par un tribunal indépendant et impartial, qui décidera, soit de ses droits et obligations, soit du bien fondé de toute accusation en matière pénale dirigée contre elle."
-    }
-   ]
-  },
-  {
-   "id": "ses opinions|et|celui de chercher",
-   "subject": "ses opinions",
-   "verb": "et",
-   "object": "celui de chercher",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#7570-7857",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Tout individu a droit à la liberté d’opinion et d’expression, ce qui implique le droit de ne pas être inquiété pour ses opinions et celui de chercher, de recevoir et de répandre, sans considérations de frontières, les informations et les idées par quelque moyen d’expression que ce soit."
-    }
-   ]
-  },
-  {
-   "id": "son honneur|et|à sa réputation",
-   "subject": "son honneur",
-   "verb": "et",
-   "object": "à sa réputation",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-fra.txt#5429-5589",
-     "ref": "06-government-legal/un-udhr/udhr-fra.txt",
-     "text": "Nul ne sera l’objet d’immixtions arbitraires dans sa vie privée, sa famille, son domicile ou sa correspondance, ni d’atteintes à son honneur et à sa réputation."
-    }
-   ]
-  },
-  {
    "id": "tant parmi|les|populations des états membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction",
    "subject": "tant parmi",
    "verb": "les",
    "object": "populations des États Membres eux‐mêmes que parmi celles des territoires placés sous leur juridiction",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2218,7 +843,7 @@
    "verb": "ont",
    "object": "droit à une protection égale contre toute discrimination qui violerait la présente Déclaration et contre toute provocation à une telle discrimination",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-fra.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-fra.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2230,7 +855,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:04.286Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:37.473Z"
  }
 }

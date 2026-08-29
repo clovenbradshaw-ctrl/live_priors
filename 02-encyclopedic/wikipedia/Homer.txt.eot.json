@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 31405,
   "bodyOffset": 0,
   "bodyChars": 31405,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,28 +55,33 @@
   "referentEvents": 17,
   "distinctReferents": 16,
   "examined": true,
-  "edgesFound": 89,
+  "edgesFound": 35,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 36,
+   "verbs": 16,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 36
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 35,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 93,
-  "excerptOk": 93,
-  "rawChecked": 93,
-  "rawOk": 93,
+  "excerptChecked": 36,
+  "excerptOk": 36,
+  "rawChecked": 36,
+  "rawOk": 36,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 89,
-  "heard": 89,
+  "offered": 35,
+  "heard": 35,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -67,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "greeceancient greek|poet|who is widely credited as the author of the iliad and the odyssey",
+    "task_id": "poet who|is|widely credited as the author of the iliad and the odyssey",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -76,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Greeceancient Greek poet who is widely credited as the author of the Iliad and the Odyssey",
-    "subject": "Greeceancient Greek",
-    "verb": "poet",
-    "object": "who is widely credited as the author of the Iliad and the Odyssey",
+    "description": "poet who is widely credited as the author of the Iliad and the Odyssey",
+    "subject": "poet who",
+    "verb": "is",
+    "object": "widely credited as the author of the Iliad and the Odyssey",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -110,7 +133,7 @@
     "verb": "are",
     "object": "foundational works of ancient Greek literature",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -130,7 +153,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "his life|and|authorship remain obscure",
+    "task_id": "society and|is|considered one of the most influential authors in history",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -139,12 +162,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "his life and authorship remain obscure",
-    "subject": "his life",
-    "verb": "and",
-    "object": "authorship remain obscure",
+    "description": "society and is considered one of the most influential authors in history",
+    "subject": "society and",
+    "verb": "is",
+    "object": "considered one of the most influential authors in history",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -154,64 +177,6 @@
      }
     ],
     "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was revered|in|ancient greek society and is considered one of the most influential authors in history",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was revered in ancient Greek society and is considered one of the most influential authors in history",
-    "subject": "was revered",
-    "verb": "in",
-    "object": "ancient Greek society and is considered one of the most influential authors in history",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#266-423",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Although his life and authorship remain obscure, Homer was revered in ancient Greek society and is considered one of the most influential authors in history."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "king agamemnon|and|the warrior achilles during the last year of the trojan war",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "King Agamemnon and the warrior Achilles during the last year of the Trojan War",
-    "subject": "King Agamemnon",
-    "verb": "and",
-    "object": "the warrior Achilles during the last year of the Trojan War",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#425-543",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The Iliad centers on a quarrel between King Agamemnon and the warrior Achilles during the last year of the Trojan War."
-     }
-    ],
-    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -231,7 +196,7 @@
     "verb": "chronicles",
     "object": "the ten-year journey of Odysseus",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -240,94 +205,7 @@
       "text": "The Odyssey chronicles the ten-year journey of Odysseus, king of Homer's IthacaIthaca, back to his home after the fall of Troy."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "king|of|homer's ithacaithaca",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "king of Homer's IthacaIthaca",
-    "subject": "king",
-    "verb": "of",
-    "object": "Homer's IthacaIthaca",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#544-671",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The Odyssey chronicles the ten-year journey of Odysseus, king of Homer's IthacaIthaca, back to his home after the fall of Troy."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "back|to|his home after the fall of troy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "back to his home after the fall of Troy",
-    "subject": "back",
-    "verb": "to",
-    "object": "his home after the fall of Troy",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#544-671",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The Odyssey chronicles the ten-year journey of Odysseus, king of Homer's IthacaIthaca, back to his home after the fall of Troy."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the odyssey|especially|so",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Odyssey especially so",
-    "subject": "the Odyssey",
-    "verb": "especially",
-    "object": "so",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#672-790",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The epics depict man's struggle, the Odyssey especially so, as Odysseus perseveres through the punishment of the gods."
-     }
-    ],
-    "seq": 8,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -347,7 +225,7 @@
     "verb": "perseveres",
     "object": "through the punishment of the gods",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -356,13 +234,13 @@
       "text": "The epics depict man's struggle, the Odyssey especially so, as Odysseus perseveres through the punishment of the gods."
      }
     ],
-    "seq": 9,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "also known|as|epic greek",
+    "task_id": "aeolic greekaeolic|dialects|from different centuries",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -371,12 +249,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "also known as Epic Greek",
-    "subject": "also known",
-    "verb": "as",
-    "object": "Epic Greek",
+    "description": "Aeolic GreekAeolic dialects from different centuries",
+    "subject": "Aeolic GreekAeolic",
+    "verb": "dialects",
+    "object": "from different centuries",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -385,36 +263,7 @@
       "text": "The poems are in Homeric Greek, also known as Epic Greek, a literary language that shows a mixture of features of the Ionic GreekIonic and Aeolic GreekAeolic dialects from different centuries; the predominant influence is Eastern Ionic."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a mixture|of|features of the ionic greekionic and aeolic greekaeolic dialects from different centuries",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a mixture of features of the Ionic GreekIonic and Aeolic GreekAeolic dialects from different centuries",
-    "subject": "a mixture",
-    "verb": "of",
-    "object": "features of the Ionic GreekIonic and Aeolic GreekAeolic dialects from different centuries",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#791-1027",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The poems are in Homeric Greek, also known as Epic Greek, a literary language that shows a mixture of features of the Ionic GreekIonic and Aeolic GreekAeolic dialects from different centuries; the predominant influence is Eastern Ionic."
-     }
-    ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -434,7 +283,7 @@
     "verb": "is",
     "object": "Eastern Ionic",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -443,7 +292,7 @@
       "text": "The poems are in Homeric Greek, also known as Epic Greek, a literary language that shows a mixture of features of the Ionic GreekIonic and Aeolic GreekAeolic dialects from different centuries; the predominant influence is Eastern Ionic."
      }
     ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -463,7 +312,7 @@
     "verb": "were",
     "object": "originally Oral traditiontransmitted orally",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -472,187 +321,13 @@
       "text": "Most researchers believe that the poems were originally Oral traditiontransmitted orally."
      }
     ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "their tragic|and|serious themes",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "their tragic and serious themes",
-    "subject": "their tragic",
-    "verb": "and",
-    "object": "serious themes",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1118-1356",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Despite being predominantly known for their tragic and serious themes, the Homeric poems also contain wiktionary:Homeric laughterinstances of comedy and laughter.Bell, Robert H.; \"Homer's humor: laughter in the Iliad\", hand 1 (2007), 596."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "homeric laughterinstances|of|comedy and laughter",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Homeric laughterinstances of comedy and laughter",
-    "subject": "Homeric laughterinstances",
-    "verb": "of",
-    "object": "comedy and laughter",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1118-1356",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Despite being predominantly known for their tragic and serious themes, the Homeric poems also contain wiktionary:Homeric laughterinstances of comedy and laughter.Bell, Robert H.; \"Homer's humor: laughter in the Iliad\", hand 1 (2007), 596."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "laughter|in|the iliad\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "laughter in the Iliad\"",
-    "subject": "laughter",
-    "verb": "in",
-    "object": "the Iliad\"",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1118-1356",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Despite being predominantly known for their tragic and serious themes, the Homeric poems also contain wiktionary:Homeric laughterinstances of comedy and laughter.Bell, Robert H.; \"Homer's humor: laughter in the Iliad\", hand 1 (2007), 596."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shaped aspects|of|ancient greek culture and education",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "shaped aspects of ancient Greek culture and education",
-    "subject": "shaped aspects",
-    "verb": "of",
-    "object": "ancient Greek culture and education",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1358-1477",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The Homeric poems shaped aspects of ancient Greek culture and education, fostering ideals of heroism, glory, and honor."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fostering ideals|of|heroism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fostering ideals of heroism",
-    "subject": "fostering ideals",
-    "verb": "of",
-    "object": "heroism",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1358-1477",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The Homeric poems shaped aspects of ancient Greek culture and education, fostering ideals of heroism, glory, and honor."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "homer was|in|simple words the one who \"has educated greece\" (",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Homer was in simple words the one who \"has educated Greece\" (",
-    "subject": "Homer was",
-    "verb": "in",
-    "object": "simple words the one who \"has educated Greece\" (",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1478-1553",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "To Plato, Homer was in simple words the one who \"has educated Greece\" (, )."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "virgil refers|to|homer as \"poet sovereign\"",
+    "task_id": "virgil|refers|to homer as \"poet sovereign\"",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -662,11 +337,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Virgil refers to Homer as \"Poet sovereign\"",
-    "subject": "Virgil refers",
-    "verb": "to",
-    "object": "Homer as \"Poet sovereign\"",
+    "subject": "Virgil",
+    "verb": "refers",
+    "object": "to Homer as \"Poet sovereign\"",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -675,94 +350,7 @@
       "text": "In Dante Alighieri's Divine Comedy, Virgil refers to Homer as \"Poet sovereign\", king of all poets;wikisource:Divine Comedy (Longfellow 1867)/Volume 1/Canto 4Divine Comedy, Inferno, Canto IV, 86–88 (Longfellow's translation):Him with that falchion in his hand behold, ⁠Who comes before the three, even as their lord."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "king|of|all poets",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "king of all poets",
-    "subject": "king",
-    "verb": "of",
-    "object": "all poets",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1554-1869",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "In Dante Alighieri's Divine Comedy, Virgil refers to Homer as \"Poet sovereign\", king of all poets;wikisource:Divine Comedy (Longfellow 1867)/Volume 1/Canto 4Divine Comedy, Inferno, Canto IV, 86–88 (Longfellow's translation):Him with that falchion in his hand behold, ⁠Who comes before the three, even as their lord."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "that falchion|in|his hand behold",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "that falchion in his hand behold",
-    "subject": "that falchion",
-    "verb": "in",
-    "object": "his hand behold",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1554-1869",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "In Dante Alighieri's Divine Comedy, Virgil refers to Homer as \"Poet sovereign\", king of all poets;wikisource:Divine Comedy (Longfellow 1867)/Volume 1/Canto 4Divine Comedy, Inferno, Canto IV, 86–88 (Longfellow's translation):Him with that falchion in his hand behold, ⁠Who comes before the three, even as their lord."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "even|as|their lord",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "even as their lord",
-    "subject": "even",
-    "verb": "as",
-    "object": "their lord",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1554-1869",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "In Dante Alighieri's Divine Comedy, Virgil refers to Homer as \"Poet sovereign\", king of all poets;wikisource:Divine Comedy (Longfellow 1867)/Volume 1/Canto 4Divine Comedy, Inferno, Canto IV, 86–88 (Longfellow's translation):Him with that falchion in his hand behold, ⁠Who comes before the three, even as their lord."
-     }
-    ],
-    "seq": 23,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -782,7 +370,7 @@
     "verb": "is",
     "object": "Homer",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -791,36 +379,7 @@
       "text": "That one is Homer, Poet sovereign; in the preface to Iliad (Alexander Pope translation)his translation of the Iliad, Alexander Pope acknowledges that Homer has always been considered the \"greatest of poets\".wikisource:The Iliad of Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever."
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the preface|to|iliad (alexander pope translation)his translation of the iliad",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the preface to Iliad (Alexander Pope translation)his translation of the Iliad",
-    "subject": "the preface",
-    "verb": "to",
-    "object": "Iliad (Alexander Pope translation)his translation of the Iliad",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#1870-2266",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "That one is Homer, Poet sovereign; in the preface to Iliad (Alexander Pope translation)his translation of the Iliad, Alexander Pope acknowledges that Homer has always been considered the \"greatest of poets\".wikisource:The Iliad of Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever."
-     }
-    ],
-    "seq": 25,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -840,7 +399,7 @@
     "verb": "has",
     "object": "always been considered the \"greatest of poets\"",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -849,13 +408,13 @@
       "text": "That one is Homer, Poet sovereign; in the preface to Iliad (Alexander Pope translation)his translation of the Iliad, Alexander Pope acknowledges that Homer has always been considered the \"greatest of poets\".wikisource:The Iliad of Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever."
      }
     ],
-    "seq": 26,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the iliad|of|homer (pope)/prefacealexander pope's preface to his translation of the iliad:\"homer is universally allowed to have had the greatest invention of any writer whatever",
+    "task_id": "homer|is|universally allowed to have had the greatest invention of any writer whatever",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -864,12 +423,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The Iliad of Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever",
-    "subject": "The Iliad",
-    "verb": "of",
-    "object": "Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever",
+    "description": "Homer is universally allowed to have had the greatest invention of any writer whatever",
+    "subject": "Homer",
+    "verb": "is",
+    "object": "universally allowed to have had the greatest invention of any writer whatever",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -878,13 +437,13 @@
       "text": "That one is Homer, Poet sovereign; in the preface to Iliad (Alexander Pope translation)his translation of the Iliad, Alexander Pope acknowledges that Homer has always been considered the \"greatest of poets\".wikisource:The Iliad of Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever."
      }
     ],
-    "seq": 27,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the praise|of|judgment virgil has justly contested with him",
+    "task_id": "judgment virgil|has|justly contested with him",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -893,12 +452,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The praise of judgment Virgil has justly contested with him",
-    "subject": "The praise",
-    "verb": "of",
-    "object": "judgment Virgil has justly contested with him",
+    "description": "judgment Virgil has justly contested with him",
+    "subject": "judgment Virgil",
+    "verb": "has",
+    "object": "justly contested with him",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -907,36 +466,7 @@
       "text": "The praise of judgment Virgil has justly contested with him, and others may have their pretensions as to particular excellencies; but his invention remains yet unrivalled."
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "their pretensions|as|to particular excellencies",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "their pretensions as to particular excellencies",
-    "subject": "their pretensions",
-    "verb": "as",
-    "object": "to particular excellencies",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#2267-2438",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The praise of judgment Virgil has justly contested with him, and others may have their pretensions as to particular excellencies; but his invention remains yet unrivalled."
-     }
-    ],
-    "seq": 29,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -956,7 +486,7 @@
     "verb": "is",
     "object": "it a wonder if he has ever been acknowledged the greatest of poets",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -965,13 +495,13 @@
       "text": "Nor is it a wonder if he has ever been acknowledged the greatest of poets, who most excelled in that which is the very foundation of poetry.\""
      }
     ],
-    "seq": 30,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "most excelled|in|that which is the very foundation of poetry",
+    "task_id": "that which|is|the very foundation of poetry",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -980,12 +510,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "most excelled in that which is the very foundation of poetry",
-    "subject": "most excelled",
-    "verb": "in",
-    "object": "that which is the very foundation of poetry",
+    "description": "that which is the very foundation of poetry",
+    "subject": "that which",
+    "verb": "is",
+    "object": "the very foundation of poetry",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -994,13 +524,13 @@
       "text": "Nor is it a wonder if he has ever been acknowledged the greatest of poets, who most excelled in that which is the very foundation of poetry.\""
      }
     ],
-    "seq": 31,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "from antiquity|to|the present day",
+    "task_id": "and odyssey|were|composed continues to be debated",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1009,70 +539,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "From antiquity to the present day",
-    "subject": "From antiquity",
-    "verb": "to",
-    "object": "the present day",
+    "description": "and Odyssey were composed continues to be debated",
+    "subject": "and Odyssey",
+    "verb": "were",
+    "object": "composed continues to be debated",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#2581-2698",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "From antiquity to the present day, Homeric epics have inspired many famous works of literature, music, art, and film."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "famous works|of|literature",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "famous works of literature",
-    "subject": "famous works",
-    "verb": "of",
-    "object": "literature",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#2581-2698",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "From antiquity to the present day, Homeric epics have inspired many famous works of literature, music, art, and film."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "homeric questionthe|question|of by whom",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Homeric QuestionThe question of by whom",
-    "subject": "Homeric QuestionThe",
-    "verb": "question",
-    "object": "of by whom",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1081,75 +553,7 @@
       "text": "Homeric QuestionThe question of by whom, when, where, and under what circumstances the Iliad and Odyssey were composed continues to be debated."
      }
     ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the iliad|and|odyssey were composed continues to be debated",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Iliad and Odyssey were composed continues to be debated",
-    "subject": "the Iliad",
-    "verb": "and",
-    "object": "Odyssey were composed continues to be debated",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#2700-2843",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Homeric QuestionThe question of by whom, when, where, and under what circumstances the Iliad and Odyssey were composed continues to be debated."
-     },
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6015-6090",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Today, only the Iliad and the Odyssey are associated with the name \"Homer\"."
-     },
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#7236-7337",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The Iliad and the Odyssey were widely used as school texts in ancient Greek and Hellenistic cultures."
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "two poems|as|the works of separate authors",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "two poems as the works of separate authors",
-    "subject": "two poems",
-    "verb": "as",
-    "object": "the works of separate authors",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#2844-2917",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Scholars generally regard the two poems as the works of separate authors."
-     }
-    ],
-    "seq": 36,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1169,7 +573,7 @@
     "verb": "is",
     "object": "thought that the poems were composed at some point around the late eighth or early seventh century BC",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1178,13 +582,13 @@
       "text": "It is thought that the poems were composed at some point around the late eighth or early seventh century BC."
      }
     ],
-    "seq": 37,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "ancient accounts|of|homeraccounts of homer's life circulated in classical antiquity",
+    "task_id": "of homer|are|the life of homer (pseudo-herodotus)life of homer by the pseudo-herodotus and the contest of homer and hesiod",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1193,302 +597,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "ancient accounts of Homeraccounts of Homer's life circulated in classical antiquity",
-    "subject": "ancient accounts",
-    "verb": "of",
-    "object": "Homeraccounts of Homer's life circulated in classical antiquity",
+    "description": "of Homer are the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod",
+    "subject": "of Homer",
+    "verb": "are",
+    "object": "the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3027-3307",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Many ancient accounts of Homeraccounts of Homer's life circulated in classical antiquity, the most widespread that he was a blind bard from Ionia, a region including the central part of the western coast of Anatolia in present-day Turkey, and the Greek islands of Chios and Samos."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "central part|of|the western coast of anatolia in present-day turkey",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "central part of the western coast of Anatolia in present-day Turkey",
-    "subject": "central part",
-    "verb": "of",
-    "object": "the western coast of Anatolia in present-day Turkey",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3027-3307",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Many ancient accounts of Homeraccounts of Homer's life circulated in classical antiquity, the most widespread that he was a blind bard from Ionia, a region including the central part of the western coast of Anatolia in present-day Turkey, and the Greek islands of Chios and Samos."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the greek|islands|of chios and samos",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Greek islands of Chios and Samos",
-    "subject": "the Greek",
-    "verb": "islands",
-    "object": "of Chios and Samos",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3027-3307",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Many ancient accounts of Homeraccounts of Homer's life circulated in classical antiquity, the most widespread that he was a blind bard from Ionia, a region including the central part of the western coast of Anatolia in present-day Turkey, and the Greek islands of Chios and Samos."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the identity|of|\"homer\" is a mystery",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The identity of \"Homer\" is a mystery",
-    "subject": "The identity",
-    "verb": "of",
-    "object": "\"Homer\" is a mystery",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3410-3578",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The identity of \"Homer\" is a mystery, and scholars generally regard the ancient conception of a single author behind the Iliad and the Odyssey as a fictional narrative."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ancient conception|of|a single author behind the iliad and the odyssey as a fictional narrative",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ancient conception of a single author behind the Iliad and the Odyssey as a fictional narrative",
-    "subject": "ancient conception",
-    "verb": "of",
-    "object": "a single author behind the Iliad and the Odyssey as a fictional narrative",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3410-3578",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The identity of \"Homer\" is a mystery, and scholars generally regard the ancient conception of a single author behind the Iliad and the Odyssey as a fictional narrative."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mythologized due|to|his anonymity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mythologized due to his anonymity",
-    "subject": "mythologized due",
-    "verb": "to",
-    "object": "his anonymity",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3579-3766",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "During antiquity, biographical details about Homer's life became increasingly mythologized due to his anonymity, and it was believed during that period that he lived after the Trojan War."
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was believed|during|that period that he lived after the trojan war",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was believed during that period that he lived after the Trojan War",
-    "subject": "was believed",
-    "verb": "during",
-    "object": "that period that he lived after the Trojan War",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3579-3766",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "During antiquity, biographical details about Homer's life became increasingly mythologized due to his anonymity, and it was believed during that period that he lived after the Trojan War."
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the life|of|homer alongside the homeric question",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the life of Homer alongside the Homeric Question",
-    "subject": "the life",
-    "verb": "of",
-    "object": "Homer alongside the Homeric Question",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3767-3986",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Contemporary scholars study the life of Homer alongside the Homeric Question, the ongoing academic debate concerning Homer's authorship and the origins, composition, and transmission of the epic poems attributed to him."
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "homer's authorship|and|the origins",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Homer's authorship and the origins",
-    "subject": "Homer's authorship",
-    "verb": "and",
-    "object": "the origins",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3767-3986",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Contemporary scholars study the life of Homer alongside the Homeric Question, the ongoing academic debate concerning Homer's authorship and the origins, composition, and transmission of the epic poems attributed to him."
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and transmission|of|the epic poems attributed to him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and transmission of the epic poems attributed to him",
-    "subject": "and transmission",
-    "verb": "of",
-    "object": "the epic poems attributed to him",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#3767-3986",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Contemporary scholars study the life of Homer alongside the Homeric Question, the ongoing academic debate concerning Homer's authorship and the origins, composition, and transmission of the epic poems attributed to him."
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ancient biographies|of|homer are the life of homer (pseudo-herodotus)life of homer by the pseudo-herodotus and the contest of homer and hesiod",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ancient biographies of Homer are the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod",
-    "subject": "ancient biographies",
-    "verb": "of",
-    "object": "Homer are the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1497,13 +611,13 @@
       "text": "The two best-known ancient biographies of Homer are the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod."
      }
     ],
-    "seq": 48,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "implicit references|to|homer in the 7th century bc are in works by archilochus",
+    "task_id": "century bc|are|in works by archilochus",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1512,12 +626,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "implicit references to Homer in the 7th century BC are in works by Archilochus",
-    "subject": "implicit references",
-    "verb": "to",
-    "object": "Homer in the 7th century BC are in works by Archilochus",
+    "description": "century BC are in works by Archilochus",
+    "subject": "century BC",
+    "verb": "are",
+    "object": "in works by Archilochus",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1526,7 +640,7 @@
       "text": "The first early implicit references to Homer in the 7th century BC are in works by Archilochus, Alcman, Tyrtaeus, and Callinus."
      }
     ],
-    "seq": 49,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1546,7 +660,7 @@
     "verb": "is",
     "object": "depicted as being blind",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1555,13 +669,13 @@
       "text": "In most ancient biographies, Homer is depicted as being blind; other biographies, such as that in the Byzantine encyclopedia Suda, described Homer to be descended from one of the Muses, Apollo, Orpheus, Thamyris, Telemachus, or Musaeus of AthensMusaeus."
      }
     ],
-    "seq": 50,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "such|as|that in the byzantine encyclopedia suda",
+    "task_id": "the byzantine|encyclopedia|suda",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1570,12 +684,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "such as that in the Byzantine encyclopedia Suda",
-    "subject": "such",
-    "verb": "as",
-    "object": "that in the Byzantine encyclopedia Suda",
+    "description": "the Byzantine encyclopedia Suda",
+    "subject": "the Byzantine",
+    "verb": "encyclopedia",
+    "object": "Suda",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1584,13 +698,13 @@
       "text": "In most ancient biographies, Homer is depicted as being blind; other biographies, such as that in the Byzantine encyclopedia Suda, described Homer to be descended from one of the Muses, Apollo, Orpheus, Thamyris, Telemachus, or Musaeus of AthensMusaeus."
      }
     ],
-    "seq": 51,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "described homer|to|be descended from one of the muses",
+    "task_id": "emperor hadrian|says|epicaste (daughter of nestor (mythology)nestor) and telemachus (son of odysseus) were the parents of homer",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1599,70 +713,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "described Homer to be descended from one of the Muses",
-    "subject": "described Homer",
-    "verb": "to",
-    "object": "be descended from one of the Muses",
+    "description": "emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer",
+    "subject": "emperor Hadrian",
+    "verb": "says",
+    "object": "Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#4281-4534",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "In most ancient biographies, Homer is depicted as being blind; other biographies, such as that in the Byzantine encyclopedia Suda, described Homer to be descended from one of the Muses, Apollo, Orpheus, Thamyris, Telemachus, or Musaeus of AthensMusaeus."
-     }
-    ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "or musaeus|of|athensmusaeus",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "or Musaeus of AthensMusaeus",
-    "subject": "or Musaeus",
-    "verb": "of",
-    "object": "AthensMusaeus",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#4281-4534",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "In most ancient biographies, Homer is depicted as being blind; other biographies, such as that in the Byzantine encyclopedia Suda, described Homer to be descended from one of the Muses, Apollo, Orpheus, Thamyris, Telemachus, or Musaeus of AthensMusaeus."
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the time|of|the roman emperor hadrian says epicaste (daughter of nestor (mythology)nestor) and telemachus (son of odysseus) were the parents of homer",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer",
-    "subject": "the time",
-    "verb": "of",
-    "object": "the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1671,13 +727,13 @@
       "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
      }
     ],
-    "seq": 54,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "contest|of|homer and hesiod) the poet pindar is credited with saying that homer originated from chios and smyrna",
+    "task_id": "poet pindar|is|credited with saying that homer originated from chios and smyrna",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1686,46 +742,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna",
-    "subject": "Contest",
-    "verb": "of",
-    "object": "Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna",
+    "description": "poet Pindar is credited with saying that Homer originated from Chios and Smyrna",
+    "subject": "poet Pindar",
+    "verb": "is",
+    "object": "credited with saying that Homer originated from Chios and Smyrna",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#4535-4973",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
-     },
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6091-6484",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "In antiquity, a large number of other works were sometimes attributed to him, including the Homeric Hymns, the Contest of Homer and Hesiod, several epigrams (Homer)epigrams, the Little Iliad, the Nostoi, the Thebaid (Greek poem)Thebaid, the Cypria, the Epigoni (epic)Epigoni, the comic mini-epic Batrachomyomachia (\"The Frog–Mouse War\"), the Margites, the Capture of Oechalia, and the Phocais."
-     }
-    ],
-    "seq": 55,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "both|of|which are also mentioned by other fifth-century writers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "both of which are also mentioned by other fifth-century writers",
-    "subject": "both",
-    "verb": "of",
-    "object": "which are also mentioned by other fifth-century writers",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1734,13 +756,13 @@
       "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
      }
     ],
-    "seq": 56,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "imagined homer|to|have been a rhapsode or singer who performed at religious festivals",
+    "task_id": "of which|are|also mentioned by other fifth-century writers",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1749,27 +771,27 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "imagined Homer to have been a rhapsode or singer who performed at religious festivals",
-    "subject": "imagined Homer",
-    "verb": "to",
-    "object": "have been a rhapsode or singer who performed at religious festivals",
+    "description": "of which are also mentioned by other fifth-century writers",
+    "subject": "of which",
+    "verb": "are",
+    "object": "also mentioned by other fifth-century writers",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#4974-5286",
+      "at": "02-encyclopedic/wikipedia/Homer.txt#4535-4973",
       "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Other biographical traditions imagined Homer to have been a rhapsode or singer who performed at religious festivals, was a wandering bard or a composer of other works (the \"Homerica\"), or that he failed to solve a riddle set by fishermen.The riddle was: \"We left whatever we caught and carry whatever we didn't\"."
+      "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
      }
     ],
-    "seq": 57,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "a composer|of|other works (the \"homerica\")",
+    "task_id": "of messene|commemorate|homer's death and burial on the island of ios",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1778,273 +800,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "a composer of other works (the \"Homerica\")",
-    "subject": "a composer",
-    "verb": "of",
-    "object": "other works (the \"Homerica\")",
+    "description": "of Messene commemorate Homer's death and burial on the island of Ios",
+    "subject": "of Messene",
+    "verb": "commemorate",
+    "object": "Homer's death and burial on the island of Ios",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#4974-5286",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Other biographical traditions imagined Homer to have been a rhapsode or singer who performed at religious festivals, was a wandering bard or a composer of other works (the \"Homerica\"), or that he failed to solve a riddle set by fishermen.The riddle was: \"We left whatever we caught and carry whatever we didn't\"."
-     }
-    ],
-    "seq": 58,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he failed|to|solve a riddle set by fishermen",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "he failed to solve a riddle set by fishermen",
-    "subject": "he failed",
-    "verb": "to",
-    "object": "solve a riddle set by fishermen",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#4974-5286",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Other biographical traditions imagined Homer to have been a rhapsode or singer who performed at religious festivals, was a wandering bard or a composer of other works (the \"Homerica\"), or that he failed to solve a riddle set by fishermen.The riddle was: \"We left whatever we caught and carry whatever we didn't\"."
-     }
-    ],
-    "seq": 59,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we caught|and|carry whatever we didn't\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we caught and carry whatever we didn't\"",
-    "subject": "we caught",
-    "verb": "and",
-    "object": "carry whatever we didn't\"",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#4974-5286",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Other biographical traditions imagined Homer to have been a rhapsode or singer who performed at religious festivals, was a wandering bard or a composer of other works (the \"Homerica\"), or that he failed to solve a riddle set by fishermen.The riddle was: \"We left whatever we caught and carry whatever we didn't\"."
-     }
-    ],
-    "seq": 60,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "according|to|the greek historian ephorus",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "According to the Greek historian Ephorus",
-    "subject": "According",
-    "verb": "to",
-    "object": "the Greek historian Ephorus",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#5287-5429",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "(The solution: lice.) According to the Greek historian Ephorus, Homer studied poetry with the bard Phemius and was born in Cyme (Aeolis)Cyme."
-     }
-    ],
-    "seq": 61,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bard phemius|and|was born in cyme (aeolis)cyme",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "bard Phemius and was born in Cyme (Aeolis)Cyme",
-    "subject": "bard Phemius",
-    "verb": "and",
-    "object": "was born in Cyme (Aeolis)Cyme",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#5287-5429",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "(The solution: lice.) According to the Greek historian Ephorus, Homer studied poetry with the bard Phemius and was born in Cyme (Aeolis)Cyme."
-     }
-    ],
-    "seq": 62,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "homer's birthplace|to|be in argos",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Homer's birthplace to be in Argos",
-    "subject": "Homer's birthplace",
-    "verb": "to",
-    "object": "be in Argos",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#5430-5575",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Philochorus thought Homer's birthplace to be in Argos, PeloponneseArgos; later writers believed Pylos and Athens to have been Homer's birthplace."
-     }
-    ],
-    "seq": 63,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "believed pylos|and|athens to have been homer's birthplace",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "believed Pylos and Athens to have been Homer's birthplace",
-    "subject": "believed Pylos",
-    "verb": "and",
-    "object": "Athens to have been Homer's birthplace",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#5430-5575",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Philochorus thought Homer's birthplace to be in Argos, PeloponneseArgos; later writers believed Pylos and Athens to have been Homer's birthplace."
-     }
-    ],
-    "seq": 64,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "one account|of|homer's origin became mainstream",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "one account of Homer's origin became mainstream",
-    "subject": "one account",
-    "verb": "of",
-    "object": "Homer's origin became mainstream",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#5576-5685",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "No one account of Homer's origin became mainstream, but most accounts of his death place its location on Ios."
-     }
-    ],
-    "seq": 65,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "most accounts|of|his death place its location on ios",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "most accounts of his death place its location on Ios",
-    "subject": "most accounts",
-    "verb": "of",
-    "object": "his death place its location on Ios",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#5576-5685",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "No one account of Homer's origin became mainstream, but most accounts of his death place its location on Ios."
-     }
-    ],
-    "seq": 66,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "two epigrams|in|the greek anthology by alcaeus of messene commemorate homer's death and burial on the island of ios",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "two epigrams in the Greek Anthology by Alcaeus of Messene commemorate Homer's death and burial on the island of Ios",
-    "subject": "two epigrams",
-    "verb": "in",
-    "object": "the Greek Anthology by Alcaeus of Messene commemorate Homer's death and burial on the island of Ios",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2053,13 +814,13 @@
       "text": "The two epigrams in the Greek Anthology by Alcaeus of Messene commemorate Homer's death and burial on the island of Ios, emphasizing both the poet's immortal fame and the honor bestowed upon the small island that serves as his tomb.[https://topostext.org/work/5337.1 Greek Anthology Book 7, 7.1]"
      }
     ],
-    "seq": 67,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "immortal fame|and|the honor bestowed upon the small island that serves as his tomb",
+    "task_id": "the odyssey|are|associated with the name \"homer\"",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2068,27 +829,27 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "immortal fame and the honor bestowed upon the small island that serves as his tomb",
-    "subject": "immortal fame",
-    "verb": "and",
-    "object": "the honor bestowed upon the small island that serves as his tomb",
+    "description": "the Odyssey are associated with the name \"Homer\"",
+    "subject": "the Odyssey",
+    "verb": "are",
+    "object": "associated with the name \"Homer\"",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#5687-5982",
+      "at": "02-encyclopedic/wikipedia/Homer.txt#6015-6090",
       "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The two epigrams in the Greek Anthology by Alcaeus of Messene commemorate Homer's death and burial on the island of Ios, emphasizing both the poet's immortal fame and the honor bestowed upon the small island that serves as his tomb.[https://topostext.org/work/5337.1 Greek Anthology Book 7, 7.1]"
+      "text": "Today, only the Iliad and the Odyssey are associated with the name \"Homer\"."
      }
     ],
-    "seq": 68,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "works attributed|to|homer",
+    "task_id": "other works|were|sometimes attributed to him",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2097,41 +858,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Works attributed to Homer",
-    "subject": "Works attributed",
-    "verb": "to",
-    "object": "Homer",
+    "description": "other works were sometimes attributed to him",
+    "subject": "other works",
+    "verb": "were",
+    "object": "sometimes attributed to him",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#5984-6009",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Works attributed to Homer"
-     }
-    ],
-    "seq": 69,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "large number|of|other works were sometimes attributed to him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "large number of other works were sometimes attributed to him",
-    "subject": "large number",
-    "verb": "of",
-    "object": "other works were sometimes attributed to him",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2140,36 +872,7 @@
       "text": "In antiquity, a large number of other works were sometimes attributed to him, including the Homeric Hymns, the Contest of Homer and Hesiod, several epigrams (Homer)epigrams, the Little Iliad, the Nostoi, the Thebaid (Greek poem)Thebaid, the Cypria, the Epigoni (epic)Epigoni, the comic mini-epic Batrachomyomachia (\"The Frog–Mouse War\"), the Margites, the Capture of Oechalia, and the Phocais."
      }
     ],
-    "seq": 70,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the capture|of|oechalia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Capture of Oechalia",
-    "subject": "the Capture",
-    "verb": "of",
-    "object": "Oechalia",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6091-6484",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "In antiquity, a large number of other works were sometimes attributed to him, including the Homeric Hymns, the Contest of Homer and Hesiod, several epigrams (Homer)epigrams, the Little Iliad, the Nostoi, the Thebaid (Greek poem)Thebaid, the Cypria, the Epigoni (epic)Epigoni, the comic mini-epic Batrachomyomachia (\"The Frog–Mouse War\"), the Margites, the Capture of Oechalia, and the Phocais."
-     }
-    ],
-    "seq": 71,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -2189,7 +892,7 @@
     "verb": "are",
     "object": "not considered authentic today and were not universally accepted in the ancient world",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2198,13 +901,13 @@
       "text": "These claims are not considered authentic today and were not universally accepted in the ancient world."
      }
     ],
-    "seq": 72,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the multitude|of|legends surrounding homer's life",
+    "task_id": "of homer|is|one of the oldest topics in scholarship",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2213,99 +916,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the multitude of legends surrounding Homer's life",
-    "subject": "the multitude",
-    "verb": "of",
-    "object": "legends surrounding Homer's life",
+    "description": "of Homer is one of the oldest topics in scholarship",
+    "subject": "of Homer",
+    "verb": "is",
+    "object": "one of the oldest topics in scholarship",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6589-6728",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "As with the multitude of legends surrounding Homer's life, they indicate little more than the centrality of Homer to ancient Greek culture."
-     }
-    ],
-    "seq": 73,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the centrality|of|homer to ancient greek culture",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the centrality of Homer to ancient Greek culture",
-    "subject": "the centrality",
-    "verb": "of",
-    "object": "Homer to ancient Greek culture",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6589-6728",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "As with the multitude of legends surrounding Homer's life, they indicate little more than the centrality of Homer to ancient Greek culture."
-     }
-    ],
-    "seq": 74,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "history|of|homeric scholarship",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "History of Homeric scholarship",
-    "subject": "History",
-    "verb": "of",
-    "object": "Homeric scholarship",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6732-6762",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "History of Homeric scholarship"
-     }
-    ],
-    "seq": 75,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the study|of|homer is one of the oldest topics in scholarship",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The study of Homer is one of the oldest topics in scholarship",
-    "subject": "The study",
-    "verb": "of",
-    "object": "Homer is one of the oldest topics in scholarship",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2314,13 +930,13 @@
       "text": "The study of Homer is one of the oldest topics in scholarship, dating back to antiquity."
      }
     ],
-    "seq": 76,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "dating back|to|antiquity",
+    "task_id": "of colophon|denounced|as immoral",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2329,70 +945,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "dating back to antiquity",
-    "subject": "dating back",
-    "verb": "to",
-    "object": "antiquity",
+    "description": "of Colophon denounced as immoral",
+    "subject": "of Colophon",
+    "verb": "denounced",
+    "object": "as immoral",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6781-6869",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The study of Homer is one of the oldest topics in scholarship, dating back to antiquity."
-     }
-    ],
-    "seq": 77,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the aims|of|homeric studies have changed throughout the millennia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the aims of Homeric studies have changed throughout the millennia",
-    "subject": "the aims",
-    "verb": "of",
-    "object": "Homeric studies have changed throughout the millennia",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6871-6950",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Nonetheless, the aims of Homeric studies have changed throughout the millennia."
-     }
-    ],
-    "seq": 78,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "his treatment|of|the gods",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "his treatment of the gods",
-    "subject": "his treatment",
-    "verb": "of",
-    "object": "the gods",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2401,13 +959,13 @@
       "text": "The earliest preserved comments on Homer concern his treatment of the gods, which hostile critics such as the poet Xenophanes of Colophon denounced as immoral."
      }
     ],
-    "seq": 79,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "critics such|as|the poet xenophanes of colophon denounced as immoral",
+    "task_id": "of rhegium|is|said to have defended homer by arguing that the homeric poems are allegoryallegories",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2416,41 +974,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "critics such as the poet Xenophanes of Colophon denounced as immoral",
-    "subject": "critics such",
-    "verb": "as",
-    "object": "the poet Xenophanes of Colophon denounced as immoral",
+    "description": "of Rhegium is said to have defended Homer by arguing that the Homeric poems are Allegoryallegories",
+    "subject": "of Rhegium",
+    "verb": "is",
+    "object": "said to have defended Homer by arguing that the Homeric poems are Allegoryallegories",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#6951-7110",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The earliest preserved comments on Homer concern his treatment of the gods, which hostile critics such as the poet Xenophanes of Colophon denounced as immoral."
-     }
-    ],
-    "seq": 80,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "allegorist theagenes|of|rhegium is said to have defended homer by arguing that the homeric poems are allegoryallegories",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "allegorist Theagenes of Rhegium is said to have defended Homer by arguing that the Homeric poems are Allegoryallegories",
-    "subject": "allegorist Theagenes",
-    "verb": "of",
-    "object": "Rhegium is said to have defended Homer by arguing that the Homeric poems are Allegoryallegories",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2459,7 +988,36 @@
       "text": "The allegorist Theagenes of Rhegium is said to have defended Homer by arguing that the Homeric poems are Allegoryallegories."
      }
     ],
-    "seq": 81,
+    "seq": 30,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the odyssey|were|widely used as school texts in ancient greek and hellenistic cultures",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the Odyssey were widely used as school texts in ancient Greek and Hellenistic cultures",
+    "subject": "the Odyssey",
+    "verb": "were",
+    "object": "widely used as school texts in ancient Greek and Hellenistic cultures",
+    "witnesses": [
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "02-encyclopedic/wikipedia/Homer.txt#7236-7337",
+      "ref": "02-encyclopedic/wikipedia/Homer.txt",
+      "text": "The Iliad and the Odyssey were widely used as school texts in ancient Greek and Hellenistic cultures."
+     }
+    ],
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -2479,7 +1037,7 @@
     "verb": "were",
     "object": "the first literary works taught to all students",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2488,13 +1046,13 @@
       "text": "They were the first literary works taught to all students."
      }
     ],
-    "seq": 82,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the odyssey|during|the hellenistic and roman periods",
+    "task_id": "parts that|were|culturally or linguistically difficult",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2503,41 +1061,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the Odyssey during the Hellenistic and Roman periods",
-    "subject": "the Odyssey",
-    "verb": "during",
-    "object": "the Hellenistic and Roman periods",
+    "description": "parts that were culturally or linguistically difficult",
+    "subject": "parts that",
+    "verb": "were",
+    "object": "culturally or linguistically difficult",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#7397-7530",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "The Iliad, particularly its first few books, was far more intently studied than the Odyssey during the Hellenistic and Roman periods."
-     }
-    ],
-    "seq": 83,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a result|of|the poems' prominence in classical greek education",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a result of the poems' prominence in classical Greek education",
-    "subject": "a result",
-    "verb": "of",
-    "object": "the poems' prominence in classical Greek education",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2546,36 +1075,7 @@
       "text": "As a result of the poems' prominence in classical Greek education, extensive commentaries on them developed to explain parts that were culturally or linguistically difficult."
      }
     ],
-    "seq": 84,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "them developed|to|explain parts that were culturally or linguistically difficult",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "them developed to explain parts that were culturally or linguistically difficult",
-    "subject": "them developed",
-    "verb": "to",
-    "object": "explain parts that were culturally or linguistically difficult",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#7532-7706",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "As a result of the poems' prominence in classical Greek education, extensive commentaries on them developed to explain parts that were culturally or linguistically difficult."
-     }
-    ],
-    "seq": 85,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -2595,7 +1095,7 @@
     "verb": "periodhellenistic",
     "object": "and Roman periods",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2604,70 +1104,12 @@
       "text": "During the Hellenistic periodHellenistic and Roman periods, many interpreters, especially the StoicismStoics, who believed that Homeric poems conveyed Stoic doctrines, regarded them as allegories, containing hidden wisdom."
      }
     ],
-    "seq": 86,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "regarded them|as|allegories",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "regarded them as allegories",
-    "subject": "regarded them",
-    "verb": "as",
-    "object": "allegories",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#7707-7929",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "During the Hellenistic periodHellenistic and Roman periods, many interpreters, especially the StoicismStoics, who believed that Homeric poems conveyed Stoic doctrines, regarded them as allegories, containing hidden wisdom."
-     }
-    ],
-    "seq": 87,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "partially because|of|the homeric poems' extensive use in educa",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "partially because of the Homeric poems' extensive use in educa",
-    "subject": "partially because",
-    "verb": "of",
-    "object": "the Homeric poems' extensive use in educa",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Homer.txt#7930-8000",
-      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-      "text": "Perhaps partially because of the Homeric poems' extensive use in educa"
-     }
-    ],
-    "seq": 88,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 89,
+  "nextSeq": 35,
   "admits": [
    "NUL",
    "SEG",
@@ -2682,28 +1124,12 @@
  },
  "folded": [
   {
-   "id": "a composer|of|other works (the \"homerica\")",
-   "subject": "a composer",
-   "verb": "of",
-   "object": "other works (the \"Homerica\")",
+   "id": "aeolic greekaeolic|dialects|from different centuries",
+   "subject": "Aeolic GreekAeolic",
+   "verb": "dialects",
+   "object": "from different centuries",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4974-5286",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Other biographical traditions imagined Homer to have been a rhapsode or singer who performed at religious festivals, was a wandering bard or a composer of other works (the \"Homerica\"), or that he failed to solve a riddle set by fishermen.The riddle was: \"We left whatever we caught and carry whatever we didn't\"."
-    }
-   ]
-  },
-  {
-   "id": "a mixture|of|features of the ionic greekionic and aeolic greekaeolic dialects from different centuries",
-   "subject": "a mixture",
-   "verb": "of",
-   "object": "features of the Ionic GreekIonic and Aeolic GreekAeolic dialects from different centuries",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2714,529 +1140,12 @@
    ]
   },
   {
-   "id": "a result|of|the poems' prominence in classical greek education",
-   "subject": "a result",
-   "verb": "of",
-   "object": "the poems' prominence in classical Greek education",
+   "id": "and odyssey|were|composed continues to be debated",
+   "subject": "and Odyssey",
+   "verb": "were",
+   "object": "composed continues to be debated",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#7532-7706",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "As a result of the poems' prominence in classical Greek education, extensive commentaries on them developed to explain parts that were culturally or linguistically difficult."
-    }
-   ]
-  },
-  {
-   "id": "according|to|the greek historian ephorus",
-   "subject": "According",
-   "verb": "to",
-   "object": "the Greek historian Ephorus",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5287-5429",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "(The solution: lice.) According to the Greek historian Ephorus, Homer studied poetry with the bard Phemius and was born in Cyme (Aeolis)Cyme."
-    }
-   ]
-  },
-  {
-   "id": "allegorist theagenes|of|rhegium is said to have defended homer by arguing that the homeric poems are allegoryallegories",
-   "subject": "allegorist Theagenes",
-   "verb": "of",
-   "object": "Rhegium is said to have defended Homer by arguing that the Homeric poems are Allegoryallegories",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#7111-7235",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The allegorist Theagenes of Rhegium is said to have defended Homer by arguing that the Homeric poems are Allegoryallegories."
-    }
-   ]
-  },
-  {
-   "id": "also known|as|epic greek",
-   "subject": "also known",
-   "verb": "as",
-   "object": "Epic Greek",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#791-1027",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The poems are in Homeric Greek, also known as Epic Greek, a literary language that shows a mixture of features of the Ionic GreekIonic and Aeolic GreekAeolic dialects from different centuries; the predominant influence is Eastern Ionic."
-    }
-   ]
-  },
-  {
-   "id": "ancient accounts|of|homeraccounts of homer's life circulated in classical antiquity",
-   "subject": "ancient accounts",
-   "verb": "of",
-   "object": "Homeraccounts of Homer's life circulated in classical antiquity",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3027-3307",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Many ancient accounts of Homeraccounts of Homer's life circulated in classical antiquity, the most widespread that he was a blind bard from Ionia, a region including the central part of the western coast of Anatolia in present-day Turkey, and the Greek islands of Chios and Samos."
-    }
-   ]
-  },
-  {
-   "id": "ancient biographies|of|homer are the life of homer (pseudo-herodotus)life of homer by the pseudo-herodotus and the contest of homer and hesiod",
-   "subject": "ancient biographies",
-   "verb": "of",
-   "object": "Homer are the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3987-4149",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The two best-known ancient biographies of Homer are the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod."
-    }
-   ]
-  },
-  {
-   "id": "ancient conception|of|a single author behind the iliad and the odyssey as a fictional narrative",
-   "subject": "ancient conception",
-   "verb": "of",
-   "object": "a single author behind the Iliad and the Odyssey as a fictional narrative",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3410-3578",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The identity of \"Homer\" is a mystery, and scholars generally regard the ancient conception of a single author behind the Iliad and the Odyssey as a fictional narrative."
-    }
-   ]
-  },
-  {
-   "id": "and transmission|of|the epic poems attributed to him",
-   "subject": "and transmission",
-   "verb": "of",
-   "object": "the epic poems attributed to him",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3767-3986",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Contemporary scholars study the life of Homer alongside the Homeric Question, the ongoing academic debate concerning Homer's authorship and the origins, composition, and transmission of the epic poems attributed to him."
-    }
-   ]
-  },
-  {
-   "id": "as odysseus|perseveres|through the punishment of the gods",
-   "subject": "as Odysseus",
-   "verb": "perseveres",
-   "object": "through the punishment of the gods",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#672-790",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The epics depict man's struggle, the Odyssey especially so, as Odysseus perseveres through the punishment of the gods."
-    }
-   ]
-  },
-  {
-   "id": "back|to|his home after the fall of troy",
-   "subject": "back",
-   "verb": "to",
-   "object": "his home after the fall of Troy",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#544-671",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The Odyssey chronicles the ten-year journey of Odysseus, king of Homer's IthacaIthaca, back to his home after the fall of Troy."
-    }
-   ]
-  },
-  {
-   "id": "bard phemius|and|was born in cyme (aeolis)cyme",
-   "subject": "bard Phemius",
-   "verb": "and",
-   "object": "was born in Cyme (Aeolis)Cyme",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5287-5429",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "(The solution: lice.) According to the Greek historian Ephorus, Homer studied poetry with the bard Phemius and was born in Cyme (Aeolis)Cyme."
-    }
-   ]
-  },
-  {
-   "id": "believed pylos|and|athens to have been homer's birthplace",
-   "subject": "believed Pylos",
-   "verb": "and",
-   "object": "Athens to have been Homer's birthplace",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5430-5575",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Philochorus thought Homer's birthplace to be in Argos, PeloponneseArgos; later writers believed Pylos and Athens to have been Homer's birthplace."
-    }
-   ]
-  },
-  {
-   "id": "both|of|which are also mentioned by other fifth-century writers",
-   "subject": "both",
-   "verb": "of",
-   "object": "which are also mentioned by other fifth-century writers",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4535-4973",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
-    }
-   ]
-  },
-  {
-   "id": "central part|of|the western coast of anatolia in present-day turkey",
-   "subject": "central part",
-   "verb": "of",
-   "object": "the western coast of Anatolia in present-day Turkey",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3027-3307",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Many ancient accounts of Homeraccounts of Homer's life circulated in classical antiquity, the most widespread that he was a blind bard from Ionia, a region including the central part of the western coast of Anatolia in present-day Turkey, and the Greek islands of Chios and Samos."
-    }
-   ]
-  },
-  {
-   "id": "contest|of|homer and hesiod) the poet pindar is credited with saying that homer originated from chios and smyrna",
-   "subject": "Contest",
-   "verb": "of",
-   "object": "Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4535-4973",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
-    },
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6091-6484",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In antiquity, a large number of other works were sometimes attributed to him, including the Homeric Hymns, the Contest of Homer and Hesiod, several epigrams (Homer)epigrams, the Little Iliad, the Nostoi, the Thebaid (Greek poem)Thebaid, the Cypria, the Epigoni (epic)Epigoni, the comic mini-epic Batrachomyomachia (\"The Frog–Mouse War\"), the Margites, the Capture of Oechalia, and the Phocais."
-    }
-   ]
-  },
-  {
-   "id": "critics such|as|the poet xenophanes of colophon denounced as immoral",
-   "subject": "critics such",
-   "verb": "as",
-   "object": "the poet Xenophanes of Colophon denounced as immoral",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6951-7110",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The earliest preserved comments on Homer concern his treatment of the gods, which hostile critics such as the poet Xenophanes of Colophon denounced as immoral."
-    }
-   ]
-  },
-  {
-   "id": "dating back|to|antiquity",
-   "subject": "dating back",
-   "verb": "to",
-   "object": "antiquity",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6781-6869",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The study of Homer is one of the oldest topics in scholarship, dating back to antiquity."
-    }
-   ]
-  },
-  {
-   "id": "described homer|to|be descended from one of the muses",
-   "subject": "described Homer",
-   "verb": "to",
-   "object": "be descended from one of the Muses",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4281-4534",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In most ancient biographies, Homer is depicted as being blind; other biographies, such as that in the Byzantine encyclopedia Suda, described Homer to be descended from one of the Muses, Apollo, Orpheus, Thamyris, Telemachus, or Musaeus of AthensMusaeus."
-    }
-   ]
-  },
-  {
-   "id": "even|as|their lord",
-   "subject": "even",
-   "verb": "as",
-   "object": "their lord",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1554-1869",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In Dante Alighieri's Divine Comedy, Virgil refers to Homer as \"Poet sovereign\", king of all poets;wikisource:Divine Comedy (Longfellow 1867)/Volume 1/Canto 4Divine Comedy, Inferno, Canto IV, 86–88 (Longfellow's translation):Him with that falchion in his hand behold, ⁠Who comes before the three, even as their lord."
-    }
-   ]
-  },
-  {
-   "id": "famous works|of|literature",
-   "subject": "famous works",
-   "verb": "of",
-   "object": "literature",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2581-2698",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "From antiquity to the present day, Homeric epics have inspired many famous works of literature, music, art, and film."
-    }
-   ]
-  },
-  {
-   "id": "fostering ideals|of|heroism",
-   "subject": "fostering ideals",
-   "verb": "of",
-   "object": "heroism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1358-1477",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The Homeric poems shaped aspects of ancient Greek culture and education, fostering ideals of heroism, glory, and honor."
-    }
-   ]
-  },
-  {
-   "id": "from antiquity|to|the present day",
-   "subject": "From antiquity",
-   "verb": "to",
-   "object": "the present day",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2581-2698",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "From antiquity to the present day, Homeric epics have inspired many famous works of literature, music, art, and film."
-    }
-   ]
-  },
-  {
-   "id": "greeceancient greek|poet|who is widely credited as the author of the iliad and the odyssey",
-   "subject": "Greeceancient Greek",
-   "verb": "poet",
-   "object": "who is widely credited as the author of the Iliad and the Odyssey",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#57-265",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Homer (; , ; possibly born ) was an Ancient Greeceancient Greek poet who is widely credited as the author of the Iliad and the Odyssey, two epic poems that are foundational works of ancient Greek literature."
-    }
-   ]
-  },
-  {
-   "id": "he failed|to|solve a riddle set by fishermen",
-   "subject": "he failed",
-   "verb": "to",
-   "object": "solve a riddle set by fishermen",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4974-5286",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Other biographical traditions imagined Homer to have been a rhapsode or singer who performed at religious festivals, was a wandering bard or a composer of other works (the \"Homerica\"), or that he failed to solve a riddle set by fishermen.The riddle was: \"We left whatever we caught and carry whatever we didn't\"."
-    }
-   ]
-  },
-  {
-   "id": "his life|and|authorship remain obscure",
-   "subject": "his life",
-   "verb": "and",
-   "object": "authorship remain obscure",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#266-423",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Although his life and authorship remain obscure, Homer was revered in ancient Greek society and is considered one of the most influential authors in history."
-    }
-   ]
-  },
-  {
-   "id": "his treatment|of|the gods",
-   "subject": "his treatment",
-   "verb": "of",
-   "object": "the gods",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6951-7110",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The earliest preserved comments on Homer concern his treatment of the gods, which hostile critics such as the poet Xenophanes of Colophon denounced as immoral."
-    }
-   ]
-  },
-  {
-   "id": "history|of|homeric scholarship",
-   "subject": "History",
-   "verb": "of",
-   "object": "Homeric scholarship",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6732-6762",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "History of Homeric scholarship"
-    }
-   ]
-  },
-  {
-   "id": "homer was|in|simple words the one who \"has educated greece\" (",
-   "subject": "Homer was",
-   "verb": "in",
-   "object": "simple words the one who \"has educated Greece\" (",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1478-1553",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "To Plato, Homer was in simple words the one who \"has educated Greece\" (, )."
-    }
-   ]
-  },
-  {
-   "id": "homer's authorship|and|the origins",
-   "subject": "Homer's authorship",
-   "verb": "and",
-   "object": "the origins",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3767-3986",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Contemporary scholars study the life of Homer alongside the Homeric Question, the ongoing academic debate concerning Homer's authorship and the origins, composition, and transmission of the epic poems attributed to him."
-    }
-   ]
-  },
-  {
-   "id": "homer's birthplace|to|be in argos",
-   "subject": "Homer's birthplace",
-   "verb": "to",
-   "object": "be in Argos",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5430-5575",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Philochorus thought Homer's birthplace to be in Argos, PeloponneseArgos; later writers believed Pylos and Athens to have been Homer's birthplace."
-    }
-   ]
-  },
-  {
-   "id": "homer|is|depicted as being blind",
-   "subject": "Homer",
-   "verb": "is",
-   "object": "depicted as being blind",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4281-4534",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In most ancient biographies, Homer is depicted as being blind; other biographies, such as that in the Byzantine encyclopedia Suda, described Homer to be descended from one of the Muses, Apollo, Orpheus, Thamyris, Telemachus, or Musaeus of AthensMusaeus."
-    }
-   ]
-  },
-  {
-   "id": "homeric laughterinstances|of|comedy and laughter",
-   "subject": "Homeric laughterinstances",
-   "verb": "of",
-   "object": "comedy and laughter",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1118-1356",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Despite being predominantly known for their tragic and serious themes, the Homeric poems also contain wiktionary:Homeric laughterinstances of comedy and laughter.Bell, Robert H.; \"Homer's humor: laughter in the Iliad\", hand 1 (2007), 596."
-    }
-   ]
-  },
-  {
-   "id": "homeric questionthe|question|of by whom",
-   "subject": "Homeric QuestionThe",
-   "verb": "question",
-   "object": "of by whom",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3247,44 +1156,28 @@
    ]
   },
   {
-   "id": "imagined homer|to|have been a rhapsode or singer who performed at religious festivals",
-   "subject": "imagined Homer",
-   "verb": "to",
-   "object": "have been a rhapsode or singer who performed at religious festivals",
+   "id": "as odysseus|perseveres|through the punishment of the gods",
+   "subject": "as Odysseus",
+   "verb": "perseveres",
+   "object": "through the punishment of the gods",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4974-5286",
+     "at": "02-encyclopedic/wikipedia/Homer.txt#672-790",
      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Other biographical traditions imagined Homer to have been a rhapsode or singer who performed at religious festivals, was a wandering bard or a composer of other works (the \"Homerica\"), or that he failed to solve a riddle set by fishermen.The riddle was: \"We left whatever we caught and carry whatever we didn't\"."
+     "text": "The epics depict man's struggle, the Odyssey especially so, as Odysseus perseveres through the punishment of the gods."
     }
    ]
   },
   {
-   "id": "immortal fame|and|the honor bestowed upon the small island that serves as his tomb",
-   "subject": "immortal fame",
-   "verb": "and",
-   "object": "the honor bestowed upon the small island that serves as his tomb",
+   "id": "century bc|are|in works by archilochus",
+   "subject": "century BC",
+   "verb": "are",
+   "object": "in works by Archilochus",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5687-5982",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The two epigrams in the Greek Anthology by Alcaeus of Messene commemorate Homer's death and burial on the island of Ios, emphasizing both the poet's immortal fame and the honor bestowed upon the small island that serves as his tomb.[https://topostext.org/work/5337.1 Greek Anthology Book 7, 7.1]"
-    }
-   ]
-  },
-  {
-   "id": "implicit references|to|homer in the 7th century bc are in works by archilochus",
-   "subject": "implicit references",
-   "verb": "to",
-   "object": "Homer in the 7th century BC are in works by Archilochus",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3295,188 +1188,28 @@
    ]
   },
   {
-   "id": "it|is|thought that the poems were composed at some point around the late eighth or early seventh century bc",
-   "subject": "It",
+   "id": "emperor hadrian|says|epicaste (daughter of nestor (mythology)nestor) and telemachus (son of odysseus) were the parents of homer",
+   "subject": "emperor Hadrian",
+   "verb": "says",
+   "object": "Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#4535-4973",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
+    }
+   ]
+  },
+  {
+   "id": "homer|is|depicted as being blind",
+   "subject": "Homer",
    "verb": "is",
-   "object": "thought that the poems were composed at some point around the late eighth or early seventh century BC",
+   "object": "depicted as being blind",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2918-3026",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "It is thought that the poems were composed at some point around the late eighth or early seventh century BC."
-    }
-   ]
-  },
-  {
-   "id": "king agamemnon|and|the warrior achilles during the last year of the trojan war",
-   "subject": "King Agamemnon",
-   "verb": "and",
-   "object": "the warrior Achilles during the last year of the Trojan War",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#425-543",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The Iliad centers on a quarrel between King Agamemnon and the warrior Achilles during the last year of the Trojan War."
-    }
-   ]
-  },
-  {
-   "id": "king|of|all poets",
-   "subject": "king",
-   "verb": "of",
-   "object": "all poets",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1554-1869",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In Dante Alighieri's Divine Comedy, Virgil refers to Homer as \"Poet sovereign\", king of all poets;wikisource:Divine Comedy (Longfellow 1867)/Volume 1/Canto 4Divine Comedy, Inferno, Canto IV, 86–88 (Longfellow's translation):Him with that falchion in his hand behold, ⁠Who comes before the three, even as their lord."
-    }
-   ]
-  },
-  {
-   "id": "king|of|homer's ithacaithaca",
-   "subject": "king",
-   "verb": "of",
-   "object": "Homer's IthacaIthaca",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#544-671",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The Odyssey chronicles the ten-year journey of Odysseus, king of Homer's IthacaIthaca, back to his home after the fall of Troy."
-    }
-   ]
-  },
-  {
-   "id": "large number|of|other works were sometimes attributed to him",
-   "subject": "large number",
-   "verb": "of",
-   "object": "other works were sometimes attributed to him",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6091-6484",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In antiquity, a large number of other works were sometimes attributed to him, including the Homeric Hymns, the Contest of Homer and Hesiod, several epigrams (Homer)epigrams, the Little Iliad, the Nostoi, the Thebaid (Greek poem)Thebaid, the Cypria, the Epigoni (epic)Epigoni, the comic mini-epic Batrachomyomachia (\"The Frog–Mouse War\"), the Margites, the Capture of Oechalia, and the Phocais."
-    }
-   ]
-  },
-  {
-   "id": "laughter|in|the iliad\"",
-   "subject": "laughter",
-   "verb": "in",
-   "object": "the Iliad\"",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1118-1356",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Despite being predominantly known for their tragic and serious themes, the Homeric poems also contain wiktionary:Homeric laughterinstances of comedy and laughter.Bell, Robert H.; \"Homer's humor: laughter in the Iliad\", hand 1 (2007), 596."
-    }
-   ]
-  },
-  {
-   "id": "most accounts|of|his death place its location on ios",
-   "subject": "most accounts",
-   "verb": "of",
-   "object": "his death place its location on Ios",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5576-5685",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "No one account of Homer's origin became mainstream, but most accounts of his death place its location on Ios."
-    }
-   ]
-  },
-  {
-   "id": "most excelled|in|that which is the very foundation of poetry",
-   "subject": "most excelled",
-   "verb": "in",
-   "object": "that which is the very foundation of poetry",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2439-2580",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Nor is it a wonder if he has ever been acknowledged the greatest of poets, who most excelled in that which is the very foundation of poetry.\""
-    }
-   ]
-  },
-  {
-   "id": "mythologized due|to|his anonymity",
-   "subject": "mythologized due",
-   "verb": "to",
-   "object": "his anonymity",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3579-3766",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "During antiquity, biographical details about Homer's life became increasingly mythologized due to his anonymity, and it was believed during that period that he lived after the Trojan War."
-    }
-   ]
-  },
-  {
-   "id": "nor|is|it a wonder if he has ever been acknowledged the greatest of poets",
-   "subject": "Nor",
-   "verb": "is",
-   "object": "it a wonder if he has ever been acknowledged the greatest of poets",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2439-2580",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Nor is it a wonder if he has ever been acknowledged the greatest of poets, who most excelled in that which is the very foundation of poetry.\""
-    }
-   ]
-  },
-  {
-   "id": "one account|of|homer's origin became mainstream",
-   "subject": "one account",
-   "verb": "of",
-   "object": "Homer's origin became mainstream",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5576-5685",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "No one account of Homer's origin became mainstream, but most accounts of his death place its location on Ios."
-    }
-   ]
-  },
-  {
-   "id": "or musaeus|of|athensmusaeus",
-   "subject": "or Musaeus",
-   "verb": "of",
-   "object": "AthensMusaeus",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3487,18 +1220,194 @@
    ]
   },
   {
-   "id": "partially because|of|the homeric poems' extensive use in educa",
-   "subject": "partially because",
-   "verb": "of",
-   "object": "the Homeric poems' extensive use in educa",
+   "id": "homer|is|universally allowed to have had the greatest invention of any writer whatever",
+   "subject": "Homer",
+   "verb": "is",
+   "object": "universally allowed to have had the greatest invention of any writer whatever",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#7930-8000",
+     "at": "02-encyclopedic/wikipedia/Homer.txt#1870-2266",
      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Perhaps partially because of the Homeric poems' extensive use in educa"
+     "text": "That one is Homer, Poet sovereign; in the preface to Iliad (Alexander Pope translation)his translation of the Iliad, Alexander Pope acknowledges that Homer has always been considered the \"greatest of poets\".wikisource:The Iliad of Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever."
+    }
+   ]
+  },
+  {
+   "id": "it|is|thought that the poems were composed at some point around the late eighth or early seventh century bc",
+   "subject": "It",
+   "verb": "is",
+   "object": "thought that the poems were composed at some point around the late eighth or early seventh century BC",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#2918-3026",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "It is thought that the poems were composed at some point around the late eighth or early seventh century BC."
+    }
+   ]
+  },
+  {
+   "id": "judgment virgil|has|justly contested with him",
+   "subject": "judgment Virgil",
+   "verb": "has",
+   "object": "justly contested with him",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#2267-2438",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "The praise of judgment Virgil has justly contested with him, and others may have their pretensions as to particular excellencies; but his invention remains yet unrivalled."
+    }
+   ]
+  },
+  {
+   "id": "nor|is|it a wonder if he has ever been acknowledged the greatest of poets",
+   "subject": "Nor",
+   "verb": "is",
+   "object": "it a wonder if he has ever been acknowledged the greatest of poets",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#2439-2580",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "Nor is it a wonder if he has ever been acknowledged the greatest of poets, who most excelled in that which is the very foundation of poetry.\""
+    }
+   ]
+  },
+  {
+   "id": "of colophon|denounced|as immoral",
+   "subject": "of Colophon",
+   "verb": "denounced",
+   "object": "as immoral",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#6951-7110",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "The earliest preserved comments on Homer concern his treatment of the gods, which hostile critics such as the poet Xenophanes of Colophon denounced as immoral."
+    }
+   ]
+  },
+  {
+   "id": "of homer|are|the life of homer (pseudo-herodotus)life of homer by the pseudo-herodotus and the contest of homer and hesiod",
+   "subject": "of Homer",
+   "verb": "are",
+   "object": "the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#3987-4149",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "The two best-known ancient biographies of Homer are the Life of Homer (Pseudo-Herodotus)Life of Homer by the Pseudo-Herodotus and the Contest of Homer and Hesiod."
+    }
+   ]
+  },
+  {
+   "id": "of homer|is|one of the oldest topics in scholarship",
+   "subject": "of Homer",
+   "verb": "is",
+   "object": "one of the oldest topics in scholarship",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#6781-6869",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "The study of Homer is one of the oldest topics in scholarship, dating back to antiquity."
+    }
+   ]
+  },
+  {
+   "id": "of messene|commemorate|homer's death and burial on the island of ios",
+   "subject": "of Messene",
+   "verb": "commemorate",
+   "object": "Homer's death and burial on the island of Ios",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#5687-5982",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "The two epigrams in the Greek Anthology by Alcaeus of Messene commemorate Homer's death and burial on the island of Ios, emphasizing both the poet's immortal fame and the honor bestowed upon the small island that serves as his tomb.[https://topostext.org/work/5337.1 Greek Anthology Book 7, 7.1]"
+    }
+   ]
+  },
+  {
+   "id": "of rhegium|is|said to have defended homer by arguing that the homeric poems are allegoryallegories",
+   "subject": "of Rhegium",
+   "verb": "is",
+   "object": "said to have defended Homer by arguing that the Homeric poems are Allegoryallegories",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#7111-7235",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "The allegorist Theagenes of Rhegium is said to have defended Homer by arguing that the Homeric poems are Allegoryallegories."
+    }
+   ]
+  },
+  {
+   "id": "of which|are|also mentioned by other fifth-century writers",
+   "subject": "of which",
+   "verb": "are",
+   "object": "also mentioned by other fifth-century writers",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#4535-4973",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
+    }
+   ]
+  },
+  {
+   "id": "other works|were|sometimes attributed to him",
+   "subject": "other works",
+   "verb": "were",
+   "object": "sometimes attributed to him",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#6091-6484",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "In antiquity, a large number of other works were sometimes attributed to him, including the Homeric Hymns, the Contest of Homer and Hesiod, several epigrams (Homer)epigrams, the Little Iliad, the Nostoi, the Thebaid (Greek poem)Thebaid, the Cypria, the Epigoni (epic)Epigoni, the comic mini-epic Batrachomyomachia (\"The Frog–Mouse War\"), the Margites, the Capture of Oechalia, and the Phocais."
+    }
+   ]
+  },
+  {
+   "id": "parts that|were|culturally or linguistically difficult",
+   "subject": "parts that",
+   "verb": "were",
+   "object": "culturally or linguistically difficult",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#7532-7706",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "As a result of the poems' prominence in classical Greek education, extensive commentaries on them developed to explain parts that were culturally or linguistically difficult."
     }
    ]
   },
@@ -3508,7 +1417,7 @@
    "verb": "are",
    "object": "foundational works of ancient Greek literature",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3524,12 +1433,44 @@
    ]
   },
   {
+   "id": "poet pindar|is|credited with saying that homer originated from chios and smyrna",
+   "subject": "poet Pindar",
+   "verb": "is",
+   "object": "credited with saying that Homer originated from Chios and Smyrna",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#4535-4973",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
+    }
+   ]
+  },
+  {
+   "id": "poet who|is|widely credited as the author of the iliad and the odyssey",
+   "subject": "poet who",
+   "verb": "is",
+   "object": "widely credited as the author of the Iliad and the Odyssey",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Homer.txt#57-265",
+     "ref": "02-encyclopedic/wikipedia/Homer.txt",
+     "text": "Homer (; , ; possibly born ) was an Ancient Greeceancient Greek poet who is widely credited as the author of the Iliad and the Odyssey, two epic poems that are foundational works of ancient Greek literature."
+    }
+   ]
+  },
+  {
    "id": "predominant influence|is|eastern ionic",
    "subject": "predominant influence",
    "verb": "is",
    "object": "Eastern Ionic",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3540,66 +1481,18 @@
    ]
   },
   {
-   "id": "regarded them|as|allegories",
-   "subject": "regarded them",
-   "verb": "as",
-   "object": "allegories",
+   "id": "society and|is|considered one of the most influential authors in history",
+   "subject": "society and",
+   "verb": "is",
+   "object": "considered one of the most influential authors in history",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#7707-7929",
+     "at": "02-encyclopedic/wikipedia/Homer.txt#266-423",
      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "During the Hellenistic periodHellenistic and Roman periods, many interpreters, especially the StoicismStoics, who believed that Homeric poems conveyed Stoic doctrines, regarded them as allegories, containing hidden wisdom."
-    }
-   ]
-  },
-  {
-   "id": "shaped aspects|of|ancient greek culture and education",
-   "subject": "shaped aspects",
-   "verb": "of",
-   "object": "ancient Greek culture and education",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1358-1477",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The Homeric poems shaped aspects of ancient Greek culture and education, fostering ideals of heroism, glory, and honor."
-    }
-   ]
-  },
-  {
-   "id": "such|as|that in the byzantine encyclopedia suda",
-   "subject": "such",
-   "verb": "as",
-   "object": "that in the Byzantine encyclopedia Suda",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4281-4534",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In most ancient biographies, Homer is depicted as being blind; other biographies, such as that in the Byzantine encyclopedia Suda, described Homer to be descended from one of the Muses, Apollo, Orpheus, Thamyris, Telemachus, or Musaeus of AthensMusaeus."
-    }
-   ]
-  },
-  {
-   "id": "that falchion|in|his hand behold",
-   "subject": "that falchion",
-   "verb": "in",
-   "object": "his hand behold",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1554-1869",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In Dante Alighieri's Divine Comedy, Virgil refers to Homer as \"Poet sovereign\", king of all poets;wikisource:Divine Comedy (Longfellow 1867)/Volume 1/Canto 4Divine Comedy, Inferno, Canto IV, 86–88 (Longfellow's translation):Him with that falchion in his hand behold, ⁠Who comes before the three, even as their lord."
+     "text": "Although his life and authorship remain obscure, Homer was revered in ancient Greek society and is considered one of the most influential authors in history."
     }
    ]
   },
@@ -3609,7 +1502,7 @@
    "verb": "has",
    "object": "always been considered the \"greatest of poets\"",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3625,7 +1518,7 @@
    "verb": "is",
    "object": "Homer",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3636,66 +1529,34 @@
    ]
   },
   {
-   "id": "the aims|of|homeric studies have changed throughout the millennia",
-   "subject": "the aims",
-   "verb": "of",
-   "object": "Homeric studies have changed throughout the millennia",
+   "id": "that which|is|the very foundation of poetry",
+   "subject": "that which",
+   "verb": "is",
+   "object": "the very foundation of poetry",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6871-6950",
+     "at": "02-encyclopedic/wikipedia/Homer.txt#2439-2580",
      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Nonetheless, the aims of Homeric studies have changed throughout the millennia."
+     "text": "Nor is it a wonder if he has ever been acknowledged the greatest of poets, who most excelled in that which is the very foundation of poetry.\""
     }
    ]
   },
   {
-   "id": "the capture|of|oechalia",
-   "subject": "the Capture",
-   "verb": "of",
-   "object": "Oechalia",
+   "id": "the byzantine|encyclopedia|suda",
+   "subject": "the Byzantine",
+   "verb": "encyclopedia",
+   "object": "Suda",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6091-6484",
+     "at": "02-encyclopedic/wikipedia/Homer.txt#4281-4534",
      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "In antiquity, a large number of other works were sometimes attributed to him, including the Homeric Hymns, the Contest of Homer and Hesiod, several epigrams (Homer)epigrams, the Little Iliad, the Nostoi, the Thebaid (Greek poem)Thebaid, the Cypria, the Epigoni (epic)Epigoni, the comic mini-epic Batrachomyomachia (\"The Frog–Mouse War\"), the Margites, the Capture of Oechalia, and the Phocais."
-    }
-   ]
-  },
-  {
-   "id": "the centrality|of|homer to ancient greek culture",
-   "subject": "the centrality",
-   "verb": "of",
-   "object": "Homer to ancient Greek culture",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6589-6728",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "As with the multitude of legends surrounding Homer's life, they indicate little more than the centrality of Homer to ancient Greek culture."
-    }
-   ]
-  },
-  {
-   "id": "the greek|islands|of chios and samos",
-   "subject": "the Greek",
-   "verb": "islands",
-   "object": "of Chios and Samos",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3027-3307",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Many ancient accounts of Homeraccounts of Homer's life circulated in classical antiquity, the most widespread that he was a blind bard from Ionia, a region including the central part of the western coast of Anatolia in present-day Turkey, and the Greek islands of Chios and Samos."
+     "text": "In most ancient biographies, Homer is depicted as being blind; other biographies, such as that in the Byzantine encyclopedia Suda, described Homer to be descended from one of the Muses, Apollo, Orpheus, Thamyris, Telemachus, or Musaeus of AthensMusaeus."
     }
    ]
   },
@@ -3705,7 +1566,7 @@
    "verb": "periodhellenistic",
    "object": "and Roman periods",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3716,92 +1577,18 @@
    ]
   },
   {
-   "id": "the identity|of|\"homer\" is a mystery",
-   "subject": "The identity",
-   "verb": "of",
-   "object": "\"Homer\" is a mystery",
+   "id": "the odyssey|are|associated with the name \"homer\"",
+   "subject": "the Odyssey",
+   "verb": "are",
+   "object": "associated with the name \"Homer\"",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3410-3578",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The identity of \"Homer\" is a mystery, and scholars generally regard the ancient conception of a single author behind the Iliad and the Odyssey as a fictional narrative."
-    }
-   ]
-  },
-  {
-   "id": "the iliad|and|odyssey were composed continues to be debated",
-   "subject": "the Iliad",
-   "verb": "and",
-   "object": "Odyssey were composed continues to be debated",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2700-2843",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Homeric QuestionThe question of by whom, when, where, and under what circumstances the Iliad and Odyssey were composed continues to be debated."
-    },
     {
      "at": "02-encyclopedic/wikipedia/Homer.txt#6015-6090",
      "ref": "02-encyclopedic/wikipedia/Homer.txt",
      "text": "Today, only the Iliad and the Odyssey are associated with the name \"Homer\"."
-    },
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#7236-7337",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The Iliad and the Odyssey were widely used as school texts in ancient Greek and Hellenistic cultures."
-    }
-   ]
-  },
-  {
-   "id": "the iliad|of|homer (pope)/prefacealexander pope's preface to his translation of the iliad:\"homer is universally allowed to have had the greatest invention of any writer whatever",
-   "subject": "The Iliad",
-   "verb": "of",
-   "object": "Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1870-2266",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "That one is Homer, Poet sovereign; in the preface to Iliad (Alexander Pope translation)his translation of the Iliad, Alexander Pope acknowledges that Homer has always been considered the \"greatest of poets\".wikisource:The Iliad of Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever."
-    }
-   ]
-  },
-  {
-   "id": "the life|of|homer alongside the homeric question",
-   "subject": "the life",
-   "verb": "of",
-   "object": "Homer alongside the Homeric Question",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3767-3986",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Contemporary scholars study the life of Homer alongside the Homeric Question, the ongoing academic debate concerning Homer's authorship and the origins, composition, and transmission of the epic poems attributed to him."
-    }
-   ]
-  },
-  {
-   "id": "the multitude|of|legends surrounding homer's life",
-   "subject": "the multitude",
-   "verb": "of",
-   "object": "legends surrounding Homer's life",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6589-6728",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "As with the multitude of legends surrounding Homer's life, they indicate little more than the centrality of Homer to ancient Greek culture."
     }
    ]
   },
@@ -3811,7 +1598,7 @@
    "verb": "chronicles",
    "object": "the ten-year journey of Odysseus",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3822,34 +1609,18 @@
    ]
   },
   {
-   "id": "the odyssey|during|the hellenistic and roman periods",
+   "id": "the odyssey|were|widely used as school texts in ancient greek and hellenistic cultures",
    "subject": "the Odyssey",
-   "verb": "during",
-   "object": "the Hellenistic and Roman periods",
+   "verb": "were",
+   "object": "widely used as school texts in ancient Greek and Hellenistic cultures",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#7397-7530",
+     "at": "02-encyclopedic/wikipedia/Homer.txt#7236-7337",
      "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The Iliad, particularly its first few books, was far more intently studied than the Odyssey during the Hellenistic and Roman periods."
-    }
-   ]
-  },
-  {
-   "id": "the odyssey|especially|so",
-   "subject": "the Odyssey",
-   "verb": "especially",
-   "object": "so",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#672-790",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The epics depict man's struggle, the Odyssey especially so, as Odysseus perseveres through the punishment of the gods."
+     "text": "The Iliad and the Odyssey were widely used as school texts in ancient Greek and Hellenistic cultures."
     }
    ]
   },
@@ -3859,7 +1630,7 @@
    "verb": "were",
    "object": "originally Oral traditiontransmitted orally",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3870,124 +1641,12 @@
    ]
   },
   {
-   "id": "the praise|of|judgment virgil has justly contested with him",
-   "subject": "The praise",
-   "verb": "of",
-   "object": "judgment Virgil has justly contested with him",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2267-2438",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The praise of judgment Virgil has justly contested with him, and others may have their pretensions as to particular excellencies; but his invention remains yet unrivalled."
-    }
-   ]
-  },
-  {
-   "id": "the preface|to|iliad (alexander pope translation)his translation of the iliad",
-   "subject": "the preface",
-   "verb": "to",
-   "object": "Iliad (Alexander Pope translation)his translation of the Iliad",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1870-2266",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "That one is Homer, Poet sovereign; in the preface to Iliad (Alexander Pope translation)his translation of the Iliad, Alexander Pope acknowledges that Homer has always been considered the \"greatest of poets\".wikisource:The Iliad of Homer (Pope)/PrefaceAlexander Pope's Preface to his translation of the Iliad:\"Homer is universally allowed to have had the greatest invention of any writer whatever."
-    }
-   ]
-  },
-  {
-   "id": "the study|of|homer is one of the oldest topics in scholarship",
-   "subject": "The study",
-   "verb": "of",
-   "object": "Homer is one of the oldest topics in scholarship",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#6781-6869",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The study of Homer is one of the oldest topics in scholarship, dating back to antiquity."
-    }
-   ]
-  },
-  {
-   "id": "the time|of|the roman emperor hadrian says epicaste (daughter of nestor (mythology)nestor) and telemachus (son of odysseus) were the parents of homer",
-   "subject": "the time",
-   "verb": "of",
-   "object": "the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4535-4973",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Another tradition from the time of the Roman emperor Hadrian says Epicaste (daughter of Nestor (mythology)Nestor) and Telemachus (son of Odysseus) were the parents of Homer.[http://mcllibrary.org/Hesiod/homrhes.html \"Hesiod, The Homeric Hymns, and Homerica\"] (Contest of Homer and Hesiod) The poet Pindar is credited with saying that Homer originated from Chios and Smyrna, both of which are also mentioned by other fifth-century writers."
-    }
-   ]
-  },
-  {
-   "id": "their pretensions|as|to particular excellencies",
-   "subject": "their pretensions",
-   "verb": "as",
-   "object": "to particular excellencies",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2267-2438",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The praise of judgment Virgil has justly contested with him, and others may have their pretensions as to particular excellencies; but his invention remains yet unrivalled."
-    }
-   ]
-  },
-  {
-   "id": "their tragic|and|serious themes",
-   "subject": "their tragic",
-   "verb": "and",
-   "object": "serious themes",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#1118-1356",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Despite being predominantly known for their tragic and serious themes, the Homeric poems also contain wiktionary:Homeric laughterinstances of comedy and laughter.Bell, Robert H.; \"Homer's humor: laughter in the Iliad\", hand 1 (2007), 596."
-    }
-   ]
-  },
-  {
-   "id": "them developed|to|explain parts that were culturally or linguistically difficult",
-   "subject": "them developed",
-   "verb": "to",
-   "object": "explain parts that were culturally or linguistically difficult",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#7532-7706",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "As a result of the poems' prominence in classical Greek education, extensive commentaries on them developed to explain parts that were culturally or linguistically difficult."
-    }
-   ]
-  },
-  {
    "id": "these claims|are|not considered authentic today and were not universally accepted in the ancient world",
    "subject": "These claims",
    "verb": "are",
    "object": "not considered authentic today and were not universally accepted in the ancient world",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4003,7 +1662,7 @@
    "verb": "were",
    "object": "the first literary works taught to all students",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4014,44 +1673,12 @@
    ]
   },
   {
-   "id": "two epigrams|in|the greek anthology by alcaeus of messene commemorate homer's death and burial on the island of ios",
-   "subject": "two epigrams",
-   "verb": "in",
-   "object": "the Greek Anthology by Alcaeus of Messene commemorate Homer's death and burial on the island of Ios",
+   "id": "virgil|refers|to homer as \"poet sovereign\"",
+   "subject": "Virgil",
+   "verb": "refers",
+   "object": "to Homer as \"Poet sovereign\"",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5687-5982",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "The two epigrams in the Greek Anthology by Alcaeus of Messene commemorate Homer's death and burial on the island of Ios, emphasizing both the poet's immortal fame and the honor bestowed upon the small island that serves as his tomb.[https://topostext.org/work/5337.1 Greek Anthology Book 7, 7.1]"
-    }
-   ]
-  },
-  {
-   "id": "two poems|as|the works of separate authors",
-   "subject": "two poems",
-   "verb": "as",
-   "object": "the works of separate authors",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#2844-2917",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Scholars generally regard the two poems as the works of separate authors."
-    }
-   ]
-  },
-  {
-   "id": "virgil refers|to|homer as \"poet sovereign\"",
-   "subject": "Virgil refers",
-   "verb": "to",
-   "object": "Homer as \"Poet sovereign\"",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Homer.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4060,74 +1687,10 @@
      "text": "In Dante Alighieri's Divine Comedy, Virgil refers to Homer as \"Poet sovereign\", king of all poets;wikisource:Divine Comedy (Longfellow 1867)/Volume 1/Canto 4Divine Comedy, Inferno, Canto IV, 86–88 (Longfellow's translation):Him with that falchion in his hand behold, ⁠Who comes before the three, even as their lord."
     }
    ]
-  },
-  {
-   "id": "was believed|during|that period that he lived after the trojan war",
-   "subject": "was believed",
-   "verb": "during",
-   "object": "that period that he lived after the Trojan War",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#3579-3766",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "During antiquity, biographical details about Homer's life became increasingly mythologized due to his anonymity, and it was believed during that period that he lived after the Trojan War."
-    }
-   ]
-  },
-  {
-   "id": "was revered|in|ancient greek society and is considered one of the most influential authors in history",
-   "subject": "was revered",
-   "verb": "in",
-   "object": "ancient Greek society and is considered one of the most influential authors in history",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#266-423",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Although his life and authorship remain obscure, Homer was revered in ancient Greek society and is considered one of the most influential authors in history."
-    }
-   ]
-  },
-  {
-   "id": "we caught|and|carry whatever we didn't\"",
-   "subject": "we caught",
-   "verb": "and",
-   "object": "carry whatever we didn't\"",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#4974-5286",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Other biographical traditions imagined Homer to have been a rhapsode or singer who performed at religious festivals, was a wandering bard or a composer of other works (the \"Homerica\"), or that he failed to solve a riddle set by fishermen.The riddle was: \"We left whatever we caught and carry whatever we didn't\"."
-    }
-   ]
-  },
-  {
-   "id": "works attributed|to|homer",
-   "subject": "Works attributed",
-   "verb": "to",
-   "object": "Homer",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Homer.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Homer.txt#5984-6009",
-     "ref": "02-encyclopedic/wikipedia/Homer.txt",
-     "text": "Works attributed to Homer"
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:35.709Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:17.523Z"
  }
 }

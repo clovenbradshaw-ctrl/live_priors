@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 21217,
   "bodyOffset": 0,
   "bodyChars": 21217,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,85 +55,39 @@
   "referentEvents": 17,
   "distinctReferents": 14,
   "examined": true,
-  "edgesFound": 55,
-  "extractionError": null
+  "edgesFound": 18,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 5,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 11
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 18,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 58,
-  "excerptOk": 58,
-  "rawChecked": 58,
-  "rawOk": 58,
+  "excerptChecked": 21,
+  "excerptOk": 21,
+  "rawChecked": 21,
+  "rawOk": 21,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 55,
-  "heard": 55,
+  "offered": 18,
+  "heard": 18,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "your lord|to|his servant zechariah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "your Lord to His servant Zechariah",
-    "subject": "your Lord",
-    "verb": "to",
-    "object": "His servant Zechariah",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#141-273",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[2] AR: ذِكْرُ رَحْمَتِ رَبِّكَ عَبْدَهُۥ زَكَرِيَّآ EN: [This is] a mention of the mercy of your Lord to His servant Zechariah"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he called|to|his lord a private supplication",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "he called to his Lord a private supplication",
-    "subject": "he called",
-    "verb": "to",
-    "object": "his Lord a private supplication",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#275-382",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[3] AR: إِذْ نَادَىٰ رَبَّهُۥ نِدَآءً خَفِيًّۭا EN: When he called to his Lord a private supplication."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "my head|has|filled with white",
@@ -132,7 +104,7 @@
     "verb": "has",
     "object": "filled with white",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,36 +113,7 @@
       "text": "[4] AR: قَالَ رَبِّ إِنِّى وَهَنَ ٱلْعَظْمُ مِنِّى وَٱشْتَعَلَ ٱلرَّأْسُ شَيْبًۭا وَلَمْ أَكُنۢ بِدُعَآئِكَ رَبِّ شَقِيًّۭا EN: He said, \"My Lord, indeed my bones have weakened, and my head has filled with white, and never have I been in my supplication to You, my Lord, unhappy."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "my supplication|to|you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "my supplication to You",
-    "subject": "my supplication",
-    "verb": "to",
-    "object": "You",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#384-668",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[4] AR: قَالَ رَبِّ إِنِّى وَهَنَ ٱلْعَظْمُ مِنِّى وَٱشْتَعَلَ ٱلرَّأْسُ شَيْبًۭا وَلَمْ أَكُنۢ بِدُعَآئِكَ رَبِّ شَقِيًّۭا EN: He said, \"My Lord, indeed my bones have weakened, and my head has filled with white, and never have I been in my supplication to You, my Lord, unhappy."
-     }
-    ],
-    "seq": 3,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -190,166 +133,21 @@
     "verb": "has",
     "object": "been barren",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#670-899",
       "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
       "text": "[5] AR: وَإِنِّى خِفْتُ ٱلْمَوَٰلِىَ مِن وَرَآءِى وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا فَهَبْ لِى مِن لَّدُنكَ وَلِيًّۭا EN: And indeed, I fear the successors after me, and my wife has been barren, so give me from Yourself an heir"
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "give me|from|yourself an heir",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "give me from Yourself an heir",
-    "subject": "give me",
-    "verb": "from",
-    "object": "Yourself an heir",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#670-899",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[5] AR: وَإِنِّى خِفْتُ ٱلْمَوَٰلِىَ مِن وَرَآءِى وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا فَهَبْ لِى مِن لَّدُنكَ وَلِيًّۭا EN: And indeed, I fear the successors after me, and my wife has been barren, so give me from Yourself an heir"
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "inherit me|and|inherit from the family of jacob",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "inherit me and inherit from the family of Jacob",
-    "subject": "inherit me",
-    "verb": "and",
-    "object": "inherit from the family of Jacob",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#901-1044",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[6] AR: يَرِثُنِى وَيَرِثُ مِنْ ءَالِ يَعْقُوبَ ۖ وَٱجْعَلْهُ رَبِّ رَضِيًّۭا EN: Who will inherit me and inherit from the family of Jacob."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tidings of|a|boy whose name will be john",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "tidings of a boy whose name will be John",
-    "subject": "tidings of",
-    "verb": "a",
-    "object": "boy whose name will be John",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1089-1302",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[7] AR: يَٰزَكَرِيَّآ إِنَّا نُبَشِّرُكَ بِغُلَٰمٍ ٱسْمُهُۥ يَحْيَىٰ لَمْ نَجْعَل لَّهُۥ مِن قَبْلُ سَمِيًّۭا EN: [He was told], \"O Zechariah, indeed We give you good tidings of a boy whose name will be John."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not assigned|to|any before [this] name",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not assigned to any before [this] name",
-    "subject": "not assigned",
-    "verb": "to",
-    "object": "any before [this] name",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1303-1351",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "We have not assigned to any before [this] name.\""
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "i have|a|boy when my wife has been barren and i have reached extreme old age?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "I have a boy when my wife has been barren and I have reached extreme old age?\"",
-    "subject": "I have",
-    "verb": "a",
-    "object": "boy when my wife has been barren and I have reached extreme old age?\"",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
+     },
      {
       "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1353-1588",
       "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
       "text": "[8] AR: قَالَ رَبِّ أَنَّىٰ يَكُونُ لِى غُلَٰمٌۭ وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا وَقَدْ بَلَغْتُ مِنَ ٱلْكِبَرِ عِتِيًّۭا EN: He said, \"My Lord, how will I have a boy when my wife has been barren and I have reached extreme old age?\""
-     },
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3879-4072",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[20] AR: قَالَتْ أَنَّىٰ يَكُونُ لِى غُلَٰمٌۭ وَلَمْ يَمْسَسْنِى بَشَرٌۭ وَلَمْ أَكُ بَغِيًّۭا EN: She said, \"How can I have a boy while no man has touched me and I have not been unchaste?\""
      }
     ],
-    "seq": 9,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -369,7 +167,7 @@
     "verb": "is",
     "object": "easy for Me",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -383,36 +181,7 @@
       "text": "[21] AR: قَالَ كَذَٰلِكِ قَالَ رَبُّكِ هُوَ عَلَىَّ هَيِّنٌۭ ۖ وَلِنَجْعَلَهُۥٓ ءَايَةًۭ لِّلنَّاسِ وَرَحْمَةًۭ مِّنَّا ۚ وَكَانَ أَمْرًۭا مَّقْضِيًّۭا EN: He said, \"Thus [it will be]; your Lord says, 'It is easy for Me, and We will make him a sign to the people and a mercy from Us."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "for me|a|sign",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "for me a sign",
-    "subject": "for me",
-    "verb": "a",
-    "object": "sign",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1836-2006",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[10] AR: قَالَ رَبِّ ٱجْعَل لِّىٓ ءَايَةًۭ ۚ قَالَ ءَايَتُكَ أَلَّا تُكَلِّمَ ٱلنَّاسَ ثَلَٰثَ لَيَالٍۢ سَوِيًّۭا EN: [Zechariah] said, \"My Lord, make for me a sign.\""
-     }
-    ],
-    "seq": 11,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -432,7 +201,7 @@
     "verb": "is",
     "object": "that you will not speak to the people for three nights",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -441,13 +210,13 @@
       "text": "He said, \"Your sign is that you will not speak to the people for three nights, [being] sound.\""
      }
     ],
-    "seq": 12,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "came out|to|his people from the prayer chamber and signaled to them to exalt [allah] in the morning and afternoon",
+    "task_id": "day he|is|raised alive",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -456,186 +225,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "came out to his people from the prayer chamber and signaled to them to exalt [Allah] in the morning and afternoon",
-    "subject": "came out",
-    "verb": "to",
-    "object": "his people from the prayer chamber and signaled to them to exalt [Allah] in the morning and afternoon",
+    "description": "day he is raised alive",
+    "subject": "day he",
+    "verb": "is",
+    "object": "raised alive",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2103-2344",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[11] AR: فَخَرَجَ عَلَىٰ قَوْمِهِۦ مِنَ ٱلْمِحْرَابِ فَأَوْحَىٰٓ إِلَيْهِمْ أَن سَبِّحُوا۟ بُكْرَةًۭ وَعَشِيًّۭا EN: So he came out to his people from the prayer chamber and signaled to them to exalt [Allah] in the morning and afternoon."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the scripture|with|determination",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Scripture with determination",
-    "subject": "the Scripture",
-    "verb": "with",
-    "object": "determination",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2346-2501",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[12] AR: يَٰيَحْيَىٰ خُذِ ٱلْكِتَٰبَ بِقُوَّةٍۢ ۖ وَءَاتَيْنَٰهُ ٱلْحُكْمَ صَبِيًّۭا EN: [Allah] said, \"O John, take the Scripture with determination.\""
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "him judgement|a|boy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "him judgement a boy",
-    "subject": "him judgement",
-    "verb": "a",
-    "object": "boy",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2502-2545",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "And We gave him judgement [while yet] a boy"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and affection|from|us and purity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And affection from Us and purity",
-    "subject": "And affection",
-    "verb": "from",
-    "object": "Us and purity",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2547-2684",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[13] AR: وَحَنَانًۭا مِّن لَّدُنَّا وَزَكَوٰةًۭ ۖ وَكَانَ تَقِيًّۭا EN: And affection from Us and purity, and he was fearing of Allah"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and dutiful|to|his parents",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "And dutiful to his parents",
-    "subject": "And dutiful",
-    "verb": "to",
-    "object": "his parents",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2686-2824",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[14] AR: وَبَرًّۢا بِوَٰلِدَيْهِ وَلَمْ يَكُن جَبَّارًا عَصِيًّۭا EN: And dutiful to his parents, and he was not a disobedient tyrant."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was not|a|disobedient tyrant",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was not a disobedient tyrant",
-    "subject": "was not",
-    "verb": "a",
-    "object": "disobedient tyrant",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2686-2824",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[14] AR: وَبَرًّۢا بِوَٰلِدَيْهِ وَلَمْ يَكُن جَبَّارًا عَصِيًّۭا EN: And dutiful to his parents, and he was not a disobedient tyrant."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was born|and|the day he dies and the day he is raised alive",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was born and the day he dies and the day he is raised alive",
-    "subject": "was born",
-    "verb": "and",
-    "object": "the day he dies and the day he is raised alive",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -644,13 +239,13 @@
       "text": "[15] AR: وَسَلَٰمٌ عَلَيْهِ يَوْمَ وُلِدَ وَيَوْمَ يَمُوتُ وَيَوْمَ يُبْعَثُ حَيًّۭا EN: And peace be upon him the day he was born and the day he dies and the day he is raised alive."
      }
     ],
-    "seq": 19,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "she withdrew|from|her family to a place toward the east",
+    "task_id": "no man|has|touched me and i have not been unchaste?\"",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -659,195 +254,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "she withdrew from her family to a place toward the east",
-    "subject": "she withdrew",
-    "verb": "from",
-    "object": "her family to a place toward the east",
+    "description": "no man has touched me and I have not been unchaste?\"",
+    "subject": "no man",
+    "verb": "has",
+    "object": "touched me and I have not been unchaste?\"",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3014-3239",
+      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3879-4072",
       "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[16] AR: وَٱذْكُرْ فِى ٱلْكِتَٰبِ مَرْيَمَ إِذِ ٱنتَبَذَتْ مِنْ أَهْلِهَا مَكَانًۭا شَرْقِيًّۭا EN: And mention, [O Muhammad], in the Book [the story of] Mary, when she withdrew from her family to a place toward the east."
+      "text": "[20] AR: قَالَتْ أَنَّىٰ يَكُونُ لِى غُلَٰمٌۭ وَلَمْ يَمْسَسْنِى بَشَرٌۭ وَلَمْ أَكُ بَغِيًّۭا EN: She said, \"How can I have a boy while no man has touched me and I have not been unchaste?\""
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in seclusion|from|them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in seclusion from them",
-    "subject": "in seclusion",
-    "verb": "from",
-    "object": "them",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3241-3413",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[17] AR: فَٱتَّخَذَتْ مِن دُونِهِمْ حِجَابًۭا فَأَرْسَلْنَآ إِلَيْهَا رُوحَنَا فَتَمَثَّلَ لَهَا بَشَرًۭا سَوِيًّۭا EN: And she took, in seclusion from them, a screen."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we sent|to|her our angel",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "We sent to her Our Angel",
-    "subject": "We sent",
-    "verb": "to",
-    "object": "her Our Angel",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3414-3506",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "Then We sent to her Our Angel, and he represented himself to her as a well-proportioned man."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "represented himself|to|her as a well-proportioned man",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "represented himself to her as a well-proportioned man",
-    "subject": "represented himself",
-    "verb": "to",
-    "object": "her as a well-proportioned man",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3414-3506",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "Then We sent to her Our Angel, and he represented himself to her as a well-proportioned man."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "most merciful|from|you",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Most Merciful from you",
-    "subject": "Most Merciful",
-    "verb": "from",
-    "object": "you",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3508-3704",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[18] AR: قَالَتْ إِنِّىٓ أَعُوذُ بِٱلرَّحْمَٰنِ مِنكَ إِن كُنتَ تَقِيًّۭا EN: She said, \"Indeed, I seek refuge in the Most Merciful from you, [so leave me], if you should be fearing of Allah.\""
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "your lord|to|give you [news of] a pure boy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "your Lord to give you [news of] a pure boy",
-    "subject": "your Lord",
-    "verb": "to",
-    "object": "give you [news of] a pure boy",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3706-3877",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[19] AR: قَالَ إِنَّمَآ أَنَا۠ رَسُولُ رَبِّكِ لِأَهَبَ لَكِ غُلَٰمًۭا زَكِيًّۭا EN: He said, \"I am only the messenger of your Lord to give you [news of] a pure boy.\""
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "make him|a|sign to the people and a mercy from us",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "make him a sign to the people and a mercy from Us",
-    "subject": "make him",
-    "verb": "a",
-    "object": "sign to the people and a mercy from Us",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4074-4361",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[21] AR: قَالَ كَذَٰلِكِ قَالَ رَبُّكِ هُوَ عَلَىَّ هَيِّنٌۭ ۖ وَلِنَجْعَلَهُۥٓ ءَايَةًۭ لِّلنَّاسِ وَرَحْمَةًۭ مِّنَّا ۚ وَكَانَ أَمْرًۭا مَّقْضِيًّۭا EN: He said, \"Thus [it will be]; your Lord says, 'It is easy for Me, and We will make him a sign to the people and a mercy from Us."
-     }
-    ],
-    "seq": 26,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -867,7 +288,7 @@
     "verb": "is",
     "object": "a matter [already] decreed",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -876,123 +297,7 @@
       "text": "And it is a matter [already] decreed.'"
      }
     ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "she withdrew|with|him to a remote place",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "she withdrew with him to a remote place",
-    "subject": "she withdrew",
-    "verb": "with",
-    "object": "him to a remote place",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4404-4541",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[22] AR: ۞ فَحَمَلَتْهُ فَٱنتَبَذَتْ بِهِۦ مَكَانًۭا قَصِيًّۭا EN: So she conceived him, and she withdrew with him to a remote place."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "drove her|to|the trunk of a palm tree",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "drove her to the trunk of a palm tree",
-    "subject": "drove her",
-    "verb": "to",
-    "object": "the trunk of a palm tree",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4543-4747",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[23] AR: فَأَجَآءَهَا ٱلْمَخَاضُ إِلَىٰ جِذْعِ ٱلنَّخْلَةِ قَالَتْ يَٰلَيْتَنِى مِتُّ قَبْلَ هَٰذَا وَكُنتُ نَسْيًۭا مَّنسِيًّۭا EN: And the pains of childbirth drove her to the trunk of a palm tree."
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "before this|and|was in oblivion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "before this and was in oblivion",
-    "subject": "before this",
-    "verb": "and",
-    "object": "was in oblivion",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4748-4825",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "She said, \"Oh, I wish I had died before this and was in oblivion, forgotten.\""
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "called her|from|below her",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "called her from below her",
-    "subject": "called her",
-    "verb": "from",
-    "object": "below her",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4827-5022",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[24] AR: فَنَادَىٰهَا مِن تَحْتِهَآ أَلَّا تَحْزَنِى قَدْ جَعَلَ رَبُّكِ تَحْتَكِ سَرِيًّۭا EN: But he called her from below her, \"Do not grieve; your Lord has provided beneath you a stream."
-     }
-    ],
-    "seq": 31,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -1012,7 +317,7 @@
     "verb": "has",
     "object": "provided beneath you a stream",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1021,13 +326,13 @@
       "text": "[24] AR: فَنَادَىٰهَا مِن تَحْتِهَآ أَلَّا تَحْزَنِى قَدْ جَعَلَ رَبُّكِ تَحْتَكِ سَرِيًّۭا EN: But he called her from below her, \"Do not grieve; your Lord has provided beneath you a stream."
      }
     ],
-    "seq": 32,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "so eat|and|drink and be contented",
+    "task_id": "one who|is|in the cradle a child?\"",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1036,244 +341,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "So eat and drink and be contented",
-    "subject": "So eat",
-    "verb": "and",
-    "object": "drink and be contented",
+    "description": "one who is in the cradle a child?\"",
+    "subject": "one who",
+    "verb": "is",
+    "object": "in the cradle a child?\"",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5210-5430",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[26] AR: فَكُلِى وَٱشْرَبِى وَقَرِّى عَيْنًۭا ۖ فَإِمَّا تَرَيِنَّ مِنَ ٱلْبَشَرِ أَحَدًۭا فَقُولِىٓ إِنِّى نَذَرْتُ لِلرَّحْمَٰنِ صَوْمًۭا فَلَنْ أُكَلِّمَ ٱلْيَوْمَ إِنسِيًّۭا EN: So eat and drink and be contented."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "you see|from|among humanity anyone",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "you see from among humanity anyone",
-    "subject": "you see",
-    "verb": "from",
-    "object": "among humanity anyone",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5431-5574",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "And if you see from among humanity anyone, say, 'Indeed, I have vowed to the Most Merciful abstention, so I will not speak today to [any] man.'"
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have vowed|to|the most merciful abstention",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "have vowed to the Most Merciful abstention",
-    "subject": "have vowed",
-    "verb": "to",
-    "object": "the Most Merciful abstention",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5431-5574",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "And if you see from among humanity anyone, say, 'Indeed, I have vowed to the Most Merciful abstention, so I will not speak today to [any] man.'"
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "speak today|to|[any] man",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "speak today to [any] man",
-    "subject": "speak today",
-    "verb": "to",
-    "object": "[any] man",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5431-5574",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "And if you see from among humanity anyone, say, 'Indeed, I have vowed to the Most Merciful abstention, so I will not speak today to [any] man.'"
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "brought him|to|her people",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "brought him to her people",
-    "subject": "brought him",
-    "verb": "to",
-    "object": "her people",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5578-5738",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[27] AR: فَأَتَتْ بِهِۦ قَوْمَهَا تَحْمِلُهُۥ ۖ قَالُوا۟ يَٰمَرْيَمُ لَقَدْ جِئْتِ شَيْـًۭٔا فَرِيًّۭا EN: Then she brought him to her people, carrying him."
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "certainly done|a|thing unprecedented",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "certainly done a thing unprecedented",
-    "subject": "certainly done",
-    "verb": "a",
-    "object": "thing unprecedented",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5739-5805",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "They said, \"O Mary, you have certainly done a thing unprecedented."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "was not|a|man of evil",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "was not a man of evil",
-    "subject": "was not",
-    "verb": "a",
-    "object": "man of evil",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5807-5994",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[28] AR: يَٰٓأُخْتَ هَٰرُونَ مَا كَانَ أَبُوكِ ٱمْرَأَ سَوْءٍۢ وَمَا كَانَتْ أُمُّكِ بَغِيًّۭا EN: O sister of Aaron, your father was not a man of evil, nor was your mother unchaste.\""
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "she pointed|to|him",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "she pointed to him",
-    "subject": "she pointed",
-    "verb": "to",
-    "object": "him",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5996-6118",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[29] AR: فَأَشَارَتْ إِلَيْهِ ۖ قَالُوا۟ كَيْفَ نُكَلِّمُ مَن كَانَ فِى ٱلْمَهْدِ صَبِيًّۭا EN: So she pointed to him."
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we speak|to|one who is in the cradle a child?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we speak to one who is in the cradle a child?\"",
-    "subject": "we speak",
-    "verb": "to",
-    "object": "one who is in the cradle a child?\"",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1282,7 +355,7 @@
       "text": "They said, \"How can we speak to one who is in the cradle a child?\""
      }
     ],
-    "seq": 41,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -1302,7 +375,7 @@
     "verb": "has",
     "object": "given me the Scripture and made me a prophet",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1311,7 +384,7 @@
       "text": "He has given me the Scripture and made me a prophet."
      }
     ],
-    "seq": 42,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -1331,7 +404,7 @@
     "verb": "has",
     "object": "made me blessed wherever I am and has enjoined upon me prayer and zakah as long as I remain alive",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1345,36 +418,7 @@
       "text": "[32] AR: وَبَرًّۢا بِوَٰلِدَتِى وَلَمْ يَجْعَلْنِى جَبَّارًۭا شَقِيًّۭا EN: And [made me] dutiful to my mother, and He has not made me a wretched tyrant."
      }
     ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dutiful|to|my mother",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dutiful to my mother",
-    "subject": "dutiful",
-    "verb": "to",
-    "object": "my mother",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#6608-6765",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[32] AR: وَبَرًّۢا بِوَٰلِدَتِى وَلَمْ يَجْعَلْنِى جَبَّارًۭا شَقِيًّۭا EN: And [made me] dutiful to my mother, and He has not made me a wretched tyrant."
-     }
-    ],
-    "seq": 44,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -1394,7 +438,7 @@
     "verb": "is",
     "object": "on me the day I was born and the day I will die and the day I am raised alive",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1403,7 +447,7 @@
       "text": "[33] AR: وَٱلسَّلَٰمُ عَلَىَّ يَوْمَ وُلِدتُّ وَيَوْمَ أَمُوتُ وَيَوْمَ أُبْعَثُ حَيًّۭا EN: And peace is on me the day I was born and the day I will die and the day I am raised alive.\""
      }
     ],
-    "seq": 45,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -1423,7 +467,7 @@
     "verb": "is",
     "object": "Jesus",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1432,7 +476,7 @@
       "text": "[34] AR: ذَٰلِكَ عِيسَى ٱبْنُ مَرْيَمَ ۚ قَوْلَ ٱلْحَقِّ ٱلَّذِى فِيهِ يَمْتَرُونَ EN: That is Jesus, the son of Mary - the word of truth about which they are in dispute."
      }
     ],
-    "seq": 46,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -1452,7 +496,7 @@
     "verb": "is",
     "object": "not [befitting] for Allah to take a son",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1461,7 +505,7 @@
       "text": "[35] AR: مَا كَانَ لِلَّهِ أَن يَتَّخِذَ مِن وَلَدٍۢ ۖ سُبْحَٰنَهُۥٓ ۚ إِذَا قَضَىٰٓ أَمْرًۭا فَإِنَّمَا يَقُولُ لَهُۥ كُن فَيَكُونُ EN: It is not [befitting] for Allah to take a son; exalted is He!"
      }
     ],
-    "seq": 47,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1481,7 +525,7 @@
     "verb": "is",
     "object": "He!",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1490,36 +534,7 @@
       "text": "[35] AR: مَا كَانَ لِلَّهِ أَن يَتَّخِذَ مِن وَلَدٍۢ ۖ سُبْحَٰنَهُۥٓ ۚ إِذَا قَضَىٰٓ أَمْرًۭا فَإِنَّمَا يَقُولُ لَهُۥ كُن فَيَكُونُ EN: It is not [befitting] for Allah to take a son; exalted is He!"
      }
     ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "he decrees|an|affair",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "He decrees an affair",
-    "subject": "He decrees",
-    "verb": "an",
-    "object": "affair",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#7337-7400",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "When He decrees an affair, He only says to it, \"Be,\" and it is."
-     }
-    ],
-    "seq": 49,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1539,7 +554,7 @@
     "verb": "says",
     "object": "to it",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1548,7 +563,7 @@
       "text": "When He decrees an affair, He only says to it, \"Be,\" and it is."
      }
     ],
-    "seq": 50,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1568,7 +583,7 @@
     "verb": "is",
     "object": "my Lord and your Lord",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1577,13 +592,13 @@
       "text": "[36] AR: وَإِنَّ ٱللَّهَ رَبِّى وَرَبُّكُمْ فَٱعْبُدُوهُ ۚ هَٰذَا صِرَٰطٌۭ مُّسْتَقِيمٌۭ EN: [Jesus said], \"And indeed, Allah is my Lord and your Lord, so worship Him."
      }
     ],
-    "seq": 51,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "that is|a|straight path",
+    "task_id": "that|is|a straight path",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1593,11 +608,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "That is a straight path",
-    "subject": "That is",
-    "verb": "a",
-    "object": "straight path",
+    "subject": "That",
+    "verb": "is",
+    "object": "a straight path",
     "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1606,70 +621,12 @@
       "text": "That is a straight path.\""
      }
     ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "factions differed|from|among them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "factions differed from among them",
-    "subject": "factions differed",
-    "verb": "from",
-    "object": "among them",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#7601-7854",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[37] AR: فَٱخْتَلَفَ ٱلْأَحْزَابُ مِنۢ بَيْنِهِمْ ۖ فَوَيْلٌۭ لِّلَّذِينَ كَفَرُوا۟ مِن مَّشْهَدِ يَوْمٍ عَظِيمٍ EN: Then the factions differed [concerning Jesus] from among them, so woe to those who disbelieved - from the scene of a tremendous Day."
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "so woe|to|those who disbelieved - from the scene of a tremendous day",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "so woe to those who disbelieved - from the scene of a tremendous Day",
-    "subject": "so woe",
-    "verb": "to",
-    "object": "those who disbelieved - from the scene of a tremendous Day",
-    "witnesses": [
-     "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#7601-7854",
-      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-      "text": "[37] AR: فَٱخْتَلَفَ ٱلْأَحْزَابُ مِنۢ بَيْنِهِمْ ۖ فَوَيْلٌۭ لِّلَّذِينَ كَفَرُوا۟ مِن مَّشْهَدِ يَوْمٍ عَظِيمٍ EN: Then the factions differed [concerning Jesus] from among them, so woe to those who disbelieved - from the scene of a tremendous Day."
-     }
-    ],
-    "seq": 54,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 55,
+  "nextSeq": 18,
   "admits": [
    "NUL",
    "SEG",
@@ -1689,7 +646,7 @@
    "verb": "is",
    "object": "easy for Me",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1710,7 +667,7 @@
    "verb": "is",
    "object": "my Lord and your Lord",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1721,44 +678,12 @@
    ]
   },
   {
-   "id": "and affection|from|us and purity",
-   "subject": "And affection",
-   "verb": "from",
-   "object": "Us and purity",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2547-2684",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[13] AR: وَحَنَانًۭا مِّن لَّدُنَّا وَزَكَوٰةًۭ ۖ وَكَانَ تَقِيًّۭا EN: And affection from Us and purity, and he was fearing of Allah"
-    }
-   ]
-  },
-  {
-   "id": "and dutiful|to|his parents",
-   "subject": "And dutiful",
-   "verb": "to",
-   "object": "his parents",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2686-2824",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[14] AR: وَبَرًّۢا بِوَٰلِدَيْهِ وَلَمْ يَكُن جَبَّارًا عَصِيًّۭا EN: And dutiful to his parents, and he was not a disobedient tyrant."
-    }
-   ]
-  },
-  {
    "id": "and he|has|made me blessed wherever i am and has enjoined upon me prayer and zakah as long as i remain alive",
    "subject": "And He",
    "verb": "has",
    "object": "made me blessed wherever I am and has enjoined upon me prayer and zakah as long as I remain alive",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1779,7 +704,7 @@
    "verb": "is",
    "object": "a matter [already] decreed",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1795,7 +720,7 @@
    "verb": "is",
    "object": "on me the day I was born and the day I will die and the day I am raised alive",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1806,114 +731,18 @@
    ]
   },
   {
-   "id": "before this|and|was in oblivion",
-   "subject": "before this",
-   "verb": "and",
-   "object": "was in oblivion",
+   "id": "day he|is|raised alive",
+   "subject": "day he",
+   "verb": "is",
+   "object": "raised alive",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4748-4825",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2826-3012",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "She said, \"Oh, I wish I had died before this and was in oblivion, forgotten.\""
-    }
-   ]
-  },
-  {
-   "id": "brought him|to|her people",
-   "subject": "brought him",
-   "verb": "to",
-   "object": "her people",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5578-5738",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[27] AR: فَأَتَتْ بِهِۦ قَوْمَهَا تَحْمِلُهُۥ ۖ قَالُوا۟ يَٰمَرْيَمُ لَقَدْ جِئْتِ شَيْـًۭٔا فَرِيًّۭا EN: Then she brought him to her people, carrying him."
-    }
-   ]
-  },
-  {
-   "id": "called her|from|below her",
-   "subject": "called her",
-   "verb": "from",
-   "object": "below her",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4827-5022",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[24] AR: فَنَادَىٰهَا مِن تَحْتِهَآ أَلَّا تَحْزَنِى قَدْ جَعَلَ رَبُّكِ تَحْتَكِ سَرِيًّۭا EN: But he called her from below her, \"Do not grieve; your Lord has provided beneath you a stream."
-    }
-   ]
-  },
-  {
-   "id": "came out|to|his people from the prayer chamber and signaled to them to exalt [allah] in the morning and afternoon",
-   "subject": "came out",
-   "verb": "to",
-   "object": "his people from the prayer chamber and signaled to them to exalt [Allah] in the morning and afternoon",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2103-2344",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[11] AR: فَخَرَجَ عَلَىٰ قَوْمِهِۦ مِنَ ٱلْمِحْرَابِ فَأَوْحَىٰٓ إِلَيْهِمْ أَن سَبِّحُوا۟ بُكْرَةًۭ وَعَشِيًّۭا EN: So he came out to his people from the prayer chamber and signaled to them to exalt [Allah] in the morning and afternoon."
-    }
-   ]
-  },
-  {
-   "id": "certainly done|a|thing unprecedented",
-   "subject": "certainly done",
-   "verb": "a",
-   "object": "thing unprecedented",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5739-5805",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "They said, \"O Mary, you have certainly done a thing unprecedented."
-    }
-   ]
-  },
-  {
-   "id": "drove her|to|the trunk of a palm tree",
-   "subject": "drove her",
-   "verb": "to",
-   "object": "the trunk of a palm tree",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4543-4747",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[23] AR: فَأَجَآءَهَا ٱلْمَخَاضُ إِلَىٰ جِذْعِ ٱلنَّخْلَةِ قَالَتْ يَٰلَيْتَنِى مِتُّ قَبْلَ هَٰذَا وَكُنتُ نَسْيًۭا مَّنسِيًّۭا EN: And the pains of childbirth drove her to the trunk of a palm tree."
-    }
-   ]
-  },
-  {
-   "id": "dutiful|to|my mother",
-   "subject": "dutiful",
-   "verb": "to",
-   "object": "my mother",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#6608-6765",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[32] AR: وَبَرًّۢا بِوَٰلِدَتِى وَلَمْ يَجْعَلْنِى جَبَّارًۭا شَقِيًّۭا EN: And [made me] dutiful to my mother, and He has not made me a wretched tyrant."
+     "text": "[15] AR: وَسَلَٰمٌ عَلَيْهِ يَوْمَ وُلِدَ وَيَوْمَ يَمُوتُ وَيَوْمَ يُبْعَثُ حَيًّۭا EN: And peace be upon him the day he was born and the day he dies and the day he is raised alive."
     }
    ]
   },
@@ -1923,7 +752,7 @@
    "verb": "is",
    "object": "He!",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1934,108 +763,12 @@
    ]
   },
   {
-   "id": "factions differed|from|among them",
-   "subject": "factions differed",
-   "verb": "from",
-   "object": "among them",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#7601-7854",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[37] AR: فَٱخْتَلَفَ ٱلْأَحْزَابُ مِنۢ بَيْنِهِمْ ۖ فَوَيْلٌۭ لِّلَّذِينَ كَفَرُوا۟ مِن مَّشْهَدِ يَوْمٍ عَظِيمٍ EN: Then the factions differed [concerning Jesus] from among them, so woe to those who disbelieved - from the scene of a tremendous Day."
-    }
-   ]
-  },
-  {
-   "id": "for me|a|sign",
-   "subject": "for me",
-   "verb": "a",
-   "object": "sign",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1836-2006",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[10] AR: قَالَ رَبِّ ٱجْعَل لِّىٓ ءَايَةًۭ ۚ قَالَ ءَايَتُكَ أَلَّا تُكَلِّمَ ٱلنَّاسَ ثَلَٰثَ لَيَالٍۢ سَوِيًّۭا EN: [Zechariah] said, \"My Lord, make for me a sign.\""
-    }
-   ]
-  },
-  {
-   "id": "give me|from|yourself an heir",
-   "subject": "give me",
-   "verb": "from",
-   "object": "Yourself an heir",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#670-899",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[5] AR: وَإِنِّى خِفْتُ ٱلْمَوَٰلِىَ مِن وَرَآءِى وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا فَهَبْ لِى مِن لَّدُنكَ وَلِيًّۭا EN: And indeed, I fear the successors after me, and my wife has been barren, so give me from Yourself an heir"
-    }
-   ]
-  },
-  {
-   "id": "have vowed|to|the most merciful abstention",
-   "subject": "have vowed",
-   "verb": "to",
-   "object": "the Most Merciful abstention",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5431-5574",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "And if you see from among humanity anyone, say, 'Indeed, I have vowed to the Most Merciful abstention, so I will not speak today to [any] man.'"
-    }
-   ]
-  },
-  {
-   "id": "he called|to|his lord a private supplication",
-   "subject": "he called",
-   "verb": "to",
-   "object": "his Lord a private supplication",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#275-382",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[3] AR: إِذْ نَادَىٰ رَبَّهُۥ نِدَآءً خَفِيًّۭا EN: When he called to his Lord a private supplication."
-    }
-   ]
-  },
-  {
-   "id": "he decrees|an|affair",
-   "subject": "He decrees",
-   "verb": "an",
-   "object": "affair",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#7337-7400",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "When He decrees an affair, He only says to it, \"Be,\" and it is."
-    }
-   ]
-  },
-  {
    "id": "he only|says|to it",
    "subject": "He only",
    "verb": "says",
    "object": "to it",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2051,7 +784,7 @@
    "verb": "has",
    "object": "given me the Scripture and made me a prophet",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2062,81 +795,12 @@
    ]
   },
   {
-   "id": "him judgement|a|boy",
-   "subject": "him judgement",
-   "verb": "a",
-   "object": "boy",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2502-2545",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "And We gave him judgement [while yet] a boy"
-    }
-   ]
-  },
-  {
-   "id": "i have|a|boy when my wife has been barren and i have reached extreme old age?\"",
-   "subject": "I have",
-   "verb": "a",
-   "object": "boy when my wife has been barren and I have reached extreme old age?\"",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1353-1588",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[8] AR: قَالَ رَبِّ أَنَّىٰ يَكُونُ لِى غُلَٰمٌۭ وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا وَقَدْ بَلَغْتُ مِنَ ٱلْكِبَرِ عِتِيًّۭا EN: He said, \"My Lord, how will I have a boy when my wife has been barren and I have reached extreme old age?\""
-    },
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3879-4072",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[20] AR: قَالَتْ أَنَّىٰ يَكُونُ لِى غُلَٰمٌۭ وَلَمْ يَمْسَسْنِى بَشَرٌۭ وَلَمْ أَكُ بَغِيًّۭا EN: She said, \"How can I have a boy while no man has touched me and I have not been unchaste?\""
-    }
-   ]
-  },
-  {
-   "id": "in seclusion|from|them",
-   "subject": "in seclusion",
-   "verb": "from",
-   "object": "them",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3241-3413",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[17] AR: فَٱتَّخَذَتْ مِن دُونِهِمْ حِجَابًۭا فَأَرْسَلْنَآ إِلَيْهَا رُوحَنَا فَتَمَثَّلَ لَهَا بَشَرًۭا سَوِيًّۭا EN: And she took, in seclusion from them, a screen."
-    }
-   ]
-  },
-  {
-   "id": "inherit me|and|inherit from the family of jacob",
-   "subject": "inherit me",
-   "verb": "and",
-   "object": "inherit from the family of Jacob",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#901-1044",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[6] AR: يَرِثُنِى وَيَرِثُ مِنْ ءَالِ يَعْقُوبَ ۖ وَٱجْعَلْهُ رَبِّ رَضِيًّۭا EN: Who will inherit me and inherit from the family of Jacob."
-    }
-   ]
-  },
-  {
    "id": "it|is|not [befitting] for allah to take a son",
    "subject": "It",
    "verb": "is",
    "object": "not [befitting] for Allah to take a son",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2147,60 +811,12 @@
    ]
   },
   {
-   "id": "make him|a|sign to the people and a mercy from us",
-   "subject": "make him",
-   "verb": "a",
-   "object": "sign to the people and a mercy from Us",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4074-4361",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[21] AR: قَالَ كَذَٰلِكِ قَالَ رَبُّكِ هُوَ عَلَىَّ هَيِّنٌۭ ۖ وَلِنَجْعَلَهُۥٓ ءَايَةًۭ لِّلنَّاسِ وَرَحْمَةًۭ مِّنَّا ۚ وَكَانَ أَمْرًۭا مَّقْضِيًّۭا EN: He said, \"Thus [it will be]; your Lord says, 'It is easy for Me, and We will make him a sign to the people and a mercy from Us."
-    }
-   ]
-  },
-  {
-   "id": "most merciful|from|you",
-   "subject": "Most Merciful",
-   "verb": "from",
-   "object": "you",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3508-3704",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[18] AR: قَالَتْ إِنِّىٓ أَعُوذُ بِٱلرَّحْمَٰنِ مِنكَ إِن كُنتَ تَقِيًّۭا EN: She said, \"Indeed, I seek refuge in the Most Merciful from you, [so leave me], if you should be fearing of Allah.\""
-    }
-   ]
-  },
-  {
    "id": "my head|has|filled with white",
    "subject": "my head",
    "verb": "has",
    "object": "filled with white",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#384-668",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[4] AR: قَالَ رَبِّ إِنِّى وَهَنَ ٱلْعَظْمُ مِنِّى وَٱشْتَعَلَ ٱلرَّأْسُ شَيْبًۭا وَلَمْ أَكُنۢ بِدُعَآئِكَ رَبِّ شَقِيًّۭا EN: He said, \"My Lord, indeed my bones have weakened, and my head has filled with white, and never have I been in my supplication to You, my Lord, unhappy."
-    }
-   ]
-  },
-  {
-   "id": "my supplication|to|you",
-   "subject": "my supplication",
-   "verb": "to",
-   "object": "You",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2216,151 +832,60 @@
    "verb": "has",
    "object": "been barren",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#670-899",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
      "text": "[5] AR: وَإِنِّى خِفْتُ ٱلْمَوَٰلِىَ مِن وَرَآءِى وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا فَهَبْ لِى مِن لَّدُنكَ وَلِيًّۭا EN: And indeed, I fear the successors after me, and my wife has been barren, so give me from Yourself an heir"
+    },
+    {
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1353-1588",
+     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
+     "text": "[8] AR: قَالَ رَبِّ أَنَّىٰ يَكُونُ لِى غُلَٰمٌۭ وَكَانَتِ ٱمْرَأَتِى عَاقِرًۭا وَقَدْ بَلَغْتُ مِنَ ٱلْكِبَرِ عِتِيًّۭا EN: He said, \"My Lord, how will I have a boy when my wife has been barren and I have reached extreme old age?\""
     }
    ]
   },
   {
-   "id": "not assigned|to|any before [this] name",
-   "subject": "not assigned",
-   "verb": "to",
-   "object": "any before [this] name",
+   "id": "no man|has|touched me and i have not been unchaste?\"",
+   "subject": "no man",
+   "verb": "has",
+   "object": "touched me and I have not been unchaste?\"",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1303-1351",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3879-4072",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "We have not assigned to any before [this] name.\""
+     "text": "[20] AR: قَالَتْ أَنَّىٰ يَكُونُ لِى غُلَٰمٌۭ وَلَمْ يَمْسَسْنِى بَشَرٌۭ وَلَمْ أَكُ بَغِيًّۭا EN: She said, \"How can I have a boy while no man has touched me and I have not been unchaste?\""
     }
    ]
   },
   {
-   "id": "represented himself|to|her as a well-proportioned man",
-   "subject": "represented himself",
-   "verb": "to",
-   "object": "her as a well-proportioned man",
+   "id": "one who|is|in the cradle a child?\"",
+   "subject": "one who",
+   "verb": "is",
+   "object": "in the cradle a child?\"",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3414-3506",
+     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#6119-6185",
      "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "Then We sent to her Our Angel, and he represented himself to her as a well-proportioned man."
+     "text": "They said, \"How can we speak to one who is in the cradle a child?\""
     }
    ]
   },
   {
-   "id": "she pointed|to|him",
-   "subject": "she pointed",
-   "verb": "to",
-   "object": "him",
+   "id": "that|is|a straight path",
+   "subject": "That",
+   "verb": "is",
+   "object": "a straight path",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5996-6118",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[29] AR: فَأَشَارَتْ إِلَيْهِ ۖ قَالُوا۟ كَيْفَ نُكَلِّمُ مَن كَانَ فِى ٱلْمَهْدِ صَبِيًّۭا EN: So she pointed to him."
-    }
-   ]
-  },
-  {
-   "id": "she withdrew|from|her family to a place toward the east",
-   "subject": "she withdrew",
-   "verb": "from",
-   "object": "her family to a place toward the east",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3014-3239",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[16] AR: وَٱذْكُرْ فِى ٱلْكِتَٰبِ مَرْيَمَ إِذِ ٱنتَبَذَتْ مِنْ أَهْلِهَا مَكَانًۭا شَرْقِيًّۭا EN: And mention, [O Muhammad], in the Book [the story of] Mary, when she withdrew from her family to a place toward the east."
-    }
-   ]
-  },
-  {
-   "id": "she withdrew|with|him to a remote place",
-   "subject": "she withdrew",
-   "verb": "with",
-   "object": "him to a remote place",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#4404-4541",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[22] AR: ۞ فَحَمَلَتْهُ فَٱنتَبَذَتْ بِهِۦ مَكَانًۭا قَصِيًّۭا EN: So she conceived him, and she withdrew with him to a remote place."
-    }
-   ]
-  },
-  {
-   "id": "so eat|and|drink and be contented",
-   "subject": "So eat",
-   "verb": "and",
-   "object": "drink and be contented",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5210-5430",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[26] AR: فَكُلِى وَٱشْرَبِى وَقَرِّى عَيْنًۭا ۖ فَإِمَّا تَرَيِنَّ مِنَ ٱلْبَشَرِ أَحَدًۭا فَقُولِىٓ إِنِّى نَذَرْتُ لِلرَّحْمَٰنِ صَوْمًۭا فَلَنْ أُكَلِّمَ ٱلْيَوْمَ إِنسِيًّۭا EN: So eat and drink and be contented."
-    }
-   ]
-  },
-  {
-   "id": "so woe|to|those who disbelieved - from the scene of a tremendous day",
-   "subject": "so woe",
-   "verb": "to",
-   "object": "those who disbelieved - from the scene of a tremendous Day",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#7601-7854",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[37] AR: فَٱخْتَلَفَ ٱلْأَحْزَابُ مِنۢ بَيْنِهِمْ ۖ فَوَيْلٌۭ لِّلَّذِينَ كَفَرُوا۟ مِن مَّشْهَدِ يَوْمٍ عَظِيمٍ EN: Then the factions differed [concerning Jesus] from among them, so woe to those who disbelieved - from the scene of a tremendous Day."
-    }
-   ]
-  },
-  {
-   "id": "speak today|to|[any] man",
-   "subject": "speak today",
-   "verb": "to",
-   "object": "[any] man",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5431-5574",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "And if you see from among humanity anyone, say, 'Indeed, I have vowed to the Most Merciful abstention, so I will not speak today to [any] man.'"
-    }
-   ]
-  },
-  {
-   "id": "that is|a|straight path",
-   "subject": "That is",
-   "verb": "a",
-   "object": "straight path",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2376,7 +901,7 @@
    "verb": "is",
    "object": "Jesus",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2387,140 +912,12 @@
    ]
   },
   {
-   "id": "the scripture|with|determination",
-   "subject": "the Scripture",
-   "verb": "with",
-   "object": "determination",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2346-2501",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[12] AR: يَٰيَحْيَىٰ خُذِ ٱلْكِتَٰبَ بِقُوَّةٍۢ ۖ وَءَاتَيْنَٰهُ ٱلْحُكْمَ صَبِيًّۭا EN: [Allah] said, \"O John, take the Scripture with determination.\""
-    }
-   ]
-  },
-  {
-   "id": "tidings of|a|boy whose name will be john",
-   "subject": "tidings of",
-   "verb": "a",
-   "object": "boy whose name will be John",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#1089-1302",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[7] AR: يَٰزَكَرِيَّآ إِنَّا نُبَشِّرُكَ بِغُلَٰمٍ ٱسْمُهُۥ يَحْيَىٰ لَمْ نَجْعَل لَّهُۥ مِن قَبْلُ سَمِيًّۭا EN: [He was told], \"O Zechariah, indeed We give you good tidings of a boy whose name will be John."
-    }
-   ]
-  },
-  {
-   "id": "was born|and|the day he dies and the day he is raised alive",
-   "subject": "was born",
-   "verb": "and",
-   "object": "the day he dies and the day he is raised alive",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2826-3012",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[15] AR: وَسَلَٰمٌ عَلَيْهِ يَوْمَ وُلِدَ وَيَوْمَ يَمُوتُ وَيَوْمَ يُبْعَثُ حَيًّۭا EN: And peace be upon him the day he was born and the day he dies and the day he is raised alive."
-    }
-   ]
-  },
-  {
-   "id": "was not|a|disobedient tyrant",
-   "subject": "was not",
-   "verb": "a",
-   "object": "disobedient tyrant",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#2686-2824",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[14] AR: وَبَرًّۢا بِوَٰلِدَيْهِ وَلَمْ يَكُن جَبَّارًا عَصِيًّۭا EN: And dutiful to his parents, and he was not a disobedient tyrant."
-    }
-   ]
-  },
-  {
-   "id": "was not|a|man of evil",
-   "subject": "was not",
-   "verb": "a",
-   "object": "man of evil",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5807-5994",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[28] AR: يَٰٓأُخْتَ هَٰرُونَ مَا كَانَ أَبُوكِ ٱمْرَأَ سَوْءٍۢ وَمَا كَانَتْ أُمُّكِ بَغِيًّۭا EN: O sister of Aaron, your father was not a man of evil, nor was your mother unchaste.\""
-    }
-   ]
-  },
-  {
-   "id": "we sent|to|her our angel",
-   "subject": "We sent",
-   "verb": "to",
-   "object": "her Our Angel",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3414-3506",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "Then We sent to her Our Angel, and he represented himself to her as a well-proportioned man."
-    }
-   ]
-  },
-  {
-   "id": "we speak|to|one who is in the cradle a child?\"",
-   "subject": "we speak",
-   "verb": "to",
-   "object": "one who is in the cradle a child?\"",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#6119-6185",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "They said, \"How can we speak to one who is in the cradle a child?\""
-    }
-   ]
-  },
-  {
-   "id": "you see|from|among humanity anyone",
-   "subject": "you see",
-   "verb": "from",
-   "object": "among humanity anyone",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#5431-5574",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "And if you see from among humanity anyone, say, 'Indeed, I have vowed to the Most Merciful abstention, so I will not speak today to [any] man.'"
-    }
-   ]
-  },
-  {
    "id": "your lord|has|provided beneath you a stream",
    "subject": "your Lord",
    "verb": "has",
    "object": "provided beneath you a stream",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2531,44 +928,12 @@
    ]
   },
   {
-   "id": "your lord|to|give you [news of] a pure boy",
-   "subject": "your Lord",
-   "verb": "to",
-   "object": "give you [news of] a pure boy",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#3706-3877",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[19] AR: قَالَ إِنَّمَآ أَنَا۠ رَسُولُ رَبِّكِ لِأَهَبَ لَكِ غُلَٰمًۭا زَكِيًّۭا EN: He said, \"I am only the messenger of your Lord to give you [news of] a pure boy.\""
-    }
-   ]
-  },
-  {
-   "id": "your lord|to|his servant zechariah",
-   "subject": "your Lord",
-   "verb": "to",
-   "object": "His servant Zechariah",
-   "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt#141-273",
-     "ref": "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt",
-     "text": "[2] AR: ذِكْرُ رَحْمَتِ رَبِّكَ عَبْدَهُۥ زَكَرِيَّآ EN: [This is] a mention of the mercy of your Lord to His servant Zechariah"
-    }
-   ]
-  },
-  {
    "id": "your sign|is|that you will not speak to the people for three nights",
    "subject": "Your sign",
    "verb": "is",
    "object": "that you will not speak to the people for three nights",
    "witnesses": [
-    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@b2de25493ccfe8e8"
+    "14-holy-texts/tanzil-quran/parallel/surah_019_parallel.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2580,7 +945,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:54.516Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:52.283Z"
  }
 }

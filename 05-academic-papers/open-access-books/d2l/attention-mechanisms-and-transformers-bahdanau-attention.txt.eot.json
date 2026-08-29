@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 23495,
   "bodyOffset": 0,
   "bodyChars": 23495,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,63 +55,39 @@
   "referentEvents": 3,
   "distinctReferents": 3,
   "examined": true,
-  "edgesFound": 37,
+  "edgesFound": 9,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 7,
+   "verbs": 2,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 7
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 9,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 43,
-  "excerptOk": 43,
-  "rawChecked": 43,
-  "rawOk": 43,
+  "excerptChecked": 9,
+  "excerptOk": 9,
+  "rawChecked": 9,
+  "rawOk": 9,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 37,
-  "heard": 37,
+  "offered": 9,
+  "heard": 9,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "an rnn|all|relevant information about a source sequence is translated into some internal *fixed-dimensional* state representation by the encoder",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "an RNN all relevant information about a source sequence is translated into some internal *fixed-dimensional* state representation by the encoder",
-    "subject": "an RNN",
-    "verb": "all",
-    "object": "relevant information about a source sequence is translated into some internal *fixed-dimensional* state representation by the encoder",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#858-1022",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "Conventionally, in an RNN all relevant information about a source sequence is translated into some internal *fixed-dimensional* state representation by the encoder."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "by the|decoder|as the complete and exclusive source of information for generating the translated sequence",
@@ -110,7 +104,7 @@
     "verb": "decoder",
     "object": "as the complete and exclusive source of information for generating the translated sequence",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -119,13 +113,13 @@
       "text": "It is this very state that is used by the decoder as the complete and exclusive source of information for generating the translated sequence."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "sufficient statistic|of|whatever string might have served as input",
+    "task_id": "between the|encoder|and the decoder",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -134,41 +128,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "sufficient statistic of whatever string might have served as input",
-    "subject": "sufficient statistic",
-    "verb": "of",
-    "object": "whatever string might have served as input",
+    "description": "between the encoder and the decoder",
+    "subject": "between the",
+    "verb": "encoder",
+    "object": "and the decoder",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1165-1318",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "In other words, the sequence-to-sequence mechanism treats the intermediate state as a sufficient statistic of whatever string might have served as input."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "only piece|of|information shared between the encoder and the decoder",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "only piece of information shared between the encoder and the decoder",
-    "subject": "only piece",
-    "verb": "of",
-    "object": "information shared between the encoder and the decoder",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -177,36 +142,7 @@
       "text": "The state, as generated by the encoder, is the only piece of information shared between the encoder and the decoder.](../img/seq2seq-state.svg) :label:`fig_s2s_attention_state`"
      }
     ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "intermediate representation|to|store all that is important in the source sequence",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "intermediate representation to store all that is important in the source sequence",
-    "subject": "intermediate representation",
-    "verb": "to",
-    "object": "store all that is important in the source sequence",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1687-1843",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "After all, before too long there will simply not be enough \"space\" in the intermediate representation to store all that is important in the source sequence."
-     }
-    ],
-    "seq": 4,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -226,7 +162,7 @@
     "verb": "decoder",
     "object": "will fail to translate long and complex sentences",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -235,13 +171,13 @@
       "text": "Consequently the decoder will fail to translate long and complex sentences."
      }
     ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "one|of|the first to encounter this was :citet:`graves",
+    "task_id": "in the|decoder|as further context (i",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -250,486 +186,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "One of the first to encounter this was :citet:`Graves",
-    "subject": "One",
-    "verb": "of",
-    "object": "the first to encounter this was :citet:`Graves",
+    "description": "in the decoder as further context (i",
+    "subject": "in the",
+    "verb": "decoder",
+    "object": "as further context (i",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1920-2036",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "One of the first to encounter this was :citet:`Graves.2013` who tried to design an RNN to generate handwritten text."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "who tried|to|design an rnn to generate handwritten text",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "who tried to design an RNN to generate handwritten text",
-    "subject": "who tried",
-    "verb": "to",
-    "object": "design an RNN to generate handwritten text",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1920-2036",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "One of the first to encounter this was :citet:`Graves.2013` who tried to design an RNN to generate handwritten text."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "attention model|to|align text characters with the much longer pen trace",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "attention model to align text characters with the much longer pen trace",
-    "subject": "attention model",
-    "verb": "to",
-    "object": "align text characters with the much longer pen trace",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2037-2232",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "Since the source text has arbitrary length they designed a differentiable attention model to align text characters with the much longer pen trace, where the alignment moves only in one direction."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "hidden markov|models|:cite:`rabiner1993fundamentals`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "hidden Markov models :cite:`rabiner1993fundamentals`",
-    "subject": "hidden Markov",
-    "verb": "models",
-    "object": ":cite:`rabiner1993fundamentals`",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2233-2359",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "This, in turn, draws on decoding algorithms in speech recognition, e.g., hidden Markov models :cite:`rabiner1993fundamentals`."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the idea|of|learning to align",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the idea of learning to align",
-    "subject": "the idea",
-    "verb": "of",
-    "object": "learning to align",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2361-2530",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "Inspired by the idea of learning to align, :citet:`Bahdanau.Cho.Bengio.2014` proposed a differentiable attention model *without* the unidirectional alignment limitation."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "if not|all|the input tokens are relevant",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "if not all the input tokens are relevant",
-    "subject": "if not",
-    "verb": "all",
-    "object": "the input tokens are relevant",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2531-2715",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "When predicting a token, if not all the input tokens are relevant, the model aligns (or attends) only to parts of the input sequence that are deemed relevant to the current prediction."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "deemed relevant|to|the current prediction",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "deemed relevant to the current prediction",
-    "subject": "deemed relevant",
-    "verb": "to",
-    "object": "the current prediction",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2531-2715",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "When predicting a token, if not all the input tokens are relevant, the model aligns (or attends) only to parts of the input sequence that are deemed relevant to the current prediction."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "then used|to|update the current state before generating the next token",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "then used to update the current state before generating the next token",
-    "subject": "then used",
-    "verb": "to",
-    "object": "update the current state before generating the next token",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2716-2795",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "This is then used to update the current state before generating the next token."
-     },
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4424-4562",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "Note that $\\mathbf{c}_{t'}$ is then used to generate the state $\\mathbf{s}_{t'}$ and to generate a new token: see :eqref:`eq_seq2seq_s_t`."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bahdanau|attention|mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Bahdanau attention mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning",
-    "subject": "Bahdanau",
-    "verb": "attention",
-    "object": "mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2796-3072",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "While quite innocuous in its description, this *Bahdanau attention mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning, giving rise to Transformers :cite:`Vaswani.Shazeer.Parmar.ea.2017` and many related new architectures."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "giving rise|to|transformers :cite:`vaswani",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "giving rise to Transformers :cite:`Vaswani",
-    "subject": "giving rise",
-    "verb": "to",
-    "object": "Transformers :cite:`Vaswani",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2796-3072",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "While quite innocuous in its description, this *Bahdanau attention mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning, giving rise to Transformers :cite:`Vaswani.Shazeer.Parmar.ea.2017` and many related new architectures."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sequence architecture|of|:numref:`sec_seq2seq`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sequence architecture of :numref:`sec_seq2seq`",
-    "subject": "sequence architecture",
-    "verb": "of",
-    "object": ":numref:`sec_seq2seq`",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#3560-3699",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "We follow the notation introduced by the sequence-to-sequence architecture of :numref:`sec_seq2seq`, in particular :eqref:`eq_seq2seq_s_t`."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "that instead|of|keeping the state",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "that instead of keeping the state",
-    "subject": "that instead",
-    "verb": "of",
-    "object": "keeping the state",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#3700-4025",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "The key idea is that instead of keeping the state, i.e., the context variable $\\mathbf{c}$ summarizing the source sentence, as fixed, we dynamically update it, as a function of both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)."
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a function|of|both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a function of both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)",
-    "subject": "a function",
-    "verb": "of",
-    "object": "both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#3700-4025",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "The key idea is that instead of keeping the state, i.e., the context variable $\\mathbf{c}$ summarizing the source sentence, as fixed, we dynamically update it, as a function of both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)."
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sequence is|of|length $t$",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sequence is of length $T$",
-    "subject": "sequence is",
-    "verb": "of",
-    "object": "length $T$",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4109-4158",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "Suppose that the input sequence is of length $T$."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the output|of|attention pooling:",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the output of attention pooling:",
-    "subject": "the output",
-    "verb": "of",
-    "object": "attention pooling:",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4159-4228",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "In this case the context variable is the output of attention pooling:"
-     },
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6602-6727",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "Both the output of the attention mechanism and the input embedding are concatenated to serve as the input of the RNN decoder."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "architecture\nusing|attention|is depicted in :numref:`fig_s2s_attention_details`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "architecture\nusing attention is depicted in :numref:`fig_s2s_attention_details`",
-    "subject": "architecture\nusing",
-    "verb": "attention",
-    "object": "is depicted in :numref:`fig_s2s_attention_details`",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4741-4847",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "This RNN encoder--decoder architecture using attention is depicted in :numref:`fig_s2s_attention_details`."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "so as|to|include the already generated tokens in the decoder as further context (i",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "so as to include the already generated tokens in the decoder as further context (i",
-    "subject": "so as",
-    "verb": "to",
-    "object": "include the already generated tokens in the decoder as further context (i",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -738,123 +200,7 @@
       "text": "Note that later this model was modified so as to include the already generated tokens in the decoder as further context (i.e., the attention sum does not stop at $T$ but rather it proceeds up to $t'-1$)."
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the|attention|sum does not stop at $t$ but rather it proceeds up to $t'-1$)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the attention sum does not stop at $T$ but rather it proceeds up to $t'-1$)",
-    "subject": "the",
-    "verb": "attention",
-    "object": "sum does not stop at $T$ but rather it proceeds up to $t'-1$)",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4848-5051",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "Note that later this model was modified so as to include the already generated tokens in the decoder as further context (i.e., the attention sum does not stop at $T$ but rather it proceeds up to $t'-1$)."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a description|of|this strategy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a description of this strategy",
-    "subject": "a description",
-    "verb": "of",
-    "object": "this strategy",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#5052-5163",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "For instance, see :citet:`chan2015listen` for a description of this strategy, as applied to speech recognition."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as applied|to|speech recognition",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as applied to speech recognition",
-    "subject": "as applied",
-    "verb": "to",
-    "object": "speech recognition",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#5052-5163",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "For instance, see :citet:`chan2015listen` for a description of this strategy, as applied to speech recognition."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the bahdanau|attention|mechanism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Bahdanau attention mechanism",
-    "subject": "the Bahdanau",
-    "verb": "attention",
-    "object": "mechanism",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#5165-5319",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "![Layers in an RNN encoder--decoder model with the Bahdanau attention mechanism.](../img/seq2seq-details-attention.svg) :label:`fig_s2s_attention_details`"
-     }
-    ],
-    "seq": 26,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -874,7 +220,7 @@
     "verb": "decoder",
     "object": "with Attention",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -883,13 +229,13 @@
       "text": "## Defining the Decoder with Attention"
      }
     ],
-    "seq": 27,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "only need|to|redefine the decoder (omitting the generated symbols from the attention function simplifies the design)",
+    "task_id": "redefine the|decoder|(omitting the generated symbols from the attention function simplifies the design)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -898,12 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "only need to redefine the decoder (omitting the generated symbols from the attention function simplifies the design)",
-    "subject": "only need",
-    "verb": "to",
-    "object": "redefine the decoder (omitting the generated symbols from the attention function simplifies the design)",
+    "description": "redefine the decoder (omitting the generated symbols from the attention function simplifies the design)",
+    "subject": "redefine the",
+    "verb": "decoder",
+    "object": "(omitting the generated symbols from the attention function simplifies the design)",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -912,7 +258,7 @@
       "text": "To implement the RNN encoder--decoder with attention, we only need to redefine the decoder (omitting the generated symbols from the attention function simplifies the design)."
      }
     ],
-    "seq": 28,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -932,7 +278,7 @@
     "verb": "decoder",
     "object": "interface",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -941,13 +287,13 @@
       "text": "```{.python .input} %%tab pytorch, mxnet, tensorflow class AttentionDecoder(d2l.Decoder): #@save \"\"\"The base attention-based decoder interface.\"\"\""
      }
     ],
-    "seq": 29,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "hidden states|of|the last layer of the encoder at all time steps",
+    "task_id": "of the|encoder|at all time steps",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -956,46 +302,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "hidden states of the last layer of the encoder at all time steps",
-    "subject": "hidden states",
-    "verb": "of",
-    "object": "the last layer of the encoder at all time steps",
+    "description": "of the encoder at all time steps",
+    "subject": "of the",
+    "verb": "encoder",
+    "object": "at all time steps",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6049-6436",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
-     },
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6437-6601",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "At each decoding time step, the hidden state of the final layer of the decoder, obtained at the previous time step, is used as the query of the attention mechanism."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "which serves|to|initialize the hidden state of the decoder",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "which serves to initialize the hidden state of the decoder",
-    "subject": "which serves",
-    "verb": "to",
-    "object": "initialize the hidden state of the decoder",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1004,13 +316,13 @@
       "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
      }
     ],
-    "seq": 31,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "valid length|of|the encoder",
+    "task_id": "of the|encoder|at all layers at the final time step",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1019,12 +331,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "valid length of the encoder",
-    "subject": "valid length",
-    "verb": "of",
-    "object": "the encoder",
+    "description": "of the encoder at all layers at the final time step",
+    "subject": "of the",
+    "verb": "encoder",
+    "object": "at all layers at the final time step",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1033,143 +345,12 @@
       "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
      }
     ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tokens in|attention|pooling",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "tokens in attention pooling",
-    "subject": "tokens in",
-    "verb": "attention",
-    "object": "pooling",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6049-6436",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the query|of|the attention mechanism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the query of the attention mechanism",
-    "subject": "the query",
-    "verb": "of",
-    "object": "the attention mechanism",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6437-6601",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "At each decoding time step, the hidden state of the final layer of the decoder, obtained at the previous time step, is used as the query of the attention mechanism."
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shape|of|outputs: (num_steps",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Shape of outputs: (num_steps",
-    "subject": "Shape",
-    "verb": "of",
-    "object": "outputs: (num_steps",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7239-7355",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "def init_state(self, enc_outputs, enc_valid_lens): # Shape of outputs: (num_steps, batch_size, num_hiddens)."
-     },
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7364-7540",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "# Shape of hidden_state: (num_layers, batch_size, num_hiddens) outputs, hidden_state = enc_outputs return (outputs.swapaxes(0, 1), hidden_state, enc_valid_lens)"
-     },
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7546-7644",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "def forward(self, X, state): # Shape of enc_outputs: (batch_size, num_steps, num_hiddens)."
-     },
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7653-8000",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "# Shape of hidden_state: (num_layers, batch_size, num_hiddens) enc_outputs, hidden_state, enc_valid_lens = state # Shape of the output X: (num_steps, batch_size, embed_size) X = self.embedding(X).swapaxes(0, 1) outputs, self._attention_weights = [], [] for x in X: # Shape of query: (batch_size,"
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "shape|of|query: (batch_size",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Shape of query: (batch_size",
-    "subject": "Shape",
-    "verb": "of",
-    "object": "query: (batch_size",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7653-8000",
-      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-      "text": "# Shape of hidden_state: (num_layers, batch_size, num_hiddens) enc_outputs, hidden_state, enc_valid_lens = state # Shape of the output X: (num_steps, batch_size, embed_size) X = self.embedding(X).swapaxes(0, 1) outputs, self._attention_weights = [], [] for x in X: # Shape of query: (batch_size,"
-     }
-    ],
-    "seq": 36,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 37,
+  "nextSeq": 9,
   "admits": [
    "NUL",
    "SEG",
@@ -1184,124 +365,12 @@
  },
  "folded": [
   {
-   "id": "a description|of|this strategy",
-   "subject": "a description",
-   "verb": "of",
-   "object": "this strategy",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#5052-5163",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "For instance, see :citet:`chan2015listen` for a description of this strategy, as applied to speech recognition."
-    }
-   ]
-  },
-  {
-   "id": "a function|of|both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)",
-   "subject": "a function",
-   "verb": "of",
-   "object": "both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#3700-4025",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "The key idea is that instead of keeping the state, i.e., the context variable $\\mathbf{c}$ summarizing the source sentence, as fixed, we dynamically update it, as a function of both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)."
-    }
-   ]
-  },
-  {
-   "id": "an rnn|all|relevant information about a source sequence is translated into some internal *fixed-dimensional* state representation by the encoder",
-   "subject": "an RNN",
-   "verb": "all",
-   "object": "relevant information about a source sequence is translated into some internal *fixed-dimensional* state representation by the encoder",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#858-1022",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "Conventionally, in an RNN all relevant information about a source sequence is translated into some internal *fixed-dimensional* state representation by the encoder."
-    }
-   ]
-  },
-  {
-   "id": "architecture\nusing|attention|is depicted in :numref:`fig_s2s_attention_details`",
-   "subject": "architecture\nusing",
-   "verb": "attention",
-   "object": "is depicted in :numref:`fig_s2s_attention_details`",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4741-4847",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "This RNN encoder--decoder architecture using attention is depicted in :numref:`fig_s2s_attention_details`."
-    }
-   ]
-  },
-  {
-   "id": "as applied|to|speech recognition",
-   "subject": "as applied",
-   "verb": "to",
-   "object": "speech recognition",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#5052-5163",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "For instance, see :citet:`chan2015listen` for a description of this strategy, as applied to speech recognition."
-    }
-   ]
-  },
-  {
-   "id": "attention model|to|align text characters with the much longer pen trace",
-   "subject": "attention model",
-   "verb": "to",
-   "object": "align text characters with the much longer pen trace",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2037-2232",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "Since the source text has arbitrary length they designed a differentiable attention model to align text characters with the much longer pen trace, where the alignment moves only in one direction."
-    }
-   ]
-  },
-  {
-   "id": "bahdanau|attention|mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning",
-   "subject": "Bahdanau",
-   "verb": "attention",
-   "object": "mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2796-3072",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "While quite innocuous in its description, this *Bahdanau attention mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning, giving rise to Transformers :cite:`Vaswani.Shazeer.Parmar.ea.2017` and many related new architectures."
-    }
-   ]
-  },
-  {
    "id": "based|decoder|interface",
    "subject": "based",
    "verb": "decoder",
    "object": "interface",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1312,12 +381,28 @@
    ]
   },
   {
+   "id": "between the|encoder|and the decoder",
+   "subject": "between the",
+   "verb": "encoder",
+   "object": "and the decoder",
+   "witnesses": [
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1350-1526",
+     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
+     "text": "The state, as generated by the encoder, is the only piece of information shared between the encoder and the decoder.](../img/seq2seq-state.svg) :label:`fig_s2s_attention_state`"
+    }
+   ]
+  },
+  {
    "id": "by the|decoder|as the complete and exclusive source of information for generating the translated sequence",
    "subject": "by the",
    "verb": "decoder",
    "object": "as the complete and exclusive source of information for generating the translated sequence",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1333,7 +418,7 @@
    "verb": "decoder",
    "object": "will fail to translate long and complex sentences",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1344,28 +429,12 @@
    ]
   },
   {
-   "id": "deemed relevant|to|the current prediction",
-   "subject": "deemed relevant",
-   "verb": "to",
-   "object": "the current prediction",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2531-2715",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "When predicting a token, if not all the input tokens are relevant, the model aligns (or attends) only to parts of the input sequence that are deemed relevant to the current prediction."
-    }
-   ]
-  },
-  {
    "id": "defining the|decoder|with attention",
    "subject": "Defining the",
    "verb": "decoder",
    "object": "with Attention",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1376,113 +445,60 @@
    ]
   },
   {
-   "id": "giving rise|to|transformers :cite:`vaswani",
-   "subject": "giving rise",
-   "verb": "to",
-   "object": "Transformers :cite:`Vaswani",
+   "id": "in the|decoder|as further context (i",
+   "subject": "in the",
+   "verb": "decoder",
+   "object": "as further context (i",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2796-3072",
+     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4848-5051",
      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "While quite innocuous in its description, this *Bahdanau attention mechanism* has arguably turned into one of the most influential ideas of the past decade in deep learning, giving rise to Transformers :cite:`Vaswani.Shazeer.Parmar.ea.2017` and many related new architectures."
+     "text": "Note that later this model was modified so as to include the already generated tokens in the decoder as further context (i.e., the attention sum does not stop at $T$ but rather it proceeds up to $t'-1$)."
     }
    ]
   },
   {
-   "id": "hidden markov|models|:cite:`rabiner1993fundamentals`",
-   "subject": "hidden Markov",
-   "verb": "models",
-   "object": ":cite:`rabiner1993fundamentals`",
+   "id": "of the|encoder|at all layers at the final time step",
+   "subject": "of the",
+   "verb": "encoder",
+   "object": "at all layers at the final time step",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2233-2359",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "This, in turn, draws on decoding algorithms in speech recognition, e.g., hidden Markov models :cite:`rabiner1993fundamentals`."
-    }
-   ]
-  },
-  {
-   "id": "hidden states|of|the last layer of the encoder at all time steps",
-   "subject": "hidden states",
-   "verb": "of",
-   "object": "the last layer of the encoder at all time steps",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6049-6436",
      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
      "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
-    },
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6437-6601",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "At each decoding time step, the hidden state of the final layer of the decoder, obtained at the previous time step, is used as the query of the attention mechanism."
     }
    ]
   },
   {
-   "id": "if not|all|the input tokens are relevant",
-   "subject": "if not",
-   "verb": "all",
-   "object": "the input tokens are relevant",
+   "id": "of the|encoder|at all time steps",
+   "subject": "of the",
+   "verb": "encoder",
+   "object": "at all time steps",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2531-2715",
+     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6049-6436",
      "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "When predicting a token, if not all the input tokens are relevant, the model aligns (or attends) only to parts of the input sequence that are deemed relevant to the current prediction."
+     "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
     }
    ]
   },
   {
-   "id": "intermediate representation|to|store all that is important in the source sequence",
-   "subject": "intermediate representation",
-   "verb": "to",
-   "object": "store all that is important in the source sequence",
+   "id": "redefine the|decoder|(omitting the generated symbols from the attention function simplifies the design)",
+   "subject": "redefine the",
+   "verb": "decoder",
+   "object": "(omitting the generated symbols from the attention function simplifies the design)",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1687-1843",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "After all, before too long there will simply not be enough \"space\" in the intermediate representation to store all that is important in the source sequence."
-    }
-   ]
-  },
-  {
-   "id": "one|of|the first to encounter this was :citet:`graves",
-   "subject": "One",
-   "verb": "of",
-   "object": "the first to encounter this was :citet:`Graves",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1920-2036",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "One of the first to encounter this was :citet:`Graves.2013` who tried to design an RNN to generate handwritten text."
-    }
-   ]
-  },
-  {
-   "id": "only need|to|redefine the decoder (omitting the generated symbols from the attention function simplifies the design)",
-   "subject": "only need",
-   "verb": "to",
-   "object": "redefine the decoder (omitting the generated symbols from the attention function simplifies the design)",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1491,323 +507,10 @@
      "text": "To implement the RNN encoder--decoder with attention, we only need to redefine the decoder (omitting the generated symbols from the attention function simplifies the design)."
     }
    ]
-  },
-  {
-   "id": "only piece|of|information shared between the encoder and the decoder",
-   "subject": "only piece",
-   "verb": "of",
-   "object": "information shared between the encoder and the decoder",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1350-1526",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "The state, as generated by the encoder, is the only piece of information shared between the encoder and the decoder.](../img/seq2seq-state.svg) :label:`fig_s2s_attention_state`"
-    }
-   ]
-  },
-  {
-   "id": "sequence architecture|of|:numref:`sec_seq2seq`",
-   "subject": "sequence architecture",
-   "verb": "of",
-   "object": ":numref:`sec_seq2seq`",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#3560-3699",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "We follow the notation introduced by the sequence-to-sequence architecture of :numref:`sec_seq2seq`, in particular :eqref:`eq_seq2seq_s_t`."
-    }
-   ]
-  },
-  {
-   "id": "sequence is|of|length $t$",
-   "subject": "sequence is",
-   "verb": "of",
-   "object": "length $T$",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4109-4158",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "Suppose that the input sequence is of length $T$."
-    }
-   ]
-  },
-  {
-   "id": "shape|of|outputs: (num_steps",
-   "subject": "Shape",
-   "verb": "of",
-   "object": "outputs: (num_steps",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7239-7355",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "def init_state(self, enc_outputs, enc_valid_lens): # Shape of outputs: (num_steps, batch_size, num_hiddens)."
-    },
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7364-7540",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "# Shape of hidden_state: (num_layers, batch_size, num_hiddens) outputs, hidden_state = enc_outputs return (outputs.swapaxes(0, 1), hidden_state, enc_valid_lens)"
-    },
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7546-7644",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "def forward(self, X, state): # Shape of enc_outputs: (batch_size, num_steps, num_hiddens)."
-    },
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7653-8000",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "# Shape of hidden_state: (num_layers, batch_size, num_hiddens) enc_outputs, hidden_state, enc_valid_lens = state # Shape of the output X: (num_steps, batch_size, embed_size) X = self.embedding(X).swapaxes(0, 1) outputs, self._attention_weights = [], [] for x in X: # Shape of query: (batch_size,"
-    }
-   ]
-  },
-  {
-   "id": "shape|of|query: (batch_size",
-   "subject": "Shape",
-   "verb": "of",
-   "object": "query: (batch_size",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#7653-8000",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "# Shape of hidden_state: (num_layers, batch_size, num_hiddens) enc_outputs, hidden_state, enc_valid_lens = state # Shape of the output X: (num_steps, batch_size, embed_size) X = self.embedding(X).swapaxes(0, 1) outputs, self._attention_weights = [], [] for x in X: # Shape of query: (batch_size,"
-    }
-   ]
-  },
-  {
-   "id": "so as|to|include the already generated tokens in the decoder as further context (i",
-   "subject": "so as",
-   "verb": "to",
-   "object": "include the already generated tokens in the decoder as further context (i",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4848-5051",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "Note that later this model was modified so as to include the already generated tokens in the decoder as further context (i.e., the attention sum does not stop at $T$ but rather it proceeds up to $t'-1$)."
-    }
-   ]
-  },
-  {
-   "id": "sufficient statistic|of|whatever string might have served as input",
-   "subject": "sufficient statistic",
-   "verb": "of",
-   "object": "whatever string might have served as input",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1165-1318",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "In other words, the sequence-to-sequence mechanism treats the intermediate state as a sufficient statistic of whatever string might have served as input."
-    }
-   ]
-  },
-  {
-   "id": "that instead|of|keeping the state",
-   "subject": "that instead",
-   "verb": "of",
-   "object": "keeping the state",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#3700-4025",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "The key idea is that instead of keeping the state, i.e., the context variable $\\mathbf{c}$ summarizing the source sentence, as fixed, we dynamically update it, as a function of both the original text (encoder hidden states $\\mathbf{h}_{t}$) and the text that was already generated (decoder hidden states $\\mathbf{s}_{t'-1}$)."
-    }
-   ]
-  },
-  {
-   "id": "the bahdanau|attention|mechanism",
-   "subject": "the Bahdanau",
-   "verb": "attention",
-   "object": "mechanism",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#5165-5319",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "![Layers in an RNN encoder--decoder model with the Bahdanau attention mechanism.](../img/seq2seq-details-attention.svg) :label:`fig_s2s_attention_details`"
-    }
-   ]
-  },
-  {
-   "id": "the idea|of|learning to align",
-   "subject": "the idea",
-   "verb": "of",
-   "object": "learning to align",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2361-2530",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "Inspired by the idea of learning to align, :citet:`Bahdanau.Cho.Bengio.2014` proposed a differentiable attention model *without* the unidirectional alignment limitation."
-    }
-   ]
-  },
-  {
-   "id": "the output|of|attention pooling:",
-   "subject": "the output",
-   "verb": "of",
-   "object": "attention pooling:",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4159-4228",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "In this case the context variable is the output of attention pooling:"
-    },
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6602-6727",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "Both the output of the attention mechanism and the input embedding are concatenated to serve as the input of the RNN decoder."
-    }
-   ]
-  },
-  {
-   "id": "the query|of|the attention mechanism",
-   "subject": "the query",
-   "verb": "of",
-   "object": "the attention mechanism",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6437-6601",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "At each decoding time step, the hidden state of the final layer of the decoder, obtained at the previous time step, is used as the query of the attention mechanism."
-    }
-   ]
-  },
-  {
-   "id": "the|attention|sum does not stop at $t$ but rather it proceeds up to $t'-1$)",
-   "subject": "the",
-   "verb": "attention",
-   "object": "sum does not stop at $T$ but rather it proceeds up to $t'-1$)",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4848-5051",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "Note that later this model was modified so as to include the already generated tokens in the decoder as further context (i.e., the attention sum does not stop at $T$ but rather it proceeds up to $t'-1$)."
-    }
-   ]
-  },
-  {
-   "id": "then used|to|update the current state before generating the next token",
-   "subject": "then used",
-   "verb": "to",
-   "object": "update the current state before generating the next token",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#2716-2795",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "This is then used to update the current state before generating the next token."
-    },
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#4424-4562",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "Note that $\\mathbf{c}_{t'}$ is then used to generate the state $\\mathbf{s}_{t'}$ and to generate a new token: see :eqref:`eq_seq2seq_s_t`."
-    }
-   ]
-  },
-  {
-   "id": "tokens in|attention|pooling",
-   "subject": "tokens in",
-   "verb": "attention",
-   "object": "pooling",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6049-6436",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
-    }
-   ]
-  },
-  {
-   "id": "valid length|of|the encoder",
-   "subject": "valid length",
-   "verb": "of",
-   "object": "the encoder",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6049-6436",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
-    }
-   ]
-  },
-  {
-   "id": "which serves|to|initialize the hidden state of the decoder",
-   "subject": "which serves",
-   "verb": "to",
-   "object": "initialize the hidden state of the decoder",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#6049-6436",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "The state of the decoder is initialized with (i) the hidden states of the last layer of the encoder at all time steps, used as keys and values for attention; (ii) the hidden state of the encoder at all layers at the final time step, which serves to initialize the hidden state of the decoder; and (iii) the valid length of the encoder, to exclude the padding tokens in attention pooling."
-    }
-   ]
-  },
-  {
-   "id": "who tried|to|design an rnn to generate handwritten text",
-   "subject": "who tried",
-   "verb": "to",
-   "object": "design an RNN to generate handwritten text",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt#1920-2036",
-     "ref": "05-academic-papers/open-access-books/d2l/attention-mechanisms-and-transformers-bahdanau-attention.txt",
-     "text": "One of the first to encounter this was :citet:`Graves.2013` who tried to design an RNN to generate handwritten text."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:48.342Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:26.813Z"
  }
 }

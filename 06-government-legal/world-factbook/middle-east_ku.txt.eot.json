@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 29996,
   "bodyOffset": 0,
   "bodyChars": 29996,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 15,
   "distinctReferents": 10,
   "examined": true,
-  "edgesFound": 31,
-  "extractionError": null
+  "edgesFound": 5,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 9,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 20
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 5,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 33,
-  "excerptOk": 33,
-  "rawChecked": 33,
-  "rawOk": 33,
+  "excerptChecked": 5,
+  "excerptOk": 5,
+  "rawChecked": 5,
+  "rawOk": 5,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 31,
-  "heard": 31,
+  "offered": 5,
+  "heard": 5,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,65 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "of ottoman|invasion|in 1899 prompted amir mubarak al-sabah to seek protection from britain",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of Ottoman invasion in 1899 prompted Amir Mubarak AL-SABAH to seek protection from Britain",
-    "subject": "of Ottoman",
-    "verb": "invasion",
-    "object": "in 1899 prompted Amir Mubarak AL-SABAH to seek protection from Britain",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#226-437",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "The threat of Ottoman invasion in 1899 prompted Amir Mubarak AL-SABAH to seek protection from Britain, ceding foreign and defense responsibility to Britain until 1961, when the country attained its independence."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ceding foreign|and|defense responsibility to britain until 1961",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ceding foreign and defense responsibility to Britain until 1961",
-    "subject": "ceding foreign",
-    "verb": "and",
-    "object": "defense responsibility to Britain until 1961",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#226-437",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "The threat of Ottoman invasion in 1899 prompted Amir Mubarak AL-SABAH to seek protection from Britain, ceding foreign and defense responsibility to Britain until 1961, when the country attained its independence."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "iraq attacked|and|overran kuwait in 1990",
+    "task_id": "iraq|attacked|and overran kuwait in 1990",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -128,11 +100,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Iraq attacked and overran Kuwait in 1990",
-    "subject": "Iraq attacked",
-    "verb": "and",
-    "object": "overran Kuwait in 1990",
+    "subject": "Iraq",
+    "verb": "attacked",
+    "object": "and overran Kuwait in 1990",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,36 +113,7 @@
       "text": "Iraq attacked and overran Kuwait in 1990."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "led un|coalition|began a ground assault in 1991 that liberated kuwait in four days",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "led UN coalition began a ground assault in 1991 that liberated Kuwait in four days",
-    "subject": "led UN",
-    "verb": "coalition",
-    "object": "began a ground assault in 1991 that liberated Kuwait in four days",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#480-611",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "After several weeks of aerial bombardment, a US-led UN coalition began a ground assault in 1991 that liberated Kuwait in four days."
-     }
-    ],
-    "seq": 3,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +133,7 @@
     "verb": "reconstituted",
     "object": "the parliament that he had dissolved in 1986",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,36 +142,7 @@
       "text": "In 1992, the Amir reconstituted the parliament that he had dissolved in 1986."
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "11 uprisings|and|protests across the arab world",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "11 uprisings and protests across the Arab world",
-    "subject": "11 uprisings",
-    "verb": "and",
-    "object": "protests across the Arab world",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#690-886",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "Amid the 2010-11 uprisings and protests across the Arab world, stateless Arabs known as Bidoon staged small protests demanding citizenship, jobs, and other benefits available to Kuwaiti nationals."
-     }
-    ],
-    "seq": 5,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +162,7 @@
     "verb": "known",
     "object": "as Bidoon staged small protests demanding citizenship",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -257,239 +171,7 @@
       "text": "Amid the 2010-11 uprisings and protests across the Arab world, stateless Arabs known as Bidoon staged small protests demanding citizenship, jobs, and other benefits available to Kuwaiti nationals."
      }
     ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "benefits available|to|kuwaiti nationals",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "benefits available to Kuwaiti nationals",
-    "subject": "benefits available",
-    "verb": "to",
-    "object": "Kuwaiti nationals",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#690-886",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "Amid the 2010-11 uprisings and protests across the Arab world, stateless Arabs known as Bidoon staged small protests demanding citizenship, jobs, and other benefits available to Kuwaiti nationals."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "notably islamists|and|kuwaitis from tribal backgrounds",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "notably Islamists and Kuwaitis from tribal backgrounds",
-    "subject": "notably Islamists",
-    "verb": "and",
-    "object": "Kuwaitis from tribal backgrounds",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#887-1103",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "Other demographic groups, notably Islamists and Kuwaitis from tribal backgrounds, soon joined the growing protest movements, which culminated with the resignation of the prime minister amid allegations of corruption."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in response|to|a decree amending the electoral law that lessened the voting power of the tribal blocs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in response to a decree amending the electoral law that lessened the voting power of the tribal blocs",
-    "subject": "in response",
-    "verb": "to",
-    "object": "a decree amending the electoral law that lessened the voting power of the tribal blocs",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#1104-1237",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "Demonstrations renewed in 2012 in response to a decree amending the electoral law that lessened the voting power of the tribal blocs."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "an opposition|coalition|of sunni islamists",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "An opposition coalition of Sunni Islamists",
-    "subject": "An opposition",
-    "verb": "coalition",
-    "object": "of Sunni Islamists",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#1238-1456",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "<br><br>An opposition coalition of Sunni Islamists, tribal populists, and some liberals largely boycotted legislative elections in 2012 and 2013, which ushered in a legislature more amenable to the government's agenda."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in 2012|and|2013",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in 2012 and 2013",
-    "subject": "in 2012",
-    "verb": "and",
-    "object": "2013",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#1238-1456",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "<br><br>An opposition coalition of Sunni Islamists, tribal populists, and some liberals largely boycotted legislative elections in 2012 and 2013, which ushered in a legislature more amenable to the government's agenda."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "more amenable|to|the government's agenda",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "more amenable to the government's agenda",
-    "subject": "more amenable",
-    "verb": "to",
-    "object": "the government's agenda",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#1238-1456",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "<br><br>An opposition coalition of Sunni Islamists, tribal populists, and some liberals largely boycotted legislative elections in 2012 and 2013, which ushered in a legislature more amenable to the government's agenda."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "oppositionists|and|independents actively participated in the 2016 election",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "oppositionists and independents actively participated in the 2016 election",
-    "subject": "oppositionists",
-    "verb": "and",
-    "object": "independents actively participated in the 2016 election",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#1457-1666",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "Faced with the prospect of painful subsidy cuts, oppositionists and independents actively participated in the 2016 election, winning nearly half the seats, but the opposition became increasingly factionalized."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between 2006|and|his death in 2020",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Between 2006 and his death in 2020",
-    "subject": "Between 2006",
-    "verb": "and",
-    "object": "his death in 2020",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#1667-1900",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "Between 2006 and his death in 2020, the Amir dissolved the National Assembly on seven occasions and shuffled the cabinet over a dozen times, usually citing political stagnation and gridlock between the legislature and the government."
-     }
-    ],
-    "seq": 14,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -509,7 +191,7 @@
     "verb": "dissolved",
     "object": "the National Assembly on seven occasions and shuffled the cabinet over a dozen times",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -518,65 +200,7 @@
       "text": "Between 2006 and his death in 2020, the Amir dissolved the National Assembly on seven occasions and shuffled the cabinet over a dozen times, usually citing political stagnation and gridlock between the legislature and the government."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "political stagnation|and|gridlock between the legislature and the government",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "political stagnation and gridlock between the legislature and the government",
-    "subject": "political stagnation",
-    "verb": "and",
-    "object": "gridlock between the legislature and the government",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#1667-1900",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "Between 2006 and his death in 2020, the Amir dissolved the National Assembly on seven occasions and shuffled the cabinet over a dozen times, usually citing political stagnation and gridlock between the legislature and the government."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "2021 meant|to|resolve political gridlock",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "2021 meant to resolve political gridlock",
-    "subject": "2021 meant",
-    "verb": "to",
-    "object": "resolve political gridlock",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#1901-2032",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "<br><br>The current Amir, who assumed his role in 2020, launched a \"National Dialogue\" in 2021 meant to resolve political gridlock."
-     }
-    ],
-    "seq": 17,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -596,7 +220,7 @@
     "verb": "pardoned",
     "object": "several opposition figures who had been living in exile",
     "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -605,370 +229,12 @@
       "text": "As part of this initiative, the Amir pardoned several opposition figures who had been living in exile, and they returned to Kuwait."
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they returned|to|kuwait",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "they returned to Kuwait",
-    "subject": "they returned",
-    "verb": "to",
-    "object": "Kuwait",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#2033-2164",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "As part of this initiative, the Amir pardoned several opposition figures who had been living in exile, and they returned to Kuwait."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between iraq|and|saudi arabia",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between Iraq and Saudi Arabia",
-    "subject": "between Iraq",
-    "verb": "and",
-    "object": "Saudi Arabia",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#2274-2361",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Location Middle East, bordering the Persian Gulf, between Iraq and Saudi Arabia"
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "terrain\n    flat|to|slightly undulating desert plain",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Terrain\n    flat to slightly undulating desert plain",
-    "subject": "Terrain\n    flat",
-    "verb": "to",
-    "object": "slightly undulating desert plain",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#2850-2906",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Terrain flat to slightly undulating desert plain"
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "tigris|and|euphrates (918",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Tigris and Euphrates (918",
-    "subject": "Tigris",
-    "verb": "and",
-    "object": "Euphrates (918",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#3514-3639",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Major watersheds (area sq km) Indian Ocean drainage: <em>(Persian Gulf)</em> Tigris and Euphrates (918,044 sq km)"
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kuwait city|and|on bubiyan island",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Kuwait City and on Bubiyan Island",
-    "subject": "Kuwait City",
-    "verb": "and",
-    "object": "on Bubiyan Island",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#3688-3964",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Population distribution densest settlement is along the Persian Gulf, particularly in Kuwait City and on Bubiyan Island; significant population threads extend south and west along highways that radiate from the capital, particularly in the southern half of the country"
-     },
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#5903-6179",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Population distribution densest settlement is along the Persian Gulf, particularly in Kuwait City and on Bubiyan Island; significant population threads extend south and west along highways that radiate from the capital, particularly in the southern half of the country"
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "extend south|and|west along highways that radiate from the capital",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "extend south and west along highways that radiate from the capital",
-    "subject": "extend south",
-    "verb": "and",
-    "object": "west along highways that radiate from the capital",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#3688-3964",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Population distribution densest settlement is along the Persian Gulf, particularly in Kuwait City and on Bubiyan Island; significant population threads extend south and west along highways that radiate from the capital, particularly in the southern half of the country"
-     },
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#5903-6179",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Population distribution densest settlement is along the Persian Gulf, particularly in Kuwait City and on Bubiyan Island; significant population threads extend south and west along highways that radiate from the capital, particularly in the southern half of the country"
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are common|from|october to april and bring heavy rain",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are common from October to April and bring heavy rain",
-    "subject": "are common",
-    "verb": "from",
-    "object": "October to April and bring heavy rain",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#3966-4196",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Natural hazards sudden cloudbursts are common from October to April and bring heavy rain, which can damage roads and houses; sandstorms and dust storms occur throughout the year but are most common between March and August"
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "damage roads|and|houses",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "damage roads and houses",
-    "subject": "damage roads",
-    "verb": "and",
-    "object": "houses",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#3966-4196",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Natural hazards sudden cloudbursts are common from October to April and bring heavy rain, which can damage roads and houses; sandstorms and dust storms occur throughout the year but are most common between March and August"
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sandstorms|and|dust storms occur throughout the year but are most common between march and august",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sandstorms and dust storms occur throughout the year but are most common between March and August",
-    "subject": "sandstorms",
-    "verb": "and",
-    "object": "dust storms occur throughout the year but are most common between March and August",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#3966-4196",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Natural hazards sudden cloudbursts are common from October to April and bring heavy rain, which can damage roads and houses; sandstorms and dust storms occur throughout the year but are most common between March and August"
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "people|and|society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "People and Society",
-    "subject": "People",
-    "verb": "and",
-    "object": "Society",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#4267-4288",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "## People and Society"
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the|world|factbook",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The world Factbook",
-    "subject": "The",
-    "verb": "world",
-    "object": "Factbook",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#4634-4901",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Languages Languages: Arabic (official), English widely spoken major-language sample(s): <br>كتاب حقائق العالم، المصدر الذي لا يمكن الاستغناء عنه للمعلومات الأساسية (Arabic)<br><br>The World Factbook, the indispensable source for basic information."
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "other|and|unspecified 7",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "other and unspecified 7",
-    "subject": "other",
-    "verb": "and",
-    "object": "unspecified 7",
-    "witnesses": [
-     "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/middle-east_ku.txt#4903-5126",
-      "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-      "text": "### Religions Muslim (official) 74.6%, Christian 18.2%, other and unspecified 7.2% (2013 est.) note: <strong>note:</strong> data represent the total population; about 72% of the population consists of immigrants"
-     }
-    ],
-    "seq": 30,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 31,
+  "nextSeq": 5,
   "admits": [
    "NUL",
    "SEG",
@@ -983,209 +249,12 @@
  },
  "folded": [
   {
-   "id": "11 uprisings|and|protests across the arab world",
-   "subject": "11 uprisings",
-   "verb": "and",
-   "object": "protests across the Arab world",
+   "id": "iraq|attacked|and overran kuwait in 1990",
+   "subject": "Iraq",
+   "verb": "attacked",
+   "object": "and overran Kuwait in 1990",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#690-886",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "Amid the 2010-11 uprisings and protests across the Arab world, stateless Arabs known as Bidoon staged small protests demanding citizenship, jobs, and other benefits available to Kuwaiti nationals."
-    }
-   ]
-  },
-  {
-   "id": "2021 meant|to|resolve political gridlock",
-   "subject": "2021 meant",
-   "verb": "to",
-   "object": "resolve political gridlock",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#1901-2032",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "<br><br>The current Amir, who assumed his role in 2020, launched a \"National Dialogue\" in 2021 meant to resolve political gridlock."
-    }
-   ]
-  },
-  {
-   "id": "an opposition|coalition|of sunni islamists",
-   "subject": "An opposition",
-   "verb": "coalition",
-   "object": "of Sunni Islamists",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#1238-1456",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "<br><br>An opposition coalition of Sunni Islamists, tribal populists, and some liberals largely boycotted legislative elections in 2012 and 2013, which ushered in a legislature more amenable to the government's agenda."
-    }
-   ]
-  },
-  {
-   "id": "are common|from|october to april and bring heavy rain",
-   "subject": "are common",
-   "verb": "from",
-   "object": "October to April and bring heavy rain",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#3966-4196",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Natural hazards sudden cloudbursts are common from October to April and bring heavy rain, which can damage roads and houses; sandstorms and dust storms occur throughout the year but are most common between March and August"
-    }
-   ]
-  },
-  {
-   "id": "benefits available|to|kuwaiti nationals",
-   "subject": "benefits available",
-   "verb": "to",
-   "object": "Kuwaiti nationals",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#690-886",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "Amid the 2010-11 uprisings and protests across the Arab world, stateless Arabs known as Bidoon staged small protests demanding citizenship, jobs, and other benefits available to Kuwaiti nationals."
-    }
-   ]
-  },
-  {
-   "id": "between 2006|and|his death in 2020",
-   "subject": "Between 2006",
-   "verb": "and",
-   "object": "his death in 2020",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#1667-1900",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "Between 2006 and his death in 2020, the Amir dissolved the National Assembly on seven occasions and shuffled the cabinet over a dozen times, usually citing political stagnation and gridlock between the legislature and the government."
-    }
-   ]
-  },
-  {
-   "id": "between iraq|and|saudi arabia",
-   "subject": "between Iraq",
-   "verb": "and",
-   "object": "Saudi Arabia",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#2274-2361",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Location Middle East, bordering the Persian Gulf, between Iraq and Saudi Arabia"
-    }
-   ]
-  },
-  {
-   "id": "ceding foreign|and|defense responsibility to britain until 1961",
-   "subject": "ceding foreign",
-   "verb": "and",
-   "object": "defense responsibility to Britain until 1961",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#226-437",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "The threat of Ottoman invasion in 1899 prompted Amir Mubarak AL-SABAH to seek protection from Britain, ceding foreign and defense responsibility to Britain until 1961, when the country attained its independence."
-    }
-   ]
-  },
-  {
-   "id": "damage roads|and|houses",
-   "subject": "damage roads",
-   "verb": "and",
-   "object": "houses",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#3966-4196",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Natural hazards sudden cloudbursts are common from October to April and bring heavy rain, which can damage roads and houses; sandstorms and dust storms occur throughout the year but are most common between March and August"
-    }
-   ]
-  },
-  {
-   "id": "extend south|and|west along highways that radiate from the capital",
-   "subject": "extend south",
-   "verb": "and",
-   "object": "west along highways that radiate from the capital",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#3688-3964",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Population distribution densest settlement is along the Persian Gulf, particularly in Kuwait City and on Bubiyan Island; significant population threads extend south and west along highways that radiate from the capital, particularly in the southern half of the country"
-    },
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#5903-6179",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Population distribution densest settlement is along the Persian Gulf, particularly in Kuwait City and on Bubiyan Island; significant population threads extend south and west along highways that radiate from the capital, particularly in the southern half of the country"
-    }
-   ]
-  },
-  {
-   "id": "in 2012|and|2013",
-   "subject": "in 2012",
-   "verb": "and",
-   "object": "2013",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#1238-1456",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "<br><br>An opposition coalition of Sunni Islamists, tribal populists, and some liberals largely boycotted legislative elections in 2012 and 2013, which ushered in a legislature more amenable to the government's agenda."
-    }
-   ]
-  },
-  {
-   "id": "in response|to|a decree amending the electoral law that lessened the voting power of the tribal blocs",
-   "subject": "in response",
-   "verb": "to",
-   "object": "a decree amending the electoral law that lessened the voting power of the tribal blocs",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#1104-1237",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "Demonstrations renewed in 2012 in response to a decree amending the electoral law that lessened the voting power of the tribal blocs."
-    }
-   ]
-  },
-  {
-   "id": "iraq attacked|and|overran kuwait in 1990",
-   "subject": "Iraq attacked",
-   "verb": "and",
-   "object": "overran Kuwait in 1990",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1196,177 +265,12 @@
    ]
   },
   {
-   "id": "kuwait city|and|on bubiyan island",
-   "subject": "Kuwait City",
-   "verb": "and",
-   "object": "on Bubiyan Island",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#3688-3964",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Population distribution densest settlement is along the Persian Gulf, particularly in Kuwait City and on Bubiyan Island; significant population threads extend south and west along highways that radiate from the capital, particularly in the southern half of the country"
-    },
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#5903-6179",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Population distribution densest settlement is along the Persian Gulf, particularly in Kuwait City and on Bubiyan Island; significant population threads extend south and west along highways that radiate from the capital, particularly in the southern half of the country"
-    }
-   ]
-  },
-  {
-   "id": "led un|coalition|began a ground assault in 1991 that liberated kuwait in four days",
-   "subject": "led UN",
-   "verb": "coalition",
-   "object": "began a ground assault in 1991 that liberated Kuwait in four days",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#480-611",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "After several weeks of aerial bombardment, a US-led UN coalition began a ground assault in 1991 that liberated Kuwait in four days."
-    }
-   ]
-  },
-  {
-   "id": "more amenable|to|the government's agenda",
-   "subject": "more amenable",
-   "verb": "to",
-   "object": "the government's agenda",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#1238-1456",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "<br><br>An opposition coalition of Sunni Islamists, tribal populists, and some liberals largely boycotted legislative elections in 2012 and 2013, which ushered in a legislature more amenable to the government's agenda."
-    }
-   ]
-  },
-  {
-   "id": "notably islamists|and|kuwaitis from tribal backgrounds",
-   "subject": "notably Islamists",
-   "verb": "and",
-   "object": "Kuwaitis from tribal backgrounds",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#887-1103",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "Other demographic groups, notably Islamists and Kuwaitis from tribal backgrounds, soon joined the growing protest movements, which culminated with the resignation of the prime minister amid allegations of corruption."
-    }
-   ]
-  },
-  {
-   "id": "of ottoman|invasion|in 1899 prompted amir mubarak al-sabah to seek protection from britain",
-   "subject": "of Ottoman",
-   "verb": "invasion",
-   "object": "in 1899 prompted Amir Mubarak AL-SABAH to seek protection from Britain",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#226-437",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "The threat of Ottoman invasion in 1899 prompted Amir Mubarak AL-SABAH to seek protection from Britain, ceding foreign and defense responsibility to Britain until 1961, when the country attained its independence."
-    }
-   ]
-  },
-  {
-   "id": "oppositionists|and|independents actively participated in the 2016 election",
-   "subject": "oppositionists",
-   "verb": "and",
-   "object": "independents actively participated in the 2016 election",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#1457-1666",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "Faced with the prospect of painful subsidy cuts, oppositionists and independents actively participated in the 2016 election, winning nearly half the seats, but the opposition became increasingly factionalized."
-    }
-   ]
-  },
-  {
-   "id": "other|and|unspecified 7",
-   "subject": "other",
-   "verb": "and",
-   "object": "unspecified 7",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#4903-5126",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Religions Muslim (official) 74.6%, Christian 18.2%, other and unspecified 7.2% (2013 est.) note: <strong>note:</strong> data represent the total population; about 72% of the population consists of immigrants"
-    }
-   ]
-  },
-  {
-   "id": "people|and|society",
-   "subject": "People",
-   "verb": "and",
-   "object": "Society",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#4267-4288",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "## People and Society"
-    }
-   ]
-  },
-  {
-   "id": "political stagnation|and|gridlock between the legislature and the government",
-   "subject": "political stagnation",
-   "verb": "and",
-   "object": "gridlock between the legislature and the government",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#1667-1900",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "Between 2006 and his death in 2020, the Amir dissolved the National Assembly on seven occasions and shuffled the cabinet over a dozen times, usually citing political stagnation and gridlock between the legislature and the government."
-    }
-   ]
-  },
-  {
-   "id": "sandstorms|and|dust storms occur throughout the year but are most common between march and august",
-   "subject": "sandstorms",
-   "verb": "and",
-   "object": "dust storms occur throughout the year but are most common between March and August",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#3966-4196",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Natural hazards sudden cloudbursts are common from October to April and bring heavy rain, which can damage roads and houses; sandstorms and dust storms occur throughout the year but are most common between March and August"
-    }
-   ]
-  },
-  {
    "id": "stateless arabs|known|as bidoon staged small protests demanding citizenship",
    "subject": "stateless Arabs",
    "verb": "known",
    "object": "as Bidoon staged small protests demanding citizenship",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1377,28 +281,12 @@
    ]
   },
   {
-   "id": "terrain\n    flat|to|slightly undulating desert plain",
-   "subject": "Terrain\n    flat",
-   "verb": "to",
-   "object": "slightly undulating desert plain",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#2850-2906",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Terrain flat to slightly undulating desert plain"
-    }
-   ]
-  },
-  {
    "id": "the amir|dissolved|the national assembly on seven occasions and shuffled the cabinet over a dozen times",
    "subject": "the Amir",
    "verb": "dissolved",
    "object": "the National Assembly on seven occasions and shuffled the cabinet over a dozen times",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1414,7 +302,7 @@
    "verb": "pardoned",
    "object": "several opposition figures who had been living in exile",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1430,7 +318,7 @@
    "verb": "reconstituted",
    "object": "the parliament that he had dissolved in 1986",
    "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/middle-east_ku.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1439,58 +327,10 @@
      "text": "In 1992, the Amir reconstituted the parliament that he had dissolved in 1986."
     }
    ]
-  },
-  {
-   "id": "the|world|factbook",
-   "subject": "The",
-   "verb": "world",
-   "object": "Factbook",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#4634-4901",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Languages Languages: Arabic (official), English widely spoken major-language sample(s): <br>كتاب حقائق العالم، المصدر الذي لا يمكن الاستغناء عنه للمعلومات الأساسية (Arabic)<br><br>The World Factbook, the indispensable source for basic information."
-    }
-   ]
-  },
-  {
-   "id": "they returned|to|kuwait",
-   "subject": "they returned",
-   "verb": "to",
-   "object": "Kuwait",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#2033-2164",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "As part of this initiative, the Amir pardoned several opposition figures who had been living in exile, and they returned to Kuwait."
-    }
-   ]
-  },
-  {
-   "id": "tigris|and|euphrates (918",
-   "subject": "Tigris",
-   "verb": "and",
-   "object": "Euphrates (918",
-   "witnesses": [
-    "06-government-legal/world-factbook/middle-east_ku.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/middle-east_ku.txt#3514-3639",
-     "ref": "06-government-legal/world-factbook/middle-east_ku.txt",
-     "text": "### Major watersheds (area sq km) Indian Ocean drainage: <em>(Persian Gulf)</em> Tigris and Euphrates (918,044 sq km)"
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:53.844Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:15.782Z"
  }
 }

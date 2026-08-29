@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 5236,
   "bodyOffset": 0,
   "bodyChars": 5236,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 5236,
   "truncated": false
  },
@@ -37,21 +55,33 @@
   "referentEvents": 8,
   "distinctReferents": 8,
   "examined": true,
-  "edgesFound": 24,
-  "extractionError": null
+  "edgesFound": 12,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 24,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 34
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 12,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 25,
-  "excerptOk": 25,
-  "rawChecked": 25,
-  "rawOk": 25,
+  "excerptChecked": 13,
+  "excerptOk": 13,
+  "rawChecked": 13,
+  "rawOk": 13,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 24,
-  "heard": 24,
+  "offered": 12,
+  "heard": 12,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "is",
     "object": "in the heavens and whatever is on the earth is exalting Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -94,64 +124,6 @@
    },
    {
     "kind": "propose",
-    "task_id": "the exalted|in|might",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Exalted in Might",
-    "subject": "the Exalted",
-    "verb": "in",
-    "object": "Might",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#222-1368",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "[62:1] يُسَبِّحُ لِلَّهِ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ ٱلۡمَلِكِ ٱلۡقُدُّوسِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Yusabbihu lillahi ma fee alssamawati wama fee alardi almaliki alquddoosi alAAazeezi alhakeemi Whatever is in the heavens and whatever is on the earth is exalting Allah, the Sovereign, the Pure, the Exalted in Might, the Wise [62:2] هُوَ ٱلَّذِي بَعَثَ فِي ٱلۡأُمِّيِّـۧنَ رَسُولٗا مِّنۡهُمۡ يَتۡلُواْ عَلَيۡهِمۡ ءَايَٰتِهِۦ وَيُزَكِّيهِمۡ وَيُعَلِّمُهُمُ ٱلۡكِتَٰبَ وَٱلۡحِكۡمَةَ وَإِن كَانُواْ مِن قَبۡلُ لَفِي ضَلَٰلٖ مُّبِينٖ Huwa allathee baAAatha fee alommiyyeena rasoolan minhum yatloo AAalayhim ayatihi wayuzakkeehim wayuAAallimuhumu alkitaba waalhikmata wain kanoo min qablu lafee dalalin mubeenin It is He who has sent among the unlettered a Messenger from themselves reciting to them His verses and purifying them and teaching them the Book and wisdom - although they were before in clear error [62:3] وَءَاخَرِينَ مِنۡهُمۡ لَمَّا يَلۡحَقُواْ بِهِمۡۚ وَهُوَ ٱلۡعَزِيزُ ٱلۡحَكِيمُ Waakhareena minhum lamma yalhaqoo bihim wahuwa alAAazeezu alhakeemu And [to] others of them who have not yet joined them."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alaaazeezu alhakeemu|and|[to] others of them who have not yet joined them",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alAAazeezu alhakeemu and [to] others of them who have not yet joined them",
-    "subject": "alAAazeezu alhakeemu",
-    "verb": "and",
-    "object": "[to] others of them who have not yet joined them",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#222-1368",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "[62:1] يُسَبِّحُ لِلَّهِ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ ٱلۡمَلِكِ ٱلۡقُدُّوسِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Yusabbihu lillahi ma fee alssamawati wama fee alardi almaliki alquddoosi alAAazeezi alhakeemi Whatever is in the heavens and whatever is on the earth is exalting Allah, the Sovereign, the Pure, the Exalted in Might, the Wise [62:2] هُوَ ٱلَّذِي بَعَثَ فِي ٱلۡأُمِّيِّـۧنَ رَسُولٗا مِّنۡهُمۡ يَتۡلُواْ عَلَيۡهِمۡ ءَايَٰتِهِۦ وَيُزَكِّيهِمۡ وَيُعَلِّمُهُمُ ٱلۡكِتَٰبَ وَٱلۡحِكۡمَةَ وَإِن كَانُواْ مِن قَبۡلُ لَفِي ضَلَٰلٖ مُّبِينٖ Huwa allathee baAAatha fee alommiyyeena rasoolan minhum yatloo AAalayhim ayatihi wayuzakkeehim wayuAAallimuhumu alkitaba waalhikmata wain kanoo min qablu lafee dalalin mubeenin It is He who has sent among the unlettered a Messenger from themselves reciting to them His verses and purifying them and teaching them the Book and wisdom - although they were before in clear error [62:3] وَءَاخَرِينَ مِنۡهُمۡ لَمَّا يَلۡحَقُواْ بِهِمۡۚ وَهُوَ ٱلۡعَزِيزُ ٱلۡحَكِيمُ Waakhareena minhum lamma yalhaqoo bihim wahuwa alAAazeezu alhakeemu And [to] others of them who have not yet joined them."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
     "task_id": "and he|is|the exalted in might",
     "operator": "INS",
     "operator_basis": "produced",
@@ -166,7 +138,7 @@
     "verb": "is",
     "object": "the Exalted in Might",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -175,7 +147,7 @@
       "text": "And He is the Exalted in Might, the Wise [62:4] ذَٰلِكَ فَضۡلُ ٱللَّهِ يُؤۡتِيهِ مَن يَشَآءُۚ وَٱللَّهُ ذُو ٱلۡفَضۡلِ ٱلۡعَظِيمِ Thalika fadlu Allahi yuteehi man yashao waAllahu thoo alfadli alAAatheemi That is the bounty of Allah, which He gives to whom He wills, and Allah is the possessor of great bounty [62:5] مَثَلُ ٱلَّذِينَ حُمِّلُواْ ٱلتَّوۡرَىٰةَ ثُمَّ لَمۡ يَحۡمِلُوهَا كَمَثَلِ ٱلۡحِمَارِ يَحۡمِلُ أَسۡفَارَۢاۚ بِئۡسَ مَثَلُ ٱلۡقَوۡمِ ٱلَّذِينَ كَذَّبُواْ بِـَٔايَٰتِ ٱللَّهِۚ وَٱللَّهُ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Mathalu allatheena hummiloo alttawrata thumma lam yahmilooha kamathali alhimari yahmilu asfaran bisa mathalu alqawmi allatheena kaththaboo biayati Allahi waAllahu la yahdee alqawma alththalimeena The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]."
      }
     ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -195,7 +167,7 @@
     "verb": "is",
     "object": "the bounty of Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -204,7 +176,7 @@
       "text": "And He is the Exalted in Might, the Wise [62:4] ذَٰلِكَ فَضۡلُ ٱللَّهِ يُؤۡتِيهِ مَن يَشَآءُۚ وَٱللَّهُ ذُو ٱلۡفَضۡلِ ٱلۡعَظِيمِ Thalika fadlu Allahi yuteehi man yashao waAllahu thoo alfadli alAAatheemi That is the bounty of Allah, which He gives to whom He wills, and Allah is the possessor of great bounty [62:5] مَثَلُ ٱلَّذِينَ حُمِّلُواْ ٱلتَّوۡرَىٰةَ ثُمَّ لَمۡ يَحۡمِلُوهَا كَمَثَلِ ٱلۡحِمَارِ يَحۡمِلُ أَسۡفَارَۢاۚ بِئۡسَ مَثَلُ ٱلۡقَوۡمِ ٱلَّذِينَ كَذَّبُواْ بِـَٔايَٰتِ ٱللَّهِۚ وَٱللَّهُ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Mathalu allatheena hummiloo alttawrata thumma lam yahmilooha kamathali alhimari yahmilu asfaran bisa mathalu alqawmi allatheena kaththaboo biayati Allahi waAllahu la yahdee alqawma alththalimeena The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]."
      }
     ],
-    "seq": 4,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -224,7 +196,7 @@
     "verb": "gives",
     "object": "to whom He wills",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -233,13 +205,13 @@
       "text": "And He is the Exalted in Might, the Wise [62:4] ذَٰلِكَ فَضۡلُ ٱللَّهِ يُؤۡتِيهِ مَن يَشَآءُۚ وَٱللَّهُ ذُو ٱلۡفَضۡلِ ٱلۡعَظِيمِ Thalika fadlu Allahi yuteehi man yashao waAllahu thoo alfadli alAAatheemi That is the bounty of Allah, which He gives to whom He wills, and Allah is the possessor of great bounty [62:5] مَثَلُ ٱلَّذِينَ حُمِّلُواْ ٱلتَّوۡرَىٰةَ ثُمَّ لَمۡ يَحۡمِلُوهَا كَمَثَلِ ٱلۡحِمَارِ يَحۡمِلُ أَسۡفَارَۢاۚ بِئۡسَ مَثَلُ ٱلۡقَوۡمِ ٱلَّذِينَ كَذَّبُواْ بِـَٔايَٰتِ ٱللَّهِۚ وَٱللَّهُ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Mathalu allatheena hummiloo alttawrata thumma lam yahmilooha kamathali alhimari yahmilu asfaran bisa mathalu alqawmi allatheena kaththaboo biayati Allahi waAllahu la yahdee alqawma alththalimeena The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]."
      }
     ],
-    "seq": 5,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the example|of|those who were entrusted with the torah and then did not take it on is like that of a donkey who carries volumes [of books]",
+    "task_id": "it on|is|like that of a donkey who carries volumes [of books]",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -248,12 +220,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]",
-    "subject": "The example",
-    "verb": "of",
-    "object": "those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]",
+    "description": "it on is like that of a donkey who carries volumes [of books]",
+    "subject": "it on",
+    "verb": "is",
+    "object": "like that of a donkey who carries volumes [of books]",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -262,7 +234,7 @@
       "text": "And He is the Exalted in Might, the Wise [62:4] ذَٰلِكَ فَضۡلُ ٱللَّهِ يُؤۡتِيهِ مَن يَشَآءُۚ وَٱللَّهُ ذُو ٱلۡفَضۡلِ ٱلۡعَظِيمِ Thalika fadlu Allahi yuteehi man yashao waAllahu thoo alfadli alAAatheemi That is the bounty of Allah, which He gives to whom He wills, and Allah is the possessor of great bounty [62:5] مَثَلُ ٱلَّذِينَ حُمِّلُواْ ٱلتَّوۡرَىٰةَ ثُمَّ لَمۡ يَحۡمِلُوهَا كَمَثَلِ ٱلۡحِمَارِ يَحۡمِلُ أَسۡفَارَۢاۚ بِئۡسَ مَثَلُ ٱلۡقَوۡمِ ٱلَّذِينَ كَذَّبُواْ بِـَٔايَٰتِ ٱللَّهِۚ وَٱللَّهُ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Mathalu allatheena hummiloo alttawrata thumma lam yahmilooha kamathali alhimari yahmilu asfaran bisa mathalu alqawmi allatheena kaththaboo biayati Allahi waAllahu la yahdee alqawma alththalimeena The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]."
      }
     ],
-    "seq": 6,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -282,7 +254,7 @@
     "verb": "is",
     "object": "the example of the people who deny the signs of Allah",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -291,65 +263,7 @@
       "text": "Wretched is the example of the people who deny the signs of Allah."
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "o you|who|are jews",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "O you who are Jews",
-    "subject": "O you",
-    "verb": "who",
-    "object": "are Jews",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#2325-3090",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "And Allah does not guide the wrongdoing people [62:6] قُلۡ يَـٰٓأَيُّهَا ٱلَّذِينَ هَادُوٓاْ إِن زَعَمۡتُمۡ أَنَّكُمۡ أَوۡلِيَآءُ لِلَّهِ مِن دُونِ ٱلنَّاسِ فَتَمَنَّوُاْ ٱلۡمَوۡتَ إِن كُنتُمۡ صَٰدِقِينَ Qul ya ayyuha allatheena hadoo in zaAAamtum annakum awliyao lillahi min dooni alnnasi fatamannawoo almawta in kuntum sadiqeena Say, \"O you who are Jews, if you claim that you are allies of Allah, excluding the [other] people, then wish for death, if you should be truthful [62:7] وَلَا يَتَمَنَّوۡنَهُۥٓ أَبَدَۢا بِمَا قَدَّمَتۡ أَيۡدِيهِمۡۚ وَٱللَّهُ عَلِيمُۢ بِٱلظَّـٰلِمِينَ Wala yatamannawnahu abadan bima qaddamat aydeehim waAllahu AAaleemun bialththalimeena But they will not wish for it, ever, because of what their hands have put forth."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are allies|of|allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are allies of Allah",
-    "subject": "are allies",
-    "verb": "of",
-    "object": "Allah",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#2325-3090",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "And Allah does not guide the wrongdoing people [62:6] قُلۡ يَـٰٓأَيُّهَا ٱلَّذِينَ هَادُوٓاْ إِن زَعَمۡتُمۡ أَنَّكُمۡ أَوۡلِيَآءُ لِلَّهِ مِن دُونِ ٱلنَّاسِ فَتَمَنَّوُاْ ٱلۡمَوۡتَ إِن كُنتُمۡ صَٰدِقِينَ Qul ya ayyuha allatheena hadoo in zaAAamtum annakum awliyao lillahi min dooni alnnasi fatamannawoo almawta in kuntum sadiqeena Say, \"O you who are Jews, if you claim that you are allies of Allah, excluding the [other] people, then wish for death, if you should be truthful [62:7] وَلَا يَتَمَنَّوۡنَهُۥٓ أَبَدَۢا بِمَا قَدَّمَتۡ أَيۡدِيهِمۡۚ وَٱللَّهُ عَلِيمُۢ بِٱلظَّـٰلِمِينَ Wala yatamannawnahu abadan bima qaddamat aydeehim waAllahu AAaleemun bialththalimeena But they will not wish for it, ever, because of what their hands have put forth."
-     }
-    ],
-    "seq": 9,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -369,7 +283,7 @@
     "verb": "bialththalimeena",
     "object": "But they will not wish for it",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -378,65 +292,7 @@
       "text": "And Allah does not guide the wrongdoing people [62:6] قُلۡ يَـٰٓأَيُّهَا ٱلَّذِينَ هَادُوٓاْ إِن زَعَمۡتُمۡ أَنَّكُمۡ أَوۡلِيَآءُ لِلَّهِ مِن دُونِ ٱلنَّاسِ فَتَمَنَّوُاْ ٱلۡمَوۡتَ إِن كُنتُمۡ صَٰدِقِينَ Qul ya ayyuha allatheena hadoo in zaAAamtum annakum awliyao lillahi min dooni alnnasi fatamannawoo almawta in kuntum sadiqeena Say, \"O you who are Jews, if you claim that you are allies of Allah, excluding the [other] people, then wish for death, if you should be truthful [62:7] وَلَا يَتَمَنَّوۡنَهُۥٓ أَبَدَۢا بِمَا قَدَّمَتۡ أَيۡدِيهِمۡۚ وَٱللَّهُ عَلِيمُۢ بِٱلظَّـٰلِمِينَ Wala yatamannawnahu abadan bima qaddamat aydeehim waAllahu AAaleemun bialththalimeena But they will not wish for it, ever, because of what their hands have put forth."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "because|of|what their hands have put forth",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "because of what their hands have put forth",
-    "subject": "because",
-    "verb": "of",
-    "object": "what their hands have put forth",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#2325-3090",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "And Allah does not guide the wrongdoing people [62:6] قُلۡ يَـٰٓأَيُّهَا ٱلَّذِينَ هَادُوٓاْ إِن زَعَمۡتُمۡ أَنَّكُمۡ أَوۡلِيَآءُ لِلَّهِ مِن دُونِ ٱلنَّاسِ فَتَمَنَّوُاْ ٱلۡمَوۡتَ إِن كُنتُمۡ صَٰدِقِينَ Qul ya ayyuha allatheena hadoo in zaAAamtum annakum awliyao lillahi min dooni alnnasi fatamannawoo almawta in kuntum sadiqeena Say, \"O you who are Jews, if you claim that you are allies of Allah, excluding the [other] people, then wish for death, if you should be truthful [62:7] وَلَا يَتَمَنَّوۡنَهُۥٓ أَبَدَۢا بِمَا قَدَّمَتۡ أَيۡدِيهِمۡۚ وَٱللَّهُ عَلِيمُۢ بِٱلظَّـٰلِمِينَ Wala yatamannawnahu abadan bima qaddamat aydeehim waAllahu AAaleemun bialththalimeena But they will not wish for it, ever, because of what their hands have put forth."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the death|from|which you flee - indeed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the death from which you flee - indeed",
-    "subject": "the death",
-    "verb": "from",
-    "object": "which you flee - indeed",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#3091-3542",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "And Allah is Knowing of the wrongdoers [62:8] قُلۡ إِنَّ ٱلۡمَوۡتَ ٱلَّذِي تَفِرُّونَ مِنۡهُ فَإِنَّهُۥ مُلَٰقِيكُمۡۖ ثُمَّ تُرَدُّونَ إِلَىٰ عَٰلِمِ ٱلۡغَيۡبِ وَٱلشَّهَٰدَةِ فَيُنَبِّئُكُم بِمَا كُنتُمۡ تَعۡمَلُونَ Qul inna almawta allathee tafirroona minhu fainnahu mulaqeekum thumma turaddoona ila AAalimi alghaybi waalshshahadati fayunabbiokum bima kuntum taAAmaloona Say, \"Indeed, the death from which you flee - indeed, it will meet you."
-     }
-    ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -456,7 +312,7 @@
     "verb": "will",
     "object": "meet you",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -465,7 +321,7 @@
       "text": "And Allah is Knowing of the wrongdoers [62:8] قُلۡ إِنَّ ٱلۡمَوۡتَ ٱلَّذِي تَفِرُّونَ مِنۡهُ فَإِنَّهُۥ مُلَٰقِيكُمۡۖ ثُمَّ تُرَدُّونَ إِلَىٰ عَٰلِمِ ٱلۡغَيۡبِ وَٱلشَّهَٰدَةِ فَيُنَبِّئُكُم بِمَا كُنتُمۡ تَعۡمَلُونَ Qul inna almawta allathee tafirroona minhu fainnahu mulaqeekum thumma turaddoona ila AAalimi alghaybi waalshshahadati fayunabbiokum bima kuntum taAAmaloona Say, \"Indeed, the death from which you flee - indeed, it will meet you."
      }
     ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -485,7 +341,7 @@
     "verb": "will",
     "object": "be returned to the Knower of the unseen and the witnessed",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -494,36 +350,7 @@
       "text": "Then you will be returned to the Knower of the unseen and the witnessed, and He will inform you about what you used to do [62:9] يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓاْ إِذَا نُودِيَ لِلصَّلَوٰةِ مِن يَوۡمِ ٱلۡجُمُعَةِ فَٱسۡعَوۡاْ إِلَىٰ ذِكۡرِ ٱللَّهِ وَذَرُواْ ٱلۡبَيۡعَۚ ذَٰلِكُمۡ خَيۡرٞ لَّكُمۡ إِن كُنتُمۡ تَعۡلَمُونَ Ya ayyuha allatheena amanoo itha noodiya lilssalati min yawmi aljumuAAati faisAAaw ila thikri Allahi watharoo albayAAa thalikum khayrun lakum in kuntum taAAlamoona O you who have believed, when [the adhan] is called for the prayer on the day of Jumu'ah [Friday], then proceed to the remembrance of Allah and leave trade."
      }
     ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "o you|who|have believed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "O you who have believed",
-    "subject": "O you",
-    "verb": "who",
-    "object": "have believed",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#3543-4190",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "Then you will be returned to the Knower of the unseen and the witnessed, and He will inform you about what you used to do [62:9] يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓاْ إِذَا نُودِيَ لِلصَّلَوٰةِ مِن يَوۡمِ ٱلۡجُمُعَةِ فَٱسۡعَوۡاْ إِلَىٰ ذِكۡرِ ٱللَّهِ وَذَرُواْ ٱلۡبَيۡعَۚ ذَٰلِكُمۡ خَيۡرٞ لَّكُمۡ إِن كُنتُمۡ تَعۡلَمُونَ Ya ayyuha allatheena amanoo itha noodiya lilssalati min yawmi aljumuAAati faisAAaw ila thikri Allahi watharoo albayAAa thalikum khayrun lakum in kuntum taAAlamoona O you who have believed, when [the adhan] is called for the prayer on the day of Jumu'ah [Friday], then proceed to the remembrance of Allah and leave trade."
-     }
-    ],
-    "seq": 15,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -543,7 +370,7 @@
     "verb": "is",
     "object": "called for the prayer on the day of Jumu'ah [Friday]",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -552,36 +379,7 @@
       "text": "Then you will be returned to the Knower of the unseen and the witnessed, and He will inform you about what you used to do [62:9] يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓاْ إِذَا نُودِيَ لِلصَّلَوٰةِ مِن يَوۡمِ ٱلۡجُمُعَةِ فَٱسۡعَوۡاْ إِلَىٰ ذِكۡرِ ٱللَّهِ وَذَرُواْ ٱلۡبَيۡعَۚ ذَٰلِكُمۡ خَيۡرٞ لَّكُمۡ إِن كُنتُمۡ تَعۡلَمُونَ Ya ayyuha allatheena amanoo itha noodiya lilssalati min yawmi aljumuAAati faisAAaw ila thikri Allahi watharoo albayAAa thalikum khayrun lakum in kuntum taAAlamoona O you who have believed, when [the adhan] is called for the prayer on the day of Jumu'ah [Friday], then proceed to the remembrance of Allah and leave trade."
      }
     ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the remembrance|of|allah and leave trade",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the remembrance of Allah and leave trade",
-    "subject": "the remembrance",
-    "verb": "of",
-    "object": "Allah and leave trade",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#3543-4190",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "Then you will be returned to the Knower of the unseen and the witnessed, and He will inform you about what you used to do [62:9] يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓاْ إِذَا نُودِيَ لِلصَّلَوٰةِ مِن يَوۡمِ ٱلۡجُمُعَةِ فَٱسۡعَوۡاْ إِلَىٰ ذِكۡرِ ٱللَّهِ وَذَرُواْ ٱلۡبَيۡعَۚ ذَٰلِكُمۡ خَيۡرٞ لَّكُمۡ إِن كُنتُمۡ تَعۡلَمُونَ Ya ayyuha allatheena amanoo itha noodiya lilssalati min yawmi aljumuAAati faisAAaw ila thikri Allahi watharoo albayAAa thalikum khayrun lakum in kuntum taAAlamoona O you who have believed, when [the adhan] is called for the prayer on the day of Jumu'ah [Friday], then proceed to the remembrance of Allah and leave trade."
-     }
-    ],
-    "seq": 17,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -601,7 +399,7 @@
     "verb": "is",
     "object": "better for you",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -610,123 +408,7 @@
       "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
      }
     ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "laaaallakum tuflihoona|and|when the prayer has been concluded",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "laAAallakum tuflihoona and when the prayer has been concluded",
-    "subject": "laAAallakum tuflihoona",
-    "verb": "and",
-    "object": "when the prayer has been concluded",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the land|and|seek from the bounty of allah",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the land and seek from the bounty of Allah",
-    "subject": "the land",
-    "verb": "and",
-    "object": "seek from the bounty of Allah",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "alrraziqeena\n    but|when|they saw a transaction or a diversion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "alrraziqeena\n    But when they saw a transaction or a diversion",
-    "subject": "alrraziqeena\n    But",
-    "verb": "when",
-    "object": "they saw a transaction or a diversion",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "to it|and|left you standing",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "to it and left you standing",
-    "subject": "to it",
-    "verb": "and",
-    "object": "left you standing",
-    "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
-      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-      "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-     }
-    ],
-    "seq": 22,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -746,7 +428,7 @@
     "verb": "is",
     "object": "the best of providers",
     "witnesses": [
-     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+     "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -755,12 +437,12 @@
       "text": "Say, \"What is with Allah is better than diversion and than a transaction, and Allah is the best of providers"
      }
     ],
-    "seq": 23,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 24,
+  "nextSeq": 12,
   "admits": [
    "NUL",
    "SEG",
@@ -780,7 +462,7 @@
    "verb": "is",
    "object": "the bounty of Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -791,28 +473,12 @@
    ]
   },
   {
-   "id": "alaaazeezu alhakeemu|and|[to] others of them who have not yet joined them",
-   "subject": "alAAazeezu alhakeemu",
-   "verb": "and",
-   "object": "[to] others of them who have not yet joined them",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#222-1368",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "[62:1] يُسَبِّحُ لِلَّهِ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ ٱلۡمَلِكِ ٱلۡقُدُّوسِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Yusabbihu lillahi ma fee alssamawati wama fee alardi almaliki alquddoosi alAAazeezi alhakeemi Whatever is in the heavens and whatever is on the earth is exalting Allah, the Sovereign, the Pure, the Exalted in Might, the Wise [62:2] هُوَ ٱلَّذِي بَعَثَ فِي ٱلۡأُمِّيِّـۧنَ رَسُولٗا مِّنۡهُمۡ يَتۡلُواْ عَلَيۡهِمۡ ءَايَٰتِهِۦ وَيُزَكِّيهِمۡ وَيُعَلِّمُهُمُ ٱلۡكِتَٰبَ وَٱلۡحِكۡمَةَ وَإِن كَانُواْ مِن قَبۡلُ لَفِي ضَلَٰلٖ مُّبِينٖ Huwa allathee baAAatha fee alommiyyeena rasoolan minhum yatloo AAalayhim ayatihi wayuzakkeehim wayuAAallimuhumu alkitaba waalhikmata wain kanoo min qablu lafee dalalin mubeenin It is He who has sent among the unlettered a Messenger from themselves reciting to them His verses and purifying them and teaching them the Book and wisdom - although they were before in clear error [62:3] وَءَاخَرِينَ مِنۡهُمۡ لَمَّا يَلۡحَقُواْ بِهِمۡۚ وَهُوَ ٱلۡعَزِيزُ ٱلۡحَكِيمُ Waakhareena minhum lamma yalhaqoo bihim wahuwa alAAazeezu alhakeemu And [to] others of them who have not yet joined them."
-    }
-   ]
-  },
-  {
    "id": "alhakeemi\n    whatever|is|in the heavens and whatever is on the earth is exalting allah",
    "subject": "alhakeemi\n    Whatever",
    "verb": "is",
    "object": "in the heavens and whatever is on the earth is exalting Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -828,28 +494,12 @@
    ]
   },
   {
-   "id": "alrraziqeena\n    but|when|they saw a transaction or a diversion",
-   "subject": "alrraziqeena\n    But",
-   "verb": "when",
-   "object": "they saw a transaction or a diversion",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-    }
-   ]
-  },
-  {
    "id": "and allah|is|the best of providers",
    "subject": "and Allah",
    "verb": "is",
    "object": "the best of providers",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -865,7 +515,7 @@
    "verb": "is",
    "object": "the Exalted in Might",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -876,34 +526,18 @@
    ]
   },
   {
-   "id": "are allies|of|allah",
-   "subject": "are allies",
-   "verb": "of",
-   "object": "Allah",
+   "id": "it on|is|like that of a donkey who carries volumes [of books]",
+   "subject": "it on",
+   "verb": "is",
+   "object": "like that of a donkey who carries volumes [of books]",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#2325-3090",
+     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#1369-2257",
      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "And Allah does not guide the wrongdoing people [62:6] قُلۡ يَـٰٓأَيُّهَا ٱلَّذِينَ هَادُوٓاْ إِن زَعَمۡتُمۡ أَنَّكُمۡ أَوۡلِيَآءُ لِلَّهِ مِن دُونِ ٱلنَّاسِ فَتَمَنَّوُاْ ٱلۡمَوۡتَ إِن كُنتُمۡ صَٰدِقِينَ Qul ya ayyuha allatheena hadoo in zaAAamtum annakum awliyao lillahi min dooni alnnasi fatamannawoo almawta in kuntum sadiqeena Say, \"O you who are Jews, if you claim that you are allies of Allah, excluding the [other] people, then wish for death, if you should be truthful [62:7] وَلَا يَتَمَنَّوۡنَهُۥٓ أَبَدَۢا بِمَا قَدَّمَتۡ أَيۡدِيهِمۡۚ وَٱللَّهُ عَلِيمُۢ بِٱلظَّـٰلِمِينَ Wala yatamannawnahu abadan bima qaddamat aydeehim waAllahu AAaleemun bialththalimeena But they will not wish for it, ever, because of what their hands have put forth."
-    }
-   ]
-  },
-  {
-   "id": "because|of|what their hands have put forth",
-   "subject": "because",
-   "verb": "of",
-   "object": "what their hands have put forth",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#2325-3090",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "And Allah does not guide the wrongdoing people [62:6] قُلۡ يَـٰٓأَيُّهَا ٱلَّذِينَ هَادُوٓاْ إِن زَعَمۡتُمۡ أَنَّكُمۡ أَوۡلِيَآءُ لِلَّهِ مِن دُونِ ٱلنَّاسِ فَتَمَنَّوُاْ ٱلۡمَوۡتَ إِن كُنتُمۡ صَٰدِقِينَ Qul ya ayyuha allatheena hadoo in zaAAamtum annakum awliyao lillahi min dooni alnnasi fatamannawoo almawta in kuntum sadiqeena Say, \"O you who are Jews, if you claim that you are allies of Allah, excluding the [other] people, then wish for death, if you should be truthful [62:7] وَلَا يَتَمَنَّوۡنَهُۥٓ أَبَدَۢا بِمَا قَدَّمَتۡ أَيۡدِيهِمۡۚ وَٱللَّهُ عَلِيمُۢ بِٱلظَّـٰلِمِينَ Wala yatamannawnahu abadan bima qaddamat aydeehim waAllahu AAaleemun bialththalimeena But they will not wish for it, ever, because of what their hands have put forth."
+     "text": "And He is the Exalted in Might, the Wise [62:4] ذَٰلِكَ فَضۡلُ ٱللَّهِ يُؤۡتِيهِ مَن يَشَآءُۚ وَٱللَّهُ ذُو ٱلۡفَضۡلِ ٱلۡعَظِيمِ Thalika fadlu Allahi yuteehi man yashao waAllahu thoo alfadli alAAatheemi That is the bounty of Allah, which He gives to whom He wills, and Allah is the possessor of great bounty [62:5] مَثَلُ ٱلَّذِينَ حُمِّلُواْ ٱلتَّوۡرَىٰةَ ثُمَّ لَمۡ يَحۡمِلُوهَا كَمَثَلِ ٱلۡحِمَارِ يَحۡمِلُ أَسۡفَارَۢاۚ بِئۡسَ مَثَلُ ٱلۡقَوۡمِ ٱلَّذِينَ كَذَّبُواْ بِـَٔايَٰتِ ٱللَّهِۚ وَٱللَّهُ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Mathalu allatheena hummiloo alttawrata thumma lam yahmilooha kamathali alhimari yahmilu asfaran bisa mathalu alqawmi allatheena kaththaboo biayati Allahi waAllahu la yahdee alqawma alththalimeena The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]."
     }
    ]
   },
@@ -913,61 +547,13 @@
    "verb": "will",
    "object": "meet you",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#3091-3542",
      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
      "text": "And Allah is Knowing of the wrongdoers [62:8] قُلۡ إِنَّ ٱلۡمَوۡتَ ٱلَّذِي تَفِرُّونَ مِنۡهُ فَإِنَّهُۥ مُلَٰقِيكُمۡۖ ثُمَّ تُرَدُّونَ إِلَىٰ عَٰلِمِ ٱلۡغَيۡبِ وَٱلشَّهَٰدَةِ فَيُنَبِّئُكُم بِمَا كُنتُمۡ تَعۡمَلُونَ Qul inna almawta allathee tafirroona minhu fainnahu mulaqeekum thumma turaddoona ila AAalimi alghaybi waalshshahadati fayunabbiokum bima kuntum taAAmaloona Say, \"Indeed, the death from which you flee - indeed, it will meet you."
-    }
-   ]
-  },
-  {
-   "id": "laaaallakum tuflihoona|and|when the prayer has been concluded",
-   "subject": "laAAallakum tuflihoona",
-   "verb": "and",
-   "object": "when the prayer has been concluded",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-    }
-   ]
-  },
-  {
-   "id": "o you|who|are jews",
-   "subject": "O you",
-   "verb": "who",
-   "object": "are Jews",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#2325-3090",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "And Allah does not guide the wrongdoing people [62:6] قُلۡ يَـٰٓأَيُّهَا ٱلَّذِينَ هَادُوٓاْ إِن زَعَمۡتُمۡ أَنَّكُمۡ أَوۡلِيَآءُ لِلَّهِ مِن دُونِ ٱلنَّاسِ فَتَمَنَّوُاْ ٱلۡمَوۡتَ إِن كُنتُمۡ صَٰدِقِينَ Qul ya ayyuha allatheena hadoo in zaAAamtum annakum awliyao lillahi min dooni alnnasi fatamannawoo almawta in kuntum sadiqeena Say, \"O you who are Jews, if you claim that you are allies of Allah, excluding the [other] people, then wish for death, if you should be truthful [62:7] وَلَا يَتَمَنَّوۡنَهُۥٓ أَبَدَۢا بِمَا قَدَّمَتۡ أَيۡدِيهِمۡۚ وَٱللَّهُ عَلِيمُۢ بِٱلظَّـٰلِمِينَ Wala yatamannawnahu abadan bima qaddamat aydeehim waAllahu AAaleemun bialththalimeena But they will not wish for it, ever, because of what their hands have put forth."
-    }
-   ]
-  },
-  {
-   "id": "o you|who|have believed",
-   "subject": "O you",
-   "verb": "who",
-   "object": "have believed",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#3543-4190",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "Then you will be returned to the Knower of the unseen and the witnessed, and He will inform you about what you used to do [62:9] يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓاْ إِذَا نُودِيَ لِلصَّلَوٰةِ مِن يَوۡمِ ٱلۡجُمُعَةِ فَٱسۡعَوۡاْ إِلَىٰ ذِكۡرِ ٱللَّهِ وَذَرُواْ ٱلۡبَيۡعَۚ ذَٰلِكُمۡ خَيۡرٞ لَّكُمۡ إِن كُنتُمۡ تَعۡلَمُونَ Ya ayyuha allatheena amanoo itha noodiya lilssalati min yawmi aljumuAAati faisAAaw ila thikri Allahi watharoo albayAAa thalikum khayrun lakum in kuntum taAAlamoona O you who have believed, when [the adhan] is called for the prayer on the day of Jumu'ah [Friday], then proceed to the remembrance of Allah and leave trade."
     }
    ]
   },
@@ -977,93 +563,13 @@
    "verb": "is",
    "object": "better for you",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
      "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
      "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-    }
-   ]
-  },
-  {
-   "id": "the death|from|which you flee - indeed",
-   "subject": "the death",
-   "verb": "from",
-   "object": "which you flee - indeed",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#3091-3542",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "And Allah is Knowing of the wrongdoers [62:8] قُلۡ إِنَّ ٱلۡمَوۡتَ ٱلَّذِي تَفِرُّونَ مِنۡهُ فَإِنَّهُۥ مُلَٰقِيكُمۡۖ ثُمَّ تُرَدُّونَ إِلَىٰ عَٰلِمِ ٱلۡغَيۡبِ وَٱلشَّهَٰدَةِ فَيُنَبِّئُكُم بِمَا كُنتُمۡ تَعۡمَلُونَ Qul inna almawta allathee tafirroona minhu fainnahu mulaqeekum thumma turaddoona ila AAalimi alghaybi waalshshahadati fayunabbiokum bima kuntum taAAmaloona Say, \"Indeed, the death from which you flee - indeed, it will meet you."
-    }
-   ]
-  },
-  {
-   "id": "the exalted|in|might",
-   "subject": "the Exalted",
-   "verb": "in",
-   "object": "Might",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#222-1368",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "[62:1] يُسَبِّحُ لِلَّهِ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِ ٱلۡمَلِكِ ٱلۡقُدُّوسِ ٱلۡعَزِيزِ ٱلۡحَكِيمِ Yusabbihu lillahi ma fee alssamawati wama fee alardi almaliki alquddoosi alAAazeezi alhakeemi Whatever is in the heavens and whatever is on the earth is exalting Allah, the Sovereign, the Pure, the Exalted in Might, the Wise [62:2] هُوَ ٱلَّذِي بَعَثَ فِي ٱلۡأُمِّيِّـۧنَ رَسُولٗا مِّنۡهُمۡ يَتۡلُواْ عَلَيۡهِمۡ ءَايَٰتِهِۦ وَيُزَكِّيهِمۡ وَيُعَلِّمُهُمُ ٱلۡكِتَٰبَ وَٱلۡحِكۡمَةَ وَإِن كَانُواْ مِن قَبۡلُ لَفِي ضَلَٰلٖ مُّبِينٖ Huwa allathee baAAatha fee alommiyyeena rasoolan minhum yatloo AAalayhim ayatihi wayuzakkeehim wayuAAallimuhumu alkitaba waalhikmata wain kanoo min qablu lafee dalalin mubeenin It is He who has sent among the unlettered a Messenger from themselves reciting to them His verses and purifying them and teaching them the Book and wisdom - although they were before in clear error [62:3] وَءَاخَرِينَ مِنۡهُمۡ لَمَّا يَلۡحَقُواْ بِهِمۡۚ وَهُوَ ٱلۡعَزِيزُ ٱلۡحَكِيمُ Waakhareena minhum lamma yalhaqoo bihim wahuwa alAAazeezu alhakeemu And [to] others of them who have not yet joined them."
-    }
-   ]
-  },
-  {
-   "id": "the example|of|those who were entrusted with the torah and then did not take it on is like that of a donkey who carries volumes [of books]",
-   "subject": "The example",
-   "verb": "of",
-   "object": "those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#1369-2257",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "And He is the Exalted in Might, the Wise [62:4] ذَٰلِكَ فَضۡلُ ٱللَّهِ يُؤۡتِيهِ مَن يَشَآءُۚ وَٱللَّهُ ذُو ٱلۡفَضۡلِ ٱلۡعَظِيمِ Thalika fadlu Allahi yuteehi man yashao waAllahu thoo alfadli alAAatheemi That is the bounty of Allah, which He gives to whom He wills, and Allah is the possessor of great bounty [62:5] مَثَلُ ٱلَّذِينَ حُمِّلُواْ ٱلتَّوۡرَىٰةَ ثُمَّ لَمۡ يَحۡمِلُوهَا كَمَثَلِ ٱلۡحِمَارِ يَحۡمِلُ أَسۡفَارَۢاۚ بِئۡسَ مَثَلُ ٱلۡقَوۡمِ ٱلَّذِينَ كَذَّبُواْ بِـَٔايَٰتِ ٱللَّهِۚ وَٱللَّهُ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ Mathalu allatheena hummiloo alttawrata thumma lam yahmilooha kamathali alhimari yahmilu asfaran bisa mathalu alqawmi allatheena kaththaboo biayati Allahi waAllahu la yahdee alqawma alththalimeena The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]."
-    }
-   ]
-  },
-  {
-   "id": "the land|and|seek from the bounty of allah",
-   "subject": "the land",
-   "verb": "and",
-   "object": "seek from the bounty of Allah",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-    }
-   ]
-  },
-  {
-   "id": "the remembrance|of|allah and leave trade",
-   "subject": "the remembrance",
-   "verb": "of",
-   "object": "Allah and leave trade",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#3543-4190",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "Then you will be returned to the Knower of the unseen and the witnessed, and He will inform you about what you used to do [62:9] يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓاْ إِذَا نُودِيَ لِلصَّلَوٰةِ مِن يَوۡمِ ٱلۡجُمُعَةِ فَٱسۡعَوۡاْ إِلَىٰ ذِكۡرِ ٱللَّهِ وَذَرُواْ ٱلۡبَيۡعَۚ ذَٰلِكُمۡ خَيۡرٞ لَّكُمۡ إِن كُنتُمۡ تَعۡلَمُونَ Ya ayyuha allatheena amanoo itha noodiya lilssalati min yawmi aljumuAAati faisAAaw ila thikri Allahi watharoo albayAAa thalikum khayrun lakum in kuntum taAAlamoona O you who have believed, when [the adhan] is called for the prayer on the day of Jumu'ah [Friday], then proceed to the remembrance of Allah and leave trade."
     }
    ]
   },
@@ -1073,7 +579,7 @@
    "verb": "will",
    "object": "be returned to the Knower of the unseen and the witnessed",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1084,28 +590,12 @@
    ]
   },
   {
-   "id": "to it|and|left you standing",
-   "subject": "to it",
-   "verb": "and",
-   "object": "left you standing",
-   "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt#4191-5126",
-     "ref": "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt",
-     "text": "That is better for you, if you only knew [62:10] فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُواْ فِي ٱلۡأَرۡضِ وَٱبۡتَغُواْ مِن فَضۡلِ ٱللَّهِ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ Faitha qudiyati alssalatu faintashiroo fee alardi waibtaghoo min fadli Allahi waothkuroo Allaha katheeran laAAallakum tuflihoona And when the prayer has been concluded, disperse within the land and seek from the bounty of Allah, and remember Allah often that you may succeed [62:11] وَإِذَا رَأَوۡاْ تِجَٰرَةً أَوۡ لَهۡوًا ٱنفَضُّوٓاْ إِلَيۡهَا وَتَرَكُوكَ قَآئِمٗاۚ قُلۡ مَا عِندَ ٱللَّهِ خَيۡرٞ مِّنَ ٱللَّهۡوِ وَمِنَ ٱلتِّجَٰرَةِۚ وَٱللَّهُ خَيۡرُ ٱلرَّـٰزِقِينَ Waitha raaw tijaratan aw lahwan infaddoo ilayha watarakooka qaiman qul ma AAinda Allahi khayrun mina allahwi wamina alttijarati waAllahu khayru alrraziqeena But when they saw a transaction or a diversion, [O Muhammad], they rushed to it and left you standing."
-    }
-   ]
-  },
-  {
    "id": "waallahu aaaleemun|bialththalimeena|but they will not wish for it",
    "subject": "waAllahu AAaleemun",
    "verb": "bialththalimeena",
    "object": "But they will not wish for it",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1121,7 +611,7 @@
    "verb": "is",
    "object": "called for the prayer on the day of Jumu'ah [Friday]",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1137,7 +627,7 @@
    "verb": "gives",
    "object": "to whom He wills",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1153,7 +643,7 @@
    "verb": "is",
    "object": "the example of the people who deny the signs of Allah",
    "witnesses": [
-    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@b2de25493ccfe8e8"
+    "14-holy-texts/quran-suras/sura-062-Al-Jumu-ah.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1165,7 +655,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:48.107Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:47.653Z"
  }
 }

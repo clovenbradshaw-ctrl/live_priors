@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 126950,
   "bodyOffset": 0,
   "bodyChars": 126950,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,28 +55,33 @@
   "referentEvents": 16,
   "distinctReferents": 14,
   "examined": true,
-  "edgesFound": 93,
+  "edgesFound": 45,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 67,
+   "verbs": 25,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 67
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 45,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 95,
-  "excerptOk": 95,
-  "rawChecked": 95,
-  "rawOk": 95,
+  "excerptChecked": 48,
+  "excerptOk": 48,
+  "rawChecked": 48,
+  "rawOk": 48,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 93,
-  "heard": 93,
+  "offered": 45,
+  "heard": 45,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -67,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "taoism|or|daoism (",
+    "task_id": "or daoism|is|a philosophical and religious tradition indigenous to china",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -76,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Taoism or Daoism (",
-    "subject": "Taoism",
-    "verb": "or",
-    "object": "Daoism (",
+    "description": "or Daoism is a philosophical and religious tradition indigenous to China",
+    "subject": "or Daoism",
+    "verb": "is",
+    "object": "a philosophical and religious tradition indigenous to China",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -96,7 +119,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "is a|philosophical|and religious tradition indigenous to china",
+    "task_id": "of tao|include|'way'",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -105,18 +128,18 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "is a philosophical and religious tradition indigenous to China",
-    "subject": "is a",
-    "verb": "philosophical",
-    "object": "and religious tradition indigenous to China",
+    "description": "of Tao include 'way'",
+    "subject": "of Tao",
+    "verb": "include",
+    "object": "'way'",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#45-165",
+      "at": "02-encyclopedic/wikipedia/Taoism.txt#166-409",
       "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Taoism or Daoism (, ) is a philosophical and religious tradition indigenous to China, emphasizing harmony with the Tao ."
+      "text": "With a range of meaning in Chinese philosophy, translations of Tao include 'way', 'road', 'path', or 'technique', generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality."
      }
     ],
     "seq": 1,
@@ -125,7 +148,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "harmony with|the|tao",
+    "task_id": "transformation ultimate|realityultimately|underlying reality",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -134,108 +157,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "harmony with the Tao",
-    "subject": "harmony with",
-    "verb": "the",
-    "object": "Tao",
+    "description": "transformation Ultimate realityultimately underlying reality",
+    "subject": "transformation Ultimate",
+    "verb": "realityultimately",
+    "object": "underlying reality",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#45-165",
+      "at": "02-encyclopedic/wikipedia/Taoism.txt#166-409",
       "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Taoism or Daoism (, ) is a philosophical and religious tradition indigenous to China, emphasizing harmony with the Tao ."
+      "text": "With a range of meaning in Chinese philosophy, translations of Tao include 'way', 'road', 'path', or 'technique', generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality."
      }
     ],
     "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a range|of|meaning in chinese philosophy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a range of meaning in Chinese philosophy",
-    "subject": "a range",
-    "verb": "of",
-    "object": "meaning in Chinese philosophy",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#166-409",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "With a range of meaning in Chinese philosophy, translations of Tao include 'way', 'road', 'path', or 'technique', generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "translations|of|tao include 'way'",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "translations of Tao include 'way'",
-    "subject": "translations",
-    "verb": "of",
-    "object": "Tao include 'way'",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#166-409",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "With a range of meaning in Chinese philosophy, translations of Tao include 'way', 'road', 'path', or 'technique', generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "generally understood|in|the taoist sense as an enigmatic process of transformation ultimate realityultimately underlying reality",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality",
-    "subject": "generally understood",
-    "verb": "in",
-    "object": "the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#166-409",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "With a range of meaning in Chinese philosophy, translations of Tao include 'way', 'road', 'path', or 'technique', generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality."
-     }
-    ],
-    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -255,7 +191,7 @@
     "verb": "has",
     "object": "informed the development of various practices within the Taoist tradition",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -264,13 +200,13 @@
       "text": "Taoist thought has informed the development of various practices within the Taoist tradition, including forms of Taoist meditationmeditation, Chinese astrologyastrology, qigong, feng shui, and internal alchemy."
      }
     ],
-    "seq": 6,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "including forms|of|taoist meditationmeditation",
+    "task_id": "taoist practice|is|self-cultivation",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -279,41 +215,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "including forms of Taoist meditationmeditation",
-    "subject": "including forms",
-    "verb": "of",
-    "object": "Taoist meditationmeditation",
+    "description": "Taoist practice is self-cultivation",
+    "subject": "Taoist practice",
+    "verb": "is",
+    "object": "self-cultivation",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#411-621",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Taoist thought has informed the development of various practices within the Taoist tradition, including forms of Taoist meditationmeditation, Chinese astrologyastrology, qigong, feng shui, and internal alchemy."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "common goal|of|taoist practice is self-cultivation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "common goal of Taoist practice is self-cultivation",
-    "subject": "common goal",
-    "verb": "of",
-    "object": "Taoist practice is self-cultivation",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -322,13 +229,13 @@
       "text": "A common goal of Taoist practice is self-cultivation, a deeper appreciation of the Tao, and more harmonious existence."
      }
     ],
-    "seq": 8,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "deeper appreciation|of|the tao",
+    "task_id": "generally emphasize|virtues|of effortless action (wu wei)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -337,41 +244,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "deeper appreciation of the Tao",
-    "subject": "deeper appreciation",
-    "verb": "of",
-    "object": "the Tao",
+    "description": "generally emphasize virtues of effortless action (Wu wei)",
+    "subject": "generally emphasize",
+    "verb": "virtues",
+    "object": "of effortless action (Wu wei)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#622-740",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "A common goal of Taoist practice is self-cultivation, a deeper appreciation of the Tao, and more harmonious existence."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "taoist|ethics|generally emphasize virtues of effortless action (wu wei)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Taoist ethics generally emphasize virtues of effortless action (Wu wei)",
-    "subject": "Taoist",
-    "verb": "ethics",
-    "object": "generally emphasize virtues of effortless action (Wu wei)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -380,36 +258,7 @@
       "text": "Taoist ethics generally emphasize virtues of effortless action (Wu wei), zirannaturalness, pu (Taoism)simplicity, and the Three Treasures (Taoism)three treasures of compassion, frugality, and humility."
      }
     ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and the|three|treasures (taoism)three treasures of compassion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the three Treasures (Taoism)three treasures of compassion",
-    "subject": "and the",
-    "verb": "three",
-    "object": "Treasures (Taoism)three treasures of compassion",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#741-942",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Taoist ethics generally emphasize virtues of effortless action (Wu wei), zirannaturalness, pu (Taoism)simplicity, and the Three Treasures (Taoism)three treasures of compassion, frugality, and humility."
-     }
-    ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -429,7 +278,7 @@
     "verb": "is",
     "object": "treated as a distinct tradition with its own scriptures",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -441,9 +290,14 @@
       "at": "02-encyclopedic/wikipedia/Taoism.txt#1818-1942",
       "ref": "02-encyclopedic/wikipedia/Taoism.txt",
       "text": "Taoism is frequently discussed in comparison with Confucianism, since both traditions profoundly influenced Chinese thought."
+     },
+     {
+      "at": "02-encyclopedic/wikipedia/Taoism.txt#5621-5702",
+      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
+      "text": "The English word Taoism is often used to translate two distinct terms in Chinese:"
      }
     ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -463,7 +317,7 @@
     "verb": "has",
     "object": "long been closely intertwined with Chinese folk religion",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -472,13 +326,13 @@
       "text": "Taoism is treated as a distinct tradition with its own scriptures, priestly lineages, and ritual systems, but it has long been closely intertwined with Chinese folk religion, and the boundary between them is often fluid in practice."
      }
     ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "and|the|boundary between them is often fluid in practice",
+    "task_id": "between them|is|often fluid in practice",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -487,12 +341,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "and the boundary between them is often fluid in practice",
-    "subject": "and",
-    "verb": "the",
-    "object": "boundary between them is often fluid in practice",
+    "description": "between them is often fluid in practice",
+    "subject": "between them",
+    "verb": "is",
+    "object": "often fluid in practice",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -501,13 +355,13 @@
       "text": "Taoism is treated as a distinct tradition with its own scriptures, priestly lineages, and ritual systems, but it has long been closely intertwined with Chinese folk religion, and the boundary between them is often fluid in practice."
      }
     ],
-    "seq": 14,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the core|of|taoist thought crystallized during the early warring states period ()",
+    "task_id": "of taoist|thought|crystallized during the early warring states period ()",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -516,12 +370,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The core of Taoist thought crystallized during the early Warring States period ()",
-    "subject": "The core",
-    "verb": "of",
-    "object": "Taoist thought crystallized during the early Warring States period ()",
+    "description": "of Taoist thought crystallized during the early Warring States period ()",
+    "subject": "of Taoist",
+    "verb": "thought",
+    "object": "crystallized during the early Warring States period ()",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -530,65 +384,7 @@
       "text": "The core of Taoist thought crystallized during the early Warring States period (), during which the epigrammatic and the anecdotal —widely regarded as the fundamental texts of Taoist philosophy—were largely composed."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "during which|the|epigrammatic  and the anecdotal —widely regarded as the fundamental texts of taoist philosophy—were largely composed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "during which the epigrammatic  and the anecdotal —widely regarded as the fundamental texts of Taoist philosophy—were largely composed",
-    "subject": "during which",
-    "verb": "the",
-    "object": "epigrammatic  and the anecdotal —widely regarded as the fundamental texts of Taoist philosophy—were largely composed",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#1178-1395",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "The core of Taoist thought crystallized during the early Warring States period (), during which the epigrammatic and the anecdotal —widely regarded as the fundamental texts of Taoist philosophy—were largely composed."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "they form|the|core of a body of taoist writings accrued over the following centuries",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "They form the core of a body of Taoist writings accrued over the following centuries",
-    "subject": "They form",
-    "verb": "the",
-    "object": "core of a body of Taoist writings accrued over the following centuries",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#1396-1558",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "They form the core of a body of Taoist writings accrued over the following centuries, which was assembled by monks into the canon starting in the 5th century CE."
-     }
-    ],
-    "seq": 17,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -608,7 +404,7 @@
     "verb": "was",
     "object": "assembled by monks into the  canon starting in the 5th century CE",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -617,13 +413,13 @@
       "text": "They form the core of a body of Taoist writings accrued over the following centuries, which was assembled by monks into the canon starting in the 5th century CE."
      }
     ],
-    "seq": 18,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "early taoism|drew|upon diverse influences",
+    "task_id": "and zhou|dynastyzhou|state religions",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -632,12 +428,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Early Taoism drew upon diverse influences",
-    "subject": "Early Taoism",
-    "verb": "drew",
-    "object": "upon diverse influences",
+    "description": "and Zhou dynastyzhou state religions",
+    "subject": "and Zhou",
+    "verb": "dynastyzhou",
+    "object": "state religions",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -646,94 +442,7 @@
       "text": "Early Taoism drew upon diverse influences, including the Shang and Zhou dynastyZhou state religions, School of NaturalistsNaturalism, Mohism, Confucianism, various Legalism (Chinese philosophy)Legalist theories, as well as the and Spring and Autumn Annals."
      }
     ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "including|the|shang and zhou dynastyzhou state religions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "including the Shang and Zhou dynastyZhou state religions",
-    "subject": "including",
-    "verb": "the",
-    "object": "Shang and Zhou dynastyZhou state religions",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#1559-1816",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Early Taoism drew upon diverse influences, including the Shang and Zhou dynastyZhou state religions, School of NaturalistsNaturalism, Mohism, Confucianism, various Legalism (Chinese philosophy)Legalist theories, as well as the and Spring and Autumn Annals."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "school|of|naturalistsnaturalism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "School of NaturalistsNaturalism",
-    "subject": "School",
-    "verb": "of",
-    "object": "NaturalistsNaturalism",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#1559-1816",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Early Taoism drew upon diverse influences, including the Shang and Zhou dynastyZhou state religions, School of NaturalistsNaturalism, Mohism, Confucianism, various Legalism (Chinese philosophy)Legalist theories, as well as the and Spring and Autumn Annals."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as well|as|the  and spring and autumn annals",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as well as the  and Spring and Autumn Annals",
-    "subject": "as well",
-    "verb": "as",
-    "object": "the  and Spring and Autumn Annals",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#1559-1816",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Early Taoism drew upon diverse influences, including the Shang and Zhou dynastyZhou state religions, School of NaturalistsNaturalism, Mohism, Confucianism, various Legalism (Chinese philosophy)Legalist theories, as well as the and Spring and Autumn Annals."
-     }
-    ],
-    "seq": 22,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -753,7 +462,7 @@
     "verb": "was",
     "object": "further influenced by Buddhism upon its History of Buddhism in Chinaintroduction to China",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -762,94 +471,7 @@
       "text": "Taoism was further influenced by Buddhism upon its History of Buddhism in Chinaintroduction to China, with long-running discourses shared between Taoists and Buddhists."
      }
     ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "between taoists|and|buddhists",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "between Taoists and Buddhists",
-    "subject": "between Taoists",
-    "verb": "and",
-    "object": "Buddhists",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#1943-2111",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Taoism was further influenced by Buddhism upon its History of Buddhism in Chinaintroduction to China, with long-running discourses shared between Taoists and Buddhists."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "existence led|to|the emergence of three teachingsthree teachings discourse by the 6th century ce",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "existence led to the emergence of Three teachingsThree Teachings discourse by the 6th century CE",
-    "subject": "existence led",
-    "verb": "to",
-    "object": "the emergence of Three teachingsThree Teachings discourse by the 6th century CE",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#2112-2317",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "This mutual co-existence led to the emergence of Three teachingsThree Teachings discourse by the 6th century CE, which examined how the three traditions could be integrated harmoniously in Chinese society."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "examined how|the|three traditions could be integrated harmoniously in chinese society",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "examined how the three traditions could be integrated harmoniously in Chinese society",
-    "subject": "examined how",
-    "verb": "the",
-    "object": "three traditions could be integrated harmoniously in Chinese society",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#2112-2317",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "This mutual co-existence led to the emergence of Three teachingsThree Teachings discourse by the 6th century CE, which examined how the three traditions could be integrated harmoniously in Chinese society."
-     }
-    ],
-    "seq": 26,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -869,7 +491,7 @@
     "verb": "denominations",
     "object": "Taoist theologyrecognize deities",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -878,7 +500,7 @@
       "text": "Many Taoist denominations Taoist theologyrecognize deities, often ones shared with other traditions, which are venerated as superhuman figures exemplifying Taoist virtues."
      }
     ],
-    "seq": 27,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -898,7 +520,7 @@
     "verb": "are",
     "object": "venerated as superhuman figures exemplifying Taoist virtues",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -907,36 +529,7 @@
       "text": "Many Taoist denominations Taoist theologyrecognize deities, often ones shared with other traditions, which are venerated as superhuman figures exemplifying Taoist virtues."
      }
     ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "two categories|of|\"gods\" and  (\"immortals\")",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "two categories of \"gods\" and  (\"immortals\")",
-    "subject": "two categories",
-    "verb": "of",
-    "object": "\"gods\" and  (\"immortals\")",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#2491-2568",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "They can be roughly divided into two categories of \"gods\" and (\"immortals\")."
-     }
-    ],
-    "seq": 29,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -956,7 +549,7 @@
     "verb": "thought",
     "object": "is syncretic and deeply rooted in Chinese culture for millennia",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -965,7 +558,7 @@
       "text": "Since Taoist thought is syncretic and deeply rooted in Chinese culture for millennia, it is often unclear which denominations should be considered \"Taoist\"."
      }
     ],
-    "seq": 30,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -985,7 +578,7 @@
     "verb": "is",
     "object": "often unclear which denominations should be considered \"Taoist\"",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -994,7 +587,7 @@
       "text": "Since Taoist thought is syncretic and deeply rooted in Chinese culture for millennia, it is often unclear which denominations should be considered \"Taoist\"."
      }
     ],
-    "seq": 31,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1014,7 +607,7 @@
     "verb": "is",
     "object": "traditionally reserved for ordained clergy within Taoist organizations",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1023,13 +616,13 @@
       "text": "The title (\"Taoist master\") is traditionally reserved for ordained clergy within Taoist organizations, who distinguish their formal traditions from those of Chinese folk religion."
      }
     ],
-    "seq": 32,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "formal traditions|from|those of chinese folk religion",
+    "task_id": "of chinese|folk|religion",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1038,12 +631,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "formal traditions from those of Chinese folk religion",
-    "subject": "formal traditions",
-    "verb": "from",
-    "object": "those of Chinese folk religion",
+    "description": "of Chinese folk religion",
+    "subject": "of Chinese",
+    "verb": "folk",
+    "object": "religion",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1052,7 +645,7 @@
       "text": "The title (\"Taoist master\") is traditionally reserved for ordained clergy within Taoist organizations, who distinguish their formal traditions from those of Chinese folk religion."
      }
     ],
-    "seq": 33,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1072,7 +665,7 @@
     "verb": "has",
     "object": "often served as a theoretical foundation for politics",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1081,13 +674,13 @@
       "text": "Though generally lacking motivation for strong hierarchies, Taoist philosophy has often served as a theoretical foundation for politics, warfare, and Taoist organizations."
      }
     ],
-    "seq": 34,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "taoist|secret|societies precipitated the yellow turban rebellion during the late han dynasty",
+    "task_id": "create what|has|been characterized as a taoist theocracy",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1096,12 +689,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Taoist secret societies precipitated the Yellow Turban Rebellion during the late Han dynasty",
-    "subject": "Taoist",
-    "verb": "secret",
-    "object": "societies precipitated the Yellow Turban Rebellion during the late Han dynasty",
+    "description": "create what has been characterized as a Taoist theocracy",
+    "subject": "create what",
+    "verb": "has",
+    "object": "been characterized as a Taoist theocracy",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1110,36 +703,7 @@
       "text": "Taoist secret societies precipitated the Yellow Turban Rebellion during the late Han dynasty, attempting to create what has been characterized as a Taoist theocracy."
      }
     ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "attempting|to|create what has been characterized as a taoist theocracy",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "attempting to create what has been characterized as a Taoist theocracy",
-    "subject": "attempting",
-    "verb": "to",
-    "object": "create what has been characterized as a Taoist theocracy",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#3177-3342",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Taoist secret societies precipitated the Yellow Turban Rebellion during the late Han dynasty, attempting to create what has been characterized as a Taoist theocracy."
-     }
-    ],
-    "seq": 36,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1159,7 +723,7 @@
     "verb": "is",
     "object": "one of Religion in Chinafive religious doctrines officially recognized by the Chinese government",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1168,36 +732,7 @@
       "text": "Today, Taoism is one of Religion in Chinafive religious doctrines officially recognized by the Chinese government, also having official status in Hong Kong and Macau."
      }
     ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "official status|in|hong kong and macau",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "official status in Hong Kong and Macau",
-    "subject": "official status",
-    "verb": "in",
-    "object": "Hong Kong and Macau",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#3344-3510",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Today, Taoism is one of Religion in Chinafive religious doctrines officially recognized by the Chinese government, also having official status in Hong Kong and Macau."
-     }
-    ],
-    "seq": 38,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1217,7 +752,7 @@
     "verb": "is",
     "object": "considered a religion in Taiwanmajor religion in Taiwan",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1226,7 +761,7 @@
       "text": "It is considered a religion in Taiwanmajor religion in Taiwan, and also has significant populations of adherents throughout the Sinosphere and Southeast Asia."
      }
     ],
-    "seq": 39,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1246,7 +781,7 @@
     "verb": "has",
     "object": "significant populations of adherents throughout the Sinosphere and Southeast Asia",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1255,36 +790,7 @@
       "text": "It is considered a religion in Taiwanmajor religion in Taiwan, and also has significant populations of adherents throughout the Sinosphere and Southeast Asia."
      }
     ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in|the|west",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "In the West",
-    "subject": "In",
-    "verb": "the",
-    "object": "West",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#3670-3887",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "In the West, Taoism has History of TaoismTaoism in the Westtaken on various forms, both those keeping to historical practice, as well as highly synthesized practices variously characterized as new religious movements."
-     }
-    ],
-    "seq": 41,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1304,7 +810,7 @@
     "verb": "has",
     "object": "History of TaoismTaoism in the Westtaken on various forms",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1313,13 +819,13 @@
       "text": "In the West, Taoism has History of TaoismTaoism in the Westtaken on various forms, both those keeping to historical practice, as well as highly synthesized practices variously characterized as new religious movements."
      }
     ],
-    "seq": 42,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "those keeping|to|historical practice",
+    "task_id": "tao and|is|often translated as 'way'",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1328,70 +834,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "those keeping to historical practice",
-    "subject": "those keeping",
-    "verb": "to",
-    "object": "historical practice",
+    "description": "Tao and is often translated as 'way'",
+    "subject": "Tao and",
+    "verb": "is",
+    "object": "often translated as 'way'",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#3670-3887",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "In the West, Taoism has History of TaoismTaoism in the Westtaken on various forms, both those keeping to historical practice, as well as highly synthesized practices variously characterized as new religious movements."
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as well|as|highly synthesized practices variously characterized as new religious movements",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as well as highly synthesized practices variously characterized as new religious movements",
-    "subject": "as well",
-    "verb": "as",
-    "object": "highly synthesized practices variously characterized as new religious movements",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#3670-3887",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "In the West, Taoism has History of TaoismTaoism in the Westtaken on various forms, both those keeping to historical practice, as well as highly synthesized practices variously characterized as new religious movements."
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "represents tao|and|is often translated as 'way'",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "represents Tao and is often translated as 'way'",
-    "subject": "represents Tao",
-    "verb": "and",
-    "object": "is often translated as 'way'",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1400,7 +848,7 @@
       "text": ", which represents Tao and is often translated as 'way', 'path', 'technique', or 'doctrine'"
      }
     ],
-    "seq": 45,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1420,7 +868,7 @@
     "verb": "goh",
     "object": "dou6 gaau3",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1429,13 +877,13 @@
       "text": "p Doh goh dou6 gaau3"
      }
     ],
-    "seq": 46,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "in|the|zhou dynasty",
+    "task_id": "of taoism|are|marked by triangles in dark green",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1444,41 +892,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "in the Zhou dynasty",
-    "subject": "in",
-    "verb": "the",
-    "object": "Zhou dynasty",
+    "description": "of Taoism are marked by triangles in dark green",
+    "subject": "of Taoism",
+    "verb": "are",
+    "object": "marked by triangles in dark green",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#4156-4196",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Dào-jiào Dōkyō }} in the Zhou dynasty."
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "philosophers|of|taoism are marked by triangles in dark green",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Philosophers of Taoism are marked by triangles in dark green",
-    "subject": "Philosophers",
-    "verb": "of",
-    "object": "Taoism are marked by triangles in dark green",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1487,94 +906,7 @@
       "text": "Philosophers of Taoism are marked by triangles in dark green.]]"
      }
     ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "spelling|and|pronunciation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Spelling and pronunciation",
-    "subject": "Spelling",
-    "verb": "and",
-    "object": "pronunciation",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#4264-4290",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Spelling and pronunciation"
-     }
-    ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "romanized spellings|of|the same chinese word: 道",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "romanized spellings of the same Chinese word: 道",
-    "subject": "romanized spellings",
-    "verb": "of",
-    "object": "the same Chinese word: 道",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#4292-4370",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "\"Tao\" and \"Dao\" are different romanized spellings of the same Chinese word: 道."
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|the|romanized spelling in the wade–giles system",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is the romanized spelling in the Wade–Giles system",
-    "subject": "is",
-    "verb": "the",
-    "object": "romanized spelling in the Wade–Giles system",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#4372-4584",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "\"Tao\" is the romanized spelling in the Wade–Giles system, which was predominant in English-speaking countries until the late 20th century, and remains in use for certain terms with strongly established spellings."
-     }
-    ],
-    "seq": 51,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1594,7 +926,7 @@
     "verb": "was",
     "object": "predominant in English-speaking countries until the late 20th century",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1603,94 +935,7 @@
       "text": "\"Tao\" is the romanized spelling in the Wade–Giles system, which was predominant in English-speaking countries until the late 20th century, and remains in use for certain terms with strongly established spellings."
      }
     ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and remains|in|use for certain terms with strongly established spellings",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and remains in use for certain terms with strongly established spellings",
-    "subject": "and remains",
-    "verb": "in",
-    "object": "use for certain terms with strongly established spellings",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#4372-4584",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "\"Tao\" is the romanized spelling in the Wade–Giles system, which was predominant in English-speaking countries until the late 20th century, and remains in use for certain terms with strongly established spellings."
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|the|romanized spelling in the hanyu pinyin system",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is the romanized spelling in the Hanyu Pinyin system",
-    "subject": "is",
-    "verb": "the",
-    "object": "romanized spelling in the Hanyu Pinyin system",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#4586-4795",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "\"Dao\" is the romanized spelling in the Hanyu Pinyin system, officially adopted in China in the 1950s and the Library of Congress in 2000, which has largely replaced Wade–Giles romanization in academic sources."
-     }
-    ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "officially adopted|in|china in the 1950s and the library of congress in 2000",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "officially adopted in China in the 1950s and the Library of Congress in 2000",
-    "subject": "officially adopted",
-    "verb": "in",
-    "object": "China in the 1950s and the Library of Congress in 2000",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#4586-4795",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "\"Dao\" is the romanized spelling in the Hanyu Pinyin system, officially adopted in China in the 1950s and the Library of Congress in 2000, which has largely replaced Wade–Giles romanization in academic sources."
-     }
-    ],
-    "seq": 55,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -1710,7 +955,7 @@
     "verb": "has",
     "object": "largely replaced Wade–Giles romanization in academic sources",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1719,13 +964,13 @@
       "text": "\"Dao\" is the romanized spelling in the Hanyu Pinyin system, officially adopted in China in the 1950s and the Library of Congress in 2000, which has largely replaced Wade–Giles romanization in academic sources."
      }
     ],
-    "seq": 56,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "standard chinese|pronunciation|of 道 is",
+    "task_id": "pronunciation like|is|the same as the standard chinese pronunciation of 道",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1734,41 +979,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Standard Chinese pronunciation of 道 is",
-    "subject": "Standard Chinese",
-    "verb": "pronunciation",
-    "object": "of 道 is",
+    "description": "pronunciation like is the same as the Standard Chinese pronunciation of 道",
+    "subject": "pronunciation like",
+    "verb": "is",
+    "object": "the same as the Standard Chinese pronunciation of 道",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#4796-4840",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "The Standard Chinese pronunciation of 道 is ."
-     }
-    ],
-    "seq": 57,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "an english|pronunciation|like  (an english pronunciation of \"dao\") nor an english pronunciation like  (an english pronunciation of \"tao\") is the same as the standard chinese pronunciation of 道",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "an English pronunciation like  (an English pronunciation of \"Dao\") nor an English pronunciation like  (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道",
-    "subject": "an English",
-    "verb": "pronunciation",
-    "object": "like  (an English pronunciation of \"Dao\") nor an English pronunciation like  (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1777,7 +993,7 @@
       "text": "Neither an English pronunciation like (an English pronunciation of \"Dao\") nor an English pronunciation like (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道, whose initial consonant is neither voiced nor Aspirated consonantaspirated."
      }
     ],
-    "seq": 58,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -1797,7 +1013,7 @@
     "verb": "is",
     "object": "neither voiced nor Aspirated consonantaspirated",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1806,36 +1022,7 @@
       "text": "Neither an English pronunciation like (an English pronunciation of \"Dao\") nor an English pronunciation like (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道, whose initial consonant is neither voiced nor Aspirated consonantaspirated."
      }
     ],
-    "seq": 59,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "authority calls|the|pronunciation with a  as in \"tie\" (with a ) to be a \"mispronunciation\" originally caused by the \"clumsy wade–giles system\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "authority calls the pronunciation with a  as in \"tie\" (with a ) to be a \"mispronunciation\" originally caused by the \"clumsy Wade–Giles system\"",
-    "subject": "authority calls",
-    "verb": "the",
-    "object": "pronunciation with a  as in \"tie\" (with a ) to be a \"mispronunciation\" originally caused by the \"clumsy Wade–Giles system\"",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#5120-5294",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "One authority calls the pronunciation with a as in \"tie\" (with a ) to be a \"mispronunciation\" originally caused by the \"clumsy Wade–Giles system\", which misled most readers."
-     }
-    ],
-    "seq": 60,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
@@ -1855,7 +1042,7 @@
     "verb": "phonology",
     "object": "does not have the same sound inventory as English phonology",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1864,36 +1051,7 @@
       "text": "Standard Chinese phonology does not have the same sound inventory as English phonology; the Wade–Giles romanization system provides spellings in the Latin alphabet, but they are not meant to indicate an exact English pronunciation in the same way as though they were English words."
      }
     ],
-    "seq": 61,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "giles romanization|system|provides spellings in the latin alphabet",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Giles romanization system provides spellings in the Latin alphabet",
-    "subject": "Giles romanization",
-    "verb": "system",
-    "object": "provides spellings in the Latin alphabet",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#5295-5576",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Standard Chinese phonology does not have the same sound inventory as English phonology; the Wade–Giles romanization system provides spellings in the Latin alphabet, but they are not meant to indicate an exact English pronunciation in the same way as though they were English words."
-     }
-    ],
-    "seq": 62,
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
@@ -1913,7 +1071,7 @@
     "verb": "are",
     "object": "not meant to indicate an exact English pronunciation in the same way as though they were English words",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1922,65 +1080,7 @@
       "text": "Standard Chinese phonology does not have the same sound inventory as English phonology; the Wade–Giles romanization system provides spellings in the Latin alphabet, but they are not meant to indicate an exact English pronunciation in the same way as though they were English words."
      }
     ],
-    "seq": 63,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "classification as|philosophy|and religion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Classification as philosophy and religion",
-    "subject": "Classification as",
-    "verb": "philosophy",
-    "object": "and religion",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#5578-5619",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Classification as philosophy and religion"
-     }
-    ],
-    "seq": 64,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the english|word|taoism is often used to translate two distinct terms in chinese:",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The English word Taoism is often used to translate two distinct terms in Chinese:",
-    "subject": "The English",
-    "verb": "word",
-    "object": "Taoism is often used to translate two distinct terms in Chinese:",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#5621-5702",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "The English word Taoism is often used to translate two distinct terms in Chinese:"
-     }
-    ],
-    "seq": 65,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -2000,7 +1100,7 @@
     "verb": "is",
     "object": "a Han-dynasty label used to classify teachings and texts associated with the dao (\"the Way\")",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2014,94 +1114,7 @@
       "text": "The expression daojia is traced to the early Han historian Sima Tan (d."
      }
     ],
-    "seq": 66,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it appears|as|part of a scheme for organizing “hundred schools of thoughtin the records of the grand historiansix schools”: school of naturalistsyin-yang",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "it appears as part of a scheme for organizing “Hundred Schools of ThoughtIn the Records of the Grand Historiansix schools”: School of NaturalistsYin-Yang",
-    "subject": "it appears",
-    "verb": "as",
-    "object": "part of a scheme for organizing “Hundred Schools of ThoughtIn the Records of the Grand Historiansix schools”: School of NaturalistsYin-Yang",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#5924-6199",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "110 BCE), where it appears as part of a scheme for organizing “Hundred Schools of ThoughtIn the Records of the Grand Historiansix schools”: School of NaturalistsYin-Yang, ConfucianismConfucian, MohismMohist, Legalism (Chinese philosophy)Legalist, School of Names, and Taoist."
-     }
-    ],
-    "seq": 67,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "school|of|names",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "School of Names",
-    "subject": "School",
-    "verb": "of",
-    "object": "Names",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#5924-6199",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "110 BCE), where it appears as part of a scheme for organizing “Hundred Schools of ThoughtIn the Records of the Grand Historiansix schools”: School of NaturalistsYin-Yang, ConfucianismConfucian, MohismMohist, Legalism (Chinese philosophy)Legalist, School of Names, and Taoist."
-     }
-    ],
-    "seq": 68,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "internet encyclopedia|of|philosophy https://iep",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Internet Encyclopedia of Philosophy https://iep",
-    "subject": "Internet Encyclopedia",
-    "verb": "of",
-    "object": "Philosophy https://iep",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#6200-6576",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Internet Encyclopedia of Philosophy https://iep.utm.edu/daoismdaoist-philosophy/ 2026-01-27 en-US}} The term is commonly applied, particularly in Western scholarship, with reference to the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi, as well as later related philosophical developments such as Xuanxue (\"Neo-Daoism\")."
-     }
-    ],
-    "seq": 69,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
@@ -2121,7 +1134,7 @@
     "verb": "is",
     "object": "commonly applied",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2130,13 +1143,13 @@
       "text": "Internet Encyclopedia of Philosophy https://iep.utm.edu/daoismdaoist-philosophy/ 2026-01-27 en-US}} The term is commonly applied, particularly in Western scholarship, with reference to the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi, as well as later related philosophical developments such as Xuanxue (\"Neo-Daoism\")."
      }
     ],
-    "seq": 70,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "particularly|in|western scholarship",
+    "task_id": "early chinese|philosophical|texts tao te ching (also called the laozi) and the zhuangzi (book)zhuangzi",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2145,12 +1158,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "particularly in Western scholarship",
-    "subject": "particularly",
-    "verb": "in",
-    "object": "Western scholarship",
+    "description": "early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi",
+    "subject": "early Chinese",
+    "verb": "philosophical",
+    "object": "texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2159,13 +1172,13 @@
       "text": "Internet Encyclopedia of Philosophy https://iep.utm.edu/daoismdaoist-philosophy/ 2026-01-27 en-US}} The term is commonly applied, particularly in Western scholarship, with reference to the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi, as well as later related philosophical developments such as Xuanxue (\"Neo-Daoism\")."
      }
     ],
-    "seq": 71,
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "with reference|to|the early chinese philosophical texts tao te ching (also called the laozi) and the zhuangzi (book)zhuangzi",
+    "task_id": "later related|philosophical|developments such as xuanxue (\"neo-daoism\")",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2174,12 +1187,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "with reference to the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi",
-    "subject": "with reference",
-    "verb": "to",
-    "object": "the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi",
+    "description": "later related philosophical developments such as Xuanxue (\"Neo-Daoism\")",
+    "subject": "later related",
+    "verb": "philosophical",
+    "object": "developments such as Xuanxue (\"Neo-Daoism\")",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2188,94 +1201,7 @@
       "text": "Internet Encyclopedia of Philosophy https://iep.utm.edu/daoismdaoist-philosophy/ 2026-01-27 en-US}} The term is commonly applied, particularly in Western scholarship, with reference to the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi, as well as later related philosophical developments such as Xuanxue (\"Neo-Daoism\")."
      }
     ],
-    "seq": 72,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as well|as|later related philosophical developments such as xuanxue (\"neo-daoism\")",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "as well as later related philosophical developments such as Xuanxue (\"Neo-Daoism\")",
-    "subject": "as well",
-    "verb": "as",
-    "object": "later related philosophical developments such as Xuanxue (\"Neo-Daoism\")",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#6200-6576",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Internet Encyclopedia of Philosophy https://iep.utm.edu/daoismdaoist-philosophy/ 2026-01-27 en-US}} The term is commonly applied, particularly in Western scholarship, with reference to the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi, as well as later related philosophical developments such as Xuanxue (\"Neo-Daoism\")."
-     }
-    ],
-    "seq": 73,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "teachings of|the|dao",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Teachings of the Dao",
-    "subject": "Teachings of",
-    "verb": "the",
-    "object": "Dao",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#6578-6699",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Daojiao (道教; dàojiào; “Teachings of the Dao,” often rendered “Taoism” or \"Daoism\" in the sense of an organized religion)."
-     }
-    ],
-    "seq": 74,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in the|sense|of an organized religion)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in the sense of an organized religion)",
-    "subject": "in the",
-    "verb": "sense",
-    "object": "of an organized religion)",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#6578-6699",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Daojiao (道教; dàojiào; “Teachings of the Dao,” often rendered “Taoism” or \"Daoism\" in the sense of an organized religion)."
-     }
-    ],
-    "seq": 75,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    },
@@ -2295,7 +1221,7 @@
     "verb": "was",
     "object": "coined by Lu Xiujing (406–477)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2304,65 +1230,7 @@
       "text": "The term was coined by Lu Xiujing (406–477), a key figure in the early Lingbao SchoolLingbao movement and architect of the early Taoist tradition, in order to distinguish Taoism from Buddhism."
      }
     ],
-    "seq": 76,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "key figure|in|the early lingbao schoollingbao movement and architect of the early taoist tradition",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "key figure in the early Lingbao SchoolLingbao movement and architect of the early Taoist tradition",
-    "subject": "key figure",
-    "verb": "in",
-    "object": "the early Lingbao SchoolLingbao movement and architect of the early Taoist tradition",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#6700-6892",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "The term was coined by Lu Xiujing (406–477), a key figure in the early Lingbao SchoolLingbao movement and architect of the early Taoist tradition, in order to distinguish Taoism from Buddhism."
-     }
-    ],
-    "seq": 77,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "in order|to|distinguish taoism from buddhism",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "in order to distinguish Taoism from Buddhism",
-    "subject": "in order",
-    "verb": "to",
-    "object": "distinguish Taoism from Buddhism",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#6700-6892",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "The term was coined by Lu Xiujing (406–477), a key figure in the early Lingbao SchoolLingbao movement and architect of the early Taoist tradition, in order to distinguish Taoism from Buddhism."
-     }
-    ],
-    "seq": 78,
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    },
@@ -2382,7 +1250,7 @@
     "verb": "is",
     "object": "often interpreted as the Taoist \"religion proper\"",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2391,13 +1259,13 @@
       "text": "In scholarship, it is often interpreted as the Taoist \"religion proper\", referring to later organized Daoist schoolsTaoist schools, institutional structures (such as temples and priesthoods), and religious practices and rituals."
      }
     ],
-    "seq": 79,
+    "seq": 39,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "referring|to|later organized daoist schoolstaoist schools",
+    "task_id": "organized daoist|schoolstaoist|schools",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2406,12 +1274,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "referring to later organized Daoist schoolsTaoist schools",
-    "subject": "referring",
-    "verb": "to",
-    "object": "later organized Daoist schoolsTaoist schools",
+    "description": "organized Daoist schoolstaoist schools",
+    "subject": "organized Daoist",
+    "verb": "schoolstaoist",
+    "object": "schools",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2420,13 +1288,13 @@
       "text": "In scholarship, it is often interpreted as the Taoist \"religion proper\", referring to later organized Daoist schoolsTaoist schools, institutional structures (such as temples and priesthoods), and religious practices and rituals."
      }
     ],
-    "seq": 80,
+    "seq": 40,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "such|as|temples and priesthoods)",
+    "task_id": "religious community|is|generally traced back to the way of the celestial masters tradition founded in 142 ce",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2435,70 +1303,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "such as temples and priesthoods)",
-    "subject": "such",
-    "verb": "as",
-    "object": "temples and priesthoods)",
+    "description": "religious community is generally traced back to the Way of the Celestial Masters tradition founded in 142 CE",
+    "subject": "religious community",
+    "verb": "is",
+    "object": "generally traced back to the Way of the Celestial Masters tradition founded in 142 CE",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#6893-7121",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "In scholarship, it is often interpreted as the Taoist \"religion proper\", referring to later organized Daoist schoolsTaoist schools, institutional structures (such as temples and priesthoods), and religious practices and rituals."
-     }
-    ],
-    "seq": 81,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|religious|practices and rituals",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and religious practices and rituals",
-    "subject": "and",
-    "verb": "religious",
-    "object": "practices and rituals",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#6893-7121",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "In scholarship, it is often interpreted as the Taoist \"religion proper\", referring to later organized Daoist schoolsTaoist schools, institutional structures (such as temples and priesthoods), and religious practices and rituals."
-     }
-    ],
-    "seq": 82,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "first instance|of|taoism as a proper religious community is generally traced back to the way of the celestial masters tradition founded in 142 ce",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "first instance of Taoism as a proper religious community is generally traced back to the Way of the Celestial Masters tradition founded in 142 CE",
-    "subject": "first instance",
-    "verb": "of",
-    "object": "Taoism as a proper religious community is generally traced back to the Way of the Celestial Masters tradition founded in 142 CE",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2507,13 +1317,13 @@
       "text": "The first instance of Taoism as a proper religious community is generally traced back to the Way of the Celestial Masters tradition founded in 142 CE."
      }
     ],
-    "seq": 83,
+    "seq": 41,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "early scholarship|on|taoism classified these terms as philosophical taoism and religious taoism",
+    "task_id": "terms as|philosophical|taoism and religious taoism",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2522,12 +1332,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Early scholarship on Taoism classified these terms as Philosophical Taoism and Religious Taoism",
-    "subject": "Early scholarship",
-    "verb": "on",
-    "object": "Taoism classified these terms as Philosophical Taoism and Religious Taoism",
+    "description": "terms as philosophical Taoism and Religious Taoism",
+    "subject": "terms as",
+    "verb": "philosophical",
+    "object": "Taoism and Religious Taoism",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2536,13 +1346,13 @@
       "text": "Early scholarship on Taoism classified these terms as Philosophical Taoism and Religious Taoism, respectively."
      }
     ],
-    "seq": 84,
+    "seq": 42,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "traced to|the|protestant missionary james legge (1815-1897)",
+    "task_id": "the protestant|missionary|james legge (1815-1897)",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -2551,12 +1361,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "traced to the Protestant missionary James Legge (1815-1897)",
-    "subject": "traced to",
-    "verb": "the",
-    "object": "Protestant missionary James Legge (1815-1897)",
+    "description": "the Protestant missionary James Legge (1815-1897)",
+    "subject": "the Protestant",
+    "verb": "missionary",
+    "object": "James Legge (1815-1897)",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2565,65 +1375,7 @@
       "text": "This distinction, traced to the Protestant missionary James Legge (1815-1897), remains present in many non-specialist texts such as world religion textbooks."
      }
     ],
-    "seq": 85,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "remains present|in|many non-specialist texts such as world religion textbooks",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "remains present in many non-specialist texts such as world religion textbooks",
-    "subject": "remains present",
-    "verb": "in",
-    "object": "many non-specialist texts such as world religion textbooks",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#7385-7542",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "This distinction, traced to the Protestant missionary James Legge (1815-1897), remains present in many non-specialist texts such as world religion textbooks."
-     }
-    ],
-    "seq": 86,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "taoist|scholars|themselves have increasingly moved away from this classification",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Taoist scholars themselves have increasingly moved away from this classification",
-    "subject": "Taoist",
-    "verb": "scholars",
-    "object": "themselves have increasingly moved away from this classification",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#7543-7693",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "However, Taoist scholars themselves have increasingly moved away from this classification, with Komjathy calling it \"wholly inaccurate and untenable.\""
-     }
-    ],
-    "seq": 87,
+    "seq": 43,
     "depends_on": [],
     "evidence": []
    },
@@ -2643,7 +1395,7 @@
     "verb": "calling",
     "object": "it \"wholly inaccurate and untenable",
     "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+     "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2652,128 +1404,12 @@
       "text": "However, Taoist scholars themselves have increasingly moved away from this classification, with Komjathy calling it \"wholly inaccurate and untenable.\""
      }
     ],
-    "seq": 88,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "komjathy|notes|even early \"classical taoism\" already consisted of several characteristic features of religion",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Komjathy notes even early \"classical Taoism\" already consisted of several characteristic features of religion",
-    "subject": "Komjathy",
-    "verb": "notes",
-    "object": "even early \"classical Taoism\" already consisted of several characteristic features of religion",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#7694-7911",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Komjathy notes even early \"classical Taoism\" already consisted of several characteristic features of religion, such as a cosmology centered on the Dao, specific practices like meditation, and aims of a mystical union."
-     }
-    ],
-    "seq": 89,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "such|as|a cosmology centered on the dao",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "such as a cosmology centered on the Dao",
-    "subject": "such",
-    "verb": "as",
-    "object": "a cosmology centered on the Dao",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#7694-7911",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Komjathy notes even early \"classical Taoism\" already consisted of several characteristic features of religion, such as a cosmology centered on the Dao, specific practices like meditation, and aims of a mystical union."
-     }
-    ],
-    "seq": 90,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and aims|of|a mystical union",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and aims of a mystical union",
-    "subject": "and aims",
-    "verb": "of",
-    "object": "a mystical union",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#7694-7911",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Komjathy notes even early \"classical Taoism\" already consisted of several characteristic features of religion, such as a cosmology centered on the Dao, specific practices like meditation, and aims of a mystical union."
-     }
-    ],
-    "seq": 91,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ying cheng|likewise|views taoism as a religion embedded into chinese h",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ying Cheng likewise views Taoism as a religion embedded into Chinese h",
-    "subject": "ying Cheng",
-    "verb": "likewise",
-    "object": "views Taoism as a religion embedded into Chinese h",
-    "witnesses": [
-     "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "02-encyclopedic/wikipedia/Taoism.txt#7912-8000",
-      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-      "text": "Philosopher Chung-ying Cheng likewise views Taoism as a religion embedded into Chinese h"
-     }
-    ],
-    "seq": 92,
+    "seq": 44,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 93,
+  "nextSeq": 45,
   "admits": [
    "NUL",
    "SEG",
@@ -2788,60 +1424,12 @@
  },
  "folded": [
   {
-   "id": "a range|of|meaning in chinese philosophy",
-   "subject": "a range",
-   "verb": "of",
-   "object": "meaning in Chinese philosophy",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#166-409",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "With a range of meaning in Chinese philosophy, translations of Tao include 'way', 'road', 'path', or 'technique', generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality."
-    }
-   ]
-  },
-  {
-   "id": "an english|pronunciation|like  (an english pronunciation of \"dao\") nor an english pronunciation like  (an english pronunciation of \"tao\") is the same as the standard chinese pronunciation of 道",
-   "subject": "an English",
-   "verb": "pronunciation",
-   "object": "like  (an English pronunciation of \"Dao\") nor an English pronunciation like  (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4841-5118",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Neither an English pronunciation like (an English pronunciation of \"Dao\") nor an English pronunciation like (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道, whose initial consonant is neither voiced nor Aspirated consonantaspirated."
-    }
-   ]
-  },
-  {
-   "id": "and aims|of|a mystical union",
-   "subject": "and aims",
-   "verb": "of",
-   "object": "a mystical union",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7694-7911",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Komjathy notes even early \"classical Taoism\" already consisted of several characteristic features of religion, such as a cosmology centered on the Dao, specific practices like meditation, and aims of a mystical union."
-    }
-   ]
-  },
-  {
    "id": "and also|has|significant populations of adherents throughout the sinosphere and southeast asia",
    "subject": "and also",
    "verb": "has",
    "object": "significant populations of adherents throughout the Sinosphere and Southeast Asia",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2852,108 +1440,12 @@
    ]
   },
   {
-   "id": "and remains|in|use for certain terms with strongly established spellings",
-   "subject": "and remains",
-   "verb": "in",
-   "object": "use for certain terms with strongly established spellings",
+   "id": "and zhou|dynastyzhou|state religions",
+   "subject": "and Zhou",
+   "verb": "dynastyzhou",
+   "object": "state religions",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4372-4584",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "\"Tao\" is the romanized spelling in the Wade–Giles system, which was predominant in English-speaking countries until the late 20th century, and remains in use for certain terms with strongly established spellings."
-    }
-   ]
-  },
-  {
-   "id": "and the|three|treasures (taoism)three treasures of compassion",
-   "subject": "and the",
-   "verb": "three",
-   "object": "Treasures (Taoism)three treasures of compassion",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#741-942",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoist ethics generally emphasize virtues of effortless action (Wu wei), zirannaturalness, pu (Taoism)simplicity, and the Three Treasures (Taoism)three treasures of compassion, frugality, and humility."
-    }
-   ]
-  },
-  {
-   "id": "and|religious|practices and rituals",
-   "subject": "and",
-   "verb": "religious",
-   "object": "practices and rituals",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#6893-7121",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "In scholarship, it is often interpreted as the Taoist \"religion proper\", referring to later organized Daoist schoolsTaoist schools, institutional structures (such as temples and priesthoods), and religious practices and rituals."
-    }
-   ]
-  },
-  {
-   "id": "and|the|boundary between them is often fluid in practice",
-   "subject": "and",
-   "verb": "the",
-   "object": "boundary between them is often fluid in practice",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#944-1176",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoism is treated as a distinct tradition with its own scriptures, priestly lineages, and ritual systems, but it has long been closely intertwined with Chinese folk religion, and the boundary between them is often fluid in practice."
-    }
-   ]
-  },
-  {
-   "id": "as well|as|highly synthesized practices variously characterized as new religious movements",
-   "subject": "as well",
-   "verb": "as",
-   "object": "highly synthesized practices variously characterized as new religious movements",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#3670-3887",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "In the West, Taoism has History of TaoismTaoism in the Westtaken on various forms, both those keeping to historical practice, as well as highly synthesized practices variously characterized as new religious movements."
-    }
-   ]
-  },
-  {
-   "id": "as well|as|later related philosophical developments such as xuanxue (\"neo-daoism\")",
-   "subject": "as well",
-   "verb": "as",
-   "object": "later related philosophical developments such as Xuanxue (\"Neo-Daoism\")",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#6200-6576",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Internet Encyclopedia of Philosophy https://iep.utm.edu/daoismdaoist-philosophy/ 2026-01-27 en-US}} The term is commonly applied, particularly in Western scholarship, with reference to the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi, as well as later related philosophical developments such as Xuanxue (\"Neo-Daoism\")."
-    }
-   ]
-  },
-  {
-   "id": "as well|as|the  and spring and autumn annals",
-   "subject": "as well",
-   "verb": "as",
-   "object": "the  and Spring and Autumn Annals",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2964,50 +1456,18 @@
    ]
   },
   {
-   "id": "attempting|to|create what has been characterized as a taoist theocracy",
-   "subject": "attempting",
-   "verb": "to",
-   "object": "create what has been characterized as a Taoist theocracy",
+   "id": "between them|is|often fluid in practice",
+   "subject": "between them",
+   "verb": "is",
+   "object": "often fluid in practice",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#3177-3342",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#944-1176",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoist secret societies precipitated the Yellow Turban Rebellion during the late Han dynasty, attempting to create what has been characterized as a Taoist theocracy."
-    }
-   ]
-  },
-  {
-   "id": "authority calls|the|pronunciation with a  as in \"tie\" (with a ) to be a \"mispronunciation\" originally caused by the \"clumsy wade–giles system\"",
-   "subject": "authority calls",
-   "verb": "the",
-   "object": "pronunciation with a  as in \"tie\" (with a ) to be a \"mispronunciation\" originally caused by the \"clumsy Wade–Giles system\"",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#5120-5294",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "One authority calls the pronunciation with a as in \"tie\" (with a ) to be a \"mispronunciation\" originally caused by the \"clumsy Wade–Giles system\", which misled most readers."
-    }
-   ]
-  },
-  {
-   "id": "between taoists|and|buddhists",
-   "subject": "between Taoists",
-   "verb": "and",
-   "object": "Buddhists",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#1943-2111",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoism was further influenced by Buddhism upon its History of Buddhism in Chinaintroduction to China, with long-running discourses shared between Taoists and Buddhists."
+     "text": "Taoism is treated as a distinct tradition with its own scriptures, priestly lineages, and ritual systems, but it has long been closely intertwined with Chinese folk religion, and the boundary between them is often fluid in practice."
     }
    ]
   },
@@ -3017,7 +1477,7 @@
    "verb": "has",
    "object": "long been closely intertwined with Chinese folk religion",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3033,7 +1493,7 @@
    "verb": "are",
    "object": "not meant to indicate an exact English pronunciation in the same way as though they were English words",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3044,34 +1504,18 @@
    ]
   },
   {
-   "id": "classification as|philosophy|and religion",
-   "subject": "Classification as",
-   "verb": "philosophy",
-   "object": "and religion",
+   "id": "create what|has|been characterized as a taoist theocracy",
+   "subject": "create what",
+   "verb": "has",
+   "object": "been characterized as a Taoist theocracy",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#5578-5619",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#3177-3342",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Classification as philosophy and religion"
-    }
-   ]
-  },
-  {
-   "id": "common goal|of|taoist practice is self-cultivation",
-   "subject": "common goal",
-   "verb": "of",
-   "object": "Taoist practice is self-cultivation",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#622-740",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "A common goal of Taoist practice is self-cultivation, a deeper appreciation of the Tao, and more harmonious existence."
+     "text": "Taoist secret societies precipitated the Yellow Turban Rebellion during the late Han dynasty, attempting to create what has been characterized as a Taoist theocracy."
     }
    ]
   },
@@ -3081,7 +1525,7 @@
    "verb": "is",
    "object": "a Han-dynasty label used to classify teachings and texts associated with the dao (\"the Way\")",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3097,300 +1541,12 @@
    ]
   },
   {
-   "id": "deeper appreciation|of|the tao",
-   "subject": "deeper appreciation",
-   "verb": "of",
-   "object": "the Tao",
+   "id": "early chinese|philosophical|texts tao te ching (also called the laozi) and the zhuangzi (book)zhuangzi",
+   "subject": "early Chinese",
+   "verb": "philosophical",
+   "object": "texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#622-740",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "A common goal of Taoist practice is self-cultivation, a deeper appreciation of the Tao, and more harmonious existence."
-    }
-   ]
-  },
-  {
-   "id": "during which|the|epigrammatic  and the anecdotal —widely regarded as the fundamental texts of taoist philosophy—were largely composed",
-   "subject": "during which",
-   "verb": "the",
-   "object": "epigrammatic  and the anecdotal —widely regarded as the fundamental texts of Taoist philosophy—were largely composed",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#1178-1395",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "The core of Taoist thought crystallized during the early Warring States period (), during which the epigrammatic and the anecdotal —widely regarded as the fundamental texts of Taoist philosophy—were largely composed."
-    }
-   ]
-  },
-  {
-   "id": "early scholarship|on|taoism classified these terms as philosophical taoism and religious taoism",
-   "subject": "Early scholarship",
-   "verb": "on",
-   "object": "Taoism classified these terms as Philosophical Taoism and Religious Taoism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7274-7384",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Early scholarship on Taoism classified these terms as Philosophical Taoism and Religious Taoism, respectively."
-    }
-   ]
-  },
-  {
-   "id": "early taoism|drew|upon diverse influences",
-   "subject": "Early Taoism",
-   "verb": "drew",
-   "object": "upon diverse influences",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#1559-1816",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Early Taoism drew upon diverse influences, including the Shang and Zhou dynastyZhou state religions, School of NaturalistsNaturalism, Mohism, Confucianism, various Legalism (Chinese philosophy)Legalist theories, as well as the and Spring and Autumn Annals."
-    }
-   ]
-  },
-  {
-   "id": "examined how|the|three traditions could be integrated harmoniously in chinese society",
-   "subject": "examined how",
-   "verb": "the",
-   "object": "three traditions could be integrated harmoniously in Chinese society",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#2112-2317",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "This mutual co-existence led to the emergence of Three teachingsThree Teachings discourse by the 6th century CE, which examined how the three traditions could be integrated harmoniously in Chinese society."
-    }
-   ]
-  },
-  {
-   "id": "existence led|to|the emergence of three teachingsthree teachings discourse by the 6th century ce",
-   "subject": "existence led",
-   "verb": "to",
-   "object": "the emergence of Three teachingsThree Teachings discourse by the 6th century CE",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#2112-2317",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "This mutual co-existence led to the emergence of Three teachingsThree Teachings discourse by the 6th century CE, which examined how the three traditions could be integrated harmoniously in Chinese society."
-    }
-   ]
-  },
-  {
-   "id": "first instance|of|taoism as a proper religious community is generally traced back to the way of the celestial masters tradition founded in 142 ce",
-   "subject": "first instance",
-   "verb": "of",
-   "object": "Taoism as a proper religious community is generally traced back to the Way of the Celestial Masters tradition founded in 142 CE",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7122-7272",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "The first instance of Taoism as a proper religious community is generally traced back to the Way of the Celestial Masters tradition founded in 142 CE."
-    }
-   ]
-  },
-  {
-   "id": "formal traditions|from|those of chinese folk religion",
-   "subject": "formal traditions",
-   "verb": "from",
-   "object": "those of Chinese folk religion",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#2824-3004",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "The title (\"Taoist master\") is traditionally reserved for ordained clergy within Taoist organizations, who distinguish their formal traditions from those of Chinese folk religion."
-    }
-   ]
-  },
-  {
-   "id": "generally understood|in|the taoist sense as an enigmatic process of transformation ultimate realityultimately underlying reality",
-   "subject": "generally understood",
-   "verb": "in",
-   "object": "the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#166-409",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "With a range of meaning in Chinese philosophy, translations of Tao include 'way', 'road', 'path', or 'technique', generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality."
-    }
-   ]
-  },
-  {
-   "id": "giles romanization|system|provides spellings in the latin alphabet",
-   "subject": "Giles romanization",
-   "verb": "system",
-   "object": "provides spellings in the Latin alphabet",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#5295-5576",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Standard Chinese phonology does not have the same sound inventory as English phonology; the Wade–Giles romanization system provides spellings in the Latin alphabet, but they are not meant to indicate an exact English pronunciation in the same way as though they were English words."
-    }
-   ]
-  },
-  {
-   "id": "harmony with|the|tao",
-   "subject": "harmony with",
-   "verb": "the",
-   "object": "Tao",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#45-165",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoism or Daoism (, ) is a philosophical and religious tradition indigenous to China, emphasizing harmony with the Tao ."
-    }
-   ]
-  },
-  {
-   "id": "in order|to|distinguish taoism from buddhism",
-   "subject": "in order",
-   "verb": "to",
-   "object": "distinguish Taoism from Buddhism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#6700-6892",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "The term was coined by Lu Xiujing (406–477), a key figure in the early Lingbao SchoolLingbao movement and architect of the early Taoist tradition, in order to distinguish Taoism from Buddhism."
-    }
-   ]
-  },
-  {
-   "id": "in the|sense|of an organized religion)",
-   "subject": "in the",
-   "verb": "sense",
-   "object": "of an organized religion)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#6578-6699",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Daojiao (道教; dàojiào; “Teachings of the Dao,” often rendered “Taoism” or \"Daoism\" in the sense of an organized religion)."
-    }
-   ]
-  },
-  {
-   "id": "in|the|west",
-   "subject": "In",
-   "verb": "the",
-   "object": "West",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#3670-3887",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "In the West, Taoism has History of TaoismTaoism in the Westtaken on various forms, both those keeping to historical practice, as well as highly synthesized practices variously characterized as new religious movements."
-    }
-   ]
-  },
-  {
-   "id": "in|the|zhou dynasty",
-   "subject": "in",
-   "verb": "the",
-   "object": "Zhou dynasty",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4156-4196",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Dào-jiào Dōkyō }} in the Zhou dynasty."
-    }
-   ]
-  },
-  {
-   "id": "including forms|of|taoist meditationmeditation",
-   "subject": "including forms",
-   "verb": "of",
-   "object": "Taoist meditationmeditation",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#411-621",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoist thought has informed the development of various practices within the Taoist tradition, including forms of Taoist meditationmeditation, Chinese astrologyastrology, qigong, feng shui, and internal alchemy."
-    }
-   ]
-  },
-  {
-   "id": "including|the|shang and zhou dynastyzhou state religions",
-   "subject": "including",
-   "verb": "the",
-   "object": "Shang and Zhou dynastyZhou state religions",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#1559-1816",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Early Taoism drew upon diverse influences, including the Shang and Zhou dynastyZhou state religions, School of NaturalistsNaturalism, Mohism, Confucianism, various Legalism (Chinese philosophy)Legalist theories, as well as the and Spring and Autumn Annals."
-    }
-   ]
-  },
-  {
-   "id": "initial consonant|is|neither voiced nor aspirated consonantaspirated",
-   "subject": "initial consonant",
-   "verb": "is",
-   "object": "neither voiced nor Aspirated consonantaspirated",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4841-5118",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Neither an English pronunciation like (an English pronunciation of \"Dao\") nor an English pronunciation like (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道, whose initial consonant is neither voiced nor Aspirated consonantaspirated."
-    }
-   ]
-  },
-  {
-   "id": "internet encyclopedia|of|philosophy https://iep",
-   "subject": "Internet Encyclopedia",
-   "verb": "of",
-   "object": "Philosophy https://iep",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3401,66 +1557,34 @@
    ]
   },
   {
-   "id": "is a|philosophical|and religious tradition indigenous to china",
-   "subject": "is a",
-   "verb": "philosophical",
-   "object": "and religious tradition indigenous to China",
+   "id": "generally emphasize|virtues|of effortless action (wu wei)",
+   "subject": "generally emphasize",
+   "verb": "virtues",
+   "object": "of effortless action (Wu wei)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#45-165",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#741-942",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoism or Daoism (, ) is a philosophical and religious tradition indigenous to China, emphasizing harmony with the Tao ."
+     "text": "Taoist ethics generally emphasize virtues of effortless action (Wu wei), zirannaturalness, pu (Taoism)simplicity, and the Three Treasures (Taoism)three treasures of compassion, frugality, and humility."
     }
    ]
   },
   {
-   "id": "is|the|romanized spelling in the hanyu pinyin system",
-   "subject": "is",
-   "verb": "the",
-   "object": "romanized spelling in the Hanyu Pinyin system",
+   "id": "initial consonant|is|neither voiced nor aspirated consonantaspirated",
+   "subject": "initial consonant",
+   "verb": "is",
+   "object": "neither voiced nor Aspirated consonantaspirated",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4586-4795",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#4841-5118",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "\"Dao\" is the romanized spelling in the Hanyu Pinyin system, officially adopted in China in the 1950s and the Library of Congress in 2000, which has largely replaced Wade–Giles romanization in academic sources."
-    }
-   ]
-  },
-  {
-   "id": "is|the|romanized spelling in the wade–giles system",
-   "subject": "is",
-   "verb": "the",
-   "object": "romanized spelling in the Wade–Giles system",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4372-4584",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "\"Tao\" is the romanized spelling in the Wade–Giles system, which was predominant in English-speaking countries until the late 20th century, and remains in use for certain terms with strongly established spellings."
-    }
-   ]
-  },
-  {
-   "id": "it appears|as|part of a scheme for organizing “hundred schools of thoughtin the records of the grand historiansix schools”: school of naturalistsyin-yang",
-   "subject": "it appears",
-   "verb": "as",
-   "object": "part of a scheme for organizing “Hundred Schools of ThoughtIn the Records of the Grand Historiansix schools”: School of NaturalistsYin-Yang",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#5924-6199",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "110 BCE), where it appears as part of a scheme for organizing “Hundred Schools of ThoughtIn the Records of the Grand Historiansix schools”: School of NaturalistsYin-Yang, ConfucianismConfucian, MohismMohist, Legalism (Chinese philosophy)Legalist, School of Names, and Taoist."
+     "text": "Neither an English pronunciation like (an English pronunciation of \"Dao\") nor an English pronunciation like (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道, whose initial consonant is neither voiced nor Aspirated consonantaspirated."
     }
    ]
   },
@@ -3470,7 +1594,7 @@
    "verb": "is",
    "object": "considered a religion in Taiwanmajor religion in Taiwan",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3486,7 +1610,7 @@
    "verb": "is",
    "object": "often interpreted as the Taoist \"religion proper\"",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3502,7 +1626,7 @@
    "verb": "is",
    "object": "often unclear which denominations should be considered \"Taoist\"",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3513,108 +1637,12 @@
    ]
   },
   {
-   "id": "key figure|in|the early lingbao schoollingbao movement and architect of the early taoist tradition",
-   "subject": "key figure",
-   "verb": "in",
-   "object": "the early Lingbao SchoolLingbao movement and architect of the early Taoist tradition",
+   "id": "later related|philosophical|developments such as xuanxue (\"neo-daoism\")",
+   "subject": "later related",
+   "verb": "philosophical",
+   "object": "developments such as Xuanxue (\"Neo-Daoism\")",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#6700-6892",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "The term was coined by Lu Xiujing (406–477), a key figure in the early Lingbao SchoolLingbao movement and architect of the early Taoist tradition, in order to distinguish Taoism from Buddhism."
-    }
-   ]
-  },
-  {
-   "id": "komjathy|notes|even early \"classical taoism\" already consisted of several characteristic features of religion",
-   "subject": "Komjathy",
-   "verb": "notes",
-   "object": "even early \"classical Taoism\" already consisted of several characteristic features of religion",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7694-7911",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Komjathy notes even early \"classical Taoism\" already consisted of several characteristic features of religion, such as a cosmology centered on the Dao, specific practices like meditation, and aims of a mystical union."
-    }
-   ]
-  },
-  {
-   "id": "many taoist|denominations|taoist theologyrecognize deities",
-   "subject": "Many Taoist",
-   "verb": "denominations",
-   "object": "Taoist theologyrecognize deities",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#2319-2490",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Many Taoist denominations Taoist theologyrecognize deities, often ones shared with other traditions, which are venerated as superhuman figures exemplifying Taoist virtues."
-    }
-   ]
-  },
-  {
-   "id": "official status|in|hong kong and macau",
-   "subject": "official status",
-   "verb": "in",
-   "object": "Hong Kong and Macau",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#3344-3510",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Today, Taoism is one of Religion in Chinafive religious doctrines officially recognized by the Chinese government, also having official status in Hong Kong and Macau."
-    }
-   ]
-  },
-  {
-   "id": "officially adopted|in|china in the 1950s and the library of congress in 2000",
-   "subject": "officially adopted",
-   "verb": "in",
-   "object": "China in the 1950s and the Library of Congress in 2000",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4586-4795",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "\"Dao\" is the romanized spelling in the Hanyu Pinyin system, officially adopted in China in the 1950s and the Library of Congress in 2000, which has largely replaced Wade–Giles romanization in academic sources."
-    }
-   ]
-  },
-  {
-   "id": "p\n doh|goh|dou6 gaau3",
-   "subject": "p\n Doh",
-   "verb": "goh",
-   "object": "dou6 gaau3",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4052-4074",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "p Doh goh dou6 gaau3"
-    }
-   ]
-  },
-  {
-   "id": "particularly|in|western scholarship",
-   "subject": "particularly",
-   "verb": "in",
-   "object": "Western scholarship",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3625,12 +1653,60 @@
    ]
   },
   {
-   "id": "philosophers|of|taoism are marked by triangles in dark green",
-   "subject": "Philosophers",
-   "verb": "of",
-   "object": "Taoism are marked by triangles in dark green",
+   "id": "many taoist|denominations|taoist theologyrecognize deities",
+   "subject": "Many Taoist",
+   "verb": "denominations",
+   "object": "Taoist theologyrecognize deities",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#2319-2490",
+     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
+     "text": "Many Taoist denominations Taoist theologyrecognize deities, often ones shared with other traditions, which are venerated as superhuman figures exemplifying Taoist virtues."
+    }
+   ]
+  },
+  {
+   "id": "of chinese|folk|religion",
+   "subject": "of Chinese",
+   "verb": "folk",
+   "object": "religion",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#2824-3004",
+     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
+     "text": "The title (\"Taoist master\") is traditionally reserved for ordained clergy within Taoist organizations, who distinguish their formal traditions from those of Chinese folk religion."
+    }
+   ]
+  },
+  {
+   "id": "of tao|include|'way'",
+   "subject": "of Tao",
+   "verb": "include",
+   "object": "'way'",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#166-409",
+     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
+     "text": "With a range of meaning in Chinese philosophy, translations of Tao include 'way', 'road', 'path', or 'technique', generally understood in the Taoist sense as an enigmatic process of transformation Ultimate realityultimately underlying reality."
+    }
+   ]
+  },
+  {
+   "id": "of taoism|are|marked by triangles in dark green",
+   "subject": "of Taoism",
+   "verb": "are",
+   "object": "marked by triangles in dark green",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3641,12 +1717,44 @@
    ]
   },
   {
-   "id": "referring|to|later organized daoist schoolstaoist schools",
-   "subject": "referring",
-   "verb": "to",
-   "object": "later organized Daoist schoolsTaoist schools",
+   "id": "of taoist|thought|crystallized during the early warring states period ()",
+   "subject": "of Taoist",
+   "verb": "thought",
+   "object": "crystallized during the early Warring States period ()",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#1178-1395",
+     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
+     "text": "The core of Taoist thought crystallized during the early Warring States period (), during which the epigrammatic and the anecdotal —widely regarded as the fundamental texts of Taoist philosophy—were largely composed."
+    }
+   ]
+  },
+  {
+   "id": "or daoism|is|a philosophical and religious tradition indigenous to china",
+   "subject": "or Daoism",
+   "verb": "is",
+   "object": "a philosophical and religious tradition indigenous to China",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#45-165",
+     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
+     "text": "Taoism or Daoism (, ) is a philosophical and religious tradition indigenous to China, emphasizing harmony with the Tao ."
+    }
+   ]
+  },
+  {
+   "id": "organized daoist|schoolstaoist|schools",
+   "subject": "organized Daoist",
+   "verb": "schoolstaoist",
+   "object": "schools",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3657,82 +1765,50 @@
    ]
   },
   {
-   "id": "remains present|in|many non-specialist texts such as world religion textbooks",
-   "subject": "remains present",
-   "verb": "in",
-   "object": "many non-specialist texts such as world religion textbooks",
+   "id": "p\n doh|goh|dou6 gaau3",
+   "subject": "p\n Doh",
+   "verb": "goh",
+   "object": "dou6 gaau3",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7385-7542",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#4052-4074",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "This distinction, traced to the Protestant missionary James Legge (1815-1897), remains present in many non-specialist texts such as world religion textbooks."
+     "text": "p Doh goh dou6 gaau3"
     }
    ]
   },
   {
-   "id": "represents tao|and|is often translated as 'way'",
-   "subject": "represents Tao",
-   "verb": "and",
-   "object": "is often translated as 'way'",
+   "id": "pronunciation like|is|the same as the standard chinese pronunciation of 道",
+   "subject": "pronunciation like",
+   "verb": "is",
+   "object": "the same as the Standard Chinese pronunciation of 道",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#3902-3993",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#4841-5118",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": ", which represents Tao and is often translated as 'way', 'path', 'technique', or 'doctrine'"
+     "text": "Neither an English pronunciation like (an English pronunciation of \"Dao\") nor an English pronunciation like (an English pronunciation of \"Tao\") is the same as the Standard Chinese pronunciation of 道, whose initial consonant is neither voiced nor Aspirated consonantaspirated."
     }
    ]
   },
   {
-   "id": "romanized spellings|of|the same chinese word: 道",
-   "subject": "romanized spellings",
-   "verb": "of",
-   "object": "the same Chinese word: 道",
+   "id": "religious community|is|generally traced back to the way of the celestial masters tradition founded in 142 ce",
+   "subject": "religious community",
+   "verb": "is",
+   "object": "generally traced back to the Way of the Celestial Masters tradition founded in 142 CE",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4292-4370",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#7122-7272",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "\"Tao\" and \"Dao\" are different romanized spellings of the same Chinese word: 道."
-    }
-   ]
-  },
-  {
-   "id": "school|of|names",
-   "subject": "School",
-   "verb": "of",
-   "object": "Names",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#5924-6199",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "110 BCE), where it appears as part of a scheme for organizing “Hundred Schools of ThoughtIn the Records of the Grand Historiansix schools”: School of NaturalistsYin-Yang, ConfucianismConfucian, MohismMohist, Legalism (Chinese philosophy)Legalist, School of Names, and Taoist."
-    }
-   ]
-  },
-  {
-   "id": "school|of|naturalistsnaturalism",
-   "subject": "School",
-   "verb": "of",
-   "object": "NaturalistsNaturalism",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#1559-1816",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Early Taoism drew upon diverse influences, including the Shang and Zhou dynastyZhou state religions, School of NaturalistsNaturalism, Mohism, Confucianism, various Legalism (Chinese philosophy)Legalist theories, as well as the and Spring and Autumn Annals."
+     "text": "The first instance of Taoism as a proper religious community is generally traced back to the Way of the Celestial Masters tradition founded in 142 CE."
     }
    ]
   },
@@ -3742,7 +1818,7 @@
    "verb": "thought",
    "object": "is syncretic and deeply rooted in Chinese culture for millennia",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3753,28 +1829,12 @@
    ]
   },
   {
-   "id": "spelling|and|pronunciation",
-   "subject": "Spelling",
-   "verb": "and",
-   "object": "pronunciation",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4264-4290",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Spelling and pronunciation"
-    }
-   ]
-  },
-  {
    "id": "standard chinese|phonology|does not have the same sound inventory as english phonology",
    "subject": "Standard Chinese",
    "verb": "phonology",
    "object": "does not have the same sound inventory as English phonology",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3785,50 +1845,18 @@
    ]
   },
   {
-   "id": "standard chinese|pronunciation|of 道 is",
-   "subject": "Standard Chinese",
-   "verb": "pronunciation",
-   "object": "of 道 is",
+   "id": "tao and|is|often translated as 'way'",
+   "subject": "Tao and",
+   "verb": "is",
+   "object": "often translated as 'way'",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#4796-4840",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#3902-3993",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "The Standard Chinese pronunciation of 道 is ."
-    }
-   ]
-  },
-  {
-   "id": "such|as|a cosmology centered on the dao",
-   "subject": "such",
-   "verb": "as",
-   "object": "a cosmology centered on the Dao",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7694-7911",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Komjathy notes even early \"classical Taoism\" already consisted of several characteristic features of religion, such as a cosmology centered on the Dao, specific practices like meditation, and aims of a mystical union."
-    }
-   ]
-  },
-  {
-   "id": "such|as|temples and priesthoods)",
-   "subject": "such",
-   "verb": "as",
-   "object": "temples and priesthoods)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#6893-7121",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "In scholarship, it is often interpreted as the Taoist \"religion proper\", referring to later organized Daoist schoolsTaoist schools, institutional structures (such as temples and priesthoods), and religious practices and rituals."
+     "text": ", which represents Tao and is often translated as 'way', 'path', 'technique', or 'doctrine'"
     }
    ]
   },
@@ -3838,7 +1866,7 @@
    "verb": "has",
    "object": "History of TaoismTaoism in the Westtaken on various forms",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3854,7 +1882,7 @@
    "verb": "is",
    "object": "one of Religion in Chinafive religious doctrines officially recognized by the Chinese government",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3870,7 +1898,7 @@
    "verb": "is",
    "object": "treated as a distinct tradition with its own scriptures",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3882,22 +1910,11 @@
      "at": "02-encyclopedic/wikipedia/Taoism.txt#1818-1942",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
      "text": "Taoism is frequently discussed in comparison with Confucianism, since both traditions profoundly influenced Chinese thought."
-    }
-   ]
-  },
-  {
-   "id": "taoism|or|daoism (",
-   "subject": "Taoism",
-   "verb": "or",
-   "object": "Daoism (",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
+    },
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#45-165",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#5621-5702",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoism or Daoism (, ) is a philosophical and religious tradition indigenous to China, emphasizing harmony with the Tao ."
+     "text": "The English word Taoism is often used to translate two distinct terms in Chinese:"
     }
    ]
   },
@@ -3907,7 +1924,7 @@
    "verb": "was",
    "object": "further influenced by Buddhism upon its History of Buddhism in Chinaintroduction to China",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3923,7 +1940,7 @@
    "verb": "has",
    "object": "often served as a theoretical foundation for politics",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3934,12 +1951,28 @@
    ]
   },
   {
+   "id": "taoist practice|is|self-cultivation",
+   "subject": "Taoist practice",
+   "verb": "is",
+   "object": "self-cultivation",
+   "witnesses": [
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#622-740",
+     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
+     "text": "A common goal of Taoist practice is self-cultivation, a deeper appreciation of the Tao, and more harmonious existence."
+    }
+   ]
+  },
+  {
    "id": "taoist thought|has|informed the development of various practices within the taoist tradition",
    "subject": "Taoist thought",
    "verb": "has",
    "object": "informed the development of various practices within the Taoist tradition",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3950,98 +1983,34 @@
    ]
   },
   {
-   "id": "taoist|ethics|generally emphasize virtues of effortless action (wu wei)",
-   "subject": "Taoist",
-   "verb": "ethics",
-   "object": "generally emphasize virtues of effortless action (Wu wei)",
+   "id": "terms as|philosophical|taoism and religious taoism",
+   "subject": "terms as",
+   "verb": "philosophical",
+   "object": "Taoism and Religious Taoism",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#741-942",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#7274-7384",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoist ethics generally emphasize virtues of effortless action (Wu wei), zirannaturalness, pu (Taoism)simplicity, and the Three Treasures (Taoism)three treasures of compassion, frugality, and humility."
+     "text": "Early scholarship on Taoism classified these terms as Philosophical Taoism and Religious Taoism, respectively."
     }
    ]
   },
   {
-   "id": "taoist|scholars|themselves have increasingly moved away from this classification",
-   "subject": "Taoist",
-   "verb": "scholars",
-   "object": "themselves have increasingly moved away from this classification",
+   "id": "the protestant|missionary|james legge (1815-1897)",
+   "subject": "the Protestant",
+   "verb": "missionary",
+   "object": "James Legge (1815-1897)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7543-7693",
+     "at": "02-encyclopedic/wikipedia/Taoism.txt#7385-7542",
      "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "However, Taoist scholars themselves have increasingly moved away from this classification, with Komjathy calling it \"wholly inaccurate and untenable.\""
-    }
-   ]
-  },
-  {
-   "id": "taoist|secret|societies precipitated the yellow turban rebellion during the late han dynasty",
-   "subject": "Taoist",
-   "verb": "secret",
-   "object": "societies precipitated the Yellow Turban Rebellion during the late Han dynasty",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#3177-3342",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Taoist secret societies precipitated the Yellow Turban Rebellion during the late Han dynasty, attempting to create what has been characterized as a Taoist theocracy."
-    }
-   ]
-  },
-  {
-   "id": "teachings of|the|dao",
-   "subject": "Teachings of",
-   "verb": "the",
-   "object": "Dao",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#6578-6699",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Daojiao (道教; dàojiào; “Teachings of the Dao,” often rendered “Taoism” or \"Daoism\" in the sense of an organized religion)."
-    }
-   ]
-  },
-  {
-   "id": "the core|of|taoist thought crystallized during the early warring states period ()",
-   "subject": "The core",
-   "verb": "of",
-   "object": "Taoist thought crystallized during the early Warring States period ()",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#1178-1395",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "The core of Taoist thought crystallized during the early Warring States period (), during which the epigrammatic and the anecdotal —widely regarded as the fundamental texts of Taoist philosophy—were largely composed."
-    }
-   ]
-  },
-  {
-   "id": "the english|word|taoism is often used to translate two distinct terms in chinese:",
-   "subject": "The English",
-   "verb": "word",
-   "object": "Taoism is often used to translate two distinct terms in Chinese:",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#5621-5702",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "The English word Taoism is often used to translate two distinct terms in Chinese:"
+     "text": "This distinction, traced to the Protestant missionary James Legge (1815-1897), remains present in many non-specialist texts such as world religion textbooks."
     }
    ]
   },
@@ -4051,7 +2020,7 @@
    "verb": "is",
    "object": "commonly applied",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4067,7 +2036,7 @@
    "verb": "was",
    "object": "coined by Lu Xiujing (406–477)",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4083,7 +2052,7 @@
    "verb": "is",
    "object": "traditionally reserved for ordained clergy within Taoist organizations",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4094,60 +2063,12 @@
    ]
   },
   {
-   "id": "they form|the|core of a body of taoist writings accrued over the following centuries",
-   "subject": "They form",
-   "verb": "the",
-   "object": "core of a body of Taoist writings accrued over the following centuries",
+   "id": "transformation ultimate|realityultimately|underlying reality",
+   "subject": "transformation Ultimate",
+   "verb": "realityultimately",
+   "object": "underlying reality",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#1396-1558",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "They form the core of a body of Taoist writings accrued over the following centuries, which was assembled by monks into the canon starting in the 5th century CE."
-    }
-   ]
-  },
-  {
-   "id": "those keeping|to|historical practice",
-   "subject": "those keeping",
-   "verb": "to",
-   "object": "historical practice",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#3670-3887",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "In the West, Taoism has History of TaoismTaoism in the Westtaken on various forms, both those keeping to historical practice, as well as highly synthesized practices variously characterized as new religious movements."
-    }
-   ]
-  },
-  {
-   "id": "traced to|the|protestant missionary james legge (1815-1897)",
-   "subject": "traced to",
-   "verb": "the",
-   "object": "Protestant missionary James Legge (1815-1897)",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7385-7542",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "This distinction, traced to the Protestant missionary James Legge (1815-1897), remains present in many non-specialist texts such as world religion textbooks."
-    }
-   ]
-  },
-  {
-   "id": "translations|of|tao include 'way'",
-   "subject": "translations",
-   "verb": "of",
-   "object": "Tao include 'way'",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4158,28 +2079,12 @@
    ]
   },
   {
-   "id": "two categories|of|\"gods\" and  (\"immortals\")",
-   "subject": "two categories",
-   "verb": "of",
-   "object": "\"gods\" and  (\"immortals\")",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#2491-2568",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "They can be roughly divided into two categories of \"gods\" and (\"immortals\")."
-    }
-   ]
-  },
-  {
    "id": "which|are|venerated as superhuman figures exemplifying taoist virtues",
    "subject": "which",
    "verb": "are",
    "object": "venerated as superhuman figures exemplifying Taoist virtues",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4195,7 +2100,7 @@
    "verb": "has",
    "object": "largely replaced Wade–Giles romanization in academic sources",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4211,7 +2116,7 @@
    "verb": "was",
    "object": "assembled by monks into the  canon starting in the 5th century CE",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4227,7 +2132,7 @@
    "verb": "was",
    "object": "predominant in English-speaking countries until the late 20th century",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4243,7 +2148,7 @@
    "verb": "calling",
    "object": "it \"wholly inaccurate and untenable",
    "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
+    "02-encyclopedic/wikipedia/Taoism.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -4252,42 +2157,10 @@
      "text": "However, Taoist scholars themselves have increasingly moved away from this classification, with Komjathy calling it \"wholly inaccurate and untenable.\""
     }
    ]
-  },
-  {
-   "id": "with reference|to|the early chinese philosophical texts tao te ching (also called the laozi) and the zhuangzi (book)zhuangzi",
-   "subject": "with reference",
-   "verb": "to",
-   "object": "the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#6200-6576",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Internet Encyclopedia of Philosophy https://iep.utm.edu/daoismdaoist-philosophy/ 2026-01-27 en-US}} The term is commonly applied, particularly in Western scholarship, with reference to the early Chinese philosophical texts Tao Te Ching (also called the Laozi) and the Zhuangzi (book)Zhuangzi, as well as later related philosophical developments such as Xuanxue (\"Neo-Daoism\")."
-    }
-   ]
-  },
-  {
-   "id": "ying cheng|likewise|views taoism as a religion embedded into chinese h",
-   "subject": "ying Cheng",
-   "verb": "likewise",
-   "object": "views Taoism as a religion embedded into Chinese h",
-   "witnesses": [
-    "02-encyclopedic/wikipedia/Taoism.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "02-encyclopedic/wikipedia/Taoism.txt#7912-8000",
-     "ref": "02-encyclopedic/wikipedia/Taoism.txt",
-     "text": "Philosopher Chung-ying Cheng likewise views Taoism as a religion embedded into Chinese h"
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:45.147Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:24.564Z"
  }
 }

@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 40308,
   "bodyOffset": 0,
   "bodyChars": 40308,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 1,
   "distinctReferents": 1,
   "examined": true,
-  "edgesFound": 12,
-  "extractionError": null
+  "edgesFound": 4,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 5,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 12
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 4,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 17,
-  "excerptOk": 17,
-  "rawChecked": 17,
-  "rawOk": 17,
+  "excerptChecked": 4,
+  "excerptOk": 4,
+  "rawChecked": 4,
+  "rawOk": 4,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 12,
-  "heard": 12,
+  "offered": 4,
+  "heard": 4,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -74,7 +104,7 @@
     "verb": "was",
     "object": "staying near Sāvatthī in Jeta’s Grove",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn99.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,35 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "when|he|said this",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "When he said this",
-    "subject": "When",
-    "verb": "he",
-    "object": "said this",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#470-756",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "Evaṁ vutte, subho māṇavo todeyyaputto bhagavatā andhaveṇūpamena vuccamāno kupito anattamano bhagavantaṁyeva khuṁsento bhagavantaṁyeva vambhento bhagavantaṁyeva vadamāno: When he said this, Subha became angry and upset with the Buddha because of the simile of the queue of blind men."
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -132,7 +133,7 @@
     "verb": "became",
     "object": "angry and upset with the Buddha because of the simile of the queue of blind men",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn99.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,133 +142,7 @@
       "text": "Evaṁ vutte, subho māṇavo todeyyaputto bhagavatā andhaveṇūpamena vuccamāno kupito anattamano bhagavantaṁyeva khuṁsento bhagavantaṁyeva vambhento bhagavantaṁyeva vadamāno: When he said this, Subha became angry and upset with the Buddha because of the simile of the queue of blind men."
      }
     ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "vision worthy|of|the noble ones",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "vision worthy of the noble ones",
-    "subject": "vision worthy",
-    "verb": "of",
-    "object": "the noble ones",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#1257-1350",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "They claim to have a superhuman distinction in knowledge and vision worthy of the noble ones."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#1549-1807",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "Kathañhi nāma manussabhūto uttari manussadhammā alamariyañāṇadassanavisesaṁ ñassati vā dakkhati vā sacchi vā karissatīti— For how on earth can a human being know or see or realize a superhuman distinction in knowledge and vision worthy of the noble ones?"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#5387-5518",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "It is quite impossible for him to know or see or realize a superhuman distinction in knowledge and vision worthy of the noble ones."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the minds|of|all these ascetics and brahmins",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the minds of all these ascetics and brahmins",
-    "subject": "the minds",
-    "verb": "of",
-    "object": "all these ascetics and brahmins",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#1994-2122",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "“But student, does Pokkharasāti understand the minds of all these ascetics and brahmins, having encompassed them with his mind?”"
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the mind|of|his own bonded maid puṇṇikā",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the mind of his own bonded maid Puṇṇikā",
-    "subject": "the mind",
-    "verb": "of",
-    "object": "his own bonded maid Puṇṇikā",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#2325-2473",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "“Worthy Gotama, Pokkharasāti doesn’t even understand the mind of his own bonded maid Puṇṇikā, so how could he know all those ascetics and brahmins?”"
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "how could|he|know all those ascetics and brahmins?”",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "how could he know all those ascetics and brahmins?”",
-    "subject": "how could",
-    "verb": "he",
-    "object": "know all those ascetics and brahmins?”",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#2325-2473",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "“Worthy Gotama, Pokkharasāti doesn’t even understand the mind of his own bonded maid Puṇṇikā, so how could he know all those ascetics and brahmins?”"
-     }
-    ],
-    "seq": 6,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -287,7 +162,7 @@
     "verb": "was",
     "object": "a person blind from birth",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn99.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -296,46 +171,7 @@
       "text": "“Suppose there was a person blind from birth."
      }
     ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "there are|such|things as dark and bright sights",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "There are such things as dark and bright sights",
-    "subject": "There are",
-    "verb": "such",
-    "object": "things as dark and bright sights",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#3320-3459",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "Atthi kaṇhasukkāni rūpāni, atthi kaṇhasukkānaṁ rūpānaṁ dassāvī; There are such things as dark and bright sights, and one who sees them."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#4231-4377",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "‘natthi kaṇhasukkāni rūpāni, natthi kaṇhasukkānaṁ rūpānaṁ dassāvī; ‘There’s no such thing as dark and bright sights, and no one who sees them."
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#4378-4916",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "natthi nīlakāni rūpāni, natthi nīlakānaṁ rūpānaṁ dassāvī; There’s no such thing as blue, natthi pītakāni rūpāni, natthi pītakānaṁ rūpānaṁ dassāvī; yellow, natthi lohitakāni rūpāni, natthi lohitakānaṁ rūpānaṁ dassāvī; red, natthi mañjiṭṭhakāni rūpāni, natthi mañjiṭṭhakānaṁ rūpānaṁ dassāvī; magenta, natthi samavisamaṁ, natthi samavisamassa dassāvī; even and uneven ground, natthi tārakarūpāni, natthi tārakarūpānaṁ dassāvī; stars, “Evameva kho, māṇava, brāhmaṇo pokkharasāti opamañño subhagavaniko andho acakkhuko."
-     }
-    ],
-    "seq": 8,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -355,7 +191,7 @@
     "verb": "say",
     "object": "this: ‘I don’t know it or see it",
     "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
+     "14-holy-texts/pali-suttas/mn99.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -364,75 +200,12 @@
       "text": "‘Ahametaṁ na jānāmi, ahametaṁ na passāmi; So it’s not right to say this: ‘I don’t know it or see it, tasmā taṁ natthī’ti; therefore it doesn’t exist.’”"
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the consensus|of|opinion?”",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the consensus of opinion?”",
-    "subject": "the consensus",
-    "verb": "of",
-    "object": "opinion?”",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#5928-6021",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "What’s better for them: that their speech agrees or disagrees with the consensus of opinion?”"
-     },
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#6624-6715",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "If this is so, does Pokkharasāti’s speech agree or disagree with the consensus of opinion?”"
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the hindrances|of|sensual desire",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "The hindrances of sensual desire",
-    "subject": "The hindrances",
-    "verb": "of",
-    "object": "sensual desire",
-    "witnesses": [
-     "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "14-holy-texts/pali-suttas/mn99.txt#7266-7484",
-      "ref": "14-holy-texts/pali-suttas/mn99.txt",
-      "text": "Kāmacchandanīvaraṇaṁ, byāpādanīvaraṇaṁ, thinamiddhanīvaraṇaṁ uddhaccakukkuccanīvaraṇaṁ, vicikicchānīvaraṇaṁ— The hindrances of sensual desire, ill will, dullness and drowsiness, restlessness and remorse, and doubt."
-     }
-    ],
-    "seq": 11,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 12,
+  "nextSeq": 4,
   "admits": [
    "NUL",
    "SEG",
@@ -447,28 +220,12 @@
  },
  "folded": [
   {
-   "id": "how could|he|know all those ascetics and brahmins?”",
-   "subject": "how could",
-   "verb": "he",
-   "object": "know all those ascetics and brahmins?”",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#2325-2473",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "“Worthy Gotama, Pokkharasāti doesn’t even understand the mind of his own bonded maid Puṇṇikā, so how could he know all those ascetics and brahmins?”"
-    }
-   ]
-  },
-  {
    "id": "right to|say|this: ‘i don’t know it or see it",
    "subject": "right to",
    "verb": "say",
    "object": "this: ‘I don’t know it or see it",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn99.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -484,7 +241,7 @@
    "verb": "became",
    "object": "angry and upset with the Buddha because of the simile of the queue of blind men",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn99.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -500,7 +257,7 @@
    "verb": "was",
    "object": "a person blind from birth",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn99.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -516,7 +273,7 @@
    "verb": "was",
    "object": "staying near Sāvatthī in Jeta’s Grove",
    "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
+    "14-holy-texts/pali-suttas/mn99.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -525,147 +282,10 @@
      "text": "At one time the Buddha was staying near Sāvatthī in Jeta’s Grove, Anāthapiṇḍika’s monastery."
     }
    ]
-  },
-  {
-   "id": "the consensus|of|opinion?”",
-   "subject": "the consensus",
-   "verb": "of",
-   "object": "opinion?”",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#5928-6021",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "What’s better for them: that their speech agrees or disagrees with the consensus of opinion?”"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#6624-6715",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "If this is so, does Pokkharasāti’s speech agree or disagree with the consensus of opinion?”"
-    }
-   ]
-  },
-  {
-   "id": "the hindrances|of|sensual desire",
-   "subject": "The hindrances",
-   "verb": "of",
-   "object": "sensual desire",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#7266-7484",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "Kāmacchandanīvaraṇaṁ, byāpādanīvaraṇaṁ, thinamiddhanīvaraṇaṁ uddhaccakukkuccanīvaraṇaṁ, vicikicchānīvaraṇaṁ— The hindrances of sensual desire, ill will, dullness and drowsiness, restlessness and remorse, and doubt."
-    }
-   ]
-  },
-  {
-   "id": "the mind|of|his own bonded maid puṇṇikā",
-   "subject": "the mind",
-   "verb": "of",
-   "object": "his own bonded maid Puṇṇikā",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#2325-2473",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "“Worthy Gotama, Pokkharasāti doesn’t even understand the mind of his own bonded maid Puṇṇikā, so how could he know all those ascetics and brahmins?”"
-    }
-   ]
-  },
-  {
-   "id": "the minds|of|all these ascetics and brahmins",
-   "subject": "the minds",
-   "verb": "of",
-   "object": "all these ascetics and brahmins",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#1994-2122",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "“But student, does Pokkharasāti understand the minds of all these ascetics and brahmins, having encompassed them with his mind?”"
-    }
-   ]
-  },
-  {
-   "id": "there are|such|things as dark and bright sights",
-   "subject": "There are",
-   "verb": "such",
-   "object": "things as dark and bright sights",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#3320-3459",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "Atthi kaṇhasukkāni rūpāni, atthi kaṇhasukkānaṁ rūpānaṁ dassāvī; There are such things as dark and bright sights, and one who sees them."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#4231-4377",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "‘natthi kaṇhasukkāni rūpāni, natthi kaṇhasukkānaṁ rūpānaṁ dassāvī; ‘There’s no such thing as dark and bright sights, and no one who sees them."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#4378-4916",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "natthi nīlakāni rūpāni, natthi nīlakānaṁ rūpānaṁ dassāvī; There’s no such thing as blue, natthi pītakāni rūpāni, natthi pītakānaṁ rūpānaṁ dassāvī; yellow, natthi lohitakāni rūpāni, natthi lohitakānaṁ rūpānaṁ dassāvī; red, natthi mañjiṭṭhakāni rūpāni, natthi mañjiṭṭhakānaṁ rūpānaṁ dassāvī; magenta, natthi samavisamaṁ, natthi samavisamassa dassāvī; even and uneven ground, natthi tārakarūpāni, natthi tārakarūpānaṁ dassāvī; stars, “Evameva kho, māṇava, brāhmaṇo pokkharasāti opamañño subhagavaniko andho acakkhuko."
-    }
-   ]
-  },
-  {
-   "id": "vision worthy|of|the noble ones",
-   "subject": "vision worthy",
-   "verb": "of",
-   "object": "the noble ones",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#1257-1350",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "They claim to have a superhuman distinction in knowledge and vision worthy of the noble ones."
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#1549-1807",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "Kathañhi nāma manussabhūto uttari manussadhammā alamariyañāṇadassanavisesaṁ ñassati vā dakkhati vā sacchi vā karissatīti— For how on earth can a human being know or see or realize a superhuman distinction in knowledge and vision worthy of the noble ones?"
-    },
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#5387-5518",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "It is quite impossible for him to know or see or realize a superhuman distinction in knowledge and vision worthy of the noble ones."
-    }
-   ]
-  },
-  {
-   "id": "when|he|said this",
-   "subject": "When",
-   "verb": "he",
-   "object": "said this",
-   "witnesses": [
-    "14-holy-texts/pali-suttas/mn99.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "14-holy-texts/pali-suttas/mn99.txt#470-756",
-     "ref": "14-holy-texts/pali-suttas/mn99.txt",
-     "text": "Evaṁ vutte, subho māṇavo todeyyaputto bhagavatā andhaveṇūpamena vuccamāno kupito anattamano bhagavantaṁyeva khuṁsento bhagavantaṁyeva vambhento bhagavantaṁyeva vadamāno: When he said this, Subha became angry and upset with the Buddha because of the simile of the queue of blind men."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:41.752Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:42.376Z"
  }
 }

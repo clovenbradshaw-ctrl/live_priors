@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 16321,
   "bodyOffset": 0,
   "bodyChars": 16321,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,63 +55,39 @@
   "referentEvents": 4,
   "distinctReferents": 3,
   "examined": true,
-  "edgesFound": 47,
+  "edgesFound": 32,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 6,
+   "verbs": 3,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 6
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 32,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 64,
-  "excerptOk": 64,
-  "rawChecked": 64,
-  "rawOk": 64,
+  "excerptChecked": 46,
+  "excerptOk": 46,
+  "rawChecked": 46,
+  "rawOk": 46,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 47,
-  "heard": 47,
+  "offered": 32,
+  "heard": 32,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "office|of|the united nations high commissioner for human rights (ohchr)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Office of the United Nations High Commissioner for Human Rights (OHCHR)",
-    "subject": "Office",
-    "verb": "of",
-    "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#0-237",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Universal Declaration of Human Rights Language: Jamaican Creole English (jam) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "we evribadi|av|ina di worl (yuunivorshal deklarieshan a yuuman raits)",
@@ -110,7 +104,7 @@
     "verb": "av",
     "object": "ina Di Worl (Yuunivorshal Deklarieshan a Yuuman Raits)",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -174,13 +168,13 @@
       "text": "Evribadi av di rait fi siik out an enjai siefiti an shelta ina wan neks konchri kaaz dem a ronwe fram wikid an bad chriitment ina dem uona ko"
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "biesik diisensi|an|praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av",
+    "task_id": "evri smadi|ina|wan fambili av",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -189,23 +183,47 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "biesik diisensi an praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av",
-    "subject": "biesik diisensi",
-    "verb": "an",
-    "object": "praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av",
+    "description": "evri smadi ina wan fambili av",
+    "subject": "evri smadi",
+    "verb": "ina",
+    "object": "wan fambili av",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-055.txt#382-623",
       "ref": "06-government-legal/un-udhr/udhr-055.txt",
       "text": "Siin az wi nuo se di biesik diisensi an praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av, we nobadi kyaahn tek we fram dem, a di foundieshan fi we dem frii fi du, fi wa fier (jostis) an fi av piis ina di worl,"
-     },
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "an fi|av|piis ina di worl",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "an fi av piis ina di worl",
+    "subject": "an fi",
+    "verb": "av",
+    "object": "piis ina di worl",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
+    ],
+    "spans": [
      {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#1436-1824",
+      "at": "06-government-legal/un-udhr/udhr-055.txt#382-623",
       "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Siin az di piipl dem we iina di Yuunaitid Nieshan av wan pormit we mek dem kyan put dem chros ina di biesik raits dem we evribadi av, iina di diisensi an praid an valyu we smadi av, an ina di iikwal raits dem we man an uman av, an disaid fi big op (promuot) di faawod muuvment (pruogres) ina sosaiyati an a beta kwaliti a laif we gi di piipl dem wol iip muor ruum fi du we dem frii fi du,"
+      "text": "Siin az wi nuo se di biesik diisensi an praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av, we nobadi kyaahn tek we fram dem, a di foundieshan fi we dem frii fi du, fi wa fier (jostis) an fi av piis ina di worl,"
      }
     ],
     "seq": 2,
@@ -214,7 +232,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "wa fier|an|fi av piis ina di worl",
+    "task_id": "iet sieka|piipl|raits kaaz som wikid tingz fi apm",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -223,41 +241,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "wa fier an fi av piis ina di worl",
-    "subject": "wa fier",
-    "verb": "an",
-    "object": "fi av piis ina di worl",
+    "description": "iet sieka piipl raits kaaz som wikid tingz fi apm",
+    "subject": "iet sieka",
+    "verb": "piipl",
+    "object": "raits kaaz som wikid tingz fi apm",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#382-623",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Siin az wi nuo se di biesik diisensi an praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av, we nobadi kyaahn tek we fram dem, a di foundieshan fi we dem frii fi du, fi wa fier (jostis) an fi av piis ina di worl,"
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "az disrispek|an|iet sieka piipl raits kaaz som wikid tingz fi apm",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm",
-    "subject": "az disrispek",
-    "verb": "an",
-    "object": "iet sieka piipl raits kaaz som wikid tingz fi apm",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -266,7 +255,7 @@
       "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
      }
     ],
-    "seq": 4,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -286,7 +275,7 @@
     "verb": "piipl",
     "object": "dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz)",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -295,7 +284,7 @@
       "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
      }
     ],
-    "seq": 5,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -315,7 +304,36 @@
     "verb": "piipl",
     "object": "wuda laik fi fiil gud ina",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-055.txt#631-1041",
+      "ref": "06-government-legal/un-udhr/udhr-055.txt",
+      "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "an chros|ina|(biliiv)",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "an chros ina (biliiv)",
+    "subject": "an chros",
+    "verb": "ina",
+    "object": "(biliiv)",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -330,7 +348,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "fi se|an|chros ina (biliiv)",
+    "task_id": "bitwiin|piipl|fram difrent konchri",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -339,128 +357,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "fi se an chros ina (biliiv)",
-    "subject": "fi se",
-    "verb": "an",
-    "object": "chros ina (biliiv)",
+    "description": "bitwiin piipl fram difrent konchri",
+    "subject": "bitwiin",
+    "verb": "piipl",
+    "object": "fram difrent konchri",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#631-1041",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "biges uop|an|driim we evri smadi av",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "biges uop an driim we evri smadi av",
-    "subject": "biges uop",
-    "verb": "an",
-    "object": "driim we evri smadi av",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#631-1041",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gens govament|an|sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gens govament an sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor",
-    "subject": "gens govament",
-    "verb": "an",
-    "object": "sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#1049-1316",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Siin az it impuotant, if unu no waahn fi fuos man fi raiz op gens govament an sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor, unu fi mek shuor se unu protek di raits a evribadi chruu laa an aada,"
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "chruu laa|an|aada",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "chruu laa an aada",
-    "subject": "chruu laa",
-    "verb": "an",
-    "object": "aada",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#1049-1316",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Siin az it impuotant, if unu no waahn fi fuos man fi raiz op gens govament an sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor, unu fi mek shuor se unu protek di raits a evribadi chruu laa an aada,"
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bil op|an|promuot a gud link (rilieshanship) bitwiin piipl fram difrent konchri",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "bil op an promuot a gud link (rilieshanship) bitwiin piipl fram difrent konchri",
-    "subject": "bil op",
-    "verb": "an",
-    "object": "promuot a gud link (rilieshanship) bitwiin piipl fram difrent konchri",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -469,7 +371,7 @@
       "text": "Siin az it impuotant fi bil op an promuot a gud link (rilieshanship) bitwiin piipl fram difrent konchri,"
      }
     ],
-    "seq": 11,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -489,7 +391,7 @@
     "verb": "piipl",
     "object": "dem we iina di Yuunaitid Nieshan av wan pormit we mek dem kyan put dem chros ina di biesik raits dem we evribadi av",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -498,7 +400,7 @@
       "text": "Siin az di piipl dem we iina di Yuunaitid Nieshan av wan pormit we mek dem kyan put dem chros ina di biesik raits dem we evribadi av, iina di diisensi an praid an valyu we smadi av, an ina di iikwal raits dem we man an uman av, an disaid fi big op (promuot) di faawod muuvment (pruogres) ina sosaiyati an a beta kwaliti a laif we gi di piipl dem wol iip muor ruum fi du we dem frii fi du,"
      }
     ],
-    "seq": 12,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -518,7 +420,7 @@
     "verb": "ina",
     "object": "di iikwal raits dem we man an uman av",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -527,7 +429,7 @@
       "text": "Siin az di piipl dem we iina di Yuunaitid Nieshan av wan pormit we mek dem kyan put dem chros ina di biesik raits dem we evribadi av, iina di diisensi an praid an valyu we smadi av, an ina di iikwal raits dem we man an uman av, an disaid fi big op (promuot) di faawod muuvment (pruogres) ina sosaiyati an a beta kwaliti a laif we gi di piipl dem wol iip muor ruum fi du we dem frii fi du,"
      }
     ],
-    "seq": 13,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -547,7 +449,7 @@
     "verb": "ina",
     "object": "sosaiyati an a beta kwaliti a laif we gi di piipl dem wol iip muor ruum fi du we dem frii fi du",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -556,13 +458,13 @@
       "text": "Siin az di piipl dem we iina di Yuunaitid Nieshan av wan pormit we mek dem kyan put dem chros ina di biesik raits dem we evribadi av, iina di diisensi an praid an valyu we smadi av, an ina di iikwal raits dem we man an uman av, an disaid fi big op (promuot) di faawod muuvment (pruogres) ina sosaiyati an a beta kwaliti a laif we gi di piipl dem wol iip muor ruum fi du we dem frii fi du,"
      }
     ],
-    "seq": 14,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "big op|an|spred rispek evriwe (worlwaid rispek) fi di selibrieshan a di raits dem we piipl av an di biesik tingz dem we dem frii fi du",
+    "task_id": "dem we|piipl|av an di biesik tingz dem we dem frii fi du",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -571,94 +473,55 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "big op an spred rispek evriwe (worlwaid rispek) fi di selibrieshan a di raits dem we piipl av an di biesik tingz dem we dem frii fi du",
-    "subject": "big op",
-    "verb": "an",
-    "object": "spred rispek evriwe (worlwaid rispek) fi di selibrieshan a di raits dem we piipl av an di biesik tingz dem we dem frii fi du",
+    "description": "dem we piipl av an di biesik tingz dem we dem frii fi du",
+    "subject": "dem we",
+    "verb": "piipl",
+    "object": "av an di biesik tingz dem we dem frii fi du",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/un-udhr/udhr-055.txt#1832-2126",
       "ref": "06-government-legal/un-udhr/udhr-055.txt",
       "text": "Siin az di konchri dem we a paat a da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, don alredi pramis demself tugeda wid di Yuunaitid Nieshan, fi big op an spred rispek evriwe (worlwaid rispek) fi di selibrieshan a di raits dem we piipl av an di biesik tingz dem we dem frii fi du,"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fi nuo|an|andastan ina di siem wie",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fi nuo an andastan ina di siem wie",
-    "subject": "fi nuo",
-    "verb": "an",
-    "object": "andastan ina di siem wie",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#2134-2293",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Siin az evribadi niid fi nuo an andastan ina di siem wie, dem raits ya an we dem frii fi du, a dis a di muos impuotant ting fi di fulnes a da pramis ya we mek,"
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "raits ya|an|we dem frii fi du",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "raits ya an we dem frii fi du",
-    "subject": "raits ya",
-    "verb": "an",
-    "object": "we dem frii fi du",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#2134-2293",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Siin az evribadi niid fi nuo an andastan ina di siem wie, dem raits ya an we dem frii fi du, a dis a di muos impuotant ting fi di fulnes a da pramis ya we mek,"
      },
      {
       "at": "06-government-legal/un-udhr/udhr-055.txt#2382-3099",
       "ref": "06-government-legal/un-udhr/udhr-055.txt",
       "text": "Se da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, a di biesik standad we set fi evribadi fram evriwe ina di worl, fi evri smadi an evri paat a sosaiyati, fi kip da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, ina dem main aal di taim, an fi bil op demself chruu we dem tiich an chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres), iina dem uona konchri (nashinal) ar farin (worlwaid) fi mek shuor se dem kip sief uu dem bi an we dem praktis ina di worl, wid di piipl dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)."
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#3391-3506",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Aatikl 2 (Di paat we diil wid evribadi raits an we dem frii fi du no mata uu dem bi, we dem uon ar we dem kom fram)"
-     },
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#3514-3976",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Evribadi disorv di uol a dem ya raits ya an tingz we dem frii fi du we rait dong ina dis ya dakyument bout Di Raits dem we Evribadi Av ina di Worl, widout eni kaina baiyas gens dem, laik we dem baan az, di kola a dem skin, if dem baan man ar uman, di langgwij we dem chat, uu dem biliiv ina an worship, govament we dem sopuot ar eni ada ting dem av fi se bout palitiks, we dem kom fram ar gruo op, we dem uon, uu dem baan az ar eni taikl we dem av ina sosaiyati."
      }
     ],
-    "seq": 17,
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "an andastan|ina|di siem wie",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "an andastan ina di siem wie",
+    "subject": "an andastan",
+    "verb": "ina",
+    "object": "di siem wie",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-055.txt#2134-2293",
+      "ref": "06-government-legal/un-udhr/udhr-055.txt",
+      "text": "Siin az evribadi niid fi nuo an andastan ina di siem wie, dem raits ya an we dem frii fi du, a dis a di muos impuotant ting fi di fulnes a da pramis ya we mek,"
+     }
+    ],
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -678,7 +541,7 @@
     "verb": "piipl",
     "object": "dem we mek di ruul dem fi di Yuunaitid Nieshan",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -687,7 +550,7 @@
       "text": "Di Mien piipl dem we mek di ruul dem fi di Yuunaitid Nieshan,"
      }
     ],
-    "seq": 18,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -707,7 +570,7 @@
     "verb": "ina",
     "object": "di worl",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -716,13 +579,13 @@
       "text": "Se da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, a di biesik standad we set fi evribadi fram evriwe ina di worl, fi evri smadi an evri paat a sosaiyati, fi kip da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, ina dem main aal di taim, an fi bil op demself chruu we dem tiich an chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres), iina dem uona konchri (nashinal) ar farin (worlwaid) fi mek shuor se dem kip sief uu dem bi an we dem praktis ina di worl, wid di piipl dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)."
      }
     ],
-    "seq": 19,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "evri smadi|an|evri paat a sosaiyati",
+    "task_id": "dem praktis|ina|di worl",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -731,12 +594,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "evri smadi an evri paat a sosaiyati",
-    "subject": "evri smadi",
-    "verb": "an",
-    "object": "evri paat a sosaiyati",
+    "description": "dem praktis ina di worl",
+    "subject": "dem praktis",
+    "verb": "ina",
+    "object": "di worl",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -745,36 +608,7 @@
       "text": "Se da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, a di biesik standad we set fi evribadi fram evriwe ina di worl, fi evri smadi an evri paat a sosaiyati, fi kip da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, ina dem main aal di taim, an fi bil op demself chruu we dem tiich an chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres), iina dem uona konchri (nashinal) ar farin (worlwaid) fi mek shuor se dem kip sief uu dem bi an we dem praktis ina di worl, wid di piipl dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)."
      }
     ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "dem tiich|an|chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "dem tiich an chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres)",
-    "subject": "dem tiich",
-    "verb": "an",
-    "object": "chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#2382-3099",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Se da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, a di biesik standad we set fi evribadi fram evriwe ina di worl, fi evri smadi an evri paat a sosaiyati, fi kip da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, ina dem main aal di taim, an fi bil op demself chruu we dem tiich an chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres), iina dem uona konchri (nashinal) ar farin (worlwaid) fi mek shuor se dem kip sief uu dem bi an we dem praktis ina di worl, wid di piipl dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)."
-     }
-    ],
-    "seq": 21,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -794,7 +628,7 @@
     "verb": "piipl",
     "object": "dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -813,36 +647,7 @@
       "text": "Aatikl 14 (Di paat we diil wid piipl we ronwe fram dem konchri sieka bad chriitment)"
      }
     ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "baan frii|an|iikwal wid rispek fi demself (digniti) an wid raits",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "baan frii an iikwal wid rispek fi demself (digniti) an wid raits",
-    "subject": "baan frii",
-    "verb": "an",
-    "object": "iikwal wid rispek fi demself (digniti) an wid raits",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#3170-3244",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Evribadi baan frii an iikwal wid rispek fi demself (digniti) an wid raits."
-     }
-    ],
-    "seq": 23,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -862,7 +667,7 @@
     "verb": "av",
     "object": "sens an nuo we rait fram we rang (kanshenz) an dem fi chriit dem wan aneda laik se dem a breda an sista",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -871,7 +676,36 @@
       "text": "Dem nuo ou fi riizn kaa dem av sens an nuo we rait fram we rang (kanshenz) an dem fi chriit dem wan aneda laik se dem a breda an sista."
      }
     ],
-    "seq": 24,
+    "seq": 17,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "rait dong|ina|dis ya dakyument bout di raits dem we evribadi av ina di worl",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "rait dong ina dis ya dakyument bout Di Raits dem we Evribadi Av ina di Worl",
+    "subject": "rait dong",
+    "verb": "ina",
+    "object": "dis ya dakyument bout Di Raits dem we Evribadi Av ina di Worl",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-055.txt#3514-3976",
+      "ref": "06-government-legal/un-udhr/udhr-055.txt",
+      "text": "Evribadi disorv di uol a dem ya raits ya an tingz we dem frii fi du we rait dong ina dis ya dakyument bout Di Raits dem we Evribadi Av ina di Worl, widout eni kaina baiyas gens dem, laik we dem baan az, di kola a dem skin, if dem baan man ar uman, di langgwij we dem chat, uu dem biliiv ina an worship, govament we dem sopuot ar eni ada ting dem av fi se bout palitiks, we dem kom fram ar gruo op, we dem uon, uu dem baan az ar eni taikl we dem av ina sosaiyati."
+     }
+    ],
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -891,7 +725,7 @@
     "verb": "ina",
     "object": "an worship",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -900,7 +734,7 @@
       "text": "Evribadi disorv di uol a dem ya raits ya an tingz we dem frii fi du we rait dong ina dis ya dakyument bout Di Raits dem we Evribadi Av ina di Worl, widout eni kaina baiyas gens dem, laik we dem baan az, di kola a dem skin, if dem baan man ar uman, di langgwij we dem chat, uu dem biliiv ina an worship, govament we dem sopuot ar eni ada ting dem av fi se bout palitiks, we dem kom fram ar gruo op, we dem uon, uu dem baan az ar eni taikl we dem av ina sosaiyati."
      }
     ],
-    "seq": 25,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
@@ -920,7 +754,7 @@
     "verb": "av",
     "object": "fi se bout palitiks",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -929,13 +763,13 @@
       "text": "Evribadi disorv di uol a dem ya raits ya an tingz we dem frii fi du we rait dong ina dis ya dakyument bout Di Raits dem we Evribadi Av ina di Worl, widout eni kaina baiyas gens dem, laik we dem baan az, di kola a dem skin, if dem baan man ar uman, di langgwij we dem chat, uu dem biliiv ina an worship, govament we dem sopuot ar eni ada ting dem av fi se bout palitiks, we dem kom fram ar gruo op, we dem uon, uu dem baan az ar eni taikl we dem av ina sosaiyati."
      }
     ],
-    "seq": 26,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "di powa|an|aatariti fi paas laa ar di worlwaid (intanashinal) pozishan (stietos) we di konchri av ar teritori we smadi kom fram",
+    "task_id": "di konchri|av|ar teritori we smadi kom fram",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -944,12 +778,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "di powa an aatariti fi paas laa ar di worlwaid (intanashinal) pozishan (stietos) we di konchri av ar teritori we smadi kom fram",
-    "subject": "di powa",
-    "verb": "an",
-    "object": "aatariti fi paas laa ar di worlwaid (intanashinal) pozishan (stietos) we di konchri av ar teritori we smadi kom fram",
+    "description": "di konchri av ar teritori we smadi kom fram",
+    "subject": "di konchri",
+    "verb": "av",
+    "object": "ar teritori we smadi kom fram",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -958,13 +792,13 @@
       "text": "Fordamuor, no kaina baiyas no fi bies pan govament, di powa an aatariti fi paas laa ar di worlwaid (intanashinal) pozishan (stietos) we di konchri av ar teritori we smadi kom fram, weda it bi a konchri wid dem ouna govament (indipendent), a konchri we no govan itself an anda di aatariti a di Yuunaitid Nieshan (chros), a konchri we no fuli govan itself ar anda eni ada rischrikshan wid ai powa an aatariti fi govan itself."
      }
     ],
-    "seq": 27,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "govan itself|an|anda di aatariti a di yuunaitid nieshan (chros)",
+    "task_id": "frii an|av|kanchruol uova dem uona badi",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -973,41 +807,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "govan itself an anda di aatariti a di Yuunaitid Nieshan (chros)",
-    "subject": "govan itself",
-    "verb": "an",
-    "object": "anda di aatariti a di Yuunaitid Nieshan (chros)",
+    "description": "frii an av kanchruol uova dem uona badi",
+    "subject": "frii an",
+    "verb": "av",
+    "object": "kanchruol uova dem uona badi",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#3984-4407",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Fordamuor, no kaina baiyas no fi bies pan govament, di powa an aatariti fi paas laa ar di worlwaid (intanashinal) pozishan (stietos) we di konchri av ar teritori we smadi kom fram, weda it bi a konchri wid dem ouna govament (indipendent), a konchri we no govan itself an anda di aatariti a di Yuunaitid Nieshan (chros), a konchri we no fuli govan itself ar anda eni ada rischrikshan wid ai powa an aatariti fi govan itself."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bi frii|an|av kanchruol uova dem uona badi",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "bi frii an av kanchruol uova dem uona badi",
-    "subject": "bi frii",
-    "verb": "an",
-    "object": "av kanchruol uova dem uona badi",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1016,36 +821,7 @@
       "text": "Evribadi av di rait fi liv, an fi bi frii an av kanchruol uova dem uona badi."
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gens slievri|an|bandij)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gens slievri an bandij)",
-    "subject": "gens slievri",
-    "verb": "an",
-    "object": "bandij)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#4560-4611",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Aatikl 4 (Di paat we likout gens slievri an bandij)"
-     }
-    ],
-    "seq": 30,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1065,7 +841,7 @@
     "verb": "ina",
     "object": "slievri",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1074,94 +850,7 @@
       "text": "Nobadi no fi bi nobadi sliev ar liv ina slievri; slievri an aal saata sliev bizniz kyaahn gwaan."
      }
     ],
-    "seq": 31,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "slievri|an|aal saata sliev bizniz kyaahn gwaan",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "slievri an aal saata sliev bizniz kyaahn gwaan",
-    "subject": "slievri",
-    "verb": "an",
-    "object": "aal saata sliev bizniz kyaahn gwaan",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#4619-4715",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Nobadi no fi bi nobadi sliev ar liv ina slievri; slievri an aal saata sliev bizniz kyaahn gwaan."
-     }
-    ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "bad chriitment|an|taacha)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "bad chriitment an taacha)",
-    "subject": "bad chriitment",
-    "verb": "an",
-    "object": "taacha)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#4726-4784",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Aatikl 5 (Di paat we likout gens bad chriitment an taacha)"
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "di laa|an|disorv widout eni kaina baiyas",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "di laa an disorv widout eni kaina baiyas",
-    "subject": "di laa",
-    "verb": "an",
-    "object": "disorv widout eni kaina baiyas",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#5112-5207",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Evribadi iikwal bifuor di laa an disorv widout eni kaina baiyas, di iikwal protekshan a di laa."
-     }
-    ],
-    "seq": 34,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -1181,7 +870,7 @@
     "verb": "av",
     "object": "fram di ruul dem we govan dem konchri ar fram di laa",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1190,36 +879,7 @@
       "text": "Evribadi av di rait tu a gud soluushan fram di kuot a jostis dem we ina dem konchri we wel kiepebl an nuo we dem a du, fi di akshan dem we disrispek di biesik raits dem we smadi av fram di ruul dem we govan dem konchri ar fram di laa."
      }
     ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "jiel ous|an|lak op)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "jiel ous an lak op)",
-    "subject": "jiel ous",
-    "verb": "an",
-    "object": "lak op)",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#5728-5777",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Aatikl 9 (Di paat we diil wid jiel ous an lak op)"
-     }
-    ],
-    "seq": 36,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1239,7 +899,7 @@
     "verb": "ina",
     "object": "jiel widout laaful riizn",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1248,7 +908,7 @@
       "text": "Nobadi no fi get fling ina jiel widout laaful riizn, lak op ina jiel widout chaaj ar get put out a yu uona konchri."
      }
     ],
-    "seq": 37,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -1268,7 +928,7 @@
     "verb": "ina",
     "object": "jiel widout chaaj ar get put out a yu uona konchri",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1277,65 +937,7 @@
       "text": "Nobadi no fi get fling ina jiel widout laaful riizn, lak op ina jiel widout chaaj ar get put out a yu uona konchri."
      }
     ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a fier|an|poblik kuot kies bai wan indipendent kuot a jostis we no baiyas",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a fier an poblik kuot kies bai wan indipendent kuot a jostis we no baiyas",
-    "subject": "a fier",
-    "verb": "an",
-    "object": "poblik kuot kies bai wan indipendent kuot a jostis we no baiyas",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#5972-6170",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Evribadi disorv ful iikwaliti tu a fier an poblik kuot kies bai wan indipendent kuot a jostis we no baiyas, wen dem a disaid pan yu raits an ef yu fi get bliem fi eni kriminal chaaj we fail gens yu."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "yu raits|an|ef yu fi get bliem fi eni kriminal chaaj we fail gens yu",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "yu raits an ef yu fi get bliem fi eni kriminal chaaj we fail gens yu",
-    "subject": "yu raits",
-    "verb": "an",
-    "object": "ef yu fi get bliem fi eni kriminal chaaj we fail gens yu",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#5972-6170",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Evribadi disorv ful iikwaliti tu a fier an poblik kuot kies bai wan indipendent kuot a jostis we no baiyas, wen dem a disaid pan yu raits an ef yu fi get bliem fi eni kriminal chaaj we fail gens yu."
-     }
-    ],
-    "seq": 40,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1355,7 +957,7 @@
     "verb": "av",
     "object": "di rait fi se dem no gilti (se dem inosent) antil it pruuv se dem gilti azkaadn tu di laa ina wan kuot kies we poblik we im get aal a di sitn dem we im niid fi defen im kies",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1364,7 +966,7 @@
       "text": "Enibadi we get chaaj wid a kraim we kyan sen yu go prizn av di rait fi se dem no gilti (se dem inosent) antil it pruuv se dem gilti azkaadn tu di laa ina wan kuot kies we poblik we im get aal a di sitn dem we im niid fi defen im kies."
      }
     ],
-    "seq": 41,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -1384,7 +986,7 @@
     "verb": "ina",
     "object": "fi yu konchri (nashinal) ar di laa fi di uol worl (farin/intanashinal)",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1393,7 +995,7 @@
       "text": "Nobadi nofi se nobadi gilti a wan kraim we kyan sen yu go prizn kaaza eni akshan ar sieka se smadi neva did tek no akshan we no kount az wan kraim we kyan sen yu go prizn, weda yu anda di laa we ina fi yu konchri (nashinal) ar di laa fi di uol worl (farin/intanashinal), a di taim wen di kraim apm."
      }
     ],
-    "seq": 42,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -1413,7 +1015,7 @@
     "verb": "av",
     "object": "a di taim wen di kraim we kyan sen yu go prizn did apm",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1422,7 +1024,7 @@
       "text": "Di kraim nofi kyari wan biga ponishment naida dan di wan we it did av a di taim wen di kraim we kyan sen yu go prizn did apm."
      }
     ],
-    "seq": 43,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -1442,7 +1044,7 @@
     "verb": "ina",
     "object": "nobadi bizniz (intafier) widout no evidens ar riizn a rang duwinz",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1451,36 +1053,7 @@
       "text": "Nobadi nofi faas ina nobadi bizniz (intafier) widout no evidens ar riizn a rang duwinz, weda it bi dem praivit bizniz (praivisi), fambili, ous/yaad ar infamieshan fi di smadi we kom chruu leta, iimiel ar eni ada taip a mesij, nar bring dong no shiem &#x26; disgries pan nobadi gud niem an repitieshan."
      }
     ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gud niem|an|repitieshan",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "gud niem an repitieshan",
-    "subject": "gud niem",
-    "verb": "an",
-    "object": "repitieshan",
-    "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/un-udhr/udhr-055.txt#7020-7321",
-      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-      "text": "Nobadi nofi faas ina nobadi bizniz (intafier) widout no evidens ar riizn a rang duwinz, weda it bi dem praivit bizniz (praivisi), fambili, ous/yaad ar infamieshan fi di smadi we kom chruu leta, iimiel ar eni ada taip a mesij, nar bring dong no shiem &#x26; disgries pan nobadi gud niem an repitieshan."
-     }
-    ],
-    "seq": 45,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -1500,7 +1073,7 @@
     "verb": "piipl",
     "object": "chravl)",
     "witnesses": [
-     "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+     "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1509,12 +1082,12 @@
       "text": "Aatikl 13 (Di paat we diil wid ou piipl chravl)"
      }
     ],
-    "seq": 46,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 47,
+  "nextSeq": 32,
   "admits": [
    "NUL",
    "SEG",
@@ -1529,18 +1102,50 @@
  },
  "folded": [
   {
-   "id": "a fier|an|poblik kuot kies bai wan indipendent kuot a jostis we no baiyas",
-   "subject": "a fier",
-   "verb": "an",
-   "object": "poblik kuot kies bai wan indipendent kuot a jostis we no baiyas",
+   "id": "an andastan|ina|di siem wie",
+   "subject": "an andastan",
+   "verb": "ina",
+   "object": "di siem wie",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#5972-6170",
+     "at": "06-government-legal/un-udhr/udhr-055.txt#2134-2293",
      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Evribadi disorv ful iikwaliti tu a fier an poblik kuot kies bai wan indipendent kuot a jostis we no baiyas, wen dem a disaid pan yu raits an ef yu fi get bliem fi eni kriminal chaaj we fail gens yu."
+     "text": "Siin az evribadi niid fi nuo an andastan ina di siem wie, dem raits ya an we dem frii fi du, a dis a di muos impuotant ting fi di fulnes a da pramis ya we mek,"
+    }
+   ]
+  },
+  {
+   "id": "an chros|ina|(biliiv)",
+   "subject": "an chros",
+   "verb": "ina",
+   "object": "(biliiv)",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-055.txt#631-1041",
+     "ref": "06-government-legal/un-udhr/udhr-055.txt",
+     "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
+    }
+   ]
+  },
+  {
+   "id": "an fi|av|piis ina di worl",
+   "subject": "an fi",
+   "verb": "av",
+   "object": "piis ina di worl",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-055.txt#382-623",
+     "ref": "06-government-legal/un-udhr/udhr-055.txt",
+     "text": "Siin az wi nuo se di biesik diisensi an praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av, we nobadi kyaahn tek we fram dem, a di foundieshan fi we dem frii fi du, fi wa fier (jostis) an fi av piis ina di worl,"
     }
    ]
   },
@@ -1550,7 +1155,7 @@
    "verb": "ina",
    "object": "di iikwal raits dem we man an uman av",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1566,7 +1171,7 @@
    "verb": "ina",
    "object": "slievri",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1582,7 +1187,7 @@
    "verb": "piipl",
    "object": "dem we iina di Yuunaitid Nieshan av wan pormit we mek dem kyan put dem chros ina di biesik raits dem we evribadi av",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1593,129 +1198,12 @@
    ]
   },
   {
-   "id": "az disrispek|an|iet sieka piipl raits kaaz som wikid tingz fi apm",
-   "subject": "az disrispek",
-   "verb": "an",
-   "object": "iet sieka piipl raits kaaz som wikid tingz fi apm",
+   "id": "bitwiin|piipl|fram difrent konchri",
+   "subject": "bitwiin",
+   "verb": "piipl",
+   "object": "fram difrent konchri",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#631-1041",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
-    }
-   ]
-  },
-  {
-   "id": "baan frii|an|iikwal wid rispek fi demself (digniti) an wid raits",
-   "subject": "baan frii",
-   "verb": "an",
-   "object": "iikwal wid rispek fi demself (digniti) an wid raits",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#3170-3244",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Evribadi baan frii an iikwal wid rispek fi demself (digniti) an wid raits."
-    }
-   ]
-  },
-  {
-   "id": "bad chriitment|an|taacha)",
-   "subject": "bad chriitment",
-   "verb": "an",
-   "object": "taacha)",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#4726-4784",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Aatikl 5 (Di paat we likout gens bad chriitment an taacha)"
-    }
-   ]
-  },
-  {
-   "id": "bi frii|an|av kanchruol uova dem uona badi",
-   "subject": "bi frii",
-   "verb": "an",
-   "object": "av kanchruol uova dem uona badi",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#4472-4549",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Evribadi av di rait fi liv, an fi bi frii an av kanchruol uova dem uona badi."
-    }
-   ]
-  },
-  {
-   "id": "biesik diisensi|an|praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av",
-   "subject": "biesik diisensi",
-   "verb": "an",
-   "object": "praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#382-623",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az wi nuo se di biesik diisensi an praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av, we nobadi kyaahn tek we fram dem, a di foundieshan fi we dem frii fi du, fi wa fier (jostis) an fi av piis ina di worl,"
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#1436-1824",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az di piipl dem we iina di Yuunaitid Nieshan av wan pormit we mek dem kyan put dem chros ina di biesik raits dem we evribadi av, iina di diisensi an praid an valyu we smadi av, an ina di iikwal raits dem we man an uman av, an disaid fi big op (promuot) di faawod muuvment (pruogres) ina sosaiyati an a beta kwaliti a laif we gi di piipl dem wol iip muor ruum fi du we dem frii fi du,"
-    }
-   ]
-  },
-  {
-   "id": "big op|an|spred rispek evriwe (worlwaid rispek) fi di selibrieshan a di raits dem we piipl av an di biesik tingz dem we dem frii fi du",
-   "subject": "big op",
-   "verb": "an",
-   "object": "spred rispek evriwe (worlwaid rispek) fi di selibrieshan a di raits dem we piipl av an di biesik tingz dem we dem frii fi du",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#1832-2126",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az di konchri dem we a paat a da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, don alredi pramis demself tugeda wid di Yuunaitid Nieshan, fi big op an spred rispek evriwe (worlwaid rispek) fi di selibrieshan a di raits dem we piipl av an di biesik tingz dem we dem frii fi du,"
-    }
-   ]
-  },
-  {
-   "id": "biges uop|an|driim we evri smadi av",
-   "subject": "biges uop",
-   "verb": "an",
-   "object": "driim we evri smadi av",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#631-1041",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
-    }
-   ]
-  },
-  {
-   "id": "bil op|an|promuot a gud link (rilieshanship) bitwiin piipl fram difrent konchri",
-   "subject": "bil op",
-   "verb": "an",
-   "object": "promuot a gud link (rilieshanship) bitwiin piipl fram difrent konchri",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1726,28 +1214,12 @@
    ]
   },
   {
-   "id": "chruu laa|an|aada",
-   "subject": "chruu laa",
-   "verb": "an",
-   "object": "aada",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#1049-1316",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az it impuotant, if unu no waahn fi fuos man fi raiz op gens govament an sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor, unu fi mek shuor se unu protek di raits a evribadi chruu laa an aada,"
-    }
-   ]
-  },
-  {
    "id": "dem biliiv|ina|an worship",
    "subject": "dem biliiv",
    "verb": "ina",
    "object": "an worship",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1758,12 +1230,12 @@
    ]
   },
   {
-   "id": "dem tiich|an|chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres)",
-   "subject": "dem tiich",
-   "verb": "an",
-   "object": "chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres)",
+   "id": "dem praktis|ina|di worl",
+   "subject": "dem praktis",
+   "verb": "ina",
+   "object": "di worl",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1774,44 +1246,33 @@
    ]
   },
   {
-   "id": "di laa|an|disorv widout eni kaina baiyas",
-   "subject": "di laa",
-   "verb": "an",
-   "object": "disorv widout eni kaina baiyas",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#5112-5207",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Evribadi iikwal bifuor di laa an disorv widout eni kaina baiyas, di iikwal protekshan a di laa."
-    }
-   ]
-  },
-  {
-   "id": "di mien|piipl|dem we mek di ruul dem fi di yuunaitid nieshan",
-   "subject": "Di Mien",
+   "id": "dem we|piipl|av an di biesik tingz dem we dem frii fi du",
+   "subject": "dem we",
    "verb": "piipl",
-   "object": "dem we mek di ruul dem fi di Yuunaitid Nieshan",
+   "object": "av an di biesik tingz dem we dem frii fi du",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#2313-2374",
+     "at": "06-government-legal/un-udhr/udhr-055.txt#1832-2126",
      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Di Mien piipl dem we mek di ruul dem fi di Yuunaitid Nieshan,"
+     "text": "Siin az di konchri dem we a paat a da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, don alredi pramis demself tugeda wid di Yuunaitid Nieshan, fi big op an spred rispek evriwe (worlwaid rispek) fi di selibrieshan a di raits dem we piipl av an di biesik tingz dem we dem frii fi du,"
+    },
+    {
+     "at": "06-government-legal/un-udhr/udhr-055.txt#2382-3099",
+     "ref": "06-government-legal/un-udhr/udhr-055.txt",
+     "text": "Se da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, a di biesik standad we set fi evribadi fram evriwe ina di worl, fi evri smadi an evri paat a sosaiyati, fi kip da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, ina dem main aal di taim, an fi bil op demself chruu we dem tiich an chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres), iina dem uona konchri (nashinal) ar farin (worlwaid) fi mek shuor se dem kip sief uu dem bi an we dem praktis ina di worl, wid di piipl dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)."
     }
    ]
   },
   {
-   "id": "di powa|an|aatariti fi paas laa ar di worlwaid (intanashinal) pozishan (stietos) we di konchri av ar teritori we smadi kom fram",
-   "subject": "di powa",
-   "verb": "an",
-   "object": "aatariti fi paas laa ar di worlwaid (intanashinal) pozishan (stietos) we di konchri av ar teritori we smadi kom fram",
+   "id": "di konchri|av|ar teritori we smadi kom fram",
+   "subject": "di konchri",
+   "verb": "av",
+   "object": "ar teritori we smadi kom fram",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1822,18 +1283,34 @@
    ]
   },
   {
-   "id": "evri smadi|an|evri paat a sosaiyati",
-   "subject": "evri smadi",
-   "verb": "an",
-   "object": "evri paat a sosaiyati",
+   "id": "di mien|piipl|dem we mek di ruul dem fi di yuunaitid nieshan",
+   "subject": "Di Mien",
+   "verb": "piipl",
+   "object": "dem we mek di ruul dem fi di Yuunaitid Nieshan",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#2382-3099",
+     "at": "06-government-legal/un-udhr/udhr-055.txt#2313-2374",
      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Se da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, a di biesik standad we set fi evribadi fram evriwe ina di worl, fi evri smadi an evri paat a sosaiyati, fi kip da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, ina dem main aal di taim, an fi bil op demself chruu we dem tiich an chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres), iina dem uona konchri (nashinal) ar farin (worlwaid) fi mek shuor se dem kip sief uu dem bi an we dem praktis ina di worl, wid di piipl dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)."
+     "text": "Di Mien piipl dem we mek di ruul dem fi di Yuunaitid Nieshan,"
+    }
+   ]
+  },
+  {
+   "id": "evri smadi|ina|wan fambili av",
+   "subject": "evri smadi",
+   "verb": "ina",
+   "object": "wan fambili av",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-055.txt#382-623",
+     "ref": "06-government-legal/un-udhr/udhr-055.txt",
+     "text": "Siin az wi nuo se di biesik diisensi an praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av, we nobadi kyaahn tek we fram dem, a di foundieshan fi we dem frii fi du, fi wa fier (jostis) an fi av piis ina di worl,"
     }
    ]
   },
@@ -1843,7 +1320,7 @@
    "verb": "ina",
    "object": "sosaiyati an a beta kwaliti a laif we gi di piipl dem wol iip muor ruum fi du we dem frii fi du",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1854,44 +1331,12 @@
    ]
   },
   {
-   "id": "fi nuo|an|andastan ina di siem wie",
-   "subject": "fi nuo",
-   "verb": "an",
-   "object": "andastan ina di siem wie",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#2134-2293",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az evribadi niid fi nuo an andastan ina di siem wie, dem raits ya an we dem frii fi du, a dis a di muos impuotant ting fi di fulnes a da pramis ya we mek,"
-    }
-   ]
-  },
-  {
-   "id": "fi se|an|chros ina (biliiv)",
-   "subject": "fi se",
-   "verb": "an",
-   "object": "chros ina (biliiv)",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#631-1041",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
-    }
-   ]
-  },
-  {
    "id": "fram evriwe|ina|di worl",
    "subject": "fram evriwe",
    "verb": "ina",
    "object": "di worl",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1902,34 +1347,18 @@
    ]
   },
   {
-   "id": "gens govament|an|sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor",
-   "subject": "gens govament",
-   "verb": "an",
-   "object": "sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor",
+   "id": "frii an|av|kanchruol uova dem uona badi",
+   "subject": "frii an",
+   "verb": "av",
+   "object": "kanchruol uova dem uona badi",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#1049-1316",
+     "at": "06-government-legal/un-udhr/udhr-055.txt#4472-4549",
      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az it impuotant, if unu no waahn fi fuos man fi raiz op gens govament an sosaiyati an rizaat tu sortn akshan bikaa dem kyaahn tek sortn bad chriitment an fait gens sieka govament ruul no muor, unu fi mek shuor se unu protek di raits a evribadi chruu laa an aada,"
-    }
-   ]
-  },
-  {
-   "id": "gens slievri|an|bandij)",
-   "subject": "gens slievri",
-   "verb": "an",
-   "object": "bandij)",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#4560-4611",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Aatikl 4 (Di paat we likout gens slievri an bandij)"
+     "text": "Evribadi av di rait fi liv, an fi bi frii an av kanchruol uova dem uona badi."
     }
    ]
   },
@@ -1939,7 +1368,7 @@
    "verb": "ina",
    "object": "jiel widout laaful riizn",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1955,7 +1384,7 @@
    "verb": "av",
    "object": "di rait fi se dem no gilti (se dem inosent) antil it pruuv se dem gilti azkaadn tu di laa ina wan kuot kies we poblik we im get aal a di sitn dem we im niid fi defen im kies",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1966,34 +1395,18 @@
    ]
   },
   {
-   "id": "govan itself|an|anda di aatariti a di yuunaitid nieshan (chros)",
-   "subject": "govan itself",
-   "verb": "an",
-   "object": "anda di aatariti a di Yuunaitid Nieshan (chros)",
+   "id": "iet sieka|piipl|raits kaaz som wikid tingz fi apm",
+   "subject": "iet sieka",
+   "verb": "piipl",
+   "object": "raits kaaz som wikid tingz fi apm",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#3984-4407",
+     "at": "06-government-legal/un-udhr/udhr-055.txt#631-1041",
      "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Fordamuor, no kaina baiyas no fi bies pan govament, di powa an aatariti fi paas laa ar di worlwaid (intanashinal) pozishan (stietos) we di konchri av ar teritori we smadi kom fram, weda it bi a konchri wid dem ouna govament (indipendent), a konchri we no govan itself an anda di aatariti a di Yuunaitid Nieshan (chros), a konchri we no fuli govan itself ar anda eni ada rischrikshan wid ai powa an aatariti fi govan itself."
-    }
-   ]
-  },
-  {
-   "id": "gud niem|an|repitieshan",
-   "subject": "gud niem",
-   "verb": "an",
-   "object": "repitieshan",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#7020-7321",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Nobadi nofi faas ina nobadi bizniz (intafier) widout no evidens ar riizn a rang duwinz, weda it bi dem praivit bizniz (praivisi), fambili, ous/yaad ar infamieshan fi di smadi we kom chruu leta, iimiel ar eni ada taip a mesij, nar bring dong no shiem &#x26; disgries pan nobadi gud niem an repitieshan."
+     "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
     }
    ]
   },
@@ -2003,7 +1416,7 @@
    "verb": "av",
    "object": "a di taim wen di kraim we kyan sen yu go prizn did apm",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2014,28 +1427,12 @@
    ]
   },
   {
-   "id": "jiel ous|an|lak op)",
-   "subject": "jiel ous",
-   "verb": "an",
-   "object": "lak op)",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#5728-5777",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Aatikl 9 (Di paat we diil wid jiel ous an lak op)"
-    }
-   ]
-  },
-  {
    "id": "kaa dem|av|sens an nuo we rait fram we rang (kanshenz) an dem fi chriit dem wan aneda laik se dem a breda an sista",
    "subject": "kaa dem",
    "verb": "av",
    "object": "sens an nuo we rait fram we rang (kanshenz) an dem fi chriit dem wan aneda laik se dem a breda an sista",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2051,7 +1448,7 @@
    "verb": "ina",
    "object": "fi yu konchri (nashinal) ar di laa fi di uol worl (farin/intanashinal)",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2067,7 +1464,7 @@
    "verb": "ina",
    "object": "jiel widout chaaj ar get put out a yu uona konchri",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2083,7 +1480,7 @@
    "verb": "piipl",
    "object": "dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz)",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2099,7 +1496,7 @@
    "verb": "ina",
    "object": "nobadi bizniz (intafier) widout no evidens ar riizn a rang duwinz",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2110,65 +1507,18 @@
    ]
   },
   {
-   "id": "office|of|the united nations high commissioner for human rights (ohchr)",
-   "subject": "Office",
-   "verb": "of",
-   "object": "the United Nations High Commissioner for Human Rights (OHCHR)",
+   "id": "rait dong|ina|dis ya dakyument bout di raits dem we evribadi av ina di worl",
+   "subject": "rait dong",
+   "verb": "ina",
+   "object": "dis ya dakyument bout Di Raits dem we Evribadi Av ina di Worl",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#0-237",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Universal Declaration of Human Rights Language: Jamaican Creole English (jam) Adopted: UN General Assembly resolution 217 A (III), Paris, 10 December 1948 Publisher: Office of the United Nations High Commissioner for Human Rights (OHCHR)"
-    }
-   ]
-  },
-  {
-   "id": "raits ya|an|we dem frii fi du",
-   "subject": "raits ya",
-   "verb": "an",
-   "object": "we dem frii fi du",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#2134-2293",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az evribadi niid fi nuo an andastan ina di siem wie, dem raits ya an we dem frii fi du, a dis a di muos impuotant ting fi di fulnes a da pramis ya we mek,"
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#2382-3099",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Se da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, a di biesik standad we set fi evribadi fram evriwe ina di worl, fi evri smadi an evri paat a sosaiyati, fi kip da dakyument ya bout Di Raits dem we Evribadi Av ina di Worl, ina dem main aal di taim, an fi bil op demself chruu we dem tiich an chruu edikieshan fi big op an spred rispek fi dem ya raits ya an di tingz dem we piipl frii fi du an chruu faawod muuvment (pruogres), iina dem uona konchri (nashinal) ar farin (worlwaid) fi mek shuor se dem kip sief uu dem bi an we dem praktis ina di worl, wid di piipl dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)."
-    },
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#3391-3506",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Aatikl 2 (Di paat we diil wid evribadi raits an we dem frii fi du no mata uu dem bi, we dem uon ar we dem kom fram)"
-    },
     {
      "at": "06-government-legal/un-udhr/udhr-055.txt#3514-3976",
      "ref": "06-government-legal/un-udhr/udhr-055.txt",
      "text": "Evribadi disorv di uol a dem ya raits ya an tingz we dem frii fi du we rait dong ina dis ya dakyument bout Di Raits dem we Evribadi Av ina di Worl, widout eni kaina baiyas gens dem, laik we dem baan az, di kola a dem skin, if dem baan man ar uman, di langgwij we dem chat, uu dem biliiv ina an worship, govament we dem sopuot ar eni ada ting dem av fi se bout palitiks, we dem kom fram ar gruo op, we dem uon, uu dem baan az ar eni taikl we dem av ina sosaiyati."
-    }
-   ]
-  },
-  {
-   "id": "slievri|an|aal saata sliev bizniz kyaahn gwaan",
-   "subject": "slievri",
-   "verb": "an",
-   "object": "aal saata sliev bizniz kyaahn gwaan",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#4619-4715",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Nobadi no fi bi nobadi sliev ar liv ina slievri; slievri an aal saata sliev bizniz kyaahn gwaan."
     }
    ]
   },
@@ -2178,7 +1528,7 @@
    "verb": "av",
    "object": "fi se bout palitiks",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2189,28 +1539,12 @@
    ]
   },
   {
-   "id": "wa fier|an|fi av piis ina di worl",
-   "subject": "wa fier",
-   "verb": "an",
-   "object": "fi av piis ina di worl",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#382-623",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Siin az wi nuo se di biesik diisensi an praid (digniti) we kom fram di iikwal raits dem we evri smadi ina wan fambili av, we nobadi kyaahn tek we fram dem, a di foundieshan fi we dem frii fi du, fi wa fier (jostis) an fi av piis ina di worl,"
-    }
-   ]
-  },
-  {
    "id": "we evribadi|av|ina di worl (yuunivorshal deklarieshan a yuuman raits)",
    "subject": "We Evribadi",
    "verb": "av",
    "object": "ina Di Worl (Yuunivorshal Deklarieshan a Yuuman Raits)",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2281,7 +1615,7 @@
    "verb": "av",
    "object": "fram di ruul dem we govan dem konchri ar fram di laa",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2297,7 +1631,7 @@
    "verb": "piipl",
    "object": "dem we a paat a di Yuunaitid Nieshan an demself an piipl we kom fram di difrent konchri dem we dem av pouwa an aatariti ova (we dem govan)",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2323,7 +1657,7 @@
    "verb": "piipl",
    "object": "chravl)",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2339,7 +1673,7 @@
    "verb": "piipl",
    "object": "wuda laik fi fiil gud ina",
    "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
+    "06-government-legal/un-udhr/udhr-055.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2348,26 +1682,10 @@
      "text": "Siin az disrispek an iet sieka piipl raits kaaz som wikid tingz fi apm, dis mek di piipl dem pan ort wel veks ina dem main we nuo wa rait fram wa rang (kanshenz), an di taip a worl we piipl wuda laik fi fiil gud ina, a wan we dem fiil frii fi se eniting we dem waahn fi se an chros ina (biliiv), an dem no fried a notn ar nobadi, an dem no in niid a notn, a dis dem se a di biges uop an driim we evri smadi av,"
     }
    ]
-  },
-  {
-   "id": "yu raits|an|ef yu fi get bliem fi eni kriminal chaaj we fail gens yu",
-   "subject": "yu raits",
-   "verb": "an",
-   "object": "ef yu fi get bliem fi eni kriminal chaaj we fail gens yu",
-   "witnesses": [
-    "06-government-legal/un-udhr/udhr-055.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/un-udhr/udhr-055.txt#5972-6170",
-     "ref": "06-government-legal/un-udhr/udhr-055.txt",
-     "text": "Evribadi disorv ful iikwaliti tu a fier an poblik kuot kies bai wan indipendent kuot a jostis we no baiyas, wen dem a disaid pan yu raits an ef yu fi get bliem fi eni kriminal chaaj we fail gens yu."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:54.989Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:31.954Z"
  }
 }

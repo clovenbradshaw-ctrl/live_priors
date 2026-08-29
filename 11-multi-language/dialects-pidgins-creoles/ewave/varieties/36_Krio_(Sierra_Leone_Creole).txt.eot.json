@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 17906,
   "bodyOffset": 0,
   "bodyChars": 17906,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,56 +55,39 @@
   "referentEvents": 6,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 21,
-  "extractionError": null
+  "edgesFound": 4,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 24
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 4,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 22,
-  "excerptOk": 22,
-  "rawChecked": 22,
-  "rawOk": 22,
+  "excerptChecked": 4,
+  "excerptOk": 4,
+  "rawChecked": 4,
+  "rawOk": 4,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 21,
-  "heard": 21,
+  "offered": 4,
+  "heard": 4,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "subject": "typically developed",
-    "verb": "in",
-    "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#55-321",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "eWAVE variety ID: 36 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "there|was|strong pressure upon the non-english speaking group to use the language of the socio-economically superior group (i",
@@ -103,7 +104,7 @@
     "verb": "was",
     "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -112,13 +113,13 @@
       "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
      }
     ],
-    "seq": 1,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "its native|speakers|was normally very limited",
+    "task_id": "native speakers|was|normally very limited",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -127,19 +128,43 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "its native speakers was normally very limited",
-    "subject": "its native",
-    "verb": "speakers",
-    "object": "was normally very limited",
+    "description": "native speakers was normally very limited",
+    "subject": "native speakers",
+    "verb": "was",
+    "object": "normally very limited",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#462-536",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
       "text": "English), while exposure to its native speakers was normally very limited."
-     },
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "subject": "of English",
+    "verb": "was",
+    "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+    "witnesses": [
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@aea2233a6055abf1"
+    ],
+    "spans": [
      {
       "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#537-731",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
@@ -152,7 +177,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "used natively|by|approximately 400",
+    "task_id": "formerly there|was|no variation",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -161,519 +186,26 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "used natively by approximately 400",
-    "subject": "used natively",
-    "verb": "by",
-    "object": "approximately 400",
+    "description": "formerly there was no variation",
+    "subject": "formerly there",
+    "verb": "was",
+    "object": "no variation",
     "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
+     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#910-1319",
+      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2097-2181",
       "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Krio, the lingua franca of Sierra Leone (estimated 5.5 Million population), is used natively by approximately 400,000 speakers living primarily in Freetown and surrounding villages though over 4 Million non-native speakers use it proficiently in various domains of communication daily."
+      "text": "As a result, Krio has developed variant forms where formerly there was no variation."
      }
     ],
     "seq": 3,
     "depends_on": [],
     "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "000|speakers|living primarily in freetown and surrounding villages though over 4 million non-native speakers use it proficiently in various domains of communication daily",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "000 speakers living primarily in Freetown and surrounding villages though over 4 Million non-native speakers use it proficiently in various domains of communication daily",
-    "subject": "000",
-    "verb": "speakers",
-    "object": "living primarily in Freetown and surrounding villages though over 4 Million non-native speakers use it proficiently in various domains of communication daily",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#910-1319",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Krio, the lingua franca of Sierra Leone (estimated 5.5 Million population), is used natively by approximately 400,000 speakers living primarily in Freetown and surrounding villages though over 4 Million non-native speakers use it proficiently in various domains of communication daily."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "used primarily|by|formerly enslaved groups resettled in freetown and its environs between 1787 and 1850:  black poor (england)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "used primarily by formerly enslaved groups resettled in Freetown and its environs between 1787 and 1850:  Black Poor (England)",
-    "subject": "used primarily",
-    "verb": "by",
-    "object": "formerly enslaved groups resettled in Freetown and its environs between 1787 and 1850:  Black Poor (England)",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1320-1618",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "Krio emerged from creole varieties used primarily by formerly enslaved groups resettled in Freetown and its environs between 1787 and 1850: Black Poor (England); Nova Scotians; Jamaican Maroons; and Recaptives (would-be slaves from ships intercepted by British fleet along the West African coast)."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ships intercepted|by|british fleet along the west african coast)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ships intercepted by British fleet along the West African coast)",
-    "subject": "ships intercepted",
-    "verb": "by",
-    "object": "British fleet along the West African coast)",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1320-1618",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "Krio emerged from creole varieties used primarily by formerly enslaved groups resettled in Freetown and its environs between 1787 and 1850: Black Poor (England); Nova Scotians; Jamaican Maroons; and Recaptives (would-be slaves from ships intercepted by British fleet along the West African coast)."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "embraced as|a|symbol of sierra leone identity though sometimes disparagingly referred to as ‘broken english’",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "embraced as a symbol of Sierra Leone identity though sometimes disparagingly referred to as ‘broken English’",
-    "subject": "embraced as",
-    "verb": "a",
-    "object": "symbol of Sierra Leone identity though sometimes disparagingly referred to as ‘broken English’",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1619-1736",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "Krio is embraced as a symbol of Sierra Leone identity though sometimes disparagingly referred to as ‘broken English’."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have resulted|in|its widespread use in social",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "have resulted in its widespread use in social",
-    "subject": "have resulted",
-    "verb": "in",
-    "object": "its widespread use in social",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1737-1844",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "More positive attitudes have resulted in its widespread use in social, political, and educational contexts."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "been influenced|by|input from non-native speakers who were displaced from other parts of sierra leone by the 1990s civil war and resettled in freetown",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "been influenced by input from non-native speakers who were displaced from other parts of Sierra Leone by the 1990s civil war and resettled in Freetown",
-    "subject": "been influenced",
-    "verb": "by",
-    "object": "input from non-native speakers who were displaced from other parts of Sierra Leone by the 1990s civil war and resettled in Freetown",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1845-2096",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "Krio grammar has recently been influenced by input from non-native speakers who were displaced from other parts of Sierra Leone by the 1990s civil war and resettled in Freetown, resulting in the incorporation of non-native grammatical forms into Krio."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "resulting|in|the incorporation of non-native grammatical forms into krio",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "resulting in the incorporation of non-native grammatical forms into Krio",
-    "subject": "resulting",
-    "verb": "in",
-    "object": "the incorporation of non-native grammatical forms into Krio",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1845-2096",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "Krio grammar has recently been influenced by input from non-native speakers who were displaced from other parts of Sierra Leone by the 1990s civil war and resettled in Freetown, resulting in the incorporation of non-native grammatical forms into Krio."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as|a|result",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "As a result",
-    "subject": "As",
-    "verb": "a",
-    "object": "result",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2097-2181",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "As a result, Krio has developed variant forms where formerly there was no variation."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "developed variant|forms|where formerly there was no variation",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "developed variant forms where formerly there was no variation",
-    "subject": "developed variant",
-    "verb": "forms",
-    "object": "where formerly there was no variation",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2097-2181",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "As a result, Krio has developed variant forms where formerly there was no variation."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the variant|forms|into their grammar",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the variant forms into their grammar",
-    "subject": "the variant",
-    "verb": "forms",
-    "object": "into their grammar",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2182-2392",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "Some native Krio speakers, accepting change as inevitable, have incorporated the variant forms into their grammar; others have criticized and rejected them in an effort to maintain the “purity” of the language."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "have criticized|and|rejected them in an effort to maintain the “purity” of the language",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "have criticized and rejected them in an effort to maintain the “purity” of the language",
-    "subject": "have criticized",
-    "verb": "and",
-    "object": "rejected them in an effort to maintain the “purity” of the language",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2182-2392",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "Some native Krio speakers, accepting change as inevitable, have incorporated the variant forms into their grammar; others have criticized and rejected them in an effort to maintain the “purity” of the language."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "materials cited|by|its chapter contributor(s):",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "materials cited by its chapter contributor(s):",
-    "subject": "materials cited",
-    "verb": "by",
-    "object": "its chapter contributor(s):",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2394-2619",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "ILLUSTRATIVE EXAMPLE SENTENCES ---------------------------------------------------------------------- eWAVE records 63 example sentence(s) for this variety, drawn from the source materials cited by its chapter contributor(s):"
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kam na|me|os en say 'wetin du you?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "kam na me os en say 'Wetin du you?\"",
-    "subject": "kam na",
-    "verb": "me",
-    "object": "os en say 'Wetin du you?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#3949-3992",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "\"Di man kam na me os en say 'Wetin du you?\""
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "wetin|you|want?\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Wetin you want?\"",
-    "subject": "Wetin",
-    "verb": "you",
-    "object": "want?\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#4130-4347",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "\"A yerri say you done go wok\" \"A wan for go an os\" \"Di yad get some san-san de\" \"John go wok\" \"Even-tem\" \"Kam quick\" \"Di titi sofa too mos\" \"Na buy dem buy di bia\" \"Na wan os a see\" \"Wetin you want?\""
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fruit way|a|lek mos na apple\"",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "fruit way a lek mos na apple\"",
-    "subject": "fruit way",
-    "verb": "a",
-    "object": "lek mos na apple\"",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#4367-4400",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "\"Di fruit way a lek mos na apple\""
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "number distinctions|in|personal pronouns than simply singular vs",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "number distinctions in personal pronouns than simply singular vs",
-    "subject": "number distinctions",
-    "verb": "in",
-    "object": "personal pronouns than simply singular vs",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#4979-7945",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "PRONOUNS [X] She/her used for inanimate referents [X] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [D] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [A] Me instead of I in coordinate subjects [D] Myself/meself instead of I in coordinate subjects [D] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [A] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [D] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [A] Subject pronoun forms as (modifying) possessive pronouns: first person plural [B] Subject pronoun forms as (modifying) possessive pronouns: third person singular [A] Subject pronoun forms as (modifying) possessive pronouns: third person plural [A] You as (modifying) possessive pronoun [A] Second person pronoun forms other than you as (modifying) possessive pronoun [D] Object pronoun forms as (modifying) possessive pronouns: third person singular [X] Object pronoun forms as (modifying) possessive pronouns: third person plural [A] Object pronoun forms as (modifying) possessive pronouns: first person singular [X] Object pronoun forms as (modifying) possessive pronouns: first person plural [D] Use of us + NP in subject function [D] Use of us in object function with singular referent [X] Non-coordinated subject pronoun forms in object function [X] Non-coordinated object pronoun forms in subject function [A] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [D] Distinct forms for inclusive/exclusive first person non-singular [D] More number distinctions in personal pronouns than simply singular vs. plural [D] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [D] Singular it for plural they in anaphoric use [D] Object pronoun drop [D] Subject pronoun drop: referential pronouns [D] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [X] Deletion of it in referential it is-constructions [X] Deletion of it in non-referential it is-constructions"
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "of it|in|non-referential it is-constructions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "of it in non-referential it is-constructions",
-    "subject": "of it",
-    "verb": "in",
-    "object": "non-referential it is-constructions",
-    "witnesses": [
-     "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#4979-7945",
-      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-      "text": "PRONOUNS [X] She/her used for inanimate referents [X] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [D] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [A] Me instead of I in coordinate subjects [D] Myself/meself instead of I in coordinate subjects [D] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [A] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [D] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [A] Subject pronoun forms as (modifying) possessive pronouns: first person plural [B] Subject pronoun forms as (modifying) possessive pronouns: third person singular [A] Subject pronoun forms as (modifying) possessive pronouns: third person plural [A] You as (modifying) possessive pronoun [A] Second person pronoun forms other than you as (modifying) possessive pronoun [D] Object pronoun forms as (modifying) possessive pronouns: third person singular [X] Object pronoun forms as (modifying) possessive pronouns: third person plural [A] Object pronoun forms as (modifying) possessive pronouns: first person singular [X] Object pronoun forms as (modifying) possessive pronouns: first person plural [D] Use of us + NP in subject function [D] Use of us in object function with singular referent [X] Non-coordinated subject pronoun forms in object function [X] Non-coordinated object pronoun forms in subject function [A] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [D] Distinct forms for inclusive/exclusive first person non-singular [D] More number distinctions in personal pronouns than simply singular vs. plural [D] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [D] Singular it for plural they in anaphoric use [D] Object pronoun drop [D] Subject pronoun drop: referential pronouns [D] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [X] Deletion of it in referential it is-constructions [X] Deletion of it in non-referential it is-constructions"
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
    }
   ],
-  "nextSeq": 21,
+  "nextSeq": 4,
   "admits": [
    "NUL",
    "SEG",
@@ -688,28 +220,12 @@
  },
  "folded": [
   {
-   "id": "000|speakers|living primarily in freetown and surrounding villages though over 4 million non-native speakers use it proficiently in various domains of communication daily",
-   "subject": "000",
-   "verb": "speakers",
-   "object": "living primarily in Freetown and surrounding villages though over 4 Million non-native speakers use it proficiently in various domains of communication daily",
+   "id": "formerly there|was|no variation",
+   "subject": "formerly there",
+   "verb": "was",
+   "object": "no variation",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#910-1319",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Krio, the lingua franca of Sierra Leone (estimated 5.5 Million population), is used natively by approximately 400,000 speakers living primarily in Freetown and surrounding villages though over 4 Million non-native speakers use it proficiently in various domains of communication daily."
-    }
-   ]
-  },
-  {
-   "id": "as|a|result",
-   "subject": "As",
-   "verb": "a",
-   "object": "result",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -720,231 +236,34 @@
    ]
   },
   {
-   "id": "been influenced|by|input from non-native speakers who were displaced from other parts of sierra leone by the 1990s civil war and resettled in freetown",
-   "subject": "been influenced",
-   "verb": "by",
-   "object": "input from non-native speakers who were displaced from other parts of Sierra Leone by the 1990s civil war and resettled in Freetown",
+   "id": "native speakers|was|normally very limited",
+   "subject": "native speakers",
+   "verb": "was",
+   "object": "normally very limited",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1845-2096",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "Krio grammar has recently been influenced by input from non-native speakers who were displaced from other parts of Sierra Leone by the 1990s civil war and resettled in Freetown, resulting in the incorporation of non-native grammatical forms into Krio."
-    }
-   ]
-  },
-  {
-   "id": "developed variant|forms|where formerly there was no variation",
-   "subject": "developed variant",
-   "verb": "forms",
-   "object": "where formerly there was no variation",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2097-2181",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "As a result, Krio has developed variant forms where formerly there was no variation."
-    }
-   ]
-  },
-  {
-   "id": "embraced as|a|symbol of sierra leone identity though sometimes disparagingly referred to as ‘broken english’",
-   "subject": "embraced as",
-   "verb": "a",
-   "object": "symbol of Sierra Leone identity though sometimes disparagingly referred to as ‘broken English’",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1619-1736",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "Krio is embraced as a symbol of Sierra Leone identity though sometimes disparagingly referred to as ‘broken English’."
-    }
-   ]
-  },
-  {
-   "id": "fruit way|a|lek mos na apple\"",
-   "subject": "fruit way",
-   "verb": "a",
-   "object": "lek mos na apple\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#4367-4400",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "\"Di fruit way a lek mos na apple\""
-    }
-   ]
-  },
-  {
-   "id": "have criticized|and|rejected them in an effort to maintain the “purity” of the language",
-   "subject": "have criticized",
-   "verb": "and",
-   "object": "rejected them in an effort to maintain the “purity” of the language",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2182-2392",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "Some native Krio speakers, accepting change as inevitable, have incorporated the variant forms into their grammar; others have criticized and rejected them in an effort to maintain the “purity” of the language."
-    }
-   ]
-  },
-  {
-   "id": "have resulted|in|its widespread use in social",
-   "subject": "have resulted",
-   "verb": "in",
-   "object": "its widespread use in social",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1737-1844",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "More positive attitudes have resulted in its widespread use in social, political, and educational contexts."
-    }
-   ]
-  },
-  {
-   "id": "its native|speakers|was normally very limited",
-   "subject": "its native",
-   "verb": "speakers",
-   "object": "was normally very limited",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#462-536",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
      "text": "English), while exposure to its native speakers was normally very limited."
-    },
+    }
+   ]
+  },
+  {
+   "id": "of english|was|rather low in contrast to non-english speakers (who constantly arrived in the colonies in large numbers)",
+   "subject": "of English",
+   "verb": "was",
+   "object": "rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)",
+   "witnesses": [
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@aea2233a6055abf1"
+   ],
+   "spans": [
     {
      "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#537-731",
      "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
      "text": "In the Caribbean, for example, the proportion of native (and L2) speakers of English was rather low in contrast to non-English speakers (who constantly arrived in the colonies in large numbers)."
-    }
-   ]
-  },
-  {
-   "id": "kam na|me|os en say 'wetin du you?\"",
-   "subject": "kam na",
-   "verb": "me",
-   "object": "os en say 'Wetin du you?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#3949-3992",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "\"Di man kam na me os en say 'Wetin du you?\""
-    }
-   ]
-  },
-  {
-   "id": "materials cited|by|its chapter contributor(s):",
-   "subject": "materials cited",
-   "verb": "by",
-   "object": "its chapter contributor(s):",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2394-2619",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "ILLUSTRATIVE EXAMPLE SENTENCES ---------------------------------------------------------------------- eWAVE records 63 example sentence(s) for this variety, drawn from the source materials cited by its chapter contributor(s):"
-    }
-   ]
-  },
-  {
-   "id": "number distinctions|in|personal pronouns than simply singular vs",
-   "subject": "number distinctions",
-   "verb": "in",
-   "object": "personal pronouns than simply singular vs",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#4979-7945",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "PRONOUNS [X] She/her used for inanimate referents [X] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [D] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [A] Me instead of I in coordinate subjects [D] Myself/meself instead of I in coordinate subjects [D] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [A] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [D] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [A] Subject pronoun forms as (modifying) possessive pronouns: first person plural [B] Subject pronoun forms as (modifying) possessive pronouns: third person singular [A] Subject pronoun forms as (modifying) possessive pronouns: third person plural [A] You as (modifying) possessive pronoun [A] Second person pronoun forms other than you as (modifying) possessive pronoun [D] Object pronoun forms as (modifying) possessive pronouns: third person singular [X] Object pronoun forms as (modifying) possessive pronouns: third person plural [A] Object pronoun forms as (modifying) possessive pronouns: first person singular [X] Object pronoun forms as (modifying) possessive pronouns: first person plural [D] Use of us + NP in subject function [D] Use of us in object function with singular referent [X] Non-coordinated subject pronoun forms in object function [X] Non-coordinated object pronoun forms in subject function [A] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [D] Distinct forms for inclusive/exclusive first person non-singular [D] More number distinctions in personal pronouns than simply singular vs. plural [D] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [D] Singular it for plural they in anaphoric use [D] Object pronoun drop [D] Subject pronoun drop: referential pronouns [D] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [X] Deletion of it in referential it is-constructions [X] Deletion of it in non-referential it is-constructions"
-    }
-   ]
-  },
-  {
-   "id": "of it|in|non-referential it is-constructions",
-   "subject": "of it",
-   "verb": "in",
-   "object": "non-referential it is-constructions",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#4979-7945",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "PRONOUNS [X] She/her used for inanimate referents [X] He/him used for inanimate referents [?] Alternative forms/phrases for referential (non-dummy) it [D] Alternative forms/phrases for dummy it [A] Generalized third person singular pronoun: subject pronouns [A] Generalized third person singular pronoun: object pronouns [A] Me instead of I in coordinate subjects [D] Myself/meself instead of I in coordinate subjects [D] Benefactive “personal dative” construction [A] No gender distinction in third person singular [A] Regularized reflexives paradigm [A] Object pronoun forms serving as base for first and/or second person reflexives [D] Subject pronoun forms serving as base for reflexives [A] No number distinction in reflexives [D] Absolute use of reflexives [D] Emphatic reflexives with own [D] Creation of possessive pronouns with prefix fi- +personal pronoun [D] Subject pronoun forms as (modifying) possessive pronouns: first person singular [A] Subject pronoun forms as (modifying) possessive pronouns: first person plural [B] Subject pronoun forms as (modifying) possessive pronouns: third person singular [A] Subject pronoun forms as (modifying) possessive pronouns: third person plural [A] You as (modifying) possessive pronoun [A] Second person pronoun forms other than you as (modifying) possessive pronoun [D] Object pronoun forms as (modifying) possessive pronouns: third person singular [X] Object pronoun forms as (modifying) possessive pronouns: third person plural [A] Object pronoun forms as (modifying) possessive pronouns: first person singular [X] Object pronoun forms as (modifying) possessive pronouns: first person plural [D] Use of us + NP in subject function [D] Use of us in object function with singular referent [X] Non-coordinated subject pronoun forms in object function [X] Non-coordinated object pronoun forms in subject function [A] Distinction between emphatic vs. non-emphatic forms of pronouns [D] Independent possessive pronoun forms with added nasal [A] Forms or phrases for the second person plural pronoun other than you [D] Forms or phrases for the second person singular pronoun other than you [D] Distinct forms for inclusive/exclusive first person non-singular [D] More number distinctions in personal pronouns than simply singular vs. plural [D] Specialized plural markers for pronouns [D] Plural forms of interrogative pronouns: using additional elements [D] Plural forms of interrogative pronouns: reduplication [D] Singular it for plural they in anaphoric use [D] Object pronoun drop [D] Subject pronoun drop: referential pronouns [D] Subject pronoun drop: dummy pronouns [D] Insertion of it where StE favours zero [X] Deletion of it in referential it is-constructions [X] Deletion of it in non-referential it is-constructions"
-    }
-   ]
-  },
-  {
-   "id": "resulting|in|the incorporation of non-native grammatical forms into krio",
-   "subject": "resulting",
-   "verb": "in",
-   "object": "the incorporation of non-native grammatical forms into Krio",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1845-2096",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "Krio grammar has recently been influenced by input from non-native speakers who were displaced from other parts of Sierra Leone by the 1990s civil war and resettled in Freetown, resulting in the incorporation of non-native grammatical forms into Krio."
-    }
-   ]
-  },
-  {
-   "id": "ships intercepted|by|british fleet along the west african coast)",
-   "subject": "ships intercepted",
-   "verb": "by",
-   "object": "British fleet along the West African coast)",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1320-1618",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "Krio emerged from creole varieties used primarily by formerly enslaved groups resettled in Freetown and its environs between 1787 and 1850: Black Poor (England); Nova Scotians; Jamaican Maroons; and Recaptives (would-be slaves from ships intercepted by British fleet along the West African coast)."
-    }
-   ]
-  },
-  {
-   "id": "the variant|forms|into their grammar",
-   "subject": "the variant",
-   "verb": "forms",
-   "object": "into their grammar",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#2182-2392",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "Some native Krio speakers, accepting change as inevitable, have incorporated the variant forms into their grammar; others have criticized and rejected them in an effort to maintain the “purity” of the language."
     }
    ]
   },
@@ -954,7 +273,7 @@
    "verb": "was",
    "object": "strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i",
    "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
+    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -963,74 +282,10 @@
      "text": "Typically, there was strong pressure upon the non-English speaking group to use the language of the socio-economically superior group (i.e."
     }
    ]
-  },
-  {
-   "id": "typically developed|in|settings (often in plantation colonies) where a group of non-english speakers acquired some variety of english",
-   "subject": "typically developed",
-   "verb": "in",
-   "object": "settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#55-321",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "eWAVE variety ID: 36 Variety type: English-based Creoles (Cr) English-based contact varieties (or rather: contact languages) that typically developed in settings (often in plantation colonies) where a group of non-English speakers acquired some variety of English."
-    }
-   ]
-  },
-  {
-   "id": "used natively|by|approximately 400",
-   "subject": "used natively",
-   "verb": "by",
-   "object": "approximately 400",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#910-1319",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "DESCRIPTION (from the eWAVE chapter on this variety) ---------------------------------------------------------------------- Krio, the lingua franca of Sierra Leone (estimated 5.5 Million population), is used natively by approximately 400,000 speakers living primarily in Freetown and surrounding villages though over 4 Million non-native speakers use it proficiently in various domains of communication daily."
-    }
-   ]
-  },
-  {
-   "id": "used primarily|by|formerly enslaved groups resettled in freetown and its environs between 1787 and 1850:  black poor (england)",
-   "subject": "used primarily",
-   "verb": "by",
-   "object": "formerly enslaved groups resettled in Freetown and its environs between 1787 and 1850:  Black Poor (England)",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#1320-1618",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "Krio emerged from creole varieties used primarily by formerly enslaved groups resettled in Freetown and its environs between 1787 and 1850: Black Poor (England); Nova Scotians; Jamaican Maroons; and Recaptives (would-be slaves from ships intercepted by British fleet along the West African coast)."
-    }
-   ]
-  },
-  {
-   "id": "wetin|you|want?\"",
-   "subject": "Wetin",
-   "verb": "you",
-   "object": "want?\"",
-   "witnesses": [
-    "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt#4130-4347",
-     "ref": "11-multi-language/dialects-pidgins-creoles/ewave/varieties/36_Krio_(Sierra_Leone_Creole).txt",
-     "text": "\"A yerri say you done go wok\" \"A wan for go an os\" \"Di yad get some san-san de\" \"John go wok\" \"Even-tem\" \"Kam quick\" \"Di titi sofa too mos\" \"Na buy dem buy di bia\" \"Na wan os a see\" \"Wetin you want?\""
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:12:22.835Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:28.065Z"
  }
 }

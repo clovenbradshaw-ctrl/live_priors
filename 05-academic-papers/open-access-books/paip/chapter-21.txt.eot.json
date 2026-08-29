@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 70315,
   "bodyOffset": 0,
   "bodyChars": 70315,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,92 +55,39 @@
   "referentEvents": 6,
   "distinctReferents": 6,
   "examined": true,
-  "edgesFound": 73,
+  "edgesFound": 31,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 15,
+   "verbs": 6,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 15
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 31,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 75,
-  "excerptOk": 75,
-  "rawChecked": 75,
-  "rawOk": 75,
+  "excerptChecked": 32,
+  "excerptOk": 32,
+  "rawChecked": 32,
+  "rawOk": 32,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 73,
-  "heard": 73,
+  "offered": 31,
+  "heard": 31,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "a grammar|of|english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "A Grammar of English",
-    "subject": "A Grammar",
-    "verb": "of",
-    "object": "English",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#121-157",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "# Chapter 21 ## A Grammar of English"
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prefer geniality|to|grammar",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Prefer geniality to grammar",
-    "subject": "Prefer geniality",
-    "verb": "to",
-    "object": "grammar",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#159-189",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "> Prefer geniality to grammar."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "it|is|quite straightforward to apply these techniques to applications like the cd player problem where input is limited to simple sentences like \"play 1 to 8 without 3",
@@ -139,7 +104,7 @@
     "verb": "is",
     "object": "quite straightforward to apply these techniques to applications like the CD player problem where input is limited to simple sentences like \"Play 1 to 8 without 3",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,7 +113,7 @@
       "text": "It is quite straightforward to apply these techniques to applications like the CD player problem where input is limited to simple sentences like \"Play 1 to 8 without 3.\""
      }
     ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -168,7 +133,7 @@
     "verb": "is",
     "object": "a major undertaking to write a grammar for unrestricted English input",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -177,65 +142,7 @@
       "text": "But it is a major undertaking to write a grammar for unrestricted English input."
      }
     ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "covers all|the|major syntactic constructions of english",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "covers all the major syntactic constructions of English",
-    "subject": "covers all",
-    "verb": "the",
-    "object": "major syntactic constructions of English",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#600-693",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "This chapter develops a grammar that covers all the major syntactic constructions of English."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "handles sentences|of|much greater complexity",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "handles sentences of much greater complexity",
-    "subject": "handles sentences",
-    "verb": "of",
-    "object": "much greater complexity",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#694-816",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "It handles sentences of much greater complexity, such as \"Kim would not have been persuaded by Lee to look after the dog.\""
-     }
-    ],
-    "seq": 5,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -255,7 +162,7 @@
     "verb": "would",
     "object": "not have been persuaded by Lee to look after the dog",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -264,7 +171,7 @@
       "text": "It handles sentences of much greater complexity, such as \"Kim would not have been persuaded by Lee to look after the dog.\""
      }
     ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -284,7 +191,7 @@
     "verb": "is",
     "object": "not comprehensive enough to handle sentences chosen at random from a book",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -293,7 +200,7 @@
       "text": "The grammar is not comprehensive enough to handle sentences chosen at random from a book, but when augmented by suitable vocabulary it is adequate for a wide variety of applications."
      }
     ],
-    "seq": 7,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -313,7 +220,7 @@
     "verb": "is",
     "object": "adequate for a wide variety of applications",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -322,7 +229,7 @@
       "text": "The grammar is not comprehensive enough to handle sentences chosen at random from a book, but when augmented by suitable vocabulary it is adequate for a wide variety of applications."
      }
     ],
-    "seq": 8,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -342,7 +249,7 @@
     "verb": "is",
     "object": "organized as a tour through the English language",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -351,210 +258,7 @@
       "text": "This chapter is organized as a tour through the English language."
      }
     ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "that correspond|to|the analysis",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "that correspond to the analysis",
-    "subject": "that correspond",
-    "verb": "to",
-    "object": "the analysis",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1139-1288",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "For each category we introduce examples, analyze them linguistically, and finally show definite clause grammar rules that correspond to the analysis."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "as|the|last chapter should have made clear",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "As the last chapter should have made clear",
-    "subject": "As",
-    "verb": "the",
-    "object": "last chapter should have made clear",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1290-1401",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "As the last chapter should have made clear, analysis more often results in complication than in simplification."
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "simple rule|like|`(s --> np vp)`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "simple rule like `(S --> NP VP)`",
-    "subject": "simple rule",
-    "verb": "like",
-    "object": "`(S --> NP VP)`",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1402-1564",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "For example, starting with a simple rule like `(S --> NP VP)`, we soon find that we have to add arguments to handle agreement, semantics, and gapping information."
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we have|to|add arguments to handle agreement",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we have to add arguments to handle agreement",
-    "subject": "we have",
-    "verb": "to",
-    "object": "add arguments to handle agreement",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1402-1564",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "For example, starting with a simple rule like `(S --> NP VP)`, we soon find that we have to add arguments to handle agreement, semantics, and gapping information."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "lists|the|grammatical categories and their arguments",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "lists the grammatical categories and their arguments",
-    "subject": "lists",
-    "verb": "the",
-    "object": "grammatical categories and their arguments",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1565-1640",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "[Figure 21.1](#f0010) lists the grammatical categories and their arguments."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "note that|the|semantic argument",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Note that the semantic argument",
-    "subject": "Note that",
-    "verb": "the",
-    "object": "semantic argument",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1641-1779",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Note that the semantic argument, `sem`, is always last, and the gap accumulators, `gap1` and `gap2`, are next-to-last whenever they occur."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "and|the|gap accumulators",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "and the gap accumulators",
-    "subject": "and",
-    "verb": "the",
-    "object": "gap accumulators",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1641-1779",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Note that the semantic argument, `sem`, is always last, and the gap accumulators, `gap1` and `gap2`, are next-to-last whenever they occur."
-     }
-    ],
-    "seq": 16,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -574,7 +278,7 @@
     "verb": "is",
     "object": "a conjunction of relations involving the variable `x`",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -583,13 +287,13 @@
       "text": "All single-letter arguments denote metavariables; for example, each noun phrase (category NP) will have a semantic interpretation, `sem`, that is a conjunction of relations involving the variable `x`."
      }
     ],
-    "seq": 17,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "that refers|to|the head-the thing that is being modified",
+    "task_id": "thing that|is|being modified",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -598,12 +302,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "that refers to the head-the thing that is being modified",
-    "subject": "that refers",
-    "verb": "to",
-    "object": "the head-the thing that is being modified",
+    "description": "thing that is being modified",
+    "subject": "thing that",
+    "verb": "is",
+    "object": "being modified",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -612,7 +316,7 @@
       "text": "Similarly, the `hin modifiers` is a variable that refers to the head-the thing that is being modified."
      }
     ],
-    "seq": 18,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
@@ -632,7 +336,7 @@
     "verb": "is",
     "object": "handy to have this figure to refer back to",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -641,36 +345,7 @@
       "text": "The other arguments and categories will be explained in turn, but it is handy to have this figure to refer back to."
      }
     ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "arguments are|the|same `(?g1)`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "arguments are the same `(?g1)`",
-    "subject": "arguments are",
-    "verb": "the",
-    "object": "same `(?g1)`",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2576-2758",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "The rules for these cases are simple: we build up a semantic expression from a name or pronoun, and since there can be no gap, the two gap accumulator arguments are the same `(?g1)`."
-     }
-    ],
-    "seq": 20,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -690,7 +365,7 @@
     "verb": "is",
     "object": "propagated in the variable `?agr`",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -699,36 +374,7 @@
       "text": "Person and number agreement is propagated in the variable `?agr`, and we also keep track of the *case* of the noun phrase."
      }
     ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "keep track|of|the *case* of the noun phrase",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "keep track of the *case* of the noun phrase",
-    "subject": "keep track",
-    "verb": "of",
-    "object": "the *case* of the noun phrase",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2759-2881",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Person and number agreement is propagated in the variable `?agr`, and we also keep track of the *case* of the noun phrase."
-     }
-    ],
-    "seq": 22,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -748,7 +394,7 @@
     "verb": "has",
     "object": "three cases that are reflected in certain pronouns",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -757,13 +403,13 @@
       "text": "English has three cases that are reflected in certain pronouns."
      }
     ],
-    "seq": 23,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "in|the|first person singular",
+    "task_id": "that mark|nouns|as being one case or another",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -772,215 +418,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "In the first person singular",
-    "subject": "In",
-    "verb": "the",
-    "object": "first person singular",
+    "description": "that mark nouns as being one case or another",
+    "subject": "that mark",
+    "verb": "nouns",
+    "object": "as being one case or another",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2946-3100",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "In the first person singular, \"I\" is the *nominative* or *subjective* case, \"me\" is the *accusative* or *objective* case, and \"my\" is the *genitive* case."
-     }
-    ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|the|*nominative* or *subjective* case",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is the *nominative* or *subjective* case",
-    "subject": "is",
-    "verb": "the",
-    "object": "*nominative* or *subjective* case",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2946-3100",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "In the first person singular, \"I\" is the *nominative* or *subjective* case, \"me\" is the *accusative* or *objective* case, and \"my\" is the *genitive* case."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|the|*accusative* or *objective* case",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is the *accusative* or *objective* case",
-    "subject": "is",
-    "verb": "the",
-    "object": "*accusative* or *objective* case",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2946-3100",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "In the first person singular, \"I\" is the *nominative* or *subjective* case, \"me\" is the *accusative* or *objective* case, and \"my\" is the *genitive* case."
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|the|*genitive* case",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is the *genitive* case",
-    "subject": "is",
-    "verb": "the",
-    "object": "*genitive* case",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2946-3100",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "In the first person singular, \"I\" is the *nominative* or *subjective* case, \"me\" is the *accusative* or *objective* case, and \"my\" is the *genitive* case."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "them from|the|genitive",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "them from the genitive",
-    "subject": "them from",
-    "verb": "the",
-    "object": "genitive",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3101-3213",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "To distinguish them from the genitive, we refer to the nominative and the objective cases as the *common* cases."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we refer|to|the nominative and the objective cases as the *common* cases",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we refer to the nominative and the objective cases as the *common* cases",
-    "subject": "we refer",
-    "verb": "to",
-    "object": "the nominative and the objective cases as the *common* cases",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3101-3213",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "To distinguish them from the genitive, we refer to the nominative and the objective cases as the *common* cases."
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "marked by|the|expressions `(common nom)`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "marked by the expressions `(common nom)`",
-    "subject": "marked by",
-    "verb": "the",
-    "object": "expressions `(common nom)`",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3214-3333",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Accordingly, the three cases will be marked by the expressions `(common nom)`, `(common obj)`, and `gen`, respectively."
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "many languages|of|the world have suffixes that mark nouns as being one case or another",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Many languages of the world have suffixes that mark nouns as being one case or another",
-    "subject": "Many languages",
-    "verb": "of",
-    "object": "the world have suffixes that mark nouns as being one case or another",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -989,7 +432,7 @@
       "text": "Many languages of the world have suffixes that mark nouns as being one case or another, but English does not."
      }
     ],
-    "seq": 31,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -1009,7 +452,7 @@
     "verb": "does",
     "object": "not",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1018,42 +461,13 @@
       "text": "Many languages of the world have suffixes that mark nouns as being one case or another, but English does not."
      }
     ],
-    "seq": 32,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "we use|the|expression `(common ?)` to mark nouns",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we use the expression `(common ?)` to mark nouns",
-    "subject": "we use",
-    "verb": "the",
-    "object": "expression `(common ?)` to mark nouns",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3444-3499",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Thus, we use the expression `(common ?)` to mark nouns."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "variable has|the|value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
+    "task_id": "variable|has|the value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1063,11 +477,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "variable has the value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
-    "subject": "variable has",
-    "verb": "the",
-    "object": "value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
+    "subject": "variable",
+    "verb": "has",
+    "object": "the value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1076,70 +490,7 @@
       "text": "The `?wh` variable has the value `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases."
      }
     ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are|the|rules for names and pronouns",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are the rules for names and pronouns",
-    "subject": "are",
-    "verb": "the",
-    "object": "rules for names and pronouns",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3726-3775",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Here, then, are the rules for names and pronouns."
-     },
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6499-6625",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "The final three arguments are the two gap accumulators and the semantics, which work the same way here as we have seen before."
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "are used|to|look up words in the lexicon",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "are used to look up words in the lexicon",
-    "subject": "are used",
-    "verb": "to",
-    "object": "look up words in the lexicon",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3776-3851",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "The predicates name and `pronoun` are used to look up words in the lexicon."
-     }
-    ],
-    "seq": 36,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
@@ -1159,7 +510,7 @@
     "verb": "nouns",
     "object": "can stand alone as noun phrases",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1173,7 +524,7 @@
       "text": "Plural nouns can also take a determiner, as in \"the dogs.\""
      }
     ],
-    "seq": 37,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -1193,7 +544,7 @@
     "verb": "nouns",
     "object": "need a determiner",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1202,7 +553,7 @@
       "text": "Plural nouns can stand alone as noun phrases, as in \"dogs,\" but singular nouns need a determiner, as in \"the dog\" or \"Kim's friend's biggest dog.\""
      }
     ],
-    "seq": 38,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1222,7 +573,7 @@
     "verb": "is",
     "object": "used for determiners",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1231,7 +582,7 @@
       "text": "The category Det is used for determiners, and NP2 is used for the part of a noun phrase after the determiner:"
      }
     ],
-    "seq": 39,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1251,7 +602,7 @@
     "verb": "is",
     "object": "used for the part of a noun phrase after the determiner:",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1260,94 +611,7 @@
       "text": "The category Det is used for determiners, and NP2 is used for the part of a noun phrase after the determiner:"
      }
     ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "appear externally|to|a construction",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "appear externally to a construction",
-    "subject": "appear externally",
-    "verb": "to",
-    "object": "a construction",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#4711-4895",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Finally, a noun phrase may appear externally to a construction, in which case the noun phrase passed in by the first gap argument will be consumed, but no words from the input will be."
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "which case|the|noun phrase passed in by the first gap argument will be consumed",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "which case the noun phrase passed in by the first gap argument will be consumed",
-    "subject": "which case",
-    "verb": "the",
-    "object": "noun phrase passed in by the first gap argument will be consumed",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#4711-4895",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Finally, a noun phrase may appear externally to a construction, in which case the noun phrase passed in by the first gap argument will be consumed, but no words from the input will be."
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "words from|the|input will be",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "words from the input will be",
-    "subject": "words from",
-    "verb": "the",
-    "object": "input will be",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#4711-4895",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Finally, a noun phrase may appear externally to a construction, in which case the noun phrase passed in by the first gap argument will be consumed, but no words from the input will be."
-     }
-    ],
-    "seq": 43,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1367,7 +631,7 @@
     "verb": "is",
     "object": "the &blank",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1376,7 +640,7 @@
       "text": "An example is the &blank; in \"Whom does Kim like &blank;?\""
      }
     ],
-    "seq": 44,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
@@ -1396,7 +660,7 @@
     "verb": "does",
     "object": "Kim like &blank",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1405,13 +669,13 @@
       "text": "An example is the &blank; in \"Whom does Kim like &blank;?\""
      }
     ],
-    "seq": 45,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "we address|the|heart of the noun phrase",
+    "task_id": "category that|is|being modified",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1420,70 +684,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "we address the heart of the noun phrase",
-    "subject": "we address",
-    "verb": "the",
-    "object": "heart of the noun phrase",
+    "description": "category that is being modified",
+    "subject": "category that",
+    "verb": "is",
+    "object": "being modified",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5058-5122",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Now we address the heart of the noun phrase, the `NP2` category."
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "it consists|of|a noun",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "it consists of a noun",
-    "subject": "it consists",
-    "verb": "of",
-    "object": "a noun",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5123-5226",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "The lone rule for `NP2` says that it consists of a noun, optionally preceded and followed by modifiers:"
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "expected by|the|head category that is being modified",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "expected by the head category that is being modified",
-    "subject": "expected by",
-    "verb": "the",
-    "object": "head category that is being modified",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1492,7 +698,7 @@
       "text": "Modifiers are split into type types: *Complements* are modifiers that are expected by the head category that is being modified; they cannot stand alone."
      }
     ],
-    "seq": 48,
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -1512,7 +718,7 @@
     "verb": "is",
     "object": "clearest with verb modifiers",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1521,7 +727,7 @@
       "text": "The distinction is clearest with verb modifiers."
      }
     ],
-    "seq": 49,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -1541,7 +747,7 @@
     "verb": "visited",
     "object": "Lee yesterday",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1550,181 +756,7 @@
       "text": "In \"Kim visited Lee yesterday,\" \"visited\" is the head verb, \"Lee\" is a complement, and \"yesterday\" is an adjunct."
      }
     ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|the|head verb",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is the head verb",
-    "subject": "is",
-    "verb": "the",
-    "object": "head verb",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5734-5847",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "In \"Kim visited Lee yesterday,\" \"visited\" is the head verb, \"Lee\" is a complement, and \"yesterday\" is an adjunct."
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "returning|to|nouns",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Returning to nouns",
-    "subject": "Returning",
-    "verb": "to",
-    "object": "nouns",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5848-6009",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Returning to nouns, in \"the former mayor of Boston,\" \"mayor\" is the head noun, \"of Boston\" is a complement (although an optional one) and \"former\" is an adjunct."
-     }
-    ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "former mayor|of|boston",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "former mayor of Boston",
-    "subject": "former mayor",
-    "verb": "of",
-    "object": "Boston",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5848-6009",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Returning to nouns, in \"the former mayor of Boston,\" \"mayor\" is the head noun, \"of Boston\" is a complement (although an optional one) and \"former\" is an adjunct."
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "is|the|head noun",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "is the head noun",
-    "subject": "is",
-    "verb": "the",
-    "object": "head noun",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5848-6009",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Returning to nouns, in \"the former mayor of Boston,\" \"mayor\" is the head noun, \"of Boston\" is a complement (although an optional one) and \"former\" is an adjunct."
-     }
-    ],
-    "seq": 54,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "be tricky|to|understand them all",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "be tricky to understand them all",
-    "subject": "be tricky",
-    "verb": "to",
-    "object": "understand them all",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6011-6103",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "The predicate `modifiers` takes eight arguments, so it can be tricky to understand them all."
-     }
-    ],
-    "seq": 55,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "or after|the|head (`pre` or `post`) and what kind of head we are modifying (`noun`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "or after the head (`pre` or `post`) and what kind of head we are modifying (`noun`",
-    "subject": "or after",
-    "verb": "the",
-    "object": "head (`pre` or `post`) and what kind of head we are modifying (`noun`",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6104-6255",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "The first two arguments tell if we are before or after the head (`pre` or `post`) and what kind of head we are modifying (`noun`, `verb`, or whatever)."
-     }
-    ],
-    "seq": 56,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -1744,7 +776,7 @@
     "verb": "is",
     "object": "an argument that passes along any required information-in the case of nouns",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1753,13 +785,13 @@
       "text": "Next is an argument that passes along any required information-in the case of nouns, it is the agreement feature."
      }
     ],
-    "seq": 57,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "it is|the|agreement feature",
+    "task_id": "it|is|the agreement feature",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1769,11 +801,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "it is the agreement feature",
-    "subject": "it is",
-    "verb": "the",
-    "object": "agreement feature",
+    "subject": "it",
+    "verb": "is",
+    "object": "the agreement feature",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1782,7 +814,7 @@
       "text": "Next is an argument that passes along any required information-in the case of nouns, it is the agreement feature."
      }
     ],
-    "seq": 58,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -1802,7 +834,7 @@
     "verb": "is",
     "object": "a list of expected complements",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1811,13 +843,13 @@
       "text": "The fourth argument is a list of expected complements, here called `?slots`."
      }
     ],
-    "seq": 59,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "next is|the|metavariable used to refer to the head",
+    "task_id": "next|is|the metavariable used to refer to the head",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1827,11 +859,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "Next is the metavariable used to refer to the head",
-    "subject": "Next is",
-    "verb": "the",
-    "object": "metavariable used to refer to the head",
+    "subject": "Next",
+    "verb": "is",
+    "object": "the metavariable used to refer to the head",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1840,94 +872,7 @@
       "text": "Next is the metavariable used to refer to the head."
      }
     ],
-    "seq": 60,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "which work|the|same way here as we have seen before",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "which work the same way here as we have seen before",
-    "subject": "which work",
-    "verb": "the",
-    "object": "same way here as we have seen before",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6499-6625",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "The final three arguments are the two gap accumulators and the semantics, which work the same way here as we have seen before."
-     }
-    ],
-    "seq": 61,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "notice that|the|lexicon entry for each `noun` can have a list of complements that are considered as postnoun modifiers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Notice that the lexicon entry for each `Noun` can have a list of complements that are considered as postnoun modifiers",
-    "subject": "Notice that",
-    "verb": "the",
-    "object": "lexicon entry for each `Noun` can have a list of complements that are considered as postnoun modifiers",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6626-6798",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Notice that the lexicon entry for each `Noun` can have a list of complements that are considered as postnoun modifiers, but there can be only adjuncts as prenoun modifiers."
-     }
-    ],
-    "seq": 62,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "appear in|the|postmodifiers but not in the premodifiers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "appear in the postmodifiers but not in the premodifiers",
-    "subject": "appear in",
-    "verb": "the",
-    "object": "postmodifiers but not in the premodifiers",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6799-6879",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Also note that gaps can appear in the postmodifiers but not in the premodifiers."
-     }
-    ],
-    "seq": 63,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -1947,7 +892,7 @@
     "verb": "is",
     "object": "Kevin the former mayor of &blank",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1956,94 +901,7 @@
       "text": "For example, we can have \"What is Kevin the former mayor of &blank;?,\" where the answer might be \"Boston.\""
      }
     ],
-    "seq": 64,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "where|the|answer might be \"boston",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "where the answer might be \"Boston",
-    "subject": "where",
-    "verb": "the",
-    "object": "answer might be \"Boston",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6880-6986",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "For example, we can have \"What is Kevin the former mayor of &blank;?,\" where the answer might be \"Boston.\""
-     }
-    ],
-    "seq": 65,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "noun phrase|like|\"the education president",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "noun phrase like \"the education president",
-    "subject": "noun phrase",
-    "verb": "like",
-    "object": "\"the education president",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6987-7226",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "But even though we can construct a noun phrase like \"the education president,\" where \"education\" is a prenoun modifier of \"president,\" we cannot construct \"* What is George the &blank; president?,\" intending that the answer be \"education.\""
-     }
-    ],
-    "seq": 66,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "prenoun modifier|of|\"president",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "prenoun modifier of \"president",
-    "subject": "prenoun modifier",
-    "verb": "of",
-    "object": "\"president",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6987-7226",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "But even though we can construct a noun phrase like \"the education president,\" where \"education\" is a prenoun modifier of \"president,\" we cannot construct \"* What is George the &blank; president?,\" intending that the answer be \"education.\""
-     }
-    ],
-    "seq": 67,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -2063,7 +921,7 @@
     "verb": "is",
     "object": "George the &blank",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2072,36 +930,7 @@
       "text": "But even though we can construct a noun phrase like \"the education president,\" where \"education\" is a prenoun modifier of \"president,\" we cannot construct \"* What is George the &blank; president?,\" intending that the answer be \"education.\""
      }
     ],
-    "seq": 68,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "intending that|the|answer be \"education",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "intending that the answer be \"education",
-    "subject": "intending that",
-    "verb": "the",
-    "object": "answer be \"education",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6987-7226",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "But even though we can construct a noun phrase like \"the education president,\" where \"education\" is a prenoun modifier of \"president,\" we cannot construct \"* What is George the &blank; president?,\" intending that the answer be \"education.\""
-     }
-    ],
-    "seq": 69,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -2121,7 +950,7 @@
     "verb": "is",
     "object": "a kind of modifier",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2130,7 +959,7 @@
       "text": "First, a complement is a kind of modifier."
      }
     ],
-    "seq": 70,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
@@ -2150,7 +979,7 @@
     "verb": "is",
     "object": "marked as optional",
     "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -2159,41 +988,12 @@
       "text": "Second, if a complement is marked as optional, it can be skipped."
      }
     ],
-    "seq": 71,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "appear in|the|input",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "appear in the input",
-    "subject": "appear in",
-    "verb": "the",
-    "object": "input",
-    "witnesses": [
-     "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#7376-7418",
-      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-      "text": "Third, an adjunct can appear in the input."
-     }
-    ],
-    "seq": 72,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 73,
+  "nextSeq": 31,
   "admits": [
    "NUL",
    "SEG",
@@ -2213,7 +1013,7 @@
    "verb": "is",
    "object": "a kind of modifier",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2229,7 +1029,7 @@
    "verb": "is",
    "object": "marked as optional",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2240,28 +1040,12 @@
    ]
   },
   {
-   "id": "a grammar|of|english",
-   "subject": "A Grammar",
-   "verb": "of",
-   "object": "English",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#121-157",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "# Chapter 21 ## A Grammar of English"
-    }
-   ]
-  },
-  {
    "id": "an example|is|the &blank",
    "subject": "An example",
    "verb": "is",
    "object": "the &blank",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2277,7 +1061,7 @@
    "verb": "is",
    "object": "used for the part of a noun phrase after the determiner:",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2288,161 +1072,12 @@
    ]
   },
   {
-   "id": "and|the|gap accumulators",
-   "subject": "and",
-   "verb": "the",
-   "object": "gap accumulators",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1641-1779",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Note that the semantic argument, `sem`, is always last, and the gap accumulators, `gap1` and `gap2`, are next-to-last whenever they occur."
-    }
-   ]
-  },
-  {
-   "id": "appear externally|to|a construction",
-   "subject": "appear externally",
-   "verb": "to",
-   "object": "a construction",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#4711-4895",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Finally, a noun phrase may appear externally to a construction, in which case the noun phrase passed in by the first gap argument will be consumed, but no words from the input will be."
-    }
-   ]
-  },
-  {
-   "id": "appear in|the|input",
-   "subject": "appear in",
-   "verb": "the",
-   "object": "input",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#7376-7418",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Third, an adjunct can appear in the input."
-    }
-   ]
-  },
-  {
-   "id": "appear in|the|postmodifiers but not in the premodifiers",
-   "subject": "appear in",
-   "verb": "the",
-   "object": "postmodifiers but not in the premodifiers",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6799-6879",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Also note that gaps can appear in the postmodifiers but not in the premodifiers."
-    }
-   ]
-  },
-  {
-   "id": "are used|to|look up words in the lexicon",
-   "subject": "are used",
-   "verb": "to",
-   "object": "look up words in the lexicon",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3776-3851",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "The predicates name and `pronoun` are used to look up words in the lexicon."
-    }
-   ]
-  },
-  {
-   "id": "are|the|rules for names and pronouns",
-   "subject": "are",
-   "verb": "the",
-   "object": "rules for names and pronouns",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3726-3775",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Here, then, are the rules for names and pronouns."
-    },
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6499-6625",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "The final three arguments are the two gap accumulators and the semantics, which work the same way here as we have seen before."
-    }
-   ]
-  },
-  {
-   "id": "arguments are|the|same `(?g1)`",
-   "subject": "arguments are",
-   "verb": "the",
-   "object": "same `(?g1)`",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2576-2758",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "The rules for these cases are simple: we build up a semantic expression from a name or pronoun, and since there can be no gap, the two gap accumulator arguments are the same `(?g1)`."
-    }
-   ]
-  },
-  {
-   "id": "as|the|last chapter should have made clear",
-   "subject": "As",
-   "verb": "the",
-   "object": "last chapter should have made clear",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1290-1401",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "As the last chapter should have made clear, analysis more often results in complication than in simplification."
-    }
-   ]
-  },
-  {
-   "id": "be tricky|to|understand them all",
-   "subject": "be tricky",
-   "verb": "to",
-   "object": "understand them all",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6011-6103",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "The predicate `modifiers` takes eight arguments, so it can be tricky to understand them all."
-    }
-   ]
-  },
-  {
    "id": "but english|does|not",
    "subject": "but English",
    "verb": "does",
    "object": "not",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2458,7 +1093,7 @@
    "verb": "is",
    "object": "a major undertaking to write a grammar for unrestricted English input",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2474,7 +1109,7 @@
    "verb": "is",
    "object": "handy to have this figure to refer back to",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2490,7 +1125,7 @@
    "verb": "nouns",
    "object": "need a determiner",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2506,7 +1141,7 @@
    "verb": "is",
    "object": "used for determiners",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2517,44 +1152,12 @@
    ]
   },
   {
-   "id": "covers all|the|major syntactic constructions of english",
-   "subject": "covers all",
-   "verb": "the",
-   "object": "major syntactic constructions of English",
+   "id": "category that|is|being modified",
+   "subject": "category that",
+   "verb": "is",
+   "object": "being modified",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#600-693",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "This chapter develops a grammar that covers all the major syntactic constructions of English."
-    }
-   ]
-  },
-  {
-   "id": "english|has|three cases that are reflected in certain pronouns",
-   "subject": "English",
-   "verb": "has",
-   "object": "three cases that are reflected in certain pronouns",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2882-2945",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "English has three cases that are reflected in certain pronouns."
-    }
-   ]
-  },
-  {
-   "id": "expected by|the|head category that is being modified",
-   "subject": "expected by",
-   "verb": "the",
-   "object": "head category that is being modified",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2565,18 +1168,18 @@
    ]
   },
   {
-   "id": "former mayor|of|boston",
-   "subject": "former mayor",
-   "verb": "of",
-   "object": "Boston",
+   "id": "english|has|three cases that are reflected in certain pronouns",
+   "subject": "English",
+   "verb": "has",
+   "object": "three cases that are reflected in certain pronouns",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5848-6009",
+     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2882-2945",
      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Returning to nouns, in \"the former mayor of Boston,\" \"mayor\" is the head noun, \"of Boston\" is a complement (although an optional one) and \"former\" is an adjunct."
+     "text": "English has three cases that are reflected in certain pronouns."
     }
    ]
   },
@@ -2586,7 +1189,7 @@
    "verb": "is",
    "object": "a list of expected complements",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2597,172 +1200,12 @@
    ]
   },
   {
-   "id": "handles sentences|of|much greater complexity",
-   "subject": "handles sentences",
-   "verb": "of",
-   "object": "much greater complexity",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#694-816",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "It handles sentences of much greater complexity, such as \"Kim would not have been persuaded by Lee to look after the dog.\""
-    }
-   ]
-  },
-  {
-   "id": "in|the|first person singular",
-   "subject": "In",
-   "verb": "the",
-   "object": "first person singular",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2946-3100",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "In the first person singular, \"I\" is the *nominative* or *subjective* case, \"me\" is the *accusative* or *objective* case, and \"my\" is the *genitive* case."
-    }
-   ]
-  },
-  {
-   "id": "intending that|the|answer be \"education",
-   "subject": "intending that",
-   "verb": "the",
-   "object": "answer be \"education",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6987-7226",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "But even though we can construct a noun phrase like \"the education president,\" where \"education\" is a prenoun modifier of \"president,\" we cannot construct \"* What is George the &blank; president?,\" intending that the answer be \"education.\""
-    }
-   ]
-  },
-  {
-   "id": "is|the|*accusative* or *objective* case",
-   "subject": "is",
-   "verb": "the",
-   "object": "*accusative* or *objective* case",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2946-3100",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "In the first person singular, \"I\" is the *nominative* or *subjective* case, \"me\" is the *accusative* or *objective* case, and \"my\" is the *genitive* case."
-    }
-   ]
-  },
-  {
-   "id": "is|the|*genitive* case",
-   "subject": "is",
-   "verb": "the",
-   "object": "*genitive* case",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2946-3100",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "In the first person singular, \"I\" is the *nominative* or *subjective* case, \"me\" is the *accusative* or *objective* case, and \"my\" is the *genitive* case."
-    }
-   ]
-  },
-  {
-   "id": "is|the|*nominative* or *subjective* case",
-   "subject": "is",
-   "verb": "the",
-   "object": "*nominative* or *subjective* case",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2946-3100",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "In the first person singular, \"I\" is the *nominative* or *subjective* case, \"me\" is the *accusative* or *objective* case, and \"my\" is the *genitive* case."
-    }
-   ]
-  },
-  {
-   "id": "is|the|head noun",
-   "subject": "is",
-   "verb": "the",
-   "object": "head noun",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5848-6009",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Returning to nouns, in \"the former mayor of Boston,\" \"mayor\" is the head noun, \"of Boston\" is a complement (although an optional one) and \"former\" is an adjunct."
-    }
-   ]
-  },
-  {
-   "id": "is|the|head verb",
-   "subject": "is",
-   "verb": "the",
-   "object": "head verb",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5734-5847",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "In \"Kim visited Lee yesterday,\" \"visited\" is the head verb, \"Lee\" is a complement, and \"yesterday\" is an adjunct."
-    }
-   ]
-  },
-  {
-   "id": "it consists|of|a noun",
-   "subject": "it consists",
-   "verb": "of",
-   "object": "a noun",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5123-5226",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "The lone rule for `NP2` says that it consists of a noun, optionally preceded and followed by modifiers:"
-    }
-   ]
-  },
-  {
-   "id": "it is|the|agreement feature",
-   "subject": "it is",
-   "verb": "the",
-   "object": "agreement feature",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6256-6369",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Next is an argument that passes along any required information-in the case of nouns, it is the agreement feature."
-    }
-   ]
-  },
-  {
    "id": "it|is|quite straightforward to apply these techniques to applications like the cd player problem where input is limited to simple sentences like \"play 1 to 8 without 3",
    "subject": "It",
    "verb": "is",
    "object": "quite straightforward to apply these techniques to applications like the CD player problem where input is limited to simple sentences like \"Play 1 to 8 without 3",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2773,18 +1216,18 @@
    ]
   },
   {
-   "id": "keep track|of|the *case* of the noun phrase",
-   "subject": "keep track",
-   "verb": "of",
-   "object": "the *case* of the noun phrase",
+   "id": "it|is|the agreement feature",
+   "subject": "it",
+   "verb": "is",
+   "object": "the agreement feature",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#2759-2881",
+     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6256-6369",
      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Person and number agreement is propagated in the variable `?agr`, and we also keep track of the *case* of the noun phrase."
+     "text": "Next is an argument that passes along any required information-in the case of nouns, it is the agreement feature."
     }
    ]
   },
@@ -2794,7 +1237,7 @@
    "verb": "visited",
    "object": "Lee yesterday",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2810,7 +1253,7 @@
    "verb": "would",
    "object": "not have been persuaded by Lee to look after the dog",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2821,76 +1264,12 @@
    ]
   },
   {
-   "id": "lists|the|grammatical categories and their arguments",
-   "subject": "lists",
-   "verb": "the",
-   "object": "grammatical categories and their arguments",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1565-1640",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "[Figure 21.1](#f0010) lists the grammatical categories and their arguments."
-    }
-   ]
-  },
-  {
-   "id": "many languages|of|the world have suffixes that mark nouns as being one case or another",
-   "subject": "Many languages",
-   "verb": "of",
-   "object": "the world have suffixes that mark nouns as being one case or another",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3334-3443",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Many languages of the world have suffixes that mark nouns as being one case or another, but English does not."
-    }
-   ]
-  },
-  {
-   "id": "marked by|the|expressions `(common nom)`",
-   "subject": "marked by",
-   "verb": "the",
-   "object": "expressions `(common nom)`",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3214-3333",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Accordingly, the three cases will be marked by the expressions `(common nom)`, `(common obj)`, and `gen`, respectively."
-    }
-   ]
-  },
-  {
-   "id": "next is|the|metavariable used to refer to the head",
-   "subject": "Next is",
-   "verb": "the",
-   "object": "metavariable used to refer to the head",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6447-6498",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Next is the metavariable used to refer to the head."
-    }
-   ]
-  },
-  {
    "id": "next|is|an argument that passes along any required information-in the case of nouns",
    "subject": "Next",
    "verb": "is",
    "object": "an argument that passes along any required information-in the case of nouns",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2901,50 +1280,18 @@
    ]
   },
   {
-   "id": "note that|the|semantic argument",
-   "subject": "Note that",
-   "verb": "the",
-   "object": "semantic argument",
+   "id": "next|is|the metavariable used to refer to the head",
+   "subject": "Next",
+   "verb": "is",
+   "object": "the metavariable used to refer to the head",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1641-1779",
+     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6447-6498",
      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Note that the semantic argument, `sem`, is always last, and the gap accumulators, `gap1` and `gap2`, are next-to-last whenever they occur."
-    }
-   ]
-  },
-  {
-   "id": "notice that|the|lexicon entry for each `noun` can have a list of complements that are considered as postnoun modifiers",
-   "subject": "Notice that",
-   "verb": "the",
-   "object": "lexicon entry for each `Noun` can have a list of complements that are considered as postnoun modifiers",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6626-6798",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Notice that the lexicon entry for each `Noun` can have a list of complements that are considered as postnoun modifiers, but there can be only adjuncts as prenoun modifiers."
-    }
-   ]
-  },
-  {
-   "id": "noun phrase|like|\"the education president",
-   "subject": "noun phrase",
-   "verb": "like",
-   "object": "\"the education president",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6987-7226",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "But even though we can construct a noun phrase like \"the education president,\" where \"education\" is a prenoun modifier of \"president,\" we cannot construct \"* What is George the &blank; president?,\" intending that the answer be \"education.\""
+     "text": "Next is the metavariable used to refer to the head."
     }
    ]
   },
@@ -2954,7 +1301,7 @@
    "verb": "is",
    "object": "propagated in the variable `?agr`",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2965,28 +1312,12 @@
    ]
   },
   {
-   "id": "or after|the|head (`pre` or `post`) and what kind of head we are modifying (`noun`",
-   "subject": "or after",
-   "verb": "the",
-   "object": "head (`pre` or `post`) and what kind of head we are modifying (`noun`",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6104-6255",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "The first two arguments tell if we are before or after the head (`pre` or `post`) and what kind of head we are modifying (`noun`, `verb`, or whatever)."
-    }
-   ]
-  },
-  {
    "id": "plural|nouns|can stand alone as noun phrases",
    "subject": "Plural",
    "verb": "nouns",
    "object": "can stand alone as noun phrases",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3002,98 +1333,18 @@
    ]
   },
   {
-   "id": "prefer geniality|to|grammar",
-   "subject": "Prefer geniality",
-   "verb": "to",
-   "object": "grammar",
+   "id": "that mark|nouns|as being one case or another",
+   "subject": "that mark",
+   "verb": "nouns",
+   "object": "as being one case or another",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#159-189",
+     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3334-3443",
      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "> Prefer geniality to grammar."
-    }
-   ]
-  },
-  {
-   "id": "prenoun modifier|of|\"president",
-   "subject": "prenoun modifier",
-   "verb": "of",
-   "object": "\"president",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6987-7226",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "But even though we can construct a noun phrase like \"the education president,\" where \"education\" is a prenoun modifier of \"president,\" we cannot construct \"* What is George the &blank; president?,\" intending that the answer be \"education.\""
-    }
-   ]
-  },
-  {
-   "id": "returning|to|nouns",
-   "subject": "Returning",
-   "verb": "to",
-   "object": "nouns",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5848-6009",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Returning to nouns, in \"the former mayor of Boston,\" \"mayor\" is the head noun, \"of Boston\" is a complement (although an optional one) and \"former\" is an adjunct."
-    }
-   ]
-  },
-  {
-   "id": "simple rule|like|`(s --> np vp)`",
-   "subject": "simple rule",
-   "verb": "like",
-   "object": "`(S --> NP VP)`",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1402-1564",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "For example, starting with a simple rule like `(S --> NP VP)`, we soon find that we have to add arguments to handle agreement, semantics, and gapping information."
-    }
-   ]
-  },
-  {
-   "id": "that correspond|to|the analysis",
-   "subject": "that correspond",
-   "verb": "to",
-   "object": "the analysis",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1139-1288",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "For each category we introduce examples, analyze them linguistically, and finally show definite clause grammar rules that correspond to the analysis."
-    }
-   ]
-  },
-  {
-   "id": "that refers|to|the head-the thing that is being modified",
-   "subject": "that refers",
-   "verb": "to",
-   "object": "the head-the thing that is being modified",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1981-2083",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Similarly, the `hin modifiers` is a variable that refers to the head-the thing that is being modified."
+     "text": "Many languages of the world have suffixes that mark nouns as being one case or another, but English does not."
     }
    ]
   },
@@ -3103,7 +1354,7 @@
    "verb": "is",
    "object": "a conjunction of relations involving the variable `x`",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3119,7 +1370,7 @@
    "verb": "is",
    "object": "clearest with verb modifiers",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3135,7 +1386,7 @@
    "verb": "is",
    "object": "not comprehensive enough to handle sentences chosen at random from a book",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3146,18 +1397,18 @@
    ]
   },
   {
-   "id": "them from|the|genitive",
-   "subject": "them from",
-   "verb": "the",
-   "object": "genitive",
+   "id": "thing that|is|being modified",
+   "subject": "thing that",
+   "verb": "is",
+   "object": "being modified",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3101-3213",
+     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1981-2083",
      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "To distinguish them from the genitive, we refer to the nominative and the objective cases as the *common* cases."
+     "text": "Similarly, the `hin modifiers` is a variable that refers to the head-the thing that is being modified."
     }
    ]
   },
@@ -3167,7 +1418,7 @@
    "verb": "is",
    "object": "organized as a tour through the English language",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3178,12 +1429,12 @@
    ]
   },
   {
-   "id": "variable has|the|value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
-   "subject": "variable has",
-   "verb": "the",
-   "object": "value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
+   "id": "variable|has|the value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
+   "subject": "variable",
+   "verb": "has",
+   "object": "the value  `+wh` for noun phrases like \"who\" or \"which one\" and `-wh` for nonquestion phrases",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3199,7 +1450,7 @@
    "verb": "is",
    "object": "adequate for a wide variety of applications",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3210,76 +1461,12 @@
    ]
   },
   {
-   "id": "we address|the|heart of the noun phrase",
-   "subject": "we address",
-   "verb": "the",
-   "object": "heart of the noun phrase",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#5058-5122",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Now we address the heart of the noun phrase, the `NP2` category."
-    }
-   ]
-  },
-  {
-   "id": "we have|to|add arguments to handle agreement",
-   "subject": "we have",
-   "verb": "to",
-   "object": "add arguments to handle agreement",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#1402-1564",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "For example, starting with a simple rule like `(S --> NP VP)`, we soon find that we have to add arguments to handle agreement, semantics, and gapping information."
-    }
-   ]
-  },
-  {
-   "id": "we refer|to|the nominative and the objective cases as the *common* cases",
-   "subject": "we refer",
-   "verb": "to",
-   "object": "the nominative and the objective cases as the *common* cases",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3101-3213",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "To distinguish them from the genitive, we refer to the nominative and the objective cases as the *common* cases."
-    }
-   ]
-  },
-  {
-   "id": "we use|the|expression `(common ?)` to mark nouns",
-   "subject": "we use",
-   "verb": "the",
-   "object": "expression `(common ?)` to mark nouns",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#3444-3499",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Thus, we use the expression `(common ?)` to mark nouns."
-    }
-   ]
-  },
-  {
    "id": "what|is|george the &blank",
    "subject": "What",
    "verb": "is",
    "object": "George the &blank",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3295,61 +1482,13 @@
    "verb": "is",
    "object": "Kevin the former mayor of &blank",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6880-6986",
      "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
      "text": "For example, we can have \"What is Kevin the former mayor of &blank;?,\" where the answer might be \"Boston.\""
-    }
-   ]
-  },
-  {
-   "id": "where|the|answer might be \"boston",
-   "subject": "where",
-   "verb": "the",
-   "object": "answer might be \"Boston",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6880-6986",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "For example, we can have \"What is Kevin the former mayor of &blank;?,\" where the answer might be \"Boston.\""
-    }
-   ]
-  },
-  {
-   "id": "which case|the|noun phrase passed in by the first gap argument will be consumed",
-   "subject": "which case",
-   "verb": "the",
-   "object": "noun phrase passed in by the first gap argument will be consumed",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#4711-4895",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Finally, a noun phrase may appear externally to a construction, in which case the noun phrase passed in by the first gap argument will be consumed, but no words from the input will be."
-    }
-   ]
-  },
-  {
-   "id": "which work|the|same way here as we have seen before",
-   "subject": "which work",
-   "verb": "the",
-   "object": "same way here as we have seen before",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#6499-6625",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "The final three arguments are the two gap accumulators and the semantics, which work the same way here as we have seen before."
     }
    ]
   },
@@ -3359,7 +1498,7 @@
    "verb": "does",
    "object": "Kim like &blank",
    "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/paip/chapter-21.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -3368,26 +1507,10 @@
      "text": "An example is the &blank; in \"Whom does Kim like &blank;?\""
     }
    ]
-  },
-  {
-   "id": "words from|the|input will be",
-   "subject": "words from",
-   "verb": "the",
-   "object": "input will be",
-   "witnesses": [
-    "05-academic-papers/open-access-books/paip/chapter-21.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/paip/chapter-21.txt#4711-4895",
-     "ref": "05-academic-papers/open-access-books/paip/chapter-21.txt",
-     "text": "Finally, a noun phrase may appear externally to a construction, in which case the noun phrase passed in by the first gap argument will be consumed, but no words from the input will be."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:52.771Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:30.077Z"
  }
 }

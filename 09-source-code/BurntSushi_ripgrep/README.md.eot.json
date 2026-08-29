@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 21599,
   "bodyOffset": 0,
   "bodyChars": 21599,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,85 +55,39 @@
   "referentEvents": 9,
   "distinctReferents": 8,
   "examined": true,
-  "edgesFound": 17,
-  "extractionError": null
+  "edgesFound": 8,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 5,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 9
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 8,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 19,
-  "excerptOk": 19,
-  "rawChecked": 19,
-  "rawOk": 19,
+  "excerptChecked": 10,
+  "excerptOk": 10,
+  "rawChecked": 10,
+  "rawOk": 10,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 17,
-  "heard": 17,
+  "offered": 8,
+  "heard": 8,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "first class|support|on windows",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "first class support on Windows",
-    "subject": "first class",
-    "verb": "support",
-    "object": "on Windows",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#249-474",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "(To disable all automatic filtering by default, use `rg -uuu`.) ripgrep has first class support on Windows, macOS and Linux, with binary downloads available for [every release](https://github.com/BurntSushi/ripgrep/releases)."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "under mit|or|the [unlicense](https://unlicense",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "under MIT or the [UNLICENSE](https://unlicense",
-    "subject": "under MIT",
-    "verb": "or",
-    "object": "the [UNLICENSE](https://unlicense",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#905-971",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "Dual-licensed under MIT or the [UNLICENSE](https://unlicense.org)."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "linux|kernel|source tree](https://github",
@@ -132,7 +104,7 @@
     "verb": "kernel",
     "object": "source tree](https://github",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -141,7 +113,7 @@
       "text": "This example searches the entire [Linux kernel source tree](https://github.com/BurntSushi/linux) (after running `make defconfig && make -j8`) for `[A-Z]+_SUSPEND`, where all matches must be words."
      }
     ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
@@ -161,7 +133,7 @@
     "verb": "grep",
     "object": "-P -n -w '[A-Z]+_SUSPEND'` | 536 | 0",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -170,7 +142,7 @@
       "text": "| Tool | Command | Line count | Time | | ---- | ------- | ---------- | ---- | | ripgrep (Unicode) | `rg -n -w '[A-Z]+_SUSPEND'` | 536 | **0.082s** (1.00x) | | [hypergrep](https://github.com/p-ranav/hypergrep) | `hgrep -n -w '[A-Z]+_SUSPEND'` | 536 | 0.167s (2.04x) | | [git grep](https://www.kernel.org/pub/software/scm/git/docs/git-grep.html) | `git grep -P -n -w '[A-Z]+_SUSPEND'` | 536 | 0.273s (3.34x) | | [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) | `ag -w '[A-Z]+_SUSPEND'` | 534 | 0.443s (5.43x) | | [ugrep](https://github.com/Genivia/ugrep) | `ugrep -r --ignore-files --no-hidden -I -w '[A-Z]+_SUSPEND'` | 536 | 0.639s (7.82x) | | [git grep](https://www.kernel.org/pub/software/scm/git/docs/git-grep.html) | `LC_ALL=C git grep -E -n -w '[A-Z]+_SUSPEND'` | 536 | 0.727s (8.91x) | | [git grep (Unicode)](https://www.kernel.org/pub/software/scm/git/docs/git-grep.html) | `LC_ALL=en_US.UTF-8 git grep -E -n -w '[A-Z]+_SUSPEND'` | 536 | 2.670s (32.70x) | | [ack](https://github.com/beyondgrep/ack3) | `ack -w '[A-Z]+_SUSPEND'` | 2677 | 2.935s (35.94x) |"
      }
     ],
-    "seq": 3,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -190,7 +162,7 @@
     "verb": "grep",
     "object": "(Unicode)](https://www",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -199,36 +171,7 @@
       "text": "| Tool | Command | Line count | Time | | ---- | ------- | ---------- | ---- | | ripgrep (Unicode) | `rg -n -w '[A-Z]+_SUSPEND'` | 536 | **0.082s** (1.00x) | | [hypergrep](https://github.com/p-ranav/hypergrep) | `hgrep -n -w '[A-Z]+_SUSPEND'` | 536 | 0.167s (2.04x) | | [git grep](https://www.kernel.org/pub/software/scm/git/docs/git-grep.html) | `git grep -P -n -w '[A-Z]+_SUSPEND'` | 536 | 0.273s (3.34x) | | [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) | `ag -w '[A-Z]+_SUSPEND'` | 534 | 0.443s (5.43x) | | [ugrep](https://github.com/Genivia/ugrep) | `ugrep -r --ignore-files --no-hidden -I -w '[A-Z]+_SUSPEND'` | 536 | 0.639s (7.82x) | | [git grep](https://www.kernel.org/pub/software/scm/git/docs/git-grep.html) | `LC_ALL=C git grep -E -n -w '[A-Z]+_SUSPEND'` | 536 | 0.727s (8.91x) | | [git grep (Unicode)](https://www.kernel.org/pub/software/scm/git/docs/git-grep.html) | `LC_ALL=en_US.UTF-8 git grep -E -n -w '[A-Z]+_SUSPEND'` | 536 | 2.670s (32.70x) | | [ack](https://github.com/beyondgrep/ack3) | `ack -w '[A-Z]+_SUSPEND'` | 2677 | 2.935s (35.94x) |"
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "disregards gitignore|files|and searches with a whitelist instead",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "disregards gitignore files and searches with a whitelist instead",
-    "subject": "disregards gitignore",
-    "verb": "files",
-    "object": "and searches with a whitelist instead",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#3137-3260",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "Here's another benchmark on the same corpus as above that disregards gitignore files and searches with a whitelist instead."
-     }
-    ],
-    "seq": 5,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -248,7 +191,7 @@
     "verb": "grep",
     "object": "(Unicode)](https://www",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -267,36 +210,7 @@
       "text": "| Tool | Command | Line count | Time | | ---- | ------- | ---------- | ---- | | ripgrep | `rg '[A-Za-z]{30}'` | 6749 | **15.569s** (1.00x) | | [ugrep](https://github.com/Genivia/ugrep) | `ugrep -E '[A-Za-z]{30}'` | 6749 | 21.857s (1.40x) | | [GNU grep](https://www.gnu.org/software/grep/) | `LC_ALL=C grep -E '[A-Za-z]{30}'` | 6749 | 32.409s (2.08x) | | [GNU grep (Unicode)](https://www.gnu.org/software/grep/) | `LC_ALL=en_US.UTF-8 grep -E '[A-Za-z]{30}'` | 6795 | 8m30s (32.74x) |"
      }
     ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the presence|or|absence of `-n`",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the presence or absence of `-n`",
-    "subject": "the presence",
-    "verb": "or",
-    "object": "absence of `-n`",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#4646-4708",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "ugrep times are unaffected by the presence or absence of `-n`."
-     }
-    ],
-    "seq": 7,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
@@ -316,7 +230,7 @@
     "verb": "grep",
     "object": "-E -w '[A-Z]\\w+ Sherlock [A-Z]\\w+'` | 485 | 6",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -325,36 +239,7 @@
       "text": "| Tool | Command | Line count | Time | | ---- | ------- | ---------- | ---- | | ripgrep (Unicode) | `rg -w '[A-Z]\\w+ Sherlock [A-Z]\\w+'` | 485 | **1.053s** (1.00x) | | [GNU grep (Unicode)](https://www.gnu.org/software/grep/) | `LC_ALL=en_US.UTF-8 grep -E -w '[A-Z]\\w+ Sherlock [A-Z]\\w+'` | 485 | 6.234s (5.92x) | | [ugrep](https://github.com/Genivia/ugrep) | `ugrep -w '[A-Z]\\w+ Sherlock [A-Z]\\w+'` | 485 | 28.973s (27.51x) |"
      }
     ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "searching big|files|for patterns without any opportunities for literal optimizations:",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "searching big files for patterns without any opportunities for literal optimizations:",
-    "subject": "searching big",
-    "verb": "files",
-    "object": "for patterns without any opportunities for literal optimizations:",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#5175-5321",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "And performance can drop precipitously across the board when searching big files for patterns without any opportunities for literal optimizations:"
-     }
-    ],
-    "seq": 9,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -374,7 +259,7 @@
     "verb": "grep",
     "object": "-E '[A-Za-z]{30}'` | 6749 | 32",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -383,7 +268,7 @@
       "text": "| Tool | Command | Line count | Time | | ---- | ------- | ---------- | ---- | | ripgrep | `rg '[A-Za-z]{30}'` | 6749 | **15.569s** (1.00x) | | [ugrep](https://github.com/Genivia/ugrep) | `ugrep -E '[A-Za-z]{30}'` | 6749 | 21.857s (1.40x) | | [GNU grep](https://www.gnu.org/software/grep/) | `LC_ALL=C grep -E '[A-Za-z]{30}'` | 6749 | 32.409s (2.08x) | | [GNU grep (Unicode)](https://www.gnu.org/software/grep/) | `LC_ALL=en_US.UTF-8 grep -E '[A-Za-z]{30}'` | 6795 | 8m30s (32.74x) |"
      }
     ],
-    "seq": 10,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
@@ -403,7 +288,7 @@
     "verb": "grep",
     "object": "-E '[A-Za-z]{30}'` | 6795 | 8m30s (32",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -412,7 +297,7 @@
       "text": "| Tool | Command | Line count | Time | | ---- | ------- | ---------- | ---- | | ripgrep | `rg '[A-Za-z]{30}'` | 6749 | **15.569s** (1.00x) | | [ugrep](https://github.com/Genivia/ugrep) | `ugrep -E '[A-Za-z]{30}'` | 6749 | 21.857s (1.40x) | | [GNU grep](https://www.gnu.org/software/grep/) | `LC_ALL=C grep -E '[A-Za-z]{30}'` | 6749 | 32.409s (2.08x) | | [GNU grep (Unicode)](https://www.gnu.org/software/grep/) | `LC_ALL=en_US.UTF-8 grep -E '[A-Za-z]{30}'` | 6795 | 8m30s (32.74x) |"
      }
     ],
-    "seq": 11,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -432,7 +317,7 @@
     "verb": "grep",
     "object": "the` | 83499915 | 15",
     "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+     "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -441,128 +326,12 @@
       "text": "| Tool | Command | Line count | Time | | ---- | ------- | ---------- | ---- | | ripgrep | `rg the` | 83499915 | **6.948s** (1.00x) | | [ugrep](https://github.com/Genivia/ugrep) | `ugrep the` | 83499915 | 11.721s (1.69x) | | [GNU grep](https://www.gnu.org/software/grep/) | `LC_ALL=C grep the` | 83499915 | 15.217s (2.19x) |"
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "won't search|files|ignored by your `",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "won't search files ignored by your `",
-    "subject": "won't search",
-    "verb": "files",
-    "object": "ignored by your `",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#6821-6980",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "Namely, ripgrep won't search files ignored by your `.gitignore`/`.ignore`/`.rgignore` files, it won't search hidden files and it won't search binary files."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "search\n  hidden|files|and it won't search binary files",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "search\n  hidden files and it won't search binary files",
-    "subject": "search\n  hidden",
-    "verb": "files",
-    "object": "and it won't search binary files",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#6821-6980",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "Namely, ripgrep won't search files ignored by your `.gitignore`/`.ignore`/`.rgignore` files, it won't search hidden files and it won't search binary files."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "excludes javascript|files|from your search",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "excludes JavaScript files from your search",
-    "subject": "excludes JavaScript",
-    "verb": "files",
-    "object": "from your search",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#7123-7248",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "For example, `rg -tpy foo` limits your search to Python files and `rg -Tjs foo` excludes JavaScript files from your search."
-     }
-    ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "has optional|support|for switching its regex engine to use pcre2",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "has optional support for switching its regex engine to use PCRE2",
-    "subject": "has optional",
-    "verb": "support",
-    "object": "for switching its regex engine to use PCRE2",
-    "witnesses": [
-     "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "09-source-code/BurntSushi_ripgrep/README.md#7595-7670",
-      "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-      "text": "* ripgrep has optional support for switching its regex engine to use PCRE2."
-     }
-    ],
-    "seq": 16,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 17,
+  "nextSeq": 8,
   "admits": [
    "NUL",
    "SEG",
@@ -582,7 +351,7 @@
    "verb": "grep",
    "object": "-E -w '[A-Z]\\w+ Sherlock [A-Z]\\w+'` | 485 | 6",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -598,7 +367,7 @@
    "verb": "grep",
    "object": "-E '[A-Za-z]{30}'` | 6795 | 8m30s (32",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -614,7 +383,7 @@
    "verb": "grep",
    "object": "-E '[A-Za-z]{30}'` | 6749 | 32",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -630,7 +399,7 @@
    "verb": "grep",
    "object": "the` | 83499915 | 15",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -641,60 +410,12 @@
    ]
   },
   {
-   "id": "disregards gitignore|files|and searches with a whitelist instead",
-   "subject": "disregards gitignore",
-   "verb": "files",
-   "object": "and searches with a whitelist instead",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#3137-3260",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "Here's another benchmark on the same corpus as above that disregards gitignore files and searches with a whitelist instead."
-    }
-   ]
-  },
-  {
-   "id": "excludes javascript|files|from your search",
-   "subject": "excludes JavaScript",
-   "verb": "files",
-   "object": "from your search",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#7123-7248",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "For example, `rg -tpy foo` limits your search to Python files and `rg -Tjs foo` excludes JavaScript files from your search."
-    }
-   ]
-  },
-  {
-   "id": "first class|support|on windows",
-   "subject": "first class",
-   "verb": "support",
-   "object": "on Windows",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#249-474",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "(To disable all automatic filtering by default, use `rg -uuu`.) ripgrep has first class support on Windows, macOS and Linux, with binary downloads available for [every release](https://github.com/BurntSushi/ripgrep/releases)."
-    }
-   ]
-  },
-  {
    "id": "git|grep|-p -n -w '[a-z]+_suspend'` | 536 | 0",
    "subject": "git",
    "verb": "grep",
    "object": "-P -n -w '[A-Z]+_SUSPEND'` | 536 | 0",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -710,7 +431,7 @@
    "verb": "grep",
    "object": "(Unicode)](https://www",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -726,7 +447,7 @@
    "verb": "grep",
    "object": "(Unicode)](https://www",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -747,28 +468,12 @@
    ]
   },
   {
-   "id": "has optional|support|for switching its regex engine to use pcre2",
-   "subject": "has optional",
-   "verb": "support",
-   "object": "for switching its regex engine to use PCRE2",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#7595-7670",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "* ripgrep has optional support for switching its regex engine to use PCRE2."
-    }
-   ]
-  },
-  {
    "id": "linux|kernel|source tree](https://github",
    "subject": "Linux",
    "verb": "kernel",
    "object": "source tree](https://github",
    "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
+    "09-source-code/BurntSushi_ripgrep/README.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -777,90 +482,10 @@
      "text": "This example searches the entire [Linux kernel source tree](https://github.com/BurntSushi/linux) (after running `make defconfig && make -j8`) for `[A-Z]+_SUSPEND`, where all matches must be words."
     }
    ]
-  },
-  {
-   "id": "search\n  hidden|files|and it won't search binary files",
-   "subject": "search\n  hidden",
-   "verb": "files",
-   "object": "and it won't search binary files",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#6821-6980",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "Namely, ripgrep won't search files ignored by your `.gitignore`/`.ignore`/`.rgignore` files, it won't search hidden files and it won't search binary files."
-    }
-   ]
-  },
-  {
-   "id": "searching big|files|for patterns without any opportunities for literal optimizations:",
-   "subject": "searching big",
-   "verb": "files",
-   "object": "for patterns without any opportunities for literal optimizations:",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#5175-5321",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "And performance can drop precipitously across the board when searching big files for patterns without any opportunities for literal optimizations:"
-    }
-   ]
-  },
-  {
-   "id": "the presence|or|absence of `-n`",
-   "subject": "the presence",
-   "verb": "or",
-   "object": "absence of `-n`",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#4646-4708",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "ugrep times are unaffected by the presence or absence of `-n`."
-    }
-   ]
-  },
-  {
-   "id": "under mit|or|the [unlicense](https://unlicense",
-   "subject": "under MIT",
-   "verb": "or",
-   "object": "the [UNLICENSE](https://unlicense",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#905-971",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "Dual-licensed under MIT or the [UNLICENSE](https://unlicense.org)."
-    }
-   ]
-  },
-  {
-   "id": "won't search|files|ignored by your `",
-   "subject": "won't search",
-   "verb": "files",
-   "object": "ignored by your `",
-   "witnesses": [
-    "09-source-code/BurntSushi_ripgrep/README.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "09-source-code/BurntSushi_ripgrep/README.md#6821-6980",
-     "ref": "09-source-code/BurntSushi_ripgrep/README.md",
-     "text": "Namely, ripgrep won't search files ignored by your `.gitignore`/`.ignore`/`.rgignore` files, it won't search hidden files and it won't search binary files."
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:51.865Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:03.362Z"
  }
 }

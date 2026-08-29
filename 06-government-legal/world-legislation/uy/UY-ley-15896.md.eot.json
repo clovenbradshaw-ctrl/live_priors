@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 13413,
   "bodyOffset": 0,
   "bodyChars": 13413,
+  "frontMatter": {
+   "detected": false
+  },
   "catalogBlankedChars": 19,
   "excerptChars": 8000,
   "truncated": true
@@ -38,21 +56,33 @@
   "referentEvents": 11,
   "distinctReferents": 7,
   "examined": true,
-  "edgesFound": 49,
-  "extractionError": null
+  "edgesFound": 20,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 15
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 20,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 57,
-  "excerptOk": 57,
-  "rawChecked": 57,
-  "rawOk": 57,
+  "excerptChecked": 22,
+  "excerptOk": 22,
+  "rawChecked": 22,
+  "rawOk": 22,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 49,
-  "heard": 49,
+  "offered": 20,
+  "heard": 20,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -61,7 +91,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "regulacion|de|las habilitaciones que otorga la direccion nacional de bomberos",
+    "task_id": "de\nbomberos|dependiente|del ministerio del interior",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -70,18 +100,18 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "REGULACION de LAS HABILITACIONES QUE OTORGA LA DIRECCION NACIONAL DE BOMBEROS",
-    "subject": "REGULACION",
-    "verb": "de",
-    "object": "LAS HABILITACIONES QUE OTORGA LA DIRECCION NACIONAL DE BOMBEROS",
+    "description": "de\nBomberos dependiente del Ministerio del Interior",
+    "subject": "de\nBomberos",
+    "verb": "dependiente",
+    "object": "del Ministerio del Interior",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1217-1392",
+      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
       "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "source_encoding: \"ISO-8859-1\" images_dropped: \"0\" editorial_notes_count: \"6\" --- # Ley Nº 15896 - REGULACION DE LAS HABILITACIONES QUE OTORGA LA DIRECCION NACIONAL DE BOMBEROS"
+      "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
      }
     ],
     "seq": 0,
@@ -90,7 +120,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "dirección nacional|de|bomberos dependiente del ministerio del interior",
+    "task_id": "del fuego|en|sus fases preventiva y ejecutiva",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -99,133 +129,21 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Dirección Nacional de Bomberos dependiente del Ministerio del Interior",
-    "subject": "Dirección Nacional",
-    "verb": "de",
-    "object": "Bomberos dependiente del Ministerio del Interior",
+    "description": "del fuego en sus fases preventiva y ejecutiva",
+    "subject": "del fuego",
+    "verb": "en",
+    "object": "sus fases preventiva y ejecutiva",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
       "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
       "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
       "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
-     },
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4127-4494",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Compete al Ministerio del Interior por intermedio de la Dirección Nacional de Bomberos el estudio, disposición supervisión y certificación de todas las medidas y dispositivos concretos de prevención y defensa contra siniestros y de seguridad, destinados a evitar el surgimiento o la propagación de incendios o el agravamiento de las consecuencias de otros siniestros."
-     },
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4746-5135",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
-     },
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5159-5416",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "El Ministerio del Interior, previo informe de la Dirección Nacional de Bomberos, podrá disponer preventivamente la clausura temporaria de cualquier establecimiento cuando en él exista peligro de siniestro o riesgo inmediato para la vida humana o los bienes."
-     },
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7131-7338",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "El Director Nacional de Bomberos podrá disponer, bajo su responsabilidad, la mutua colaboración entre dichos servicios y las demás unidades de su dependencia, cuando así sea requerido por las circunstancias."
      }
     ],
     "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "de policía|del|fuego en sus fases preventiva y ejecutiva",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "de policía del fuego en sus fases preventiva y ejecutiva",
-    "subject": "de policía",
-    "verb": "del",
-    "object": "fuego en sus fases preventiva y ejecutiva",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
-     }
-    ],
-    "seq": 2,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la prevención|y|combate de fuegos y siniestros",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la prevención y combate de fuegos y siniestros",
-    "subject": "la prevención",
-    "verb": "y",
-    "object": "combate de fuegos y siniestros",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "peligro\ninmediato|para|la vida humana o los bienes",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "peligro\ninmediato para la vida humana o los bienes",
-    "subject": "peligro\ninmediato",
-    "verb": "para",
-    "object": "la vida humana o los bienes",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
-     },
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5159-5416",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "El Ministerio del Interior, previo informe de la Dirección Nacional de Bomberos, podrá disponer preventivamente la clausura temporaria de cualquier establecimiento cuando en él exista peligro de siniestro o riesgo inmediato para la vida humana o los bienes."
-     }
-    ],
-    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -245,7 +163,7 @@
     "verb": "en",
     "object": "todo el territorio nacional",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -254,36 +172,7 @@
       "text": "A tales efectos, tendrá jurisdicción en todo el territorio nacional."
      }
     ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "normas|de|prevencion contra siniestros",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "NORMAS de PREVENCION CONTRA SINIESTROS",
-    "subject": "NORMAS",
-    "verb": "de",
-    "object": "PREVENCION CONTRA SINIESTROS",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1845-1901",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "### CAPITULO II - NORMAS DE PREVENCION CONTRA SINIESTROS"
-     }
-    ],
-    "seq": 6,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    },
@@ -303,7 +192,7 @@
     "verb": "dictará",
     "object": "los reglamentos de policía de fuego",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -312,13 +201,13 @@
       "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
      }
     ],
-    "seq": 7,
+    "seq": 3,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "o circunstancial|y|los casos de su aplicación",
+    "task_id": "que correspondan|por|la contravención a sus disposiciones",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -327,12 +216,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "o circunstancial y los casos de su aplicación",
-    "subject": "o circunstancial",
-    "verb": "y",
-    "object": "los casos de su aplicación",
+    "description": "que correspondan por la contravención a sus disposiciones",
+    "subject": "que correspondan",
+    "verb": "por",
+    "object": "la contravención a sus disposiciones",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -341,13 +230,13 @@
       "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
      }
     ],
-    "seq": 8,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "las\nmultas|que|correspondan por la contravención a sus disposiciones",
+    "task_id": "de\nproyectos|en|materia de protección y prevención contra incendios",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -356,70 +245,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "las\nmultas que correspondan por la contravención a sus disposiciones",
-    "subject": "las\nmultas",
-    "verb": "que",
-    "object": "correspondan por la contravención a sus disposiciones",
+    "description": "de\nproyectos en materia de protección y prevención contra incendios",
+    "subject": "de\nproyectos",
+    "verb": "en",
+    "object": "materia de protección y prevención contra incendios",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1921-2369",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "las|que|se graduarán de acuerdo a su gravedad",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "las que se graduarán de acuerdo a su gravedad",
-    "subject": "las",
-    "verb": "que",
-    "object": "se graduarán de acuerdo a su gravedad",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1921-2369",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la presentación|de|proyectos en materia de protección y prevención contra incendios",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la presentación de proyectos en materia de protección y prevención contra incendios",
-    "subject": "la presentación",
-    "verb": "de",
-    "object": "proyectos en materia de protección y prevención contra incendios",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -428,13 +259,13 @@
       "text": "Los responsables técnicos habilitados para la presentación de proyectos en materia de protección y prevención contra incendios, podrán ser sancionados por las infracciones que cometan a la normativa vigente, de acuerdo al siguiente régimen:"
      }
     ],
-    "seq": 11,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "días corridos|para|actuar ante la dirección nacional de bomberos",
+    "task_id": "para actuar|ante|la dirección nacional de bomberos",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -443,12 +274,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "días corridos para actuar ante la Dirección Nacional de Bomberos",
-    "subject": "días corridos",
-    "verb": "para",
-    "object": "actuar ante la Dirección Nacional de Bomberos",
+    "description": "para actuar ante la Dirección Nacional de Bomberos",
+    "subject": "para actuar",
+    "verb": "ante",
+    "object": "la Dirección Nacional de Bomberos",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -467,7 +298,7 @@
       "text": "- Cuarta observación: suspensión por el plazo de doscientos cincuenta días corridos para actuar ante la Dirección Nacional de Bomberos."
      }
     ],
-    "seq": 12,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -487,7 +318,7 @@
     "verb": "ante",
     "object": "la Dirección Nacional de Bomberos",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -496,13 +327,13 @@
       "text": "- Quinta observación: suspensión por el plazo de hasta diez años como Técnico Registrado ante la Dirección Nacional de Bomberos, previa evaluación del Comité Técnico de Seguimiento."
      }
     ],
-    "seq": 13,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "previa\n evaluación|del|comité técnico de seguimiento",
+    "task_id": "progresivo establecido|en|este artículo",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -511,41 +342,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "previa\n evaluación del Comité Técnico de Seguimiento",
-    "subject": "previa\n evaluación",
-    "verb": "del",
-    "object": "Comité Técnico de Seguimiento",
+    "description": "progresivo establecido en este artículo",
+    "subject": "progresivo establecido",
+    "verb": "en",
+    "object": "este artículo",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3058-3241",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "- Quinta observación: suspensión por el plazo de hasta diez años como Técnico Registrado ante la Dirección Nacional de Bomberos, previa evaluación del Comité Técnico de Seguimiento."
-     }
-    ],
-    "seq": 14,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sin perjuicio|del|régimen progresivo establecido en este artículo",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Sin perjuicio del régimen progresivo establecido en este artículo",
-    "subject": "Sin perjuicio",
-    "verb": "del",
-    "object": "régimen progresivo establecido en este artículo",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -554,65 +356,7 @@
       "text": "Sin perjuicio del régimen progresivo establecido en este artículo, de existir razones fundadas, se podrán aplicar sanciones en función de la gravedad de la infracción sin respetar estrictamente la graduación establecida."
      }
     ],
-    "seq": 15,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "el registro|de|técnicos que lleva la dirección nacional de bomberos",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "el Registro de Técnicos que lleva la Dirección Nacional de Bomberos",
-    "subject": "el Registro",
-    "verb": "de",
-    "object": "Técnicos que lleva la Dirección Nacional de Bomberos",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3559-3659",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Las mismas se deberán anotar en el Registro de Técnicos que lleva la Dirección Nacional de Bomberos."
-     }
-    ],
-    "seq": 16,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "el técnico|que|es suspendido",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "El Técnico que es suspendido",
-    "subject": "El Técnico",
-    "verb": "que",
-    "object": "es suspendido",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3750-4016",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "El Técnico que es suspendido, no podrá presentar ningún trámite ante la Dirección Nacional de Bomberos, por el término de la suspensión y deberá retirar su patrocinio en todas las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días."
-     }
-    ],
-    "seq": 17,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -632,7 +376,7 @@
     "verb": "ante",
     "object": "la Dirección Nacional de Bomberos",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -641,13 +385,13 @@
       "text": "El Técnico que es suspendido, no podrá presentar ningún trámite ante la Dirección Nacional de Bomberos, por el término de la suspensión y deberá retirar su patrocinio en todas las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días."
      }
     ],
-    "seq": 18,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "las gestiones|que|tenga ante la dirección nacional de bomberos en un plazo de veinte días",
+    "task_id": "que\ntenga|ante|la dirección nacional de bomberos en un plazo de veinte días",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -656,12 +400,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días",
-    "subject": "las gestiones",
-    "verb": "que",
-    "object": "tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días",
+    "description": "que\ntenga ante la Dirección Nacional de Bomberos en un plazo de veinte días",
+    "subject": "que\ntenga",
+    "verb": "ante",
+    "object": "la Dirección Nacional de Bomberos en un plazo de veinte días",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -670,13 +414,13 @@
       "text": "El Técnico que es suspendido, no podrá presentar ningún trámite ante la Dirección Nacional de Bomberos, por el término de la suspensión y deberá retirar su patrocinio en todas las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días."
      }
     ],
-    "seq": 19,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "al técnico|para|la prosecución del trámite",
+    "task_id": "o venda|en|el país",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -685,133 +429,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "al Técnico para la prosecución del trámite",
-    "subject": "al Técnico",
-    "verb": "para",
-    "object": "la prosecución del trámite",
+    "description": "o venda en el país",
+    "subject": "o venda",
+    "verb": "en",
+    "object": "el país",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4017-4103",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "De no sustituirse al Técnico para la prosecución del trámite, este quedará paralizado."
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "contra siniestros|y|de seguridad",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "contra siniestros y de seguridad",
-    "subject": "contra siniestros",
-    "verb": "y",
-    "object": "de seguridad",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4127-4494",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Compete al Ministerio del Interior por intermedio de la Dirección Nacional de Bomberos el estudio, disposición supervisión y certificación de todas las medidas y dispositivos concretos de prevención y defensa contra siniestros y de seguridad, destinados a evitar el surgimiento o la propagación de incendios o el agravamiento de las consecuencias de otros siniestros."
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "previa autorización|de|la dirección nacional de bomberos",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "previa autorización de la Dirección Nacional de Bomberos",
-    "subject": "previa autorización",
-    "verb": "de",
-    "object": "la Dirección Nacional de Bomberos",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4514-4722",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Ninguna construcción, salvo las destinadas a vivienda de un núcleo familiar, podrá ser habilitada para su uso sin la previa autorización de la Dirección Nacional de Bomberos, de acuerdo con la reglamentación."
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "de acuerdo|con|la reglamentación",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "de acuerdo con la reglamentación",
-    "subject": "de acuerdo",
-    "verb": "con",
-    "object": "la reglamentación",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4514-4722",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Ninguna construcción, salvo las destinadas a vivienda de un núcleo familiar, podrá ser habilitada para su uso sin la previa autorización de la Dirección Nacional de Bomberos, de acuerdo con la reglamentación."
-     },
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "o\ncombate|de|incendios que se fabrique o venda en el país",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "o\ncombate de incendios que se fabrique o venda en el país",
-    "subject": "o\ncombate",
-    "verb": "de",
-    "object": "incendios que se fabrique o venda en el país",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -820,181 +443,7 @@
       "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
      }
     ],
-    "seq": 24,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "del cumplimiento|de|las normas de fabricación y reposición",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "del cumplimiento de las normas de fabricación y reposición",
-    "subject": "del cumplimiento",
-    "verb": "de",
-    "object": "las normas de fabricación y reposición",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4746-5135",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
-     }
-    ],
-    "seq": 25,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "los mismos|de|acuerdo con la reglamentación aprobada",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "los mismos de acuerdo con la reglamentación aprobada",
-    "subject": "los mismos",
-    "verb": "de",
-    "object": "acuerdo con la reglamentación aprobada",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4746-5135",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
-     }
-    ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "el ministerio|del|interior",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "El Ministerio del Interior",
-    "subject": "El Ministerio",
-    "verb": "del",
-    "object": "Interior",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5159-5416",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "El Ministerio del Interior, previo informe de la Dirección Nacional de Bomberos, podrá disponer preventivamente la clausura temporaria de cualquier establecimiento cuando en él exista peligro de siniestro o riesgo inmediato para la vida humana o los bienes."
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "suspensión temporaria|de|la fabricación y comercialización de artículos",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "suspensión temporaria de la fabricación y comercialización de artículos",
-    "subject": "suspensión temporaria",
-    "verb": "de",
-    "object": "la fabricación y comercialización de artículos",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5418-5905",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Podrá, asimismo, disponer preventivamente la suspensión temporaria de la fabricación y comercialización de artículos, aparatos, dispositivos o materiales que, conforme con las pericias o ensayos practicados, se consideren peligrosos por su potencial capacidad de producir o propagar incendios u otros siniestros, así como de aquellos destinados al combate del fuego, que no llenen los requisitos de diseño o reposición previamente aprobados, procediendo en este último caso a su requisa."
-     }
-    ],
-    "seq": 28,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "conforme|con|las pericias o ensayos practicados",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "conforme con las pericias o ensayos practicados",
-    "subject": "conforme",
-    "verb": "con",
-    "object": "las pericias o ensayos practicados",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5418-5905",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Podrá, asimismo, disponer preventivamente la suspensión temporaria de la fabricación y comercialización de artículos, aparatos, dispositivos o materiales que, conforme con las pericias o ensayos practicados, se consideren peligrosos por su potencial capacidad de producir o propagar incendios u otros siniestros, así como de aquellos destinados al combate del fuego, que no llenen los requisitos de diseño o reposición previamente aprobados, procediendo en este último caso a su requisa."
-     }
-    ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "al combate|del|fuego",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "al combate del fuego",
-    "subject": "al combate",
-    "verb": "del",
-    "object": "fuego",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5418-5905",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Podrá, asimismo, disponer preventivamente la suspensión temporaria de la fabricación y comercialización de artículos, aparatos, dispositivos o materiales que, conforme con las pericias o ensayos practicados, se consideren peligrosos por su potencial capacidad de producir o propagar incendios u otros siniestros, así como de aquellos destinados al combate del fuego, que no llenen los requisitos de diseño o reposición previamente aprobados, procediendo en este último caso a su requisa."
-     }
-    ],
-    "seq": 30,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
@@ -1014,7 +463,7 @@
     "verb": "en",
     "object": "este último caso a su requisa",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1023,7 +472,7 @@
       "text": "Podrá, asimismo, disponer preventivamente la suspensión temporaria de la fabricación y comercialización de artículos, aparatos, dispositivos o materiales que, conforme con las pericias o ensayos practicados, se consideren peligrosos por su potencial capacidad de producir o propagar incendios u otros siniestros, así como de aquellos destinados al combate del fuego, que no llenen los requisitos de diseño o reposición previamente aprobados, procediendo en este último caso a su requisa."
      }
     ],
-    "seq": 31,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -1043,7 +492,7 @@
     "verb": "en",
     "object": "todo establecimiento comercial o industrial",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1052,216 +501,13 @@
       "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
      }
     ],
-    "seq": 32,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "los elementos|de|defensa contra siniestros",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "los elementos de defensa contra siniestros",
-    "subject": "los elementos",
-    "verb": "de",
-    "object": "defensa contra siniestros",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "número adecuado|de|su personal",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "número adecuado de su personal",
-    "subject": "número adecuado",
-    "verb": "de",
-    "object": "su personal",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-     }
-    ],
-    "seq": 34,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "los\nmedios|y|de los riesgos",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "los\nmedios y de los riesgos",
-    "subject": "los\nmedios",
-    "verb": "y",
-    "object": "de los riesgos",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-     }
-    ],
-    "seq": 35,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "habitación|que|constituyan un hogar (artículo 11 de la constitución)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "habitación que constituyan un hogar (artículo 11 de la Constitución)",
-    "subject": "habitación",
-    "verb": "que",
-    "object": "constituyan un hogar (artículo 11 de la Constitución)",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6402-6791",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Los propietarios, arrendatarios u ocupantes a cualquier título, administradores o encargados de construcciones o áreas a las cuales concurran funcionarios de la Dirección Nacional de Bomberos con fines inspectivos, con excepción de las destinadas a casa - habitación que constituyan un hogar (artículo 11 de la Constitución), están obligadas a franquearles el acceso previa identificación."
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "a\nfranquearles|el|acceso previa identificación",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "a\nfranquearles el acceso previa identificación",
-    "subject": "a\nfranquearles",
-    "verb": "el",
-    "object": "acceso previa identificación",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6402-6791",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Los propietarios, arrendatarios u ocupantes a cualquier título, administradores o encargados de construcciones o áreas a las cuales concurran funcionarios de la Dirección Nacional de Bomberos con fines inspectivos, con excepción de las destinadas a casa - habitación que constituyan un hogar (artículo 11 de la Constitución), están obligadas a franquearles el acceso previa identificación."
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "los\nservicios|de|prevención que éstos requieran de la misma",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "los\nservicios de prevención que éstos requieran de la misma",
-    "subject": "los\nservicios",
-    "verb": "de",
-    "object": "prevención que éstos requieran de la misma",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6811-6938",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "La Dirección Nacional de Bomberos podrá contratar con los usuarios los servicios de prevención que éstos requieran de la misma."
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "la\nextensión|del|servicio",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "la\nextensión del servicio",
-    "subject": "la\nextensión",
-    "verb": "del",
-    "object": "servicio",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6940-7129",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "En estos casos, la Dirección Nacional de Bomberos prescribirá la extensión del servicio, la dimensión y jerarquía de las dotaciones y sus costos respectivos, fijados por el Poder Ejecutivo."
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "fijados por|el|poder ejecutivo",
+    "task_id": "fijados|por|el poder ejecutivo",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1271,11 +517,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "fijados por el Poder Ejecutivo",
-    "subject": "fijados por",
-    "verb": "el",
-    "object": "Poder Ejecutivo",
+    "subject": "fijados",
+    "verb": "por",
+    "object": "el Poder Ejecutivo",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1284,13 +530,13 @@
       "text": "En estos casos, la Dirección Nacional de Bomberos prescribirá la extensión del servicio, la dimensión y jerarquía de las dotaciones y sus costos respectivos, fijados por el Poder Ejecutivo."
      }
     ],
-    "seq": 40,
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "demás\nunidades|de|su dependencia",
+    "task_id": "de bomberos|podrá|disponer",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1299,12 +545,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "demás\nunidades de su dependencia",
-    "subject": "demás\nunidades",
-    "verb": "de",
-    "object": "su dependencia",
+    "description": "de Bomberos podrá disponer",
+    "subject": "de Bomberos",
+    "verb": "podrá",
+    "object": "disponer",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1313,7 +559,7 @@
       "text": "El Director Nacional de Bomberos podrá disponer, bajo su responsabilidad, la mutua colaboración entre dichos servicios y las demás unidades de su dependencia, cuando así sea requerido por las circunstancias."
      }
     ],
-    "seq": 41,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
@@ -1333,7 +579,7 @@
     "verb": "en",
     "object": "CASO DE SINIESTROS",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1342,7 +588,7 @@
       "text": "### CAPITULO III - OPERACIONES EN CASO DE SINIESTROS"
      }
     ],
-    "seq": 42,
+    "seq": 16,
     "depends_on": [],
     "evidence": []
    },
@@ -1362,7 +608,7 @@
     "verb": "podrá",
     "object": "efectuarse de oficio o a solicitud de cualquier interesado",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1371,7 +617,7 @@
       "text": "La intervención de los servicios de la Dirección Nacional de Bomberos podrá efectuarse de oficio o a solicitud de cualquier interesado, o por medio de autoridad pública."
      }
     ],
-    "seq": 43,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -1391,7 +637,7 @@
     "verb": "por",
     "object": "medio de autoridad pública",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1400,13 +646,13 @@
       "text": "La intervención de los servicios de la Dirección Nacional de Bomberos podrá efectuarse de oficio o a solicitud de cualquier interesado, o por medio de autoridad pública."
      }
     ],
-    "seq": 44,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "más próxima|del|servicio de bomberos",
+    "task_id": "incendio que|en|el mismo ocurra",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1415,41 +661,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "más próxima del servicio de Bomberos",
-    "subject": "más próxima",
-    "verb": "del",
-    "object": "servicio de Bomberos",
+    "description": "incendio que en el mismo ocurra",
+    "subject": "incendio que",
+    "verb": "en",
+    "object": "el mismo ocurra",
     "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7588-7775",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Toda persona que perciba signos de incendio o de otros siniestros deberá adoptar la providencias razonables y dar cuenta en forma inmediata a la sede más próxima del servicio de Bomberos."
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "mismo modo|el|propietario",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "mismo modo el propietario",
-    "subject": "mismo modo",
-    "verb": "el",
-    "object": "propietario",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+     "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1458,70 +675,12 @@
       "text": "Del mismo modo el propietario, así como el ocupante a cualquier título de un predio, deberá dar parte a los servicios de Bomberos de cualquier principio de incendio que en el mismo ocurra, incluso si hubiera sido extinguido"
      }
     ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cualquier título|de|un predio",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "cualquier título de un predio",
-    "subject": "cualquier título",
-    "verb": "de",
-    "object": "un predio",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7777-8000",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Del mismo modo el propietario, así como el ocupante a cualquier título de un predio, deberá dar parte a los servicios de Bomberos de cualquier principio de incendio que en el mismo ocurra, incluso si hubiera sido extinguido"
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "cualquier\nprincipio|de|incendio que en el mismo ocurra",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "cualquier\nprincipio de incendio que en el mismo ocurra",
-    "subject": "cualquier\nprincipio",
-    "verb": "de",
-    "object": "incendio que en el mismo ocurra",
-    "witnesses": [
-     "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7777-8000",
-      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-      "text": "Del mismo modo el propietario, así como el ocupante a cualquier título de un predio, deberá dar parte a los servicios de Bomberos de cualquier principio de incendio que en el mismo ocurra, incluso si hubiera sido extinguido"
-     }
-    ],
-    "seq": 48,
+    "seq": 19,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 49,
+  "nextSeq": 20,
   "admits": [
    "NUL",
    "SEG",
@@ -1536,161 +695,12 @@
  },
  "folded": [
   {
-   "id": "a\nfranquearles|el|acceso previa identificación",
-   "subject": "a\nfranquearles",
-   "verb": "el",
-   "object": "acceso previa identificación",
+   "id": "de\nbomberos|dependiente|del ministerio del interior",
+   "subject": "de\nBomberos",
+   "verb": "dependiente",
+   "object": "del Ministerio del Interior",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6402-6791",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Los propietarios, arrendatarios u ocupantes a cualquier título, administradores o encargados de construcciones o áreas a las cuales concurran funcionarios de la Dirección Nacional de Bomberos con fines inspectivos, con excepción de las destinadas a casa - habitación que constituyan un hogar (artículo 11 de la Constitución), están obligadas a franquearles el acceso previa identificación."
-    }
-   ]
-  },
-  {
-   "id": "al combate|del|fuego",
-   "subject": "al combate",
-   "verb": "del",
-   "object": "fuego",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5418-5905",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Podrá, asimismo, disponer preventivamente la suspensión temporaria de la fabricación y comercialización de artículos, aparatos, dispositivos o materiales que, conforme con las pericias o ensayos practicados, se consideren peligrosos por su potencial capacidad de producir o propagar incendios u otros siniestros, así como de aquellos destinados al combate del fuego, que no llenen los requisitos de diseño o reposición previamente aprobados, procediendo en este último caso a su requisa."
-    }
-   ]
-  },
-  {
-   "id": "al técnico|para|la prosecución del trámite",
-   "subject": "al Técnico",
-   "verb": "para",
-   "object": "la prosecución del trámite",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4017-4103",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "De no sustituirse al Técnico para la prosecución del trámite, este quedará paralizado."
-    }
-   ]
-  },
-  {
-   "id": "conforme|con|las pericias o ensayos practicados",
-   "subject": "conforme",
-   "verb": "con",
-   "object": "las pericias o ensayos practicados",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5418-5905",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Podrá, asimismo, disponer preventivamente la suspensión temporaria de la fabricación y comercialización de artículos, aparatos, dispositivos o materiales que, conforme con las pericias o ensayos practicados, se consideren peligrosos por su potencial capacidad de producir o propagar incendios u otros siniestros, así como de aquellos destinados al combate del fuego, que no llenen los requisitos de diseño o reposición previamente aprobados, procediendo en este último caso a su requisa."
-    }
-   ]
-  },
-  {
-   "id": "contra siniestros|y|de seguridad",
-   "subject": "contra siniestros",
-   "verb": "y",
-   "object": "de seguridad",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4127-4494",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Compete al Ministerio del Interior por intermedio de la Dirección Nacional de Bomberos el estudio, disposición supervisión y certificación de todas las medidas y dispositivos concretos de prevención y defensa contra siniestros y de seguridad, destinados a evitar el surgimiento o la propagación de incendios o el agravamiento de las consecuencias de otros siniestros."
-    }
-   ]
-  },
-  {
-   "id": "cualquier\nprincipio|de|incendio que en el mismo ocurra",
-   "subject": "cualquier\nprincipio",
-   "verb": "de",
-   "object": "incendio que en el mismo ocurra",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7777-8000",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Del mismo modo el propietario, así como el ocupante a cualquier título de un predio, deberá dar parte a los servicios de Bomberos de cualquier principio de incendio que en el mismo ocurra, incluso si hubiera sido extinguido"
-    }
-   ]
-  },
-  {
-   "id": "cualquier título|de|un predio",
-   "subject": "cualquier título",
-   "verb": "de",
-   "object": "un predio",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7777-8000",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Del mismo modo el propietario, así como el ocupante a cualquier título de un predio, deberá dar parte a los servicios de Bomberos de cualquier principio de incendio que en el mismo ocurra, incluso si hubiera sido extinguido"
-    }
-   ]
-  },
-  {
-   "id": "de acuerdo|con|la reglamentación",
-   "subject": "de acuerdo",
-   "verb": "con",
-   "object": "la reglamentación",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4514-4722",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Ninguna construcción, salvo las destinadas a vivienda de un núcleo familiar, podrá ser habilitada para su uso sin la previa autorización de la Dirección Nacional de Bomberos, de acuerdo con la reglamentación."
-    },
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-    }
-   ]
-  },
-  {
-   "id": "de bomberos|podrá|efectuarse de oficio o a solicitud de cualquier interesado",
-   "subject": "de Bomberos",
-   "verb": "podrá",
-   "object": "efectuarse de oficio o a solicitud de cualquier interesado",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7417-7586",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "La intervención de los servicios de la Dirección Nacional de Bomberos podrá efectuarse de oficio o a solicitud de cualquier interesado, o por medio de autoridad pública."
-    }
-   ]
-  },
-  {
-   "id": "de policía|del|fuego en sus fases preventiva y ejecutiva",
-   "subject": "de policía",
-   "verb": "del",
-   "object": "fuego en sus fases preventiva y ejecutiva",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1701,28 +711,28 @@
    ]
   },
   {
-   "id": "del cumplimiento|de|las normas de fabricación y reposición",
-   "subject": "del cumplimiento",
-   "verb": "de",
-   "object": "las normas de fabricación y reposición",
+   "id": "de\nproyectos|en|materia de protección y prevención contra incendios",
+   "subject": "de\nproyectos",
+   "verb": "en",
+   "object": "materia de protección y prevención contra incendios",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4746-5135",
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#2371-2611",
      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
+     "text": "Los responsables técnicos habilitados para la presentación de proyectos en materia de protección y prevención contra incendios, podrán ser sancionados por las infracciones que cometan a la normativa vigente, de acuerdo al siguiente régimen:"
     }
    ]
   },
   {
-   "id": "demás\nunidades|de|su dependencia",
-   "subject": "demás\nunidades",
-   "verb": "de",
-   "object": "su dependencia",
+   "id": "de bomberos|podrá|disponer",
+   "subject": "de Bomberos",
+   "verb": "podrá",
+   "object": "disponer",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1733,12 +743,156 @@
    ]
   },
   {
-   "id": "días corridos|para|actuar ante la dirección nacional de bomberos",
-   "subject": "días corridos",
-   "verb": "para",
-   "object": "actuar ante la Dirección Nacional de Bomberos",
+   "id": "de bomberos|podrá|efectuarse de oficio o a solicitud de cualquier interesado",
+   "subject": "de Bomberos",
+   "verb": "podrá",
+   "object": "efectuarse de oficio o a solicitud de cualquier interesado",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7417-7586",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "La intervención de los servicios de la Dirección Nacional de Bomberos podrá efectuarse de oficio o a solicitud de cualquier interesado, o por medio de autoridad pública."
+    }
+   ]
+  },
+  {
+   "id": "del fuego|en|sus fases preventiva y ejecutiva",
+   "subject": "del fuego",
+   "verb": "en",
+   "object": "sus fases preventiva y ejecutiva",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
+    }
+   ]
+  },
+  {
+   "id": "es obligatorio|en|todo establecimiento comercial o industrial",
+   "subject": "Es obligatorio",
+   "verb": "en",
+   "object": "todo establecimiento comercial o industrial",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
+    }
+   ]
+  },
+  {
+   "id": "fijados|por|el poder ejecutivo",
+   "subject": "fijados",
+   "verb": "por",
+   "object": "el Poder Ejecutivo",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6940-7129",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "En estos casos, la Dirección Nacional de Bomberos prescribirá la extensión del servicio, la dimensión y jerarquía de las dotaciones y sus costos respectivos, fijados por el Poder Ejecutivo."
+    }
+   ]
+  },
+  {
+   "id": "incendio que|en|el mismo ocurra",
+   "subject": "incendio que",
+   "verb": "en",
+   "object": "el mismo ocurra",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7777-8000",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "Del mismo modo el propietario, así como el ocupante a cualquier título de un predio, deberá dar parte a los servicios de Bomberos de cualquier principio de incendio que en el mismo ocurra, incluso si hubiera sido extinguido"
+    }
+   ]
+  },
+  {
+   "id": "ningún trámite|ante|la dirección nacional de bomberos",
+   "subject": "ningún trámite",
+   "verb": "ante",
+   "object": "la Dirección Nacional de Bomberos",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3750-4016",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "El Técnico que es suspendido, no podrá presentar ningún trámite ante la Dirección Nacional de Bomberos, por el término de la suspensión y deberá retirar su patrocinio en todas las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días."
+    }
+   ]
+  },
+  {
+   "id": "o venda|en|el país",
+   "subject": "o venda",
+   "verb": "en",
+   "object": "el país",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4746-5135",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
+    }
+   ]
+  },
+  {
+   "id": "o|por|medio de autoridad pública",
+   "subject": "o",
+   "verb": "por",
+   "object": "medio de autoridad pública",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7417-7586",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "La intervención de los servicios de la Dirección Nacional de Bomberos podrá efectuarse de oficio o a solicitud de cualquier interesado, o por medio de autoridad pública."
+    }
+   ]
+  },
+  {
+   "id": "operaciones|en|caso de siniestros",
+   "subject": "OPERACIONES",
+   "verb": "en",
+   "object": "CASO DE SINIESTROS",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7344-7396",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "### CAPITULO III - OPERACIONES EN CASO DE SINIESTROS"
+    }
+   ]
+  },
+  {
+   "id": "para actuar|ante|la dirección nacional de bomberos",
+   "subject": "para actuar",
+   "verb": "ante",
+   "object": "la Dirección Nacional de Bomberos",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1759,507 +913,18 @@
    ]
   },
   {
-   "id": "dirección nacional|de|bomberos dependiente del ministerio del interior",
-   "subject": "Dirección Nacional",
-   "verb": "de",
-   "object": "Bomberos dependiente del Ministerio del Interior",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
-    },
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4127-4494",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Compete al Ministerio del Interior por intermedio de la Dirección Nacional de Bomberos el estudio, disposición supervisión y certificación de todas las medidas y dispositivos concretos de prevención y defensa contra siniestros y de seguridad, destinados a evitar el surgimiento o la propagación de incendios o el agravamiento de las consecuencias de otros siniestros."
-    },
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4746-5135",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
-    },
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5159-5416",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Ministerio del Interior, previo informe de la Dirección Nacional de Bomberos, podrá disponer preventivamente la clausura temporaria de cualquier establecimiento cuando en él exista peligro de siniestro o riesgo inmediato para la vida humana o los bienes."
-    },
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7131-7338",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Director Nacional de Bomberos podrá disponer, bajo su responsabilidad, la mutua colaboración entre dichos servicios y las demás unidades de su dependencia, cuando así sea requerido por las circunstancias."
-    }
-   ]
-  },
-  {
-   "id": "el ministerio|del|interior",
-   "subject": "El Ministerio",
-   "verb": "del",
-   "object": "Interior",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5159-5416",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Ministerio del Interior, previo informe de la Dirección Nacional de Bomberos, podrá disponer preventivamente la clausura temporaria de cualquier establecimiento cuando en él exista peligro de siniestro o riesgo inmediato para la vida humana o los bienes."
-    }
-   ]
-  },
-  {
-   "id": "el registro|de|técnicos que lleva la dirección nacional de bomberos",
-   "subject": "el Registro",
-   "verb": "de",
-   "object": "Técnicos que lleva la Dirección Nacional de Bomberos",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3559-3659",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Las mismas se deberán anotar en el Registro de Técnicos que lleva la Dirección Nacional de Bomberos."
-    }
-   ]
-  },
-  {
-   "id": "el técnico|que|es suspendido",
-   "subject": "El Técnico",
-   "verb": "que",
-   "object": "es suspendido",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3750-4016",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Técnico que es suspendido, no podrá presentar ningún trámite ante la Dirección Nacional de Bomberos, por el término de la suspensión y deberá retirar su patrocinio en todas las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días."
-    }
-   ]
-  },
-  {
-   "id": "es obligatorio|en|todo establecimiento comercial o industrial",
-   "subject": "Es obligatorio",
-   "verb": "en",
-   "object": "todo establecimiento comercial o industrial",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-    }
-   ]
-  },
-  {
-   "id": "fijados por|el|poder ejecutivo",
-   "subject": "fijados por",
-   "verb": "el",
-   "object": "Poder Ejecutivo",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6940-7129",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "En estos casos, la Dirección Nacional de Bomberos prescribirá la extensión del servicio, la dimensión y jerarquía de las dotaciones y sus costos respectivos, fijados por el Poder Ejecutivo."
-    }
-   ]
-  },
-  {
-   "id": "habitación|que|constituyan un hogar (artículo 11 de la constitución)",
-   "subject": "habitación",
-   "verb": "que",
-   "object": "constituyan un hogar (artículo 11 de la Constitución)",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6402-6791",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Los propietarios, arrendatarios u ocupantes a cualquier título, administradores o encargados de construcciones o áreas a las cuales concurran funcionarios de la Dirección Nacional de Bomberos con fines inspectivos, con excepción de las destinadas a casa - habitación que constituyan un hogar (artículo 11 de la Constitución), están obligadas a franquearles el acceso previa identificación."
-    }
-   ]
-  },
-  {
-   "id": "la\nextensión|del|servicio",
-   "subject": "la\nextensión",
-   "verb": "del",
-   "object": "servicio",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6940-7129",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "En estos casos, la Dirección Nacional de Bomberos prescribirá la extensión del servicio, la dimensión y jerarquía de las dotaciones y sus costos respectivos, fijados por el Poder Ejecutivo."
-    }
-   ]
-  },
-  {
-   "id": "la presentación|de|proyectos en materia de protección y prevención contra incendios",
-   "subject": "la presentación",
-   "verb": "de",
-   "object": "proyectos en materia de protección y prevención contra incendios",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#2371-2611",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Los responsables técnicos habilitados para la presentación de proyectos en materia de protección y prevención contra incendios, podrán ser sancionados por las infracciones que cometan a la normativa vigente, de acuerdo al siguiente régimen:"
-    }
-   ]
-  },
-  {
-   "id": "la prevención|y|combate de fuegos y siniestros",
-   "subject": "la prevención",
-   "verb": "y",
-   "object": "combate de fuegos y siniestros",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
-    }
-   ]
-  },
-  {
-   "id": "las\nmultas|que|correspondan por la contravención a sus disposiciones",
-   "subject": "las\nmultas",
-   "verb": "que",
-   "object": "correspondan por la contravención a sus disposiciones",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1921-2369",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
-    }
-   ]
-  },
-  {
-   "id": "las gestiones|que|tenga ante la dirección nacional de bomberos en un plazo de veinte días",
-   "subject": "las gestiones",
-   "verb": "que",
-   "object": "tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3750-4016",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Técnico que es suspendido, no podrá presentar ningún trámite ante la Dirección Nacional de Bomberos, por el término de la suspensión y deberá retirar su patrocinio en todas las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días."
-    }
-   ]
-  },
-  {
-   "id": "las|que|se graduarán de acuerdo a su gravedad",
-   "subject": "las",
-   "verb": "que",
-   "object": "se graduarán de acuerdo a su gravedad",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1921-2369",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
-    }
-   ]
-  },
-  {
-   "id": "los\nmedios|y|de los riesgos",
-   "subject": "los\nmedios",
-   "verb": "y",
-   "object": "de los riesgos",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-    }
-   ]
-  },
-  {
-   "id": "los\nservicios|de|prevención que éstos requieran de la misma",
-   "subject": "los\nservicios",
-   "verb": "de",
-   "object": "prevención que éstos requieran de la misma",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6811-6938",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "La Dirección Nacional de Bomberos podrá contratar con los usuarios los servicios de prevención que éstos requieran de la misma."
-    }
-   ]
-  },
-  {
-   "id": "los elementos|de|defensa contra siniestros",
-   "subject": "los elementos",
-   "verb": "de",
-   "object": "defensa contra siniestros",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-    }
-   ]
-  },
-  {
-   "id": "los mismos|de|acuerdo con la reglamentación aprobada",
-   "subject": "los mismos",
-   "verb": "de",
-   "object": "acuerdo con la reglamentación aprobada",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4746-5135",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
-    }
-   ]
-  },
-  {
-   "id": "más próxima|del|servicio de bomberos",
-   "subject": "más próxima",
-   "verb": "del",
-   "object": "servicio de Bomberos",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7588-7775",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Toda persona que perciba signos de incendio o de otros siniestros deberá adoptar la providencias razonables y dar cuenta en forma inmediata a la sede más próxima del servicio de Bomberos."
-    }
-   ]
-  },
-  {
-   "id": "mismo modo|el|propietario",
-   "subject": "mismo modo",
-   "verb": "el",
-   "object": "propietario",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7777-8000",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Del mismo modo el propietario, así como el ocupante a cualquier título de un predio, deberá dar parte a los servicios de Bomberos de cualquier principio de incendio que en el mismo ocurra, incluso si hubiera sido extinguido"
-    }
-   ]
-  },
-  {
-   "id": "ningún trámite|ante|la dirección nacional de bomberos",
-   "subject": "ningún trámite",
-   "verb": "ante",
-   "object": "la Dirección Nacional de Bomberos",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3750-4016",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Técnico que es suspendido, no podrá presentar ningún trámite ante la Dirección Nacional de Bomberos, por el término de la suspensión y deberá retirar su patrocinio en todas las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días."
-    }
-   ]
-  },
-  {
-   "id": "normas|de|prevencion contra siniestros",
-   "subject": "NORMAS",
-   "verb": "de",
-   "object": "PREVENCION CONTRA SINIESTROS",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1845-1901",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "### CAPITULO II - NORMAS DE PREVENCION CONTRA SINIESTROS"
-    }
-   ]
-  },
-  {
-   "id": "número adecuado|de|su personal",
-   "subject": "número adecuado",
-   "verb": "de",
-   "object": "su personal",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#6069-6382",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Es obligatorio en todo establecimiento comercial o industrial, mantener permanentemente instruido en el manejo y utilización de los elementos de defensa contra siniestros, a un número adecuado de su personal, de acuerdo con la reglamentación, la que tendrá en cuenta la importancia de los medios y de los riesgos."
-    }
-   ]
-  },
-  {
-   "id": "o\ncombate|de|incendios que se fabrique o venda en el país",
-   "subject": "o\ncombate",
-   "verb": "de",
-   "object": "incendios que se fabrique o venda en el país",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4746-5135",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Todo aparato, dispositivo o material destinado a la prevención o combate de incendios que se fabrique o venda en el país, deberá ser técnicamente aprobado y autorizado en su diseño por la Dirección Nacional de Bomberos, a la cual compete asimismo la verificación del cumplimiento de las normas de fabricación y reposición, aplicables a los mismos de acuerdo con la reglamentación aprobada."
-    }
-   ]
-  },
-  {
-   "id": "o circunstancial|y|los casos de su aplicación",
-   "subject": "o circunstancial",
-   "verb": "y",
-   "object": "los casos de su aplicación",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1921-2369",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
-    }
-   ]
-  },
-  {
-   "id": "o|por|medio de autoridad pública",
-   "subject": "o",
-   "verb": "por",
-   "object": "medio de autoridad pública",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7417-7586",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "La intervención de los servicios de la Dirección Nacional de Bomberos podrá efectuarse de oficio o a solicitud de cualquier interesado, o por medio de autoridad pública."
-    }
-   ]
-  },
-  {
-   "id": "operaciones|en|caso de siniestros",
-   "subject": "OPERACIONES",
-   "verb": "en",
-   "object": "CASO DE SINIESTROS",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#7344-7396",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "### CAPITULO III - OPERACIONES EN CASO DE SINIESTROS"
-    }
-   ]
-  },
-  {
-   "id": "peligro\ninmediato|para|la vida humana o los bienes",
-   "subject": "peligro\ninmediato",
-   "verb": "para",
-   "object": "la vida humana o los bienes",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1443-1773",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Compete al Poder Ejecutivo, por intermedio de la Dirección Nacional de Bomberos dependiente del Ministerio del Interior, la función de policía del fuego en sus fases preventiva y ejecutiva, así como todo lo relativo a la prevención y combate de fuegos y siniestros, que aparejen peligro inmediato para la vida humana o los bienes."
-    },
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5159-5416",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "El Ministerio del Interior, previo informe de la Dirección Nacional de Bomberos, podrá disponer preventivamente la clausura temporaria de cualquier establecimiento cuando en él exista peligro de siniestro o riesgo inmediato para la vida humana o los bienes."
-    }
-   ]
-  },
-  {
    "id": "poder ejecutivo|dictará|los reglamentos de policía de fuego",
    "subject": "Poder Ejecutivo",
    "verb": "dictará",
    "object": "los reglamentos de policía de fuego",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
      "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1921-2369",
      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
      "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
-    }
-   ]
-  },
-  {
-   "id": "previa\n evaluación|del|comité técnico de seguimiento",
-   "subject": "previa\n evaluación",
-   "verb": "del",
-   "object": "Comité Técnico de Seguimiento",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3058-3241",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "- Quinta observación: suspensión por el plazo de hasta diez años como Técnico Registrado ante la Dirección Nacional de Bomberos, previa evaluación del Comité Técnico de Seguimiento."
-    }
-   ]
-  },
-  {
-   "id": "previa autorización|de|la dirección nacional de bomberos",
-   "subject": "previa autorización",
-   "verb": "de",
-   "object": "la Dirección Nacional de Bomberos",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#4514-4722",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Ninguna construcción, salvo las destinadas a vivienda de un núcleo familiar, podrá ser habilitada para su uso sin la previa autorización de la Dirección Nacional de Bomberos, de acuerdo con la reglamentación."
     }
    ]
   },
@@ -2269,7 +934,7 @@
    "verb": "en",
    "object": "este último caso a su requisa",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2280,28 +945,12 @@
    ]
   },
   {
-   "id": "regulacion|de|las habilitaciones que otorga la direccion nacional de bomberos",
-   "subject": "REGULACION",
-   "verb": "de",
-   "object": "LAS HABILITACIONES QUE OTORGA LA DIRECCION NACIONAL DE BOMBEROS",
+   "id": "progresivo establecido|en|este artículo",
+   "subject": "progresivo establecido",
+   "verb": "en",
+   "object": "este artículo",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1217-1392",
-     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "source_encoding: \"ISO-8859-1\" images_dropped: \"0\" editorial_notes_count: \"6\" --- # Ley Nº 15896 - REGULACION DE LAS HABILITACIONES QUE OTORGA LA DIRECCION NACIONAL DE BOMBEROS"
-    }
-   ]
-  },
-  {
-   "id": "sin perjuicio|del|régimen progresivo establecido en este artículo",
-   "subject": "Sin perjuicio",
-   "verb": "del",
-   "object": "régimen progresivo establecido en este artículo",
-   "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2312,18 +961,34 @@
    ]
   },
   {
-   "id": "suspensión temporaria|de|la fabricación y comercialización de artículos",
-   "subject": "suspensión temporaria",
-   "verb": "de",
-   "object": "la fabricación y comercialización de artículos",
+   "id": "que\ntenga|ante|la dirección nacional de bomberos en un plazo de veinte días",
+   "subject": "que\ntenga",
+   "verb": "ante",
+   "object": "la Dirección Nacional de Bomberos en un plazo de veinte días",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#5418-5905",
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#3750-4016",
      "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
-     "text": "Podrá, asimismo, disponer preventivamente la suspensión temporaria de la fabricación y comercialización de artículos, aparatos, dispositivos o materiales que, conforme con las pericias o ensayos practicados, se consideren peligrosos por su potencial capacidad de producir o propagar incendios u otros siniestros, así como de aquellos destinados al combate del fuego, que no llenen los requisitos de diseño o reposición previamente aprobados, procediendo en este último caso a su requisa."
+     "text": "El Técnico que es suspendido, no podrá presentar ningún trámite ante la Dirección Nacional de Bomberos, por el término de la suspensión y deberá retirar su patrocinio en todas las gestiones que tenga ante la Dirección Nacional de Bomberos en un plazo de veinte días."
+    }
+   ]
+  },
+  {
+   "id": "que correspondan|por|la contravención a sus disposiciones",
+   "subject": "que correspondan",
+   "verb": "por",
+   "object": "la contravención a sus disposiciones",
+   "witnesses": [
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-legislation/uy/UY-ley-15896.md#1921-2369",
+     "ref": "06-government-legal/world-legislation/uy/UY-ley-15896.md",
+     "text": "El Poder Ejecutivo dictará los reglamentos de policía de fuego, estableciendo las medidas y dispositivos de prevención de carácter permanente o circunstancial y los casos de su aplicación, así como las multas que correspondan por la contravención a sus disposiciones, las que se graduarán de acuerdo a su gravedad, entre un mínimo equivalente a 10 UR (diez unidades reajustables) y un máximo equivalente a 200 UR (doscientas unidades reajustables)."
     }
    ]
   },
@@ -2333,7 +998,7 @@
    "verb": "ante",
    "object": "la Dirección Nacional de Bomberos",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2349,7 +1014,7 @@
    "verb": "en",
    "object": "todo el territorio nacional",
    "witnesses": [
-    "06-government-legal/world-legislation/uy/UY-ley-15896.md@b2de25493ccfe8e8"
+    "06-government-legal/world-legislation/uy/UY-ley-15896.md@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2361,7 +1026,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:11:50.942Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:44:02.844Z"
  }
 }

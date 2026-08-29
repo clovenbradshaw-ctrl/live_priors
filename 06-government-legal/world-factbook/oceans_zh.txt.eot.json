@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 11413,
   "bodyOffset": 0,
   "bodyChars": 11413,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,21 +55,33 @@
   "referentEvents": 23,
   "distinctReferents": 20,
   "examined": true,
-  "edgesFound": 56,
-  "extractionError": null
+  "edgesFound": 14,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 10,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 25
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 14,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 61,
-  "excerptOk": 61,
-  "rawChecked": 61,
-  "rawOk": 61,
+  "excerptChecked": 16,
+  "excerptOk": 16,
+  "rawChecked": 16,
+  "rawOk": 16,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 56,
-  "heard": 56,
+  "offered": 14,
+  "heard": 14,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -60,7 +90,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "the atlantic|ocean|is the second largest of the world's five ocean basins (after the pacific ocean",
+    "task_id": "atlantic ocean|is|the second largest of the world's five ocean basins (after the pacific ocean",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -69,12 +99,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "The Atlantic ocean is the second largest of the world's five ocean basins (after the Pacific Ocean",
-    "subject": "The Atlantic",
-    "verb": "ocean",
-    "object": "is the second largest of the world's five ocean basins (after the Pacific Ocean",
+    "description": "Atlantic Ocean is the second largest of the world's five ocean basins (after the Pacific Ocean",
+    "subject": "Atlantic Ocean",
+    "verb": "is",
+    "object": "the second largest of the world's five ocean basins (after the Pacific Ocean",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -84,40 +114,6 @@
      }
     ],
     "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "strait|of|gibraltar (morocco-spain)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Strait of Gibraltar (Morocco-Spain)",
-    "subject": "Strait",
-    "verb": "of",
-    "object": "Gibraltar (Morocco-Spain)",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#313-504",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "The Kiel Canal (Germany), Oresund (Denmark-Sweden), Bosporus (Turkey), Strait of Gibraltar (Morocco-Spain), and the Saint Lawrence Seaway (Canada-US) are important strategic access waterways."
-     },
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-     }
-    ],
-    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -137,7 +133,7 @@
     "verb": "are",
     "object": "important strategic access waterways",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -146,13 +142,47 @@
       "text": "The Kiel Canal (Germany), Oresund (Denmark-Sweden), Bosporus (Turkey), Strait of Gibraltar (Morocco-Spain), and the Saint Lawrence Seaway (Canada-US) are important strategic access waterways."
      }
     ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "atlantic ocean|is|often divided at the equator and designated as the north atlantic ocean and the south atlantic ocean",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Atlantic Ocean is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean",
+    "subject": "Atlantic Ocean",
+    "verb": "is",
+    "object": "often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean",
+    "witnesses": [
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/world-factbook/oceans_zh.txt#723-895",
+      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
+      "text": "For convenience and because of its immense size, the Atlantic Ocean is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean."
+     },
+     {
+      "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
+      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
+      "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
+     }
+    ],
     "seq": 2,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "hydrographic organization|in|the spring of 2000 to delimit a fifth world ocean basin",
+    "task_id": "december but|are|most frequent from august to november",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -161,360 +191,26 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Hydrographic Organization in the spring of 2000 to delimit a fifth world ocean basin",
-    "subject": "Hydrographic Organization",
-    "verb": "in",
-    "object": "the spring of 2000 to delimit a fifth world ocean basin",
+    "description": "December but are most frequent from August to November",
+    "subject": "December but",
+    "verb": "are",
+    "object": "most frequent from August to November",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#505-722",
+      "at": "06-government-legal/world-factbook/oceans_zh.txt#1562-1786",
       "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "The decision by the International Hydrographic Organization in the spring of 2000 to delimit a fifth world ocean basin, the Southern Ocean, removed the portion of the Atlantic Ocean south of 60 degrees south latitude."
+      "text": "### Climate tropical cyclones (hurricanes) develop off the coast of Africa near Cabo Verde and move westward into the Caribbean Sea; hurricanes can occur from May to December but are most frequent from August to November"
+     },
+     {
+      "at": "06-government-legal/world-factbook/oceans_zh.txt#7383-7607",
+      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
+      "text": "### Climate tropical cyclones (hurricanes) develop off the coast of Africa near Cabo Verde and move westward into the Caribbean Sea; hurricanes can occur from May to December but are most frequent from August to November"
      }
     ],
     "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the portion|of|the atlantic ocean south of 60 degrees south latitude",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the portion of the Atlantic Ocean south of 60 degrees south latitude",
-    "subject": "the portion",
-    "verb": "of",
-    "object": "the Atlantic Ocean south of 60 degrees south latitude",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#505-722",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "The decision by the International Hydrographic Organization in the spring of 2000 to delimit a fifth world ocean basin, the Southern Ocean, removed the portion of the Atlantic Ocean south of 60 degrees south latitude."
-     }
-    ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "for convenience|and|because of its immense size",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "For convenience and because of its immense size",
-    "subject": "For convenience",
-    "verb": "and",
-    "object": "because of its immense size",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#723-895",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "For convenience and because of its immense size, the Atlantic Ocean is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the atlantic|ocean|is often divided at the equator and designated as the north atlantic ocean and the south atlantic ocean",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Atlantic ocean is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean",
-    "subject": "the Atlantic",
-    "verb": "ocean",
-    "object": "is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#723-895",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "For convenience and because of its immense size, the Atlantic Ocean is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean."
-     },
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "location\n    body|of|water between africa",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Location\n    body of water between Africa",
-    "subject": "Location\n    body",
-    "verb": "of",
-    "object": "water between Africa",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#911-1020",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Location body of water between Africa, Europe, the Arctic Ocean, the Americas, and the Southern Ocean"
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "map|references|map of the world oceans",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Map references Map of the world oceans",
-    "subject": "Map",
-    "verb": "references",
-    "object": "Map of the world oceans",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1070-1116",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Map references Map of the world oceans"
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "part|of|the drake passage",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "part of the Drake Passage",
-    "subject": "part",
-    "verb": "of",
-    "object": "the Drake Passage",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1118-1467",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Area total : 85.133 million sq km note: <strong>note:</strong> includes Baffin Bay, Baltic Sea, Black Sea, Caribbean Sea, Davis Strait, Denmark Strait, part of the Drake Passage, Hudson Bay, Hudson Strait, Gulf of America, Labrador Sea, Mediterranean Sea, North Sea, almost all of the Scotia Sea, and other tributary water bodies"
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "gulf|of|america",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Gulf of America",
-    "subject": "Gulf",
-    "verb": "of",
-    "object": "America",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1118-1467",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Area total : 85.133 million sq km note: <strong>note:</strong> includes Baffin Bay, Baltic Sea, Black Sea, Caribbean Sea, Davis Strait, Denmark Strait, part of the Drake Passage, Hudson Bay, Hudson Strait, Gulf of America, Labrador Sea, Mediterranean Sea, North Sea, almost all of the Scotia Sea, and other tributary water bodies"
-     },
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6828-7381",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Environmental issues endangered marine species; fishery issues (over-fishing, unregulated bottom trawling, drift-net fishing, discards, catch of non-target species); pollution (maritime transport, discharges, offshore drilling, oil spills, improperly disposed waste); municipal sludge pollution off eastern US, southern Brazil, and eastern Argentina; oil pollution in Caribbean Sea, Gulf of America, Lake Maracaibo, Mediterranean Sea, and North Sea; industrial waste and municipal sewage pollution in Baltic Sea, North Sea, and Mediterranean Sea"
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "almost all|of|the scotia sea",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "almost all of the Scotia Sea",
-    "subject": "almost all",
-    "verb": "of",
-    "object": "the Scotia Sea",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1118-1467",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Area total : 85.133 million sq km note: <strong>note:</strong> includes Baffin Bay, Baltic Sea, Black Sea, Caribbean Sea, Davis Strait, Denmark Strait, part of the Drake Passage, Hudson Bay, Hudson Strait, Gulf of America, Labrador Sea, Mediterranean Sea, North Sea, almost all of the Scotia Sea, and other tributary water bodies"
-     }
-    ],
-    "seq": 11,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the size|of|the us",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the size of the US",
-    "subject": "the size",
-    "verb": "of",
-    "object": "the US",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1469-1530",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Area - comparative about 7.5 times the size of the US"
-     }
-    ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the coast|of|africa near cabo verde and move westward into the caribbean sea",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the coast of Africa near Cabo Verde and move westward into the Caribbean Sea",
-    "subject": "the coast",
-    "verb": "of",
-    "object": "Africa near Cabo Verde and move westward into the Caribbean Sea",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1562-1786",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Climate tropical cyclones (hurricanes) develop off the coast of Africa near Cabo Verde and move westward into the Caribbean Sea; hurricanes can occur from May to December but are most frequent from August to November"
-     },
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#7383-7607",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Climate tropical cyclones (hurricanes) develop off the coast of Africa near Cabo Verde and move westward into the Caribbean Sea; hurricanes can occur from May to December but are most frequent from August to November"
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "can occur|from|may to december but are most frequent from august to november",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "can occur from May to December but are most frequent from August to November",
-    "subject": "can occur",
-    "verb": "from",
-    "object": "May to December but are most frequent from August to November",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1562-1786",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Climate tropical cyclones (hurricanes) develop off the coast of Africa near Cabo Verde and move westward into the Caribbean Sea; hurricanes can occur from May to December but are most frequent from August to November"
-     },
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#7383-7607",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Climate tropical cyclones (hurricanes) develop off the coast of Africa near Cabo Verde and move westward into the Caribbean Sea; hurricanes can occur from May to December but are most frequent from August to November"
-     }
-    ],
-    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -534,7 +230,7 @@
     "verb": "consists",
     "object": "of the northward flowing",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -543,13 +239,13 @@
       "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
      }
     ],
-    "seq": 15,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "gulf stream|in|the west",
+    "task_id": "atlantic gyre|composed|of the southward flowing warm brazil current in the west",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -558,12 +254,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Gulf Stream in the west",
-    "subject": "Gulf Stream",
-    "verb": "in",
-    "object": "the west",
+    "description": "Atlantic Gyre composed of the southward flowing warm Brazil Current in the west",
+    "subject": "Atlantic Gyre",
+    "verb": "composed",
+    "object": "of the southward flowing warm Brazil Current in the west",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -572,13 +268,13 @@
       "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
      }
     ],
-    "seq": 16,
+    "seq": 5,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "atlantic current|in|the north",
+    "task_id": "atlantic ocean|provide|for wide continental shelves in north america",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -587,215 +283,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Atlantic Current in the north",
-    "subject": "Atlantic Current",
-    "verb": "in",
-    "object": "the north",
+    "description": "Atlantic Ocean provide for wide continental shelves in North America",
+    "subject": "Atlantic Ocean",
+    "verb": "provide",
+    "object": "for wide continental shelves in North America",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-     }
-    ],
-    "seq": 17,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "canary current|in|the east",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Canary Current in the east",
-    "subject": "Canary Current",
-    "verb": "in",
-    "object": "the east",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-     }
-    ],
-    "seq": 18,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "equatorial current|in|the south",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Equatorial Current in the south",
-    "subject": "Equatorial Current",
-    "verb": "in",
-    "object": "the south",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-     }
-    ],
-    "seq": 19,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the counterclockwise|south|atlantic gyre composed of the southward flowing warm brazil current in the west",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the counterclockwise south Atlantic Gyre composed of the southward flowing warm Brazil Current in the west",
-    "subject": "the counterclockwise",
-    "verb": "south",
-    "object": "Atlantic Gyre composed of the southward flowing warm Brazil Current in the west",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-     }
-    ],
-    "seq": 20,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "eastward flowing|south|atlantic current in the south",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "eastward flowing south Atlantic Current in the south",
-    "subject": "eastward flowing",
-    "verb": "south",
-    "object": "Atlantic Current in the south",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-     }
-    ],
-    "seq": 21,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "benguela current|in|the east",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Benguela Current in the east",
-    "subject": "Benguela Current",
-    "verb": "in",
-    "object": "the east",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-     }
-    ],
-    "seq": 22,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "westward flowing|south|equatorial current in the north",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "westward flowing south Equatorial Current in the north",
-    "subject": "westward flowing",
-    "verb": "south",
-    "object": "Equatorial Current in the north",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-     }
-    ],
-    "seq": 23,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "passive margins|of|the atlantic ocean provide for wide continental shelves in north america",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "passive margins of the Atlantic Ocean provide for wide continental shelves in North America",
-    "subject": "passive margins",
-    "verb": "of",
-    "object": "the Atlantic Ocean provide for wide continental shelves in North America",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -804,7 +297,7 @@
       "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
      }
     ],
-    "seq": 24,
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -824,7 +317,7 @@
     "verb": "displaces",
     "object": "the mid-ocean ridge 350 km to the west",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -833,13 +326,13 @@
       "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
      }
     ],
-    "seq": 25,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "atlantic ridge|from|the reykjanes ridge",
+    "task_id": "km and|is|considered the dividing line between the north and south atlantic oceans <br><br>the following are examples of mid-ocean ridges on the floor of the atlantic ocean:<br><br>east mediterranean ridge (figure 4)<br>mid-atlantic ridge (figures 2",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -848,12 +341,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Atlantic Ridge from the Reykjanes Ridge",
-    "subject": "Atlantic Ridge",
-    "verb": "from",
-    "object": "the Reykjanes Ridge",
+    "description": "km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2",
+    "subject": "km and",
+    "verb": "is",
+    "object": "considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -862,65 +355,7 @@
       "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
      }
     ],
-    "seq": 26,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "located|near|the equator",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "located near the equator",
-    "subject": "located",
-    "verb": "near",
-    "object": "the equator",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
-     }
-    ],
-    "seq": 27,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "900 km|and|is considered the dividing line between the north and south atlantic oceans <br><br>the following are examples of mid-ocean ridges on the floor of the atlantic ocean:<br><br>east mediterranean ridge (figure 4)<br>mid-atlantic ridge (figures 2",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2",
-    "subject": "900 km",
-    "verb": "and",
-    "object": "is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
-     }
-    ],
-    "seq": 28,
+    "seq": 8,
     "depends_on": [],
     "evidence": []
    },
@@ -940,7 +375,7 @@
     "verb": "is",
     "object": "the only atoll in the South Atlantic",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -949,65 +384,7 @@
       "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
      }
     ],
-    "seq": 29,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the ocean|is|divided into three zones based on depth and light level",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the ocean is divided into three zones based on depth and light level",
-    "subject": "the ocean",
-    "verb": "is",
-    "object": "divided into three zones based on depth and light level",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-     }
-    ],
-    "seq": 30,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "000 m|into|the oceans under the right conditions",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "000 m into the oceans under the right conditions",
-    "subject": "000 m",
-    "verb": "into",
-    "object": "the oceans under the right conditions",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-     }
-    ],
-    "seq": 31,
+    "seq": 9,
     "depends_on": [],
     "evidence": []
    },
@@ -1027,7 +404,7 @@
     "verb": "is",
     "object": "rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1036,65 +413,7 @@
       "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
      }
     ],
-    "seq": 32,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "small amount|of|light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1",
-    "subject": "small amount",
-    "verb": "of",
-    "object": "light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-     }
-    ],
-    "seq": 33,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the intensity|of|light rapidly dissipates as depth increases",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the intensity of light rapidly dissipates as depth increases",
-    "subject": "the intensity",
-    "verb": "of",
-    "object": "light rapidly dissipates as depth increases",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-     }
-    ],
-    "seq": 34,
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -1114,7 +433,7 @@
     "verb": "is",
     "object": "no longer possible<br><br><em>aphotic zone</em>: below 1",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1123,13 +442,13 @@
       "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
      }
     ],
-    "seq": 35,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "000 m|and|also called the midnight zone",
+    "task_id": "ocean fisheries|are|the second most important in the world accounting for 25",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1138,476 +457,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "000 m and also called the midnight zone",
-    "subject": "000 m",
-    "verb": "and",
-    "object": "also called the midnight zone",
+    "description": "Ocean fisheries are the second most important in the world accounting for 25",
+    "subject": "Ocean fisheries",
+    "verb": "are",
+    "object": "the second most important in the world accounting for 25",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-     }
-    ],
-    "seq": 36,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "not penetrate|to|these depths",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "not penetrate to these depths",
-    "subject": "not penetrate",
-    "verb": "to",
-    "object": "these depths",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-     }
-    ],
-    "seq": 37,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "resources\n    oil|and|gas fields",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "resources\n    oil and gas fields",
-    "subject": "resources\n    oil",
-    "verb": "and",
-    "object": "gas fields",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5910-6079",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Natural resources oil and gas fields, fish, marine mammals (seals and whales), sand and gravel aggregates, placer deposits, polymetallic nodules, precious stones"
-     }
-    ],
-    "seq": 38,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "seals|and|whales)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "seals and whales)",
-    "subject": "seals",
-    "verb": "and",
-    "object": "whales)",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5910-6079",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Natural resources oil and gas fields, fish, marine mammals (seals and whales), sand and gravel aggregates, placer deposits, polymetallic nodules, precious stones"
-     }
-    ],
-    "seq": 39,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "sand|and|gravel aggregates",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "sand and gravel aggregates",
-    "subject": "sand",
-    "verb": "and",
-    "object": "gravel aggregates",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#5910-6079",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Natural resources oil and gas fields, fish, marine mammals (seals and whales), sand and gravel aggregates, placer deposits, polymetallic nodules, precious stones"
-     }
-    ],
-    "seq": 40,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "icebergs common|in|davis strait",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "icebergs common in Davis Strait",
-    "subject": "icebergs common",
-    "verb": "in",
-    "object": "Davis Strait",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-     }
-    ],
-    "seq": 41,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "northwestern atlantic|ocean|from february to august and have been spotted as far south as bermuda and the madeira islands",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "northwestern Atlantic ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands",
-    "subject": "northwestern Atlantic",
-    "verb": "ocean",
-    "object": "from February to August and have been spotted as far south as Bermuda and the Madeira Islands",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-     }
-    ],
-    "seq": 42,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "ships subject|to|superstructure icing in extreme northern atlantic from october to may",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "ships subject to superstructure icing in extreme northern Atlantic from October to May",
-    "subject": "ships subject",
-    "verb": "to",
-    "object": "superstructure icing in extreme northern Atlantic from October to May",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-     }
-    ],
-    "seq": 43,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "maritime hazard|from|may to september",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "maritime hazard from May to September",
-    "subject": "maritime hazard",
-    "verb": "from",
-    "object": "May to September",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-     }
-    ],
-    "seq": 44,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "may|to|december)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "May to December)",
-    "subject": "May",
-    "verb": "to",
-    "object": "December)",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-     }
-    ],
-    "seq": 45,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "access|to|the panama and suez canals",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "access to the Panama and Suez Canals",
-    "subject": "access",
-    "verb": "to",
-    "object": "the Panama and Suez Canals",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-     }
-    ],
-    "seq": 46,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the strait|of|dover",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Strait of Dover",
-    "subject": "the Strait",
-    "verb": "of",
-    "object": "Dover",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-     }
-    ],
-    "seq": 47,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "straits|of|florida",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Straits of Florida",
-    "subject": "Straits",
-    "verb": "of",
-    "object": "Florida",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-     }
-    ],
-    "seq": 48,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "catch|of|non-target species)",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "catch of non-target species)",
-    "subject": "catch",
-    "verb": "of",
-    "object": "non-target species)",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6828-7381",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Environmental issues endangered marine species; fishery issues (over-fishing, unregulated bottom trawling, drift-net fishing, discards, catch of non-target species); pollution (maritime transport, discharges, offshore drilling, oil spills, improperly disposed waste); municipal sludge pollution off eastern US, southern Brazil, and eastern Argentina; oil pollution in Caribbean Sea, Gulf of America, Lake Maracaibo, Mediterranean Sea, and North Sea; industrial waste and municipal sewage pollution in Baltic Sea, North Sea, and Mediterranean Sea"
-     }
-    ],
-    "seq": 49,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "oil pollution|in|caribbean sea",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "oil pollution in Caribbean Sea",
-    "subject": "oil pollution",
-    "verb": "in",
-    "object": "Caribbean Sea",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6828-7381",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Environmental issues endangered marine species; fishery issues (over-fishing, unregulated bottom trawling, drift-net fishing, discards, catch of non-target species); pollution (maritime transport, discharges, offshore drilling, oil spills, improperly disposed waste); municipal sludge pollution off eastern US, southern Brazil, and eastern Argentina; oil pollution in Caribbean Sea, Gulf of America, Lake Maracaibo, Mediterranean Sea, and North Sea; industrial waste and municipal sewage pollution in Baltic Sea, North Sea, and Mediterranean Sea"
-     }
-    ],
-    "seq": 50,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "industrial waste|and|municipal sewage pollution in baltic sea",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "industrial waste and municipal sewage pollution in Baltic Sea",
-    "subject": "industrial waste",
-    "verb": "and",
-    "object": "municipal sewage pollution in Baltic Sea",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#6828-7381",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Environmental issues endangered marine species; fishery issues (over-fishing, unregulated bottom trawling, drift-net fishing, discards, catch of non-target species); pollution (maritime transport, discharges, offshore drilling, oil spills, improperly disposed waste); municipal sludge pollution off eastern US, southern Brazil, and eastern Argentina; oil pollution in Caribbean Sea, Gulf of America, Lake Maracaibo, Mediterranean Sea, and North Sea; industrial waste and municipal sewage pollution in Baltic Sea, North Sea, and Mediterranean Sea"
-     }
-    ],
-    "seq": 51,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "marine|fisheries|<p>the atlantic ocean fisheries are the second most important in the world accounting for 25",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25",
-    "subject": "Marine",
-    "verb": "fisheries",
-    "object": "<p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1616,65 +471,7 @@
       "text": "### Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25.8%, or 20,300,000 mt, of the global catch in 2020; of the seven regions delineated by the Food and Agriculture Organization in the Atlantic basin, the most important include the following:</p> <p><em>Northeast Atlantic</em> region (Region 27) is the fourth most important i"
      }
     ],
-    "seq": 52,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "global catch|in|2020",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "global catch in 2020",
-    "subject": "global catch",
-    "verb": "in",
-    "object": "2020",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#7609-8000",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25.8%, or 20,300,000 mt, of the global catch in 2020; of the seven regions delineated by the Food and Agriculture Organization in the Atlantic basin, the most important include the following:</p> <p><em>Northeast Atlantic</em> region (Region 27) is the fourth most important i"
-     }
-    ],
-    "seq": 53,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the food|and|agriculture organization in the atlantic basin",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the Food and Agriculture Organization in the Atlantic basin",
-    "subject": "the Food",
-    "verb": "and",
-    "object": "Agriculture Organization in the Atlantic basin",
-    "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "06-government-legal/world-factbook/oceans_zh.txt#7609-8000",
-      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-      "text": "### Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25.8%, or 20,300,000 mt, of the global catch in 2020; of the seven regions delineated by the Food and Agriculture Organization in the Atlantic basin, the most important include the following:</p> <p><em>Northeast Atlantic</em> region (Region 27) is the fourth most important i"
-     }
-    ],
-    "seq": 54,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -1694,7 +491,7 @@
     "verb": "is",
     "object": "the fourth most important i",
     "witnesses": [
-     "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+     "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -1703,12 +500,12 @@
       "text": "### Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25.8%, or 20,300,000 mt, of the global catch in 2020; of the seven regions delineated by the Food and Agriculture Organization in the Atlantic basin, the most important include the following:</p> <p><em>Northeast Atlantic</em> region (Region 27) is the fourth most important i"
      }
     ],
-    "seq": 55,
+    "seq": 13,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 56,
+  "nextSeq": 14,
   "admits": [
    "NUL",
    "SEG",
@@ -1723,92 +520,12 @@
  },
  "folded": [
   {
-   "id": "000 m|and|also called the midnight zone",
-   "subject": "000 m",
-   "verb": "and",
-   "object": "also called the midnight zone",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-    }
-   ]
-  },
-  {
-   "id": "000 m|into|the oceans under the right conditions",
-   "subject": "000 m",
-   "verb": "into",
-   "object": "the oceans under the right conditions",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-    }
-   ]
-  },
-  {
-   "id": "900 km|and|is considered the dividing line between the north and south atlantic oceans <br><br>the following are examples of mid-ocean ridges on the floor of the atlantic ocean:<br><br>east mediterranean ridge (figure 4)<br>mid-atlantic ridge (figures 2",
-   "subject": "900 km",
-   "verb": "and",
-   "object": "is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
-    }
-   ]
-  },
-  {
-   "id": "access|to|the panama and suez canals",
-   "subject": "access",
-   "verb": "to",
-   "object": "the Panama and Suez Canals",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-    }
-   ]
-  },
-  {
-   "id": "almost all|of|the scotia sea",
-   "subject": "almost all",
-   "verb": "of",
-   "object": "the Scotia Sea",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1118-1467",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Area total : 85.133 million sq km note: <strong>note:</strong> includes Baffin Bay, Baltic Sea, Black Sea, Caribbean Sea, Davis Strait, Denmark Strait, part of the Drake Passage, Hudson Bay, Hudson Strait, Gulf of America, Labrador Sea, Mediterranean Sea, North Sea, almost all of the Scotia Sea, and other tributary water bodies"
-    }
-   ]
-  },
-  {
    "id": "and photosynthesis|is|no longer possible<br><br><em>aphotic zone</em>: below 1",
    "subject": "and photosynthesis",
    "verb": "is",
    "object": "no longer possible<br><br><em>aphotic zone</em>: below 1",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1819,12 +536,12 @@
    ]
   },
   {
-   "id": "atlantic current|in|the north",
-   "subject": "Atlantic Current",
-   "verb": "in",
-   "object": "the north",
+   "id": "atlantic gyre|composed|of the southward flowing warm brazil current in the west",
+   "subject": "Atlantic Gyre",
+   "verb": "composed",
+   "object": "of the southward flowing warm Brazil Current in the west",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1840,7 +557,7 @@
    "verb": "consists",
    "object": "of the northward flowing",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -1851,619 +568,12 @@
    ]
   },
   {
-   "id": "atlantic ridge|from|the reykjanes ridge",
-   "subject": "Atlantic Ridge",
-   "verb": "from",
-   "object": "the Reykjanes Ridge",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
-    }
-   ]
-  },
-  {
-   "id": "benguela current|in|the east",
-   "subject": "Benguela Current",
-   "verb": "in",
-   "object": "the east",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-    }
-   ]
-  },
-  {
-   "id": "but there|is|rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone",
-   "subject": "but there",
+   "id": "atlantic ocean|is|often divided at the equator and designated as the north atlantic ocean and the south atlantic ocean",
+   "subject": "Atlantic Ocean",
    "verb": "is",
-   "object": "rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone",
+   "object": "often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-    }
-   ]
-  },
-  {
-   "id": "can occur|from|may to december but are most frequent from august to november",
-   "subject": "can occur",
-   "verb": "from",
-   "object": "May to December but are most frequent from August to November",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1562-1786",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Climate tropical cyclones (hurricanes) develop off the coast of Africa near Cabo Verde and move westward into the Caribbean Sea; hurricanes can occur from May to December but are most frequent from August to November"
-    },
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#7383-7607",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Climate tropical cyclones (hurricanes) develop off the coast of Africa near Cabo Verde and move westward into the Caribbean Sea; hurricanes can occur from May to December but are most frequent from August to November"
-    }
-   ]
-  },
-  {
-   "id": "canary current|in|the east",
-   "subject": "Canary Current",
-   "verb": "in",
-   "object": "the east",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-    }
-   ]
-  },
-  {
-   "id": "catch|of|non-target species)",
-   "subject": "catch",
-   "verb": "of",
-   "object": "non-target species)",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6828-7381",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Environmental issues endangered marine species; fishery issues (over-fishing, unregulated bottom trawling, drift-net fishing, discards, catch of non-target species); pollution (maritime transport, discharges, offshore drilling, oil spills, improperly disposed waste); municipal sludge pollution off eastern US, southern Brazil, and eastern Argentina; oil pollution in Caribbean Sea, Gulf of America, Lake Maracaibo, Mediterranean Sea, and North Sea; industrial waste and municipal sewage pollution in Baltic Sea, North Sea, and Mediterranean Sea"
-    }
-   ]
-  },
-  {
-   "id": "eastward flowing|south|atlantic current in the south",
-   "subject": "eastward flowing",
-   "verb": "south",
-   "object": "Atlantic Current in the south",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-    }
-   ]
-  },
-  {
-   "id": "equatorial current|in|the south",
-   "subject": "Equatorial Current",
-   "verb": "in",
-   "object": "the south",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-    }
-   ]
-  },
-  {
-   "id": "for convenience|and|because of its immense size",
-   "subject": "For convenience",
-   "verb": "and",
-   "object": "because of its immense size",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#723-895",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "For convenience and because of its immense size, the Atlantic Ocean is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean."
-    }
-   ]
-  },
-  {
-   "id": "fracture zone|displaces|the mid-ocean ridge 350 km to the west",
-   "subject": "Fracture Zone",
-   "verb": "displaces",
-   "object": "the mid-ocean ridge 350 km to the west",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
-    }
-   ]
-  },
-  {
-   "id": "global catch|in|2020",
-   "subject": "global catch",
-   "verb": "in",
-   "object": "2020",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#7609-8000",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25.8%, or 20,300,000 mt, of the global catch in 2020; of the seven regions delineated by the Food and Agriculture Organization in the Atlantic basin, the most important include the following:</p> <p><em>Northeast Atlantic</em> region (Region 27) is the fourth most important i"
-    }
-   ]
-  },
-  {
-   "id": "gulf stream|in|the west",
-   "subject": "Gulf Stream",
-   "verb": "in",
-   "object": "the west",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
-    }
-   ]
-  },
-  {
-   "id": "gulf|of|america",
-   "subject": "Gulf",
-   "verb": "of",
-   "object": "America",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1118-1467",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Area total : 85.133 million sq km note: <strong>note:</strong> includes Baffin Bay, Baltic Sea, Black Sea, Caribbean Sea, Davis Strait, Denmark Strait, part of the Drake Passage, Hudson Bay, Hudson Strait, Gulf of America, Labrador Sea, Mediterranean Sea, North Sea, almost all of the Scotia Sea, and other tributary water bodies"
-    },
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6828-7381",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Environmental issues endangered marine species; fishery issues (over-fishing, unregulated bottom trawling, drift-net fishing, discards, catch of non-target species); pollution (maritime transport, discharges, offshore drilling, oil spills, improperly disposed waste); municipal sludge pollution off eastern US, southern Brazil, and eastern Argentina; oil pollution in Caribbean Sea, Gulf of America, Lake Maracaibo, Mediterranean Sea, and North Sea; industrial waste and municipal sewage pollution in Baltic Sea, North Sea, and Mediterranean Sea"
-    }
-   ]
-  },
-  {
-   "id": "hydrographic organization|in|the spring of 2000 to delimit a fifth world ocean basin",
-   "subject": "Hydrographic Organization",
-   "verb": "in",
-   "object": "the spring of 2000 to delimit a fifth world ocean basin",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#505-722",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "The decision by the International Hydrographic Organization in the spring of 2000 to delimit a fifth world ocean basin, the Southern Ocean, removed the portion of the Atlantic Ocean south of 60 degrees south latitude."
-    }
-   ]
-  },
-  {
-   "id": "icebergs common|in|davis strait",
-   "subject": "icebergs common",
-   "verb": "in",
-   "object": "Davis Strait",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-    }
-   ]
-  },
-  {
-   "id": "industrial waste|and|municipal sewage pollution in baltic sea",
-   "subject": "industrial waste",
-   "verb": "and",
-   "object": "municipal sewage pollution in Baltic Sea",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6828-7381",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Environmental issues endangered marine species; fishery issues (over-fishing, unregulated bottom trawling, drift-net fishing, discards, catch of non-target species); pollution (maritime transport, discharges, offshore drilling, oil spills, improperly disposed waste); municipal sludge pollution off eastern US, southern Brazil, and eastern Argentina; oil pollution in Caribbean Sea, Gulf of America, Lake Maracaibo, Mediterranean Sea, and North Sea; industrial waste and municipal sewage pollution in Baltic Sea, North Sea, and Mediterranean Sea"
-    }
-   ]
-  },
-  {
-   "id": "lawrence seaway|are|important strategic access waterways",
-   "subject": "Lawrence Seaway",
-   "verb": "are",
-   "object": "important strategic access waterways",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#313-504",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "The Kiel Canal (Germany), Oresund (Denmark-Sweden), Bosporus (Turkey), Strait of Gibraltar (Morocco-Spain), and the Saint Lawrence Seaway (Canada-US) are important strategic access waterways."
-    }
-   ]
-  },
-  {
-   "id": "located|near|the equator",
-   "subject": "located",
-   "verb": "near",
-   "object": "the equator",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
-    }
-   ]
-  },
-  {
-   "id": "location\n    body|of|water between africa",
-   "subject": "Location\n    body",
-   "verb": "of",
-   "object": "water between Africa",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#911-1020",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Location body of water between Africa, Europe, the Arctic Ocean, the Americas, and the Southern Ocean"
-    }
-   ]
-  },
-  {
-   "id": "map|references|map of the world oceans",
-   "subject": "Map",
-   "verb": "references",
-   "object": "Map of the world oceans",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1070-1116",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Map references Map of the world oceans"
-    }
-   ]
-  },
-  {
-   "id": "marine|fisheries|<p>the atlantic ocean fisheries are the second most important in the world accounting for 25",
-   "subject": "Marine",
-   "verb": "fisheries",
-   "object": "<p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#7609-8000",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25.8%, or 20,300,000 mt, of the global catch in 2020; of the seven regions delineated by the Food and Agriculture Organization in the Atlantic basin, the most important include the following:</p> <p><em>Northeast Atlantic</em> region (Region 27) is the fourth most important i"
-    }
-   ]
-  },
-  {
-   "id": "maritime hazard|from|may to september",
-   "subject": "maritime hazard",
-   "verb": "from",
-   "object": "May to September",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-    }
-   ]
-  },
-  {
-   "id": "may|to|december)",
-   "subject": "May",
-   "verb": "to",
-   "object": "December)",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-    }
-   ]
-  },
-  {
-   "id": "northwestern atlantic|ocean|from february to august and have been spotted as far south as bermuda and the madeira islands",
-   "subject": "northwestern Atlantic",
-   "verb": "ocean",
-   "object": "from February to August and have been spotted as far south as Bermuda and the Madeira Islands",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-    }
-   ]
-  },
-  {
-   "id": "not penetrate|to|these depths",
-   "subject": "not penetrate",
-   "verb": "to",
-   "object": "these depths",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-    }
-   ]
-  },
-  {
-   "id": "oil pollution|in|caribbean sea",
-   "subject": "oil pollution",
-   "verb": "in",
-   "object": "Caribbean Sea",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6828-7381",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Environmental issues endangered marine species; fishery issues (over-fishing, unregulated bottom trawling, drift-net fishing, discards, catch of non-target species); pollution (maritime transport, discharges, offshore drilling, oil spills, improperly disposed waste); municipal sludge pollution off eastern US, southern Brazil, and eastern Argentina; oil pollution in Caribbean Sea, Gulf of America, Lake Maracaibo, Mediterranean Sea, and North Sea; industrial waste and municipal sewage pollution in Baltic Sea, North Sea, and Mediterranean Sea"
-    }
-   ]
-  },
-  {
-   "id": "part|of|the drake passage",
-   "subject": "part",
-   "verb": "of",
-   "object": "the Drake Passage",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1118-1467",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Area total : 85.133 million sq km note: <strong>note:</strong> includes Baffin Bay, Baltic Sea, Black Sea, Caribbean Sea, Davis Strait, Denmark Strait, part of the Drake Passage, Hudson Bay, Hudson Strait, Gulf of America, Labrador Sea, Mediterranean Sea, North Sea, almost all of the Scotia Sea, and other tributary water bodies"
-    }
-   ]
-  },
-  {
-   "id": "passive margins|of|the atlantic ocean provide for wide continental shelves in north america",
-   "subject": "passive margins",
-   "verb": "of",
-   "object": "the Atlantic Ocean provide for wide continental shelves in North America",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
-    }
-   ]
-  },
-  {
-   "id": "region|is|the fourth most important i",
-   "subject": "region",
-   "verb": "is",
-   "object": "the fourth most important i",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#7609-8000",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25.8%, or 20,300,000 mt, of the global catch in 2020; of the seven regions delineated by the Food and Agriculture Organization in the Atlantic basin, the most important include the following:</p> <p><em>Northeast Atlantic</em> region (Region 27) is the fourth most important i"
-    }
-   ]
-  },
-  {
-   "id": "resources\n    oil|and|gas fields",
-   "subject": "resources\n    oil",
-   "verb": "and",
-   "object": "gas fields",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5910-6079",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Natural resources oil and gas fields, fish, marine mammals (seals and whales), sand and gravel aggregates, placer deposits, polymetallic nodules, precious stones"
-    }
-   ]
-  },
-  {
-   "id": "rocas atoll|is|the only atoll in the south atlantic",
-   "subject": "Rocas Atoll",
-   "verb": "is",
-   "object": "the only atoll in the South Atlantic",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
-    }
-   ]
-  },
-  {
-   "id": "sand|and|gravel aggregates",
-   "subject": "sand",
-   "verb": "and",
-   "object": "gravel aggregates",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5910-6079",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Natural resources oil and gas fields, fish, marine mammals (seals and whales), sand and gravel aggregates, placer deposits, polymetallic nodules, precious stones"
-    }
-   ]
-  },
-  {
-   "id": "seals|and|whales)",
-   "subject": "seals",
-   "verb": "and",
-   "object": "whales)",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5910-6079",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Natural resources oil and gas fields, fish, marine mammals (seals and whales), sand and gravel aggregates, placer deposits, polymetallic nodules, precious stones"
-    }
-   ]
-  },
-  {
-   "id": "ships subject|to|superstructure icing in extreme northern atlantic from october to may",
-   "subject": "ships subject",
-   "verb": "to",
-   "object": "superstructure icing in extreme northern Atlantic from October to May",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6081-6464",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Natural hazards icebergs common in Davis Strait, Denmark Strait, and the northwestern Atlantic Ocean from February to August and have been spotted as far south as Bermuda and the Madeira Islands; ships subject to superstructure icing in extreme northern Atlantic from October to May; persistent fog can be a maritime hazard from May to September; hurricanes (May to December)"
-    }
-   ]
-  },
-  {
-   "id": "small amount|of|light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1",
-   "subject": "small amount",
-   "verb": "of",
-   "object": "light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-    }
-   ]
-  },
-  {
-   "id": "strait|of|gibraltar (morocco-spain)",
-   "subject": "Strait",
-   "verb": "of",
-   "object": "Gibraltar (Morocco-Spain)",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#313-504",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "The Kiel Canal (Germany), Oresund (Denmark-Sweden), Bosporus (Turkey), Strait of Gibraltar (Morocco-Spain), and the Saint Lawrence Seaway (Canada-US) are important strategic access waterways."
-    },
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-    }
-   ]
-  },
-  {
-   "id": "straits|of|florida",
-   "subject": "Straits",
-   "verb": "of",
-   "object": "Florida",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-    }
-   ]
-  },
-  {
-   "id": "the atlantic|ocean|is often divided at the equator and designated as the north atlantic ocean and the south atlantic ocean",
-   "subject": "the Atlantic",
-   "verb": "ocean",
-   "object": "is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2472,19 +582,19 @@
      "text": "For convenience and because of its immense size, the Atlantic Ocean is often divided at the Equator and designated as the North Atlantic Ocean and the South Atlantic Ocean."
     },
     {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
+     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
+     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
     }
    ]
   },
   {
-   "id": "the atlantic|ocean|is the second largest of the world's five ocean basins (after the pacific ocean",
-   "subject": "The Atlantic",
-   "verb": "ocean",
-   "object": "is the second largest of the world's five ocean basins (after the Pacific Ocean",
+   "id": "atlantic ocean|is|the second largest of the world's five ocean basins (after the pacific ocean",
+   "subject": "Atlantic Ocean",
+   "verb": "is",
+   "object": "the second largest of the world's five ocean basins (after the Pacific Ocean",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2495,12 +605,44 @@
    ]
   },
   {
-   "id": "the coast|of|africa near cabo verde and move westward into the caribbean sea",
-   "subject": "the coast",
-   "verb": "of",
-   "object": "Africa near Cabo Verde and move westward into the Caribbean Sea",
+   "id": "atlantic ocean|provide|for wide continental shelves in north america",
+   "subject": "Atlantic Ocean",
+   "verb": "provide",
+   "object": "for wide continental shelves in North America",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
+     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
+     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
+    }
+   ]
+  },
+  {
+   "id": "but there|is|rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone",
+   "subject": "but there",
+   "verb": "is",
+   "object": "rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone",
+   "witnesses": [
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
+     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
+     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
+    }
+   ]
+  },
+  {
+   "id": "december but|are|most frequent from august to november",
+   "subject": "December but",
+   "verb": "are",
+   "object": "most frequent from August to November",
+   "witnesses": [
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2516,28 +658,60 @@
    ]
   },
   {
-   "id": "the counterclockwise|south|atlantic gyre composed of the southward flowing warm brazil current in the west",
-   "subject": "the counterclockwise",
-   "verb": "south",
-   "object": "Atlantic Gyre composed of the southward flowing warm Brazil Current in the west",
+   "id": "fracture zone|displaces|the mid-ocean ridge 350 km to the west",
+   "subject": "Fracture Zone",
+   "verb": "displaces",
+   "object": "the mid-ocean ridge 350 km to the west",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
+     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
+     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
     }
    ]
   },
   {
-   "id": "the food|and|agriculture organization in the atlantic basin",
-   "subject": "the Food",
-   "verb": "and",
-   "object": "Agriculture Organization in the Atlantic basin",
+   "id": "km and|is|considered the dividing line between the north and south atlantic oceans <br><br>the following are examples of mid-ocean ridges on the floor of the atlantic ocean:<br><br>east mediterranean ridge (figure 4)<br>mid-atlantic ridge (figures 2",
+   "subject": "km and",
+   "verb": "is",
+   "object": "considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
+     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
+     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
+    }
+   ]
+  },
+  {
+   "id": "lawrence seaway|are|important strategic access waterways",
+   "subject": "Lawrence Seaway",
+   "verb": "are",
+   "object": "important strategic access waterways",
+   "witnesses": [
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/world-factbook/oceans_zh.txt#313-504",
+     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
+     "text": "The Kiel Canal (Germany), Oresund (Denmark-Sweden), Bosporus (Turkey), Strait of Gibraltar (Morocco-Spain), and the Saint Lawrence Seaway (Canada-US) are important strategic access waterways."
+    }
+   ]
+  },
+  {
+   "id": "ocean fisheries|are|the second most important in the world accounting for 25",
+   "subject": "Ocean fisheries",
+   "verb": "are",
+   "object": "the second most important in the world accounting for 25",
+   "witnesses": [
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -2548,104 +722,40 @@
    ]
   },
   {
-   "id": "the intensity|of|light rapidly dissipates as depth increases",
-   "subject": "the intensity",
-   "verb": "of",
-   "object": "light rapidly dissipates as depth increases",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
-    }
-   ]
-  },
-  {
-   "id": "the ocean|is|divided into three zones based on depth and light level",
-   "subject": "the ocean",
+   "id": "region|is|the fourth most important i",
+   "subject": "region",
    "verb": "is",
-   "object": "divided into three zones based on depth and light level",
+   "object": "the fourth most important i",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#5044-5908",
+     "at": "06-government-legal/world-factbook/oceans_zh.txt#7609-8000",
      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Elevation highest point: sea level lowest point: Puerto Rico Trench -8,605 m mean depth: -3,646 m ocean zones: the ocean is divided into three zones based on depth and light level; sunlight entering the water may travel about 1,000 m into the oceans under the right conditions, but there is rarely any significant light below 200 m<br><br><em>euphotic zone</em>: the upper 200 m (656 ft) is also called \"sunlight\" zone; only a small amount of light penetrates beyond this depth<br><br><em>dysphotic zone</em>: between 200 m (656 ft) and 1,000 m (3,280 ft), and also called the twilight zone; the intensity of light rapidly dissipates as depth increases, and photosynthesis is no longer possible<br><br><em>aphotic zone</em>: below 1,000 m (3,280 ft) and also called the midnight zone; sunlight does not penetrate to these depths"
+     "text": "### Marine fisheries <p>the Atlantic Ocean fisheries are the second most important in the world accounting for 25.8%, or 20,300,000 mt, of the global catch in 2020; of the seven regions delineated by the Food and Agriculture Organization in the Atlantic basin, the most important include the following:</p> <p><em>Northeast Atlantic</em> region (Region 27) is the fourth most important i"
     }
    ]
   },
   {
-   "id": "the portion|of|the atlantic ocean south of 60 degrees south latitude",
-   "subject": "the portion",
-   "verb": "of",
-   "object": "the Atlantic Ocean south of 60 degrees south latitude",
+   "id": "rocas atoll|is|the only atoll in the south atlantic",
+   "subject": "Rocas Atoll",
+   "verb": "is",
+   "object": "the only atoll in the South Atlantic",
    "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
+    "06-government-legal/world-factbook/oceans_zh.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#505-722",
+     "at": "06-government-legal/world-factbook/oceans_zh.txt#2485-5042",
      "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "The decision by the International Hydrographic Organization in the spring of 2000 to delimit a fifth world ocean basin, the Southern Ocean, removed the portion of the Atlantic Ocean south of 60 degrees south latitude."
-    }
-   ]
-  },
-  {
-   "id": "the size|of|the us",
-   "subject": "the size",
-   "verb": "of",
-   "object": "the US",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1469-1530",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Area - comparative about 7.5 times the size of the US"
-    }
-   ]
-  },
-  {
-   "id": "the strait|of|dover",
-   "subject": "the Strait",
-   "verb": "of",
-   "object": "Dover",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#6466-6810",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Geography - note major chokepoints include the Dardanelles, Strait of Gibraltar, access to the Panama and Suez Canals; strategic straits include the Strait of Dover, Straits of Florida, Mona Passage, The Sound (Oresund), and Windward Passage; the equator divides the Atlantic Ocean into the North Atlantic Ocean and South Atlantic Ocean"
-    }
-   ]
-  },
-  {
-   "id": "westward flowing|south|equatorial current in the north",
-   "subject": "westward flowing",
-   "verb": "south",
-   "object": "Equatorial Current in the north",
-   "witnesses": [
-    "06-government-legal/world-factbook/oceans_zh.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "06-government-legal/world-factbook/oceans_zh.txt#1897-2483",
-     "ref": "06-government-legal/world-factbook/oceans_zh.txt",
-     "text": "### Major ocean currents clockwise North Atlantic Gyre consists of the northward flowing, warm Gulf Stream in the west, the eastward flowing North Atlantic Current in the north, the southward flowing cold Canary Current in the east, and the westward flowing North Equatorial Current in the south; the counterclockwise South Atlantic Gyre composed of the southward flowing warm Brazil Current in the west, the eastward flowing South Atlantic Current in the south, the northward flowing cold Benguela Current in the east, and the westward flowing South Equatorial Current in the north"
+     "text": "### Bathymetry continental shelf: the passive margins of the Atlantic Ocean provide for wide continental shelves in North America, Northwest Europe, and the southern coast of South America <br><br>the following are examples of features on the continental shelf of the Atlantic Ocean:<br><br>Blake Plateau (Figure 5)<br>Celtic Shelf (Figure 2)<br>Dogger Bank (Figure 2) <br>Flemish Cap (Figure 2) <br>Falkland Plateau (Figure 3) <br>Grand Banks of Newfoundland (Figure 2) <br>Great Bahama Bank (Figure 5)<br>Little Bahama Bank (Figure 5)<br>Tunisian Plateau (Figure 4)<br>Yucatán Shelf (Figure 5) continental slope: the following are examples of features on the continental slope of the Atlantic Ocean:<br><br>Amazon Cone (Figure 3)<br>Congo Fan (Figure 3)<br>Hudson Canyon (Figure 5)<br>Mississippi Fan (Figure 5) abyssal plains: the following are examples of features on the abyssal plains of the Atlantic Ocean:<br><br>Angola Basin (Figure 3)<br>Agulhas Basin (Figure 3) <br>Argentine Basin (Figure 3) <br>Brazil Basin (Figure 3)<br>Canary Basin (Figure 2) <br>Cape Basin (Figure 3)<br>Colombia Basin (Figure 2) <br>Labrador Basin (Figure 2) <br>Mexico Basin (Figure 2)<br>Newfoundland Basin (Figure 2) <br>North American Basin (Figure 2) <br>Venezuela Basin (Figure 2)<br>West European Basin (Figure 2) mid-ocean ridge: the Charlie-Gibbs Fracture Zone displaces the mid-ocean ridge 350 km to the west, separating the Mid-Atlantic Ridge from the Reykjanes Ridge; the Romanche Fracture Zone, located near the equator, offsets the Mid-Atlantic Ridge 900 km and is considered the dividing line between the North and South Atlantic Oceans <br><br>the following are examples of mid-ocean ridges on the floor of the Atlantic Ocean:<br><br>East Mediterranean Ridge (Figure 4)<br>Mid-Atlantic Ridge (Figures 2, 3)<br>Reykjanes Ridge (Figure 2) undersea terrain features: the following are examples of undersea terrain features on the floor of the Atlantic Ocean:<br><br>Bermuda Rise (Figure 2)<br>Cape Verde Plateau (Figure 2)<br>New England Seamounts (Figure 2)<br>Rio Grande Plateau (Figure 3)<br>Rockall Plateau (Figure 2) ocean trenches: the following are examples of ocean trenches on the floor of the Atlantic Ocean:<br><br>Cayman Trench (Caribbean Sea) (Figure 2)<br>Hellenic Trench (Mediterranean Sea) (Figure 4)<br>Puerto Rico Trench (Figure 2) - deepest point in the Atlantic<br>South Sandwich Trench (South Atlantic) (Figure 3) atolls: Rocas Atoll (Brazil) is the only atoll in the South Atlantic"
     }
    ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:10:57.785Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:43:18.526Z"
  }
 }

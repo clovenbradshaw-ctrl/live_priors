@@ -7,21 +7,39 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "b2de25493ccfe8e8",
+  "id": "aea2233a6055abf1",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-   "classifyConnector": null,
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
    "verbForms": null,
    "createLemmatizer": null,
-   "excerptChars": 8000
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "dirty": true
+    }
+   }
   }
  },
  "excerpting": {
   "fullChars": 15442,
   "bodyOffset": 0,
   "bodyChars": 15442,
+  "frontMatter": {
+   "detected": false
+  },
   "excerptChars": 8000,
   "truncated": true
  },
@@ -37,92 +55,39 @@
   "referentEvents": 6,
   "distinctReferents": 4,
   "examined": true,
-  "edgesFound": 15,
+  "edgesFound": 3,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 14,
+   "verbs": 6,
    "minSurfaces": 1,
-   "grammarPrior": false,
+   "grammarPrior": true,
    "candidates": 14
   },
-  "contentWithoutRelations": false
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 3,
+   "minShare": 0.5,
+   "mismatched": []
+  }
  },
  "spanSelfVerification": {
-  "excerptChecked": 15,
-  "excerptOk": 15,
-  "rawChecked": 15,
-  "rawOk": 15,
+  "excerptChecked": 3,
+  "excerptOk": 3,
+  "rawChecked": 3,
+  "rawOk": 3,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 15,
-  "heard": 15,
+  "offered": 3,
+  "heard": 3,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
  },
  "log": {
   "entries": [
-   {
-    "kind": "propose",
-    "task_id": "an mlp|to|pictures of clothing in the fashion-mnist dataset",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "an MLP to pictures of clothing in the Fashion-MNIST dataset",
-    "subject": "an MLP",
-    "verb": "to",
-    "object": "pictures of clothing in the Fashion-MNIST dataset",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#353-576",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "In our earlier encounter with image data, we applied a linear model with softmax regression (:numref:`sec_softmax_scratch`) and an MLP (:numref:`sec_mlp-implementation`) to pictures of clothing in the Fashion-MNIST dataset."
-     }
-    ],
-    "seq": 0,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "published cnns|to|capture wide attention for its performance on computer vision tasks",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "published CNNs to capture wide attention for its performance on computer vision tasks",
-    "subject": "published CNNs",
-    "verb": "to",
-    "object": "capture wide attention for its performance on computer vision tasks",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#1029-1175",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "In this section, we will introduce *LeNet*, among the first published CNNs to capture wide attention for its performance on computer vision tasks."
-     }
-    ],
-    "seq": 1,
-    "depends_on": [],
-    "evidence": []
-   },
    {
     "kind": "propose",
     "task_id": "the model|was|introduced by (and named for) yann lecun",
@@ -139,7 +104,7 @@
     "verb": "was",
     "object": "introduced by (and named for) Yann LeCun",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -148,13 +113,13 @@
       "text": "The model was introduced by (and named for) Yann LeCun, then a researcher at AT&T Bell Labs, for the purpose of recognizing handwritten digits in images :cite:`LeCun.Bottou.Bengio.ea.1998`."
      }
     ],
-    "seq": 2,
+    "seq": 0,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "train cnns|via|backpropagation :cite:`lecun",
+    "task_id": "leon bottou|wrote|in the 1990s!",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -163,41 +128,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "train CNNs via backpropagation :cite:`LeCun",
-    "subject": "train CNNs",
-    "verb": "via",
-    "object": "backpropagation :cite:`LeCun",
+    "description": "Leon Bottou wrote in the 1990s!",
+    "subject": "Leon Bottou",
+    "verb": "wrote",
+    "object": "in the 1990s!",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#1366-1576",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "This work represented the culmination of a decade of research developing the technology; LeCun's team published the first study to successfully train CNNs via backpropagation :cite:`LeCun.Boser.Denker.ea.1989`."
-     }
-    ],
-    "seq": 3,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "yann lecun|and|his colleague leon bottou wrote in the 1990s!",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Yann LeCun and his colleague Leon Bottou wrote in the 1990s!",
-    "subject": "Yann LeCun",
-    "verb": "and",
-    "object": "his colleague Leon Bottou wrote in the 1990s!",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -206,210 +142,7 @@
       "text": "To this day, some ATMs still run the code that Yann LeCun and his colleague Leon Bottou wrote in the 1990s!"
      }
     ],
-    "seq": 4,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "while relus|and|max-pooling work better",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "while ReLUs and max-pooling work better",
-    "subject": "while ReLUs",
-    "verb": "and",
-    "object": "max-pooling work better",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3055-3139",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "Note that while ReLUs and max-pooling work better, they had not yet been discovered."
-     }
-    ],
-    "seq": 5,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "kernel|and|a sigmoid activation function",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "kernel and a sigmoid activation function",
-    "subject": "kernel",
-    "verb": "and",
-    "object": "a sigmoid activation function",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3140-3225",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "Each convolutional layer uses a $5\\times 5$ kernel and a sigmoid activation function."
-     }
-    ],
-    "seq": 6,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "arranged inputs|to|a number of two-dimensional feature maps",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "arranged inputs to a number of two-dimensional feature maps",
-    "subject": "arranged inputs",
-    "verb": "to",
-    "object": "a number of two-dimensional feature maps",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3226-3358",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "These layers map spatially arranged inputs to a number of two-dimensional feature maps, typically increasing the number of channels."
-     }
-    ],
-    "seq": 7,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "convolutional block|to|the dense block",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "convolutional block to the dense block",
-    "subject": "convolutional block",
-    "verb": "to",
-    "object": "the dense block",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3659-3778",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "In order to pass output from the convolutional block to the dense block, we must flatten each example in the minibatch."
-     }
-    ],
-    "seq": 8,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "the minibatch|and|the second to give the flat vector representation of each example",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "the minibatch and the second to give the flat vector representation of each example",
-    "subject": "the minibatch",
-    "verb": "and",
-    "object": "the second to give the flat vector representation of each example",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3779-4110",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "In other words, we take this four-dimensional input and transform it into the two-dimensional input expected by fully connected layers: as a reminder, the two-dimensional representation that we desire uses the first dimension to index examples in the minibatch and the second to give the flat vector representation of each example."
-     }
-    ],
-    "seq": 9,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "we are|still|performing classification",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "we are still performing classification",
-    "subject": "we are",
-    "verb": "still",
-    "object": "performing classification",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#4209-4342",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "Because we are still performing classification, the 10-dimensional output layer corresponds to the number of possible output classes."
-     }
-    ],
-    "seq": 10,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "layer corresponds|to|the number of possible output classes",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "layer corresponds to the number of possible output classes",
-    "subject": "layer corresponds",
-    "verb": "to",
-    "object": "the number of possible output classes",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#4209-4342",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "Because we are still performing classification, the 10-dimensional output layer corresponds to the number of possible output classes."
-     }
-    ],
-    "seq": 11,
+    "seq": 1,
     "depends_on": [],
     "evidence": []
    },
@@ -429,7 +162,7 @@
     "verb": "may",
     "object": "have taken a bit of work",
     "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
+     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@aea2233a6055abf1"
     ],
     "spans": [
      {
@@ -438,70 +171,12 @@
       "text": "While getting to the point where you truly understand what is going on inside LeNet may have taken a bit of work, we hope that the following code snippet will convince you that implementing such models with modern deep learning frameworks is remarkably simple."
      }
     ],
-    "seq": 12,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "block|and|chain together the appropriate layers",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "block and chain together the appropriate layers",
-    "subject": "block",
-    "verb": "and",
-    "object": "chain together the appropriate layers",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#4605-4766",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "We need only to instantiate a `Sequential` block and chain together the appropriate layers, using Xavier initialization as introduced in :numref:`subsec_xavier`."
-     }
-    ],
-    "seq": 13,
-    "depends_on": [],
-    "evidence": []
-   },
-   {
-    "kind": "propose",
-    "task_id": "initialize|weights|for cnns",
-    "operator": "INS",
-    "operator_basis": "produced",
-    "grain": "Figure",
-    "cell": "INS·Figure",
-    "stance": "Making",
-    "terrain": "Entity",
-    "mode": "Generate",
-    "domain": "Existence",
-    "description": "Initialize weights for CNNs",
-    "subject": "Initialize",
-    "verb": "weights",
-    "object": "for CNNs",
-    "witnesses": [
-     "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-    ],
-    "spans": [
-     {
-      "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#4768-4870",
-      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-      "text": "```{.python .input} %%tab pytorch def init_cnn(module): #@save \"\"\"Initialize weights for CNNs.\"\"\""
-     }
-    ],
-    "seq": 14,
+    "seq": 2,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 15,
+  "nextSeq": 3,
   "admits": [
    "NUL",
    "SEG",
@@ -516,92 +191,12 @@
  },
  "folded": [
   {
-   "id": "an mlp|to|pictures of clothing in the fashion-mnist dataset",
-   "subject": "an MLP",
-   "verb": "to",
-   "object": "pictures of clothing in the Fashion-MNIST dataset",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#353-576",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "In our earlier encounter with image data, we applied a linear model with softmax regression (:numref:`sec_softmax_scratch`) and an MLP (:numref:`sec_mlp-implementation`) to pictures of clothing in the Fashion-MNIST dataset."
-    }
-   ]
-  },
-  {
-   "id": "arranged inputs|to|a number of two-dimensional feature maps",
-   "subject": "arranged inputs",
-   "verb": "to",
-   "object": "a number of two-dimensional feature maps",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3226-3358",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "These layers map spatially arranged inputs to a number of two-dimensional feature maps, typically increasing the number of channels."
-    }
-   ]
-  },
-  {
-   "id": "block|and|chain together the appropriate layers",
-   "subject": "block",
-   "verb": "and",
-   "object": "chain together the appropriate layers",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#4605-4766",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "We need only to instantiate a `Sequential` block and chain together the appropriate layers, using Xavier initialization as introduced in :numref:`subsec_xavier`."
-    }
-   ]
-  },
-  {
-   "id": "convolutional block|to|the dense block",
-   "subject": "convolutional block",
-   "verb": "to",
-   "object": "the dense block",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3659-3778",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "In order to pass output from the convolutional block to the dense block, we must flatten each example in the minibatch."
-    }
-   ]
-  },
-  {
-   "id": "initialize|weights|for cnns",
-   "subject": "Initialize",
-   "verb": "weights",
-   "object": "for CNNs",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#4768-4870",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "```{.python .input} %%tab pytorch def init_cnn(module): #@save \"\"\"Initialize weights for CNNs.\"\"\""
-    }
-   ]
-  },
-  {
    "id": "inside lenet|may|have taken a bit of work",
    "subject": "inside LeNet",
    "verb": "may",
    "object": "have taken a bit of work",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -612,66 +207,18 @@
    ]
   },
   {
-   "id": "kernel|and|a sigmoid activation function",
-   "subject": "kernel",
-   "verb": "and",
-   "object": "a sigmoid activation function",
+   "id": "leon bottou|wrote|in the 1990s!",
+   "subject": "Leon Bottou",
+   "verb": "wrote",
+   "object": "in the 1990s!",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3140-3225",
+     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#1868-1975",
      "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "Each convolutional layer uses a $5\\times 5$ kernel and a sigmoid activation function."
-    }
-   ]
-  },
-  {
-   "id": "layer corresponds|to|the number of possible output classes",
-   "subject": "layer corresponds",
-   "verb": "to",
-   "object": "the number of possible output classes",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#4209-4342",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "Because we are still performing classification, the 10-dimensional output layer corresponds to the number of possible output classes."
-    }
-   ]
-  },
-  {
-   "id": "published cnns|to|capture wide attention for its performance on computer vision tasks",
-   "subject": "published CNNs",
-   "verb": "to",
-   "object": "capture wide attention for its performance on computer vision tasks",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#1029-1175",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "In this section, we will introduce *LeNet*, among the first published CNNs to capture wide attention for its performance on computer vision tasks."
-    }
-   ]
-  },
-  {
-   "id": "the minibatch|and|the second to give the flat vector representation of each example",
-   "subject": "the minibatch",
-   "verb": "and",
-   "object": "the second to give the flat vector representation of each example",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3779-4110",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "In other words, we take this four-dimensional input and transform it into the two-dimensional input expected by fully connected layers: as a reminder, the two-dimensional representation that we desire uses the first dimension to index examples in the minibatch and the second to give the flat vector representation of each example."
+     "text": "To this day, some ATMs still run the code that Yann LeCun and his colleague Leon Bottou wrote in the 1990s!"
     }
    ]
   },
@@ -681,7 +228,7 @@
    "verb": "was",
    "object": "introduced by (and named for) Yann LeCun",
    "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
+    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@aea2233a6055abf1"
    ],
    "spans": [
     {
@@ -690,74 +237,10 @@
      "text": "The model was introduced by (and named for) Yann LeCun, then a researcher at AT&T Bell Labs, for the purpose of recognizing handwritten digits in images :cite:`LeCun.Bottou.Bengio.ea.1998`."
     }
    ]
-  },
-  {
-   "id": "train cnns|via|backpropagation :cite:`lecun",
-   "subject": "train CNNs",
-   "verb": "via",
-   "object": "backpropagation :cite:`LeCun",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#1366-1576",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "This work represented the culmination of a decade of research developing the technology; LeCun's team published the first study to successfully train CNNs via backpropagation :cite:`LeCun.Boser.Denker.ea.1989`."
-    }
-   ]
-  },
-  {
-   "id": "we are|still|performing classification",
-   "subject": "we are",
-   "verb": "still",
-   "object": "performing classification",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#4209-4342",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "Because we are still performing classification, the 10-dimensional output layer corresponds to the number of possible output classes."
-    }
-   ]
-  },
-  {
-   "id": "while relus|and|max-pooling work better",
-   "subject": "while ReLUs",
-   "verb": "and",
-   "object": "max-pooling work better",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#3055-3139",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "Note that while ReLUs and max-pooling work better, they had not yet been discovered."
-    }
-   ]
-  },
-  {
-   "id": "yann lecun|and|his colleague leon bottou wrote in the 1990s!",
-   "subject": "Yann LeCun",
-   "verb": "and",
-   "object": "his colleague Leon Bottou wrote in the 1990s!",
-   "witnesses": [
-    "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt@b2de25493ccfe8e8"
-   ],
-   "spans": [
-    {
-     "at": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt#1868-1975",
-     "ref": "05-academic-papers/open-access-books/d2l/convolutional-neural-networks-lenet.txt",
-     "text": "To this day, some ATMs still run the code that Yann LeCun and his colleague Leon Bottou wrote in the 1990s!"
-    }
-   ]
   }
  ],
  "lastRun": {
-  "recipeId": "b2de25493ccfe8e8",
-  "at": "2026-08-29T18:49:49.212Z"
+  "recipeId": "aea2233a6055abf1",
+  "at": "2026-08-29T19:42:27.498Z"
  }
 }
