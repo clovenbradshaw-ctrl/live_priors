@@ -486,6 +486,163 @@ No script in this repo changed — the fix lives entirely in eoreader7
 (S34), reached the identical way every other cross-repo dependency here
 already is, through `loadOrgans()`'s own sibling-checkout import.
 
+**Amended 2026-08-30 — aligned by narrative content, a second recipe
+defect closed, and the real, root cause of Russian's referent
+fragmentation, run to ground.** User direction: *"get them all aligned,
+use deltas to detect issues."* The three sources above cover different
+character spans of the SAME opening scene — `en` is the full novel,
+`ru`/`fr` are excerpts — so a raw comparison was never comparing the same
+narrative content in the first place.
+
+**Alignment is by content, not by chapter number — a real confound,
+checked directly rather than assumed.** War and Peace's Part One Chapter
+boundaries do not fall at the same narrative point across editions: close
+reading found Maude's English Chapter III/IV boundary sitting roughly 72
+lines LATER, in narrative terms, than the Russian and French Chapter
+III/IV boundary. Comparing "Chapter I–III" by NUMBER across the three
+files would silently compare unequal spans. `aligned/{en,ru,fr}/` instead
+holds Part One, Chapters I–III, cut at the identical narrative sentence in
+all three — Prince Vasíli's closing aside about the bear cub ("Educate
+this bear for me!" / its Russian and French equivalents) — verified by
+locating that exact sentence in each file before cutting, not by trusting
+any edition's own chapter markers. `eot-sidecar.mjs` read each aligned
+file at `excerptChars: 33000`, exceeding every file's own length
+(31,577 / 28,260 / 32,390 chars — `truncated: false` on all three), so
+the comparison below is genuinely over the same content in every
+language, fully read, not truncated asymmetrically the way the original
+run above (8000-char window) unavoidably was.
+
+**A second recipe defect, found by the alignment itself.** Reading the
+Russian aligned excerpt surfaced one spurious 3-token candidate name:
+"Пьера Анна Павловна" — Prince Vasíli's aside about Pierre, a comma, then
+the scene's real subject newly introduced. The comma sits glued directly
+against "Пьера"'s own trailing edge with no space before "Анна", and
+eoreader7's `accumulateSurfaceEvidence` read the two names either side of
+it as one continuous capitalised run. Reproduced identically on
+constructed English prose sharing only the punctuation shape before the
+fix was trusted, confirming the defect general rather than
+Cyrillic-specific. **Full diagnosis, the fix, and its own tests live in
+eoreader7 — `native/READING-SPEC.md` S35 is the law for the mechanism;
+this entry is the corpus-side record.**
+
+This is a genuine recipe-level correctness defect (a false admission,
+not new material) on the three aligned files specifically, so LP6's own
+licence applies: `--fresh` was used to re-read exactly these three
+sidecars — never corpus-wide, never routine — validated first by
+eoreader7's own S35 test suite (12 cases in `rich-referents.test.js`,
+including the comma specimen and a plain-whitespace regression control)
+before being trusted against real material. Re-run, same `excerptChars`,
+same organs, only the fix changed: `en` 351 → **382** edges, `fr` 407 →
+**435** edges, both real gains from genuine dialogue-tag constructions
+this file's own grep confirms are present in both languages ("Well,
+Prince" / "Pierre, Anna Pavlovna"). `ru` stayed flat at **285** — checked
+directly rather than assumed: the aligned Russian excerpt's own text
+never contains a comma-glued capitalised pair inside its window (the
+specimen above lives in the aside sentence, which this alignment cuts
+before). **Disclosed, not silently left ambiguous:** the ORIGINAL,
+already-committed `ru/voyna-i-mir_Tolstoy_wikisource.txt.eot.json` (the
+8-then-63-edge reading this entry's own numbers above are built on) is
+UNAFFECTED and was not re-read — its specimen ("Пьера, Анна Павловна",
+found by direct search) sits at character offset 25,306, past that
+file's own 8000-char `excerptChars` window entirely, so the recipe
+defect never fired within what it actually read. Nothing in the numbers
+above this amendment needs correcting.
+
+**Finding: a raw surface count is not a valid cross-language comparison
+metric on its own — checked, not merely suspected.** `extractSurfaces`
+found 86 candidate surfaces in the aligned English excerpt, 87 in
+Russian, 53 in French — English and Russian look alike, French looks like
+an outlier. Direct grep resolves why, and it is orthography, not
+narrative content: French systematically writes a title before a name in
+LOWERCASE ("prince Vassili", "prince André"), while English and Russian
+both capitalise it ("Prince Vasíli", "князь Василий"). Every one of this
+instrument's surface candidates is found by capitalisation — L2's own
+standing rule, "capitalisation is a differentiator, never the primary
+signal" — so a language whose own writing convention does not capitalise
+titles will structurally extract fewer candidate surfaces for the
+identical set of real people, with nothing wrong in the reading. A raw
+surface count is a fact about writing conventions before it is a fact
+about content; referent counts, admitted below the surface layer, are the
+closer (though still imperfect, see next finding) comparison.
+
+**Finding: the real, root cause of Russian's referent fragmentation is
+grammatical case, and it acts through TWO mechanisms sharing one cause —
+checked by running the real pipeline organs directly, not assumed from
+counts.** `discoverReferents`, run with its own DERIVED fences (no
+override — the same way the real reading pipeline runs it) over each
+aligned excerpt, admits Anna Pávlovna's own name as: **2 distinct
+referents in English** (`Anna` + `Anna Pávlovna` correctly merge by
+containment; `Annette` — her own French nickname, used in this novel's
+own embedded French dialogue — stays separate, the ALREADY-DISCLOSED
+descriptor-synonymy MODEL-tier gap this file's own header names, not a
+defect); **2 in French** (identical shape: `Anna` + `Anna Pavlovna`
+merge, `Annette` stays separate); **6 in Russian**, across eight admitted
+surface forms spanning three grammatical cases (nominative `Анна
+Павловна`/`Анна`/`Павловна`; dative `Анне Павловне`/`Анне`; genitive
+`Анны Павловны`/`Анны`; plus `Annette`) — one person read as six.
+
+The FIRST mechanism is direct: `namesCorefer` (eoreader7,
+`adapters/text/surfaces.js`) matches two surfaces by exact-token
+containment or a shared final token, over `diaNorm`'d text — folding
+ONLY the five Latin-vowel diacritics, by the file's own disclosed scope.
+It has no morphological layer. "Анна" (nominative) and "Анны" (genitive)
+share zero tokens after normalisation — they are, token-for-token,
+different strings — so containment never fires between a name's declined
+forms and its dictionary form, and each case-form becomes its own
+referent by default.
+
+The SECOND mechanism is indirect, and was found only by computing the
+actual fence values rather than trusting the earlier summary that
+attributed the whole effect to mechanism one alone: `genericTokens`'s
+partner-count fence is DERIVED from the excerpt's own token
+co-occurrence spread (an IQR-style statistic, by design — see
+`surfaces.js`'s own header on why a fixed number would be wrong). Because
+declension explodes Anna Pávlovna's own name into six-plus distinct
+2-token surfaces instead of English's or French's one, the Russian
+partner-count pool is diluted with many partner-count-1 tokens (each
+case-form's own two tokens pairing only with each other) — measured
+directly: **fence = 1 in Russian** (17 distinct partner-bearing tokens,
+Q1=1, Q3=1) versus **fence = 3 in English** (34 tokens, Q1=1, Q3=2) on
+the identical scene. At fence 1, "анна" and "павловна"'s own genuine,
+unambiguous partner-count of 2 (each other, plus "шерер" from her own
+full name "Анна Павловна Шерер") EXCEEDS the fence and both are wrongly
+read as generic — the ordinary co-occurrence of one person's own first
+name, patronymic and surname, misread as breadth of reference the way a
+real title or family name earns it. At fence 3 the identical partner
+count of 2 does not exceed it, and English correctly reads "anna" as
+individuating. **Declension is the cause of both:** it fragments a name's
+surface forms directly, AND — by proliferating those fragments as
+low-partner-count tokens — it tightens the very fence meant to catch
+genuine ambiguity, until it catches the one pairing that was never
+ambiguous at all.
+
+**What this does NOT establish, disclosed rather than silently left
+open.** No fix is proposed or attempted here. A morphological
+(case-declension) folder for `namesCorefer` is real, scoped, unbuilt
+future work, and it is NOT the same thing as the `createLemmatizer`
+organ the-fold's `hypergraph.js` already carries (the-fold's own CLAUDE.md,
+"MINE-1 gap" sections): that organ is UniMorph-backed, English-default,
+and lemmatises VERBS for relation-edge matching in a completely
+different module — nothing in either repository lemmatises or declines a
+Russian PROPER NAME today, and building that (a real Russian
+morphological resource, with its own giver, the same standard LP6
+already holds the English POS-prior gate to) is unattempted here. This
+finding narrows LP7's original bottom line one level further: reading
+here is **omnilingual at the script/reachability level (S34) and at the
+punctuation-boundary level (S35), not yet at the referent-identity level
+for a morphologically rich language** — a third, honestly bounded clause,
+alongside the original entry's vocabulary-quality caveat, rather than a
+claim that referent identity is now solved for every language this
+instrument can read.
+
+**Files.** `11-multi-language/war-and-peace/aligned/{en,ru,fr}/` (3
+content-aligned excerpts, Part One Chapters I–III, cut at the identical
+narrative sentence) plus their `.eot.json` sidecars, generated `--fresh`
+under LP6's licence against eoreader7's post-S35 commit. No script in
+this repo changed for either fix; both live in eoreader7 (S34, S35),
+reached through `loadOrgans()`'s own sibling-checkout import exactly as
+before.
+
 ---
 
 ## What no entry here decides
