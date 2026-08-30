@@ -389,6 +389,105 @@ without the evidence that produced it).
 
 ---
 
+## LP7 — War and Peace, read in three languages: the corpus's own filenames lied again, and the reader was blind to a whole alphabet
+
+The ask, directly: process the-fold's own flagship specimen — War and
+Peace — in English, Russian, and a third language through the full EOT
+reading process, and use the resultant `.eot.json` files to measure
+whether reading is actually omnilingual. Two findings, in the order they
+were found, each closed before moving to the next.
+
+**LP1, again — this corpus's own `gutenberg-non-en/` could not be used.**
+Checked directly rather than trusted: `en/pg2542_War_and_Peace.txt` is
+Henrik Ibsen's *A Doll's House*, exactly as `digested/
+CORPUS-INTEGRITY-FINDING.md` already recorded for all 20 of 20 files in
+that directory. Real, verified sources were fetched fresh instead —
+English from Project Gutenberg (`pg2600`, the Maude translation, the same
+file the-fold's own `eval/crosslingual-eval.mjs` and
+`eval/atmosphere-chunking-eval.mjs` already use), the Russian original and
+a real French translation (Bienstock, 1903) both from Wikisource,
+identity confirmed by reading the actual bytes — not a filename or a
+search result's own metadata — the identical discipline `declaredIdentity`
+already holds English Gutenberg files to. Landed at
+`11-multi-language/war-and-peace/{en,ru,fr}/`, named honestly rather than
+extending the tainted directory. French Wikisource's own chapter-level
+transclusions (`Guerre et Paix (trad. Bienstock)/I/01` … `/I/07`) were
+rendered directly rather than the whole six-volume container page — the
+same reasoning LP3 already states about addressing a recension rather
+than an unbounded transclusion, applied to fetching rather than to
+citing.
+
+**The first `eot-sidecar.mjs` run measured a real, sharp asymmetry.**
+`en`: clean, 90 edges. `fr`: clean, 60 edges. `ru`: clean, but only **8
+edges — every single one in French**, the novel's own embedded
+aristocratic dialogue (real Tolstoy code-switching, not corruption), and
+**zero from the surrounding Cyrillic narration**, despite the script gate
+correctly reporting the excerpt fully cased and `extractSurfaces`
+correctly finding ten real Cyrillic surfaces (including the full name
+"Анна Павловна Шерер") when tested directly.
+
+**Two plausible causes, both tested and both refuted before the real one
+was found (P5.5's own discipline, applied here rather than re-derived).**
+Russian's grammatical case declension fragmenting a name across sightings
+— refuted: an artificially undeclined, exactly-repeated Cyrillic surface
+still nominated zero candidate verbs. The novel's own French dialogue
+statistically dominating a short excerpt — refuted: the same zero result
+reproduces on pure Russian text with no French anywhere in it. The actual
+cause was one line in eoreader7's `discoverRelationVocab`: JavaScript's
+`\b` is ASCII-`\w`-only, with no Unicode mode even under `/u`, so a
+surface written entirely in a non-Latin script can never be located by
+name, at all, regardless of recurrence. Confirmed universal by direct
+construction on two more unrelated scripts (Greek, Hebrew) before being
+trusted. **Full diagnosis, the fix, and its own tests live in eoreader7 —
+`native/READING-SPEC.md` S34 is the law for the mechanism; this entry is
+the corpus-side record of what it was measured against and what changed.**
+
+**Re-run after the fix, same three files, same append-only log — the
+delta itself is the artifact, not just a before/after table.** Because
+the source bytes were unchanged, the second `eot-sidecar.mjs` pass did not
+overwrite anything: it read the existing hyperlexicon log and called
+`hl.admit()` again under a new witness (the fixed code's own recipeId).
+The original 8 French edges are still there, now `SUPERSEDE`d with a
+second witness — two independent reads agreeing, LP2's own "one note, two
+witnesses" working exactly as designed. Fifty-five new `PROPOSE` entries
+landed alongside them, in real Cyrillic, real Russian: *"Анна Павловна
+—кашляла→ несколько дней"* (coughed for several days), *"Князь Василий
+—говорил→ всегда лениво"* (always spoke languidly), *"Анна Павловна
+—назвала→ императрицу"* (named the empress) — genuine SVO triples read
+from the novel's own narration, not the dialogue. `ru` moved from 8 edges
+to **63** — no longer a rounding error beside `en`'s 90 and `fr`'s 60, the
+same order of magnitude as both.
+
+**What this does NOT yet establish, disclosed rather than implied.**
+`grammarPrior: false` on all three sidecars — this checkout has no local
+`POSPrior@1` build, so the vocabulary-quality gate (LP6: verb-share over a
+real treebank, closing 80-99% false "verbs") is not loaded for ANY of the
+three languages here, not only Russian. Reading the raw edges by hand
+confirms this plainly: English's own 90 include spurious nominations
+("if" —you→ …, "how do" —you→ …) at a rate visibly similar to Russian's
+("садитесь" —и→ "рассказывайте", where "и" is the conjunction "and", not
+a verb). **The fix closes REACHABILITY — a real edge can now be found at
+all — never PRECISION**, and precision's own gate is itself English-only
+by construction (UD_English-EWT). A Russian equivalent (Universal
+Dependencies has a real Russian treebank, UD_Russian-SynTagRus among
+others) is real, named, unbuilt future work, on the same footing LP6
+already states for the English gate: a one-time vendoring pass, not
+attempted here. So: **omnilingual at the script/reachability level, not
+yet at the vocabulary-quality level** — a narrower, honestly bounded claim
+than "reading is omnilingual" would otherwise suggest, and the correct
+one to make until that gate exists for more than one language.
+
+**Files.** `11-multi-language/war-and-peace/{en,ru,fr}/` (3 verified
+sources, ~3.5MB total, `en` full text and `ru`/`fr` opening-chapter
+excerpts sufficient to exceed `eot-sidecar.mjs`'s own 8000-char reading
+window) plus their `.eot.json` sidecars (each carrying both the pre-fix
+and post-fix admission as PROPOSE/SUPERSEDE entries on one log, per LP2).
+No script in this repo changed — the fix lives entirely in eoreader7
+(S34), reached the identical way every other cross-repo dependency here
+already is, through `loadOrgans()`'s own sibling-checkout import.
+
+---
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work
