@@ -808,6 +808,100 @@ wired into `readSidecar` right after `stripContainer`; `attemptWindow`'s
 `scriptCoverage` itself — that fix is eoreader7's own (S36), reached the
 same way every other cross-repo dependency here already is.
 
+**Amended same day — the actual content of the 516 readings compared
+against each other, not just their gates; three real, distinct causes
+found behind one symptom, and a caution about the metric that would have
+hidden the third.** User direction: *"learn lessons from the full
+comparison of the UDHR."* UDHR is a genuinely rare corpus for this — 516
+near-word-for-word translations of the SAME thirty articles — so a
+length-normalised edge count (`edgesFound` per 1,000 body characters)
+across the 390 `clean` languages was computed as the first cut at
+"which languages, un-gated, still read worse than their peers." Median
+2.29 edges/1k, but the tails needed reading, not just ranking, and
+reading them found the metric itself confounded before either tail could
+be trusted.
+
+**The caution first, because it changes how to read everything else:
+edge count is not a validated quality signal anywhere in this sweep,
+English included.** The HIGH tail (Dangme, Twi, Bulu, Low Saxon, ...) was
+checked by hand against its own raw edges rather than trusted from the
+count — Twi's own top-frequency "verbs" are `no`, `ne`, `de`, `a`, `mu`,
+ordinary Twi particles and postpositions, not predicates; English's OWN
+62 edges in this exact run break down `and`: 30, `of`: 25, `as`: 4,
+`have`: 2, `constantly`: 1 — 89% grammatical particles. This is not a
+new defect: LP6's own POS-vocabulary gate exists precisely to close it,
+and this whole 516-language sweep confirms it directly — `posPriorGate`
+loaded in **0 of 516** sidecars, English included, because this checkout
+carries no local `POSPrior@1` build. A high edge count in this corpus is
+not evidence of richer extraction; absent the gate, it is more likely
+evidence of MORE unfiltered particle noise, and the median offers no
+safe harbour either — it was never measured against the gate any more
+than the tails were.
+
+**What IS a reliable comparison — because nothing downstream can inflate
+it — is the SURFACE layer: how many real, recurring capitalised name
+components a language's own translation of "United Nations" yields, read
+directly rather than inferred from a count.** Read by hand across a
+sample of the low-surface languages, three genuinely distinct mechanisms
+were found behind the identical symptom (a near-empty surface list),
+never conflated into one story:
+
+1. **Statistical under-power, not absence of evidence.** Czech's own
+   "spojených" (United) appears 4 times capitalised, 1 lowercase, in the
+   whole document — real, strong evidence by eye — and
+   `capitalisationIsSignificant` (surfaces.js's own binomial test) computes
+   `pHat = 0.8` against a required bound of `0.868` at n=5: genuinely
+   under-powered, not genuinely absent. The SAME mechanism this file's own
+   War-and-Peace work already found sample-size-sensitive
+   (`deriveMinPartners`'s IQR fence, disclosed and deliberately unfixed
+   there) recurs here in its sibling test, and for the identical reason —
+   UDHR's own short, thirty-article length gives every within-document
+   frequency statistic in this file far less power than a book does.
+2. **Morphological declension, confirmed on a SECOND, unrelated language
+   family.** Finnish's own "Yhdistyneiden"/"Yhdistyneet" (genitive vs.
+   nominative plural of United) split into two never-merging surfaces;
+   North Saami's own "Ovttastuvvon Naššuvnnaid" splits into FIVE distinct
+   spellings across its five real occurrences, no two identical. This is
+   the-fold's own P72/LP7 Russian-declension finding (`namesCorefer` has
+   no morphological layer), now independently reproduced on Uralic
+   languages wholly unrelated to Russian's Slavic case system — the
+   cross-family confirmation that finding's own disclosure named as
+   real, unbuilt future work, not invented here.
+3. **Genuine paucity of proper-noun material, not a defect.** Yoruba and
+   Xhosa each yield exactly ONE raw candidate in their entire document —
+   not a filtered-out true positive, a genuinely near-empty capitalised-run
+   count. This is the material, not the mechanism: a thirty-article
+   declaration whose own translation may render "United Nations" only
+   once, or with wording that does not repeat verbatim, gives this
+   organ almost nothing to find regardless of how well it works — the
+   same limit this entry's own original text already named for
+   referent-fragmentation analysis generally, now traced to its precise
+   mechanism for two specific languages rather than asserted in general.
+
+**No code changed for any of this pass's three mechanisms, and that is
+the deliberate, disclosed decision, not an oversight.** (1) would need
+`capitalisationIsSignificant`'s own fixed-alpha bound reconsidered
+against corpus LENGTH, which this file's own standing rule already
+forbids doing by tuning against one specimen's own score. (2) is
+already-disclosed, already-scoped future work (a per-language
+morphological folder), not something a "lessons learned" pass invents
+on the spot. (3) is a fact about the material, and there is nothing to
+fix. Building the POS-vocabulary gate for even one more language (this
+pass's own caution above names exactly why that would matter most) is,
+per LP6's own text, "a one-time vendoring pass" — real, scoped,
+deliberately not attempted here either.
+
+**One more thing noticed, not chased: two apparent duplicates.** The
+corpus carries TWO separate files both self-identifying "Language:
+Finnish (fi)" (`udhr-067.txt` and `udhr-fin.txt`) and two both
+self-identifying "Language: [North] Saami (se)" (`udhr-059.txt` and
+`udhr-sme.txt`) — real OHCHR-published files under this corpus's own
+walk, not a fetch artifact of this repo's own scripts (unchanged from
+before this pass). Named here because a future pass computing per-
+language statistics naively by short ISO code, rather than by filename,
+would silently double-count these two languages — this pass's own
+analysis above used filenames throughout for exactly this reason.
+
 ---
 
 ## What no entry here decides
