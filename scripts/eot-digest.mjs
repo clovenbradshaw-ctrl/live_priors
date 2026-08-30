@@ -372,8 +372,12 @@ async function digestOne(organs, spec) {
   // debris sits in the file, never about the material's own language. This
   // digest's first run reported exactly such counts for Hebrew, Korean and
   // Farsi with nothing marking them; the gap is now carried per source.
-  const script = surfaces.scriptCoverage(sentences);
-  const surfaceEvidence = surfaces.extractSurfaces(sentences);
+  // Folded once, fed to both — scriptCoverage's third gap boundary (S36)
+  // needs the same capitalised-run walk extractSurfaces performs; see
+  // eot-sidecar.mjs's identical fold for the fuller account.
+  const evidence = surfaces.accumulateSurfaceEvidence(sentences, surfaces.createSurfaceEvidence());
+  const script = surfaces.scriptCoverage(sentences, { evidence });
+  const surfaceEvidence = surfaces.surfacesFromEvidence(evidence);
   const { events } = surfaces.discoverReferents(surfaceEvidence, {});
   const referentIds = new Set(events.map((e) => e.referent_id));
 

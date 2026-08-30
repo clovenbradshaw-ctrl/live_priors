@@ -23,7 +23,7 @@ are not mistaken for empty documents.
 | 3. OER/Textbooks | 8 | ⬜ | No bulk APIs available |
 | 4. Pre-aggregated | 2 | ⬜ | Common Pile/RedPajama require local HF datasets |
 | 5. Academic papers | 4 | ✅ 94 book chapters | arXiv/PLOS abstracts removed (under the floor); replaced with open-licensed monographs — see below |
-| 6. Government/Legal | 6 | ✅ **1,220 documents** | 449 statutes from 28 jurisdictions, 516 UDHR translations, 255 World Factbook profiles |
+| 6. Government/Legal | 6 | ✅ **1,220 documents** | 449 statutes from 28 jurisdictions, 516 UDHR translations (all re-read for reading-pipeline blind spots — see POLICIES.md LP8), 255 World Factbook profiles |
 | 7. Images/Media | 4 | ✅ 2 collection catalogues | NASA (185 items) and Met Museum (140 items) folded into catalogue documents |
 | 8. News | 4 | ⚠️ 1 document | Wikinews items were under the floor; wikinews.org is not reachable to refetch |
 | 9. Source Code | 20 | ✅ 55 files across 20 repos | Source files, licences and substantive upstream documentation |

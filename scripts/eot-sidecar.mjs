@@ -73,6 +73,40 @@ function sha256(text) {
   return crypto.createHash("sha256").update(text, "utf8").digest("hex");
 }
 
+// The OHCHR UDHR corpus's own fixed four-line header, found reading its
+// own bytes rather than assumed from the filename: EVERY one of the 516
+// files under 06-government-legal/un-udhr/ opens with the literal line
+// "Universal Declaration of Human Rights", then "Language: <name> (<code>)",
+// then "Adopted: UN General Assembly resolution 217 A (III), Paris, 10
+// December 1948", then "Publisher: Office of the United Nations High
+// Commissioner for Human Rights (OHCHR)", then one blank line — byte-
+// identical across every language checked, only the Language line's own
+// name/code varying. Left unstripped, this English-language block is
+// exactly the "cased debris" surfaces.js's own header already warns a
+// caseless script produces: on a real read of the Georgian translation,
+// EVERY ONE of the 18 candidate surfaces extractSurfaces found ("Human
+// Rights", "UN General Assembly", "Paris"...) came from this header —
+// zero from the document's own 106 sentences of real Georgian prose — a
+// small but real contamination present on every one of the 516 reads,
+// the same class of defect P5.3 (stripContainer, Gutenberg's own licence
+// text) already closed for a different container shape. Offset-carrying,
+// matching stripContainer's own shape, not blankCatalogLines's length-
+// preserving one: the header sits at the very start, so a caller that
+// drops it outright (rather than blanking it to spaces) also stops
+// spending excerptChars budget on four lines that are never the
+// material. Anchored to the exact literal text, not a length or a line
+// count, so it is a safe no-op on every file outside this one corpus —
+// checked directly: no other digested source in this repo opens with
+// this literal string.
+const UDHR_HEADER_RE =
+  /^Universal Declaration of Human Rights\nLanguage:[^\n]*\nAdopted: UN General Assembly resolution 217 A \(III\), Paris, 10 December 1948\nPublisher: Office of the United Nations High Commissioner for Human Rights \(OHCHR\)\n\n?/;
+function stripUdhrHeader(text) {
+  const s = String(text ?? "");
+  const m = s.match(UDHR_HEADER_RE);
+  if (!m) return { text: s, offset: 0 };
+  return { text: s.slice(m[0].length), offset: m[0].length };
+}
+
 // A length-PRESERVING version of eot-digest.mjs's stripCatalogBoilerplate.
 // That function's own replacement text is a different length than the line
 // it replaces, which is fine for a driver that reads a fresh excerpt every
@@ -173,7 +207,9 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     catch (err) { existing = { corrupt: true, error: String(err?.message ?? err) }; }
   }
 
-  const { text: rawBody, offset: containerOffset } = stripContainer(raw);
+  const { text: gutenbergStripped, offset: gutenbergOffset } = stripContainer(raw);
+  const { text: rawBody, offset: udhrOffset } = stripUdhrHeader(gutenbergStripped);
+  const containerOffset = gutenbergOffset + udhrOffset;
 
   /**
    * One candidate reading window — everything from blanking through
@@ -195,8 +231,14 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     const catalogDominated = excerptWindow.length > 0 && excerptBlankedChars / excerptWindow.length > 0.5;
 
     const sentences = spans.splitSentences(excerpt);
-    const script = surfaces.scriptCoverage(sentences);
-    const surfaceEvidence = surfaces.extractSurfaces(sentences);
+    // Folded ONCE, fed to both: scriptCoverage's third gap boundary needs
+    // the exact same capitalised-run walk extractSurfaces performs to ask
+    // its own question, and extractSurfaces itself is already split into
+    // this accumulate/project shape for precisely this reason (surfaces.js's
+    // own header). Two separate calls would walk every sentence twice.
+    const evidence = surfaces.accumulateSurfaceEvidence(sentences, surfaces.createSurfaceEvidence());
+    const script = surfaces.scriptCoverage(sentences, { evidence });
+    const surfaceEvidence = surfaces.surfacesFromEvidence(evidence);
     const { events } = surfaces.discoverReferents(surfaceEvidence, {});
     const referentIds = new Set(events.map((e) => e.referent_id));
 
@@ -468,7 +510,7 @@ function walkCorpus(root = LP_ROOT) {
   return out.sort();
 }
 
-export { readSidecar, processFile, walkCorpus, blankCatalogLines, sha256, EXCERPT_CHARS };
+export { readSidecar, processFile, walkCorpus, blankCatalogLines, stripUdhrHeader, sha256, EXCERPT_CHARS };
 
 // ── CLI ─────────────────────────────────────────────────────────────────
 // `node eot-sidecar.mjs <path> [<path> ...]`  — one or more specific files

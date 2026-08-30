@@ -645,6 +645,171 @@ before.
 
 ---
 
+## LP8 — all 516 UN UDHR translations, read for blind spots rather than for one more universal-reading claim
+
+The ask, directly: apply the same process to every version of the UN
+Declaration of Human Rights this corpus already holds — `06-government-
+legal/un-udhr/`, 516 real OHCHR translations, pulled once and never
+re-read since — and this time the target is not "does it read the same
+everywhere," it is **where does it not, and why.** Two real, general
+defects were found and fixed; the corpus's own 516 readings were
+regenerated under both; the result is a census, not a single specimen.
+
+**The corpus's own front matter was cased debris on every one of the 516
+reads, unnoticed because it never happened to matter until a script had
+nothing else.** Every file under this directory opens with the identical
+four-line OHCHR header ("Universal Declaration of Human Rights" /
+"Language: NAME (code)" / "Adopted: UN General Assembly resolution 217 A
+(III), Paris, 10 December 1948" / "Publisher: Office of the United
+Nations High Commissioner for Human Rights (OHCHR)"), byte-identical
+across every language, only the Language line varying. Left unstripped,
+this is exactly the "cased debris" surfaces.js's own header already
+warns a caseless script produces (P5.3's Gutenberg-licence problem, a
+different container): on the real Georgian translation, EVERY ONE of the
+18 candidate surfaces `extractSurfaces` found ("Human Rights", "UN
+General Assembly", "Paris"...) came from this four-line header, zero
+from the document's own 106 sentences of real Georgian prose. `stripUdhrHeader`
+(`scripts/eot-sidecar.mjs`, offset-carrying like `stripContainer`, not
+length-preserving like `blankCatalogLines` — the header sits at the
+start, so a caller that drops it also stops spending `excerptChars`
+budget on four lines that are never the material) closes it, anchored to
+the exact literal text so it is a safe no-op on every source outside
+this one corpus.
+
+**The corpus-wide sweep this stripping made possible surfaced a second,
+larger, genuinely new defect — not in this repo's code, but in the
+engine's own `scriptCoverage` gate.** Stripped of its own header debris,
+the Georgian translation's real body still produced ZERO surfaces —
+because Georgian's everyday alphabet, Mkhedruli, is Unicode
+General_Category `Ll` (lowercase), so `scriptCoverage`'s existing test
+(does this material have `Cased_Letter` letters at all) reported
+`casedShare: 1.0, gap: null` — "fine" — while the mechanism this gate
+exists to protect had structurally nothing to work with, because
+ordinary published Georgian never uses the OTHER member of that case
+pair (Mtavruli, a monumental/decorative variant) to mark anything. The
+identical shape recurred on two more, completely unrelated specimens in
+this exact corpus: a Cherokee translation using the syllabary's
+traditional block (every character defaults `Lu`, the mirror-image
+failure), and the Uyghur Latin-script translation (an ordinary romanised
+Latin alphabet that simply is not capitalised in this transcription — no
+exotic script involved at all). **Full diagnosis, the fix (a third,
+parameter-free `scriptCoverage` gap — "zero distinct sentences carry a
+non-sentence-initial capitalised token" — reusing `accumulateSurfaceEvidence`'s
+own walk, never a second one), and its tests live in eoreader7 —
+`native/READING-SPEC.md` S36 is the law for the mechanism; this entry is
+the corpus-side census of what it was measured against.**
+
+**The full census, before and after, both fixes together.** All 516
+sidecars regenerated `--fresh` (LP6's licence: a genuine recipe defect —
+false admissions from unread header debris, and a false "no gap" on
+material the extraction mechanism cannot in fact read — never new
+material layered on old; validated first against eoreader7's own 20 new
+test cases across S35/S36 plus a dozen real specimens driven through the
+live pipeline before the corpus-wide re-read, matching this entry's own
+prior POS-gate sweep's practice of committing the validation as a
+record).
+
+| | before (stale, pre-S34/S35/S36, header unstripped) | after (current code, both fixes) |
+|---|---|---|
+| `clean` (real edges extracted) | 324 | **390** |
+| `gapped_script` (honestly typed, script blind) | 66 — all `script_mostly_without_case` | **90** — 60 `script_without_case`, 24 `script_case_unused` (NEW), 6 `script_mostly_without_case` |
+| `empty` (0 edges, no gap named) | 126 | **36** |
+
+The `gapped_script` growth (66 → 90) is not the mechanism reading LESS —
+it is the mechanism NAMING what it could never read in the first place,
+honestly, instead of leaving it silent inside `empty`: `script_case_unused`'s
+own 24 languages were ALL counted as unexplained `empty` results before this
+pass. And the header fix sharpened the existing gap itself: with the
+English debris gone, a genuinely, purely caseless script (Arabic, Hebrew,
+Chinese, Thai, Hindi, Korean, Khmer...) now correctly reads `casedShare:
+0` and lands the STRONGER `script_without_case` rather than the weaker
+"mostly" variant that debris alone used to force it into — 60 languages
+moved from a hedge to a precise statement.
+
+**`script_case_unused`'s own 24 languages, read together, are not a
+random list — checked directly, not merely counted.** Beyond Georgian,
+Cherokee (uppercase) and Uyghur (Latin), the other 21 are overwhelmingly
+languages whose current written form is a 20th-century orthography —
+often missionary or post-colonial linguistic work giving a previously
+unwritten language its first script — rather than an alphabet that
+inherited a centuries-old European print convention: Zarma, Dendi, Fon,
+Fulfulde, Kabiyé, Mbundu, Mòoré, Nyemba, Susu, Ditammari, Umbundu (West
+and Central African); Waorani, Tsimané, Huastec, Mam, Pipil, Ambo-Pasco
+Quechua, Záparo (Indigenous American); Central Atlas Tamazight and Adlam
+Pular (a script and a language, respectively, whose modern written
+standard is itself recent). Spot-checked rather than assumed for two of
+these: Tamazight and Adlam Pular both render their document's own TITLE
+in a genuine, deliberate all-caps run (correctly excluded by the
+extractor's own pre-existing all-caps-typography filter, built for an
+unrelated reason — a heading quoted mid-paragraph), while their real body
+prose never again distinguishes case for a name — a real, additional
+mechanism feeding the same outcome, disclosed rather than folded into a
+single story for all 24. **The pattern is a fact about writing-system
+history, not about any one script or language family, and it is worth
+stating plainly: capitalisation-marks-a-name is a specific European
+typographic convention that a language's own alphabet does not
+automatically inherit just because that alphabet happens to be Latin —
+and the languages this leaves silent are disproportionately smaller,
+more recently written, and more likely to belong to communities already
+under-served by NLP tooling generally.** This instrument's entire
+proper-name layer — and everything built on it, referent identity and
+relation extraction alike — depends on a convention roughly two dozen of
+516 real UN-translated languages do not share, honestly named now
+instead of reading as an unremarkable zero.
+
+**The matched pairs already in this corpus are a natural experiment this
+pass did not have to construct — same language, different script or
+different era, read side by side.** Bosnian, Azerbaijani, Uzbek,
+Turkmen and Serbian each exist here in BOTH Cyrillic and Latin
+transliteration; every pair reads `clean` on both sides with closely
+matched edge counts (Azerbaijani and Uzbek: EXACT matches, 51/51 and
+19/19; the rest within a few edges either way) — real, direct evidence
+that S34's fix reads a language's own structure consistently regardless
+of which cased script carries it, the strongest confirmation this
+project has produced yet that the fix is about the mechanism, never the
+alphabet. Malay exists in both Arabic (Jawi) and Latin script: Jawi
+correctly `gapped_script` (Arabic script is genuinely caseless), Latin
+correctly `clean` — the SAME language legible in one script and honestly
+refused in the other, exactly the outcome a script-level gate should
+produce. Uyghur, uniquely, gaps in BOTH of its scripts here — Arabic for
+the structural reason, Latin for the convention reason — two different
+gap types landing on one language's two written forms. German (1901 vs
+1996 spelling reform) and Romanian (1953 vs 1993 vs 2006 orthographic
+standards) each show near-identical or IDENTICAL edge counts across their
+historical variants — a within-language orthographic reform, unlike a
+script change, does not perturb this reading at all.
+
+**Disclosed, not chased further.** 36 sources still land `empty` after
+both fixes; 14 of them report zero surfaces without triggering
+`script_case_unused`, meaning SOME raw capitalised-run evidence exists
+(clearing scriptCoverage's zero-threshold gate) but nothing survives
+`surfacesFromEvidence`'s own downstream admission filters — a real,
+different, narrower question than "can this script be seen at all," and
+correctly landing in `empty` rather than `gapped_script` because it is a
+distinct fact. One outlier is named rather than smoothed over: the
+Chiltepec Chinantec translation reports 43 candidate surfaces and zero
+edges — evidence the surface layer found real names while the relation
+tier still extracted nothing usable from them, a vocabulary-level gap,
+not a script-level one, and genuinely unexplored here. And this corpus's
+own genre limits what a referent-identity audit (LP7's own Anna
+Pavlovna-shaped finding) can even ask here: UDHR is thirty short
+declarative articles with almost no recurring named people, so the kind
+of within-document referent fragmentation War and Peace exposed simply
+has little material to bite on in this corpus — a fact about the
+material, not a clean bill of health for the mechanism.
+
+**Files.** `scripts/eot-sidecar.mjs` (`stripUdhrHeader`, offset-carrying;
+wired into `readSidecar` right after `stripContainer`; `attemptWindow`'s
+`scriptCoverage`/`extractSurfaces` calls folded into one
+`accumulateSurfaceEvidence` pass, fed to both). `scripts/eot-digest.mjs`
+(the identical fold, for its own separate call site). All 516
+`06-government-legal/un-udhr/*.txt.eot.json` sidecars regenerated
+`--fresh`, source `.txt` files untouched (LP1). No script here changed
+`scriptCoverage` itself — that fix is eoreader7's own (S36), reached the
+same way every other cross-repo dependency here already is.
+
+---
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work
