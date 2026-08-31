@@ -99,6 +99,7 @@ new `clause` field:
 | `complement` | the predication inside an extraposed subject or object clause ("that human rights **should be protected**") |
 | `purpose-adjunct` | a purpose or result clause ("to the end that every individual **shall strive**") |
 | `conditional-adjunct` | a conditional clause ("if man **is not to be compelled**") |
+| `temporal-adjunct` | a finite temporal clause that asserts ("while we **Unburden'd crawl** toward death", "when I have **requir'd** Some heavenly music") — added 2026-08-31 with the gap suite; a VERBLESS temporal phrase still folds per A2 |
 | `reason-adjunct` | a causal clause ("puesto que sólo en ella **puede desarrollar**…", "因为只有在社会中他的个性才可能**得到**…发展") — added 2026-08-31 when es/zh rendered article 29's community-development content as an asserted reason where en/ar/sw use a relative |
 | `participial-modifier` | a deverbal modifier carrying a predication ("actos **ultrajantes** para la conciencia") |
 | `participial-adjunct` | a participial clause ("**keeping** this Declaration constantly in mind") |
@@ -513,3 +514,50 @@ no-compelled-association). The centroid cross-check
 and is superseded in scope, not in conclusion; Goal 6's independent blind
 adjudication remains the only validation that can settle ROSETTA-GOALS'
 falsification condition, now over 651 rows.
+
+
+**2026-08-31, third pass — the phasepost gap suite: 27/27, omnilingually.**
+Ten tight windows joined the goldens (`hand-gap-suite.mjs`, 80 rows):
+Genesis 1:1-8 and 2:1-3 (Hebrew, WLC — pointed text with cantillation;
+every field string derived mechanically from the file's own bytes after
+hand-typed combining-mark sequences failed byte-verification, the same
+never-trust-the-transcription discipline as ever), Mark 1:14-15 and 16:6
+(Koine Greek, SBLGNT — its critical sigla stay verbatim where they fall),
+Quran 2:37 (Uthmani Arabic AND Pickthall English, sharing quran: props —
+the cross-language join's fourth document family), and King Lear 1.1
+(three windows) plus The Tempest 5.1 from the pg100 Complete Works.
+Result, measured from the built tuples: **all 27 phasepost cells now
+carry at least one primary attestation** (767 rows, 18 goldens, 7
+languages: en ar es zh sw he grc), 22/27 in two or more languages. The
+last four cells landed as: REC·Ground (Prospero's 'this rough magic I
+here abjure' — a practice-field conceded), REC·Figure (Lear's 'Here I
+disclaim all my paternal care', the tawba's فَتَابَ عَلَيْهِ / 'relented
+toward him', and Genesis's וַיְבָרֶךְ — blessing as generated
+interpretive standing, the promote-respect family's own cell-arithmetic),
+SEG·Ground (Lear's 'divided In three our kingdom' beside Genesis's two
+וַיַּבְדֵּל divisions), NUL·Figure (Lear's 'we Have no such daughter' —
+A4 at figure grain, spoken over a daughter standing before him; Mark's
+οὐκ ἔστιν ὧδε; Prospero's 'I'll drown my book'; Genesis's וַיִּשְׁבֹּת).
+The five cells still attested in ONE language (all English) are the
+disclosed omnilingual frontier: SEG·Figure, CON·Ground, EVA·Ground,
+SYN·Pattern, REC·Ground.
+
+THREE RULINGS the suite forced, all consequences of R11's assertion
+wall: (1) a SITUATIONAL directive ('Give me the map there', Μὴ
+ἐκθαμβεῖσθε, 'Therefore be gone') performs rather than asserts and FOLDS,
+disclosed — distinct from a NORMATIVE deontic over a kind (the Swahili
+usifanye / Greek μετανοεῖτε class), which asserts a norm and rows; (2) an
+INTERROGATIVE ('Which of you shall we say doth love us most?') asserts
+nothing and folds, disclosed; (3) QUOTED PROCLAMATION content rows with
+`embedded: true` (the UDHR proclamation precedent — a performative
+proclamation enacts its content), the report-frame rowed separately. The
+clause table gained `temporal-adjunct`.
+
+SOURCE FINDING, disclosed never repaired: the corpus's
+`15-western-canon/folger-shakespeare/` directory is MISLABELED
+throughout — every file is a Project Gutenberg text (not Folger) and the
+filename↔content mapping is scrambled (Romeo_and_Juliet.txt holds King
+Lear; The_Tempest.txt holds Othello; Much Ado, Shrew, Tempest and
+Twelfth Night contents are absent while King John, Richard II, Henry
+VI.3 and Comedy of Errors are present under other names). The suite
+reads both plays from the canonical pg100 file instead.

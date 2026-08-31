@@ -56,11 +56,21 @@
 // ledgers were added (R12). The row counts and window notes in the 2026-08-31
 // amendment above describe the superseded Preamble+Article-1 state — kept
 // per R12's append-only discipline, not rewritten.
+//
+// AMENDMENT 2026-08-31 (third pass) — the phasepost GAP SUITE
+// (hand-gap-suite.mjs, ten windows, 80 rows: Genesis 1 and 2:1-3 in
+// Hebrew, Mark 1:14-15 and 16:6 in Koine Greek, Quran 2:37 in Arabic and
+// English, King Lear 1.1 ×3 and The Tempest 5.1 from pg100) closed the
+// cube: ALL 27 phasepost cells now carry a primary attestation — 767
+// rows, 18 goldens, 7 languages. See RULE.md's dated amendment for the
+// three rulings it forced and the folger-shakespeare mislabeling it
+// caught.
 import { UDHR_ENG } from "./hand-udhr-eng.mjs";
 import { UDHR_ARB } from "./hand-udhr-arb.mjs";
 import { UDHR_SPA } from "./hand-udhr-spa.mjs";
 import { UDHR_CMN } from "./hand-udhr-cmn.mjs";
 import { UDHR_SWH } from "./hand-udhr-swh.mjs";
+import { GAP_SUITE } from "./hand-gap-suite.mjs";
 
 export const GOLDENS = [
   {
@@ -366,4 +376,5 @@ export const GOLDENS = [
   UDHR_SPA,
   UDHR_CMN,
   UDHR_SWH,
+  ...GAP_SUITE,
 ];

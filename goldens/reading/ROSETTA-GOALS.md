@@ -113,6 +113,21 @@ document-cut (SEG·Ground — alternate-only on every heading), and a single
 thing's absence (NUL·Figure). The paragraphs below are the pre-extension
 prediction, kept per R12's append-only discipline.**
 
+**STATUS 2026-08-31 (third pass): 27/27.** The gap suite
+(hand-gap-suite.mjs — Genesis in Hebrew, Mark in Koine Greek, Quran 2:37
+in Arabic and English, King Lear and The Tempest windows from pg100)
+closed every remaining cell: all 27 phaseposts now carry a primary
+attestation across 767 rows in seven languages (en ar es zh sw he grc);
+22/27 are attested in two or more languages. The recanting specimen the
+paragraph below predicted would be needed turned out to already live in
+the corpus three times over: Prospero's abjuration (REC·Ground), Lear's
+disclaiming and the tawba of Quran 2:37 (REC·Figure, in three
+languages), and Genesis's blessing of the seventh day (REC·Figure by the
+same cell-arithmetic as promote-respect). The omnilingual frontier is
+now the five cells attested in English alone — SEG·Figure, CON·Ground,
+EVA·Ground, SYN·Pattern, REC·Ground — and Goal 6's blind adjudication,
+which now has a 767-row, 27-cell, 7-language target.
+
 Measured across all eight goldens: **19 of 27 occupied.** UDHR alone reaches 9;
 the three non-UDHR specimens supply ten more.
 
