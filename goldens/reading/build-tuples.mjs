@@ -77,6 +77,10 @@ function tupleLines(golden, lang) {
       grain: cell.grain,
       terrain: cell.terrain,
       stance: cell.stance,
+      // R8's clause role. A scorer that wants the old main-clause-only
+      // target filters to clause === "main"; one that wants full
+      // propositional coverage takes every line.
+      clause: row.clause ?? null,
       embedded: row.embedded === true,
       unresolved: row.unresolved === true,
       alternate: row.alternate ? `${row.alternate.op}·${row.alternate.grain}` : null,

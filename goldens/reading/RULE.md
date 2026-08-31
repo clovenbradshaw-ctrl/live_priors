@@ -82,6 +82,49 @@ with a one-line `because`. A genuinely undecidable act carries a
 `primary` and one disclosed `alternate` with the reason the window cannot
 settle it — never a silent coin-flip.
 
+**R8 — full propositional coverage, with the clause role recorded**
+(amended 2026-08-31; supersedes R1's folding rule and A2's exclusion rule
+for COUNTING purposes, and see that amendment for the measurement that
+forced it). EVERY predication in the window gets its own row, including
+the ones R1 previously folded into a noun phrase and the ones A2
+previously pushed outside the object. Each row declares what it is, in a
+new `clause` field:
+
+| `clause` | what it marks |
+|---|---|
+| `main` | a finite main-clause predication (what R1 alone used to admit) |
+| `restrictive-relative` | a relative clause restricting a noun phrase ("acts **which have outraged** the conscience") |
+| `coordinate` | an independent clause continuing the previous one paratactically — what a language without relative pronouns uses where English subordinates (Mandarin "这些暴行**玷污了**人类的良心") |
+| `relative` | a non-restrictive or descriptive relative clause |
+| `complement` | the predication inside an extraposed subject or object clause ("that human rights **should be protected**") |
+| `purpose-adjunct` | a purpose or result clause ("to the end that every individual **shall strive**") |
+| `conditional-adjunct` | a conditional clause ("if man **is not to be compelled**") |
+| `participial-modifier` | a deverbal modifier carrying a predication ("actos **ultrajantes** para la conciencia") |
+| `participial-adjunct` | a participial clause ("**keeping** this Declaration constantly in mind") |
+
+**A1 still holds and is not superseded:** the intensional complement of an
+attitude verb is NOT separately asserted. "have determined **to promote**
+social progress", "have pledged themselves **to achieve** the promotion",
+"shall strive **to promote** respect" each stay ONE row — the promoting
+is the content of a resolve, not a thing the text says happened. R8 adds
+rows for predications the text ASSERTS, never for ones it merely embeds
+under an attitude.
+
+**R4's wholeness still holds too.** A main row's object stays whole even
+where a sub-predication of it now also has its own row; the two sit at
+different levels and `clause` is what distinguishes them. A scorer that
+wants the old behaviour filters to `clause === "main"`.
+
+**Why this rule exists, measured rather than argued:** under R1+A2 alone
+the five UDHR readings produced 67 rows, of which **67 were polarity `+`
+and 1 of 67 was `embedded`** — the window's only negation ("if man is not
+to be compelled to have recourse... to rebellion") is a conditional
+adjunct, so R6's polarity wall was a rule the goldens never once
+exercised, and the Preamble's operative obligation ("every individual and
+every organ of society shall strive... to promote respect for these rights
+and freedoms") had no row in any language. A target that omits a third of
+what the text says teaches an extractor to omit it too.
+
 ## Part II — the phasepost rule: a verb is one of nine acts, at one of three grains
 
 The framing, received directly (2026-08-29): **a phasepost is an act of
