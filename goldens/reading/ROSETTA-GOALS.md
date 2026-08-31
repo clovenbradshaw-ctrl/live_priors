@@ -99,6 +99,20 @@ A reader given these 107 rows cannot tell a premise from a conclusion.
 
 ## Goal 4 — examples of all 27 phaseposts
 
+**STATUS 2026-08-31 (second pass): the whole-document extension ran — all 30
+articles, all five languages, 651 UDHR rows. Measured from the built tuples:
+UDHR primary 15/27, +alternates 18/27; all eight goldens primary 23/27,
++alternates 26/27. Absent as primary: `NUL·Figure`, `SEG·Ground`,
+`REC·Ground`, `REC·Figure`; absent even as alternate: `NUL·Figure` alone.
+The prediction below held precisely: Article 2 delivered SEG·Pattern,
+Articles 4/29 DEF·Pattern, Article 30 DEF·Ground (and, through the ar/sw
+negative existentials, NUL·Ground) — and REC·Pattern arrived unpredicted via
+the limitation-purpose and promote-frames. What remains is what the document
+cannot supply: the recanting specimen (REC·Ground/REC·Figure), an asserted
+document-cut (SEG·Ground — alternate-only on every heading), and a single
+thing's absence (NUL·Figure). The paragraphs below are the pre-extension
+prediction, kept per R12's append-only discipline.**
+
 Measured across all eight goldens: **19 of 27 occupied.** UDHR alone reaches 9;
 the three non-UDHR specimens supply ten more.
 

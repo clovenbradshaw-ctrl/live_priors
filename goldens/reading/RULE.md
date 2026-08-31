@@ -99,6 +99,7 @@ new `clause` field:
 | `complement` | the predication inside an extraposed subject or object clause ("that human rights **should be protected**") |
 | `purpose-adjunct` | a purpose or result clause ("to the end that every individual **shall strive**") |
 | `conditional-adjunct` | a conditional clause ("if man **is not to be compelled**") |
+| `reason-adjunct` | a causal clause ("puesto que sólo en ella **puede desarrollar**…", "因为只有在社会中他的个性才可能**得到**…发展") — added 2026-08-31 when es/zh rendered article 29's community-development content as an asserted reason where en/ar/sw use a relative |
 | `participial-modifier` | a deverbal modifier carrying a predication ("actos **ultrajantes** para la conciencia") |
 | `participial-adjunct` | a participial clause ("**keeping** this Declaration constantly in mind") |
 | `heading` | a section heading — not a proposition but a ground-opening act (R10) |
@@ -149,6 +150,64 @@ the document's own argument structure: the Preamble's whereas-clauses are
 `premise`, the proclamation and its dependents `operative`, Article 1's
 substance `declared`. Before R10 the goldens could not distinguish a
 premise from a conclusion — the document's own argument was invisible.
+
+**R11 — holonic ground addresses, and the assertion wall** (added
+2026-08-31, second pass; user direction on both halves).
+
+*Addresses.* `ground` is a HOLONIC DOTTED ADDRESS: `article-29.2.1.1` =
+sub-clause 1 of predication 1 of paragraph 2 of article-29. Two walls:
+(1) address levels mirror the SOURCE'S OWN containment (blank-line
+paragraph, then predication order, then sub-predication nesting) — never
+an invented layer; where a layout splits one sentence across paragraphs
+(the en/ar/es proclamations), the row sits at its predicate's paragraph
+and the split is noted. (2) `prop` stays flat and language-independent —
+structure legitimately diverges across languages (Mandarin coordinates at
+main level what English nests; the addresses now SHOW it), so nesting
+must never leak into the join key. A heading row sits at the bare region
+address (`article-29`); every row it conditions carries that address as a
+prefix — a heading's activation scope is a prefix-walk, which is the
+mechanical form of "a section heading conditions what follows." An
+asserted subordinate predication extends its matrix's address by one
+segment; `resolution` binds its borrowed referents. R10's flat `ground`
+is superseded compatibly: its "section" is the dotted address's first
+segment.
+
+*The assertion wall.* EVERY ROW IS AN ASSERTION. Content the text does
+not assert never becomes a row under any label — there are no
+presupposition rows, and polarity is never assigned to unasserted
+content; a disclosed fold (in `because`) is unasserted material's only
+encoding. What folds: intensional complements (A1); verbless
+parentheticals, appositives ("as a member of society" — presupposed, not
+asserted) and concessive alternative-lists ("whether it be independent,
+trust…" — quantifying alternatives, asserting none) per A2;
+micro-relatives (R1); and — the rule this pass earned from the material —
+IRREALIS CHARACTERIZING MODIFIERS: a subjunctive/potential relative
+inside an entitlement object characterizes the sought thing rather than
+asserting anything of the world ("que la ampare", "que le asegure",
+"utakao mwezesha", "unaoweza kuvunja"), so it folds — MOOD IS EVIDENCE
+ABOUT ASSERTION. The same evidence cuts the other way twice: an
+INDICATIVE relative in the same position is asserted and rows ("que será
+completada", "no fueron delictivos"), and a MAIN-LINE deontic subjunctive
+is the assertion itself, not a characterizer — Swahili's -si-/subjunctive
+prescriptions ARE its "shall" (A3's deontic frame), so they row. Where
+mood is unavailable, existence of the host referent decides: article 28's
+sought order does not yet exist (Spanish marks the whole complement
+subjunctive), so its realization-relative folds in every language that
+nests it; article 29's community EXISTS, so its development-relative is
+asserted — and Spanish and Mandarin independently confirm by rendering it
+as a causal clause (`reason-adjunct`).
+
+**R12 — goldens revise by append** (added 2026-08-31, second pass; user
+direction; store.js's own law applied to the goldens themselves: the
+event stream is the reality, the current state a projection). Once a
+golden is established (its first commit at whole-document coverage), a
+re-adjudication NEVER silently edits a row. It appends
+`{date, ground, prop, from: {op, grain, polarity}, to: {…}, because}` to
+the entry's append-only `revisions` array AND updates the row — the row
+set is the projection, the revisions array the log. A retraction is a
+revision with `to: null`. Deleting or rewriting a revisions entry is
+forbidden. The inline "RE-TYPED 2026-08-31" notes in `because` fields are
+the birth-era record from before this rule existed; they stay.
 
 ## The 2026-08-31 re-adjudication (ROSETTA-GOALS Goal 1) — every row re-read verb-first
 
@@ -282,6 +341,10 @@ The copula's phasepost is read from its PREDICATE:
   "object": "…",             // R4: whole
   "polarity": "+",           // R6
   "phasepost": { "op": "…", "grain": "…" },
+  "clause": "main",           // R8: the predication's construction role
+  "prop": "udhr:born-free",   // R9: the language-independent join key
+  "ground": "article-1.1.1",  // R11: holonic dotted address (R10's section = first segment)
+  "role": "declared",         // R10: premise | operative | declared (null on headings)
   "because": "one line: why this op and this grain",
   "span": { "start": 0, "end": 0 },   // R5: raw-file coordinates
   "embedded": false,          // true for appositive/parenthetical assertions
@@ -290,6 +353,9 @@ The copula's phasepost is read from its PREDICATE:
   "alternate": null           // R7: the one disclosed alternate, when undecidable
 }
 ```
+
+Each golden entry additionally carries `revisions: []` — R12's append-only
+re-adjudication ledger.
 
 ## Part IV — scope and scoring
 
@@ -386,3 +452,64 @@ own header and each row's `because` field. Running `diff-golden.mjs`
 against these four (comparing to what the LIVE pipeline currently
 extracts in each language) is real, disclosed, unstarted next work — this
 amendment only establishes the ground truth itself.
+
+**2026-08-31, second pass — whole-document coverage, all five languages;
+holonic addresses; the assertion wall; append-only revision.** Every UDHR
+golden grew from Preamble+Article 1 to the WHOLE DOCUMENT (Preamble +
+Articles 1-30): 651 rows across the five languages (en 125, ar 128, es
+127, zh 133, sw 138), one per-language file each (`hand-udhr-*.mjs`),
+every row hand-adjudicated verb-first, every anchor byte-verified against
+the source before build and self-verified by the builder after. R11
+(holonic dotted `ground` addresses; the every-row-is-an-assertion wall;
+the mood rule), R12 (append-only `revisions`), and the `reason-adjunct`
+clause role were added; `build-goldens.mjs` gained optional
+`windowStartText` (a window may declare a start as literal text — unused
+by the shipped goldens, kept for partial-window specimens to come). R9
+gained the MULTI-ROW rule in practice: prop granularity is pivoted on the
+English verb-spans (the props were named from en); a language that splits
+what English folds carries multiple rows on one prop (Arabic's three
+possessive predications on udhr:right-to-work; the leave/return pairs in
+ar/zh/sw), and a language that folds what English splits notes the fold
+and simply lacks the prop (es folding no-deny-change-nationality under
+one deprivation verb). A prop is language-unique only when its CONTENT is
+unique to that rendering (zh no-distinction-kind and rights-violated and
+no-attacks-honour and realization-through-effort and
+order-realizes-rights; sw rights-set-forth and dignity-equal and
+declaration-standard and nations-make-known; ar humanity-aspires).
+
+SOURCE FINDINGS this pass caught, disclosed on the rows and never
+repaired (R2): the Arabic file's Preamble is MISSING the
+friendly-relations recital entirely (its bytes contain no ودية; the prop
+has four languages); Arabic Article 29(3) drops the لا its own
+negative-polarity idiom (بحال من الأحوال) requires — read under the only
+grammatical parse, with all four siblings negating there as evidence;
+Arabic Article 16's non-restriction list has two grounds where the
+siblings have three; the Swahili file carries heading typos 'Kufungu cha
+7.' and 'Kifungu ch 23.', body typos 'masarasa' and 'uchagazi', and
+Article 25's 'wakati wa kazi' (time of work) where every sibling has
+unemployment.
+
+CONSTRUCTION SPLITS the full matrix now records systematically (each
+mirror-disclosed in both directions via `alternate`): negative
+EXISTENTIALS in ar/sw where en/es/zh negate a verb (no-distinction-status
+ar; no-destructive-interpretation ar+sw — A4's NUL·Ground, twice);
+MAKING-verbs in zh/sw where en/ar/es have holding/subjection verbs
+(no-slavery, no-torture, no-arbitrary-arrest — INS vs CON, zh
+consistently on the infliction side via 加以/使为); the FOUR-WAY nullum
+crimen split (en/zh class-membership 'constitute'/构成, es indicative
+property 'no fueron delictivos', ar deeming inside an unless-clause
+يعتبر, sw contravention halikupinga); restriction worded as
+negation-plus-exception in ar (لا…إلا, polarity −) vs an unnegated
+restrictor elsewhere (only / 只有…才 / tu, polarity +) on
+marriage-consent; DEFINITENESS MARKING driving copula rule 3
+(family-unit-society: en/ar/es definite role → SIG·Figure, zh bare NP →
+SIG·Pattern class-membership, sw mereological 'kiungo' → CON·Pattern);
+Mandarin's 在于 identificational used twice (limitation-purpose,
+education-directed) where siblings verb the aiming/securing; and the
+matrix's cleanest five-way ALIGNMENT: compulsion (compelled / إرغام /
+obligado / 迫使 / kulazimishwa — INS·Pattern − in all five,
+no-compelled-association). The centroid cross-check
+(centroid-check-RESULTS.md) covered the 117-row Preamble+Article-1 state
+and is superseded in scope, not in conclusion; Goal 6's independent blind
+adjudication remains the only validation that can settle ROSETTA-GOALS'
+falsification condition, now over 651 rows.
