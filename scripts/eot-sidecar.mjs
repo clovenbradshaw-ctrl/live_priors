@@ -58,7 +58,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { loadOrgans, LP_ROOT } from "./eot-digest.mjs";
+import { loadOrgans, LP_ROOT, admissionCoverage, propositionLedger } from "./eot-digest.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
@@ -259,6 +259,21 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     const catalogDominated = excerptWindow.length > 0 && excerptBlankedChars / excerptWindow.length > 0.5;
 
     const sentences = spans.splitSentences(excerpt);
+    // Raw-file-coordinate twin of `sentences`, computed HERE because this is
+    // the one place `candidateOffset`/`toRaw` are both in scope — the SAME
+    // bodyOffset+toRaw(...) transform verifyRawSpan already applies to
+    // admitted-edge spans below, applied to sentence boundaries too, so the
+    // two sides `propositionLedger` compares are addressed identically.
+    // Bug this closes: `sentences[].offset` is excerpt-local while every
+    // edge this driver admits is translated to raw-file bytes before
+    // hl.admit() ever sees it (P5.2 self-verification against the real
+    // file), so comparing them unconverted read 0.0% coverage and every
+    // sentence a false gap on a document that actually had 5 real edges.
+    const sentenceSpans = sentences.map((s) => ({
+      order: s.order,
+      start: candidateOffset + toRaw(s.offset),
+      end: candidateOffset + toRaw(s.offset + s.text.length),
+    }));
     // Folded ONCE, fed to both: scriptCoverage's third gap boundary needs
     // the exact same capitalised-run walk extractSurfaces performs to ask
     // its own question, and extractSurfaces itself is already split into
@@ -308,7 +323,7 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
 
     return {
       bodyOffset: candidateOffset, body: candidateBody, blankedChars, excerpt, truncated, catalogDominated, grammar,
-      sentences, script, surfaceEvidence, events, referentIds, report, rawEdges,
+      sentences, sentenceSpans, script, surfaceEvidence, events, referentIds, report, rawEdges,
       excerptChecked, excerptOk, rawChecked, rawOk, badSpans, admitEdges,
     };
   }
@@ -345,7 +360,7 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
 
   const {
     bodyOffset, body, blankedChars, excerpt, truncated, catalogDominated, grammar,
-    sentences, script, surfaceEvidence, events, referentIds, report, rawEdges,
+    sentences, sentenceSpans, script, surfaceEvidence, events, referentIds, report, rawEdges,
     excerptChecked, excerptOk, rawChecked, rawOk, badSpans, admitEdges,
   } = attempt;
 
@@ -499,9 +514,17 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
       turnedAway: turnedAway.length,
       turnedAwayReasons: turnedAway.reduce((acc, t) => { acc[t.reason] = (acc[t.reason] ?? 0) + 1; return acc; }, {}),
       suppressedByScriptGap: script.gap ? admitEdges.length : 0,
+      // LP10: `gate` answers "did anything false get in" — this answers
+      // the separate question "how much of the document got a chance to
+      // get in at all," always computed, never left implicit in a raw
+      // edge count next to a sentence count nobody compared it to.
+      ...admissionCoverage(sentences.length, folded),
     },
     log,
     folded,
+    // LP10: one entry per sentence, always — a real proposition or a typed
+    // gap, never a silent absence. See propositionLedger's own header.
+    propositions: propositionLedger(sentenceSpans, folded, relPath),
     lastRun: { recipeId: recipeIdValue, at: new Date().toISOString() },
     ...(priorVersions.length ? { priorVersions } : {}),
   };
@@ -567,18 +590,31 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     process.exit(1);
   }
   let clean = 0, gappedScript = 0, gappedSelfVerify = 0, empty = 0;
+  const cleanCoverages = []; // LP10: coverage among CLEAN-gated sources specifically — "clean" alone was the false signal
   const started = Date.now();
   for (const abs of targets) {
     const t0 = Date.now();
     const out = await processFile(organs, abs, { fresh });
     const ms = Date.now() - t0;
     const rel = path.relative(LP_ROOT, abs);
-    if (out.admission.gate === "clean") clean += 1;
+    if (out.admission.gate === "clean") { clean += 1; if (out.admission.coverage != null) cleanCoverages.push(out.admission.coverage); }
     else if (out.admission.gate === "gapped_script") gappedScript += 1;
     else if (out.admission.gate === "gapped_self_verify") gappedSelfVerify += 1;
     else empty += 1;
-    console.log(`${rel}: ${out.admission.gate} — ${out.reading.edgesFound} edges, ${out.admission.heard} heard, raw-spans ${out.spanSelfVerification.rawOk}/${out.spanSelfVerification.rawChecked} — ${ms}ms`);
+    const coveragePct = out.admission.coverage == null ? "n/a" : `${(out.admission.coverage * 100).toFixed(1)}%`;
+    console.log(`${rel}: ${out.admission.gate} — ${out.reading.edgesFound} edges, ${out.admission.heard} heard (${coveragePct} of sentences), raw-spans ${out.spanSelfVerification.rawOk}/${out.spanSelfVerification.rawChecked} — ${ms}ms`);
   }
   const total = Date.now() - started;
-  console.log(`\n${targets.length} sources in ${(total / 1000).toFixed(1)}s (${(total / targets.length).toFixed(0)}ms/source avg) — clean ${clean}, gapped_script ${gappedScript}, gapped_self_verify ${gappedSelfVerify}, empty ${empty}`);
+  // LP10: reported as a distribution over what was actually measured, never
+  // a pass/fail cut invented against this one run — "clean" already means
+  // nothing false got in; this line is the separate, honest answer to how
+  // MUCH of each clean-gated document that actually reached.
+  let coverageNote = "";
+  if (cleanCoverages.length) {
+    const sorted = [...cleanCoverages].sort((a, b) => a - b);
+    const mean = sorted.reduce((a, b) => a + b, 0) / sorted.length;
+    const median = sorted[Math.floor(sorted.length / 2)];
+    coverageNote = ` — admission coverage among clean sources: mean ${(mean * 100).toFixed(1)}%, median ${(median * 100).toFixed(1)}%, min ${(sorted[0] * 100).toFixed(1)}%, max ${(sorted[sorted.length - 1] * 100).toFixed(1)}%`;
+  }
+  console.log(`\n${targets.length} sources in ${(total / 1000).toFixed(1)}s (${(total / targets.length).toFixed(0)}ms/source avg) — clean ${clean}, gapped_script ${gappedScript}, gapped_self_verify ${gappedSelfVerify}, empty ${empty}${coverageNote}`);
 }

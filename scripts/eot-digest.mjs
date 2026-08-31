@@ -430,6 +430,107 @@ function excerptOf(fullText, { gutenberg = false, catalog = false, stripContaine
 }
 
 // ── self-verification (P5.2) ────────────────────────────────────────────
+/**
+ * How much of a document's own sentence structure the admission log
+ * actually covers — LP10's own named distinction: `gate: "clean"` answers
+ * "did anything FALSE get in," this answers "how much of the document
+ * ever got a CHANCE to get in at all." Counted as distinct admitted
+ * byte-spans against total sentences, never assumed 1:1 with "sentences
+ * worth reading" — a low number names a real, disclosed shortfall in
+ * RELATION EXTRACTION coverage, not a verdict on the material itself.
+ * `edges` may carry either raw `{start,end}` spans (pre-admission) or
+ * addressed `{at}` spans (post-admission) — both are accepted so this one
+ * function serves either call site rather than two copies keyed to two
+ * different span shapes. MUST be `folded` (or `admitEdges`/`heard`-shaped
+ * pre-admission edges), never bare `hl.admit()`'s own `heard` return value:
+ * `heard` entries are `{id, subject, verb, object}` ONLY — no `spans` field
+ * at all (hyperlexicon.js's `admit()` pushes exactly that shape) — so
+ * calling this with `heard` silently reads zero spans on every edge and
+ * reports 0% coverage regardless of what was actually admitted. Caught
+ * live: both call sites did exactly this on their first real run.
+ */
+function admissionCoverage(sentenceCount, edges) {
+  const spans = new Set();
+  for (const e of edges ?? []) {
+    for (const s of e.spans ?? []) {
+      if (s?.at) spans.add(s.at);
+      else if (Number.isFinite(s?.start) && Number.isFinite(s?.end)) spans.add(`${s.start}-${s.end}`);
+    }
+  }
+  return {
+    sentenceCount,
+    admittedSpans: spans.size,
+    coverage: sentenceCount > 0 ? spans.size / sentenceCount : null,
+  };
+}
+
+const SPAN_AT_RE = /#(\d+)-(\d+)$/;
+
+/**
+ * LP10's own rule, mechanically enforced: a line per PROPOSITION, never
+ * per document. Every sentence gets exactly one entry here — a real
+ * proposition (naming the admitted claim(s) it produced, by address) or a
+ * typed gap ("read, nothing extractable") — so a sentence can never again
+ * be silently invisible the way LP9's own "how do we have five edges for
+ * 72 sentences" finding caught. This is DELIBERATELY NOT folded into
+ * hyperlexicon.js's own `log`/`folded` (the-fold's append-only assertion
+ * log, admit()'s own door) — a gap is not an assertion, and admit()'s own
+ * typing has no business absorbing "nothing was said here." It is a
+ * separate, additive ledger a reader joins against the log by sentence
+ * order/address, built entirely from this driver's own already-available
+ * sentence structure and `folded` (or `heard`) — no change to the-fold's
+ * module.
+ *
+ * `sentenceSpans` is `{order, start, end}` per sentence — CALLER-COMPUTED,
+ * on purpose: a coordinate-space bug lived here once (this driver's own
+ * `sentences[].offset` is excerpt-local; `readSidecar` separately
+ * translates admitted edges to RAW-FILE coordinates before `hl.admit()`
+ * ever sees them, so the two sides silently disagreed — 0.0% coverage,
+ * every sentence a false gap, on a document that actually had 5 real
+ * admitted edges). Deriving `start`/`end` in here from a bare `.offset`
+ * assumed one coordinate space for every caller; there are two (see
+ * `digestOne` — excerpt-local, edges untranslated — vs `readSidecar` —
+ * raw-file, edges translated for on-disk self-verification), and only the
+ * caller knows which one its own `edges` argument is actually in. `edges`
+ * is `folded` (or any array of admitted entries) whose `spans` carry the
+ * addressed `{at: "ref#start-end", ...}` shape the persisted log itself
+ * uses — the SAME shape `admissionCoverage` above also reads, intentionally
+ * not re-derived a second way. `ref` is this document's own address prefix
+ * (`spec.slug` / `relPath`, matching every edge's own `ref` field) so a
+ * gap's own `at` resolves in the SAME coordinate space as a real
+ * proposition's, not a bare offset nothing else in the file uses.
+ */
+function propositionLedger(sentenceSpans, edges, ref) {
+  const bySentence = sentenceSpans.map((s) => ({
+    order: s.order,
+    start: s.start,
+    end: s.end,
+    propositions: [],
+  }));
+  for (const e of edges ?? []) {
+    for (const s of e.spans ?? []) {
+      const m = typeof s?.at === "string" ? s.at.match(SPAN_AT_RE) : null;
+      if (!m) continue;
+      const [, startStr, endStr] = m;
+      const start = Number(startStr), end = Number(endStr);
+      // Contained-within, not merely overlapping: extraction is per-
+      // sentence (S38's own header names the cross-boundary garbage a
+      // looser rule once produced), so a real admitted span should sit
+      // fully inside exactly one sentence's own byte range.
+      const hit = bySentence.find((sent) => start >= sent.start && end <= sent.end);
+      if (hit) hit.propositions.push({ at: s.at, subject: e.subject, verb: e.verb, object: e.object });
+    }
+  }
+  return bySentence.map((sent) => ({
+    order: sent.order,
+    at: `${ref}#${sent.start}-${sent.end}`,
+    ref,
+    kind: sent.propositions.length ? "proposition" : "gap",
+    propositions: sent.propositions.length ? sent.propositions : undefined,
+    reason: sent.propositions.length ? undefined : "no_relation_extracted",
+  }));
+}
+
 function verifySpans(excerpt, edges) {
   let checked = 0, ok = 0;
   const bad = [];
@@ -456,6 +557,13 @@ async function digestOne(organs, spec) {
   const identity = spec.kind === "text-gutenberg" ? organs.declaredIdentity(spec.slug, raw) : null;
 
   const sentences = spans.splitSentences(excerpt);
+  // digestOne's own admitEdges (below) carry `e.spans` UNTRANSLATED straight
+  // off `report.edges` — no bodyOffset/toRaw crossing, unlike readSidecar's
+  // deliberate raw-file translation for on-disk self-verification — so this
+  // driver's sentence spans and its admitted-edge spans are ALREADY in the
+  // same excerpt-local coordinate space; propositionLedger just needs them
+  // handed over as `{order, start, end}` rather than `{order, offset, text}`.
+  const sentenceSpans = sentences.map((s) => ({ order: s.order, start: s.offset, end: s.offset + s.text.length }));
   // Whether the surface layer can see this material's script AT ALL, asked
   // BEFORE its counts are read — eoreader7 native surfaces.js::scriptCoverage
   // (S24). Every candidate-surface filter in that organ reads capitalisation,
@@ -549,14 +657,21 @@ async function digestOne(organs, spec) {
       heard: heard.length,
       turnedAway: turnedAway.length,
       turnedAwayReasons: turnedAway.reduce((acc, t) => { acc[t.reason] = (acc[t.reason] ?? 0) + 1; return acc; }, {}),
+      // LP10: "gate clean" and "nothing false got in" are not "most of the
+      // document got in" — this is the second, separate question, always
+      // computed, never left for a human to hand-derive from raw counts.
+      ...admissionCoverage(sentences.length, folded),
     },
     log,
     folded,
+    // LP10: one entry per sentence, always — a real proposition or a typed
+    // gap, never a silent absence. See propositionLedger's own header.
+    propositions: propositionLedger(sentenceSpans, folded, spec.slug),
     excerpt,
   };
 }
 
-export { loadOrgans, digestOne, excerptOf, stripCatalogBoilerplate, verifySpans, EXCERPT_CHARS, LP_ROOT, DIGEST_DIR, repoState };
+export { loadOrgans, digestOne, excerptOf, stripCatalogBoilerplate, verifySpans, admissionCoverage, propositionLedger, EXCERPT_CHARS, LP_ROOT, DIGEST_DIR, repoState };
 
 // ── the sample manifest ─────────────────────────────────────────────────
 //
@@ -623,13 +738,15 @@ async function runBatch() {
       edgesFound: out.reading.edgesFound, heard: out.admission.heard,
       turnedAway: out.admission.turnedAway,
       spanSelfVerifyRate: out.spanSelfVerification.passRate,
+      admissionCoverage: out.admission.coverage,
       casedShare: out.script.casedShare,
       scriptGap: out.script.gap?.reason ?? null,
     });
     const gapNote = out.script.gap
       ? `  [${out.script.gap.reason}: only ${(out.script.casedShare * 100).toFixed(1)}% of letters carry case]`
       : "";
-    console.log(`${spec.slug}: ${out.reading.sentences} sentences, ${out.reading.distinctReferents} referents, ${out.reading.edgesFound} edges found, ${out.admission.heard} heard, spans ${out.spanSelfVerification.ok}/${out.spanSelfVerification.checked}${gapNote} -> ${outPath}`);
+    const coveragePct = out.admission.coverage == null ? "n/a" : `${(out.admission.coverage * 100).toFixed(1)}%`;
+    console.log(`${spec.slug}: ${out.reading.sentences} sentences, ${out.reading.distinctReferents} referents, ${out.reading.edgesFound} edges found, ${out.admission.heard} heard (${coveragePct} of sentences), spans ${out.spanSelfVerification.ok}/${out.spanSelfVerification.checked}${gapNote} -> ${outPath}`);
   }
   fs.writeFileSync(path.join(DIGEST_DIR, "index.json"), JSON.stringify({ schema: "EOTDigestIndex@1", generatedAt: new Date().toISOString(), sources: index }, null, 1));
   console.log(`\nwrote ${index.length} digests + index.json to ${DIGEST_DIR}`);
