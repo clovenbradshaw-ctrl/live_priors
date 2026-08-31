@@ -389,6 +389,77 @@ without the evidence that produced it).
 
 ---
 
+## LP7 — There is no reading from nowhere: the sidecars erased, and the bar any successor must clear
+
+**Two user directions, one entry (2026-08-31).** First: "erase all our eot
+sidecars since they don't align to this" — "this" being the proposition
+bar stated the same day in `goldens/reading/RULE.md`'s fourth amendment:
+a proposition is a difference that makes a difference, the TRIADIC
+MINIMUM of assertions (a term, an operator, and the state or ground the
+move lands against; fewer than three and nothing has moved). Second, the
+forward half: "there is no reading from nowhere — any reading needs to
+leverage declared priors and have things like surprise etc."
+
+**What was erased, and why it failed the bar.** All 2,208 `*.eot.json`
+sidecars, corpus-wide, in one commit. The specimen that decided it,
+examined row by row the same day: `06-government-legal/un-udhr/
+udhr-eng.txt.eot.json` read 73 sentences of the English UDHR and emitted
+five edges — every one the auxiliary "have" glued to its neighbours,
+every one stamped INS·Figure, two subjects ("compelled to", "women and")
+not referring phrases at all, two edges sharing one byte span. Those
+rows are extractor patterns, not propositions: no row names a
+transformation landed against a ground, so under the triadic minimum the
+sidecars asserted nothing — while LOOKING like readings, which is worse
+than absence. LP4's own line — "a document with no reading is not a
+document with nothing in it" — cuts both ways: an absent sidecar claims
+nothing, where a wrong one claimed plenty.
+
+The erasure is a `git rm`: history keeps every byte (the event stream is
+the reality, the working tree the projection — store.js's frame, already
+this repo's own R12), and the projection now honestly shows no reading
+where none worth the name exists.
+
+**What stays, condemned or cleared by name.** The generator
+(`scripts/eot-sidecar.mjs`) and its tooling (eot-digest,
+eot-coverage-summary, eot-sidecar-sample, the sweep RESULTS docs, and
+`goldens/reading/MINED-PATTERNS.md`) remain in the tree as the record of
+the generation that was tried — the-fold's succession.js precedent:
+condemned, present, disclosed; it must not run again until the bar below
+is met. The apparatus it built is NOT condemned: recipe identity (LP5),
+S26 raw-coordinate spans, the typed admission gate all held (the specimen
+self-verified 5/5 and turned nothing away) — what failed is what walked
+through them. A gate can only refuse what its reader flags; the reader
+had no ground to flag against.
+
+**The law: no reading from nowhere.** A reading enters this corpus only
+when all three hold:
+
+1. **Its rows meet the proposition bar.** RULE.md's triadic minimum;
+   `goldens/reading/` is the target grammar and the scorer.
+2. **Its declared priors are its GROUND, not merely its filter.** The
+   erased recipes NAMED priors with givers (determiners, negation, the
+   POS vocabulary gate) but used them only to filter candidate verbs.
+   Leveraging a prior means reading WITH the expectation the prior
+   supplies — the reader can say what it expected before it says what it
+   found. A recipe that names priors it does not expect with is
+   provenance for a reading from nowhere.
+3. **Difference is measured, not assumed: surprise runs.** A reader that
+   cannot say what it expected cannot say what differed — and a
+   proposition IS a difference. The organs exist and are named, not
+   aspirational: eoreader7's `emergence/surprise.js` (Shannon novelty and
+   Bayesian surprise, kept apart, provably identical only at full
+   commitment), the tier-stack meters the-fold already wires
+   (reflex.js/aperture.js — declared window, gamma, draws, seed, givers
+   named). What a row's difference moved against belongs on the row.
+
+**What this entry does not decide:** the successor reader's design —
+whether the goldens seed its expectations, whether surprise gates
+admission or only rides rows, what a prior-expectation concretely is at
+corpus scale. Those are the next pass's to measure, not this entry's to
+guess.
+
+---
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work

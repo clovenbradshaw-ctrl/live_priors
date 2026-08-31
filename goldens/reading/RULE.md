@@ -561,3 +561,45 @@ Lear; The_Tempest.txt holds Othello; Much Ado, Shrew, Tempest and
 Twelfth Night contents are absent while King John, Richard II, Henry
 VI.3 and Comedy of Errors are present under other names). The suite
 reads both plays from the canonical pg100 file instead.
+
+**2026-08-31, fourth pass — the definition, stated once: a proposition is
+a difference that makes a difference, at the triadic minimum.** User
+direction, near-verbatim: a proposition should be a difference that makes
+a difference — the triadic minimum of assertions. This was already the
+engine's own vocabulary one register up (`nul/index.js`: "figure —
+difference from its own ground; pattern — the difference that figure made
+to the next ground... Bateson's: a difference that makes a difference");
+this amendment applies it to what counts as an assertion AT ALL, so the
+fold rules above read as instances of one principle rather than a
+checklist.
+
+THE DEFINITION. A proposition is the smallest assertion that actually
+moves something: (1) a term with a prior state, (2) an operator that
+moves or predicates something of it, (3) the state or ground the move
+lands against — recoverable either as an explicit object or in the
+predicate's own aspect and mood (Πεπλήρωται's perfect passive carries its
+own before/after; `object: null` does not fail the test). Fewer than
+three terms and nothing has moved: a name, a reference, a label — not a
+proposition.
+
+THE FOLD RULES ARE ITS INSTANCES. A heading (R10: subject null, object
+null, a bare name — monadic, nothing moved; already declared "not a
+proposition" by fiat, now by derivation). An intensional complement (A1:
+the outer triad lands — a pledge now exists where none did; the inner
+content names a state nothing has yet transformed). Presupposed material
+(A2: zero delta against the given ground — restates, does not move). An
+irrealis characterizing modifier (R11's mood rule: describes an unlanded,
+contingent difference; the indicative sibling reports a landed one). A
+situational directive or an interrogative (the gap-suite rulings:
+performs or asks; reports nothing landed). One test decides all five:
+does this relation land a transformation against a recoverable ground, or
+does it only name, restate, or describe an unlanded possibility?
+
+WHAT IT CHANGED THE DAY IT WAS STATED: the corpus's 2,208 machine EOT
+sidecars were erased against it — their rows were extractor patterns, not
+landed differences (live_priors POLICIES.md LP7 is the record, with the
+udhr-eng specimen: five edges, every one the auxiliary "have", every one
+INS·Figure, two subjects not referring phrases at all). Stating it forced
+no golden-row revision (R12's ledgers stay empty this pass): R8-R11
+already were this principle, stated piecewise — which is what the
+derivation above verifies.
