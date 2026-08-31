@@ -81,6 +81,15 @@ function tupleLines(golden, lang) {
       // target filters to clause === "main"; one that wants full
       // propositional coverage takes every line.
       clause: row.clause ?? null,
+      // R9's language-independent proposition key: rows sharing a `prop`
+      // across specimens are the same claim — the join the Rosetta stone
+      // superposes on. R10's structure fields: `ground` names the section
+      // the row is read under (on a heading row, the section it OPENS);
+      // `role` carries the document's own argument structure
+      // (premise / operative / declared).
+      prop: row.prop ?? null,
+      ground: row.ground ?? null,
+      role: row.role ?? null,
       embedded: row.embedded === true,
       unresolved: row.unresolved === true,
       alternate: row.alternate ? `${row.alternate.op}·${row.alternate.grain}` : null,

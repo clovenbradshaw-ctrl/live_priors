@@ -101,6 +101,7 @@ new `clause` field:
 | `conditional-adjunct` | a conditional clause ("if man **is not to be compelled**") |
 | `participial-modifier` | a deverbal modifier carrying a predication ("actos **ultrajantes** para la conciencia") |
 | `participial-adjunct` | a participial clause ("**keeping** this Declaration constantly in mind") |
+| `heading` | a section heading — not a proposition but a ground-opening act (R10) |
 
 **A1 still holds and is not superseded:** the intensional complement of an
 attitude verb is NOT separately asserted. "have determined **to promote**
@@ -124,6 +125,72 @@ exercised, and the Preamble's operative obligation ("every individual and
 every organ of society shall strive... to promote respect for these rights
 and freedoms") had no row in any language. A target that omits a third of
 what the text says teaches an extractor to omit it too.
+
+**R9 — the alignment key** (added 2026-08-31; ROSETTA-GOALS Goal 2).
+Every row carries `prop`: a language-independent proposition identifier
+(`udhr:born-free`), shared by every language's row for the same claim.
+Superposition across languages is a join, and a join needs a key.
+Positional identity (`specimen` + row index) cannot serve: the languages'
+row counts legitimately diverge. The prop matrix is also where a
+language's absences become legible — Arabic's genuinely missing
+friendly-relations clause, English folding freed-from-want into an
+object — as holes in a row rather than prose in a note. A prop present in
+only one language is a language-unique proposition and is recorded as
+such, never forced into a shared slot.
+
+**R10 — structure: grounds, roles, headings** (added 2026-08-31;
+ROSETTA-GOALS Goal 3). A heading is not a proposition, but it is an act —
+a sign held over the region it opens (SIG·Ground; SEG·Ground the
+disclosed alternate) — and it gets a row with `clause: "heading"`. Every
+row carries `ground`: the section it is read under (on a heading row, the
+section it OPENS) — the scope that keeps a section's activation visible
+on each row rather than implied by position. Every row carries `role`,
+the document's own argument structure: the Preamble's whereas-clauses are
+`premise`, the proclamation and its dependents `operative`, Article 1's
+substance `declared`. Before R10 the goldens could not distinguish a
+premise from a conclusion — the document's own argument was invisible.
+
+## The 2026-08-31 re-adjudication (ROSETTA-GOALS Goal 1) — every row re-read verb-first
+
+Hand-inspection found `CON·Pattern` holding 36 of 107 rows — a third of
+the corpus in one cell — and two systematic errors feeding it: rows typed
+from their DEONTIC FRAMING ("prescribed standing conduct") rather than
+from the verb's own act, inverting A3; and six `because` fields
+justifying an operator from the engine's DERIVED stance name, which is
+circular (stance is computed FROM operator × grain and can never be
+evidence for it). Every row was re-read. The retypings:
+
+- **enjoy-freedoms** CON·P → **SIG·P**: the object names a CONDITION
+  (freedom) present to the kind — the verbal form of a property
+  predication — not a constituent part. The part-whole test now
+  separates it from **endowed-reason** (faculties → CON·P, kept).
+- **compelled-to-rebellion** CON·P → **INS·P, polarity −**: compulsion
+  is causative — unnegated, man driven into rebellion, the same
+  causation shape as the Preamble's own "disregard HAS RESULTED IN
+  barbarous acts" (both INS·P; the text itself pairs them: violation
+  produced barbarism, unprotected rights produce rebellion).
+- **standard-to-strive** CON·P → **INS·P**: "esforzarse por / 努力实现 /
+  تستهدفه" assert labouring to REALIZE a state of affairs.
+- **promote-respect**, **secure-recognition**, **nations-make-known**
+  CON·P → **REC·P**: fostering respect / securing recognition / making
+  rights understood generate a VALUATION in others — an interpretive
+  product, Generate·Interpretation. Typed from the verbs; that this
+  re-occupies a previously empty cell is a consequence, not a reason.
+- **Kept after re-inspection**, with `because` rewritten from
+  mode × domain primitives: law-protects-rights (a standing
+  guard-arrangement, CON·P), states-pledged (one standing link, CON·F),
+  act-brotherhood (a mutual relation of the kind, CON·P),
+  faith-reaffirmed (EVA·F, the circular clause struck).
+
+After: CON·P holds 15 rows (possession, mutual conduct, guardianship —
+three relations argued separately), and the corpus occupies 11 cells
+including SIG·Ground (headings) and REC·Pattern. The prop matrix shows
+23 of 24 shared propositions agreeing across all five languages; the one
+disagreement (advent-aspiration: Arabic's bare copula كان vs. the
+declaring verb elsewhere) is a fact about the source verbs, mutually
+disclosed in the rows' alternates, and is NOT to be normalised away.
+That agreement number is one reader's consistency, not independent
+convergence — Goal 6's blind adjudication is what would make it evidence.
 
 ## Part II — the phasepost rule: a verb is one of nine acts, at one of three grains
 
