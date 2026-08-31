@@ -202,29 +202,104 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
   // opened) is a genuine one; `candidates` (the full nominated set, gated
   // or not) is unchanged, so nothing about what was NOMINATED moved, only
   // what was ADMITTED to the vocabulary extraction actually draws from.
-  const POS_PRIOR_PATH = path.join(EOREADER7_ROOT, "legacy-eoreader6.1", "scripts", "corpus", "pos-eng.json");
+  // POS priors, PER LANGUAGE: native/priors/pos-<iso3>.json, each built by
+  // eoreader7's own native/scripts/build-pos-prior.mjs from a real UD
+  // treebank (see that file's own header — one script, zero per-language
+  // code, English/Russian/Finnish today). The path used to name the empty
+  // `legacy-eoreader6.1` submodule, so this gate has never actually loaded
+  // for any of this corpus's languages, English included — the elaborate
+  // measured numbers in this function's own header comment (Shakespeare
+  // 90→22, the Iliad 65→25, Alice 97→34) describe a real prior run, but
+  // against a build this checkout never had a live path to. Fixed at the
+  // source: `wordclass.js` (native/adapters/text/wordclass.js) is already
+  // self-contained — no legacy import, confirmed directly — and exports
+  // exactly the four symbols `makeGrammarLens` needs.
+  //
+  // `LANG_ALIAS`/`normalizeLangCode` bridge the two code schemes this
+  // corpus itself mixes: this file's own SAMPLE array declares ISO 639-1
+  // (`language: "fr"`), and the UDHR corpus's own header code is ALSO
+  // mostly ISO 639-1 (eot-sidecar.mjs's own UDHR_HEADER_RE comment: "ru",
+  // "fi", checked directly against real files) — against the priors'
+  // own ISO 639-3 filenames (matching UniMorph's/UD's per-language repo
+  // naming, `pos-eng.json`/`pos-rus.json`/`pos-fin.json`). An alias table
+  // of exactly the three languages this pass built data for, not a
+  // general ISO 639 mapping — every other code passes through unchanged
+  // and simply finds no entry below, which is the honest, disclosed
+  // default for the other ~513 UDHR languages and every other document
+  // this corpus holds.
+  const LANG_ALIAS = { en: "eng", ru: "rus", fi: "fin" };
+  const normalizeLangCode = (code) => {
+    const c = String(code ?? "").toLowerCase();
+    return LANG_ALIAS[c] ?? c;
+  };
   const GRAMMAR_MIN_SHARE = 0.5;
-  let classifyConnector = null;
-  let posPriorLoaded = false;
-  let posPrior = null;
+  const posByLang = {};
   try {
-    const wordclass = await import(path.join(EOREADER7_ROOT, "legacy-eoreader6.1", "packages/engine/perceiver/text/wordclass.js"));
-    posPrior = JSON.parse(fs.readFileSync(POS_PRIOR_PATH, "utf8"));
-    classifyConnector = makeGrammarLens({
-      classifyWord: wordclass.classifyWord,
-      dominantClass: wordclass.dominantClass,
-      posPrior,
-      posPriorMeta: wordclass.POS_PRIOR_META,
-      thraxMeta: wordclass.THRAX_META,
-    });
-    posPriorLoaded = true;
+    const wordclass = await import(path.join(NATIVE, "adapters/text/wordclass.js"));
+    for (const lang of ["eng", "rus", "fin"]) {
+      try {
+        const posPrior = JSON.parse(fs.readFileSync(path.join(NATIVE, "priors", `pos-${lang}.json`), "utf8"));
+        posByLang[lang] = {
+          posPrior,
+          classifyConnector: makeGrammarLens({
+            classifyWord: wordclass.classifyWord,
+            dominantClass: wordclass.dominantClass,
+            posPrior,
+            posPriorMeta: wordclass.POS_PRIOR_META,
+            thraxMeta: wordclass.THRAX_META,
+          }),
+        };
+      } catch {
+        // no build for this language — a disclosed absence via posGateFor
+        // below, never a guess; every language not in the loop above is
+        // the same disclosed absence, by construction.
+      }
+    }
   } catch {
-    classifyConnector = null; // disclosed absence, not a guess — see recipe.descriptor.grammar
-    posPrior = null;
+    // adapters/text/wordclass.js unreachable — every language degrades to
+    // no gate, disclosed the same way as a single missing prior file.
   }
+  // Backward-compatible flat defaults: any caller reading `classifyConnector`/
+  // `posPrior`/`posPriorLoaded` off the returned organs bundle directly
+  // (unchanged names, unchanged meaning) gets English — the language this
+  // function's own header comment's measured numbers were about — now
+  // actually loaded rather than silently dead.
+  const posPriorLoaded = !!posByLang.eng;
+  const classifyConnector = posByLang.eng?.classifyConnector ?? null;
+  const posPrior = posByLang.eng?.posPrior ?? null;
+
+  // Declension folding (the-fold/eoreader7 S38): namesCorefer's own
+  // containment/shared-final-token check compares tokens as exact strings,
+  // which fragments a highly-inflected language's own names across their
+  // case forms (Russian: "Кутузов"/"Кутузова"/"Кутузову" read as three
+  // strangers). `sameStemFor(lang)` is the SAME per-language-map shape as
+  // `posGateFor` below, deliberately — one received-prior lookup pattern,
+  // not two. Only Russian has a built prior today; every other language
+  // returns `null` and `discoverReferents` runs exactly as it always has.
+  const declensionByLang = {};
+  try {
+    const declension = await import(path.join(NATIVE, "adapters/text/declension.js"));
+    for (const lang of ["rus"]) {
+      try {
+        const prior = JSON.parse(fs.readFileSync(path.join(NATIVE, "priors", `declension-${lang}.json`), "utf8"));
+        declensionByLang[lang] = declension.createDeclensionFolder(prior).sameStem;
+      } catch {
+        // no declension prior for this language yet — disclosed via sameStemFor
+      }
+    }
+  } catch {
+    // adapters/text/declension.js unreachable — every language degrades to
+    // exact-token comparison, the pre-existing behaviour.
+  }
+  const sameStemFor = (code) => declensionByLang[normalizeLangCode(code)] ?? null;
 
   const determiners = new Set([...priors.DEFINITE_DETERMINERS, ...priors.INDEFINITE_DETERMINERS]);
-  const relationsFor = makeRelationReader({
+  // Factored out so a per-language relationsFor is the SAME construction
+  // as the flat default below, never a second implementation that could
+  // drift from it (this repo's own postmortems — P22/P24/P25 in the-fold's
+  // CLAUDE.md — are exactly this drift class, caught here before it could
+  // recur a fourth time).
+  const buildRelationsFor = (langPosPrior) => makeRelationReader({
     splitSentences: spans.splitSentences,
     extractSurfaces: surfaces.extractSurfaces,
     discoverReferents: surfaces.discoverReferents,
@@ -242,7 +317,7 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
     // nothing; `posPrior === null` here degrades makeRelationReader to
     // byte-identical prior behaviour (checked at hypergraph.js's own
     // `organs.posPriorFor ? organs.posPriorFor() : null`).
-    posPriorFor: posPriorLoaded ? () => posPrior : null,
+    posPriorFor: langPosPrior ? () => langPosPrior : null,
     // Both default false, threaded straight from this function's own
     // caller-declared `opts` — see this file's own header for what they are
     // (DR4/DR5, live_priors/goldens/reading/DERIVED-RULES.md) and hypergraph.js's
@@ -255,6 +330,18 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
     phrasalPredicates,
     nounPhraseSubjects,
   });
+  const relationsFor = buildRelationsFor(posByLang.eng?.posPrior ?? null); // backward-compatible flat default: English
+  const relationsForLangCache = new Map();
+  const relationsForLang = (code) => {
+    const lang = normalizeLangCode(code);
+    if (!relationsForLangCache.has(lang)) relationsForLangCache.set(lang, buildRelationsFor(posByLang[lang]?.posPrior ?? null));
+    return relationsForLangCache.get(lang);
+  };
+  const posGateFor = (code) => {
+    const lang = normalizeLangCode(code);
+    const entry = posByLang[lang];
+    return { loaded: !!entry, classifyConnector: entry?.classifyConnector ?? null, posPrior: entry?.posPrior ?? null };
+  };
   // taskLog.js exports GRAIN_RANK directly (native/kernel/task-log.js,
   // eoreader7 S23) — hyperlexicon.js reads it to name the Figure grain
   // without hardcoding the string. cellOf lives on cube.js in the native
@@ -272,7 +359,8 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
   };
   return {
     spans, surfaces, relations, material, priors, taskLog, cube,
-    relationsFor, hl, stripContainer, declaredIdentity, repoStates,
+    relationsFor, relationsForLang, posGateFor, sameStemFor, normalizeLangCode,
+    hl, stripContainer, declaredIdentity, repoStates,
     classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
   };
 }
@@ -356,7 +444,10 @@ function verifySpans(excerpt, edges) {
 }
 
 async function digestOne(organs, spec) {
-  const { relationsFor, hl, spans, surfaces, stripContainer } = organs;
+  const { relationsForLang, sameStemFor, posGateFor, hl, spans, surfaces, stripContainer, GRAMMAR_MIN_SHARE } = organs;
+  const relationsFor = relationsForLang(spec.language);
+  const sameStem = sameStemFor(spec.language);
+  const posGate = posGateFor(spec.language);
   const rawPath = path.join(LP_ROOT, spec.path);
   const raw = fs.readFileSync(rawPath, "utf8");
   const { excerpt, bodyOffset, catalogDropped, fullChars, bodyChars, excerptChars, truncated } =
@@ -378,7 +469,7 @@ async function digestOne(organs, spec) {
   const evidence = surfaces.accumulateSurfaceEvidence(sentences, surfaces.createSurfaceEvidence());
   const script = surfaces.scriptCoverage(sentences, { evidence });
   const surfaceEvidence = surfaces.surfacesFromEvidence(evidence);
-  const { events } = surfaces.discoverReferents(surfaceEvidence, {});
+  const { events } = surfaces.discoverReferents(surfaceEvidence, { sameStem });
   const referentIds = new Set(events.map((e) => e.referent_id));
 
   const passage = { ref: spec.slug, text: excerpt };
@@ -417,9 +508,17 @@ async function digestOne(organs, spec) {
       engine: "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
       determiners: "injected — priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, P41)",
       negationWords: "injected — priors.js NEGATION_WORDS (giver lang/en, P43)",
-      classifyConnector: "omitted — POSPrior fixture (UD_English-EWT build) not present in this environment",
+      posPriorGate: posGate.loaded
+        ? `active — native/priors/pos-${organs.normalizeLangCode(spec.language)}.json (giver Universal Dependencies, CC BY-SA 4.0) gates relations.js::discoverRelationVocab's candidate verb vocabulary`
+        : `omitted — no POSPrior@1 build for language "${spec.language}" (normalized "${organs.normalizeLangCode(spec.language)}") in this environment`,
+      classifyConnector: posGate.loaded
+        ? `wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
+        : "omitted — no POSPrior@1 build for this language in this environment",
       verbForms: "omitted — opt-in only, undecided default per the-fold CLAUDE.md",
       createLemmatizer: "omitted — opt-in only, undecided default per the-fold CLAUDE.md",
+      sameStem: sameStem
+        ? `injected — declension-${organs.normalizeLangCode(spec.language)}.json (giver UniMorph, CC BY-SA 3.0), widens namesCorefer past exact-token comparison`
+        : `omitted — no declension prior for language "${spec.language}" in this environment`,
     },
     // What fraction of this material's own writing the surface layer could
     // see, and the typed gap when the answer is "little or none". Sits ABOVE

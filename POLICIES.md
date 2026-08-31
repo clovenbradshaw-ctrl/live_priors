@@ -904,6 +904,161 @@ analysis above used filenames throughout for exactly this reason.
 
 ---
 
+## LP9 — the three blind spots LP8 diagnosed, closed: an exact statistical test, a declension-folding organ, and a live POS-vocabulary gate
+
+User direction, verbatim: *"fix the issues."* LP8 diagnosed three defects
+by comparing the CONTENT of 516 real UDHR readings against each other
+rather than stopping at gate-level statistics; this entry is their close.
+Two live in eoreader7 (READING-SPEC.md S37/S38 carry the full account —
+summarized and pointed at here, not restated); the third is this repo's
+own wiring, fixed here.
+
+**(1) `capitalisationIsSignificant`'s normal approximation — closed as
+S37, eoreader7.** The triggering Czech specimen (cap=4/lower=1) never
+actually flipped between the old approximation and an exact test (both
+refuse it, p=0.1875) — the REAL defect, found by widening from one
+specimen to an exhaustive sweep of the function's whole practical domain
+(every `(cap, lower)` pair, n<=60), was a systematic bias: 24 pairs where
+the old z-bound wrongly called a split "significant" and the exact
+binomial tail correctly refuses it, zero pairs in the other direction.
+Fixed with an exact one-sided binomial tail computed in log-space.
+Nothing in this repo changed for this fix; it is entirely
+`native/adapters/text/surfaces.js`.
+
+**(2) Declension fragmenting a name's own case forms into strangers —
+closed as S38, eoreader7, wired here.** LP8 found this on real material
+(Russian's "Anna Pavlovna" and, separately, Finnish/[North] Saami
+place-and-organisation names) and named it a real, general defect:
+`namesCorefer`'s containment/shared-final-token check compares tokens as
+exact strings, so a bare Russian surname's own case forms —
+"Кутузов"/"Кутузова"/"Кутузову" — read as three unrelated referents.
+`declension.js::createDeclensionFolder` (eoreader7, new) mines
+suffix-transformation rules from UniMorph's real Russian noun paradigm
+table and checks them PAIRWISE against two actually-observed surfaces
+(never as a per-word canonical lemma — S38's own header explains why that
+would be unsafe: the dominant Russian genitive-PLURAL pattern, "ов"->"",
+would corrupt an already-nominative surname like "Кутузов" itself if
+applied to a bare word in isolation). Verified against real fetched
+Russian War and Peace: 38 correct merges (Anna, Pierre, Kutuzov, Vasily,
+Andrei, Boris, Bolkonsky, Bonaparte, Napoleon, and more), zero false
+merges, across a floor sweep from 10 to 200 kept rules.
+
+**Wired here, into `loadOrgans`.** `namesCorefer(a, b, { sameStem })` and
+`discoverReferents(surfaces, { sameStem })` both take the fold as an
+optional organ; `eot-digest.mjs::loadOrgans` now builds it from
+`native/priors/declension-rus.json` (Russian only — no other language has
+a built prior yet, a disclosed absence, not a silent one) and exposes
+`organs.sameStemFor(languageCode)`, consumed by both `digestOne` (keyed
+off `spec.language`, already a per-document field there) and
+`readSidecar` (keyed off the UDHR corpus's own header code — see (3)
+below). **Honest residue, found while wiring, not glossed over:**
+`readSidecar` has no language signal for a NON-UDHR document (the War and
+Peace file this whole finding was measured against has no UDHR-style
+header), so it falls through to English and applies neither the POS gate
+nor the declension fold for that file today — `digestOne`, called with an
+explicit `spec.language: "ru"`, is what actually exercises the fix
+end-to-end against that file (verified directly: `organs.sameStem`
+correctly reports "injected" and the POS gate correctly reports "active"
+when called this way). A LP8-scale referent-count delta on that file
+through `digestOne`'s own DEFAULT 8000-char excerpt window did not
+materialize (`distinctReferents` held at 4 either way, on a 43,343-char
+document) — checked, not assumed: the mechanism's own correctness is
+proven directly (the 38-merge sweep above, and eoreader7's own
+`declension.test.js` end-to-end `discoverReferents` case), and the null
+result here is a real, disclosed finding about the EXCERPT WINDOW, not
+about the fold — an 8000-char slice of a 43K-char book is not guaranteed
+to contain both a name's nominative and declined forms together, and this
+one apparently does not. Widening the excerpt window for narrative
+material with recurring characters is real, unattempted, scoped future
+work, not silently claimed done.
+
+**(3) The POS-vocabulary gate — closed here.** LP8 found `loadOrgans`'s
+own header comment describing a measured, working gate (Shakespeare
+90→22 edges, the Iliad 65→25, Alice 97→34) that was true of some past
+build, while the CODE imported `legacy-eoreader6.1/scripts/corpus/
+pos-eng.json` and `legacy-eoreader6.1/packages/engine/perceiver/text/
+wordclass.js` — both paths into a submodule confirmed empty in this
+checkout — so the gate had been silently loading for NEITHER English nor
+any of the other 515 languages, ever, in this environment. Fixed at the
+source: `native/adapters/text/wordclass.js` is already self-contained (no
+legacy import, confirmed directly) and exports exactly what
+`makeGrammarLens` needs; `native/scripts/build-pos-prior.mjs` (new,
+eoreader7, language-general — one script, zero per-language code) built
+real `POSPrior@1` files for English (UD_English-EWT), Russian
+(UD_Russian-GSD) and Finnish (UD_Finnish-TDT). `loadOrgans` now builds a
+`posByLang` map from these three files and exposes `organs.
+relationsForLang(languageCode)` / `organs.posGateFor(languageCode)`,
+consumed the same way as `sameStemFor` above; the flat `relationsFor`/
+`classifyConnector`/`posPrior`/`posPriorLoaded` fields stay for backward
+compatibility, now pointing at real English data instead of a dead path.
+
+**A pre-existing test that had been silently skipping now genuinely
+passes, and is independent confirmation.**
+`scripts/eot-sidecar.test.mjs`'s own "POS vocabulary gate" case has an
+explicit `if (!organs.posPriorLoaded) return;` skip — before this fix,
+`posPriorLoaded` was always `false`, so this test had never once actually
+exercised its own assertions in this environment despite existing on
+disk. It now runs for real and passes: on the real Alice in Wonderland
+excerpt, candidates (22) genuinely narrow past kept verbs (8), and every
+one of the 22 held-back tokens (`of`/`the`/`by`/`with`/`in`/`that`/...) is
+a real, listed non-verb. On the real War and Peace Russian excerpt
+(digestOne, `spec.language: "ru"`), `edgesFound` narrowed 63 -> 12 with
+the gate active — the same class of effect, a second language, the
+identical unmodified mechanism.
+
+**A `Language:` header two-letter code, needed for real, found by
+checking rather than assuming.** `stripUdhrHeader`'s own regex gained a
+capture group for the header's trailing `(code)` — checked directly
+against real files first: `udhr-rus.txt`'s own header reads "Language:
+Russian (ru)" and `udhr-fin.txt` reads "Language: Finnish (fi)" — ISO
+639-1, NOT the ISO 639-3 this corpus's own FILENAMES use
+(`un-udhr/udhr-rus.txt`), a real mismatch between the two conventions
+this corpus mixes, disclosed in the code's own comment rather than
+assumed consistent. The initial capture class (`[a-zA-Z-]+`) silently
+narrowed `stripUdhrHeader`'s own matching for two real files
+(`udhr-deu_1901.txt`/`udhr-deu_1996.txt`, whose header carries a second
+parenthetical — "Language: German, Standard (1901) (de-1901)" — with
+DIGITS in the actual code) — caught by testing the new regex against all
+516 real files before trusting it, not assumed safe from reading it;
+fixed to `[a-zA-Z0-9-]+`, re-verified at 516/516 matched, zero regression.
+A small `LANG_ALIAS` table (`en`/`ru`/`fi` -> the priors' own ISO 639-3
+keys) bridges the two schemes — three entries, not a general ISO 639
+table, honest about its own narrow scope.
+
+**Measured, not assumed: the full 516-file UDHR corpus re-swept with
+`--fresh`** (LP6's own licensed escape hatch — a recipe change that adds
+a gate rather than removing one still needs `--fresh` for the *disclosure
+fields* on already-clean files to update, even though this specific
+recipe change could only narrow, never fabricate) in 20.5 seconds (388
+clean, 90 gapped_script, 38 empty — the same shape LP8's own census
+already found, this pass added a gate and a fold, not a new script-
+coverage defect). `udhr-rus.txt`'s own recipe descriptor now reads
+`language: "ru"`, `posPriorGate: "active — ...pos-rus.json..."`,
+`sameStem: "...declension-rus.json..."`; `udhr-fin.txt` and `udhr-eng.txt`
+correctly show `posPriorGate` active and `sameStem` correctly "omitted —
+no declension prior for language..." (Finnish declension folding is real,
+scoped, unbuilt future work, not silently claimed). Every other one of
+the 513 remaining UDHR languages shows the identical honest "omitted" —
+this pass built three languages' worth of received data, not 516, and
+says so on every file rather than only in this document.
+
+**Files.** `scripts/eot-sidecar.mjs` (`stripUdhrHeader`'s captured
+`language`; `readSidecar`'s per-document `relationsFor`/`sameStem`/
+`posGate` selection; the `recipe.descriptor` disclosure fields, now
+dynamic rather than a hardcoded string). `scripts/eot-digest.mjs`
+(`loadOrgans`'s `posByLang`/`declensionByLang` construction,
+`relationsForLang`/`posGateFor`/`sameStemFor`/`normalizeLangCode`;
+`digestOne`'s per-`spec.language` selection and dynamic `organs`
+disclosure block). No new test file — this repo's own existing
+`scripts/eot-sidecar.test.mjs` (2/2, one of them now genuinely exercised
+for the first time) plus a live batch run of `eot-digest.mjs`'s own
+14-source SAMPLE and a full, fresh 516-file UDHR re-sweep are this pass's
+verification, matching this repo's own established posture for these
+driver scripts (a re-runnable driver against real data, not a fixture
+suite) — eoreader7's own `declension.test.js`/`pos-prior.test.js` (16
+cases, S38) carry the mechanism-level regression coverage for the two
+new organs themselves.
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work

@@ -99,12 +99,27 @@ function sha256(text) {
 // checked directly: no other digested source in this repo opens with
 // this literal string.
 const UDHR_HEADER_RE =
-  /^Universal Declaration of Human Rights\nLanguage:[^\n]*\nAdopted: UN General Assembly resolution 217 A \(III\), Paris, 10 December 1948\nPublisher: Office of the United Nations High Commissioner for Human Rights \(OHCHR\)\n\n?/;
+  /^Universal Declaration of Human Rights\nLanguage:[^\n]*\(([a-zA-Z0-9-]+)\)\nAdopted: UN General Assembly resolution 217 A \(III\), Paris, 10 December 1948\nPublisher: Office of the United Nations High Commissioner for Human Rights \(OHCHR\)\n\n?/;
+// The header's own trailing "(code)" is ISO 639-1 for most files (checked
+// directly: udhr-rus.txt's own Language line reads "Russian (ru)",
+// udhr-fin.txt reads "Finnish (fi)") even though this corpus's own
+// FILENAMES are ISO 639-3 (un-udhr/udhr-rus.txt) — a real, disclosed
+// mismatch between the two naming conventions this corpus mixes, not a
+// typo. Some variant lines carry a SECOND parenthetical before the code
+// ("Language: German, Standard (1901) (de-1901)") — `[a-zA-Z0-9-]+`
+// (digits included; a bare `[a-zA-Z-]+` silently stopped matching BOTH
+// German variant files' own header, checked against all 516 files before
+// and after this widening, zero regressions either way) plus the regex's
+// own greedy-then-backtrack order means the LAST parenthesized group on
+// the line is what gets captured, which is always the code. `language` is
+// that raw code, lowercased, exactly as the header states it — mapping it
+// to anything (a POS/declension prior's own 3-letter key) is the
+// CALLER's job, never guessed here.
 function stripUdhrHeader(text) {
   const s = String(text ?? "");
   const m = s.match(UDHR_HEADER_RE);
-  if (!m) return { text: s, offset: 0 };
-  return { text: s.slice(m[0].length), offset: m[0].length };
+  if (!m) return { text: s, offset: 0, language: null };
+  return { text: s.slice(m[0].length), offset: m[0].length, language: m[1].toLowerCase() };
 }
 
 // A length-PRESERVING version of eot-digest.mjs's stripCatalogBoilerplate.
@@ -174,8 +189,9 @@ function verifyRawSpan(raw, bodyOffset, toRaw, s) {
  */
 async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fresh = false } = {}) {
   const {
-    spans, surfaces, relationsFor, hl, stripContainer, declaredIdentity, repoStates,
-    classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
+    spans, surfaces, relationsForLang, sameStemFor, posGateFor, normalizeLangCode,
+    hl, stripContainer, declaredIdentity, repoStates,
+    mismatchedConnectors, GRAMMAR_MIN_SHARE,
   } = organs;
   globalThis.__eotSidecarSpans = spans; // verifyRawSpan's own closure, avoiding a second import path
 
@@ -208,8 +224,20 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
   }
 
   const { text: gutenbergStripped, offset: gutenbergOffset } = stripContainer(raw);
-  const { text: rawBody, offset: udhrOffset } = stripUdhrHeader(gutenbergStripped);
+  const { text: rawBody, offset: udhrOffset, language: udhrLanguage } = stripUdhrHeader(gutenbergStripped);
   const containerOffset = gutenbergOffset + udhrOffset;
+
+  // Per-document language selection (S38): only the UDHR corpus's own
+  // fixed header names a document's language here — everything else this
+  // walker reads (Gutenberg novels, Wikipedia, legislation) has no such
+  // signal available to this function, and falls through to English
+  // exactly as the pre-existing single-language behaviour did. That is a
+  // real, disclosed scope boundary, not an oversight: `posGate`/`sameStem`
+  // below report which language's prior (if any) actually applied.
+  const lang = udhrLanguage ?? "en";
+  const relationsFor = relationsForLang(lang);
+  const sameStem = sameStemFor(lang);
+  const posGate = posGateFor(lang);
 
   /**
    * One candidate reading window — everything from blanking through
@@ -239,7 +267,7 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     const evidence = surfaces.accumulateSurfaceEvidence(sentences, surfaces.createSurfaceEvidence());
     const script = surfaces.scriptCoverage(sentences, { evidence });
     const surfaceEvidence = surfaces.surfacesFromEvidence(evidence);
-    const { events } = surfaces.discoverReferents(surfaceEvidence, {});
+    const { events } = surfaces.discoverReferents(surfaceEvidence, { sameStem });
     const referentIds = new Set(events.map((e) => e.referent_id));
 
     const passage = { ref: relPath, text: excerpt };
@@ -274,8 +302,8 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     // edges: a connector's grammatical standing is a fact about the
     // TEXT, independent of whether its span happened to survive the
     // separate byte-address check above.
-    const grammar = classifyConnector
-      ? { checked: rawEdges.length, minShare: GRAMMAR_MIN_SHARE, mismatched: mismatchedConnectors(rawEdges, classifyConnector, { minShare: GRAMMAR_MIN_SHARE }).map((m) => ({ subject: m.edge.subject, verb: m.edge.verb, object: m.edge.object, thraxClass: m.classification.thraxClass })) }
+    const grammar = posGate.classifyConnector
+      ? { checked: rawEdges.length, minShare: GRAMMAR_MIN_SHARE, mismatched: mismatchedConnectors(rawEdges, posGate.classifyConnector, { minShare: GRAMMAR_MIN_SHARE }).map((m) => ({ subject: m.edge.subject, verb: m.edge.verb, object: m.edge.object, thraxClass: m.classification.thraxClass })) }
       : null;
 
     return {
@@ -344,14 +372,18 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     engine: "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
     determiners: "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
     negationWords: "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-    posPriorGate: posPriorLoaded
-      ? "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)"
-      : null,
-    classifyConnector: posPriorLoaded
-      ? `wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
+    language: lang,
+    posPriorGate: posGate.loaded
+      ? `hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver Universal Dependencies, native/priors/pos-${normalizeLangCode(lang)}.json, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)`
+      : `omitted — no POSPrior@1 build for language "${lang}" (normalized "${normalizeLangCode(lang)}") in this environment`,
+    classifyConnector: posGate.loaded
+      ? `wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
       : null,
     verbForms: null,
     createLemmatizer: null,
+    sameStem: sameStem
+      ? `declension-${normalizeLangCode(lang)}.json (giver UniMorph, CC BY-SA 3.0) — widens namesCorefer past exact-token comparison, pairwise only (see eoreader7 native/adapters/text/declension.js's own header for why)`
+      : `omitted — no declension prior for language "${lang}" (normalized "${normalizeLangCode(lang)}") in this environment`,
     excerptChars,
     // The exact commit of every repo whose code ran to produce this
     // reading — folded into the descriptor itself (not just disclosed
