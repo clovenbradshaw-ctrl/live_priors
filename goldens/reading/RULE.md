@@ -255,3 +255,24 @@ subject reads as NUL with polarity `+` (the absence IS the act); A5
 translocation verbs read as SIG with grain from what the motion lands on;
 A6 repair/revision verbs follow the project's own build-log precedent
 (revision = SYN), alternate SEG disclosed.
+
+**2026-08-31, omnilingual extension — four more languages, same window,
+independently derived.** The Preamble+Article-1 window was hand-read again
+for Arabic, Spanish, Mandarin, and Swahili (`udhr-arb`/`udhr-spa`/
+`udhr-cmn_hans`/`udhr-swh`, alongside the existing English `udhr`), each
+from that language's own OHCHR file bytes rather than from the English
+golden's structure — R2's "the text itself establishes" read literally
+across scripts. This surfaced three real, disclosed divergences a
+same-language-only pass could not have found: a whereas-clause genuinely
+absent from the Arabic translation (12 rows, not 13); an independent
+finite clause Mandarin's paratactic grammar produces where English
+subordinates the identical content as a restrictive relative (14 rows);
+and Swahili verbing "born free" and "equal in dignity/rights" as two
+separately-subjected clauses where English folds them into one predicate
+(15 rows). None of these are reading errors — R1's own test (an
+independent finite predication) applied honestly to each language's own
+grammar, not to English's. Full reasoning lives in `hand-readings.mjs`'s
+own header and each row's `because` field. Running `diff-golden.mjs`
+against these four (comparing to what the LIVE pipeline currently
+extracts in each language) is real, disclosed, unstarted next work — this
+amendment only establishes the ground truth itself.
