@@ -2,8 +2,8 @@
 
 *Re-runnable: `node scripts/build-pos-prior.mjs && node
 scripts/build-reading-priors.mjs && node scripts/eot-sidecar2.mjs --ring0
---ring1-sample`; conformance: `node --test
-scripts/build-reading-priors.test.mjs` (9/9). Law: POLICIES.md LP7 and its
+--ring1-all`; conformance: `node --test
+scripts/build-reading-priors.test.mjs` (15/15). Law: POLICIES.md LP7 and its
 two same-day amendments (surprise is hypergraph delta; priors are
 checkpoints, never weights). Grammar: goldens/reading/RULE.md R1-R12 +
 the fourth amendment (the triadic minimum).*
@@ -163,3 +163,99 @@ conventions are the trap succession.js is condemned for.
 - **Nothing here is a weight.** Every artifact is a checkpoint of the
   live record (LP7 second amendment); the goldens and the sidecars' own
   logs stay the reality, and the next checkpoint is a recompile.
+
+---
+
+## The ring-1 sweep (2026-08-31, same day — the spiral's first full ring)
+
+User direction: "spiral out to the rest of the UDHR editions." The
+5-edition sample above was the LP6-style validation; the sweep followed:
+**511 editions read structurally** (516 minus the five ring-0 golden
+sources), every sidecar `derived: true`, zero propositions offered,
+`no_lexicon` gaps typed. Machine summary: `scripts/eot-ring1-sweep.json`.
+
+Before the sweep, one more hand list died: the digit detector's five
+hand-picked Unicode blocks (the stop-list hack one level down — a sample
+of a closed set standing in for the whole). Detection now covers ANY
+Unicode Nd block mechanically, the zero found by the Standard's own
+contiguity guarantee (ten contiguous ascending digits); Thai ๑๕, Burmese
+၁၀, Devanagari २९ parse with zero configuration; a mixed-block run
+refuses as noise; ideographic numerals (一二三) are not Nd and stay a
+disclosed refusal — a per-language conversion table is the succession.js
+trap.
+
+**Distribution (articles detected per edition):**
+
+| found | editions |
+|---|---|
+| 30/30 | 395 |
+| 29/30 | 26 |
+| 1–28 | 15 |
+| 0/30 | 75 |
+
+Identity confirmed (the file's own first line) on 511/511.
+
+**Outlier classes, typed from the bytes, not guessed:**
+
+- **29/30, missing [1] (20 editions)** — the Article-premier class: an
+  unnumbered first article ("Article premier", Bamanankan, Hausa, Corsican,
+  Malagasy…). Disclosed, never repaired.
+- **29/30, missing a mid article (6 editions)** — singleton anomalies.
+  The Maldivian specimen is a genuine SOURCE defect: article 10's heading
+  literally reads "1 ވަނަ މާއްދާ" — the zero is missing in the file
+  (LP1: disclosed, never repaired). Swati's article 28 heading
+  ("INTFO YEMASHUMI LAMABILI NESIPHOHLONGO (28)", 43 chars) exceeds the
+  declared 40-char heading guard — a detection limit, typed as such.
+- **Partial detections (15 editions)** — mixed causes, spot-checked:
+  Chuvash genuinely STOPS at article 19 (the translation is partial — a
+  real corpus fact the sweep surfaced, not a detector failure); Jamaican
+  Creole's headings ("Aatikl 23 (Di paat we diil wid wok)") mostly exceed
+  the guard, so only 3 short ones land.
+- **0/30 (75 editions)** — three sub-classes: ideographic-numeral
+  editions (the CJK dialect family — 第一条 throughout);
+  genuinely unnumbered editions (Achuar-Shiwiar: native prose headings,
+  no numbers anywhere); and long-heading editions where every numbered
+  line exceeds the guard.
+
+The guard (≤40 chars, exactly one digit run, ≥1 letter) is a declared
+structural threshold, kept rather than tuned per edition — chasing the
+Swati/Jamaican heading formats one convention at a time is the
+succession.js trap. What closes those honestly is the lexicon ring, not
+a wider regex.
+
+## Adversarial priors — which hypothesis minimizes hypergraph surprise (LP8)
+
+User direction, near-verbatim: hold alt versions of the sidecars as
+adversarial priors, built on other genuinely decent hypotheses about
+minimizing hypergraphical surprise; amend earlier sidecars via appends;
+no sidecar is ever done. Every sidecar now carries `layers` (an
+append-only ledger of readings — layer 0 the favored reading, layers 1+
+adversarial priors from `scripts/reading-hypotheses.mjs`) and a `fold`
+(the projection across layers, recomputed on every append).
+
+Four hypotheses shipped, each predicting a language's adjudicated cells
+from what the languages BEFORE it know — scored, never preferred:
+
+| hypothesis | knows | ar | es | zh | sw |
+|---|---|---|---|---|---|
+| frame | family modal cell alone | 49% | 48% | 49% | 50% |
+| structural | (role × clause × polarity) → modal, no lexicon, no join | 66% | 65% | 58% | 59% |
+| cell-transfer | the Rosetta prop join (prior languages' cells) | 93% | 99% | 90% | 92% |
+| **grain-transfer** | the prop join, grain only | **100%** | **100%** | **97%** | **100%** |
+
+**The finding: the GRAIN is the near-invariant axis of translation; the
+OP carries the construction.** On the 23 construction-splits — exactly
+where the op varies — grain survives 20/23, and each of the three breaks
+has a documented adjudication reason (`family-unit-society`: the rule-3
+definiteness split; `education-directed`; `limitation-purpose`; all
+three involve zh or sw grain choices the goldens' own `because` fields
+argue). Standing consequence, now printed in every rosetta sidecar's
+fold: an op-level variant against the join is ordinary translation
+information; a grain break is rare enough to read as an alarm.
+
+Honest limits: the founding reading (en) is unscored — a hypothesis that
+predicts from priors cannot be measured against the reading that founds
+them; and every rate above is one reader's consistency until Goal 6's
+blind adjudication runs. The ledger appends: the named next candidate is
+the mechanical copula/A4/A5 ladder proper, which needs predicate-shape
+fields the rows do not yet carry.

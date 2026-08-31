@@ -63,6 +63,7 @@ const MORPH_PATH = path.join(ROOT, "..", "eoreader7", "native", "priors", "morph
 // (imported, never copied — the P22/P24 drift lesson): election by
 // measured UD verb-share dominance, no hand list anywhere.
 import { headOf, loadPosForms } from "./build-reading-priors.mjs";
+import { adversarialLayers, grainSurvival } from "./reading-hypotheses.mjs";
 
 const priors = JSON.parse(fs.readFileSync(PRIORS_PATH, "utf8"));
 const actPrior = JSON.parse(fs.readFileSync(ACT_PRIOR_PATH, "utf8"));
@@ -226,7 +227,8 @@ function ring0Sidecar(srcPath, specs) {
   }
 
   const isRosetta = specs.length === 1 && ROSETTA_ORDER.includes(specs[0].specimen);
-  let surprise = null;
+  let surprise = null; let layers = null; let fold = null;
+  const NEVER_DONE = "a sidecar is never done (LP8): layers append, the fold is recomputed on every append, nothing here is a final reading";
   if (isRosetta) {
     const spec = specs[0].specimen;
     const lang = LANG_OF[spec];
@@ -239,6 +241,21 @@ function ring0Sidecar(srcPath, specs) {
       frame: frameStanding(census(specs[0].rows), langsBefore),
       actExpectations: { ...actCheck, note: "checked against non-self witnesses + the received VerbNet tier only" },
     };
+    // LP8: the adversarial-prior ledger, scored against this reading's own
+    // adjudicated rows — competing hypotheses about what minimizes
+    // hypergraph surprise, ranked by measurement.
+    const adv = adversarialLayers(priors, lang, langsBefore);
+    layers = [
+      { layer: 0, kind: "reading", hypothesis: "hand-adjudication + sequential graph events (the favored reading)", recipeId: RECIPE_ID },
+      ...adv.layers,
+    ];
+    fold = {
+      statement: NEVER_DONE,
+      ranking: adv.ranking,
+      grainLaw: langsBefore.length
+        ? "an op-level variant against the join is ordinary translation information; a GRAIN break is rare (20/23 splits preserve grain corpus-wide) and reads as an alarm"
+        : "founding reading — the ranking activates from the second language onward",
+    };
   } else {
     surprise = {
       definition: priors.surprise.definition,
@@ -246,6 +263,8 @@ function ring0Sidecar(srcPath, specs) {
       frame: { standing: "own-census", census: Object.fromEntries(specs.map((g) => [g.specimen, census(g.rows)])) },
       actExpectations: { ...actCheck, note: "checked against non-self witnesses + the received VerbNet tier only" },
     };
+    layers = [{ layer: 0, kind: "reading", hypothesis: "hand-adjudication (the favored reading)", recipeId: RECIPE_ID }];
+    fold = { statement: NEVER_DONE, note: "no adversarial layers yet — the shipped hypotheses predict from a prior reading of the same document, which this source does not have; the ledger appends when one exists" };
   }
 
   return {
@@ -263,6 +282,8 @@ function ring0Sidecar(srcPath, specs) {
     admission: { gate: "hand-adjudication under RULE.md", offered: propositions.length, heard: propositions.length, turnedAway: 0 },
     spanSelfVerification: { checked, ok, bad, method: "re-run fresh at generation: raw.slice(span) must contain subject head, relation head, first object word (collapsed comparison)" },
     surprise,
+    layers,
+    fold,
     propositions,
     acts,
     revisions: [],
@@ -272,17 +293,34 @@ function ring0Sidecar(srcPath, specs) {
 
 // ---- ring 1: rosetta-structural ----
 
-// received digit blocks (giver: The Unicode Standard, decimal digit ranges)
-const DIGIT_ZEROS = [0x0030, 0x0660, 0x06f0, 0x0966, 0x09e6];
+// Decimal digits for ANY script, mechanically — no hand-picked block
+// list (the first cut named five blocks by hand, which is the stop-list
+// hack one level down: a sample of a closed set standing in for the
+// whole). The giver is The Unicode Standard's own guarantee: every Nd
+// block is exactly ten CONTIGUOUS characters with ascending values 0-9,
+// so a digit's zero is found by walking down while the previous
+// codepoint is still Nd (at most 9 steps). Covers Thai, Burmese, Khmer,
+// Tibetan, Tamil, N'Ko — every decimal-digit script at once. Ideographic
+// numerals (kanji 一二三) are NOT Nd — a genuinely different numeral
+// system, refused and disclosed, never converted by a per-language table
+// (the succession.js trap).
+const isNd = (cp) => /\p{Nd}/u.test(String.fromCodePoint(cp));
+function digitValue(cp) {
+  if (!isNd(cp)) return null;
+  let zero = cp;
+  while (zero - 1 >= 0 && isNd(zero - 1) && cp - (zero - 1) <= 9) zero--;
+  return cp - zero;
+}
 export function digitRunValue(run) {
   let v = 0; let block = null;
   for (const ch of run) {
     const cp = ch.codePointAt(0);
-    const zero = DIGIT_ZEROS.find((z) => cp >= z && cp <= z + 9);
-    if (zero === undefined) return null;
+    const d = digitValue(cp);
+    if (d === null) return null;
+    const zero = cp - d;
     if (block !== null && zero !== block) return null; // a mixed-block run is noise, not a number
     block = zero;
-    v = v * 10 + (cp - zero);
+    v = v * 10 + d;
   }
   return v;
 }
@@ -330,10 +368,12 @@ function ring1Sidecar(srcPath) {
     structure: {
       identityConfirmed: header.identityClaim === "Universal Declaration of Human Rights",
       nativeTitle: (lines.slice(5).find((l) => l.trim()) ?? "").trim(),
-      articleRegions: { expected: 30, found: found.length, headings: found, missingNumbers: missing, unplacedNumberedLines: unplaced, digitBlocks: "ASCII + Arabic-Indic + Extended Arabic-Indic + Devanagari + Bengali (giver: Unicode decimal-digit ranges)" },
+      articleRegions: { expected: 30, found: found.length, headings: found, missingNumbers: missing, unplacedNumberedLines: unplaced, digitDetection: "any Unicode Nd block, the zero found by the Standard\u2019s own contiguity guarantee (ten contiguous ascending digits) — no hand-picked block list; ideographic numerals are not Nd and stay a disclosed refusal" },
     },
     admission: { gate: "structural only", offered: 0, heard: 0, turnedAway: 0, note: "no proposition is offered: this reader has no lexicon for this language and says so" },
     gaps: [{ type: "no_lexicon", language: header.code, expectedProps, note: "the rosetta expects these propositions here; reading them awaits a lexicon ring or an adjudicator for this language — typed, never guessed (LP4)" }],
+    layers: [{ layer: 0, kind: "reading", hypothesis: "rosetta-structural (derived)", recipeId: RECIPE_ID }],
+    fold: { statement: "a sidecar is never done (LP8): layers append, the fold is recomputed on every append", note: "adversarial layers append when a lexicon ring or an adjudicator reaches this language" },
     surprise: {
       definition: priors.surprise.definition,
       graphEvents: {
@@ -357,11 +397,24 @@ function ring1Sidecar(srcPath) {
 const invokedDirectly = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (invokedDirectly) {
 const args = process.argv.slice(2);
-const ring1Files = args.includes("--ring1-sample")
-  ? ["udhr-fra.txt", "udhr-rus.txt", "udhr-jpn.txt", "udhr-007.txt", "udhr-hin.txt"]
-      .map((f) => `06-government-legal/un-udhr/${f}`)
-      .filter((p) => fs.existsSync(path.join(ROOT, p)))
-  : args.filter((a) => !a.startsWith("--"));
+const RING0_SOURCES = new Set(ROSETTA_ORDER.map((sp) => bySpecimen[sp].path));
+let ring1Files;
+if (args.includes("--ring1-all")) {
+  // THE SWEEP (LP6's discipline met: the 5-edition diverse sample ran,
+  // was measured and committed first — scripts/eot-sidecar2-RESULTS.md):
+  // every un-udhr edition except the five ring-0 golden sources.
+  ring1Files = fs.readdirSync(path.join(ROOT, "06-government-legal", "un-udhr"))
+    .filter((f) => f.endsWith(".txt"))
+    .map((f) => `06-government-legal/un-udhr/${f}`)
+    .filter((p) => !RING0_SOURCES.has(p))
+    .sort();
+} else if (args.includes("--ring1-sample")) {
+  ring1Files = ["udhr-fra.txt", "udhr-rus.txt", "udhr-jpn.txt", "udhr-007.txt", "udhr-hin.txt"]
+    .map((f) => `06-government-legal/un-udhr/${f}`)
+    .filter((p) => fs.existsSync(path.join(ROOT, p)));
+} else {
+  ring1Files = args.filter((a) => !a.startsWith("--"));
+}
 
 let failures = 0;
 if (!args.length || args.includes("--ring0")) {
@@ -381,11 +434,34 @@ if (!args.length || args.includes("--ring0")) {
     console.log(`ring0 ${srcPath} -> ${specs.map((g) => g.specimen).join("+")}: ${sc.propositions.length} props, ${sc.acts.length} acts, spans ${sc.spanSelfVerification.ok}/${sc.spanSelfVerification.checked} | ${evStr}`);
   }
 }
+const sweep = [];
 for (const p of ring1Files) {
   const sc = ring1Sidecar(p);
   fs.writeFileSync(path.join(ROOT, p + ".eot.json"), JSON.stringify(sc, null, 1));
   const ar = sc.structure.articleRegions;
-  console.log(`ring1 ${p} [${sc.source.declaredIdentity.language}]: ${ar.found}/30 articles, missing [${ar.missingNumbers.join(",")}], unplaced ${ar.unplacedNumberedLines}`);
+  sweep.push({
+    file: p.split("/").pop(), language: sc.source.declaredIdentity.language,
+    code: sc.source.declaredIdentity.code, identityConfirmed: sc.structure.identityConfirmed,
+    found: ar.found, missing: ar.missingNumbers, unplaced: ar.unplacedNumberedLines,
+  });
+  if (!args.includes("--ring1-all")) console.log(`ring1 ${p} [${sc.source.declaredIdentity.language}]: ${ar.found}/30 articles, missing [${ar.missingNumbers.join(",")}], unplaced ${ar.unplacedNumberedLines}`);
+}
+if (args.includes("--ring1-all")) {
+  const dist = {};
+  for (const r of sweep) dist[r.found] = (dist[r.found] ?? 0) + 1;
+  const summary = {
+    schema: "EOTRing1Sweep@1",
+    recipeId: RECIPE_ID,
+    editions: sweep.length,
+    articleDistribution: Object.fromEntries(Object.entries(dist).sort((a, b) => b[0] - a[0])),
+    identityUnconfirmed: sweep.filter((r) => !r.identityConfirmed).map((r) => r.file),
+    at: new Date().toISOString(),
+    rows: sweep,
+  };
+  fs.writeFileSync(path.join(HERE, "eot-ring1-sweep.json"), JSON.stringify(summary, null, 1));
+  console.log(`ring1 sweep: ${sweep.length} editions -> scripts/eot-ring1-sweep.json`);
+  console.log("  found-articles distribution:", JSON.stringify(summary.articleDistribution));
+  console.log("  identity unconfirmed:", summary.identityUnconfirmed.length);
 }
 if (failures) process.exit(1);
 } // invokedDirectly

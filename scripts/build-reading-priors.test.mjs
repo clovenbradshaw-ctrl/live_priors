@@ -115,3 +115,53 @@ test("sidecars on disk: spans verified, derived firewall typed, checkpoint named
   assert.equal(fra.gaps[0].type, "no_lexicon");
   assert.deepEqual(fra.structure.articleRegions.missingNumbers, [1]); // Article premier, disclosed not repaired
 });
+
+// ---- LP8: the adversarial-prior ledger ----
+const { adversarialLayers, grainSurvival, HYPOTHESES } = await import("./reading-hypotheses.mjs");
+
+test("grain survival: 20 of 23 construction-splits preserve grain; the 3 breaks are the documented cases", () => {
+  const g = grainSurvival(priors);
+  assert.equal(g.splits, 23);
+  assert.equal(g.grainSurvives, 20);
+  assert.deepEqual(g.breaks.map((b) => b.prop).sort(), [
+    "udhr:education-directed", "udhr:family-unit-society", "udhr:limitation-purpose",
+  ]);
+});
+
+test("adversarial ranking (ar): grain-transfer > cell-transfer > structural > frame, by measurement", () => {
+  const { ranking } = adversarialLayers(priors, "ar", ["en"]);
+  assert.deepEqual(ranking.map((r) => r.hypothesis), ["grain-transfer", "cell-transfer", "structural", "frame"]);
+  assert.equal(ranking[0].rate, 1);
+  assert.ok(ranking[1].rate > 0.9 && ranking[2].rate > ranking[3].rate);
+});
+
+test("a founding reading is unscored, never self-confirmed", () => {
+  const { layers, ranking } = adversarialLayers(priors, "en", []);
+  assert.equal(ranking.length, 0);
+  for (const l of layers) assert.equal(l.scored, false);
+});
+
+test("the hypothesis ledger is append-only in shape: every entry dated, ids unique", () => {
+  const ids = HYPOTHESES.map((h) => h.id);
+  assert.equal(new Set(ids).size, ids.length);
+  for (const h of HYPOTHESES) assert.match(h.appended, /^\d{4}-\d{2}-\d{2}$/);
+});
+
+test("sidecars carry the layer ledger and the never-done fold", () => {
+  const ar = JSON.parse(fs.readFileSync(path.join(ROOT, "06-government-legal/un-udhr/udhr-arb.txt.eot.json"), "utf8"));
+  assert.equal(ar.layers[0].layer, 0);
+  assert.equal(ar.layers.length, 1 + HYPOTHESES.length);
+  assert.match(ar.fold.statement, /never done/);
+  assert.equal(ar.fold.ranking[0].hypothesis, "grain-transfer");
+  const fra = JSON.parse(fs.readFileSync(path.join(ROOT, "06-government-legal/un-udhr/udhr-fra.txt.eot.json"), "utf8"));
+  assert.ok(Array.isArray(fra.layers) && fra.fold.statement.match(/never done/));
+});
+
+test("ring-1 sweep summary is coherent", () => {
+  const sweep = JSON.parse(fs.readFileSync(path.join(ROOT, "scripts/eot-ring1-sweep.json"), "utf8"));
+  assert.equal(sweep.editions, 511);
+  const sum = Object.values(sweep.articleDistribution).reduce((a, b) => a + b, 0);
+  assert.equal(sum, 511);
+  assert.equal(sweep.identityUnconfirmed.length, 0);
+  assert.equal(sweep.rows.length, 511);
+});

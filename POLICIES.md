@@ -504,6 +504,59 @@ just the first projection.
 
 ---
 
+## LP8 — A sidecar is never done: layered readings, adversarial priors, and the fold
+
+**User direction (2026-08-31, near-verbatim):** as we spiral out, assess
+whether the sidecars contain what is meaningful about READING; hold alt
+versions as ADVERSARIAL PRIORS, built on other genuinely decent
+hypotheses about minimizing hypergraphical surprise; amend earlier
+sidecars via APPENDS so their folds improve; **no sidecar ever needs to
+be "done."**
+
+**The shape.** A sidecar carries `layers`: an append-only ledger of
+reading passes, each under a NAMED HYPOTHESIS with its own recipe —
+layer 0 the favored reading, later layers adversarial priors: competing
+expectation structures scored against the same rows. The `fold` is the
+projection across layers (per-hypothesis surprise rates, the current
+ranking) — recomputed on every append, never hand-edited. Appending a
+layer is the only way a sidecar changes meaning; deleting or rewriting
+one is forbidden (LP2's discipline, one level up). Because ring-0
+sidecars are themselves projections of the live goldens (LP7's
+checkpoint law), the append-only reality is the LAYER-RECIPE LEDGER in
+the generator plus the goldens' own R12 revisions; the file is their
+fold, regenerated deterministically — adding a hypothesis appends to the
+ledger, never edits a prior entry.
+
+**Adversarial priors are hypotheses about what minimizes hypergraph
+surprise, ranked by MEASUREMENT, never by preference.** The first four,
+measured the day this entry landed — each language's adjudicated cells
+predicted from what the languages before it know (Goal 6's one-reader
+caveat rides every figure):
+
+| hypothesis | knows | ar | es | zh | sw |
+|---|---|---|---|---|---|
+| frame | the family modal cell alone | 49% | 48% | 49% | 50% |
+| structural | (role x clause x polarity) -> modal, no lexicon, no join | 66% | 65% | 58% | 59% |
+| cell-transfer | the Rosetta prop join: prior languages' cells | 93% | 99% | 90% | 92% |
+| **grain-transfer** | the prop join, GRAIN only | **100%** | **100%** | **97%** | **100%** |
+
+**The finding this bought immediately:** the GRAIN is the near-invariant
+axis of translation; the OP carries the construction. On the 23
+construction-splits — exactly where the op varies — grain survives
+20/23, and each of the three grain-breaks has a documented adjudication
+reason (family-unit-society: the rule-3 definiteness split;
+education-directed; limitation-purpose). Consequence for every future
+ring: an op-level variant is ordinary translation information; a GRAIN
+break against the join is rare enough to be an alarm, in a way an op
+variant never is.
+
+**What this does not decide:** whether grain-transfer's win survives
+independent adjudication (Goal 6); which hypotheses join the ledger next
+(named candidate: the mechanical copula/A4/A5 ladder proper, which needs
+predicate-shape fields the rows do not yet carry).
+
+---
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work
