@@ -458,6 +458,50 @@ admission or only rides rows, what a prior-expectation concretely is at
 corpus scale. Those are the next pass's to measure, not this entry's to
 guess.
 
+**Amended 2026-08-31, same day — surprise is hypergraph delta, never
+n-gram frequency.** User direction, verbatim: "things are surprising to
+the extent they change our hypergraph, not ngram frequency." This
+sharpens clause 3 above from "surprise runs" to WHAT surprise is: the
+ground a reading measures difference against is the accumulated
+hypergraph — propositions, referents, cells, polarities, standings — and
+an increment's surprise is the TYPED CHANGE it makes to that graph: a new
+proposition founded, a witness added to a standing one (near-zero
+surprise — LP2's union, two readings agreeing become one note), a cell or
+polarity variant landed on an existing proposition, an expected
+proposition found ABSENT, a language-unique proposition added, a
+departure from the declared frame or act expectation. Token-frequency
+novelty (FoldReadingPrior@1's Witten-Bell mixture, Shannon surprisal over
+forms) is NOT this measure: it may still rank candidates — LP4's
+accelerator posture, decide where to look, never what is true — but a
+reading's surprise field carries graph deltas, each one typed and
+witnessed, never a perplexity score. This closes the loop with RULE.md's
+fourth amendment: a proposition is a difference that makes a difference
+(admission asks "did anything land"); surprise is how much difference it
+made (what the landing changed) — Bateson's own second clause, "the
+difference that figure made to the NEXT ground," read as the definition
+of the measurement. The kernel already carries the right vocabulary:
+`expectations.js` (open/fulfilled/violated/reframed — EVA transitions,
+REC on reframe) is the per-expectation form of the same law.
+
+**Amended 2026-08-31 (second, same day) — priors are checkpoints, never
+weights.** User direction, near-verbatim: build a universe of meaning
+where as much as possible lives LIVE, not as permanent weights — but with
+a bootstrap/checkpoint to start from. The rule: the reality is always the
+event stream — the source bytes (LP1), the hand goldens with their
+append-only revisions (R12), the readings' own appended logs (LP2) — and
+every compiled prior (ReadingPriors@1, ActPrior@1, POSPrior@1) is a
+PROJECTION of those live sources at a named moment: content-addressed,
+carrying its regeneration path (build script + input shas + repo commit),
+superseded by RECOMPILING from the live sources, never by editing the
+artifact. No figure in a checkpoint is a permanent weight: a later ring's
+readings extend the graph, the goldens revise by append, and the next
+checkpoint is a fresh projection (v1, v2, … — versions of a projection,
+not editions of a truth). A consumer that treats a checkpoint as truth
+rather than as "where the live record stood when I started" has rebuilt
+the cache LP2 forbids, one level up. store.js's own law, applied to
+priors: the log is truth, projection is convenience — and a bootstrap is
+just the first projection.
+
 ---
 
 ## What no entry here decides

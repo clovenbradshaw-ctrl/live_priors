@@ -155,6 +155,25 @@ survives the Goal 1 standard — not when something has merely been filed there.
 
 ## Goal 5 — what the stone is actually FOR: bootstrapping into unread languages
 
+**STATUS 2026-08-31 (fourth pass): the stone exists as working artifacts.**
+`derived-priors/reading-priors/reading-priors-v1.json` (ReadingPriors@1 —
+a CHECKPOINT of the live goldens, LP7's second amendment, regenerated
+never edited) carries the full per-language surface→phasepost evidence
+this goal names: 477 act-expectation keys witnessed `specimen@ground`,
+and the rosetta matrix — 107 props × 5 languages with full rows, 23
+construction-splits and 21 per-language absences precomputed. Five
+EOTReading@2 sidecars sit beside the UDHR sources, each carrying its
+reading's typed hypergraph deltas (surprise per LP7's first amendment);
+five more editions (fra/rus/jpn/007/hin) carry ring-1 STRUCTURAL
+readings — `derived: true`, zero propositions, prop expectations as
+typed `no_lexicon` gaps. THE FIREWALL HOLDS BY CONSTRUCTION: derived
+readings are typed derived on the sidecar itself, act-expectation checks
+exclude self-witnessed evidence, and every cross-language figure carries
+Goal 6's one-reader caveat verbatim on the artifact. Full numbers:
+`scripts/eot-sidecar2-RESULTS.md`. Goal 6 (blind adjudication) remains
+the open gate between this construction and any claim that alignment
+works.
+
 From aligned readings, derive per-language **surface → phasepost** evidence:
 that `have pledged` / `تعهدت` / `se han comprometido` / `誓愿` / `zimeahidi`
 all realise the same act gives a seed act-lexicon in five languages obtained
