@@ -150,7 +150,7 @@ test("the hypothesis ledger is append-only in shape: every entry dated, ids uniq
 test("sidecars carry the layer ledger and the never-done fold", () => {
   const ar = JSON.parse(fs.readFileSync(path.join(ROOT, "06-government-legal/un-udhr/udhr-arb.txt.eot.json"), "utf8"));
   assert.equal(ar.layers[0].layer, 0);
-  assert.equal(ar.layers.length, 1 + HYPOTHESES.length);
+  assert.equal(ar.layers.length, 1 + HYPOTHESES.length + 1); // + the Goal-6 blind-adjudication layer
   assert.match(ar.fold.statement, /never done/);
   assert.equal(ar.fold.ranking[0].hypothesis, "grain-transfer");
   const fra = JSON.parse(fs.readFileSync(path.join(ROOT, "06-government-legal/un-udhr/udhr-fra.txt.eot.json"), "utf8"));
@@ -164,4 +164,35 @@ test("ring-1 sweep summary is coherent", () => {
   assert.equal(sum, 511);
   assert.equal(sweep.identityUnconfirmed.length, 0);
   assert.equal(sweep.rows.length, 511);
+});
+
+test("goal 6: the blind-panel score is coherent and its verdicts honest", () => {
+  const score = JSON.parse(fs.readFileSync(path.join(ROOT, "goldens/reading/goal6/score.json"), "utf8"));
+  assert.equal(score.floor, 0.4);
+  assert.ok(score.panelVsPanel.grain.kappa > score.panelVsPanel.cell.kappa, "grain must out-agree cell — the invariance finding");
+  assert.match(score.verdictAgainstFloor.cell, /BELOW/);
+  assert.match(score.verdictAgainstFloor.grain, /clears/);
+  for (const l of ["en", "ar", "es", "zh", "sw"]) assert.equal(score.panelVsStored[l].n, 40);
+  const en = JSON.parse(fs.readFileSync(path.join(ROOT, "06-government-legal/un-udhr/udhr-eng.txt.eot.json"), "utf8"));
+  const blind = en.layers.find((l) => l.kind === "blind-adjudication");
+  assert.ok(blind && blind.panelKappa.grain === score.panelVsPanel.grain.kappa, "the blind layer rides the sidecar ledger");
+  assert.match(en.fold.goal6, /GRAIN clears/);
+});
+
+test("the omnilingual closure holds: 27/27 cells, every cell in >=2 languages", () => {
+  const LANG = { udhr: "en", "udhr-arb": "ar", "udhr-spa": "es", "udhr-cmn_hans": "zh", "udhr-swh": "sw",
+    kant: "en", alice: "en", ripgrep: "en", "gen-1": "he", "gen-2": "he", "gen-6": "he",
+    "mark-1-15": "grc", "mark-16-6": "grc", "mark-15-38": "grc",
+    "quran-2-37": "ar", "quran-2-37-en": "en", "quran-54-1": "ar", "quran-5-3": "ar", "quran-2-255": "ar",
+    "lear-division": "en", "lear-disclaim": "en", "lear-france": "en", "tempest-abjure": "en" };
+  const cells = {};
+  for (const f of fs.readdirSync(path.join(ROOT, "goldens/reading")).filter((x) => x.endsWith(".golden.json"))) {
+    const d = JSON.parse(fs.readFileSync(path.join(ROOT, "goldens/reading", f), "utf8"));
+    for (const r of d.rows) {
+      if (r.clause === "heading") continue;
+      (cells[`${r.phasepost.op}·${r.phasepost.grain}`] ??= new Set()).add(LANG[d.specimen]);
+    }
+  }
+  assert.equal(Object.keys(cells).length, 27);
+  for (const [c, langs] of Object.entries(cells)) assert.ok(langs.size >= 2, `${c} attested in only ${[...langs]}`);
 });

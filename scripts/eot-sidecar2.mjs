@@ -249,12 +249,29 @@ function ring0Sidecar(srcPath, specs) {
       { layer: 0, kind: "reading", hypothesis: "hand-adjudication + sequential graph events (the favored reading)", recipeId: RECIPE_ID },
       ...adv.layers,
     ];
+    // Goal 6's blind panel, appended as its own layer when its score
+    // exists (LP8: a genuinely independent reading pass joins the ledger;
+    // the ledger is why it can)
+    const scorePath = path.join(GOLD, "goal6", "score.json");
+    let goal6Note = null;
+    if (fs.existsSync(scorePath)) {
+      const score = JSON.parse(fs.readFileSync(scorePath, "utf8"));
+      layers.push({
+        layer: layers.length, kind: "blind-adjudication", reader: "Goal 6 LLM-proxy panel — one context-isolated reader for this language, blind to the other languages and to the stored rows (goldens/reading/goal6/)",
+        scored: true,
+        agreementWithStored: score.panelVsStored[lang],
+        panelKappa: { cell: score.panelVsPanel.cell.kappa, op: score.panelVsPanel.op.kappa, grain: score.panelVsPanel.grain.kappa, floor: score.floor },
+        proxy: score.proxy,
+      });
+      goal6Note = `blind adjudication (proxy): GRAIN clears the ${score.floor} floor (kappa ${score.panelVsPanel.grain.kappa}); CELL does not (${score.panelVsPanel.cell.kappa}) — the op carries convention, the grain is the invariant (GOAL6-RESULTS.md)`;
+    }
     fold = {
       statement: NEVER_DONE,
       ranking: adv.ranking,
       grainLaw: langsBefore.length
         ? "an op-level variant against the join is ordinary translation information; a GRAIN break is rare (20/23 splits preserve grain corpus-wide) and reads as an alarm"
         : "founding reading — the ranking activates from the second language onward",
+      ...(goal6Note ? { goal6: goal6Note } : {}),
     };
   } else {
     surprise = {

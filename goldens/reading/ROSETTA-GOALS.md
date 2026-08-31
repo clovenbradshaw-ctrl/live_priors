@@ -113,6 +113,16 @@ document-cut (SEG·Ground — alternate-only on every heading), and a single
 thing's absence (NUL·Figure). The paragraphs below are the pre-extension
 prediction, kept per R12's append-only discipline.**
 
+**STATUS 2026-08-31 (fifth pass): every cell omnilingual.** The five
+English-only cells closed via mark-15-38 (grc), quran-2-255 / quran-54-1 /
+quran-5-3 (ar), and gen-6 (he) — 24 new rows, all byte-derived, all
+self-verified. Measured from the rebuilt tuples: 27/27 cells attested
+with EVERY cell in at least two languages; the narrowest five sit at
+exactly two (CON·Ground, INS·Ground, REC·Ground, SEG·Ground,
+SYN·Pattern). The lexical-analysis exemplar signatures served as
+lead-generator only — they located candidate passages; every row was
+adjudicated fresh under RULE.md.
+
 **STATUS 2026-08-31 (third pass): 27/27.** The gap suite
 (hand-gap-suite.mjs — Genesis in Hebrew, Mark in Koine Greek, Quran 2:37
 in Arabic and English, King Lear and The Tempest windows from pg100)
@@ -190,6 +200,24 @@ independent convergence, and must never be promoted to adjudicated without a
 reader who actually read the language.
 
 ## Goal 6 — validation that is not self-confirmation
+
+**STATUS 2026-08-31: RUN, as an LLM-proxy panel — and the falsification
+condition answered in two parts.** Five context-isolated readers, one
+language each, blind to the other languages and to the stored goldens,
+working from RULE.md Part II alone (`goldens/reading/goal6/` — sheets,
+verbatim verdicts, key, scorer, full results). Fleiss' kappa at the
+declared 0.4 floor: **cell 0.310 — BELOW the floor, not certified; op
+0.323 — below; GRAIN 0.525 — clears.** 82 of 96 panel-vs-stored
+disagreements (85%) keep the grain. The dominant divergence is ONE
+convention — the right-holding frame, stored SIG·Pattern, read
+EVA·Pattern by the en AND es readers consistently (23 rows): the rule
+text underdetermines it, and the stored choice is a frame-precedent
+living outside the published rule. Named repair: codify the frame
+precedents into Part II, then re-run with fresh readers — never by
+briefing readers on stored answers. Converges with LP8's independent
+measurement (grain-transfer 97-100%): the GRAIN is the robust invariant;
+the op carries convention. Proxy caveats in the results doc — a human
+pass remains what certification needs.
 
 The current five readings were all adjudicated by one reader with the other
 languages in view. Their agreement is therefore uninformative about Goal 0's

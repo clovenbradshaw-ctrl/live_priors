@@ -259,3 +259,21 @@ them; and every rate above is one reader's consistency until Goal 6's
 blind adjudication runs. The ledger appends: the named next candidate is
 the mechanical copula/A4/A5 ladder proper, which needs predicate-shape
 fields the rows do not yet carry.
+
+## Goal 6 ran (2026-08-31, same day): the op carries convention, the grain is the invariant
+
+The blind panel (five context-isolated readers, one language each, blind
+to the other languages and the stored rows — full method, verbatim
+verdicts and caveats in `goldens/reading/goal6/GOAL6-RESULTS.md`)
+answered the Rosetta falsification condition in two parts: **cell-level
+kappa 0.310, BELOW the declared 0.4 floor — not certified; grain-level
+kappa 0.525 — clears.** 82 of 96 panel-vs-stored disagreements keep the
+grain, and the dominant divergence is one frame convention (right-holding:
+stored SIG·Pattern, read EVA·Pattern by the en and es readers
+consistently). This is the adversarial-prior ladder's own conclusion
+reached by an independent instrument: grain-transfer won that ladder at
+97–100%; blind adjudication now certifies (at proxy) the same axis and
+refuses the other. Each rosetta sidecar carries the panel as an appended
+`blind-adjudication` layer — LP8's ledger doing what it was built for the
+same day it landed. The named repair (codify the frame precedents into
+RULE.md Part II, re-run with fresh readers) is in the Goal 6 results doc.

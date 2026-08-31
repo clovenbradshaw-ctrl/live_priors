@@ -44,6 +44,23 @@
 // sigla (⸀ ⸂ ⸃) are part of that file's bytes and stay verbatim in field
 // strings where they fall.
 
+// 2026-08-31 EXTENSION — the omnilingual closure of the five English-only
+// cells (user direction: "get omnilingual examples of all phaseposts";
+// lead-generation via the eo-lexical-analysis exemplar signatures, used
+// only to FIND candidate passages, never to adjudicate them):
+//   SEG·Figure  — mark-15-38 (grc: the veil torn), quran-54-1 (ar: the
+//                 moon split)
+//   CON·Ground  — quran-2-255 (ar: the kursi encompassing heavens+earth)
+//   EVA·Ground  — gen-6 (he: the ambient wickedness seen)
+//   SYN·Pattern — quran-5-3 (ar: the din perfected)
+//   REC·Ground  — gen-6 (he: the Maker's repenting, narrated AND quoted
+//                 first-person — the tempest-abjure cell in Hebrew)
+// Every field string in these five was derived mechanically from source
+// bytes by word index (the combining-mark lesson, held to). A1's
+// intensionality wall decided gen-6's shape: what was SEEN and what was
+// REGRETTED stay inside their attitude verbs' objects (the gen-1
+// saw-that-good precedent), so the window's rows are the acts themselves.
+
 export const GAP_SUITE = [
   {
     specimen: "gen-1",
@@ -897,5 +914,585 @@ export const GAP_SUITE = [
         alternate: { op: "SIG", grain: "Figure", because: "readable as the A5 placement — sunk to a place — rather than the ending" },
       },
     ],
+  },
+
+  {
+   "specimen": "mark-15-38",
+   "path": "14-holy-texts/sblgnt-books/62-Mk.txt",
+   "gutenberg": false,
+   "windowStartText": "02:15:38 ",
+   "windowEndText": "ἕως κάτω.",
+   "notes": "Mark 15:38, SBLGNT: the veil of the temple torn in two — SEG·Figure in Koine Greek (one identified hanging severed into parts), closing that cell's English-only frontier. The extent phrase (top to bottom) is the cut's manner, folded (A2). Field strings derived mechanically from the file's own bytes.",
+   "revisions": [],
+   "rows": [
+    {
+     "sentence": "τὸ καταπέτασμα τοῦ ναοῦ ἐσχίσθη εἰς δύο",
+     "subject": "τὸ καταπέτασμα τοῦ ναοῦ",
+     "relation": "ἐσχίσθη",
+     "object": "εἰς δύο",
+     "polarity": "+",
+     "phasepost": {
+      "op": "SEG",
+      "grain": "Figure"
+     },
+     "clause": "main",
+     "prop": "mark:veil-torn",
+     "ground": "mark-15.38.1",
+     "role": "declared",
+     "because": "ἐσχίσθη (was torn/split) — ONE identified hanging SEVERED into parts (εἰς δύο): Differentiate·Structure at figure grain, the tempest break-staff cell in Greek; ἀπ' ἄνωθεν ἕως κάτω (top to bottom) is the cut's extent, folded (A2)",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": null,
+     "alternate": null
+    }
+   ]
+  },
+
+  {
+   "specimen": "gen-6",
+   "path": "14-holy-texts/wlc-tanakh/Gen.txt",
+   "gutenberg": false,
+   "windowStartText": "Gen.6.5 ",
+   "windowEndText": "כִּ֥י נִחַ֖מְתִּי כִּ֥י עֲשִׂיתִֽם",
+   "notes": "Genesis 6:5-7, WLC: the repenting of the Maker — REC·Ground in Hebrew, twice (וַיִּנָּחֶם narrated, נִחַמְתִּי in the quoted first person), closing that cell's English-only frontier; with the seeing (EVA·Ground — the ambient wickedness perceived), the grieving (EVA·Figure), the say-act, the announced blotting-out (NUL·Pattern over the kind-range, quoted content rowed per the proclamation precedent), and the creation relative (INS·Figure). A1 holds throughout: what was SEEN (the wickedness great, every inclination only evil) and what was REGRETTED (the making) stay inside their attitude verbs' objects — the gen-1 saw-that-good precedent — so the window's own contents are the acts, not the content-clauses. Field strings derived mechanically from the file's bytes.",
+   "revisions": [],
+   "rows": [
+    {
+     "sentence": "וַיַּ֣רְא יְהוָ֔ה כִּ֥י רַבָּ֛ה רָעַ֥ת הָאָדָ֖ם בָּאָ֑רֶץ",
+     "subject": "יְהוָ֔ה",
+     "relation": "וַיַּ֣רְא",
+     "object": "כִּ֥י רַבָּ֛ה רָעַ֥ת הָאָדָ֖ם בָּאָ֑רֶץ וְכָל יֵ֨צֶר֙ מַחְשְׁבֹ֣ת לִבּ֔וֹ רַ֥ק רַ֖ע כָּל הַיּֽוֹם",
+     "polarity": "+",
+     "phasepost": {
+      "op": "EVA",
+      "grain": "Ground"
+     },
+     "clause": "main",
+     "prop": "gen:saw-wickedness-great",
+     "ground": "gen-6.5.1",
+     "role": "declared",
+     "because": "וַיַּרְא (saw) — perception held over the AMBIENT moral condition of the earth (רבה בארץ... כל היום): Relate·Interpretation at GROUND grain; the perceived content (wickedness great; every inclination only evil continually) stays inside the object per A1, the gen-1 saw-that-good precedent",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": null,
+     "alternate": {
+      "op": "EVA",
+      "grain": "Pattern",
+      "because": "readable as taking in the RECURRENCE (every inclination, all the day) rather than the ambient state"
+     }
+    },
+    {
+     "sentence": "וַיִּנָּ֣חֶם יְהוָ֔ה כִּֽי עָשָׂ֥ה אֶת הָֽאָדָ֖ם בָּאָ֑רֶץ",
+     "subject": "יְהוָ֔ה",
+     "relation": "וַיִּנָּ֣חֶם",
+     "object": "כִּֽי עָשָׂ֥ה אֶת הָֽאָדָ֖ם בָּאָ֑רֶץ",
+     "polarity": "+",
+     "phasepost": {
+      "op": "REC",
+      "grain": "Ground"
+     },
+     "clause": "main",
+     "prop": "gen:god-repented-making",
+     "ground": "gen-6.6.1",
+     "role": "declared",
+     "because": "וַיִּנָּחֶם (repented/relented) — the RE-ZERO itself at ground grain: the maker's whole interpretive stance toward the made world conceded and re-grounded (regret THAT he had made man in the earth): Generate·Interpretation at GROUND grain — the tempest-abjure cell in Hebrew; the making regretted stays inside the object per A1 (content of an attitude)",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": null,
+     "alternate": {
+      "op": "EVA",
+      "grain": "Ground",
+      "because": "readable as grief held over the whole rather than the stance re-grounded — the quran-2-37 tawba's own disclosed alternate, one grain up"
+     }
+    },
+    {
+     "sentence": "וַיִּתְעַצֵּ֖ב אֶל לִבּֽוֹ",
+     "subject": "יְהוָ֔ה",
+     "relation": "וַיִּתְעַצֵּ֖ב",
+     "object": "אֶל לִבּֽוֹ",
+     "polarity": "+",
+     "phasepost": {
+      "op": "EVA",
+      "grain": "Figure"
+     },
+     "clause": "coordinate",
+     "prop": "gen:grieved-to-heart",
+     "ground": "gen-6.6.2",
+     "role": "declared",
+     "because": "וַיִּתְעַצֵּב (was grieved) — an affect held, borne inward to his own heart (אל לבו): Relate·Interpretation at figure grain",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the coordinated verb shares the matrix subject יְהוָה",
+     "alternate": null
+    },
+    {
+     "sentence": "וַיֹּ֣אמֶר יְהוָ֗ה",
+     "subject": "יְהוָ֗ה",
+     "relation": "וַיֹּ֣אמֶר",
+     "object": "אֶמְחֶ֨ה אֶת הָאָדָ֤ם אֲשֶׁר בָּרָ֨אתִי֙ מֵעַל֙ פְּנֵ֣י הָֽאֲדָמָ֔ה מֵֽאָדָם֙ עַד בְּהֵמָ֔ה עַד רֶ֖מֶשׂ וְעַד ע֣וֹף הַשָּׁמָ֑יִם כִּ֥י נִחַ֖מְתִּי כִּ֥י עֲשִׂיתִֽם",
+     "polarity": "+",
+     "phasepost": {
+      "op": "SIG",
+      "grain": "Figure"
+     },
+     "clause": "main",
+     "prop": "gen:god-said-blot",
+     "ground": "gen-6.7.1",
+     "role": "declared",
+     "because": "the say-act (וַיֹּאמֶר): a sign emitted — Relate·Existence at figure grain, gen-1's own precedent; the quoted announcement's asserted clauses row below with embedded per the proclamation precedent",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": null,
+     "alternate": null
+    },
+    {
+     "sentence": "אֶמְחֶ֨ה אֶת הָאָדָ֤ם אֲשֶׁר בָּרָ֨אתִי֙ מֵעַל֙ פְּנֵ֣י הָֽאֲדָמָ֔ה",
+     "subject": "יְהוָ֗ה",
+     "relation": "אֶמְחֶ֨ה",
+     "object": "אֶת הָאָדָ֤ם",
+     "polarity": "+",
+     "phasepost": {
+      "op": "NUL",
+      "grain": "Pattern"
+     },
+     "clause": "complement",
+     "prop": "gen:blot-out-man",
+     "ground": "gen-6.7.1.1",
+     "role": "declared",
+     "because": "אֶמְחֶה (I will blot out) — absence brought about as the act's own product (A4's family) over a KIND-RANGE (from man to beast to creeping thing to fowl — the range מֵאָדָם עַד... folded, disclosed; the locative מעל פני האדמה folded, A2): Differentiate·Existence at PATTERN grain; quoted announcement, rowed with embedded (the proclamation precedent; the volitive imperfect is the speaker's asserted course, the sw main-line-deontic ruling's family)",
+     "embedded": true,
+     "unresolved": false,
+     "resolution": "the 1sg subject is the quoted speaker → יְהוָה",
+     "alternate": {
+      "op": "NUL",
+      "grain": "Ground",
+      "because": "readable as wiping the whole living surface of the ground rather than the kinds ranged over"
+     }
+    },
+    {
+     "sentence": "אֲשֶׁר בָּרָ֨אתִי֙",
+     "subject": "יְהוָ֗ה",
+     "relation": "בָּרָ֨אתִי֙",
+     "object": "הָאָדָ֤ם",
+     "polarity": "+",
+     "phasepost": {
+      "op": "INS",
+      "grain": "Figure"
+     },
+     "clause": "restrictive-relative",
+     "prop": "gen:whom-i-created",
+     "ground": "gen-6.7.1.1.1",
+     "role": "declared",
+     "because": "בָּרָאתִי (I created) — the coming-into-being of the one now to be blotted: Generate·Existence at figure grain; an INDICATIVE restrictive relative rows (R8, the es que-será-completada precedent)",
+     "embedded": true,
+     "unresolved": false,
+     "resolution": "the 1sg subject → יְהוָה (the speaker); the relative head אֲשֶׁר → הָאָדָם, carried as object",
+     "alternate": null
+    },
+    {
+     "sentence": "כִּ֥י נִחַ֖מְתִּי כִּ֥י עֲשִׂיתִֽם",
+     "subject": "יְהוָ֗ה",
+     "relation": "נִחַ֖מְתִּי",
+     "object": "כִּ֥י עֲשִׂיתִֽם",
+     "polarity": "+",
+     "phasepost": {
+      "op": "REC",
+      "grain": "Ground"
+     },
+     "clause": "reason-adjunct",
+     "prop": "gen:for-i-repent",
+     "ground": "gen-6.7.1.2",
+     "role": "declared",
+     "because": "נִחַמְתִּי (I repent) — the same re-zero in the quoted FIRST person, the reason offered for the blotting: Generate·Interpretation at ground grain; the made-them content (כִּי עֲשִׂיתִם) stays inside the object per A1",
+     "embedded": true,
+     "unresolved": false,
+     "resolution": "the 1sg subject → יְהוָה (the speaker)",
+     "alternate": {
+      "op": "EVA",
+      "grain": "Ground",
+      "because": "readable as grief held — the same disclosed mirror as the narrated וַיִּנָּחֶם"
+     }
+    }
+   ]
+  },
+
+  {
+   "specimen": "quran-54-1",
+   "path": "14-holy-texts/tanzil-quran/quran_quran-uthmani.txt",
+   "gutenberg": false,
+   "windowStartText": "ٱقْتَرَبَتِ ٱلسَّاعَةُ",
+   "windowEndText": "وَٱنشَقَّ ٱلْقَمَرُ",
+   "notes": "Quran 54:1 (Uthmani): the moon split — SEG·Figure in Arabic (وَٱنشَقَّ, one identified body divided), the mark-15-38 ἐσχίσθη cell in a third language; with the Hour drawn near (SIG·Ground, the A5/ἤγγικεν family). Field strings derived mechanically from the file's bytes.",
+   "revisions": [],
+   "rows": [
+    {
+     "sentence": "ٱقْتَرَبَتِ ٱلسَّاعَةُ",
+     "subject": "ٱلسَّاعَةُ",
+     "relation": "ٱقْتَرَبَتِ",
+     "object": null,
+     "polarity": "+",
+     "phasepost": {
+      "op": "SIG",
+      "grain": "Ground"
+     },
+     "clause": "main",
+     "prop": "quran:hour-near",
+     "ground": "quran-54.1.1",
+     "role": "declared",
+     "because": "ٱقْتَرَبَتِ (has drawn near) — translocation (A5) of a whole era-condition toward the present: Relate·Existence at GROUND grain, the mark-1-15 ἤγγικεν family",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": null,
+     "alternate": null
+    },
+    {
+     "sentence": "وَٱنشَقَّ ٱلْقَمَرُ",
+     "subject": "ٱلْقَمَرُ",
+     "relation": "وَٱنشَقَّ",
+     "object": null,
+     "polarity": "+",
+     "phasepost": {
+      "op": "SEG",
+      "grain": "Figure"
+     },
+     "clause": "coordinate",
+     "prop": "quran:moon-split",
+     "ground": "quran-54.1.2",
+     "role": "declared",
+     "because": "ٱنشَقَّ (split apart, middle voice) — ONE identified body divided into parts: Differentiate·Structure at figure grain — the mark-15-38 ἐσχίσθη cell, one document over",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": null,
+     "alternate": null
+    }
+   ]
+  },
+
+  {
+   "specimen": "quran-5-3",
+   "path": "14-holy-texts/tanzil-quran/quran_quran-uthmani.txt",
+   "gutenberg": false,
+   "windowStartText": "ٱلْيَوْمَ أَكْمَلْتُ",
+   "windowEndText": "دِينًۭا ۚ",
+   "notes": "Quran 5:3, the ikmāl sentence (mid-verse window — windowStartText scopes past the verse's earlier forbidden-foods and despairing-disbelievers material; R8's completeness is per window): the dīn perfected — SYN·Pattern in Arabic (a whole WAY brought to completed wholeness), closing that cell's English-only frontier; with the favor completed (SYN·Figure, the Πεπλήρωται family at figure scale) and Islam approved AS dīn (EVA·Pattern). The 1sg divine speaker is the sura's own voice, resolved on every row. Field strings derived mechanically from the file's bytes.",
+   "revisions": [],
+   "rows": [
+    {
+     "sentence": "ٱلْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ",
+     "subject": "ٱللَّهُ",
+     "relation": "أَكْمَلْتُ",
+     "object": "دِينَكُمْ",
+     "polarity": "+",
+     "phasepost": {
+      "op": "SYN",
+      "grain": "Pattern"
+     },
+     "clause": "main",
+     "prop": "quran:din-perfected",
+     "ground": "quran-5.3.1",
+     "role": "declared",
+     "because": "أَكْمَلْتُ (I have perfected/completed) — a whole WAY brought to completed wholeness: Generate·Structure at PATTERN grain (the دِين is a paradigm binding a community, not one artifact — the kind-level whole); ٱلْيَوْمَ (this day) temporal, لَكُمْ recipient, both folded (A2)",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the 1sg subject is the sura's divine speaker → ٱللَّهُ",
+     "alternate": {
+      "op": "SYN",
+      "grain": "Ground",
+      "because": "readable as the whole field of the religion completed rather than the paradigm"
+     }
+    },
+    {
+     "sentence": "وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِى",
+     "subject": "ٱللَّهُ",
+     "relation": "وَأَتْمَمْتُ",
+     "object": "نِعْمَتِى",
+     "polarity": "+",
+     "phasepost": {
+      "op": "SYN",
+      "grain": "Figure"
+     },
+     "clause": "coordinate",
+     "prop": "quran:favor-completed",
+     "ground": "quran-5.3.2",
+     "role": "declared",
+     "because": "أَتْمَمْتُ (I have brought to fullness) — ONE bestowal (نِعْمَتِى, My favor) completed: Generate·Structure at figure grain, the mark-1-15 Πεπλήρωται family at figure scale; عَلَيْكُمْ recipient folded (A2)",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the 1sg subject → ٱللَّهُ (the same speaker)",
+     "alternate": null
+    },
+    {
+     "sentence": "وَرَضِيتُ لَكُمُ ٱلْإِسْلَٰمَ دِينًۭا ۚ",
+     "subject": "ٱللَّهُ",
+     "relation": "وَرَضِيتُ",
+     "object": "دِينًۭا ۚ",
+     "polarity": "+",
+     "phasepost": {
+      "op": "EVA",
+      "grain": "Pattern"
+     },
+     "clause": "coordinate",
+     "prop": "quran:islam-approved-din",
+     "ground": "quran-5.3.3",
+     "role": "declared",
+     "because": "رَضِيتُ (I have approved / am pleased with) — approval HELD toward Islam AS the way (دِينًا, the as-classification borne by the تمييز): Relate·Interpretation at PATTERN grain (approved as the kind-of-way for the community); لَكُمُ recipient folded (A2)",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the 1sg subject → ٱللَّهُ (the same speaker)",
+     "alternate": {
+      "op": "DEF",
+      "grain": "Pattern",
+      "because": "the as-assignment readable as bounding a standing (the proclaims-as family) rather than approval held"
+     }
+    }
+   ]
+  },
+
+  {
+   "specimen": "quran-2-255",
+   "path": "14-holy-texts/tanzil-quran/quran_quran-uthmani.txt",
+   "gutenberg": false,
+   "windowStartText": "ٱللَّهُ لَآ إِلَٰهَ",
+   "windowEndText": "وَهُوَ ٱلْعَلِىُّ ٱلْعَظِيمُ",
+   "notes": "Quran 2:255, Ayat al-Kursi (Uthmani), R8-complete: the kursi encompassing the heavens and the earth — CON·Ground in Arabic (wasi'a: an arrangement held over the WHOLE field), closing that cell's English-only frontier; with the absolute negative existential (la of categorical negation + the illa restrictor, the ar-UDHR lan-yakuna-hunaka precedent), two rule-3 identificational epithet sentences, the two negated seizures (slumber, sleep — the shared verb gapped), the possession of all-in-heavens-and-earth (CON·Ground, the asserted-possession ruling), the knowing over the surrounding whole (EVA·Ground), the negated encompassing of His knowledge (CON·Pattern, the illa restrictor folded-disclosed with its indicative relative rowed), and the unwearied preserving. The rhetorical interrogative (man dha alladhi yashfa'u 'indahu illa bi-idhnihi — who intercedes save by His leave) asserts nothing and FOLDS per the suite's interrogative ruling, disclosed here. Recitation pause marks are the file's own bytes standing as separate tokens between clauses. Field strings derived mechanically from the file's bytes.",
+   "revisions": [],
+   "rows": [
+    {
+     "sentence": "ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ",
+     "subject": "إِلَٰهَ",
+     "relation": "لَآ",
+     "object": "إِلَّا هُوَ",
+     "polarity": "+",
+     "phasepost": {
+      "op": "NUL",
+      "grain": "Ground"
+     },
+     "clause": "main",
+     "prop": "quran:no-god-but-he",
+     "ground": "quran-2.255.1",
+     "role": "declared",
+     "because": "la of categorical negation (la an-nafiya lil-jins) — the ABSENCE of the kind deity-as-such across the whole field of being, asserted as the act itself (A4 at GROUND grain), with the one exception held out (illa huwa — the la...illa restrictor, the ar-UDHR negative-existential precedent); polarity + because the absence IS what is asserted",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": null,
+     "alternate": {
+      "op": "SIG",
+      "grain": "Figure",
+      "because": "readable as identification through the exception: none-but-He = He alone stands as God"
+     }
+    },
+    {
+     "sentence": "هُوَ ٱلْحَىُّ ٱلْقَيُّومُ",
+     "subject": "ٱللَّهُ",
+     "relation": "هُوَ",
+     "object": "ٱلْحَىُّ ٱلْقَيُّومُ",
+     "polarity": "+",
+     "phasepost": {
+      "op": "SIG",
+      "grain": "Figure"
+     },
+     "clause": "main",
+     "prop": "quran:living-sustainer",
+     "ground": "quran-2.255.2",
+     "role": "declared",
+     "because": "copula rule 3 — the pronoun copula huwa + definite unique epithets (THE Living, THE Self-Subsisting): identificational, the quran-2-37 at-tawwab ar-rahim shape exactly",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the fasl pronoun (w4) resumes the topic (w0)",
+     "alternate": null
+    },
+    {
+     "sentence": "لَا تَأْخُذُهُۥ سِنَةٌۭ",
+     "subject": "سِنَةٌۭ",
+     "relation": "تَأْخُذُهُۥ",
+     "object": null,
+     "polarity": "-",
+     "phasepost": {
+      "op": "CON",
+      "grain": "Figure"
+     },
+     "clause": "main",
+     "prop": "quran:slumber-not-seize",
+     "ground": "quran-2.255.3",
+     "role": "declared",
+     "because": "akhadha (seize/grip) — a hold arranged on one figure: Relate·Structure at figure grain, negated (R6: the la is polarity, never a different act)",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the object clitic -hu on the verb -> the One named at w0",
+     "alternate": null
+    },
+    {
+     "sentence": "وَلَا نَوْمٌۭ",
+     "subject": "نَوْمٌۭ",
+     "relation": "تَأْخُذُهُۥ",
+     "object": null,
+     "polarity": "-",
+     "phasepost": {
+      "op": "CON",
+      "grain": "Figure"
+     },
+     "clause": "coordinate",
+     "prop": "quran:sleep-not-seize",
+     "ground": "quran-2.255.4",
+     "role": "declared",
+     "because": "the coordinated second negation (wa-la nawm) shares the gapped verb — the same seizure-hold denied of sleep: Relate·Structure at figure grain, negated",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the verb is gapped from the preceding clause (w9); its object clitic -> the One named at w0",
+     "alternate": null
+    },
+    {
+     "sentence": "لَّهُۥ مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ",
+     "subject": "مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ",
+     "relation": "لَّهُۥ",
+     "object": null,
+     "polarity": "+",
+     "phasepost": {
+      "op": "CON",
+      "grain": "Ground"
+     },
+     "clause": "main",
+     "prop": "quran:his-heavens-earth",
+     "ground": "quran-2.255.5",
+     "role": "declared",
+     "because": "the possessive predicate lahu (to-Him-belongs) fronting a verbless nominal clause — ASSERTED possession is a CON row (the suite's possessive ruling; the gen-1 verbless-nominal precedent): Relate·Structure at GROUND grain, the possessed being the whole of what the heavens and the earth hold",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the possessive clitic -hu in the predicate (w14) -> the One named at w0",
+     "alternate": null
+    },
+    {
+     "sentence": "يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ",
+     "subject": "ٱللَّهُ",
+     "relation": "يَعْلَمُ",
+     "object": "مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ",
+     "polarity": "+",
+     "phasepost": {
+      "op": "EVA",
+      "grain": "Ground"
+     },
+     "clause": "main",
+     "prop": "quran:knows-before-behind",
+     "ground": "quran-2.255.6",
+     "role": "declared",
+     "because": "ya'lamu (He knows) — knowledge held over the SURROUNDING WHOLE (what is between their hands and what is behind them — the ambient totality): Relate·Interpretation at GROUND grain",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the implicit 3ms subject -> the One named at w0; the -him of aydihim -> the creatures of the preceding discourse",
+     "alternate": null
+    },
+    {
+     "sentence": "وَلَا يُحِيطُونَ بِشَىْءٍۢ مِّنْ عِلْمِهِۦٓ إِلَّا بِمَا شَآءَ",
+     "subject": "the creatures",
+     "relation": "يُحِيطُونَ",
+     "object": "بِشَىْءٍۢ مِّنْ عِلْمِهِۦٓ",
+     "polarity": "-",
+     "phasepost": {
+      "op": "CON",
+      "grain": "Pattern"
+     },
+     "clause": "main",
+     "prop": "quran:encompass-not-knowledge",
+     "ground": "quran-2.255.7",
+     "role": "declared",
+     "because": "ihata (encompass/surround) — an encirclement arranged: Relate·Structure, negated; PATTERN grain because the object is kind-quantified under negation (bi-shay'in min 'ilmihi, any-thing of His knowledge); the illa bi-ma sha'a restrictor is the la...illa family, folded-disclosed, its indicative relative rowed below",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the 3pl subject is the generic creatures of the preceding discourse (the mark-1-15 the-hearers shape)",
+     "alternate": null
+    },
+    {
+     "sentence": "بِمَا شَآءَ",
+     "subject": "ٱللَّهُ",
+     "relation": "شَآءَ",
+     "object": null,
+     "polarity": "+",
+     "phasepost": {
+      "op": "DEF",
+      "grain": "Figure"
+     },
+     "clause": "restrictive-relative",
+     "prop": "quran:what-he-willed",
+     "ground": "quran-2.255.7.1",
+     "role": "declared",
+     "because": "sha'a (He willed) — the determining choice that BOUNDS which portion of His knowledge is granted: Differentiate·Interpretation at figure grain; an INDICATIVE relative inside the restrictor rows (R8, the es que-sera-completada precedent)",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "the 3ms subject -> the One named at w0; the relative head ma (what He willed, the granted portion) is the gapped object",
+     "alternate": {
+      "op": "EVA",
+      "grain": "Figure",
+      "because": "willing readable as a preference held rather than a bound drawn"
+     }
+    },
+    {
+     "sentence": "وَسِعَ كُرْسِيُّهُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضَ",
+     "subject": "كُرْسِيُّهُ",
+     "relation": "وَسِعَ",
+     "object": "ٱلسَّمَٰوَٰتِ وَٱلْأَرْضَ",
+     "polarity": "+",
+     "phasepost": {
+      "op": "CON",
+      "grain": "Ground"
+     },
+     "clause": "main",
+     "prop": "quran:kursi-encompasses",
+     "ground": "quran-2.255.8",
+     "role": "declared",
+     "because": "wasi'a (encompasses/extends over) — an arrangement HELD OVER THE WHOLE FIELD: the kursi in relation to the heavens-and-the-earth totality (the gen-1 merism one document over): Relate·Structure at GROUND grain — the containment-of-the-ground cell, in Arabic",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": null,
+     "alternate": {
+      "op": "SIG",
+      "grain": "Ground",
+      "because": "readable as presence held over the field rather than the arrangement holding it"
+     }
+    },
+    {
+     "sentence": "وَلَا يَـُٔودُهُۥ حِفْظُهُمَا",
+     "subject": "حِفْظُهُمَا",
+     "relation": "يَـُٔودُهُۥ",
+     "object": null,
+     "polarity": "-",
+     "phasepost": {
+      "op": "EVA",
+      "grain": "Figure"
+     },
+     "clause": "coordinate",
+     "prop": "quran:preserving-not-weary",
+     "ground": "quran-2.255.9",
+     "role": "declared",
+     "because": "ya'uduhu (weighs upon/wearies) — a felt burden held against its bearer: Relate·Interpretation at figure grain, negated (R6)",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "hifzuhuma — the preserving of the two (the heavens and the earth, w48-49); the object clitic -hu -> the One named at w0",
+     "alternate": {
+      "op": "CON",
+      "grain": "Figure",
+      "because": "the burden readable as a structural load arranged rather than felt"
+     }
+    },
+    {
+     "sentence": "وَهُوَ ٱلْعَلِىُّ ٱلْعَظِيمُ",
+     "subject": "وَهُوَ",
+     "relation": "ٱلْعَلِىُّ ٱلْعَظِيمُ",
+     "object": null,
+     "polarity": "+",
+     "phasepost": {
+      "op": "SIG",
+      "grain": "Figure"
+     },
+     "clause": "coordinate",
+     "prop": "quran:most-high-tremendous",
+     "ground": "quran-2.255.10",
+     "role": "declared",
+     "because": "a verbless nominal clause whose predicate is the definite unique epithets (THE Most High, THE Tremendous) — copula rule 3 identificational, the quran-2-37 shape; the relation slot holds the predicate nominal per the verbless-clause convention",
+     "embedded": false,
+     "unresolved": false,
+     "resolution": "wa-huwa (w55) -> the One named at w0",
+     "alternate": null
+    }
+   ]
   },
 ];

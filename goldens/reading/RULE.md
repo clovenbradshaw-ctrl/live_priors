@@ -603,3 +603,28 @@ INS·Figure, two subjects not referring phrases at all). Stating it forced
 no golden-row revision (R12's ledgers stay empty this pass): R8-R11
 already were this principle, stated piecewise — which is what the
 derivation above verifies.
+
+**2026-08-31, fifth pass — the omnilingual closure: every cell in at
+least two languages.** The five cells the third pass left English-only
+(SEG·Figure, CON·Ground, EVA·Ground, SYN·Pattern, REC·Ground) closed with
+five new windows in Hebrew, Koine Greek, and Quranic Arabic — found by
+the eo-lexical-analysis exemplar signatures used as a LEAD-GENERATOR only
+(candidate passages located by signature; every row adjudicated fresh
+under this rule, never inherited from a signature): mark-15-38 (the veil
+torn — SEG·Figure in Greek, with quran-54-1's split moon giving the cell
+a third language), quran-2-255 (Ayat al-Kursi, R8-complete at 11 rows —
+the kursi encompassing the heavens and the earth, CON·Ground), gen-6
+(Genesis 6:5-7 — the ambient wickedness seen, EVA·Ground; the Maker's
+repenting, REC·Ground, narrated AND quoted first-person), quran-5-3 (the
+din perfected, SYN·Pattern). Measured from the rebuilt tuples: 27/27
+cells attested, EVERY cell in >=2 languages (the narrowest — CON·Ground,
+INS·Ground, REC·Ground, SEG·Ground, SYN·Pattern — at exactly two).
+Twenty-four rows, every field string derived mechanically from source
+bytes by word index (the combining-mark lesson, held to; a mangled
+regex character class caught live re-proved it — RTL bytes do not
+survive retyping even inside a character class). A1 decided gen-6's
+shape: the seen and the regretted stay inside their attitude verbs'
+objects (the gen-1 saw-that-good precedent), so the window rows are the
+acts; the quoted announcement's asserted clauses row per the
+proclamation precedent, and the rhetorical interrogative of 2:255 folds
+per the suite's own interrogative ruling.
