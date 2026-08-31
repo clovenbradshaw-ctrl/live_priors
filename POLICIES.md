@@ -1059,7 +1059,44 @@ suite) — eoreader7's own `declension.test.js`/`pos-prior.test.js` (16
 cases, S38) carry the mechanism-level regression coverage for the two
 new organs themselves.
 
-## What no entry here decides
+**Amended same day — hand-reading a real committed file found the EOT
+log covers a small SLICE of a document, not the document.** User
+question, verbatim, after being handed the English UDHR's real committed
+`folded`/`log` content: *"How do we have five edges for 72 sentences??
+It's supposed to convert the entire thing into eot."* Checked directly,
+not assumed: `hyperlexicon.js::admit()` only ever receives what
+`relationsFor` OFFERS it, and `relationsFor` only offers a sentence that
+matched a recognisable subject-verb-object shape — a sentence with
+nothing SVO-shaped in it is never turned away (that would show up in
+`admission.turnedAway`, which reads 0), it is simply never REACHED.
+Counted precisely on the two real files already read by hand: English's
+5 log entries land on only **4 of 72 sentences (5.6%)** — one sentence
+("...have in the Charter reaffirmed... and have determined...") produced
+two coordinated-clause edges, which is why 5 entries and not 4; Russian's
+2 entries land on **2 of 67 sentences (3.0%)**. The other ~95% of each
+document was genuinely READ (chunked, byte-addressed, and — per LP8/LP9
+above — 100% self-verified) by the reading layer, but carries no entry of
+any kind in the append-only admission log.
+
+**The reframe, and the decision.** This is not a bug LP9's own three
+fixes introduced — `hyperlexicon.js`'s own header (P57, the-fold's
+POLICIES.md) already states the design plainly: it is a log of HEARD
+ASSERTIONS with byte-addressed spans, never a mirror of the source text.
+What was missing was saying so this bluntly next to a real number: a
+document is not "converted into EOT" in the sense of every sentence
+becoming a queryable unit — it is FILTERED through relation extraction
+first, and only the shard that survives that filter is ever addressed as
+an admission-log entry. For a narrative specimen (War and Peace) that
+shard is large enough to reason over usefully; for a legal-preamble
+document built from long coordinate clauses (the UDHR) it is not.
+
+Asked directly whether every sentence should get SOME log entry — a real
+PROPOSE where a relation was found, a typed "no relation extracted" gap
+otherwise — the user's own call: **leave it gapped for now**, so a later
+pass can try to assign real structure to what is currently invisible,
+rather than papering over the gap with a placeholder entry that would
+still carry no actual content. Real, deferred, unstarted work — not
+fixed here, and not silently left unstated either.
 
 - **Whether the whole corpus should be read.** LP4 names the order of work
   and stops there.
