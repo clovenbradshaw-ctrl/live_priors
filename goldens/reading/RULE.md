@@ -628,3 +628,65 @@ objects (the gen-1 saw-that-good precedent), so the window rows are the
 acts; the quoted announcement's asserted clauses row per the
 proclamation precedent, and the rhetorical interrogative of 2:255 folds
 per the suite's own interrogative ruling.
+
+**2026-08-31, sixth pass — the frame table: conventions published, per
+Goal 6's own finding.** The blind panel (goldens/reading/goal6/) measured
+what Part II's ladder underdetermines: recurring frames where two ops
+both survive the mode/domain steps, and where the stored adjudication's
+consistency came from precedents living OUTSIDE the published rule — the
+en and es blind readers converged WITH EACH OTHER on EVA·Pattern for the
+right-holding frame against the stored SIG·Pattern, which is exactly what
+an unpublished convention looks like from outside. Per that finding's
+named repair, the standing frame precedents are now PART OF THE RULE.
+This codifies; it re-adjudicates nothing (no stored row changes, R12's
+ledgers stay empty); and the disclosed alternatives below are real
+readings a re-adjudication could still prefer on merits — publishing a
+convention is not closing the question.
+
+THE FRAME TABLE (applies after Steps 1-3 and the copula rule; each entry
+names its reason and, where the panel diverged, the disclosed alternative):
+
+- **right-holding / entitlement** ("has the right to", "is entitled to",
+  tiene derecho a, لكل شخص الحق, 有权, ana haki ya; "shall enjoy") →
+  **SIG·Pattern**: a right held is a STANDING — the person's
+  presence-in-relation with a freedom or good; a deontic text CONFERS
+  standings rather than reporting attitudes. Disclosed alternative, the
+  panel's consistent other reading: EVA·Pattern (an entitlement-claim
+  held against holders).
+- **subjection / exposure** ("shall be subjected to", sometido a,
+  يعرض لـ) → **CON·Pattern**, polarity per R6: an arrangement held over
+  the person.
+- **endowment** ("endowed with", dotados de, 赋有) → **CON·Pattern**:
+  faculties held-with the kind. Disclosed alternative: INS·Pattern via
+  copula rule 1 (the bestowal participle), the panel's majority reading.
+- **compulsion** ("compelled to") → **INS·Pattern** with polarity per R6
+  — the five-way alignment precedent (a state forced into being).
+- **making / infliction** ("made a slave", 使为, kufanywa; "imposed",
+  "inflicted") → **INS·Pattern**: a caused becoming.
+- **deprivation** ("deprived of", privar de, 剥夺, kunyang'anywa) →
+  **SEG·Pattern**: a belonging cut away.
+- **denial** ("denied the right") → **SIG·Pattern** polarity −: the
+  standing withheld, never NUL (R6's wall).
+- **inclusion** ("this right includes") → **CON** (containment), grain
+  from the container's own standing.
+- **protection** ("protected by the rule of law") → **CON·Pattern**:
+  coverage held over the kind.
+- **the promote-frame** ("shall promote", "shall strive to promote",
+  "securing recognition") → **REC·Pattern**: generating an interpretive
+  standing (respect, recognition) that was not held before.
+- **the pledge** ("have pledged themselves to") → **CON·Figure**: a
+  compact bound into (the panel's es reader agreed unprompted).
+- **proclaims-as / interpreted-as** → **DEF** (bounding a standing) for
+  the assignment itself; REC where a whole frame is produced over a text
+  ("may be interpreted as implying" at document scope → DEF·Ground, the
+  stored article-30 reading; the panel read REC·Pattern — disclosed).
+- **perception / attitude** (saw, believed, reaffirmed, regretted) →
+  **EVA family**, with A1 unmoved: the content clause stays inside the
+  object.
+- A4 (negative existentials → NUL), A5 (translocation → SIG, grain from
+  the landing), A6 (revision → SYN) stand as always.
+
+The re-run condition, stated so it is not finessed: op-level agreement is
+re-measured only with FRESH readers against this amended rule — briefing
+any reader on stored rows would be teaching the test, and its number
+would certify nothing.
