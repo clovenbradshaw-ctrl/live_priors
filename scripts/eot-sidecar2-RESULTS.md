@@ -277,3 +277,33 @@ refuses the other. Each rosetta sidecar carries the panel as an appended
 `blind-adjudication` layer — LP8's ledger doing what it was built for the
 same day it landed. The named repair (codify the frame precedents into
 RULE.md Part II, re-run with fresh readers) is in the Goal 6 results doc.
+
+## Metacognitive pass, 2026-08-31: the mechanical ladder and ring 2's calibrated start
+
+Full narrative, the Friston/Vivekananda framing, and the generalizable
+lesson are in POLICIES.md LP9. The numbers:
+
+**Mechanical ladder** (`scripts/mechanical-ladder.mjs`, LP8's own named
+next candidate — copula rules + A3/A4 + the published frame table,
+scored against all 173 English rows across every committed golden):
+first cut 74.6% accuracy-of-decided (A4 tier 8.3%, 1/12 — a
+negative-quantifier SUBJECT alone, wrongly sufficient); corrected after
+reading the actual misses (RULE.md's seventh amendment: A4 needs the
+quantifier paired with a bare copula/existential predicate, never an
+ordinary content verb) to **94.7% accuracy-of-decided, 32.9% coverage,
+7/7 own tests**. Two further corrections were the author's own invented
+extensions beyond the published table ("held guilty of", a bare "shall
+be made"), removed rather than repatched.
+
+**Ring 2, calibrated before swept:** `02-encyclopedic/wikipedia` (49
+files). The structural detector (infobox/glue-debris boundary + heading
+detection) was run against `Immanuel_Kant.txt` alone first — its debris
+boundary (567 bytes) landed within one byte of `kant.golden.json`'s own
+first row (568), an unplanned validation against real ground truth. The
+sweep then ran with an online (Welford) posterior over heading count and
+debris fraction, flagging three real structural outliers (Cell_biology
+sparser than the family norm; Industrial_Revolution and Taoism denser),
+hand-confirmed rather than trusted blind. Propositions stay empty
+corpus-wide — DR4/DR5 (the-fold's own extractor) are still the named
+prerequisite for any content reading here, re-confirmed from standing
+evidence rather than re-run.

@@ -690,3 +690,34 @@ The re-run condition, stated so it is not finessed: op-level agreement is
 re-measured only with FRESH readers against this amended rule — briefing
 any reader on stored rows would be teaching the test, and its number
 would certify nothing.
+
+**2026-08-31, seventh pass — A4 clarified: a negative-quantifier SUBJECT
+is not sufficient; it must pair with an existential/copula PREDICATE.**
+Found mechanically, not by re-reading prose: a first attempt at a
+surface classifier (`scripts/mechanical-ladder.mjs`, this repo's own
+one level up) tested "does the subject lead with a negative quantifier
+(no/none/nothing/nobody/no one)" as A4's whole test and scored 1/12
+(8.3%) against real goldens — every miss was "No one shall be subjected
+to X" / "No one shall be arbitrarily deprived of X", which this rule's
+OWN frame table (sixth amendment) already types as the ordinary
+subjection/deprivation frame with a negative-quantifier subject and
+negative polarity (R6), never NUL. The real positive shape, found by
+reading the misses rather than discarding the number: Alice's own row
+("nothing so very remarkable | was | in that") pairs the
+negative-quantifier subject WITH a pure copula/existential predicate —
+the quantifier alone proves nothing, the pairing does. A4 is now stated
+precisely: **the subject is a negative-existential quantifier AND the
+predicate is a bare copula or existence verb** ("is"/"are"/"exists",
+negated or not); a negative-quantifier subject over an ordinary content
+verb is that verb's own frame, negative polarity, never A4. Corrected,
+the classifier's A4 tier reached 1/1 (100%) against the one genuine
+positive case in the corpus and correctly refused all eleven false
+positives. Two further named absences from the same instrument, kept
+here rather than silently patched: A4 also covers a subject whose
+LEXICAL CONTENT denotes absence without any negative quantifier at all
+(gen-1's "the earth was formless/void") — this needs a lexical resource
+this pass does not have, and is not attempted; and mark-16-6's "is not
+here" (negated presence at a place, subject an ordinary referent) was
+already carrying a disclosed alternate in its own hand row before this
+pass — the mechanical test correctly leaves it undecided rather than
+resolving what the original adjudication itself left open.

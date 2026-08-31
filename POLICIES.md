@@ -557,6 +557,146 @@ predicate-shape fields the rows do not yet carry).
 
 ---
 
+## LP9 — Metacognition on the spiral: testing before trusting, and where surprise actually lived
+
+**User direction (2026-08-31), near-verbatim:** use what this project has
+learned to spiral out and create sidecars for more files in this corpus;
+exercise metacognition on the process itself, adjusting it and drawing
+real lessons about reducing surprise; do it "as Friston possessed by
+Vivekananda."
+
+**The two teachers, named once, translated into this project's own
+vocabulary rather than invoked as decoration.** Friston's active
+inference: a generative model is not asserted, it is tested against
+evidence before it is trusted with precision — a model given full
+confidence before it has met data is exactly the failure LP7 diagnosed
+in the erased sidecars, and the right response to a risky, informative
+policy is to run it at the smallest reversible scale first, not to avoid
+it or to commit to it blind. Vivekananda's practical Vedanta: work done
+as its own end, without attachment to whether the fruit is flattering
+(the mechanical ladder's first run scored 74.6%, with one tier at 8.3% —
+published here exactly as measured, not quietly improved before anyone
+saw the bad number); and the discipline this project had ALREADY
+rediscovered on its own before either name was invoked — LP4's own
+sentence, "a document with no reading is not a document with nothing in
+it... the reader is blind to it, and now says so," is viveka (discrimination
+between the veil one's own instrument casts and the thing itself) in
+this project's native register. Both ideas earned their place by
+predicting what actually happened in this pass, not by being asserted
+over it.
+
+**What was tested before anything was trusted.** Two checks, both run
+BEFORE building anything, both answerable from records already on disk:
+
+1. *Is the raw extractor ready for ring 2?* DERIVED-RULES.md already
+   answers this (10 golden Kant rows, 4 pipeline edges, 1 genuine
+   correspondence, 1 clean match) — re-run, not re-derived, to confirm
+   nothing had changed. It had not. Conclusion held without spending a
+   single token reproducing the failure LP7 exists to prevent: no raw
+   mechanical extraction on new files this pass, named as the boundary
+   ring 3 must clear first (DR4/DR5, in the-fold's own extractor, not
+   fixable from this repo).
+2. *Does a structural detector, built from general principles and never
+   shown this specific file's answer, land where a hand adjudicator
+   independently did?* `scripts/spiral-ring2-wikipedia.mjs` was run
+   against `Immanuel_Kant.txt` FIRST, alone, before the other 48 files —
+   its detected debris/prose boundary (567 bytes) landed within ONE BYTE
+   of `kant.golden.json`'s own first row (568). Unplanned, and the
+   strongest kind of validation this pass could ask for: a model tested
+   against ground truth it was never fitted to.
+
+**Where surprise actually lived: not where it was expected.**
+`scripts/mechanical-ladder.mjs` (LP8's own named next candidate, built
+this pass) implements the copula rules + A3/A4 + the frame table (RULE.md
+sixth amendment) as a real classifier — every closed class either REUSED
+from eoreader7's own received register (`AUXILIARY_VERBS`,
+`DEFINITE_DETERMINERS`, `INDEFINITE_DETERMINERS` — imported, not
+re-typed) or declared with its own giver as a genuinely closed
+grammatical paradigm (negative existential quantifiers), never an
+open-class sample. First run against the 173 English rows across all
+committed goldens: 74.6% accuracy-of-decided, and its A4 tier scored
+8.3% (1/12) — a prior asserted with far more confidence than it had
+earned. READING THE MISSES rather than discarding the number (prediction
+error is information, not noise) found the real fault: the rule fired on
+"does the SUBJECT lead with a negative quantifier" alone, when the real
+positive shape (Alice's own "nothing so very remarkable | was | in
+that") needs the quantifier to pair WITH a bare copula/existential
+predicate — "No one shall be subjected to X" is the ordinary subjection
+frame with a negative-quantifier subject, never NUL. RULE.md's own
+seventh amendment records the corrected rule. Two more faults were the
+author's own, named as such rather than smoothed over: a "held guilty
+of" pattern was added to the subjection frame by analogy, not because
+the published table names it, and it fired on a real EVA-family row the
+frame table has no coverage for yet; a bare "shall be made" swallowed
+"no distinction shall be made" (SEG, the ordinary distinguishing act,
+not INS). Both removed rather than patched into a different guess.
+Corrected: 94.7% accuracy-of-decided, 32.9% coverage — a small, honest
+instrument, not a sweeping one.
+
+**The generalizable lesson, stated once:** a prior is worth holding
+exactly to the degree it CAN be surprised — the mechanical ladder's
+first cut minimized its own apparent surprise by matching broadly (three
+guessed extensions, one over-eager rule), which is the same failure
+shape as the erased sidecars at a smaller scale: confidence purchased by
+not looking closely enough at what it actually covers. The fix, both
+times, was the same move: read the misses, trace each one to its actual
+cause, and either correct the rule with the evidence in hand or DISCLOSE
+the limit rather than paper over it with a guess. Testing at the
+smallest reversible scale (one file against its own golden, 173 rows
+against a classifier before any new file was touched) is what makes that
+move affordable — a wrong prior discovered on 173 already-graded rows
+costs nothing; the same prior discovered after being asserted as a
+reading of new material is LP7 all over again.
+
+**What this pass adds to the spiral, concretely.** `02-encyclopedic/
+wikipedia` (49 files, one already a hand golden) joins the corpus with
+STRUCTURAL-ONLY sidecars — declared identity (this family's own
+convention: the filename is the identity, disclosed as such, since no
+in-file header exists the way OHCHR's does for `un-udhr`), a real
+infobox/wikilink-glue debris detector (DR10's own named finding, now a
+working organ rather than a filed observation), heading detection, and —
+new this pass — an ONLINE structural posterior: each file's heading
+count and debris fraction is compared against the family's own RUNNING
+mean/spread (a plain Welford update, disclosed as exactly that, not a
+validated test), then folded into the posterior for the next file. Three
+real structural outliers surfaced this way (Cell_biology.txt, sparser
+than the family's own norm; Industrial_Revolution.txt and Taoism.txt,
+denser) — checked by hand against the actual files rather than trusted
+blind, and confirmed real rather than detector error. Propositions stay
+empty, corpus-wide, per the standing DR4/DR5 evidence above.
+
+**What this does not license.** The mechanical ladder is scored against
+existing ground truth only — it is not run on unread files as a reading,
+and its `undecided` outcomes are real refusals, not a coverage figure to
+chase upward by loosening the ladder's own walls. The Wikipedia sweep's
+propositions stay empty until DR4/DR5 land in the-fold's own extractor;
+that boundary is named, not worked around. The next ring this entry
+licenses is MORE of the same discipline — more structural families, more
+mechanical-ladder tiers scored against rows this corpus already has —
+never a shortcut past the evidence that keeps saying content extraction
+on unread material is not ready yet.
+
+**Addendum, same pass — the discipline caught its own author mid-act.**
+`git status` before staging (this repo's own standing practice, not a
+special step for this pass) showed `Immanuel_Kant.txt.eot.json` as
+MODIFIED rather than newly added — the tell that `spiral-ring2-
+wikipedia.mjs`'s first run had silently overwritten the real ring-0
+hand-adjudicated sidecar (10 propositions) with a zero-proposition
+structural stub, because both generators write the identical
+`<file>.eot.json` path with no coordination between them. This is LP2's
+own law ("layers append, never overwrite") and LP8's own law ("a
+sidecar is never done" — never a sidecar SILENTLY UNDONE) violated by
+the very pass written to honor them, caught only because staging is
+never trusted blind in this project. Fixed at the generator, not just
+the file: ring 2 now checks for an existing `reader.kind ===
+"hand-adjudication"` sidecar and skips rather than writes, named in the
+script's own comment so the next generator sharing this corpus does not
+repeat it. The corrected sweep: 48 structural sidecars (Kant excluded,
+correctly, as ring 2's own log now states plainly: "a ring-0
+hand-adjudicated sidecar already exists here"). Kept here rather than
+quietly folded into a clean final number, because the honest account of
+testing a process is not only what the process got right.
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work

@@ -196,3 +196,48 @@ test("the omnilingual closure holds: 27/27 cells, every cell in >=2 languages", 
   assert.equal(Object.keys(cells).length, 27);
   for (const [c, langs] of Object.entries(cells)) assert.ok(langs.size >= 2, `${c} attested in only ${[...langs]}`);
 });
+
+// ---- ring 2: the mechanical ladder and the Wikipedia structural spiral ----
+test("mechanical ladder: calibrated corrections hold at the corpus level", () => {
+  const d = JSON.parse(fs.readFileSync(path.join(ROOT, "scripts/mechanical-ladder-RESULTS.json"), "utf8"));
+  assert.ok(d.accuracyOfDecided > 0.9, `accuracy-of-decided regressed below 0.9: ${d.accuracyOfDecided}`);
+  assert.equal(d.byTier.A4.total, 1, "A4 must decide exactly the one genuine positive case, not the eleven false positives it used to catch");
+  assert.equal(d.byTier.A4.hit, 1);
+});
+
+test("ring 2 never overwrites a ring-0 hand-adjudicated sidecar", () => {
+  // regression pin: the first run of spiral-ring2-wikipedia.mjs silently
+  // clobbered Immanuel_Kant.txt.eot.json's real 10 propositions with a
+  // zero-proposition structural stub (LP9's own disclosed finding).
+  const kantSidecar = JSON.parse(fs.readFileSync(path.join(ROOT, "02-encyclopedic/wikipedia/Immanuel_Kant.txt.eot.json"), "utf8"));
+  assert.equal(kantSidecar.reader.kind, "hand-adjudication");
+  assert.equal(kantSidecar.propositions.length, 10);
+});
+
+test("wikipedia ring-2 sidecars: structural only, zero propositions, calibration matches the golden within a byte", () => {
+  const aristotle = JSON.parse(fs.readFileSync(path.join(ROOT, "02-encyclopedic/wikipedia/Aristotle.txt.eot.json"), "utf8"));
+  assert.equal(aristotle.propositions.length, 0);
+  assert.equal(aristotle.reader.derived, true);
+  assert.equal(aristotle.gaps[0].type, "no_extractor");
+  // calibration is checked against the raw detector's own output (not
+  // the sidecar, which ring 2 now correctly declines to write for kant)
+  const kantGolden = JSON.parse(fs.readFileSync(path.join(ROOT, "goldens/reading/kant.golden.json"), "utf8"));
+  const raw = fs.readFileSync(path.join(ROOT, "02-encyclopedic/wikipedia/Immanuel_Kant.txt"), "utf8");
+  const lines = raw.split("\n");
+  let proseStart = 0;
+  for (let i = 0; i < lines.length; i++) {
+    const t = lines[i].trim();
+    if (t.length < 180) continue;
+    if (!/[.!?]$/.test(t.replace(/["')\]]+$/, ""))) continue;
+    const words = t.split(/\s+/);
+    const avgLen = words.reduce((a, w) => a + w.length, 0) / words.length;
+    if (avgLen > 0 && avgLen < 9) { proseStart = i; break; }
+  }
+  const debrisChars = lines.slice(0, proseStart).join("\n").length;
+  const firstRowByte = kantGolden.rows[0].span.start;
+  assert.ok(Math.abs(debrisChars - firstRowByte) <= 2,
+    `structural debris boundary (${debrisChars}) should sit within a byte or two of the golden's own first row (${firstRowByte})`);
+  const sweep = JSON.parse(fs.readFileSync(path.join(ROOT, "scripts/eot-ring2-wikipedia-sweep.json"), "utf8"));
+  assert.equal(sweep.files, 49);
+  assert.equal(sweep.rows.length, 48, "kant is skipped, not swept, as a ring-0 file");
+});
