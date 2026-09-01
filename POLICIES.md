@@ -389,6 +389,510 @@ without the evidence that produced it).
 
 ---
 
+## LP7 — There is no reading from nowhere: the sidecars erased, and the bar any successor must clear
+
+**Two user directions, one entry (2026-08-31).** First: "erase all our eot
+sidecars since they don't align to this" — "this" being the proposition
+bar stated the same day in `goldens/reading/RULE.md`'s fourth amendment:
+a proposition is a difference that makes a difference, the TRIADIC
+MINIMUM of assertions (a term, an operator, and the state or ground the
+move lands against; fewer than three and nothing has moved). Second, the
+forward half: "there is no reading from nowhere — any reading needs to
+leverage declared priors and have things like surprise etc."
+
+**What was erased, and why it failed the bar.** All 2,208 `*.eot.json`
+sidecars, corpus-wide, in one commit. The specimen that decided it,
+examined row by row the same day: `06-government-legal/un-udhr/
+udhr-eng.txt.eot.json` read 73 sentences of the English UDHR and emitted
+five edges — every one the auxiliary "have" glued to its neighbours,
+every one stamped INS·Figure, two subjects ("compelled to", "women and")
+not referring phrases at all, two edges sharing one byte span. Those
+rows are extractor patterns, not propositions: no row names a
+transformation landed against a ground, so under the triadic minimum the
+sidecars asserted nothing — while LOOKING like readings, which is worse
+than absence. LP4's own line — "a document with no reading is not a
+document with nothing in it" — cuts both ways: an absent sidecar claims
+nothing, where a wrong one claimed plenty.
+
+The erasure is a `git rm`: history keeps every byte (the event stream is
+the reality, the working tree the projection — store.js's frame, already
+this repo's own R12), and the projection now honestly shows no reading
+where none worth the name exists.
+
+**What stays, condemned or cleared by name.** The generator
+(`scripts/eot-sidecar.mjs`) and its tooling (eot-digest,
+eot-coverage-summary, eot-sidecar-sample, the sweep RESULTS docs, and
+`goldens/reading/MINED-PATTERNS.md`) remain in the tree as the record of
+the generation that was tried — the-fold's succession.js precedent:
+condemned, present, disclosed; it must not run again until the bar below
+is met. The apparatus it built is NOT condemned: recipe identity (LP5),
+S26 raw-coordinate spans, the typed admission gate all held (the specimen
+self-verified 5/5 and turned nothing away) — what failed is what walked
+through them. A gate can only refuse what its reader flags; the reader
+had no ground to flag against.
+
+**The law: no reading from nowhere.** A reading enters this corpus only
+when all three hold:
+
+1. **Its rows meet the proposition bar.** RULE.md's triadic minimum;
+   `goldens/reading/` is the target grammar and the scorer.
+2. **Its declared priors are its GROUND, not merely its filter.** The
+   erased recipes NAMED priors with givers (determiners, negation, the
+   POS vocabulary gate) but used them only to filter candidate verbs.
+   Leveraging a prior means reading WITH the expectation the prior
+   supplies — the reader can say what it expected before it says what it
+   found. A recipe that names priors it does not expect with is
+   provenance for a reading from nowhere.
+3. **Difference is measured, not assumed: surprise runs.** A reader that
+   cannot say what it expected cannot say what differed — and a
+   proposition IS a difference. The organs exist and are named, not
+   aspirational: eoreader7's `emergence/surprise.js` (Shannon novelty and
+   Bayesian surprise, kept apart, provably identical only at full
+   commitment), the tier-stack meters the-fold already wires
+   (reflex.js/aperture.js — declared window, gamma, draws, seed, givers
+   named). What a row's difference moved against belongs on the row.
+
+**What this entry does not decide:** the successor reader's design —
+whether the goldens seed its expectations, whether surprise gates
+admission or only rides rows, what a prior-expectation concretely is at
+corpus scale. Those are the next pass's to measure, not this entry's to
+guess.
+
+**Amended 2026-08-31, same day — surprise is hypergraph delta, never
+n-gram frequency.** User direction, verbatim: "things are surprising to
+the extent they change our hypergraph, not ngram frequency." This
+sharpens clause 3 above from "surprise runs" to WHAT surprise is: the
+ground a reading measures difference against is the accumulated
+hypergraph — propositions, referents, cells, polarities, standings — and
+an increment's surprise is the TYPED CHANGE it makes to that graph: a new
+proposition founded, a witness added to a standing one (near-zero
+surprise — LP2's union, two readings agreeing become one note), a cell or
+polarity variant landed on an existing proposition, an expected
+proposition found ABSENT, a language-unique proposition added, a
+departure from the declared frame or act expectation. Token-frequency
+novelty (FoldReadingPrior@1's Witten-Bell mixture, Shannon surprisal over
+forms) is NOT this measure: it may still rank candidates — LP4's
+accelerator posture, decide where to look, never what is true — but a
+reading's surprise field carries graph deltas, each one typed and
+witnessed, never a perplexity score. This closes the loop with RULE.md's
+fourth amendment: a proposition is a difference that makes a difference
+(admission asks "did anything land"); surprise is how much difference it
+made (what the landing changed) — Bateson's own second clause, "the
+difference that figure made to the NEXT ground," read as the definition
+of the measurement. The kernel already carries the right vocabulary:
+`expectations.js` (open/fulfilled/violated/reframed — EVA transitions,
+REC on reframe) is the per-expectation form of the same law.
+
+**Amended 2026-08-31 (second, same day) — priors are checkpoints, never
+weights.** User direction, near-verbatim: build a universe of meaning
+where as much as possible lives LIVE, not as permanent weights — but with
+a bootstrap/checkpoint to start from. The rule: the reality is always the
+event stream — the source bytes (LP1), the hand goldens with their
+append-only revisions (R12), the readings' own appended logs (LP2) — and
+every compiled prior (ReadingPriors@1, ActPrior@1, POSPrior@1) is a
+PROJECTION of those live sources at a named moment: content-addressed,
+carrying its regeneration path (build script + input shas + repo commit),
+superseded by RECOMPILING from the live sources, never by editing the
+artifact. No figure in a checkpoint is a permanent weight: a later ring's
+readings extend the graph, the goldens revise by append, and the next
+checkpoint is a fresh projection (v1, v2, … — versions of a projection,
+not editions of a truth). A consumer that treats a checkpoint as truth
+rather than as "where the live record stood when I started" has rebuilt
+the cache LP2 forbids, one level up. store.js's own law, applied to
+priors: the log is truth, projection is convenience — and a bootstrap is
+just the first projection.
+
+---
+
+## LP8 — A sidecar is never done: layered readings, adversarial priors, and the fold
+
+**User direction (2026-08-31, near-verbatim):** as we spiral out, assess
+whether the sidecars contain what is meaningful about READING; hold alt
+versions as ADVERSARIAL PRIORS, built on other genuinely decent
+hypotheses about minimizing hypergraphical surprise; amend earlier
+sidecars via APPENDS so their folds improve; **no sidecar ever needs to
+be "done."**
+
+**The shape.** A sidecar carries `layers`: an append-only ledger of
+reading passes, each under a NAMED HYPOTHESIS with its own recipe —
+layer 0 the favored reading, later layers adversarial priors: competing
+expectation structures scored against the same rows. The `fold` is the
+projection across layers (per-hypothesis surprise rates, the current
+ranking) — recomputed on every append, never hand-edited. Appending a
+layer is the only way a sidecar changes meaning; deleting or rewriting
+one is forbidden (LP2's discipline, one level up). Because ring-0
+sidecars are themselves projections of the live goldens (LP7's
+checkpoint law), the append-only reality is the LAYER-RECIPE LEDGER in
+the generator plus the goldens' own R12 revisions; the file is their
+fold, regenerated deterministically — adding a hypothesis appends to the
+ledger, never edits a prior entry.
+
+**Adversarial priors are hypotheses about what minimizes hypergraph
+surprise, ranked by MEASUREMENT, never by preference.** The first four,
+measured the day this entry landed — each language's adjudicated cells
+predicted from what the languages before it know (Goal 6's one-reader
+caveat rides every figure):
+
+| hypothesis | knows | ar | es | zh | sw |
+|---|---|---|---|---|---|
+| frame | the family modal cell alone | 49% | 48% | 49% | 50% |
+| structural | (role x clause x polarity) -> modal, no lexicon, no join | 66% | 65% | 58% | 59% |
+| cell-transfer | the Rosetta prop join: prior languages' cells | 93% | 99% | 90% | 92% |
+| **grain-transfer** | the prop join, GRAIN only | **100%** | **100%** | **97%** | **100%** |
+
+**The finding this bought immediately:** the GRAIN is the near-invariant
+axis of translation; the OP carries the construction. On the 23
+construction-splits — exactly where the op varies — grain survives
+20/23, and each of the three grain-breaks has a documented adjudication
+reason (family-unit-society: the rule-3 definiteness split;
+education-directed; limitation-purpose). Consequence for every future
+ring: an op-level variant is ordinary translation information; a GRAIN
+break against the join is rare enough to be an alarm, in a way an op
+variant never is.
+
+**What this does not decide:** whether grain-transfer's win survives
+independent adjudication (Goal 6); which hypotheses join the ledger next
+(named candidate: the mechanical copula/A4/A5 ladder proper, which needs
+predicate-shape fields the rows do not yet carry).
+
+---
+
+## LP9 — Metacognition on the spiral: testing before trusting, and where surprise actually lived
+
+**User direction (2026-08-31), near-verbatim:** use what this project has
+learned to spiral out and create sidecars for more files in this corpus;
+exercise metacognition on the process itself, adjusting it and drawing
+real lessons about reducing surprise; do it "as Friston possessed by
+Vivekananda."
+
+**The two teachers, named once, translated into this project's own
+vocabulary rather than invoked as decoration.** Friston's active
+inference: a generative model is not asserted, it is tested against
+evidence before it is trusted with precision — a model given full
+confidence before it has met data is exactly the failure LP7 diagnosed
+in the erased sidecars, and the right response to a risky, informative
+policy is to run it at the smallest reversible scale first, not to avoid
+it or to commit to it blind. Vivekananda's practical Vedanta: work done
+as its own end, without attachment to whether the fruit is flattering
+(the mechanical ladder's first run scored 74.6%, with one tier at 8.3% —
+published here exactly as measured, not quietly improved before anyone
+saw the bad number); and the discipline this project had ALREADY
+rediscovered on its own before either name was invoked — LP4's own
+sentence, "a document with no reading is not a document with nothing in
+it... the reader is blind to it, and now says so," is viveka (discrimination
+between the veil one's own instrument casts and the thing itself) in
+this project's native register. Both ideas earned their place by
+predicting what actually happened in this pass, not by being asserted
+over it.
+
+**What was tested before anything was trusted.** Two checks, both run
+BEFORE building anything, both answerable from records already on disk:
+
+1. *Is the raw extractor ready for ring 2?* DERIVED-RULES.md already
+   answers this (10 golden Kant rows, 4 pipeline edges, 1 genuine
+   correspondence, 1 clean match) — re-run, not re-derived, to confirm
+   nothing had changed. It had not. Conclusion held without spending a
+   single token reproducing the failure LP7 exists to prevent: no raw
+   mechanical extraction on new files this pass, named as the boundary
+   ring 3 must clear first (DR4/DR5, in the-fold's own extractor, not
+   fixable from this repo).
+2. *Does a structural detector, built from general principles and never
+   shown this specific file's answer, land where a hand adjudicator
+   independently did?* `scripts/spiral-ring2-wikipedia.mjs` was run
+   against `Immanuel_Kant.txt` FIRST, alone, before the other 48 files —
+   its detected debris/prose boundary (567 bytes) landed within ONE BYTE
+   of `kant.golden.json`'s own first row (568). Unplanned, and the
+   strongest kind of validation this pass could ask for: a model tested
+   against ground truth it was never fitted to.
+
+**Where surprise actually lived: not where it was expected.**
+`scripts/mechanical-ladder.mjs` (LP8's own named next candidate, built
+this pass) implements the copula rules + A3/A4 + the frame table (RULE.md
+sixth amendment) as a real classifier — every closed class either REUSED
+from eoreader7's own received register (`AUXILIARY_VERBS`,
+`DEFINITE_DETERMINERS`, `INDEFINITE_DETERMINERS` — imported, not
+re-typed) or declared with its own giver as a genuinely closed
+grammatical paradigm (negative existential quantifiers), never an
+open-class sample. First run against the 173 English rows across all
+committed goldens: 74.6% accuracy-of-decided, and its A4 tier scored
+8.3% (1/12) — a prior asserted with far more confidence than it had
+earned. READING THE MISSES rather than discarding the number (prediction
+error is information, not noise) found the real fault: the rule fired on
+"does the SUBJECT lead with a negative quantifier" alone, when the real
+positive shape (Alice's own "nothing so very remarkable | was | in
+that") needs the quantifier to pair WITH a bare copula/existential
+predicate — "No one shall be subjected to X" is the ordinary subjection
+frame with a negative-quantifier subject, never NUL. RULE.md's own
+seventh amendment records the corrected rule. Two more faults were the
+author's own, named as such rather than smoothed over: a "held guilty
+of" pattern was added to the subjection frame by analogy, not because
+the published table names it, and it fired on a real EVA-family row the
+frame table has no coverage for yet; a bare "shall be made" swallowed
+"no distinction shall be made" (SEG, the ordinary distinguishing act,
+not INS). Both removed rather than patched into a different guess.
+Corrected: 94.7% accuracy-of-decided, 32.9% coverage — a small, honest
+instrument, not a sweeping one.
+
+**The generalizable lesson, stated once:** a prior is worth holding
+exactly to the degree it CAN be surprised — the mechanical ladder's
+first cut minimized its own apparent surprise by matching broadly (three
+guessed extensions, one over-eager rule), which is the same failure
+shape as the erased sidecars at a smaller scale: confidence purchased by
+not looking closely enough at what it actually covers. The fix, both
+times, was the same move: read the misses, trace each one to its actual
+cause, and either correct the rule with the evidence in hand or DISCLOSE
+the limit rather than paper over it with a guess. Testing at the
+smallest reversible scale (one file against its own golden, 173 rows
+against a classifier before any new file was touched) is what makes that
+move affordable — a wrong prior discovered on 173 already-graded rows
+costs nothing; the same prior discovered after being asserted as a
+reading of new material is LP7 all over again.
+
+**What this pass adds to the spiral, concretely.** `02-encyclopedic/
+wikipedia` (49 files, one already a hand golden) joins the corpus with
+STRUCTURAL-ONLY sidecars — declared identity (this family's own
+convention: the filename is the identity, disclosed as such, since no
+in-file header exists the way OHCHR's does for `un-udhr`), a real
+infobox/wikilink-glue debris detector (DR10's own named finding, now a
+working organ rather than a filed observation), heading detection, and —
+new this pass — an ONLINE structural posterior: each file's heading
+count and debris fraction is compared against the family's own RUNNING
+mean/spread (a plain Welford update, disclosed as exactly that, not a
+validated test), then folded into the posterior for the next file. Three
+real structural outliers surfaced this way (Cell_biology.txt, sparser
+than the family's own norm; Industrial_Revolution.txt and Taoism.txt,
+denser) — checked by hand against the actual files rather than trusted
+blind, and confirmed real rather than detector error. Propositions stay
+empty, corpus-wide, per the standing DR4/DR5 evidence above.
+
+**What this does not license.** The mechanical ladder is scored against
+existing ground truth only — it is not run on unread files as a reading,
+and its `undecided` outcomes are real refusals, not a coverage figure to
+chase upward by loosening the ladder's own walls. The Wikipedia sweep's
+propositions stay empty until DR4/DR5 land in the-fold's own extractor;
+that boundary is named, not worked around. The next ring this entry
+licenses is MORE of the same discipline — more structural families, more
+mechanical-ladder tiers scored against rows this corpus already has —
+never a shortcut past the evidence that keeps saying content extraction
+on unread material is not ready yet.
+
+**Addendum, same pass — the discipline caught its own author mid-act.**
+`git status` before staging (this repo's own standing practice, not a
+special step for this pass) showed `Immanuel_Kant.txt.eot.json` as
+MODIFIED rather than newly added — the tell that `spiral-ring2-
+wikipedia.mjs`'s first run had silently overwritten the real ring-0
+hand-adjudicated sidecar (10 propositions) with a zero-proposition
+structural stub, because both generators write the identical
+`<file>.eot.json` path with no coordination between them. This is LP2's
+own law ("layers append, never overwrite") and LP8's own law ("a
+sidecar is never done" — never a sidecar SILENTLY UNDONE) violated by
+the very pass written to honor them, caught only because staging is
+never trusted blind in this project. Fixed at the generator, not just
+the file: ring 2 now checks for an existing `reader.kind ===
+"hand-adjudication"` sidecar and skips rather than writes, named in the
+script's own comment so the next generator sharing this corpus does not
+repeat it. The corrected sweep: 48 structural sidecars (Kant excluded,
+correctly, as ring 2's own log now states plainly: "a ring-0
+hand-adjudicated sidecar already exists here"). Kept here rather than
+quietly folded into a clean final number, because the honest account of
+testing a process is not only what the process got right.
+
+**Addendum, next day — the held-out test this entry's own claims were
+waiting on.** User question, direct: "do you think these are good
+priors?" — followed by the instruction to answer it with an e2e test on
+a net-new corpus rather than an opinion. `scripts/e2e-generalization-
+eval.mjs` + `scripts/e2e-generalization-test-RESULTS.md`: 13 hand-read
+specimens from `06-government-legal/world-factbook` (a family with no
+golden, no sidecar, no frame-table phrase drawn from it), scored live
+against the currently-committed mechanical ladder. Coverage collapsed
+from 32.9% in-family to 15%, as expected for a classifier tuned on
+legal-declarative prose. **What was not assumed and had to be measured:
+zero of the two decisions made on unseen material were wrong** — the
+discipline (never guess; refuse and type the cause rather than decide
+past the evidence) held under the one kind of pressure this whole
+project had not yet put it under. Three genuinely new construction
+classes surfaced this way, each with a nameable cause rather than a
+vague miss: no branch exists for an ordinary transitive verb at all (the
+ladder's real coverage is copula constructions plus a dozen phrases
+lifted from one register); rule 3's definiteness test only recognizes an
+article, so a bare proper-noun predicate ("Algiers" as capital) has no
+path to SIG·Figure at all; and no rule anticipates a bare numeric or
+date predicate ("998 km", "5 July 1962"), which turns out to be the
+single most common predicate shape in a reference-fact register. One
+already-disclosed gap (dispositional/Pattern-promotion) fired again,
+exactly as documented — a confirmation, not a new find. The verdict,
+stated precisely rather than as a rating: the measurement DISCIPLINE is
+good and just proved itself outside the distribution it was built on;
+the COVERAGE is narrow and was previously only argued, now measured.
+
+## LP10 — A received lexicon is wired where it decides; a prior with no consumer is not coverage
+
+User direction, verbatim: "yeah let's use verbnet, why not? I thought we
+were. what about unimorph? can we do this for as many languages as
+possible?" Two separate corrections, one entry.
+
+**ActPrior@1 (VerbNet) existed since LP7's own seed pass but was only
+ever consulted by the SCORING function** (`eot-sidecar2.mjs::checkAct`),
+never the GENERATING one (`mechanical-ladder.mjs::classify`) — a
+resource built to answer "what act does this verb perform" sat unused
+at the one place that question is actually asked. Fixed: a new tier,
+after the frame table/copula/A3/A4 tiers and before the final undecided
+fallback, electing the relation's head the same measured way (`headOf`)
+and looking it up directly in ActPrior, falling back through
+MorphologyPrior@1 (UniMorph) to the head's lemma when the surface form
+itself is absent. A `contested` entry is refused by name (R7's own
+disclosed-alternate discipline), never resolved by picking. Measured
+both in-family (32.9% → 34.7% coverage, all 173 hand-adjudicated English
+rows, the new tier itself 3/3 correct) and held-out (the same untouched
+`world-factbook` specimens LP9's addendum already scored: 15% → 23%,
+0 wrong, one new decision honestly flagged as a debatable word-sense
+call rather than a clean win). Full numbers:
+`scripts/eot-sidecar2-RESULTS.md`, `scripts/e2e-generalization-test-
+RESULTS.md`.
+
+**"As many languages as possible" has a structural answer, not a
+coverage answer, and finding it took building the wrong thing first.**
+The act-typing tier rests on VerbNet, which is English-only BY
+CONSTRUCTION — Levin classes are a theory of English verb alternations,
+not a universal inventory. So this capability cannot be extended to
+another language by adding data; it would need a different theory of
+that language's verbs. What extends is the layer beneath it (POS priors
+→ head election), built this pass for Arabic, Spanish, and Chinese — but
+that layer classifies nothing alone, since the ladder above it (frame
+table, copula rules) is hand-adjudicated English. Honest scorecard:
+**capability extended to one language, substrate to three, wall named.**
+
+**The lesson that cost the most, and the rule it earns.** A Spanish
+morphology prior was built from real, verified `unimorph/spa` data
+(873,811 forms, cross-checked against real UDHR inflections — `fueron`
+→ `{ser, ir}`, ambiguity correctly preserved) and measured 24.5MB, ~34x
+the largest artifact otherwise committed here. Effort then went into
+COMPACTING it — while simultaneously writing a long disclosure
+explaining why it matched neither an existing consumer nor the
+established design (eoreader7's `morphology-eng.json` stores only the
+irregular tail: 5,531 kept of 224,550 pairs). Both facts were visible
+the whole time. A morphology prior does exactly one job in this project
+— bridge a surface form to a lemma so ActPrior can be looked up — so
+with no non-English ActPrior it is a bridge to a destination that does
+not exist. Deleted rather than committed. **The rule: when the
+disclosure explaining why an artifact does not fit runs longer than the
+case for shipping it, the artifact is the thing to cut — and a prior
+with no consumer is not coverage, however real its data.** Pinned as a
+test so it is re-added only alongside a consumer.
+
+**Two register refusals worth keeping.** Arabic and Swahili each HAVE a
+real, live UniMorph repository — for the wrong register (Egyptian/Gulf
+Arabic, not Modern Standard; Congo Swahili, not standard Kiswahili).
+Substituting either fails silently rather than loudly, so both were
+refused. Chinese has no UniMorph repo under any code — a principled
+absence (little inflection for that schema to tabulate), not chased with
+a sixth guess. And on the UD side, `UD_Chinese-GSD` answers HTTP 200 on
+every file but is TRADITIONAL script where this project's golden is
+Simplified — caught only by reading the actual bytes rather than
+trusting the 200, and replaced with `UD_Chinese-GSDSimp`. Swahili has no
+UD data at all: `UD_Swahili-OPUSGV` contains no `.conllu` file anywhere,
+confirmed twice, despite its README claiming a v2.8 release.
+
+**A real, live bug, caught before it shipped:** every prior-build
+script accumulates per-form counts into a plain object via
+`forms[form] ??= {}`. `"constructor"` is a genuine attested word in both
+UD_Spanish-AnCora and UniMorph's Spanish paradigm table, and a plain
+`{}` resolves that key through `Object.prototype` instead of creating a
+fresh accumulator — silently losing that one word's counts with no
+error anywhere, not merely a crash (the UniMorph script's stricter
+`.add()` call happened to throw; the POS-prior script's `[upos] = ...`
+shape would NOT have thrown, and did not throw when English's own build
+was checked, because English's own vocabulary has no colliding word).
+Fixed with `Object.create(null)` everywhere the pattern appears,
+including the pre-existing, already-committed English script
+(reconfirmed byte-identical after the fix — it was never actually
+corrupted, the collision never occurred in that corpus). Pinned as
+regression tests so it cannot silently regress.
+
+**What this entry does not claim:** the three new POS priors are wired
+into nothing — `headOf` is called only from the English ladder. They are
+committed because they are small, in-norm, verified against real words
+from this project's own hand goldens, and the honest substrate for
+future non-English work; calling them "three more languages supported"
+would be false. Building a construction ladder for Arabic, Spanish, or
+Chinese is real, larger, unattempted work. Full account, every URL and
+HTTP status checked: `scripts/multilingual-priors-RESULTS.md`.
+
+### LP10, amended same day — resolve on demand; the lock makes live fetching safe; and the consumer arrived
+
+User direction, verbatim: "can we leave the unimorph on its own site and
+not bloat our priors doc?" then "why don't we do language detection and
+then vendor from unimorph as needed live?" The entry above shipped with
+the three non-English POS priors COMMITTED (~2.9MB) — LP10's own mistake
+repeated at smaller scale, real data committed with no consumer as if
+committing were the point. Reversed: `scripts/lang-registry.mjs` is now
+the one implementation — a registry of what exists per language (every
+row live-verified, every absence typed with what was checked), a
+resolver (local cache → fetch on demand → typed refusal, NEVER a silent
+fallback to another language), and a committed lockfile
+(`derived-priors/pos-priors/resolved.lock.json`) pinning each resolve's
+source sha256s so upstream drift is REPORTED, never silently absorbed
+into a prior a results document already cited. `pos-prior-en.json` stays
+committed — it has consumers. The rule, now mechanical rather than
+re-decided per pass: **bytes are committed only where something reads
+them; otherwise the recipe + the source address + its sha256 IS the
+artifact.**
+
+**And the English prior's second consumer arrived the same day, from the
+other direction.** the-fold's hypergraph admission door had been
+admitting 18-of-29 junk-labeled notes because its POS prior's mount
+pointed at a gitignored dir in an uninitialized submodule — a gate whose
+ground never shipped. the-fold's `/priors-data/` mounts now fall back to
+THIS repo's committed `pos-prior-en.json` (read live, never copied; one
+declared eng→en naming alias at the seam), and the measured effect is
+the whole point of committing a prior with its giver and hashes: junk
+admissions 18/32 → 0/19 with no other change. the-fold's POLICIES.md
+P74 (renumbered from P72 on merge) carries that side; this repo is the Ground repo in that story —
+which is precisely what "reproducible from the repo alone" was for.
+
+## LP11 — A loosened key is judged on its marginal admits, never on aggregate coverage
+
+Earned by measurement (`scripts/head-election-eval.mjs`, leave-one-out
+over the real adjudicated goldens so expectations are never scored on the
+rows that built them), stated as law because the same temptation recurs
+wherever identity is keyed: retrieval, act expectations, the-fold's
+hypergraph note identity.
+
+**The measurement.** Non-English act expectations key on the whole
+relation surface; with POS priors resolvable for ar/es/zh the obvious
+move was to key on the elected head instead, so differently-spelled
+relations sharing a head could match. Head keying LOSES everywhere,
+including English: as a replacement it drops coverage and accuracy in
+every language (en: 42.4%/92.5% surface → 20.8%/61.5% head); as the
+DEPLOYED ladder (surface first, head only on a miss), its marginal
+admits — the only rows where it speaks at all — ran **25.0% (ar), 55.6%
+(es), never fired (zh), and 0/8 (en)**. Silence beat it. The whole
+surface carries act-deciding information the head throws away ("shall be
+subjected to" is not the act of "subjected"), which retroactively
+validates `keyKind: "surface"` as the better keying rather than a
+fallback.
+
+**The law.** A loosened key's value is what it adds ON THE ROWS THE
+STRICT KEY COULD NOT ANSWER, at what accuracy — never its aggregate
+coverage, because on the marginal rows it is the only voice, and nothing
+downstream can tell its answers from the reliable ones. A join that adds
+coverage at coin-flip accuracy exactly where it is unchecked is worse
+than silence. Applied the same day, in the other repo, to the other
+half of the same handoff: the proposed hypergraph note-identity fold
+(referent face + lemma, to make cross-source witnesses possible) was
+measured BEFORE being built — 0 joins on the real material, and the
+flagship motivating pair (`withdraws` ~ `retreated`) fails at the lemma:
+that gap is synonymy, not morphology, and belongs to the semantic tier
+(the-fold P32), not to a looser key. Full numbers:
+`scripts/multilingual-priors-RESULTS.md`; the-fold's
+`eval/results/admission-gate-RESULTS.md`.
+
+**Generality:** universal (evidence: `scripts/head-election-eval.mjs` —
+the same leave-one-out construction, same folds, only the keying varies,
+measured across four languages and two scripts; the law's restatement in
+the-fold was checked against different material and a different keying
+mechanism the same day).
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work
