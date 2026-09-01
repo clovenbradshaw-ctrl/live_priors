@@ -1,0 +1,455 @@
+You are adjudicating predications extracted from a document written in English. For each row (subject, relation, object, the sentence it came from, clause type, polarity, role), classify what the RELATION — the predicate as this language states it — DOES, as an act of transformation: ONE of nine operators at ONE of three grains.
+
+Decision procedure — follow it step by step for every row, reasoning from this language's own verb in its own grammar:
+
+STEP 1 — MODE: what does the act do to its object?
+- Differentiate — the act cuts, bounds, removes, ends, distinguishes: something is set apart or taken away.
+- Relate — the act holds two things in relation without making or unmaking either: standing-with, standing-as, standing-against.
+- Generate — the act brings forth: something exists, is arranged, or is understood that was not before.
+
+STEP 2 — DOMAIN: where does the act operate?
+- Existence — presence and absence of beings and things: being, appearing, arriving, being named, ceasing.
+- Structure — arrangement: parts, wholes, connections, positions.
+- Interpretation — meaning: claims, judgments, definitions, framings.
+
+Mode x domain names the operator:
+- Differentiate·Existence = NUL (absence, ceasing, lacking: "vanished", "died", "lacked")
+- Differentiate·Structure = SEG (cutting an arrangement: "divided", "left", "removed", "excluded")
+- Differentiate·Interpretation = DEF (bounding a meaning: "defined", "distinguished", "denied that")
+- Relate·Existence = SIG (presence held in relation: "appeared", "is called", "was a teacher", "stood at")
+- Relate·Structure = CON (arrangement held in relation: "married", "met", "contains", "borders", "accompanied")
+- Relate·Interpretation = EVA (a claim held against a holder: "believed", "judged", "demonstrated", "considered")
+- Generate·Existence = INS (coming into being: "was born", "founded", "created", "became")
+- Generate·Structure = SYN (a whole produced: "wrote", "built", "composed", "assembled")
+- Generate·Interpretation = REC (a new frame produced: "converted", "recanted", "reinterpreted", "revised")
+
+STEP 3 — GRAIN: what does this particular transformation land on?
+- Ground — a field, state, place, period, or whole condition.
+- Figure — one individual: one person, one thing, one specific claim, one event.
+- Pattern — a kind, class, habit, law, or recurrence. Habitual or normative scope over a kind promotes to Pattern even when the object is singular in form.
+
+THE COPULA RULE (for act-empty copulas — read the phasepost from the PREDICATE):
+1. Predicate is a participle of another verb ("was born", "was elected") -> that verb's own act, subject read as patient.
+2. Predicate is a class or kind ("is a physician") -> SIG, grain Pattern.
+3. Predicate is a unique role, position, or identity ("is the capital") -> SIG, grain Figure.
+4. Predicate is a property adjective ("was strict") -> SIG, grain Figure; a dispositional/habitual property -> SIG, grain Pattern.
+5. Predicate is a location or time ("was in the harbor") -> SIG, grain Ground.
+
+WALLS:
+- Polarity NEVER moves the operator. The row's polarity is already given; "did not appear" is SIG (polarity handled elsewhere), never NUL. NUL is only for a predicate whose OWN act is absence.
+- An existential-negative construction ("there is no X", "there exists no X") reads as NUL — the absence IS the act.
+- Modality never moves the operator: "shall"/"should"/deontic or obligation marking is force, not a different act.
+- Translocation verbs (came, went, drew near, was laid) read as SIG, with grain from what the motion lands on.
+- Revision/repair verbs read as SYN.
+- Classify the ACT the verb performs, never the topic of the sentence.
+
+Answer from THIS sentence in THIS language only. Do not assume any other version or translation of this document exists. Do not use any tools. Do not read any files. Everything you need is in this message.
+
+OUTPUT: a single fenced JSON array and nothing else, one entry per input row, same "i":
+```json
+[{"i": 0, "op": "SIG", "grain": "Pattern", "because": "one line"}, ...]
+```
+
+ROWS:
+[
+ {
+  "i": 0,
+  "sentence": "is the foundation of freedom, justice and peace in the world",
+  "subject": "recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family",
+  "relation": "is",
+  "object": "the foundation of freedom, justice and peace in the world",
+  "clause": "main",
+  "polarity": "+",
+  "role": "premise"
+ },
+ {
+  "i": 1,
+  "sentence": "has been proclaimed as the highest aspiration of the common people",
+  "subject": "the advent of a world in which human beings shall enjoy freedom of speech and belief and freedom from fear and want",
+  "relation": "has been proclaimed as",
+  "object": "the highest aspiration of the common people",
+  "clause": "main",
+  "polarity": "+",
+  "role": "premise"
+ },
+ {
+  "i": 2,
+  "sentence": "in which human beings shall enjoy freedom of speech and belief",
+  "subject": "human beings",
+  "relation": "shall enjoy",
+  "object": "freedom of speech and belief and freedom from fear and want",
+  "clause": "relative",
+  "polarity": "+",
+  "role": "premise"
+ },
+ {
+  "i": 3,
+  "sentence": "if man is not to be compelled to have recourse",
+  "subject": "man",
+  "relation": "is not to be compelled to have recourse",
+  "object": "rebellion against tyranny and oppression",
+  "clause": "conditional-adjunct",
+  "polarity": "-",
+  "role": "premise"
+ },
+ {
+  "i": 4,
+  "sentence": "Member States have pledged themselves to achieve",
+  "subject": "Member States",
+  "relation": "have pledged themselves to achieve",
+  "object": "the promotion of universal respect for and observance of human rights and fundamental freedoms",
+  "clause": "main",
+  "polarity": "+",
+  "role": "premise"
+ },
+ {
+  "i": 5,
+  "sentence": "shall strive by teaching and education to promote respect for these rights and freedoms",
+  "subject": "every individual and every organ of society",
+  "relation": "shall strive",
+  "object": "to promote respect for these rights and freedoms and by progressive measures, national and international, to secure their universal and effective recognition and observance",
+  "clause": "purpose-adjunct",
+  "polarity": "+",
+  "role": "operative"
+ },
+ {
+  "i": 6,
+  "sentence": "They are endowed with reason and conscience",
+  "subject": "All human beings",
+  "relation": "are endowed with",
+  "object": "reason and conscience",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 7,
+  "sentence": "no distinction shall be made on the basis of the political, jurisdictional or international status",
+  "subject": "no distinction",
+  "relation": "shall be made",
+  "object": "on the basis of the political, jurisdictional or international status of the country or territory to which a person belongs",
+  "clause": "main",
+  "polarity": "-",
+  "role": "declared"
+ },
+ {
+  "i": 8,
+  "sentence": "Everyone has the right to life, liberty and the security of person.",
+  "subject": "Everyone",
+  "relation": "has the right to",
+  "object": "life, liberty and the security of person",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 9,
+  "sentence": "No one shall be held in slavery or servitude",
+  "subject": "No one",
+  "relation": "shall be held in",
+  "object": "slavery or servitude",
+  "clause": "main",
+  "polarity": "-",
+  "role": "declared"
+ },
+ {
+  "i": 10,
+  "sentence": "No one shall be subjected to torture or to cruel, inhuman or degrading treatment or punishment.",
+  "subject": "No one",
+  "relation": "shall be subjected to",
+  "object": "torture or to cruel, inhuman or degrading treatment or punishment",
+  "clause": "main",
+  "polarity": "-",
+  "role": "declared"
+ },
+ {
+  "i": 11,
+  "sentence": "All are equal before the law",
+  "subject": "All",
+  "relation": "are",
+  "object": "equal before the law",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 12,
+  "sentence": "Everyone has the right to an effective remedy by the competent national tribunals",
+  "subject": "Everyone",
+  "relation": "has the right to",
+  "object": "an effective remedy by the competent national tribunals for acts violating the fundamental rights granted him by the constitution or by law",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 13,
+  "sentence": "No one shall be subjected to arbitrary arrest, detention or exile.",
+  "subject": "No one",
+  "relation": "shall be subjected to",
+  "object": "arbitrary arrest, detention or exile",
+  "clause": "main",
+  "polarity": "-",
+  "role": "declared"
+ },
+ {
+  "i": 14,
+  "sentence": "Everyone charged with a penal offence has the right to be presumed innocent",
+  "subject": "Everyone charged with a penal offence",
+  "relation": "has the right to",
+  "object": "be presumed innocent until proved guilty according to law in a public trial at which he has had all the guarantees necessary for his defence",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 15,
+  "sentence": "which did not constitute a penal offence",
+  "subject": "any act or omission",
+  "relation": "did not constitute",
+  "object": "a penal offence",
+  "clause": "restrictive-relative",
+  "polarity": "-",
+  "role": "declared"
+ },
+ {
+  "i": 16,
+  "sentence": "Nor shall a heavier penalty be imposed",
+  "subject": "a heavier penalty",
+  "relation": "shall be imposed",
+  "object": "than the one that was applicable at the time the penal offence was committed",
+  "clause": "coordinate",
+  "polarity": "-",
+  "role": "declared"
+ },
+ {
+  "i": 17,
+  "sentence": "No one shall be subjected to arbitrary interference with his privacy",
+  "subject": "No one",
+  "relation": "shall be subjected to",
+  "object": "arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation",
+  "clause": "main",
+  "polarity": "-",
+  "role": "declared"
+ },
+ {
+  "i": 18,
+  "sentence": "Everyone has the right to the protection of the law against such interference or attacks.",
+  "subject": "Everyone",
+  "relation": "has the right to",
+  "object": "the protection of the law against such interference or attacks",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 19,
+  "sentence": "Everyone has the right to seek and to enjoy in other countries asylum from persecution.",
+  "subject": "Everyone",
+  "relation": "has the right to",
+  "object": "seek and to enjoy in other countries asylum from persecution",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 20,
+  "sentence": "No one shall be arbitrarily deprived of his nationality",
+  "subject": "No one",
+  "relation": "shall be arbitrarily deprived of",
+  "object": "his nationality",
+  "clause": "main",
+  "polarity": "-",
+  "role": "declared"
+ },
+ {
+  "i": 21,
+  "sentence": "Marriage shall be entered into only with the free and full consent of the intending spouses.",
+  "subject": "Marriage",
+  "relation": "shall be entered into",
+  "object": "only with the free and full consent of the intending spouses",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 22,
+  "sentence": "The family is the natural and fundamental group unit of society",
+  "subject": "The family",
+  "relation": "is",
+  "object": "the natural and fundamental group unit of society",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 23,
+  "sentence": "is entitled to protection by society and the State",
+  "subject": "The family",
+  "relation": "is entitled to",
+  "object": "protection by society and the State",
+  "clause": "coordinate",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 24,
+  "sentence": "Everyone has the right to freedom of thought, conscience and religion",
+  "subject": "Everyone",
+  "relation": "has the right to",
+  "object": "freedom of thought, conscience and religion",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 25,
+  "sentence": "this right includes freedom to hold opinions without interference",
+  "subject": "this right",
+  "relation": "includes",
+  "object": "freedom to hold opinions without interference and to seek, receive and impart information and ideas through any media and regardless of frontiers",
+  "clause": "coordinate",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 26,
+  "sentence": "Everyone has the right to take part in the government of his country",
+  "subject": "Everyone",
+  "relation": "has the right to",
+  "object": "take part in the government of his country, directly or through freely chosen representatives",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 27,
+  "sentence": "this will shall be expressed in periodic and genuine elections",
+  "subject": "this will",
+  "relation": "shall be expressed in",
+  "object": "periodic and genuine elections",
+  "clause": "coordinate",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 28,
+  "sentence": "Everyone has the right to work, to free choice of employment",
+  "subject": "Everyone",
+  "relation": "has the right to",
+  "object": "work, to free choice of employment, to just and favourable conditions of work and to protection against unemployment",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 29,
+  "sentence": "Everyone who works has the right to just and favourable remuneration",
+  "subject": "Everyone who works",
+  "relation": "has the right to",
+  "object": "just and favourable remuneration ensuring for himself and his family an existence worthy of human dignity, and supplemented, if necessary, by other means of social protection",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 30,
+  "sentence": "Everyone has the right to a standard of living adequate for the health and well‐being of himself and of his family",
+  "subject": "Everyone",
+  "relation": "has the right to",
+  "object": "a standard of living adequate for the health and well‐being of himself and of his family, including food, clothing, housing and medical care and necessary social services, and the right to security in the event of unemployment, sickness, disability, widowhood, old age or other lack of livelihood in circumstances beyond his control",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 31,
+  "sentence": "All children, whether born in or out of wedlock, shall enjoy the same social protection.",
+  "subject": "All children",
+  "relation": "shall enjoy",
+  "object": "the same social protection",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 32,
+  "sentence": "Education shall be free, at least in the elementary and fundamental stages.",
+  "subject": "Education",
+  "relation": "shall be",
+  "object": "free, at least in the elementary and fundamental stages",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 33,
+  "sentence": "Elementary education shall be compulsory.",
+  "subject": "Elementary education",
+  "relation": "shall be",
+  "object": "compulsory",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 34,
+  "sentence": "Technical and professional education shall be made generally available",
+  "subject": "Technical and professional education",
+  "relation": "shall be made",
+  "object": "generally available",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 35,
+  "sentence": "higher education shall be equally accessible to all on the basis of merit",
+  "subject": "higher education",
+  "relation": "shall be",
+  "object": "equally accessible to all on the basis of merit",
+  "clause": "coordinate",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 36,
+  "sentence": "Education shall be directed to the full development of the human personality",
+  "subject": "Education",
+  "relation": "shall be directed to",
+  "object": "the full development of the human personality and to the strengthening of respect for human rights and fundamental freedoms",
+  "clause": "main",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 37,
+  "sentence": "in which alone the free and full development of his personality is possible",
+  "subject": "the free and full development of his personality",
+  "relation": "is",
+  "object": "possible",
+  "clause": "restrictive-relative",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 38,
+  "sentence": "solely for the purpose of securing due recognition and respect for the rights and freedoms of others",
+  "subject": "such limitations as are determined by law",
+  "relation": "securing",
+  "object": "due recognition and respect for the rights and freedoms of others",
+  "clause": "purpose-adjunct",
+  "polarity": "+",
+  "role": "declared"
+ },
+ {
+  "i": 39,
+  "sentence": "Nothing in this Declaration may be interpreted as implying",
+  "subject": "Nothing in this Declaration",
+  "relation": "may be interpreted as implying",
+  "object": "for any State, group or person any right to engage in any activity or to perform any act aimed at the destruction of any of the rights and freedoms set forth herein",
+  "clause": "main",
+  "polarity": "-",
+  "role": "declared"
+ }
+]
