@@ -19,10 +19,12 @@
 // Full write-up, diagnosis of every refusal against real POS attestation,
 // and the verdict: scripts/e2e-generalization-test-RESULTS.md.
 
-import { classify } from "./mechanical-ladder.mjs";
+import { classify, loadActPrior, loadMorphologyForms } from "./mechanical-ladder.mjs";
 import { loadPosForms } from "./build-reading-priors.mjs";
 
 const posForms = loadPosForms();
+const actPrior = loadActPrior();
+const morphologyForms = loadMorphologyForms();
 
 // ---- specimens, hand-read from the real file ----
 const specimens = [
@@ -60,7 +62,7 @@ const specimens = [
 
 console.log("=== live scoring against the REAL, currently-committed classifier ===\n");
 const results = specimens.map((s) => {
-  const r = classify(s, posForms);
+  const r = classify(s, posForms, actPrior, morphologyForms);
   return { ...s, result: r };
 });
 

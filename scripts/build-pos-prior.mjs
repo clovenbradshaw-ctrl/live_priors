@@ -47,7 +47,15 @@ const FILES = ["en_ewt-ud-train.conllu", "en_ewt-ud-dev.conllu", "en_ewt-ud-test
 
 const sha256 = (b) => crypto.createHash("sha256").update(b).digest("hex");
 
-const forms = {};
+// Object.create(null), not {}: English EWT itself has no colliding token
+// (checked), but the sibling multilingual build (build-pos-prior-multi.mjs)
+// found a real one live in UD_Spanish-AnCora ("constructor" is a genuine
+// attested Spanish word) — a plain {} lets `forms[form] ??= {}` silently
+// resolve to Object.prototype.constructor instead of a fresh counter,
+// corrupting that word's counts with no error. Fixed here too as a
+// preventive measure, not a correction — this file's own committed output
+// was verified unaffected before this change.
+const forms = Object.create(null);
 const sources = [];
 let tokens = 0, sentences = 0;
 

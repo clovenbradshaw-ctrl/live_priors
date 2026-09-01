@@ -20,19 +20,37 @@
 // textbook-closed paradigm, disclosed as exactly that.
 //
 // SCOPE, DISCLOSED RATHER THAN SMOOTHED OVER: lang/en only (the frame
-// table's phrases are English strings). Copula rule 1 (participle of
-// another verb) is NOT built — UD's coarse VERB tag does not distinguish
-// a participle from a finite verb without FEATS, which POSPrior@1 does
-// not carry; this rule returns undecided rather than guess. A5
-// (translocation) and A6 (revision) are NOT built — both need an
-// open-class semantic verb resource (which verbs are motion-verbs /
-// revision-verbs), and hand-listing one would be exactly the hack this
-// file exists to avoid; VerbNet's raw Levin class NAMES could proxy this
-// but mapping class-name substrings to "is this motion" is the same
-// hack one level down. Named absence, not a silent gap.
+// table's phrases and ActPrior@1/MorphologyPrior@1 are English
+// resources). Copula rule 1 (participle of another verb) is NOT built —
+// UD's coarse VERB tag does not distinguish a participle from a finite
+// verb without FEATS, which POSPrior@1 does not carry; this rule
+// returns undecided rather than guess.
+//
+// AMENDED — the held-out factbook test (e2e-generalization-test-
+// RESULTS.md) found this file had no branch at all for an ORDINARY verb
+// ("resigned", "ran for", "known"), while ActPrior@1 (VerbNet, DR1's own
+// reason for existing — 4,569 forms mapped to acts) sat unused. Now
+// wired in as a direct dictionary lookup (never a Levin-class-NAME
+// substring guess, which stays refused below), bridged through
+// MorphologyPrior@1 (UniMorph) for inflected forms not directly in
+// ActPrior — the exact lemma-bridge `checkAct` (eot-sidecar2.mjs) already
+// proved, generalized from scoring to generating. Contested ActPrior
+// entries are refused (R7), never resolved by picking a candidate.
 
 import { AUXILIARY_VERBS, DEFINITE_DETERMINERS, INDEFINITE_DETERMINERS } from "../../eoreader7/native/adapters/text/priors.js";
 import { headOf, loadPosForms } from "./build-reading-priors.mjs";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const LADDER_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+export function loadActPrior() {
+  return JSON.parse(fs.readFileSync(path.join(LADDER_ROOT, "derived-priors/act-priors/act-prior-en.json"), "utf8"));
+}
+export function loadMorphologyForms() {
+  const p = path.join(LADDER_ROOT, "..", "eoreader7", "native", "priors", "morphology-eng.json");
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")).forms : {};
+}
 
 const MODALS = new Set(["will", "shall", "should", "would", "could", "can", "may", "might", "must"]);
 const BE_FORMS = new Set(["am", "is", "are", "was", "were", "be", "been", "being"]);
@@ -90,7 +108,7 @@ const FRAME_TABLE = [
  * tier} or {undecided: true, because} when nothing in the ladder fires —
  * NEVER a guess in place of a genuine gap.
  */
-export function classify(row, posForms) {
+export function classify(row, posForms, actPrior = null, morphologyForms = {}) {
   const relation = String(row.relation ?? "");
 
   // frame table (checked before the generic ladder — more specific wins)
@@ -160,18 +178,56 @@ export function classify(row, posForms) {
     return { undecided: true, because: "pure copula chain, but the predicate's own head does not clear POS dominance for rules 2/4/5, and rule 1 (participle) needs FEATS this artifact does not carry" };
   }
 
-  return { undecided: true, because: "no frame-table phrase matched and the relation is not a pure copula chain — A5/A6 (translocation/revision) are named absences, not attempted" };
+  // VerbNet tier — the ordinary-verb gap the held-out factbook test found:
+  // classify() had no branch at all for a ordinary transitive/intransitive
+  // verb ("resigned", "ran for", "known"), even though ActPrior@1 (VerbNet,
+  // 4,569 forms mapped to acts, DR1's own reason for existing) was sitting
+  // unused three files away — `checkAct` (eot-sidecar2.mjs) already
+  // consults it, but only to SCORE an already-decided cell, never to
+  // PROPOSE one. This is that wiring, aimed at generation.
+  //
+  // Not the same move the A5/A6 disclosure above refuses: that objects to
+  // guessing "is this verb a motion verb" from a Levin CLASS NAME
+  // substring (a hand-list one level down). This is a direct dictionary
+  // lookup on ActPrior's own already-computed `op` field — the DR1
+  // translation from Levin semantics to the nine acts is done ONCE, at
+  // build time, disclosed with its own giver; using it per-verb is no
+  // different from using POSPrior's own counts.
+  //
+  // Contested entries are refused, not resolved by picking a candidate —
+  // R7's own law (a disclosed alternate, never a silent coin-flip)
+  // applied to an unranked candidate set. ActPrior carries no GRAIN (a
+  // VerbNet class is about the verb's own type, not the clause's Ground/
+  // Figure/Pattern scope), so a hit here mirrors A4's own shape: op
+  // decided, grain left null and disclosed as undetermined — a real,
+  // partial classification, not a refusal dressed as one.
+  const genHead = actPrior && headOf(relation, posForms);
+  if (genHead) {
+    let entry = actPrior.forms[genHead];
+    let via = genHead;
+    if (!entry) {
+      const lemmas = morphologyForms[genHead];
+      if (lemmas?.length) { entry = actPrior.forms[lemmas[0]]; via = lemmas[0]; }
+    }
+    if (entry?.standing === "unanimous") {
+      return { op: entry.op, grain: null, because: `VerbNet (ActPrior@1): "${genHead}"${via !== genHead ? ` → lemma "${via}" (UniMorph)` : ""} is unanimously ${entry.op} across its VerbNet classes (${entry.classes.join(", ")}) — grain undetermined (VerbNet types the verb, not the clause's scope)`, tier: "verbnet" };
+    }
+    if (entry?.standing === "contested") {
+      return { undecided: true, because: `VerbNet (ActPrior@1): "${genHead}" is contested — candidates ${entry.candidates.map((c) => c.op).join("/")} — refused rather than picked (R7)` };
+    }
+  }
+
+  return { undecided: true, because: "no frame-table phrase matched, the relation is not a pure copula chain, and its elected head is unattested (or contested) in ActPrior — A5/A6 were named absent as HAND rules; whether VerbNet's own translation table already realizes them for some verbs is an open, checked-not-assumed question (see the RESULTS doc)" };
 }
 
 // ---- scoring, guarded ----
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 const invokedDirectly = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (invokedDirectly) {
   const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
   const GOLD = path.join(ROOT, "goldens", "reading");
   const posForms = loadPosForms();
+  const actPrior = loadActPrior();
+  const morphologyForms = loadMorphologyForms();
   const LANG = { udhr: "en", kant: "en", alice: "en", ripgrep: "en", "quran-2-37-en": "en",
     "lear-division": "en", "lear-disclaim": "en", "lear-france": "en", "tempest-abjure": "en" };
 
@@ -183,7 +239,7 @@ if (invokedDirectly) {
     for (const r of g.rows) {
       if (r.clause === "heading") continue;
       total++;
-      const result = classify(r, posForms);
+      const result = classify(r, posForms, actPrior, morphologyForms);
       if (result.undecided) { undecided++; continue; }
       byTier[result.tier] = (byTier[result.tier] ?? { hit: 0, total: 0 });
       byTier[result.tier].total++;

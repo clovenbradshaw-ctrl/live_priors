@@ -725,6 +725,99 @@ stated precisely rather than as a rating: the measurement DISCIPLINE is
 good and just proved itself outside the distribution it was built on;
 the COVERAGE is narrow and was previously only argued, now measured.
 
+## LP10 — A received lexicon is wired where it decides; a prior with no consumer is not coverage
+
+User direction, verbatim: "yeah let's use verbnet, why not? I thought we
+were. what about unimorph? can we do this for as many languages as
+possible?" Two separate corrections, one entry.
+
+**ActPrior@1 (VerbNet) existed since LP7's own seed pass but was only
+ever consulted by the SCORING function** (`eot-sidecar2.mjs::checkAct`),
+never the GENERATING one (`mechanical-ladder.mjs::classify`) — a
+resource built to answer "what act does this verb perform" sat unused
+at the one place that question is actually asked. Fixed: a new tier,
+after the frame table/copula/A3/A4 tiers and before the final undecided
+fallback, electing the relation's head the same measured way (`headOf`)
+and looking it up directly in ActPrior, falling back through
+MorphologyPrior@1 (UniMorph) to the head's lemma when the surface form
+itself is absent. A `contested` entry is refused by name (R7's own
+disclosed-alternate discipline), never resolved by picking. Measured
+both in-family (32.9% → 34.7% coverage, all 173 hand-adjudicated English
+rows, the new tier itself 3/3 correct) and held-out (the same untouched
+`world-factbook` specimens LP9's addendum already scored: 15% → 23%,
+0 wrong, one new decision honestly flagged as a debatable word-sense
+call rather than a clean win). Full numbers:
+`scripts/eot-sidecar2-RESULTS.md`, `scripts/e2e-generalization-test-
+RESULTS.md`.
+
+**"As many languages as possible" has a structural answer, not a
+coverage answer, and finding it took building the wrong thing first.**
+The act-typing tier rests on VerbNet, which is English-only BY
+CONSTRUCTION — Levin classes are a theory of English verb alternations,
+not a universal inventory. So this capability cannot be extended to
+another language by adding data; it would need a different theory of
+that language's verbs. What extends is the layer beneath it (POS priors
+→ head election), built this pass for Arabic, Spanish, and Chinese — but
+that layer classifies nothing alone, since the ladder above it (frame
+table, copula rules) is hand-adjudicated English. Honest scorecard:
+**capability extended to one language, substrate to three, wall named.**
+
+**The lesson that cost the most, and the rule it earns.** A Spanish
+morphology prior was built from real, verified `unimorph/spa` data
+(873,811 forms, cross-checked against real UDHR inflections — `fueron`
+→ `{ser, ir}`, ambiguity correctly preserved) and measured 24.5MB, ~34x
+the largest artifact otherwise committed here. Effort then went into
+COMPACTING it — while simultaneously writing a long disclosure
+explaining why it matched neither an existing consumer nor the
+established design (eoreader7's `morphology-eng.json` stores only the
+irregular tail: 5,531 kept of 224,550 pairs). Both facts were visible
+the whole time. A morphology prior does exactly one job in this project
+— bridge a surface form to a lemma so ActPrior can be looked up — so
+with no non-English ActPrior it is a bridge to a destination that does
+not exist. Deleted rather than committed. **The rule: when the
+disclosure explaining why an artifact does not fit runs longer than the
+case for shipping it, the artifact is the thing to cut — and a prior
+with no consumer is not coverage, however real its data.** Pinned as a
+test so it is re-added only alongside a consumer.
+
+**Two register refusals worth keeping.** Arabic and Swahili each HAVE a
+real, live UniMorph repository — for the wrong register (Egyptian/Gulf
+Arabic, not Modern Standard; Congo Swahili, not standard Kiswahili).
+Substituting either fails silently rather than loudly, so both were
+refused. Chinese has no UniMorph repo under any code — a principled
+absence (little inflection for that schema to tabulate), not chased with
+a sixth guess. And on the UD side, `UD_Chinese-GSD` answers HTTP 200 on
+every file but is TRADITIONAL script where this project's golden is
+Simplified — caught only by reading the actual bytes rather than
+trusting the 200, and replaced with `UD_Chinese-GSDSimp`. Swahili has no
+UD data at all: `UD_Swahili-OPUSGV` contains no `.conllu` file anywhere,
+confirmed twice, despite its README claiming a v2.8 release.
+
+**A real, live bug, caught before it shipped:** every prior-build
+script accumulates per-form counts into a plain object via
+`forms[form] ??= {}`. `"constructor"` is a genuine attested word in both
+UD_Spanish-AnCora and UniMorph's Spanish paradigm table, and a plain
+`{}` resolves that key through `Object.prototype` instead of creating a
+fresh accumulator — silently losing that one word's counts with no
+error anywhere, not merely a crash (the UniMorph script's stricter
+`.add()` call happened to throw; the POS-prior script's `[upos] = ...`
+shape would NOT have thrown, and did not throw when English's own build
+was checked, because English's own vocabulary has no colliding word).
+Fixed with `Object.create(null)` everywhere the pattern appears,
+including the pre-existing, already-committed English script
+(reconfirmed byte-identical after the fix — it was never actually
+corrupted, the collision never occurred in that corpus). Pinned as
+regression tests so it cannot silently regress.
+
+**What this entry does not claim:** the three new POS priors are wired
+into nothing — `headOf` is called only from the English ladder. They are
+committed because they are small, in-norm, verified against real words
+from this project's own hand goldens, and the honest substrate for
+future non-English work; calling them "three more languages supported"
+would be false. Building a construction ladder for Arabic, Spanish, or
+Chinese is real, larger, unattempted work. Full account, every URL and
+HTTP status checked: `scripts/multilingual-priors-RESULTS.md`.
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work

@@ -307,3 +307,59 @@ hand-confirmed rather than trusted blind. Propositions stay empty
 corpus-wide — DR4/DR5 (the-fold's own extractor) are still the named
 prerequisite for any content reading here, re-confirmed from standing
 evidence rather than re-run.
+
+## VerbNet wired into generation, not just scoring (2026-09-01)
+
+ActPrior@1 existed since ring 0 but was only ever consulted by
+`eot-sidecar2.mjs`'s own `checkAct` — a SCORING function, checking a
+row someone else already classified against VerbNet's expectation.
+`mechanical-ladder.mjs::classify` — the function that actually DECIDES a
+row's op — never looked at it, so a resource built specifically to
+answer "what act does this verb perform" sat unused at the one place
+that question is actually asked. User direction, verbatim: "yeah let's
+use verbnet, why not? I thought we were. what about unimorph?"
+
+**The tier.** Inserted after the frame-table/copula/A3/A4 tiers (all of
+which stay first — a hand-adjudicated phrase or a grammatical
+construction outranks a lexical lookup) and before the final undecided
+fallback: elect the relation's head the same measured way (`headOf`,
+POS-dominance, no list), look it up directly in ActPrior's `forms` dict;
+if absent, fall back through MorphologyPrior@1 (UniMorph, `../eoreader7/
+native/priors/morphology-eng.json`) to the form's lemma and retry. A
+`unanimous` entry decides the op (grain stays `null` — VerbNet types the
+verb's class, never the clause's scope, so grain is honestly left to
+whatever the next tier down would have said, which today is nothing).
+A `contested` entry is refused by name (R7's own disclosed-alternate
+discipline — a candidate SET is never picked from), not resolved by
+guessing. This is a direct dictionary lookup, not the Levin-class-
+name-substring guess R5/R6 already refused elsewhere in this project —
+disclosed as the distinction in the module's own header.
+
+**Measured, both directions.** In-family (all 173 English rows across
+every committed golden, real hand-adjudicated ground truth):
+coverage 32.9% → **34.7%** (57 → 60 decided), VerbNet tier itself
+**3/3 = 100%** accuracy, the 3 remaining copula misses are the
+pre-existing, already-disclosed dispositional/Pattern-promotion gap
+(unrelated to this change — confirmed by diff, not assumed). Held-out
+(`06-government-legal/world-factbook`, Algeria — untouched by any
+golden or frame-table phrase): 2/13 (15%) → **3/13 (23%)**; the new
+decision is `"Algeria has known many empires and dynasties"` → EVA via
+VerbNet's `comprehend-87.2` class through the UniMorph bridge
+(known→know) — a genuinely debatable WSD call, disclosed rather than
+claimed clean: "know" here reads experientially ("has lived through"),
+not "comprehend"'s core cognitive sense, though EVA's own
+witness/perceive family (RULE.md's frame table) arguably still covers
+"having witnessed history" — recorded as a real judgment call, not a
+confirmed hit, since this held-out set carries no adjudicated ground
+truth to check against (by the eval script's own design).
+
+**11 tests** (`mechanical-ladder.test.mjs`, 7 → 11): unanimous entries
+decide with `tier: "verbnet"` and the lemma-bridge noted in `because`
+when UniMorph fired; contested entries refuse; the tier is off by
+default (omitting `actPrior` never fires it — no silent behavior
+change for any existing caller); the tier never fires inside a pure
+copula chain. Full suite 31/31.
+
+Full account of the multilingual extension this same direction asked
+for ("can we do this for as many languages as possible?"):
+`scripts/multilingual-priors-RESULTS.md`.

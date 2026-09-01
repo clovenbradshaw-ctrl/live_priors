@@ -107,3 +107,42 @@ Graded on what actually holds up under measurement:
 Not fixed here, on purpose: this document's job was to find out whether
 the priors are good, honestly, before spending effort improving them
 further. It found a precise, three-part answer instead of a vague one.
+
+## Amended 2026-09-01 — VerbNet wired into `classify()`, re-run on the same 13
+
+The first named next-step above ("a general-transitive-verb branch...
+at the cost of needing either VerbNet coverage or a real parse") is now
+partly done: `mechanical-ladder.mjs::classify` gained a VerbNet tier
+(full account: `scripts/eot-sidecar2-RESULTS.md`'s own same-day
+section). Re-running this exact script, unchanged specimens, against
+the now-wired classifier:
+
+**3/13 decided (23%)**, up from 2/13 (15%). The one new decision:
+`bg-1` ("Algeria has known many empires and dynasties") → **EVA**, via
+VerbNet's `comprehend-87.2` class, reached through the UniMorph
+form→lemma bridge (`known` → `know`). Flagged honestly, not claimed as
+a clean third win: this is a real word-sense question (experiential
+"has lived through" vs. comprehend-87.2's core cognitive "understands"
+sense), and unlike `fb-1`'s clean class-membership hit, nothing here
+adjudicates which reading is correct — this script was deliberately
+built with no ground truth to check against (see the header). It is a
+principled, disclosed call (EVA's own witness/perceive family plausibly
+covers "having witnessed history"), not a verified one.
+
+**`bg-4`/`bg-5` still undecided, and why matters:** "resigned" and "ran"
+are both real, attested English verbs — the miss is not vocabulary, it
+is that neither is in VerbNet's own class coverage under a form
+`headOf` elects cleanly, or their entries land `contested`. The
+diagnosis this document already gave ("a genuine, concrete instance of
+the disclosed A5 (translocation) absence") stands unchanged — VerbNet
+closes some of that gap, not all of it, exactly as predicted rather
+than overclaimed.
+
+**The other two named next steps are untouched by this change** (a
+numeric/date predicate rule; a proper-noun definiteness signal for rule
+3) — `fb-2` through `fb-8` are unaffected, all still undecided for the
+same reasons already diagnosed above. **0 wrong, still** — the new
+decision is debatable, not false, and every refusal remains typed and
+traceable. The failure shape this document's headline named as correct
+("precision held, recall did not") continues to hold under the first
+real attempt to move recall.
