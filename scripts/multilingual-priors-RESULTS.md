@@ -2,9 +2,10 @@
 
 *Answers "yeah let's use verbnet, why not? I thought we were. what about
 unimorph? can we do this for as many languages as possible?" (user,
-2026-09-01). Re-runnable: `node scripts/build-pos-prior-multi.mjs`.
-Companion to `scripts/eot-sidecar2-RESULTS.md`'s same-day VerbNet-wiring
-section.*
+2026-09-01). Re-runnable: `node scripts/lang-registry.mjs ar es zh sw`
+(resolve-on-demand) and `node scripts/head-election-eval.mjs` (the
+measurement). Companion to `scripts/eot-sidecar2-RESULTS.md`'s same-day
+VerbNet-wiring section.*
 
 ## The answer, before the evidence
 
@@ -133,21 +134,82 @@ correct 38,718) before the catch. Fixed with `Object.create(null)`
 everywhere the pattern appears, including preventively in the
 pre-existing English script. Pinned as a regression test.
 
+## Amended same day — resolve on demand, don't vendor ahead of need
+
+User direction, verbatim: "can we leave the unimorph on its own site and
+not bloat our priors doc?" then "why don't we do language detection and
+then vendor from unimorph as needed live?" The first cut of this pass had
+committed all three non-English POS priors (~2.9MB) — which was LP10's
+own mistake repeated at smaller scale: real data, no consumer, committed
+as if committing were the point. Replaced by **`scripts/
+lang-registry.mjs`**: one registry of what exists per language (every row
+live-verified, every absence typed with what was checked), one resolver
+(local cache → fetch on demand → typed refusal, NEVER a silent fallback
+to another language — reading Arabic with English priors and not
+noticing is exactly the failure the registry exists to make impossible),
+and one committed lockfile (`derived-priors/pos-priors/
+resolved.lock.json`) pinning each resolve's source sha256s so upstream
+drift is REPORTED, never silently absorbed into a prior some results doc
+already cited. `pos-prior-en.json` stays committed — it has a real
+consumer (`loadPosForms`, every run). The rule, now mechanical instead of
+re-decided per pass: **bytes are committed only where something reads
+them; otherwise the recipe + the source address + its sha256 IS the
+artifact.**
+
+## Measured before wiring: head election does NOT extend the act lexicon
+
+The obvious next move — "we have non-English POS priors now, so wire
+`headOf` for ar/es/zh and key the Rosetta act expectations by elected
+head instead of exact surface" — was measured before being built
+(`scripts/head-election-eval.mjs`, leave-one-out over the real
+adjudicated goldens, so the expectations are never scored on the rows
+that built them). It loses, everywhere, including English:
+
+| lang | surface: cov / acc | head alone: cov / acc | head as fallback (deployed shape): fired / acc |
+|---|---|---|---|
+| ar | 28.1% / **100%** | 14.8% / 57.9% | 8 of 92 misses / **25.0%** |
+| es | 32.3% / **100%** | 33.9% / 90.7% | 9 of 86 misses / 55.6% |
+| zh | 34.6% / 82.6% | 17.3% / 82.6% | 0 of 87 misses / — |
+| en | 42.4% / 92.5% | 20.8% / 61.5% | 8 of 72 misses / **0.0%** |
+
+The marginal arm is the decisive one, because the deployed mechanism
+(`eot-sidecar2.mjs`) tries surface first and head only on a miss: in
+English, the head fallback fired 8 times on rows surface could not
+answer and was wrong **8 of 8**. Silence beat it. The whole relation
+surface carries act-deciding information the head throws away ("shall be
+subjected to" is not the act of "subjected"), which retroactively
+validates `keyKind: "surface"` as the better keying, not a fallback.
+
+**The standing caution this measurement earns** (it governs the
+hypergraph note-identity work in the-fold, where the same temptation
+appears as "fold identities so cross-source witnesses can match"):
+**a loosened key is judged on its MARGINAL admits — the cases the strict
+key could not answer — never on aggregate coverage.** A join that adds
+coverage at coin-flip accuracy on exactly the rows where it is the only
+voice is worse than silence, because nothing downstream can tell its
+answers from the reliable ones.
+
 ## Files
 
-`scripts/build-pos-prior-multi.mjs` → `derived-priors/pos-priors/
-pos-prior-{ar,es,zh}.json` + `MULTILINGUAL-MANIFEST.json` (built list and
-typed gap list, machine-checkable). `scripts/multilingual-priors.test.mjs`
-(5 cases). `scripts/build-pos-prior.mjs` gained the same
-`Object.create(null)` fix, output reconfirmed unchanged.
+`scripts/lang-registry.mjs` (registry + resolver + lock; the CONLL-U
+parse lives here once — `build-pos-prior-multi.mjs`, an earlier
+duplicate, was deleted). `derived-priors/pos-priors/resolved.lock.json`
+(committed). `scripts/head-election-eval.mjs` (the measurement).
+`scripts/multilingual-priors.test.mjs` (10 cases — registry typing, the
+never-fallback rule, the vendoring rule, lock pinning, honest skips on a
+fresh checkout, the Object.create(null) source pin, the
+no-morphology-without-a-consumer pin). `scripts/build-pos-prior.mjs`
+gained the same `Object.create(null)` fix, output reconfirmed unchanged.
 
 ## What this does not claim
 
-The three new POS priors have **no consumer today** — `headOf` is called
-only from the English ladder. They are checkpoints, the same standing
-`pos-prior-en.json` held before this session wired it in, and they are
-committed because they are small, in-norm, verified, and the honest
-substrate for any future non-English work. Calling them "three more
-languages supported" would be false: **capability extended to one
-language (English, via VerbNet); substrate extended to three; the wall
-named precisely.**
+No non-English prior gained a consumer in this repo — and the one
+candidate consumer proposed for them (head-keyed act expectations) was
+measured and refused, which is the honest opposite of coverage theater:
+**capability extended to one language (English, via VerbNet); the
+substrate for three more resolvable on demand, sha-pinned; the wall named
+precisely; and the first proposed bridge over the wall measured and
+found to make things worse.** Where the non-English priors DID find a
+real consumer the same day — the-fold's hypergraph admission gate, which
+needed exactly this repo's `pos-prior-en.json` as its shipped ground —
+is the-fold's own story: see its POLICIES.md P72.

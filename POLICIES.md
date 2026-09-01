@@ -818,6 +818,81 @@ would be false. Building a construction ladder for Arabic, Spanish, or
 Chinese is real, larger, unattempted work. Full account, every URL and
 HTTP status checked: `scripts/multilingual-priors-RESULTS.md`.
 
+### LP10, amended same day — resolve on demand; the lock makes live fetching safe; and the consumer arrived
+
+User direction, verbatim: "can we leave the unimorph on its own site and
+not bloat our priors doc?" then "why don't we do language detection and
+then vendor from unimorph as needed live?" The entry above shipped with
+the three non-English POS priors COMMITTED (~2.9MB) — LP10's own mistake
+repeated at smaller scale, real data committed with no consumer as if
+committing were the point. Reversed: `scripts/lang-registry.mjs` is now
+the one implementation — a registry of what exists per language (every
+row live-verified, every absence typed with what was checked), a
+resolver (local cache → fetch on demand → typed refusal, NEVER a silent
+fallback to another language), and a committed lockfile
+(`derived-priors/pos-priors/resolved.lock.json`) pinning each resolve's
+source sha256s so upstream drift is REPORTED, never silently absorbed
+into a prior a results document already cited. `pos-prior-en.json` stays
+committed — it has consumers. The rule, now mechanical rather than
+re-decided per pass: **bytes are committed only where something reads
+them; otherwise the recipe + the source address + its sha256 IS the
+artifact.**
+
+**And the English prior's second consumer arrived the same day, from the
+other direction.** the-fold's hypergraph admission door had been
+admitting 18-of-29 junk-labeled notes because its POS prior's mount
+pointed at a gitignored dir in an uninitialized submodule — a gate whose
+ground never shipped. the-fold's `/priors-data/` mounts now fall back to
+THIS repo's committed `pos-prior-en.json` (read live, never copied; one
+declared eng→en naming alias at the seam), and the measured effect is
+the whole point of committing a prior with its giver and hashes: junk
+admissions 18/32 → 0/19 with no other change. the-fold's POLICIES.md
+P72 carries that side; this repo is the Ground repo in that story —
+which is precisely what "reproducible from the repo alone" was for.
+
+## LP11 — A loosened key is judged on its marginal admits, never on aggregate coverage
+
+Earned by measurement (`scripts/head-election-eval.mjs`, leave-one-out
+over the real adjudicated goldens so expectations are never scored on the
+rows that built them), stated as law because the same temptation recurs
+wherever identity is keyed: retrieval, act expectations, the-fold's
+hypergraph note identity.
+
+**The measurement.** Non-English act expectations key on the whole
+relation surface; with POS priors resolvable for ar/es/zh the obvious
+move was to key on the elected head instead, so differently-spelled
+relations sharing a head could match. Head keying LOSES everywhere,
+including English: as a replacement it drops coverage and accuracy in
+every language (en: 42.4%/92.5% surface → 20.8%/61.5% head); as the
+DEPLOYED ladder (surface first, head only on a miss), its marginal
+admits — the only rows where it speaks at all — ran **25.0% (ar), 55.6%
+(es), never fired (zh), and 0/8 (en)**. Silence beat it. The whole
+surface carries act-deciding information the head throws away ("shall be
+subjected to" is not the act of "subjected"), which retroactively
+validates `keyKind: "surface"` as the better keying rather than a
+fallback.
+
+**The law.** A loosened key's value is what it adds ON THE ROWS THE
+STRICT KEY COULD NOT ANSWER, at what accuracy — never its aggregate
+coverage, because on the marginal rows it is the only voice, and nothing
+downstream can tell its answers from the reliable ones. A join that adds
+coverage at coin-flip accuracy exactly where it is unchecked is worse
+than silence. Applied the same day, in the other repo, to the other
+half of the same handoff: the proposed hypergraph note-identity fold
+(referent face + lemma, to make cross-source witnesses possible) was
+measured BEFORE being built — 0 joins on the real material, and the
+flagship motivating pair (`withdraws` ~ `retreated`) fails at the lemma:
+that gap is synonymy, not morphology, and belongs to the semantic tier
+(the-fold P32), not to a looser key. Full numbers:
+`scripts/multilingual-priors-RESULTS.md`; the-fold's
+`eval/results/admission-gate-RESULTS.md`.
+
+**Generality:** universal (evidence: `scripts/head-election-eval.mjs` —
+the same leave-one-out construction, same folds, only the keying varies,
+measured across four languages and two scripts; the law's restatement in
+the-fold was checked against different material and a different keying
+mechanism the same day).
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work
