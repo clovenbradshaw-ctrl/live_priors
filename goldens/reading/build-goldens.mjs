@@ -52,13 +52,27 @@ for (const g of GOLDENS) {
   }
   const { text: norm, toRaw } = spans.normaliseNewlines(bodyRaw);
 
-  const windowEndIdx = norm.indexOf(g.windowEndText);
+  // A window may declare a START as well as an end (both as literal text,
+  // resolved mechanically — the same discipline windowEndText always had).
+  // Default absent -> 0, byte-identical to the original single-ended
+  // behaviour. This exists so a future specimen can read a SLICE of a
+  // document without R8 obliging it to cover everything before the slice
+  // (R8's completeness is per WINDOW, and the window is [start, end)) —
+  // no shipped golden uses it today: the UDHR entries cover their whole
+  // documents.
+  let windowStart = 0;
+  if (g.windowStartText) {
+    const ws = norm.indexOf(g.windowStartText);
+    if (ws === -1) { console.error(`${g.specimen}: windowStartText not found`); failures++; continue; }
+    windowStart = ws;
+  }
+  const windowEndIdx = norm.indexOf(g.windowEndText, windowStart);
   if (windowEndIdx === -1) { console.error(`${g.specimen}: windowEndText not found`); failures++; continue; }
   const windowEnd = windowEndIdx + g.windowEndText.length;
 
   const rows = [];
   for (const row of g.rows) {
-    const anchorIdx = norm.indexOf(row.sentence);
+    const anchorIdx = norm.indexOf(row.sentence, windowStart);
     if (anchorIdx === -1) {
       console.error(`${g.specimen}: anchor not found: ${JSON.stringify(row.sentence.slice(0, 60))}`);
       failures++; continue;
@@ -110,8 +124,9 @@ for (const g of GOLDENS) {
     specimen: g.specimen,
     path: g.path,
     rule: "goldens/reading/RULE.md",
-    window: { end: windowEnd, endText: g.windowEndText, coordinates: "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates" },
+    window: { start: windowStart, ...(g.windowStartText ? { startText: g.windowStartText } : {}), end: windowEnd, endText: g.windowEndText, coordinates: "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates" },
     notes: g.notes,
+    revisions: g.revisions ?? [],
     rows,
   };
   const outPath = path.join(HERE, `${g.specimen}.golden.json`);
