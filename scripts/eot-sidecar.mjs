@@ -58,7 +58,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { loadOrgans, LP_ROOT } from "./eot-digest.mjs";
+import { loadOrgans, LP_ROOT, admissionCoverage, propositionLedger } from "./eot-digest.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
@@ -71,6 +71,55 @@ const EXCERPT_CHARS = 8000;
 
 function sha256(text) {
   return crypto.createHash("sha256").update(text, "utf8").digest("hex");
+}
+
+// The OHCHR UDHR corpus's own fixed four-line header, found reading its
+// own bytes rather than assumed from the filename: EVERY one of the 516
+// files under 06-government-legal/un-udhr/ opens with the literal line
+// "Universal Declaration of Human Rights", then "Language: <name> (<code>)",
+// then "Adopted: UN General Assembly resolution 217 A (III), Paris, 10
+// December 1948", then "Publisher: Office of the United Nations High
+// Commissioner for Human Rights (OHCHR)", then one blank line — byte-
+// identical across every language checked, only the Language line's own
+// name/code varying. Left unstripped, this English-language block is
+// exactly the "cased debris" surfaces.js's own header already warns a
+// caseless script produces: on a real read of the Georgian translation,
+// EVERY ONE of the 18 candidate surfaces extractSurfaces found ("Human
+// Rights", "UN General Assembly", "Paris"...) came from this header —
+// zero from the document's own 106 sentences of real Georgian prose — a
+// small but real contamination present on every one of the 516 reads,
+// the same class of defect P5.3 (stripContainer, Gutenberg's own licence
+// text) already closed for a different container shape. Offset-carrying,
+// matching stripContainer's own shape, not blankCatalogLines's length-
+// preserving one: the header sits at the very start, so a caller that
+// drops it outright (rather than blanking it to spaces) also stops
+// spending excerptChars budget on four lines that are never the
+// material. Anchored to the exact literal text, not a length or a line
+// count, so it is a safe no-op on every file outside this one corpus —
+// checked directly: no other digested source in this repo opens with
+// this literal string.
+const UDHR_HEADER_RE =
+  /^Universal Declaration of Human Rights\nLanguage:[^\n]*\(([a-zA-Z0-9-]+)\)\nAdopted: UN General Assembly resolution 217 A \(III\), Paris, 10 December 1948\nPublisher: Office of the United Nations High Commissioner for Human Rights \(OHCHR\)\n\n?/;
+// The header's own trailing "(code)" is ISO 639-1 for most files (checked
+// directly: udhr-rus.txt's own Language line reads "Russian (ru)",
+// udhr-fin.txt reads "Finnish (fi)") even though this corpus's own
+// FILENAMES are ISO 639-3 (un-udhr/udhr-rus.txt) — a real, disclosed
+// mismatch between the two naming conventions this corpus mixes, not a
+// typo. Some variant lines carry a SECOND parenthetical before the code
+// ("Language: German, Standard (1901) (de-1901)") — `[a-zA-Z0-9-]+`
+// (digits included; a bare `[a-zA-Z-]+` silently stopped matching BOTH
+// German variant files' own header, checked against all 516 files before
+// and after this widening, zero regressions either way) plus the regex's
+// own greedy-then-backtrack order means the LAST parenthesized group on
+// the line is what gets captured, which is always the code. `language` is
+// that raw code, lowercased, exactly as the header states it — mapping it
+// to anything (a POS/declension prior's own 3-letter key) is the
+// CALLER's job, never guessed here.
+function stripUdhrHeader(text) {
+  const s = String(text ?? "");
+  const m = s.match(UDHR_HEADER_RE);
+  if (!m) return { text: s, offset: 0, language: null };
+  return { text: s.slice(m[0].length), offset: m[0].length, language: m[1].toLowerCase() };
 }
 
 // A length-PRESERVING version of eot-digest.mjs's stripCatalogBoilerplate.
@@ -140,7 +189,8 @@ function verifyRawSpan(raw, bodyOffset, toRaw, s) {
  */
 async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fresh = false } = {}) {
   const {
-    spans, surfaces, relationsFor, hl, stripContainer, declaredIdentity, repoStates,
+    spans, surfaces, relationsForLang, sameStemFor, posGateFor, normalizeLangCode,
+    hl, stripContainer, declaredIdentity, repoStates,
     classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
     makeHyperlexicon, makeReferentIndex, taskLog, cube,
   } = organs;
@@ -174,7 +224,21 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     catch (err) { existing = { corrupt: true, error: String(err?.message ?? err) }; }
   }
 
-  const { text: rawBody, offset: containerOffset } = stripContainer(raw);
+  const { text: gutenbergStripped, offset: gutenbergOffset } = stripContainer(raw);
+  const { text: rawBody, offset: udhrOffset, language: udhrLanguage } = stripUdhrHeader(gutenbergStripped);
+  const containerOffset = gutenbergOffset + udhrOffset;
+
+  // Per-document language selection (S38): only the UDHR corpus's own
+  // fixed header names a document's language here — everything else this
+  // walker reads (Gutenberg novels, Wikipedia, legislation) has no such
+  // signal available to this function, and falls through to English
+  // exactly as the pre-existing single-language behaviour did. That is a
+  // real, disclosed scope boundary, not an oversight: `posGate`/`sameStem`
+  // below report which language's prior (if any) actually applied.
+  const lang = udhrLanguage ?? "en";
+  const relationsFor = relationsForLang(lang);
+  const sameStem = sameStemFor(lang);
+  const posGate = posGateFor(lang);
 
   /**
    * One candidate reading window — everything from blanking through
@@ -196,9 +260,30 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     const catalogDominated = excerptWindow.length > 0 && excerptBlankedChars / excerptWindow.length > 0.5;
 
     const sentences = spans.splitSentences(excerpt);
-    const script = surfaces.scriptCoverage(sentences);
-    const surfaceEvidence = surfaces.extractSurfaces(sentences);
-    const { events } = surfaces.discoverReferents(surfaceEvidence, {});
+    // Raw-file-coordinate twin of `sentences`, computed HERE because this is
+    // the one place `candidateOffset`/`toRaw` are both in scope — the SAME
+    // bodyOffset+toRaw(...) transform verifyRawSpan already applies to
+    // admitted-edge spans below, applied to sentence boundaries too, so the
+    // two sides `propositionLedger` compares are addressed identically.
+    // Bug this closes: `sentences[].offset` is excerpt-local while every
+    // edge this driver admits is translated to raw-file bytes before
+    // hl.admit() ever sees it (P5.2 self-verification against the real
+    // file), so comparing them unconverted read 0.0% coverage and every
+    // sentence a false gap on a document that actually had 5 real edges.
+    const sentenceSpans = sentences.map((s) => ({
+      order: s.order,
+      start: candidateOffset + toRaw(s.offset),
+      end: candidateOffset + toRaw(s.offset + s.text.length),
+    }));
+    // Folded ONCE, fed to both: scriptCoverage's third gap boundary needs
+    // the exact same capitalised-run walk extractSurfaces performs to ask
+    // its own question, and extractSurfaces itself is already split into
+    // this accumulate/project shape for precisely this reason (surfaces.js's
+    // own header). Two separate calls would walk every sentence twice.
+    const evidence = surfaces.accumulateSurfaceEvidence(sentences, surfaces.createSurfaceEvidence());
+    const script = surfaces.scriptCoverage(sentences, { evidence });
+    const surfaceEvidence = surfaces.surfacesFromEvidence(evidence);
+    const { events } = surfaces.discoverReferents(surfaceEvidence, { sameStem });
     const referentIds = new Set(events.map((e) => e.referent_id));
 
     const passage = { ref: relPath, text: excerpt };
@@ -233,13 +318,13 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     // edges: a connector's grammatical standing is a fact about the
     // TEXT, independent of whether its span happened to survive the
     // separate byte-address check above.
-    const grammar = classifyConnector
-      ? { checked: rawEdges.length, minShare: GRAMMAR_MIN_SHARE, mismatched: mismatchedConnectors(rawEdges, classifyConnector, { minShare: GRAMMAR_MIN_SHARE }).map((m) => ({ subject: m.edge.subject, verb: m.edge.verb, object: m.edge.object, thraxClass: m.classification.thraxClass })) }
+    const grammar = posGate.classifyConnector
+      ? { checked: rawEdges.length, minShare: GRAMMAR_MIN_SHARE, mismatched: mismatchedConnectors(rawEdges, posGate.classifyConnector, { minShare: GRAMMAR_MIN_SHARE }).map((m) => ({ subject: m.edge.subject, verb: m.edge.verb, object: m.edge.object, thraxClass: m.classification.thraxClass })) }
       : null;
 
     return {
       bodyOffset: candidateOffset, body: candidateBody, blankedChars, excerpt, truncated, catalogDominated, grammar,
-      sentences, script, surfaceEvidence, events, referentIds, report, rawEdges,
+      sentences, sentenceSpans, script, surfaceEvidence, events, referentIds, report, rawEdges,
       excerptChecked, excerptOk, rawChecked, rawOk, badSpans, admitEdges,
     };
   }
@@ -276,7 +361,7 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
 
   const {
     bodyOffset, body, blankedChars, excerpt, truncated, catalogDominated, grammar,
-    sentences, script, surfaceEvidence, events, referentIds, report, rawEdges,
+    sentences, sentenceSpans, script, surfaceEvidence, events, referentIds, report, rawEdges,
     excerptChecked, excerptOk, rawChecked, rawOk, badSpans, admitEdges,
   } = attempt;
 
@@ -303,11 +388,12 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     engine: "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
     determiners: "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
     negationWords: "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
-    posPriorGate: posPriorLoaded
-      ? "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)"
-      : null,
-    classifyConnector: posPriorLoaded
-      ? `wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
+    language: lang,
+    posPriorGate: posGate.loaded
+      ? `hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver Universal Dependencies, native/priors/pos-${normalizeLangCode(lang)}.json, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)`
+      : `omitted — no POSPrior@1 build for language "${lang}" (normalized "${normalizeLangCode(lang)}") in this environment`,
+    classifyConnector: posGate.loaded
+      ? `wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
       : null,
     // eo-constitution Article III.4 (18th amendment, 2026-09-01): the
     // recipe descriptor is what recipeId hashes, so a field silently
@@ -347,6 +433,9 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
       casePrior: "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
       extractCaseMarkedRelation: "same reason as casePrior",
     },
+    sameStem: sameStem
+      ? `declension-${normalizeLangCode(lang)}.json (giver UniMorph, CC BY-SA 3.0) — widens namesCorefer past exact-token comparison, pairwise only (see eoreader7 native/adapters/text/declension.js's own header for why)`
+      : `omitted — no declension prior for language "${lang}" (normalized "${normalizeLangCode(lang)}") in this environment`,
     excerptChars,
     // The exact commit of every repo whose code ran to produce this
     // reading — folded into the descriptor itself (not just disclosed
@@ -509,9 +598,17 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
       turnedAway: turnedAway.length,
       turnedAwayReasons: turnedAway.reduce((acc, t) => { acc[t.reason] = (acc[t.reason] ?? 0) + 1; return acc; }, {}),
       suppressedByScriptGap: script.gap ? admitEdges.length : 0,
+      // LP10: `gate` answers "did anything false get in" — this answers
+      // the separate question "how much of the document got a chance to
+      // get in at all," always computed, never left implicit in a raw
+      // edge count next to a sentence count nobody compared it to.
+      ...admissionCoverage(sentences.length, folded),
     },
     log,
     folded,
+    // LP10: one entry per sentence, always — a real proposition or a typed
+    // gap, never a silent absence. See propositionLedger's own header.
+    propositions: propositionLedger(sentenceSpans, folded, relPath),
     lastRun: { recipeId: recipeIdValue, at: new Date().toISOString() },
     ...(priorVersions.length ? { priorVersions } : {}),
   };
@@ -552,7 +649,7 @@ function walkCorpus(root = LP_ROOT) {
   return out.sort();
 }
 
-export { readSidecar, processFile, walkCorpus, blankCatalogLines, sha256, EXCERPT_CHARS };
+export { readSidecar, processFile, walkCorpus, blankCatalogLines, stripUdhrHeader, sha256, EXCERPT_CHARS };
 
 // ── CLI ─────────────────────────────────────────────────────────────────
 // `node eot-sidecar.mjs <path> [<path> ...]`  — one or more specific files
@@ -577,18 +674,31 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     process.exit(1);
   }
   let clean = 0, gappedScript = 0, gappedSelfVerify = 0, empty = 0;
+  const cleanCoverages = []; // LP10: coverage among CLEAN-gated sources specifically — "clean" alone was the false signal
   const started = Date.now();
   for (const abs of targets) {
     const t0 = Date.now();
     const out = await processFile(organs, abs, { fresh });
     const ms = Date.now() - t0;
     const rel = path.relative(LP_ROOT, abs);
-    if (out.admission.gate === "clean") clean += 1;
+    if (out.admission.gate === "clean") { clean += 1; if (out.admission.coverage != null) cleanCoverages.push(out.admission.coverage); }
     else if (out.admission.gate === "gapped_script") gappedScript += 1;
     else if (out.admission.gate === "gapped_self_verify") gappedSelfVerify += 1;
     else empty += 1;
-    console.log(`${rel}: ${out.admission.gate} — ${out.reading.edgesFound} edges, ${out.admission.heard} heard, raw-spans ${out.spanSelfVerification.rawOk}/${out.spanSelfVerification.rawChecked} — ${ms}ms`);
+    const coveragePct = out.admission.coverage == null ? "n/a" : `${(out.admission.coverage * 100).toFixed(1)}%`;
+    console.log(`${rel}: ${out.admission.gate} — ${out.reading.edgesFound} edges, ${out.admission.heard} heard (${coveragePct} of sentences), raw-spans ${out.spanSelfVerification.rawOk}/${out.spanSelfVerification.rawChecked} — ${ms}ms`);
   }
   const total = Date.now() - started;
-  console.log(`\n${targets.length} sources in ${(total / 1000).toFixed(1)}s (${(total / targets.length).toFixed(0)}ms/source avg) — clean ${clean}, gapped_script ${gappedScript}, gapped_self_verify ${gappedSelfVerify}, empty ${empty}`);
+  // LP10: reported as a distribution over what was actually measured, never
+  // a pass/fail cut invented against this one run — "clean" already means
+  // nothing false got in; this line is the separate, honest answer to how
+  // MUCH of each clean-gated document that actually reached.
+  let coverageNote = "";
+  if (cleanCoverages.length) {
+    const sorted = [...cleanCoverages].sort((a, b) => a - b);
+    const mean = sorted.reduce((a, b) => a + b, 0) / sorted.length;
+    const median = sorted[Math.floor(sorted.length / 2)];
+    coverageNote = ` — admission coverage among clean sources: mean ${(mean * 100).toFixed(1)}%, median ${(median * 100).toFixed(1)}%, min ${(sorted[0] * 100).toFixed(1)}%, max ${(sorted[sorted.length - 1] * 100).toFixed(1)}%`;
+  }
+  console.log(`\n${targets.length} sources in ${(total / 1000).toFixed(1)}s (${(total / targets.length).toFixed(0)}ms/source avg) — clean ${clean}, gapped_script ${gappedScript}, gapped_self_verify ${gappedSelfVerify}, empty ${empty}${coverageNote}`);
 }
