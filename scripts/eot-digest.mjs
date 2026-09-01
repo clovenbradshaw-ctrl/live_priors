@@ -207,7 +207,20 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
   // opened) is a genuine one; `candidates` (the full nominated set, gated
   // or not) is unchanged, so nothing about what was NOMINATED moved, only
   // what was ADMITTED to the vocabulary extraction actually draws from.
-  const POS_PRIOR_PATH = path.join(EOREADER7_ROOT, "legacy-eoreader6.1", "scripts", "corpus", "pos-eng.json");
+  // THE FILENAME WAS WRONG AND NOTHING FAILED (2026-09-01). This path asked
+  // for "pos-eng.json"; the file sitting in that very directory is
+  // "pos-prior-eng.json". One word, and the grammar gate ran dark in every
+  // invocation of this driver — posPriorLoaded said false, truthfully, to
+  // nobody, while 12,696 Dracula edges admitted "the"/"and"/"of" as labels.
+  // P74's own bug class, recurring in the repo that documented it. The
+  // ladder below prefers the-fold's COMMITTED artifact (P74: the two builds
+  // were reconciled there byte-for-byte) and falls back to the legacy
+  // corpus copy; conformance now asserts the gate is LIT in this checkout.
+  const POS_PRIOR_CANDIDATES = [
+    path.join(LP_ROOT, "..", "the-fold", "priors-data", "pos-prior-eng.json"),
+    path.join(EOREADER7_ROOT, "legacy-eoreader6.1", "scripts", "corpus", "pos-prior-eng.json"),
+  ];
+  const POS_PRIOR_PATH = POS_PRIOR_CANDIDATES.find((c) => fs.existsSync(c)) ?? POS_PRIOR_CANDIDATES[0];
   const GRAMMAR_MIN_SHARE = 0.5;
   let classifyConnector = null;
   let posPriorLoaded = false;
