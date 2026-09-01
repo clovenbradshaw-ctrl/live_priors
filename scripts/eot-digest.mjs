@@ -157,8 +157,13 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
   const priors = await import(path.join(NATIVE, "adapters/text/priors.js"));
   const taskLog = await import(path.join(NATIVE, "kernel/task-log.js"));
   const cube = await import(path.join(NATIVE, "kernel/cube.js"));
+  // The activation tier (eo-constitution Article III.4, 2026-09-01): the
+  // one occurrence-level organ makeRelationReader accepts and this file had
+  // never imported at all, let alone passed.
+  const pron = await import(path.join(NATIVE, "adapters/text/pronouns.js"));
   const { makeRelationReader } = await import(path.join(FOLD_ROOT, "hypergraph.js"));
   const { makeHyperlexicon } = await import(path.join(FOLD_ROOT, "hyperlexicon.js"));
+  const { makeReferentIndex } = await import(path.join(FOLD_ROOT, "cast.js"));
   const { stripContainer, declaredIdentity } = await import(path.join(FOLD_ROOT, "source.js"));
   const { makeGrammarLens, mismatchedConnectors } = await import(path.join(FOLD_ROOT, "grammar-lens.js"));
 
@@ -254,7 +259,69 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
     // measure DR4/DR5 against the hand-rolled goldens.
     phrasalPredicates,
     nounPhraseSubjects,
+    // THE ACTIVATION TIER, WIRED (eo-constitution Article III.4, 2026-09-01).
+    // A cross-repo survey found this call site passing eleven of the
+    // twenty-five organs hypergraph.js::makeRelationReader accepts, with no
+    // record anywhere that the rest had been omitted — every 2026-08-29
+    // corpus sweep ran purely type-level (surfaces, POS-gated vocabulary,
+    // slot-position relations), with the one occurrence-level organ
+    // (`resolvePronouns` — kernel/activation.js's one-hop recall through
+    // kernel/contest.js's co-presence veto) never once reaching it.
+    // `resolvePronouns`/`thirdPersonSingular` are wired now — measured
+    // effect, real and honestly small at this window: 0 additional edges
+    // across a 10-file, 8000-char sample (Aristotle, Dante, Byzantine
+    // Empire, Christianity, Buddhism, Cold War, Confucianism, Drama,
+    // Hamlet, UK 2008 c.27 — every file identical edge count with the
+    // organ on or off). Its value is NOT raw yield; `resolvePronouns`'s own
+    // `regime` block (framesWithPronouns/framesCoPresent/framesAdjudicated)
+    // is real, disclosed evidence about how often co-presence vetoes a
+    // candidate binding, and nothing before this pass captured it anywhere
+    // — that block should ride the sidecar once `eot-sidecar.mjs` is
+    // extended to keep it (named, not done in this pass).
+    resolvePronouns: pron.resolvePronouns,
+    thirdPersonSingular: priors.THIRD_PERSON_SINGULAR,
   });
+
+  // UNION_OMITTED — eo-constitution/conformance/composition.test.mjs reads
+  // this literal object directly off this file's own source text (parsed,
+  // never executed by the audit) and fails if any organ
+  // hypergraph.js::makeRelationReader accepts is neither passed above nor
+  // named here with a real reason. A bare list of names is refused by that
+  // test; every entry below carries why.
+  const UNION_OMITTED = {
+    // A REAL BUG, found wiring this pass, not a design choice: `blankFurniture`
+    // (the-fold's `source.js::blankLabelRows`) is byte-length-preserving but
+    // NOT sentence-COUNT-preserving on real material — measured on the same
+    // Aristotle excerpt, it blanks 40 sentences down to 36 by erasing
+    // terminal punctuation inside label-cell lines that `splitSentences`
+    // was using as boundaries. hypergraph.js's own span-pairing check
+    // (`readSentences.length === originalSentences.length`) then refuses
+    // EVERY triple's address on the affected passage — confirmed live:
+    // wiring `blankFurniture` alone turned 37 addressed edges into 37
+    // edges with `spans: []`, silently unadmittable at hyperlexicon.js's
+    // own UNADDRESSED door. Leaving it out is the safe choice until
+    // `blankLabelRows` is made sentence-count-preserving or the pairing
+    // check gains a fallback; the bug itself is filed as
+    // eo-constitution/claims/blank-furniture-sentence-drift.claim.json.
+    blankFurniture: "real bug, 2026-09-01: blankLabelRows changes splitSentences' sentence count on real material, which silently zeroes every edge's span under makeRelationReader's own count-pairing check — see claims/blank-furniture-sentence-drift.claim.json",
+    // Widens what the reader HEARS rather than closing a false binding
+    // (the-fold P43's own distinguishing test) — a real, measured, LARGE
+    // effect (319 -> 737 edges across the same 10-file sample, matching
+    // this project's own MINE-1 finding), and a genuinely separate
+    // decision from wiring the activation tier: whether the corpus should
+    // read with a widened English-only lexical prior is not answered by
+    // "the organ exists and works." Left to a deliberate follow-up pass,
+    // not bundled silently into "turn activation on."
+    verbForms: "available (the-fold/eval/fixtures/unimorph-eng-verb-forms.json, 103,318 forms) and measured (319->737 edges on the 10-file sample) but withheld from THIS pass — widens recall rather than closing a false binding, and shipping it needs its own decision, not a side effect of wiring activation",
+    createLemmatizer: "available (eoreader7/legacy-eoreader6.1 .../morphology.js::createLemmatizer, UniMorph-backed) but not yet paired with a verified lemma index for this corpus's own vocabulary — the-fold's own MINE-1 findings used a lemma pass tuned to that corpus, not this one",
+    morphologyIndex: "no organ produces this shape on any engine path today (checked: legacy-eoreader6.1 exports createLemmatizer and loadMorphology, neither returns a morphologyIndex)",
+    morphologyLanguage: "unused while morphologyIndex is unset — see morphologyIndex above",
+    classifyConnector: "grammar-lens.js's disclosure-only lens (P56), already loaded above for classifyConnector's OTHER call site in this file; not the same organ makeRelationReader accepts under this name and not re-wired here without checking that distinction first",
+    minShare: "the classifyConnector threshold; moot while classifyConnector is unset above",
+    extractLeadingSurfaces: "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass — checked, absent",
+    casePrior: "Latin case-marking prior (the-fold P77) — this composition calls makeRelationReader, the English positional reader, never makeCaseMarkedRelationReader; not applicable to an English-majority sweep, named rather than silently absent",
+    extractCaseMarkedRelation: "same reason as casePrior — this composition calls the English positional reader",
+  };
   // taskLog.js exports GRAIN_RANK directly (native/kernel/task-log.js,
   // eoreader7 S23) — hyperlexicon.js reads it to name the Figure grain
   // without hardcoding the string. cellOf lives on cube.js in the native
@@ -270,9 +337,19 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
     theFold: repoState(FOLD_ROOT),
     livePriors: repoState(LP_ROOT),
   };
+  // makeHyperlexicon and makeReferentIndex are exposed as CONSTRUCTORS, not
+  // only `hl` (a single fixed instance without noteIdentity, built above for
+  // the corpus-wide sweep's own recipe-identity use). eo-constitution
+  // Article III.4's own referent-identity wiring (2026-09-01) needs a FRESH
+  // hyperlexicon per file, closed over THAT file's own referent index —
+  // coreference is passage-scoped and must never be shared across
+  // documents (cast.js's own referent index is built fresh per call for
+  // exactly this reason). eot-sidecar.mjs builds the per-file instance;
+  // this function only hands over the parts.
   return {
     spans, surfaces, relations, material, priors, taskLog, cube,
-    relationsFor, hl, stripContainer, declaredIdentity, repoStates,
+    relationsFor, hl, makeHyperlexicon, makeReferentIndex,
+    stripContainer, declaredIdentity, repoStates,
     classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
   };
 }
