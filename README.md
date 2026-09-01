@@ -9,7 +9,7 @@ not a prior; see [The 600-word floor](#the-600-word-floor) below.
 
 ## What's Here
 
-2,044 documents. The largest section is government and legal, which holds official texts
+2,078 documents. The largest section is government and legal, which holds official texts
 published by institutions in 28 jurisdictions.
 
 | Directory | Content |
@@ -20,7 +20,7 @@ published by institutions in 28 jurisdictions.
 | `06-government-legal/world-legislation/` | **449 statutes and codes from 28 jurisdictions** |
 | `06-government-legal/un-udhr/` | **516 translations of the Universal Declaration of Human Rights** |
 | `06-government-legal/world-factbook/` | **255 CIA World Factbook country profiles** |
-| `09-source-code/` | 20 repos: source, licences and upstream documentation |
+| `09-source-code/` | 31 repos in two tiers: 20 landmark + 11 security-audited at pinned commits, content-vetted (`VETTING.md`) |
 | `14-holy-texts/` | 492 files — whole books of the Tanakh, Greek NT, Qur'an and Pali canon |
 | `15-western-canon/folger-shakespeare/` | Bulk text + XML + 15 individual plays |
 

@@ -28,7 +28,8 @@ const SCRIPTS = [
   { name: 'replacements', file: 'fetch-replacements.mjs', desc: 'Whole books, works, chapters and project docs' },
   { name: 'govinfo', file: 'fetch-govinfo.mjs', desc: 'GovInfo + SEC EDGAR' },
   { name: 'shakespeare', file: 'fetch-shakespeare.mjs', desc: 'Shakespeare (Folger/Gutenberg)' },
-  { name: 'code-repos', file: 'fetch-code-repos.mjs', desc: 'Open source code repos' },
+  { name: 'code-repos', file: 'fetch-code-repos.mjs', desc: 'Open source code repos (landmark tier)' },
+  { name: 'audited-code', file: 'fetch-audited-code.mjs', desc: 'Security-audited code repos, pinned commits' },
   { name: 'ccel', file: 'fetch-ccel.mjs', desc: 'Christian Classics (CCEL)' },
   { name: 'mysticism', file: 'fetch-mysticism.mjs', desc: 'Mysticism texts' },
   { name: 'ganjoor', file: 'fetch-ganjoor.mjs', desc: 'Persian classical poetry' },
@@ -90,8 +91,10 @@ async function main() {
   }
 
   // The corpus floor is part of the build, not an afterthought: fold the media
-  // metadata into catalogues, then drop anything still under MIN_WORDS.
-  for (const step of ['consolidate-media-catalogs.mjs', 'enforce-min-words.mjs']) {
+  // metadata into catalogues, drop anything still under MIN_WORDS, then vet
+  // the source-code section (checksums + content scan; fails the build on a
+  // FAIL finding).
+  for (const step of ['consolidate-media-catalogs.mjs', 'enforce-min-words.mjs', 'vet-source-code.mjs']) {
     const args = step === 'enforce-min-words.mjs' ? ' --prune' : '';
     console.log(`\n${'='.repeat(60)}\n  ${step}\n${'='.repeat(60)}\n`);
     try {
