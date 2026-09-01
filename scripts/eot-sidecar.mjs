@@ -191,7 +191,8 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
   const {
     spans, surfaces, relationsForLang, sameStemFor, posGateFor, normalizeLangCode,
     hl, stripContainer, declaredIdentity, repoStates,
-    mismatchedConnectors, GRAMMAR_MIN_SHARE,
+    classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
+    makeHyperlexicon, makeReferentIndex, taskLog, cube,
   } = organs;
   globalThis.__eotSidecarSpans = spans; // verifyRawSpan's own closure, avoiding a second import path
 
@@ -394,8 +395,44 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     classifyConnector: posGate.loaded
       ? `wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
       : null,
+    // eo-constitution Article III.4 (18th amendment, 2026-09-01): the
+    // recipe descriptor is what recipeId hashes, so a field silently
+    // absent here makes two genuinely different recipes hash IDENTICALLY
+    // — exactly the failure this pass found and closed. resolvePronouns
+    // went from unimported to wired in this same pass; it MUST appear
+    // here or every reading taken before and after would be
+    // indistinguishable by recipe id, which is LP5's whole reason to
+    // exist.
+    resolvePronouns: "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+    thirdPersonSingular: "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+    // Flipped true 2026-09-01 (loadOrgans' own measured defaults — see its
+    // header for the debris table). In the descriptor for LP5's reason:
+    // a reading with full-NP subjects and one with bare-anchor subjects
+    // are different readings and must never share a recipe id.
+    nounPhraseSubjects: organs.nounPhraseSubjects,
+    phrasalPredicates: organs.phrasalPredicates,
     verbForms: null,
     createLemmatizer: null,
+    // Every organ makeRelationReader accepts that this recipe does NOT
+    // pass, named with a real reason — the exact object
+    // eo-constitution/conformance/composition.test.mjs parses out of
+    // eot-digest.mjs to verify the composition is honest about its own
+    // omissions. Carried into every sidecar too, not only the source
+    // file, so a reader of ONE reading (not the recipe file) can see
+    // what this pass chose not to hear without cross-referencing a
+    // second repository.
+    unionOmitted: {
+      blankFurniture: "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+      verbForms: "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+      createLemmatizer: "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+      morphologyIndex: "no organ produces this shape on any engine path today",
+      morphologyLanguage: "unused while morphologyIndex is unset",
+      classifyConnector: "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+      minShare: "moot while classifyConnector is unset above",
+      extractLeadingSurfaces: "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+      casePrior: "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+      extractCaseMarkedRelation: "same reason as casePrior",
+    },
     sameStem: sameStem
       ? `declension-${normalizeLangCode(lang)}.json (giver UniMorph, CC BY-SA 3.0) — widens namesCorefer past exact-token comparison, pairwise only (see eoreader7 native/adapters/text/declension.js's own header for why)`
       : `omitted — no declension prior for language "${lang}" (normalized "${normalizeLangCode(lang)}") in this environment`,
@@ -432,9 +469,56 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     log = hl.createHyperlexicon();
   }
 
-  const { log: nextLog, heard, turnedAway } = hl.admit(log, effectiveAdmitEdges, { witness });
+  // eo-constitution Article III.4 (18th amendment) — the user's own
+  // direct question, 2026-09-01: "should the jsonl be about tokens or
+  // about the system's revisable thoughts about the referents of the
+  // tokens?" Answer, built here rather than only argued: BOTH, kept as
+  // two distinct grains, never collapsed. The SPAN (`at`, below) is the
+  // token — a byte range, cheap to recover any time, immutable. What is
+  // worth an append-only ledger is the REVISABLE CLAIM about what a
+  // subject/object string NAMES — hyperlexicon.js's own `noteIdentity`
+  // socket, undwired since it was written (its own header: "the
+  // production organ... is the named next wiring, not built here").
+  //
+  // Built from `events` — this SAME window's own `discoverReferents`
+  // output, already computed above for the reading's own report, never
+  // re-run — through cast.js's `resolve`/`represent` (the SAME organ
+  // hypergraph.js uses internally for endpoint resolution, so identity
+  // here cannot drift from what the reader itself already trusted).
+  // AMBIGUOUS RESOLUTION REFUSES rather than guesses (P38: "an ambiguous
+  // bare form is a typed gap with candidates, never a third being") — a
+  // subject/object that resolves to zero or more-than-one referent falls
+  // back to its own normalised surface, exactly hyperlexicon.js's
+  // documented default-path behaviour when no organ is injected at all.
+  // A common-noun subject ("the council") never resolves and always
+  // takes this fallback — this identity organ folds NAMES, not every
+  // noun phrase.
+  //
+  // SCOPED TO THIS FILE, REBUILT EVERY CALL: coreference is passage-
+  // scoped (cast.js's own referent index is built fresh per call for
+  // exactly this reason — carrying it across documents would fold two
+  // different Aristotles into one). A shared, corpus-wide `hl` (as
+  // eot-digest.mjs's own loadOrgans still builds, for its recipe-id use
+  // only) would either compute nothing usable here or, worse, leak
+  // identity across files; a per-file `hl` avoids both.
+  const referentIndex = makeReferentIndex(organs)([{ ref: relPath, text: excerpt }]);
+  const foldSurface = (s) => String(s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+  const noteIdentity = (subject, verb, object) => {
+    const canon = (s) => {
+      const ids = referentIndex.resolve(String(s ?? ""));
+      if (ids.size === 1) {
+        const face = referentIndex.represent([...ids][0]);
+        if (face) return foldSurface(face);
+      }
+      return foldSurface(s);
+    };
+    return { subject: canon(subject), verb: foldSurface(verb), object: canon(object) };
+  };
+  const hlForFile = makeHyperlexicon({ ...taskLog, cellOf: cube.cellOf, noteIdentity });
+
+  const { log: nextLog, heard, turnedAway } = hlForFile.admit(log, effectiveAdmitEdges, { witness });
   log = nextLog;
-  const folded = hl.foldHyperlexicon(log);
+  const folded = hlForFile.foldHyperlexicon(log);
 
   const sidecar = {
     schema: "EOTReading@1",
