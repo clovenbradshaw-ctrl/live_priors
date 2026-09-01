@@ -23,12 +23,12 @@ are not mistaken for empty documents.
 | 3. OER/Textbooks | 8 | ⬜ | No bulk APIs available |
 | 4. Pre-aggregated | 2 | ⬜ | Common Pile/RedPajama require local HF datasets |
 | 5. Academic papers | 4 | ✅ 94 book chapters | arXiv/PLOS abstracts removed (under the floor); replaced with open-licensed monographs — see below |
-| 6. Government/Legal | 6 | ✅ **1,220 documents** | 449 statutes from 28 jurisdictions, 516 UDHR translations, 255 World Factbook profiles |
+| 6. Government/Legal | 6 | ✅ **1,220 documents** | 449 statutes from 28 jurisdictions, 516 UDHR translations (all re-read for reading-pipeline blind spots — see POLICIES.md LP8), 255 World Factbook profiles |
 | 7. Images/Media | 4 | ✅ 2 collection catalogues | NASA (185 items) and Met Museum (140 items) folded into catalogue documents |
 | 8. News | 4 | ⚠️ 1 document | Wikinews items were under the floor; wikinews.org is not reachable to refetch |
 | 9. Source Code | 20 | ✅ 55 files across 20 repos | Source files, licences and substantive upstream documentation |
 | 10. Audio/Music | 5 | ✅ 13 collection catalogues | Per-item metadata folded into catalogues; 2 collections were too thin even consolidated |
-| 11. Multi-language | 6 | ✅ 32 texts | Gutenberg non-English + Wikipedia in 16 languages |
+| 11. Multi-language | 6 | ✅ 35 texts | Gutenberg non-English + Wikipedia in 16 languages + War and Peace (en/ru/fr), content-verified, at `war-and-peace/` — see POLICIES.md LP7; the `gutenberg-non-en/` row above it is 20/20 mislabeled, see `digested/CORPUS-INTEGRITY-FINDING.md` |
 | 12. Non-Western Music | 5 | ✅ Great 78 catalogue | Other sources not yet pulled |
 | 13. Mysticism | 3 | ⬜ | Cloudflare blocks sacred-texts.com |
 | 14. Holy Texts | 10 | ✅ 492 files | Whole books: Tanakh (38), SBLGNT (23), Qur'an by sura (81), Pali suttas (186) + earlier pulls |
