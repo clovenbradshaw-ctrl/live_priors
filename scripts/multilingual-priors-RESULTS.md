@@ -212,4 +212,4 @@ precisely; and the first proposed bridge over the wall measured and
 found to make things worse.** Where the non-English priors DID find a
 real consumer the same day — the-fold's hypergraph admission gate, which
 needed exactly this repo's `pos-prior-en.json` as its shipped ground —
-is the-fold's own story: see its POLICIES.md P72.
+is the-fold's own story: see its POLICIES.md P74 (renumbered from P72 on merge).

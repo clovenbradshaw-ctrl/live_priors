@@ -847,7 +847,7 @@ THIS repo's committed `pos-prior-en.json` (read live, never copied; one
 declared eng→en naming alias at the seam), and the measured effect is
 the whole point of committing a prior with its giver and hashes: junk
 admissions 18/32 → 0/19 with no other change. the-fold's POLICIES.md
-P72 carries that side; this repo is the Ground repo in that story —
+P74 (renumbered from P72 on merge) carries that side; this repo is the Ground repo in that story —
 which is precisely what "reproducible from the repo alone" was for.
 
 ## LP11 — A loosened key is judged on its marginal admits, never on aggregate coverage
