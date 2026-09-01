@@ -1,4 +1,4 @@
-// hand-readings.mjs — the four hand-adjudicated golden readings, as data.
+// hand-readings.mjs — the hand-adjudicated golden readings, as data.
 //
 // Every row here was derived BY HAND from the specimen's own bytes under
 // goldens/reading/RULE.md (written first). The builder (build-goldens.mjs)
@@ -23,6 +23,54 @@
 //   A6 repair/revision verbs (fix, improve) follow this project's own
 //      build-log precedent (a revision is SUPERSEDE·SYN): primary SYN,
 //      alternate SEG (defect removed) disclosed.
+//
+// AMENDMENT 2026-08-31 — four omnilingual UDHR readings added (Arabic,
+// Spanish, Mandarin, Swahili: specimens udhr-arb/udhr-spa/udhr-cmn_hans/
+// udhr-swh), same Preamble+Article-1 window as the existing "udhr" (English)
+// entry. Each was derived INDEPENDENTLY from that language's own OHCHR file
+// bytes under RULE.md — never copied from the English golden's structure —
+// and each surfaced a real, disclosed structural divergence from English,
+// found this way rather than assumed (full reasoning in each entry's own
+// `notes` field and per-row `because` fields):
+//   - Arabic's Preamble genuinely OMITS the whereas-clause corresponding to
+//     English's "it is essential to promote the development of friendly
+//     relations between nations" — verified absent from the file's own
+//     bytes, not a reading gap. 12 rows, not 13.
+//   - Mandarin's paratactic syntax gives "these atrocities sullied
+//     humanity's conscience" its OWN independent finite clause (no relative
+//     pronoun available to subordinate it, unlike English's "which have
+//     outraged..."). 14 rows.
+//   - Swahili verbs "born free" and "equal in dignity/rights" SEPARATELY
+//     (each its own subject+copula), and its proclamation clause's object
+//     is itself a full copula sentence in a separate typographic paragraph
+//     ("...ndio nguzo ya juhudi...", "is indeed the pillar of effort...").
+//     15 rows.
+// All 54 new rows (12+13+14+15) self-verified on the first real
+// `build-goldens.mjs` run — see the four new *.golden.json files.
+
+//
+// AMENDMENT 2026-08-31 (second pass) — the five UDHR entries grew from
+// Preamble+Article 1 to the WHOLE DOCUMENT (Articles 1-30, 651 rows across
+// the five languages) and moved into per-language files (hand-udhr-*.mjs),
+// imported below. Grounds became holonic dotted addresses (R11), revision
+// ledgers were added (R12). The row counts and window notes in the 2026-08-31
+// amendment above describe the superseded Preamble+Article-1 state — kept
+// per R12's append-only discipline, not rewritten.
+//
+// AMENDMENT 2026-08-31 (third pass) — the phasepost GAP SUITE
+// (hand-gap-suite.mjs, ten windows, 80 rows: Genesis 1 and 2:1-3 in
+// Hebrew, Mark 1:14-15 and 16:6 in Koine Greek, Quran 2:37 in Arabic and
+// English, King Lear 1.1 ×3 and The Tempest 5.1 from pg100) closed the
+// cube: ALL 27 phasepost cells now carry a primary attestation — 767
+// rows, 18 goldens, 7 languages. See RULE.md's dated amendment for the
+// three rulings it forced and the folger-shakespeare mislabeling it
+// caught.
+import { UDHR_ENG } from "./hand-udhr-eng.mjs";
+import { UDHR_ARB } from "./hand-udhr-arb.mjs";
+import { UDHR_SPA } from "./hand-udhr-spa.mjs";
+import { UDHR_CMN } from "./hand-udhr-cmn.mjs";
+import { UDHR_SWH } from "./hand-udhr-swh.mjs";
+import { GAP_SUITE } from "./hand-gap-suite.mjs";
 
 export const GOLDENS = [
   {
@@ -258,118 +306,6 @@ export const GOLDENS = [
   },
 
   {
-    specimen: "udhr",
-    path: "06-government-legal/un-udhr/udhr-eng.txt",
-    gutenberg: false,
-    windowEndText: "in a spirit of brotherhood.",
-    notes: "Window: header lines (no finite main clause), the Preamble's whereas-clauses (each carrying a real predication), the proclamation, and Article 1.",
-    rows: [
-      {
-        sentence: "is the foundation of freedom, justice and peace in the world",
-        subject: "recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family",
-        relation: "is", object: "the foundation of freedom, justice and peace in the world",
-        polarity: "+", phasepost: { op: "SIG", grain: "Figure" },
-        because: "copula rule 3: a unique role (THE foundation) — standing-as one identified role",
-        embedded: false, unresolved: false, resolution: null, alternate: null,
-      },
-      {
-        sentence: "have resulted in barbarous acts which have outraged the conscience of mankind",
-        subject: "disregard and contempt for human rights", relation: "have resulted in",
-        object: "barbarous acts which have outraged the conscience of mankind",
-        polarity: "+", phasepost: { op: "INS", grain: "Pattern" },
-        because: "causation brings acts into being — a class of acts, not one event — Generate·Existence at pattern grain; the which-clause is restrictive and folds in (R1)",
-        embedded: false, unresolved: false, resolution: null, alternate: null,
-      },
-      {
-        sentence: "has been proclaimed as the highest aspiration of the common people",
-        subject: "the advent of a world in which human beings shall enjoy freedom of speech and belief and freedom from fear and want",
-        relation: "has been proclaimed as", object: "the highest aspiration of the common people",
-        polarity: "+", phasepost: { op: "DEF", grain: "Figure" },
-        because: "proclaiming-as assigns a bounded standing to one thing — Differentiate·Interpretation at figure grain",
-        embedded: false, unresolved: false, resolution: null,
-        alternate: { op: "SIG", grain: "Figure", because: "readable as a public sign emitted rather than a boundary drawn" },
-      },
-      {
-        sentence: "that human rights should be protected by the rule of law",
-        subject: "that human rights should be protected by the rule of law", relation: "is", object: "essential",
-        polarity: "+", phasepost: { op: "SIG", grain: "Figure" },
-        because: "extraposed subject clause + property adjective (copula rule 4); the if-man-is-not-to-be-compelled conditional is adjunct (A2); deontic \"should\" noted, does not move the phasepost (A3)",
-        embedded: false, unresolved: false, resolution: null, alternate: null,
-      },
-      {
-        sentence: "it is essential to promote the development of friendly relations between nations",
-        subject: "to promote the development of friendly relations between nations", relation: "is", object: "essential",
-        polarity: "+", phasepost: { op: "SIG", grain: "Figure" },
-        because: "extraposed subject + property adjective (copula rule 4)",
-        embedded: false, unresolved: false, resolution: null, alternate: null,
-      },
-      {
-        sentence: "have in the Charter reaffirmed their faith in fundamental human rights",
-        subject: "the peoples of the United Nations", relation: "have reaffirmed",
-        object: "their faith in fundamental human rights, in the dignity and worth of the human person and in the equal rights of men and women",
-        polarity: "+", phasepost: { op: "REC", grain: "Figure" },
-        because: "RE-affirming produces an existing commitment anew — Generate·Interpretation, the re-grounding act, on one commitment; \"in the Charter\" is adjunct (A2)",
-        embedded: false, unresolved: false, resolution: null, alternate: null,
-      },
-      {
-        sentence: "have determined to promote social progress and better standards of life in larger freedom",
-        subject: "the peoples of the United Nations", relation: "have determined",
-        object: "to promote social progress and better standards of life in larger freedom",
-        polarity: "+", phasepost: { op: "DEF", grain: "Figure" },
-        because: "forming a resolution bounds a course of action — Differentiate·Interpretation on one resolve; shares the coordinated sentence's subject",
-        embedded: false, unresolved: false, resolution: "coordinated predicate shares \"the peoples of the United Nations\"",
-        alternate: { op: "REC", grain: "Figure", because: "readable as generating a new commitment" },
-      },
-      {
-        sentence: "Member States have pledged themselves to achieve",
-        subject: "Member States", relation: "have pledged themselves to achieve",
-        object: "the promotion of universal respect for and observance of human rights and fundamental freedoms",
-        polarity: "+", phasepost: { op: "CON", grain: "Figure" },
-        because: "a pledge binds the pledger to an undertaking — a link made (Relate·Structure at figure grain; the engine's own stance name for CON·Figure is Binding); \"in co-operation with the United Nations\" is adjunct (A2)",
-        embedded: false, unresolved: false, resolution: null, alternate: null,
-      },
-      {
-        sentence: "is of the greatest importance for the full realization of this pledge",
-        subject: "a common understanding of these rights and freedoms", relation: "is",
-        object: "of the greatest importance for the full realization of this pledge",
-        polarity: "+", phasepost: { op: "SIG", grain: "Figure" },
-        because: "copula + property (rule 4)",
-        embedded: false, unresolved: false, resolution: null, alternate: null,
-      },
-      {
-        sentence: "Proclaims this Universal Declaration of Human Rights as a common standard of achievement",
-        subject: "The General Assembly", relation: "proclaims",
-        object: "this Universal Declaration of Human Rights as a common standard of achievement for all peoples and all nations",
-        polarity: "+", phasepost: { op: "DEF", grain: "Figure" },
-        because: "declaring the Declaration's standing — a bounded public act of definition; the to-the-end-that purpose clause is adjunct (A2)",
-        embedded: false, unresolved: false,
-        resolution: "subject stands in its own preceding paragraph (\"Now, therefore, The General Assembly\" / blank line / \"Proclaims…\") — the Preamble's own layout, not a pronoun", alternate: null,
-      },
-      {
-        sentence: "All human beings are born free and equal in dignity and rights.",
-        subject: "All human beings", relation: "are born", object: "free and equal in dignity and rights",
-        polarity: "+", phasepost: { op: "INS", grain: "Pattern" },
-        because: "birth stated as a law over the whole kind — Generate·Existence at pattern grain (the textbook Pattern case)",
-        embedded: false, unresolved: false, resolution: null, alternate: null,
-      },
-      {
-        sentence: "They are endowed with reason and conscience",
-        subject: "All human beings", relation: "are endowed with", object: "reason and conscience",
-        polarity: "+", phasepost: { op: "CON", grain: "Pattern" },
-        because: "possession stated as a law of the kind — Relate·Structure at pattern grain",
-        embedded: false, unresolved: false, resolution: "\"They\" → All human beings, previous sentence's subject", alternate: null,
-      },
-      {
-        sentence: "should act towards one another in a spirit of brotherhood.",
-        subject: "All human beings", relation: "should act towards", object: "one another in a spirit of brotherhood",
-        polarity: "+", phasepost: { op: "CON", grain: "Pattern" },
-        because: "prescribes a standing pattern of mutual conduct; deontic \"should\" noted, does not move the phasepost (A3)",
-        embedded: false, unresolved: false, resolution: "coordinated predicate shares \"They\" → All human beings", alternate: null,
-      },
-    ],
-  },
-
-  {
     specimen: "ripgrep",
     path: "09-source-code/BurntSushi_ripgrep/CHANGELOG.md.txt",
     gutenberg: false,
@@ -434,4 +370,11 @@ export const GOLDENS = [
       },
     ],
   },
+
+  UDHR_ENG,
+  UDHR_ARB,
+  UDHR_SPA,
+  UDHR_CMN,
+  UDHR_SWH,
+  ...GAP_SUITE,
 ];
