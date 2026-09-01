@@ -319,6 +319,12 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     // exist.
     resolvePronouns: "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
     thirdPersonSingular: "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+    // Flipped true 2026-09-01 (loadOrgans' own measured defaults — see its
+    // header for the debris table). In the descriptor for LP5's reason:
+    // a reading with full-NP subjects and one with bare-anchor subjects
+    // are different readings and must never share a recipe id.
+    nounPhraseSubjects: organs.nounPhraseSubjects,
+    phrasalPredicates: organs.phrasalPredicates,
     verbForms: null,
     createLemmatizer: null,
     // Every organ makeRelationReader accepts that this recipe does NOT

@@ -149,7 +149,18 @@ function repoState(dir) {
 // such — never silently presented as the whole work.
 const EXCERPT_CHARS = 8000;
 
-async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = false } = {}) {
+// DEFAULTS FLIPPED TRUE 2026-09-01, by measurement, not preference. With
+// both off, 49.2% of a real book's edge SUBJECTS were not nominals at all
+// ("belief may", "late and", "which") and only 33.1% read as plausible NPs;
+// with both on, plausible 53.1%, determiner fragments halved (16.5%→8.7%),
+// and the corpus yielded MORE edges (6,503→7,050), the whole debris table in
+// the-fold's kind-induction/hyperlexicon findings. The organs were built and
+// tested in eoreader7 (expandSubjectNP, its auxiliary wall, DR4/DR5) and no
+// production caller had ever enabled them — the compiled-but-unwired shape
+// III.5 now legislates against. `false` remains one opt away for a caller
+// reproducing the old reading; the RECIPE DESCRIPTOR carries both flags, so
+// readings under different settings can never share an identity (P68).
+async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true } = {}) {
   const spans = await import(path.join(NATIVE, "adapters/text/spans.js"));
   const surfaces = await import(path.join(NATIVE, "adapters/text/surfaces.js"));
   const relations = await import(path.join(NATIVE, "adapters/text/relations.js"));
@@ -361,6 +372,10 @@ async function loadOrgans({ phrasalPredicates = false, nounPhraseSubjects = fals
   // this function only hands over the parts.
   return {
     spans, surfaces, relations, material, priors, taskLog, cube,
+    // The flags AS RUN, exposed so a descriptor derives them from this
+    // bag instead of restating a literal that could drift (III.5's own
+    // "prose never claims wiring" applied to a recipe field).
+    nounPhraseSubjects, phrasalPredicates,
     relationsFor, hl, makeHyperlexicon, makeReferentIndex,
     stripContainer, declaredIdentity, repoStates,
     classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
