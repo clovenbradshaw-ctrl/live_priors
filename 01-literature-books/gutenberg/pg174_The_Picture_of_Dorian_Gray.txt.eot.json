@@ -7,27 +7,43 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "aea2233a6055abf1",
+  "id": "d4c696c0ac8e97c6",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
    "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
    "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
    "verbForms": null,
    "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
    "excerptChars": 8000,
    "provenance": {
     "eoreader7": {
-     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
-     "dirty": false
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
     },
     "theFold": {
-     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
-     "dirty": false
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
     },
     "livePriors": {
-     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
      "dirty": true
     }
    }
@@ -55,33 +71,33 @@
   "referentEvents": 7,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 34,
+  "edgesFound": 36,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 6,
+   "verbs": 12,
    "minSurfaces": 1,
    "grammarPrior": true,
-   "candidates": 11
+   "candidates": 31
   },
   "contentWithoutRelations": false,
   "grammar": {
-   "checked": 34,
+   "checked": 36,
    "minShare": 0.5,
    "mismatched": []
   }
  },
  "spanSelfVerification": {
-  "excerptChecked": 35,
-  "excerptOk": 35,
-  "rawChecked": 35,
-  "rawOk": 35,
+  "excerptChecked": 37,
+  "excerptOk": 37,
+  "rawChecked": 37,
+  "rawOk": 37,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 34,
-  "heard": 34,
+  "offered": 36,
+  "heard": 36,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -104,7 +120,7 @@
     "verb": "is",
     "object": "the creator of beautiful things",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -119,7 +135,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "the artist|is|art’s aim",
+    "task_id": "to reveal art and conceal the artist|is|art’s aim",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -128,12 +144,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the artist is art’s aim",
-    "subject": "the artist",
+    "description": "To reveal art and conceal the artist is art’s aim",
+    "subject": "To reveal art and conceal the artist",
     "verb": "is",
     "object": "art’s aim",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -148,7 +164,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "of criticism|is|a mode of autobiography",
+    "task_id": "the lowest form of criticism|is|a mode of autobiography",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -157,12 +173,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "of criticism is a mode of autobiography",
-    "subject": "of criticism",
+    "description": "the lowest form of criticism is a mode of autobiography",
+    "subject": "the lowest form of criticism",
     "verb": "is",
     "object": "a mode of autobiography",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -191,7 +207,7 @@
     "verb": "is",
     "object": "a fault",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -206,7 +222,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "these there|is|hope",
+    "task_id": "for these there|is|hope",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -215,12 +231,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "these there is hope",
-    "subject": "these there",
+    "description": "For these there is hope",
+    "subject": "For these there",
     "verb": "is",
     "object": "hope",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -249,7 +265,7 @@
     "verb": "is",
     "object": "no such thing as a moral or an immoral book",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -283,7 +299,7 @@
     "verb": "is",
     "object": "all",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -298,7 +314,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "of caliban|seeing|his own face in a glass",
+    "task_id": "the rage of caliban|seeing|his own face in a glass",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -307,12 +323,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "of Caliban seeing his own face in a glass",
-    "subject": "of Caliban",
+    "description": "the rage of Caliban seeing his own face in a glass",
+    "subject": "the rage of Caliban",
     "verb": "seeing",
     "object": "his own face in a glass",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -327,7 +343,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "caliban\nnot|seeing|his own face in a glass",
+    "task_id": "the rage of caliban|not seeing|his own face in a glass",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -336,12 +352,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Caliban\nnot seeing his own face in a glass",
-    "subject": "Caliban\nnot",
-    "verb": "seeing",
+    "description": "the rage of Caliban not seeing his own face in a glass",
+    "subject": "the rage of Caliban",
+    "verb": "not seeing",
     "object": "his own face in a glass",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -370,7 +386,7 @@
     "verb": "is",
     "object": "ever morbid",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -399,7 +415,7 @@
     "verb": "is",
     "object": "at once surface and symbol",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -428,7 +444,7 @@
     "verb": "is",
     "object": "the spectator",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -443,7 +459,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "the work|is|new",
+    "task_id": "that the work|is|new",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -452,12 +468,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the work is new",
-    "subject": "the work",
+    "description": "that the work is new",
+    "subject": "that the work",
     "verb": "is",
     "object": "new",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -486,7 +502,7 @@
     "verb": "is",
     "object": "quite useless",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -515,7 +531,7 @@
     "verb": "was",
     "object": "filled with the rich odour of roses",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -530,7 +546,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "which he|was|lying",
+    "task_id": "the corner of the divan of persian saddle-bags on which he|was|lying",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -539,12 +555,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "which he was lying",
-    "subject": "which he",
+    "description": "the corner of the divan of Persian saddle-bags on which he was lying",
+    "subject": "the corner of the divan of Persian saddle-bags on which he",
     "verb": "was",
     "object": "lying",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -573,7 +589,7 @@
     "verb": "was",
     "object": "his custom",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -588,7 +604,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "that were|stretched|in front of the huge window",
+    "task_id": "the long tussore-silk curtains that|were stretched|in front of the huge window",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -597,12 +613,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "that were stretched in front of the huge window",
-    "subject": "that were",
-    "verb": "stretched",
+    "description": "the long tussore-silk curtains that were stretched in front of the huge window",
+    "subject": "the long tussore-silk curtains that",
+    "verb": "were stretched",
     "object": "in front of the huge window",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -617,7 +633,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "art that|is|necessarily immobile",
+    "task_id": "the medium of an art that|is|necessarily immobile",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -626,12 +642,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "art that is necessarily immobile",
-    "subject": "art that",
+    "description": "the medium of an art that is necessarily immobile",
+    "subject": "the medium of an art that",
     "verb": "is",
     "object": "necessarily immobile",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -646,7 +662,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "of london|was|like the bourdon note of a distant organ",
+    "task_id": "the dim roar of london|was|like the bourdon note of a distant organ",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -655,12 +671,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "of London was like the bourdon note of a distant organ",
-    "subject": "of London",
+    "description": "The dim roar of London was like the bourdon note of a distant organ",
+    "subject": "The dim roar of London",
     "verb": "was",
     "object": "like the bourdon note of a distant organ",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -670,6 +686,35 @@
      }
     ],
     "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "some curious dream from which lord henry feared lord henry|might|awake",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "some curious dream from which Lord Henry feared Lord Henry might awake",
+    "subject": "some curious dream from which Lord Henry feared Lord Henry",
+    "verb": "might",
+    "object": "awake",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#4346-4537",
+      "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+      "text": "But he suddenly started up, and closing his eyes, placed his fingers upon the lids, as though he sought to imprison within his brain some curious dream from which he feared he might awake."
+     }
+    ],
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -689,7 +734,7 @@
     "verb": "is",
     "object": "your best work",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -698,7 +743,7 @@
       "text": "“It is your best work, Basil, the best thing you have ever done,” said Lord Henry languidly."
      }
     ],
-    "seq": 20,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
@@ -718,7 +763,7 @@
     "verb": "is",
     "object": "too large and too vulgar",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -727,7 +772,7 @@
       "text": "The Academy is too large and too vulgar."
      }
     ],
-    "seq": 21,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -747,7 +792,7 @@
     "verb": "was",
     "object": "dreadful",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -756,7 +801,7 @@
       "text": "Whenever I have gone there, there have been either so many people that I have not been able to see the pictures, which was dreadful, or so many pictures that I have not been able to see the people, which was worse."
      }
     ],
-    "seq": 22,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
@@ -776,7 +821,7 @@
     "verb": "was",
     "object": "worse",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -785,7 +830,7 @@
       "text": "Whenever I have gone there, there have been either so many people that I have not been able to see the pictures, which was dreadful, or so many pictures that I have not been able to see the people, which was worse."
      }
     ],
-    "seq": 23,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -805,7 +850,7 @@
     "verb": "is",
     "object": "really the only place",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -814,7 +859,7 @@
       "text": "The Grosvenor is really the only place.”"
      }
     ],
-    "seq": 24,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -834,7 +879,7 @@
     "verb": "is",
     "object": "silly of you",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -843,7 +888,7 @@
       "text": "It is silly of you, for there is only one thing in the world worse than being talked about, and that is not being talked about."
      }
     ],
-    "seq": 25,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
@@ -863,7 +908,7 @@
     "verb": "is",
     "object": "not being talked about",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -872,7 +917,7 @@
       "text": "It is silly of you, for there is only one thing in the world worse than being talked about, and that is not being talked about."
      }
     ],
-    "seq": 26,
+    "seq": 27,
     "depends_on": [],
     "evidence": []
    },
@@ -892,7 +937,7 @@
     "verb": "stretched",
     "object": "himself out on the divan and laughed",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -901,7 +946,7 @@
       "text": "Lord Henry stretched himself out on the divan and laughed."
      }
     ],
-    "seq": 27,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
@@ -921,7 +966,7 @@
     "verb": "is",
     "object": "quite true",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -930,13 +975,13 @@
       "text": "“Yes, I knew you would; but it is quite true, all the same.”"
      }
     ],
-    "seq": 28,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "if he|was|made out of ivory and rose-leaves",
+    "task_id": "who looks as if he|was|made out of ivory and rose-leaves",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -945,12 +990,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "if he was made out of ivory and rose-leaves",
-    "subject": "if he",
+    "description": "who looks as if he was made out of ivory and rose-leaves",
+    "subject": "who looks as if he",
     "verb": "was",
     "object": "made out of ivory and rose-leaves",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -959,7 +1004,7 @@
       "text": "Upon my word, Basil, I didn’t know you were so vain; and I really can’t see any resemblance between you, with your rugged strong face and your coal-black hair, and this young Adonis, who looks as if he was made out of ivory and rose-leaves."
      }
     ],
-    "seq": 29,
+    "seq": 30,
     "depends_on": [],
     "evidence": []
    },
@@ -979,7 +1024,7 @@
     "verb": "is",
     "object": "a Narcissus",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -988,13 +1033,13 @@
       "text": "Why, my dear Basil, he is a Narcissus, and you—well, of course you have an intellectual expression and all that."
      }
     ],
-    "seq": 30,
+    "seq": 31,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "what he|was|told to say when he was a boy of eighteen",
+    "task_id": "the age of eighty what basil|was told|to say when basil was a boy of eighteen",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -1003,12 +1048,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "what he was told to say when he was a boy of eighteen",
-    "subject": "what he",
-    "verb": "was",
-    "object": "told to say when he was a boy of eighteen",
+    "description": "the age of eighty what Basil was told to say when Basil was a boy of eighteen",
+    "subject": "the age of eighty what Basil",
+    "verb": "was told",
+    "object": "to say when Basil was a boy of eighteen",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -1017,7 +1062,36 @@
       "text": "A bishop keeps on saying at the age of eighty what he was told to say when he was a boy of eighteen, and as a natural consequence he always looks absolutely delightful."
      }
     ],
-    "seq": 31,
+    "seq": 32,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "whose name you|have never told|me",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "whose name you have never told me",
+    "subject": "whose name you",
+    "verb": "have never told",
+    "object": "me",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#7099-7218",
+      "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+      "text": "Your mysterious young friend, whose name you have never told me, but whose picture really fascinates me, never thinks."
+     }
+    ],
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -1037,7 +1111,7 @@
     "verb": "is",
     "object": "a fatality about all physical and intellectual distinction",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -1046,7 +1120,7 @@
       "text": "There is a fatality about all physical and intellectual distinction, the sort of fatality that seems to dog through history the faltering steps of kings."
      }
     ],
-    "seq": 32,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
@@ -1066,7 +1140,7 @@
     "verb": "is",
     "object": "better not to be different from one’s fellows",
     "witnesses": [
-     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -1075,12 +1149,12 @@
       "text": "It is better not to be different from one’s fellows."
      }
     ],
-    "seq": 33,
+    "seq": 35,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 34,
+  "nextSeq": 36,
   "admits": [
    "NUL",
    "SEG",
@@ -1100,7 +1174,7 @@
    "verb": "is",
    "object": "at once surface and symbol",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1116,7 +1190,7 @@
    "verb": "is",
    "object": "quite useless",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1132,7 +1206,7 @@
    "verb": "is",
    "object": "not being talked about",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1143,28 +1217,12 @@
    ]
   },
   {
-   "id": "art that|is|necessarily immobile",
-   "subject": "art that",
-   "verb": "is",
-   "object": "necessarily immobile",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#2777-3500",
-     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "From the corner of the divan of Persian saddle-bags on which he was lying, smoking, as was his custom, innumerable cigarettes, Lord Henry Wotton could just catch the gleam of the honey-sweet and honey-coloured blossoms of a laburnum, whose tremulous branches seemed hardly able to bear the burden of a beauty so flamelike as theirs; and now and then the fantastic shadows of birds in flight flitted across the long tussore-silk curtains that were stretched in front of the huge window, producing a kind of momentary Japanese effect, and making him think of those pallid, jade-faced painters of Tokyo who, through the medium of an art that is necessarily immobile, seek to convey the sense of swiftness and motion."
-    }
-   ]
-  },
-  {
    "id": "as|was|his custom",
    "subject": "as",
    "verb": "was",
    "object": "his custom",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1180,7 +1238,7 @@
    "verb": "is",
    "object": "quite true",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1191,18 +1249,18 @@
    ]
   },
   {
-   "id": "caliban\nnot|seeing|his own face in a glass",
-   "subject": "Caliban\nnot",
-   "verb": "seeing",
-   "object": "his own face in a glass",
+   "id": "for these there|is|hope",
+   "subject": "For these there",
+   "verb": "is",
+   "object": "hope",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#1165-1270",
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#860-884",
      "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "The nineteenth century dislike of romanticism is the rage of Caliban not seeing his own face in a glass."
+     "text": "For these there is hope."
     }
    ]
   },
@@ -1212,7 +1270,7 @@
    "verb": "is",
    "object": "a Narcissus",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1223,28 +1281,12 @@
    ]
   },
   {
-   "id": "if he|was|made out of ivory and rose-leaves",
-   "subject": "if he",
-   "verb": "was",
-   "object": "made out of ivory and rose-leaves",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#6142-6385",
-     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "Upon my word, Basil, I didn’t know you were so vain; and I really can’t see any resemblance between you, with your rugged strong face and your coal-black hair, and this young Adonis, who looks as if he was made out of ivory and rose-leaves."
-    }
-   ]
-  },
-  {
    "id": "it|is|better not to be different from one’s fellows",
    "subject": "It",
    "verb": "is",
    "object": "better not to be different from one’s fellows",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1260,7 +1302,7 @@
    "verb": "is",
    "object": "silly of you",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1276,7 +1318,7 @@
    "verb": "is",
    "object": "the spectator",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1292,7 +1334,7 @@
    "verb": "is",
    "object": "your best work",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1308,7 +1350,7 @@
    "verb": "stretched",
    "object": "himself out on the divan and laughed",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1324,7 +1366,7 @@
    "verb": "is",
    "object": "ever morbid",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1335,66 +1377,34 @@
    ]
   },
   {
-   "id": "of caliban|seeing|his own face in a glass",
-   "subject": "of Caliban",
-   "verb": "seeing",
-   "object": "his own face in a glass",
+   "id": "some curious dream from which lord henry feared lord henry|might|awake",
+   "subject": "some curious dream from which Lord Henry feared Lord Henry",
+   "verb": "might",
+   "object": "awake",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#1064-1161",
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#4346-4537",
      "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "The nineteenth century dislike of realism is the rage of Caliban seeing his own face in a glass."
+     "text": "But he suddenly started up, and closing his eyes, placed his fingers upon the lids, as though he sought to imprison within his brain some curious dream from which he feared he might awake."
     }
    ]
   },
   {
-   "id": "of criticism|is|a mode of autobiography",
-   "subject": "of criticism",
+   "id": "that the work|is|new",
+   "subject": "that the work",
    "verb": "is",
-   "object": "a mode of autobiography",
+   "object": "new",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#606-677",
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#2146-2235",
      "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "The highest as the lowest form of criticism is a mode of autobiography."
-    }
-   ]
-  },
-  {
-   "id": "of london|was|like the bourdon note of a distant organ",
-   "subject": "of London",
-   "verb": "was",
-   "object": "like the bourdon note of a distant organ",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#3727-3796",
-     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "The dim roar of London was like the bourdon note of a distant organ."
-    }
-   ]
-  },
-  {
-   "id": "that were|stretched|in front of the huge window",
-   "subject": "that were",
-   "verb": "stretched",
-   "object": "in front of the huge window",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#2777-3500",
-     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "From the corner of the divan of Persian saddle-bags on which he was lying, smoking, as was his custom, innumerable cigarettes, Lord Henry Wotton could just catch the gleam of the honey-sweet and honey-coloured blossoms of a laburnum, whose tremulous branches seemed hardly able to bear the burden of a beauty so flamelike as theirs; and now and then the fantastic shadows of birds in flight flitted across the long tussore-silk curtains that were stretched in front of the huge window, producing a kind of momentary Japanese effect, and making him think of those pallid, jade-faced painters of Tokyo who, through the medium of an art that is necessarily immobile, seek to convey the sense of swiftness and motion."
+     "text": "Diversity of opinion about a work of art shows that the work is new, complex, and vital."
     }
    ]
   },
@@ -1404,7 +1414,7 @@
    "verb": "is",
    "object": "all",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1420,7 +1430,7 @@
    "verb": "is",
    "object": "too large and too vulgar",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1431,18 +1441,18 @@
    ]
   },
   {
-   "id": "the artist|is|art’s aim",
-   "subject": "the artist",
-   "verb": "is",
-   "object": "art’s aim",
+   "id": "the age of eighty what basil|was told|to say when basil was a boy of eighteen",
+   "subject": "the age of eighty what Basil",
+   "verb": "was told",
+   "object": "to say when Basil was a boy of eighteen",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#440-491",
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#6927-7097",
      "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "To reveal art and conceal the artist is art’s aim."
+     "text": "A bishop keeps on saying at the age of eighty what he was told to say when he was a boy of eighteen, and as a natural consequence he always looks absolutely delightful."
     }
    ]
   },
@@ -1452,7 +1462,7 @@
    "verb": "is",
    "object": "the creator of beautiful things",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1463,12 +1473,44 @@
    ]
   },
   {
+   "id": "the corner of the divan of persian saddle-bags on which he|was|lying",
+   "subject": "the corner of the divan of Persian saddle-bags on which he",
+   "verb": "was",
+   "object": "lying",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#2777-3500",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "From the corner of the divan of Persian saddle-bags on which he was lying, smoking, as was his custom, innumerable cigarettes, Lord Henry Wotton could just catch the gleam of the honey-sweet and honey-coloured blossoms of a laburnum, whose tremulous branches seemed hardly able to bear the burden of a beauty so flamelike as theirs; and now and then the fantastic shadows of birds in flight flitted across the long tussore-silk curtains that were stretched in front of the huge window, producing a kind of momentary Japanese effect, and making him think of those pallid, jade-faced painters of Tokyo who, through the medium of an art that is necessarily immobile, seek to convey the sense of swiftness and motion."
+    }
+   ]
+  },
+  {
+   "id": "the dim roar of london|was|like the bourdon note of a distant organ",
+   "subject": "The dim roar of London",
+   "verb": "was",
+   "object": "like the bourdon note of a distant organ",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#3727-3796",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "The dim roar of London was like the bourdon note of a distant organ."
+    }
+   ]
+  },
+  {
    "id": "the grosvenor|is|really the only place",
    "subject": "The Grosvenor",
    "verb": "is",
    "object": "really the only place",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1479,12 +1521,92 @@
    ]
   },
   {
+   "id": "the long tussore-silk curtains that|were stretched|in front of the huge window",
+   "subject": "the long tussore-silk curtains that",
+   "verb": "were stretched",
+   "object": "in front of the huge window",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#2777-3500",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "From the corner of the divan of Persian saddle-bags on which he was lying, smoking, as was his custom, innumerable cigarettes, Lord Henry Wotton could just catch the gleam of the honey-sweet and honey-coloured blossoms of a laburnum, whose tremulous branches seemed hardly able to bear the burden of a beauty so flamelike as theirs; and now and then the fantastic shadows of birds in flight flitted across the long tussore-silk curtains that were stretched in front of the huge window, producing a kind of momentary Japanese effect, and making him think of those pallid, jade-faced painters of Tokyo who, through the medium of an art that is necessarily immobile, seek to convey the sense of swiftness and motion."
+    }
+   ]
+  },
+  {
+   "id": "the lowest form of criticism|is|a mode of autobiography",
+   "subject": "the lowest form of criticism",
+   "verb": "is",
+   "object": "a mode of autobiography",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#606-677",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "The highest as the lowest form of criticism is a mode of autobiography."
+    }
+   ]
+  },
+  {
+   "id": "the medium of an art that|is|necessarily immobile",
+   "subject": "the medium of an art that",
+   "verb": "is",
+   "object": "necessarily immobile",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#2777-3500",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "From the corner of the divan of Persian saddle-bags on which he was lying, smoking, as was his custom, innumerable cigarettes, Lord Henry Wotton could just catch the gleam of the honey-sweet and honey-coloured blossoms of a laburnum, whose tremulous branches seemed hardly able to bear the burden of a beauty so flamelike as theirs; and now and then the fantastic shadows of birds in flight flitted across the long tussore-silk curtains that were stretched in front of the huge window, producing a kind of momentary Japanese effect, and making him think of those pallid, jade-faced painters of Tokyo who, through the medium of an art that is necessarily immobile, seek to convey the sense of swiftness and motion."
+    }
+   ]
+  },
+  {
+   "id": "the rage of caliban|not seeing|his own face in a glass",
+   "subject": "the rage of Caliban",
+   "verb": "not seeing",
+   "object": "his own face in a glass",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#1165-1270",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "The nineteenth century dislike of romanticism is the rage of Caliban not seeing his own face in a glass."
+    }
+   ]
+  },
+  {
+   "id": "the rage of caliban|seeing|his own face in a glass",
+   "subject": "the rage of Caliban",
+   "verb": "seeing",
+   "object": "his own face in a glass",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#1064-1161",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "The nineteenth century dislike of realism is the rage of Caliban seeing his own face in a glass."
+    }
+   ]
+  },
+  {
    "id": "the studio|was|filled with the rich odour of roses",
    "subject": "The studio",
    "verb": "was",
    "object": "filled with the rich odour of roses",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1495,28 +1617,12 @@
    ]
   },
   {
-   "id": "the work|is|new",
-   "subject": "the work",
-   "verb": "is",
-   "object": "new",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#2146-2235",
-     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "Diversity of opinion about a work of art shows that the work is new, complex, and vital."
-    }
-   ]
-  },
-  {
    "id": "there|is|a fatality about all physical and intellectual distinction",
    "subject": "There",
    "verb": "is",
    "object": "a fatality about all physical and intellectual distinction",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1532,7 +1638,7 @@
    "verb": "is",
    "object": "no such thing as a moral or an immoral book",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1548,28 +1654,12 @@
    ]
   },
   {
-   "id": "these there|is|hope",
-   "subject": "these there",
-   "verb": "is",
-   "object": "hope",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#860-884",
-     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "For these there is hope."
-    }
-   ]
-  },
-  {
    "id": "this|is|a fault",
    "subject": "This",
    "verb": "is",
    "object": "a fault",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1580,34 +1670,18 @@
    ]
   },
   {
-   "id": "what he|was|told to say when he was a boy of eighteen",
-   "subject": "what he",
-   "verb": "was",
-   "object": "told to say when he was a boy of eighteen",
+   "id": "to reveal art and conceal the artist|is|art’s aim",
+   "subject": "To reveal art and conceal the artist",
+   "verb": "is",
+   "object": "art’s aim",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#6927-7097",
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#440-491",
      "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "A bishop keeps on saying at the age of eighty what he was told to say when he was a boy of eighteen, and as a natural consequence he always looks absolutely delightful."
-    }
-   ]
-  },
-  {
-   "id": "which he|was|lying",
-   "subject": "which he",
-   "verb": "was",
-   "object": "lying",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#2777-3500",
-     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
-     "text": "From the corner of the divan of Persian saddle-bags on which he was lying, smoking, as was his custom, innumerable cigarettes, Lord Henry Wotton could just catch the gleam of the honey-sweet and honey-coloured blossoms of a laburnum, whose tremulous branches seemed hardly able to bear the burden of a beauty so flamelike as theirs; and now and then the fantastic shadows of birds in flight flitted across the long tussore-silk curtains that were stretched in front of the huge window, producing a kind of momentary Japanese effect, and making him think of those pallid, jade-faced painters of Tokyo who, through the medium of an art that is necessarily immobile, seek to convey the sense of swiftness and motion."
+     "text": "To reveal art and conceal the artist is art’s aim."
     }
    ]
   },
@@ -1617,7 +1691,7 @@
    "verb": "was",
    "object": "dreadful",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1633,7 +1707,7 @@
    "verb": "was",
    "object": "worse",
    "witnesses": [
-    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1642,10 +1716,42 @@
      "text": "Whenever I have gone there, there have been either so many people that I have not been able to see the pictures, which was dreadful, or so many pictures that I have not been able to see the people, which was worse."
     }
    ]
+  },
+  {
+   "id": "who looks as if he|was|made out of ivory and rose-leaves",
+   "subject": "who looks as if he",
+   "verb": "was",
+   "object": "made out of ivory and rose-leaves",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#6142-6385",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "Upon my word, Basil, I didn’t know you were so vain; and I really can’t see any resemblance between you, with your rugged strong face and your coal-black hair, and this young Adonis, who looks as if he was made out of ivory and rose-leaves."
+    }
+   ]
+  },
+  {
+   "id": "whose name you|have never told|me",
+   "subject": "whose name you",
+   "verb": "have never told",
+   "object": "me",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt#7099-7218",
+     "ref": "01-literature-books/gutenberg/pg174_The_Picture_of_Dorian_Gray.txt",
+     "text": "Your mysterious young friend, whose name you have never told me, but whose picture really fascinates me, never thinks."
+    }
+   ]
   }
  ],
  "lastRun": {
-  "recipeId": "aea2233a6055abf1",
-  "at": "2026-08-29T19:42:10.461Z"
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:33.861Z"
  }
 }

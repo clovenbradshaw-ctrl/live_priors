@@ -7,27 +7,43 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "aea2233a6055abf1",
+  "id": "d4c696c0ac8e97c6",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
    "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
    "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
    "verbForms": null,
    "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
    "excerptChars": 8000,
    "provenance": {
     "eoreader7": {
-     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
-     "dirty": false
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
     },
     "theFold": {
-     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
-     "dirty": false
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
     },
     "livePriors": {
-     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
      "dirty": true
     }
    }
@@ -58,10 +74,10 @@
   "edgesFound": 7,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 3,
+   "verbs": 4,
    "minSurfaces": 1,
    "grammarPrior": true,
-   "candidates": 7
+   "candidates": 8
   },
   "contentWithoutRelations": false,
   "grammar": {
@@ -90,7 +106,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "and frost|are|banished",
+    "task_id": "there snow and frost|are|banished",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -99,12 +115,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "and frost are banished",
-    "subject": "and frost",
+    "description": "there snow and frost are banished",
+    "subject": "there snow and frost",
     "verb": "are",
     "object": "banished",
     "witnesses": [
-     "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -133,7 +149,7 @@
     "verb": "are",
     "object": "my enticements",
     "witnesses": [
-     "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -148,7 +164,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "many months|are|requisite",
+    "task_id": "to reach which at present so many months|are|requisite",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -157,12 +173,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "many months are requisite",
-    "subject": "many months",
+    "description": "to reach which at present so many months are requisite",
+    "subject": "to reach which at present so many months",
     "verb": "are",
     "object": "requisite",
     "witnesses": [
-     "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -177,7 +193,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "and shakespeare|are|consecrated",
+    "task_id": "the names of homer and shakespeare|are|consecrated",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -186,12 +202,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "and Shakespeare are consecrated",
-    "subject": "and Shakespeare",
+    "description": "the names of Homer and Shakespeare are consecrated",
+    "subject": "the names of Homer and Shakespeare",
     "verb": "are",
     "object": "consecrated",
     "witnesses": [
-     "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -206,7 +222,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "my spirits|are|often depressed",
+    "task_id": "and my spirits|are|often depressed",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -215,12 +231,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "my spirits are often depressed",
-    "subject": "my spirits",
+    "description": "and my spirits are often depressed",
+    "subject": "and my spirits",
     "verb": "are",
     "object": "often depressed",
     "witnesses": [
-     "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -249,7 +265,7 @@
     "verb": "are",
     "object": "failing",
     "witnesses": [
-     "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -264,7 +280,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "those who|are|accustomed to the whale-fishing",
+    "task_id": "and to engage as many sailors as i think necessary among those who|are|accustomed to the whale-fishing",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -273,12 +289,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "those who are accustomed to the whale-fishing",
-    "subject": "those who",
+    "description": "and to engage as many sailors as I think necessary among those who are accustomed to the whale-fishing",
+    "subject": "and to engage as many sailors as I think necessary among those who",
     "verb": "are",
     "object": "accustomed to the whale-fishing",
     "witnesses": [
-     "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -307,60 +323,12 @@
  },
  "folded": [
   {
-   "id": "and frost|are|banished",
-   "subject": "and frost",
-   "verb": "are",
-   "object": "banished",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg84_Frankenstein.txt#1547-1819",
-     "ref": "01-literature-books/gutenberg/pg84_Frankenstein.txt",
-     "text": "There—for with your leave, my sister, I will put some trust in preceding navigators—there snow and frost are banished; and, sailing over a calm sea, we may be wafted to a land surpassing in wonders and in beauty every region hitherto discovered on the habitable globe."
-    }
-   ]
-  },
-  {
-   "id": "and shakespeare|are|consecrated",
-   "subject": "and Shakespeare",
-   "verb": "are",
-   "object": "consecrated",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg84_Frankenstein.txt#4183-4379",
-     "ref": "01-literature-books/gutenberg/pg84_Frankenstein.txt",
-     "text": "I also became a poet and for one year lived in a paradise of my own creation; I imagined that I also might obtain a niche in the temple where the names of Homer and Shakespeare are consecrated."
-    }
-   ]
-  },
-  {
-   "id": "many months|are|requisite",
-   "subject": "many months",
-   "verb": "are",
-   "object": "requisite",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg84_Frankenstein.txt#2673-3070",
-     "ref": "01-literature-books/gutenberg/pg84_Frankenstein.txt",
-     "text": "But supposing all these conjectures to be false, you cannot contest the inestimable benefit which I shall confer on all mankind, to the last generation, by discovering a passage near the pole to those countries, to reach which at present so many months are requisite; or by ascertaining the secret of the magnet, which, if at all possible, can only be effected by an undertaking such as mine."
-    }
-   ]
-  },
-  {
-   "id": "my spirits|are|often depressed",
-   "subject": "my spirits",
+   "id": "and my spirits|are|often depressed",
+   "subject": "and my spirits",
    "verb": "are",
    "object": "often depressed",
    "witnesses": [
-    "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -371,28 +339,12 @@
    ]
   },
   {
-   "id": "these|are|my enticements",
-   "subject": "These",
-   "verb": "are",
-   "object": "my enticements",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg84_Frankenstein.txt#2393-2672",
-     "ref": "01-literature-books/gutenberg/pg84_Frankenstein.txt",
-     "text": "These are my enticements, and they are sufficient to conquer all fear of danger or death and to induce me to commence this laborious voyage with the joy a child feels when he embarks in a little boat, with his holiday mates, on an expedition of discovery up his native river."
-    }
-   ]
-  },
-  {
-   "id": "those who|are|accustomed to the whale-fishing",
-   "subject": "those who",
+   "id": "and to engage as many sailors as i think necessary among those who|are|accustomed to the whale-fishing",
+   "subject": "and to engage as many sailors as I think necessary among those who",
    "verb": "are",
    "object": "accustomed to the whale-fishing",
    "witnesses": [
-    "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -403,12 +355,76 @@
    ]
   },
   {
+   "id": "the names of homer and shakespeare|are|consecrated",
+   "subject": "the names of Homer and Shakespeare",
+   "verb": "are",
+   "object": "consecrated",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg84_Frankenstein.txt#4183-4379",
+     "ref": "01-literature-books/gutenberg/pg84_Frankenstein.txt",
+     "text": "I also became a poet and for one year lived in a paradise of my own creation; I imagined that I also might obtain a niche in the temple where the names of Homer and Shakespeare are consecrated."
+    }
+   ]
+  },
+  {
+   "id": "there snow and frost|are|banished",
+   "subject": "there snow and frost",
+   "verb": "are",
+   "object": "banished",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg84_Frankenstein.txt#1547-1819",
+     "ref": "01-literature-books/gutenberg/pg84_Frankenstein.txt",
+     "text": "There—for with your leave, my sister, I will put some trust in preceding navigators—there snow and frost are banished; and, sailing over a calm sea, we may be wafted to a land surpassing in wonders and in beauty every region hitherto discovered on the habitable globe."
+    }
+   ]
+  },
+  {
+   "id": "these|are|my enticements",
+   "subject": "These",
+   "verb": "are",
+   "object": "my enticements",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg84_Frankenstein.txt#2393-2672",
+     "ref": "01-literature-books/gutenberg/pg84_Frankenstein.txt",
+     "text": "These are my enticements, and they are sufficient to conquer all fear of danger or death and to induce me to commence this laborious voyage with the joy a child feels when he embarks in a little boat, with his holiday mates, on an expedition of discovery up his native river."
+    }
+   ]
+  },
+  {
+   "id": "to reach which at present so many months|are|requisite",
+   "subject": "to reach which at present so many months",
+   "verb": "are",
+   "object": "requisite",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg84_Frankenstein.txt#2673-3070",
+     "ref": "01-literature-books/gutenberg/pg84_Frankenstein.txt",
+     "text": "But supposing all these conjectures to be false, you cannot contest the inestimable benefit which I shall confer on all mankind, to the last generation, by discovering a passage near the pole to those countries, to reach which at present so many months are requisite; or by ascertaining the secret of the magnet, which, if at all possible, can only be effected by an undertaking such as mine."
+    }
+   ]
+  },
+  {
    "id": "when theirs|are|failing",
    "subject": "when theirs",
    "verb": "are",
    "object": "failing",
    "witnesses": [
-    "01-literature-books/gutenberg/pg84_Frankenstein.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg84_Frankenstein.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -420,7 +436,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "aea2233a6055abf1",
-  "at": "2026-08-29T19:42:11.596Z"
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:35.349Z"
  }
 }

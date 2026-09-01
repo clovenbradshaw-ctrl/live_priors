@@ -7,27 +7,43 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "aea2233a6055abf1",
+  "id": "d4c696c0ac8e97c6",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
    "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
    "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
    "verbForms": null,
    "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
    "excerptChars": 8000,
    "provenance": {
     "eoreader7": {
-     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
-     "dirty": false
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
     },
     "theFold": {
-     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
-     "dirty": false
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
     },
     "livePriors": {
-     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
      "dirty": true
     }
    }
@@ -58,10 +74,10 @@
   "edgesFound": 22,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 8,
+   "verbs": 11,
    "minSurfaces": 1,
    "grammarPrior": true,
-   "candidates": 24
+   "candidates": 29
   },
   "contentWithoutRelations": false,
   "grammar": {
@@ -104,7 +120,7 @@
     "verb": "being",
     "object": "asked",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -133,7 +149,7 @@
     "verb": "were",
     "object": "to be new made when thou art old",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -148,7 +164,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "she in|thee|calls back the lovely april of her prime",
+    "task_id": "thou art thy mother’s glass and she in|thee|calls back the lovely april of her prime",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -157,12 +173,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "she in thee Calls back the lovely April of her prime",
-    "subject": "she in",
+    "description": "Thou art thy mother’s glass and she in thee Calls back the lovely April of her prime",
+    "subject": "Thou art thy mother’s glass and she in",
     "verb": "thee",
     "object": "Calls back the lovely April of her prime",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -191,7 +207,7 @@
     "verb": "thyself",
     "object": "thy beauty’s legacy?",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -220,7 +236,7 @@
     "verb": "beauteous",
     "object": "niggard why dost thou abuse",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -249,7 +265,7 @@
     "verb": "thee",
     "object": "to give?",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -264,7 +280,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "traffic with|thyself|alone",
+    "task_id": "for having traffic with|thyself|alone",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -273,12 +289,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "traffic with thyself alone",
-    "subject": "traffic with",
+    "description": "For having traffic with thyself alone",
+    "subject": "For having traffic with",
     "verb": "thyself",
     "object": "alone",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -307,7 +323,7 @@
     "verb": "thyself",
     "object": "thy sweet self dost deceive",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -336,7 +352,7 @@
     "verb": "thee",
     "object": "to be gone",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -365,7 +381,7 @@
     "verb": "checked",
     "object": "with frost and lusty leaves quite gone",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -380,7 +396,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "with beauty|were|bereft",
+    "task_id": "beauty’s effect with beauty|were|bereft",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -389,12 +405,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "with beauty were bereft",
-    "subject": "with beauty",
+    "description": "Beauty’s effect with beauty were bereft",
+    "subject": "Beauty’s effect with beauty",
     "verb": "were",
     "object": "bereft",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -423,7 +439,7 @@
     "verb": "let",
     "object": "not winter’s ragged hand deface",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -452,7 +468,7 @@
     "verb": "thyself",
     "object": "to breed another thee",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -481,7 +497,7 @@
     "verb": "thyself",
     "object": "were happier than thou art",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -510,7 +526,7 @@
     "verb": "thee",
     "object": "living in posterity?",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -525,7 +541,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "speechless song|being|many",
+    "task_id": "whose speechless song|being|many",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -534,12 +550,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "speechless song being many",
-    "subject": "speechless song",
+    "description": "Whose speechless song being many",
+    "subject": "Whose speechless song",
     "verb": "being",
     "object": "many",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -554,7 +570,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "thou consum’st|thyself|in single life?",
+    "task_id": "that thou consum’st|thyself|in single life?",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -563,12 +579,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "thou consum’st thyself in single life?",
-    "subject": "thou consum’st",
+    "description": "That thou consum’st thyself in single life?",
+    "subject": "That thou consum’st",
     "verb": "thyself",
     "object": "in single life?",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -583,7 +599,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "will wail|thee|like a makeless wife",
+    "task_id": "the world will wail|thee|like a makeless wife",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -592,12 +608,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "will wail thee like a makeless wife",
-    "subject": "will wail",
+    "description": "The world will wail thee like a makeless wife",
+    "subject": "The world will wail",
     "verb": "thee",
     "object": "like a makeless wife",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -612,7 +628,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "form of|thee|hast left behind",
+    "task_id": "that thou no form of|thee|hast left behind",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -621,12 +637,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "form of thee hast left behind",
-    "subject": "form of",
+    "description": "That thou no form of thee hast left behind",
+    "subject": "That thou no form of",
     "verb": "thee",
     "object": "hast left behind",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -641,7 +657,7 @@
    },
    {
     "kind": "propose",
-    "task_id": "who for|thyself|art so unprovident",
+    "task_id": "any who for|thyself|art so unprovident",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -650,12 +666,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Who for thyself art so unprovident",
-    "subject": "Who for",
+    "description": "any Who for thyself art so unprovident",
+    "subject": "any Who for",
     "verb": "thyself",
     "object": "art so unprovident",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -684,7 +700,7 @@
     "verb": "thyself",
     "object": "thou stick’st not to conspire",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -713,7 +729,7 @@
     "verb": "thyself",
     "object": "at least kind-hearted prove",
     "witnesses": [
-     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -742,18 +758,50 @@
  },
  "folded": [
   {
-   "id": "form of|thee|hast left behind",
-   "subject": "form of",
-   "verb": "thee",
-   "object": "hast left behind",
+   "id": "any who for|thyself|art so unprovident",
+   "subject": "any Who for",
+   "verb": "thyself",
+   "object": "art so unprovident",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#6871-7421",
+     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#7453-7534",
      "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
-     "text": "Ah, if thou issueless shalt hap to die, The world will wail thee like a makeless wife, The world will be thy widow and still weep, That thou no form of thee hast left behind, When every private widow well may keep, By children’s eyes, her husband’s shape in mind: Look what an unthrift in the world doth spend Shifts but his place, for still the world enjoys it; But beauty’s waste hath in the world an end, And kept unused the user so destroys it: No love toward others in that bosom sits That on himself such murd’rous shame commits."
+     "text": "For shame deny that thou bear’st love to any Who for thyself art so unprovident."
+    }
+   ]
+  },
+  {
+   "id": "beauty’s effect with beauty|were|bereft",
+   "subject": "Beauty’s effect with beauty",
+   "verb": "were",
+   "object": "bereft",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#4150-4670",
+     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
+     "text": "Those hours that with gentle work did frame The lovely gaze where every eye doth dwell Will play the tyrants to the very same, And that unfair which fairly doth excel: For never-resting time leads summer on To hideous winter and confounds him there, Sap checked with frost and lusty leaves quite gone, Beauty o’er-snowed and bareness every where: Then were not summer’s distillation left A liquid prisoner pent in walls of glass, Beauty’s effect with beauty were bereft, Nor it nor no remembrance what it was."
+    }
+   ]
+  },
+  {
+   "id": "for having traffic with|thyself|alone",
+   "subject": "For having traffic with",
+   "verb": "thyself",
+   "object": "alone",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#3862-4032",
+     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
+     "text": "For having traffic with thyself alone, Thou of thyself thy sweet self dost deceive, Then how when nature calls thee to be gone, What acceptable audit canst thou leave?"
     }
    ]
   },
@@ -763,7 +811,7 @@
    "verb": "thee",
    "object": "to give?",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -779,7 +827,7 @@
    "verb": "thee",
    "object": "living in posterity?",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -795,7 +843,7 @@
    "verb": "thee",
    "object": "to be gone",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -811,7 +859,7 @@
    "verb": "thyself",
    "object": "at least kind-hearted prove",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -827,7 +875,7 @@
    "verb": "checked",
    "object": "with frost and lusty leaves quite gone",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -838,44 +886,12 @@
    ]
   },
   {
-   "id": "she in|thee|calls back the lovely april of her prime",
-   "subject": "she in",
-   "verb": "thee",
-   "object": "Calls back the lovely April of her prime",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#3225-3403",
-     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
-     "text": "Thou art thy mother’s glass and she in thee Calls back the lovely April of her prime, So thou through windows of thine age shalt see, Despite of wrinkles this thy golden time."
-    }
-   ]
-  },
-  {
-   "id": "speechless song|being|many",
-   "subject": "speechless song",
-   "verb": "being",
-   "object": "many",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#6295-6757",
-     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
-     "text": "If the true concord of well-tuned sounds, By unions married do offend thine ear, They do but sweetly chide thee, who confounds In singleness the parts that thou shouldst bear: Mark how one string sweet husband to another, Strikes each in each by mutual ordering; Resembling sire, and child, and happy mother, Who all in one, one pleasing note do sing: Whose speechless song being many, seeming one, Sings this to thee, ‘Thou single wilt prove none’."
-    }
-   ]
-  },
-  {
    "id": "ten times|thyself|were happier than thou art",
    "subject": "Ten times",
    "verb": "thyself",
    "object": "were happier than thou art",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -891,7 +907,7 @@
    "verb": "thyself",
    "object": "thou stick’st not to conspire",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -902,12 +918,44 @@
    ]
   },
   {
+   "id": "that thou consum’st|thyself|in single life?",
+   "subject": "That thou consum’st",
+   "verb": "thyself",
+   "object": "in single life?",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#6788-6869",
+     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
+     "text": "Is it for fear to wet a widow’s eye, That thou consum’st thyself in single life?"
+    }
+   ]
+  },
+  {
+   "id": "that thou no form of|thee|hast left behind",
+   "subject": "That thou no form of",
+   "verb": "thee",
+   "object": "hast left behind",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#6871-7421",
+     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
+     "text": "Ah, if thou issueless shalt hap to die, The world will wail thee like a makeless wife, The world will be thy widow and still weep, That thou no form of thee hast left behind, When every private widow well may keep, By children’s eyes, her husband’s shape in mind: Look what an unthrift in the world doth spend Shifts but his place, for still the world enjoys it; But beauty’s waste hath in the world an end, And kept unused the user so destroys it: No love toward others in that bosom sits That on himself such murd’rous shame commits."
+    }
+   ]
+  },
+  {
    "id": "that’s for|thyself|to breed another thee",
    "subject": "That’s for",
    "verb": "thyself",
    "object": "to breed another thee",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -918,12 +966,28 @@
    ]
   },
   {
+   "id": "the world will wail|thee|like a makeless wife",
+   "subject": "The world will wail",
+   "verb": "thee",
+   "object": "like a makeless wife",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#6871-7421",
+     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
+     "text": "Ah, if thou issueless shalt hap to die, The world will wail thee like a makeless wife, The world will be thy widow and still weep, That thou no form of thee hast left behind, When every private widow well may keep, By children’s eyes, her husband’s shape in mind: Look what an unthrift in the world doth spend Shifts but his place, for still the world enjoys it; But beauty’s waste hath in the world an end, And kept unused the user so destroys it: No love toward others in that bosom sits That on himself such murd’rous shame commits."
+    }
+   ]
+  },
+  {
    "id": "then|beauteous|niggard why dost thou abuse",
    "subject": "Then",
    "verb": "beauteous",
    "object": "niggard why dost thou abuse",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -939,7 +1003,7 @@
    "verb": "being",
    "object": "asked",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -955,7 +1019,7 @@
    "verb": "let",
    "object": "not winter’s ragged hand deface",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -971,7 +1035,7 @@
    "verb": "were",
    "object": "to be new made when thou art old",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -982,18 +1046,18 @@
    ]
   },
   {
-   "id": "thou consum’st|thyself|in single life?",
-   "subject": "thou consum’st",
-   "verb": "thyself",
-   "object": "in single life?",
+   "id": "thou art thy mother’s glass and she in|thee|calls back the lovely april of her prime",
+   "subject": "Thou art thy mother’s glass and she in",
+   "verb": "thee",
+   "object": "Calls back the lovely April of her prime",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#6788-6869",
+     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#3225-3403",
      "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
-     "text": "Is it for fear to wet a widow’s eye, That thou consum’st thyself in single life?"
+     "text": "Thou art thy mother’s glass and she in thee Calls back the lovely April of her prime, So thou through windows of thine age shalt see, Despite of wrinkles this thy golden time."
     }
    ]
   },
@@ -1003,23 +1067,7 @@
    "verb": "thyself",
    "object": "thy sweet self dost deceive",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#3862-4032",
-     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
-     "text": "For having traffic with thyself alone, Thou of thyself thy sweet self dost deceive, Then how when nature calls thee to be gone, What acceptable audit canst thou leave?"
-    }
-   ]
-  },
-  {
-   "id": "traffic with|thyself|alone",
-   "subject": "traffic with",
-   "verb": "thyself",
-   "object": "alone",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1035,7 +1083,7 @@
    "verb": "thyself",
    "object": "thy beauty’s legacy?",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1046,56 +1094,24 @@
    ]
   },
   {
-   "id": "who for|thyself|art so unprovident",
-   "subject": "Who for",
-   "verb": "thyself",
-   "object": "art so unprovident",
+   "id": "whose speechless song|being|many",
+   "subject": "Whose speechless song",
+   "verb": "being",
+   "object": "many",
    "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
-     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#7453-7534",
+     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#6295-6757",
      "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
-     "text": "For shame deny that thou bear’st love to any Who for thyself art so unprovident."
-    }
-   ]
-  },
-  {
-   "id": "will wail|thee|like a makeless wife",
-   "subject": "will wail",
-   "verb": "thee",
-   "object": "like a makeless wife",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#6871-7421",
-     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
-     "text": "Ah, if thou issueless shalt hap to die, The world will wail thee like a makeless wife, The world will be thy widow and still weep, That thou no form of thee hast left behind, When every private widow well may keep, By children’s eyes, her husband’s shape in mind: Look what an unthrift in the world doth spend Shifts but his place, for still the world enjoys it; But beauty’s waste hath in the world an end, And kept unused the user so destroys it: No love toward others in that bosom sits That on himself such murd’rous shame commits."
-    }
-   ]
-  },
-  {
-   "id": "with beauty|were|bereft",
-   "subject": "with beauty",
-   "verb": "were",
-   "object": "bereft",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt#4150-4670",
-     "ref": "01-literature-books/gutenberg/pg100_Complete_Works_of_Shakespeare.txt",
-     "text": "Those hours that with gentle work did frame The lovely gaze where every eye doth dwell Will play the tyrants to the very same, And that unfair which fairly doth excel: For never-resting time leads summer on To hideous winter and confounds him there, Sap checked with frost and lusty leaves quite gone, Beauty o’er-snowed and bareness every where: Then were not summer’s distillation left A liquid prisoner pent in walls of glass, Beauty’s effect with beauty were bereft, Nor it nor no remembrance what it was."
+     "text": "If the true concord of well-tuned sounds, By unions married do offend thine ear, They do but sweetly chide thee, who confounds In singleness the parts that thou shouldst bear: Mark how one string sweet husband to another, Strikes each in each by mutual ordering; Resembling sire, and child, and happy mother, Who all in one, one pleasing note do sing: Whose speechless song being many, seeming one, Sings this to thee, ‘Thou single wilt prove none’."
     }
    ]
   }
  ],
  "lastRun": {
-  "recipeId": "aea2233a6055abf1",
-  "at": "2026-08-29T19:42:09.527Z"
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:32.677Z"
  }
 }

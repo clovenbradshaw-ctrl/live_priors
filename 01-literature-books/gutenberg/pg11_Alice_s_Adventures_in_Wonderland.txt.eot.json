@@ -7,27 +7,43 @@
   "declaredIdentity": null
  },
  "recipe": {
-  "id": "aea2233a6055abf1",
+  "id": "d4c696c0ac8e97c6",
   "descriptor": {
    "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
    "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
    "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
    "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
    "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
    "verbForms": null,
    "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
    "excerptChars": 8000,
    "provenance": {
     "eoreader7": {
-     "commit": "f1896810b586622d0e1efac3d637e6f1b262b921",
-     "dirty": false
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
     },
     "theFold": {
-     "commit": "5f168b61faa66fa92057c08b2f81abff9ae89cde",
-     "dirty": false
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
     },
     "livePriors": {
-     "commit": "884a785cd9021cf79dd6453a0218b4671072b5ec",
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
      "dirty": true
     }
    }
@@ -51,37 +67,37 @@
  },
  "reading": {
   "sentences": 81,
-  "surfaces": 45,
+  "surfaces": 44,
   "referentEvents": 6,
   "distinctReferents": 5,
   "examined": true,
-  "edgesFound": 34,
+  "edgesFound": 48,
   "extractionError": null,
   "vocabulary": {
-   "verbs": 9,
+   "verbs": 24,
    "minSurfaces": 1,
    "grammarPrior": true,
-   "candidates": 24
+   "candidates": 49
   },
   "contentWithoutRelations": false,
   "grammar": {
-   "checked": 34,
+   "checked": 48,
    "minShare": 0.5,
    "mismatched": []
   }
  },
  "spanSelfVerification": {
-  "excerptChecked": 38,
-  "excerptOk": 38,
-  "rawChecked": 38,
-  "rawOk": 38,
+  "excerptChecked": 52,
+  "excerptOk": 52,
+  "rawChecked": 52,
+  "rawOk": 52,
   "rawPassRate": 1,
   "bad": []
  },
  "admission": {
   "gate": "clean",
-  "offered": 34,
-  "heard": 34,
+  "offered": 48,
+  "heard": 48,
   "turnedAway": 0,
   "turnedAwayReasons": {},
   "suppressedByScriptGap": 0
@@ -90,7 +106,7 @@
   "entries": [
    {
     "kind": "propose",
-    "task_id": "her sister|was|reading",
+    "task_id": "the book her sister|was|reading",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -99,12 +115,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "her sister was reading",
-    "subject": "her sister",
+    "description": "the book her sister was reading",
+    "subject": "the book her sister",
     "verb": "was",
     "object": "reading",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -133,7 +149,7 @@
     "verb": "was",
     "object": "considering in her own mind (as well as she could",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -162,7 +178,7 @@
     "verb": "was",
     "object": "nothing so _very_ remarkable in that",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -187,6 +203,35 @@
    },
    {
     "kind": "propose",
+    "task_id": "and|looked|at it",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and looked at it",
+    "subject": "and",
+    "verb": "looked",
+    "object": "at it",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#1432-2007",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "(when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually _took a watch out of its waistcoat-pocket_, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
     "task_id": "alice|started|to her feet",
     "operator": "INS",
     "operator_basis": "produced",
@@ -201,7 +246,7 @@
     "verb": "started",
     "object": "to her feet",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -210,7 +255,7 @@
       "text": "(when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually _took a watch out of its waistcoat-pocket_, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
      }
     ],
-    "seq": 3,
+    "seq": 4,
     "depends_on": [],
     "evidence": []
    },
@@ -230,21 +275,45 @@
     "verb": "had",
     "object": "never before seen a rabbit with either a waistcoat-pocket",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
       "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#1432-2007",
       "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
       "text": "(when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually _took a watch out of its waistcoat-pocket_, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
-     },
-     {
-      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#6918-7151",
-      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-      "text": "However, on the second time round, she came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great delight it fitted!"
      }
     ],
-    "seq": 4,
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "another moment down|went|alice after it",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "another moment down went Alice after it",
+    "subject": "another moment down",
+    "verb": "went",
+    "object": "Alice after it",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2011-2121",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "In another moment down went Alice after it, never once considering how in the world she was to get out again."
+     }
+    ],
+    "seq": 6,
     "depends_on": [],
     "evidence": []
    },
@@ -264,7 +333,7 @@
     "verb": "was",
     "object": "to get out again",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -273,13 +342,13 @@
       "text": "In another moment down went Alice after it, never once considering how in the world she was to get out again."
      }
     ],
-    "seq": 5,
+    "seq": 7,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the well|was|very deep",
+    "task_id": "hole|went|straight on like a tunnel for some way",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -288,12 +357,41 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the well was very deep",
-    "subject": "the well",
+    "description": "hole went straight on like a tunnel for some way",
+    "subject": "hole",
+    "verb": "went",
+    "object": "straight on like a tunnel for some way",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2125-2347",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "either the well|was|very deep",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Either the well was very deep",
+    "subject": "Either the well",
     "verb": "was",
     "object": "very deep",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -302,7 +400,36 @@
       "text": "Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next."
      }
     ],
-    "seq": 6,
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "or alice|fell|very slowly",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "or Alice fell very slowly",
+    "subject": "or Alice",
+    "verb": "fell",
+    "object": "very slowly",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2351-2515",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next."
+     }
+    ],
+    "seq": 10,
     "depends_on": [],
     "evidence": []
    },
@@ -322,7 +449,7 @@
     "verb": "was",
     "object": "going to happen next",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -331,13 +458,13 @@
       "text": "Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next."
      }
     ],
-    "seq": 7,
+    "seq": 11,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "what she|was|coming to",
+    "task_id": "alice tried to look down and make out what alice|was coming|to",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -346,12 +473,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "what she was coming to",
-    "subject": "what she",
-    "verb": "was",
-    "object": "coming to",
+    "description": "Alice tried to look down and make out what Alice was coming to",
+    "subject": "Alice tried to look down and make out what Alice",
+    "verb": "was coming",
+    "object": "to",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -360,7 +487,7 @@
       "text": "First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs."
      }
     ],
-    "seq": 8,
+    "seq": 12,
     "depends_on": [],
     "evidence": []
    },
@@ -380,7 +507,7 @@
     "verb": "was",
     "object": "too dark to see anything",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -394,7 +521,36 @@
       "text": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it."
      }
     ],
-    "seq": 9,
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "then alice|looked|at the sides of the well",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "then Alice looked at the sides of the well",
+    "subject": "then Alice",
+    "verb": "looked",
+    "object": "at the sides of the well",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2516-2789",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs."
+     }
+    ],
+    "seq": 14,
     "depends_on": [],
     "evidence": []
    },
@@ -414,7 +570,7 @@
     "verb": "was",
     "object": "labelled “ORANGE MARMALADE”",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -423,13 +579,42 @@
       "text": "She took down a jar from one of the shelves as she passed; it was labelled “ORANGE MARMALADE”, but to her great disappointment it was empty: she did not like to drop the jar for fear of killing somebody underneath, so managed to put it into one of the cupboards as she fell past it."
      }
     ],
-    "seq": 10,
+    "seq": 15,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "i shall|think|nothing of tumbling down stairs!",
+    "task_id": "so managed to put it into one of the cupboards as she|fell|past it",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "so managed to put it into one of the cupboards as she fell past it",
+    "subject": "so managed to put it into one of the cupboards as she",
+    "verb": "fell",
+    "object": "past it",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2790-3076",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "She took down a jar from one of the shelves as she passed; it was labelled “ORANGE MARMALADE”, but to her great disappointment it was empty: she did not like to drop the jar for fear of killing somebody underneath, so managed to put it into one of the cupboards as she fell past it."
+     }
+    ],
+    "seq": 16,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "i|shall think|nothing of tumbling down stairs!",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -439,11 +624,11 @@
     "mode": "Generate",
     "domain": "Existence",
     "description": "I shall think nothing of tumbling down stairs!",
-    "subject": "I shall",
-    "verb": "think",
+    "subject": "I",
+    "verb": "shall think",
     "object": "nothing of tumbling down stairs!",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -452,7 +637,7 @@
       "text": "thought Alice to herself, “after such a fall as this, I shall think nothing of tumbling down stairs!"
      }
     ],
-    "seq": 11,
+    "seq": 17,
     "depends_on": [],
     "evidence": []
    },
@@ -472,7 +657,7 @@
     "verb": "was",
     "object": "very likely true",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -481,13 +666,13 @@
       "text": "(Which was very likely true.)"
      }
     ],
-    "seq": 12,
+    "seq": 18,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "miles i’ve|fallen|by this time?”",
+    "task_id": "i wonder how many miles i’ve|fallen|by this time?”",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -496,12 +681,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "miles I’ve fallen by this time?”",
-    "subject": "miles I’ve",
+    "description": "I wonder how many miles I’ve fallen by this time?”",
+    "subject": "I wonder how many miles I’ve",
     "verb": "fallen",
     "object": "by this time?”",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -510,7 +695,36 @@
       "text": "“I wonder how many miles I’ve fallen by this time?”"
      }
     ],
-    "seq": 13,
+    "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "alice|had learnt|several things of this sort in her lessons in the schoolroom",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Alice had learnt several things of this sort in her lessons in the schoolroom",
+    "subject": "Alice",
+    "verb": "had learnt",
+    "object": "several things of this sort in her lessons in the schoolroom",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#3532-3953",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "Let me see: that would be four thousand miles down, I think—” (for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a _very_ good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over) “—yes, that’s about the right distance—but then I wonder what Latitude or Longitude I’ve got to?”"
+     }
+    ],
+    "seq": 20,
     "depends_on": [],
     "evidence": []
    },
@@ -530,7 +744,7 @@
     "verb": "was",
     "object": "no one to listen to her",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -539,13 +753,13 @@
       "text": "Let me see: that would be four thousand miles down, I think—” (for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a _very_ good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over) “—yes, that’s about the right distance—but then I wonder what Latitude or Longitude I’ve got to?”"
      }
     ],
-    "seq": 14,
+    "seq": 21,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "longitude i’ve|got|to?”",
+    "task_id": "but then i wonder what latitude or longitude i’ve|got|to?”",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -554,12 +768,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "Longitude I’ve got to?”",
-    "subject": "Longitude I’ve",
+    "description": "but then I wonder what Latitude or Longitude I’ve got to?”",
+    "subject": "but then I wonder what Latitude or Longitude I’ve",
     "verb": "got",
     "object": "to?”",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -568,7 +782,7 @@
       "text": "Let me see: that would be four thousand miles down, I think—” (for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a _very_ good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over) “—yes, that’s about the right distance—but then I wonder what Latitude or Longitude I’ve got to?”"
      }
     ],
-    "seq": 15,
+    "seq": 22,
     "depends_on": [],
     "evidence": []
    },
@@ -588,7 +802,7 @@
     "verb": "began",
     "object": "again",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -597,13 +811,13 @@
       "text": "Presently she began again."
      }
     ],
-    "seq": 16,
+    "seq": 23,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "girl she’ll|think|me for asking!",
+    "task_id": "an ignorant little girl she’ll|think|me for asking!",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -612,12 +826,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "girl she’ll think me for asking!",
-    "subject": "girl she’ll",
+    "description": "an ignorant little girl she’ll think me for asking!",
+    "subject": "an ignorant little girl she’ll",
     "verb": "think",
     "object": "me for asking!",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -626,7 +840,7 @@
       "text": "Do you think you could manage it?) “And what an ignorant little girl she’ll think me for asking!"
      }
     ],
-    "seq": 17,
+    "seq": 24,
     "depends_on": [],
     "evidence": []
    },
@@ -646,7 +860,7 @@
     "verb": "began",
     "object": "talking again",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -655,7 +869,7 @@
       "text": "There was nothing else to do, so Alice soon began talking again."
      }
     ],
-    "seq": 18,
+    "seq": 25,
     "depends_on": [],
     "evidence": []
    },
@@ -675,7 +889,7 @@
     "verb": "was",
     "object": "the cat",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -684,13 +898,13 @@
       "text": "(Dinah was the cat.) “I hope they’ll remember her saucer of milk at tea-time."
      }
     ],
-    "seq": 19,
+    "seq": 26,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "here\nalice|began|to get rather sleepy",
+    "task_id": "but you|might|catch a bat",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -699,12 +913,41 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "here\nAlice began to get rather sleepy",
-    "subject": "here\nAlice",
+    "description": "but you might catch a bat",
+    "subject": "but you",
+    "verb": "might",
+    "object": "catch a bat",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5032-5142",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "There are no mice in the air, I’m afraid, but you might catch a bat, and that’s very like a mouse, you know."
+     }
+    ],
+    "seq": 27,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "here alice|began|to get rather sleepy",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "here Alice began to get rather sleepy",
+    "subject": "here Alice",
     "verb": "began",
     "object": "to get rather sleepy",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -713,13 +956,13 @@
       "text": "And here Alice began to get rather sleepy, and went on saying to herself, in a dreamy sort of way, “Do cats eat bats?"
      }
     ],
-    "seq": 20,
+    "seq": 28,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "that she|was|dozing off",
+    "task_id": "and|went|on saying to herself",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -728,27 +971,27 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "that she was dozing off",
-    "subject": "that she",
-    "verb": "was",
-    "object": "dozing off",
+    "description": "and went on saying to herself",
+    "subject": "and",
+    "verb": "went",
+    "object": "on saying to herself",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
-      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5450-5651",
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5176-5295",
       "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-      "text": "She felt that she was dozing off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very earnestly, “Now, Dinah, tell me the truth: did you ever eat a bat?”"
+      "text": "And here Alice began to get rather sleepy, and went on saying to herself, in a dreamy sort of way, “Do cats eat bats?"
      }
     ],
-    "seq": 21,
+    "seq": 29,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "that she|was|walking hand in hand with dinah",
+    "task_id": "alice|felt|that alice was dozing off",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -757,12 +1000,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "that she was walking hand in hand with Dinah",
-    "subject": "that she",
-    "verb": "was",
-    "object": "walking hand in hand with Dinah",
+    "description": "Alice felt that Alice was dozing off",
+    "subject": "Alice",
+    "verb": "felt",
+    "object": "that Alice was dozing off",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -771,7 +1014,70 @@
       "text": "She felt that she was dozing off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very earnestly, “Now, Dinah, tell me the truth: did you ever eat a bat?”"
      }
     ],
-    "seq": 22,
+    "seq": 30,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that alice|was walking|hand in hand with dinah",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that Alice was walking hand in hand with Dinah",
+    "subject": "that Alice",
+    "verb": "was walking",
+    "object": "hand in hand with Dinah",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5450-5651",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "She felt that she was dozing off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very earnestly, “Now, Dinah, tell me the truth: did you ever eat a bat?”"
+     }
+    ],
+    "seq": 31,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "down she|came|upon a heap of sticks and dry leaves",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "down she came upon a heap of sticks and dry leaves",
+    "subject": "down she",
+    "verb": "came",
+    "object": "upon a heap of sticks and dry leaves",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5682-5757",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "down she came upon a heap of sticks and dry leaves, and the fall was over."
+     },
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#6586-6810",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "Suddenly she came upon a little three-legged table, all made of solid glass; there was nothing on it except a tiny golden key, and Alice’s first thought was that it might belong to one of the doors of the hall; but, alas!"
+     }
+    ],
+    "seq": 32,
     "depends_on": [],
     "evidence": []
    },
@@ -791,7 +1097,7 @@
     "verb": "was",
     "object": "over",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -800,7 +1106,7 @@
       "text": "down she came upon a heap of sticks and dry leaves, and the fall was over."
      }
     ],
-    "seq": 23,
+    "seq": 33,
     "depends_on": [],
     "evidence": []
    },
@@ -820,7 +1126,7 @@
     "verb": "was",
     "object": "not a bit hurt",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -829,13 +1135,13 @@
       "text": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it."
      }
     ],
-    "seq": 24,
+    "seq": 34,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "white rabbit|was|still in sight",
+    "task_id": "she|looked|up",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -844,12 +1150,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "White Rabbit was still in sight",
-    "subject": "White Rabbit",
-    "verb": "was",
-    "object": "still in sight",
+    "description": "she looked up",
+    "subject": "she",
+    "verb": "looked",
+    "object": "up",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -858,7 +1164,36 @@
       "text": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it."
      }
     ],
-    "seq": 25,
+    "seq": 35,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the white rabbit|was|still in sight",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the White Rabbit was still in sight",
+    "subject": "the White Rabbit",
+    "verb": "was",
+    "object": "still in sight",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5761-5976",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it."
+     }
+    ],
+    "seq": 36,
     "depends_on": [],
     "evidence": []
    },
@@ -878,7 +1213,7 @@
     "verb": "was",
     "object": "not a moment to be lost: away went Alice like the wind",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -887,7 +1222,7 @@
       "text": "There was not a moment to be lost: away went Alice like the wind, and was just in time to hear it say, as it turned a corner, “Oh my ears and whiskers, how late it’s getting!”"
      }
     ],
-    "seq": 26,
+    "seq": 37,
     "depends_on": [],
     "evidence": []
    },
@@ -907,7 +1242,7 @@
     "verb": "was",
     "object": "just in time to hear it say",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -916,13 +1251,13 @@
       "text": "There was not a moment to be lost: away went Alice like the wind, and was just in time to hear it say, as it turned a corner, “Oh my ears and whiskers, how late it’s getting!”"
      }
     ],
-    "seq": 27,
+    "seq": 38,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "when\nalice|had|been all the way down one side and up the other",
+    "task_id": "when alice|had been|all the way down one side and up the other",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -931,12 +1266,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "when\nAlice had been all the way down one side and up the other",
-    "subject": "when\nAlice",
-    "verb": "had",
-    "object": "been all the way down one side and up the other",
+    "description": "when Alice had been all the way down one side and up the other",
+    "subject": "when Alice",
+    "verb": "had been",
+    "object": "all the way down one side and up the other",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -945,7 +1280,7 @@
       "text": "There were doors all round the hall, but they were all locked; and when Alice had been all the way down one side and up the other, trying every door, she walked sadly down the middle, wondering how she was ever to get out again."
      }
     ],
-    "seq": 28,
+    "seq": 39,
     "depends_on": [],
     "evidence": []
    },
@@ -965,7 +1300,7 @@
     "verb": "was",
     "object": "that it might belong to one of the doors of the hall",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -974,13 +1309,13 @@
       "text": "Suddenly she came upon a little three-legged table, all made of solid glass; there was nothing on it except a tiny golden key, and Alice’s first thought was that it might belong to one of the doors of the hall; but, alas!"
      }
     ],
-    "seq": 29,
+    "seq": 40,
     "depends_on": [],
     "evidence": []
    },
    {
     "kind": "propose",
-    "task_id": "the key|was|too small",
+    "task_id": "or the key|was|too small",
     "operator": "INS",
     "operator_basis": "produced",
     "grain": "Figure",
@@ -989,12 +1324,12 @@
     "terrain": "Entity",
     "mode": "Generate",
     "domain": "Existence",
-    "description": "the key was too small",
-    "subject": "the key",
+    "description": "or the key was too small",
+    "subject": "or the key",
     "verb": "was",
     "object": "too small",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -1003,7 +1338,36 @@
       "text": "either the locks were too large, or the key was too small, but at any rate it would not open any of them."
      }
     ],
-    "seq": 30,
+    "seq": 41,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "alice|came|upon a low curtain alice had not noticed before",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Alice came upon a low curtain Alice had not noticed before",
+    "subject": "Alice",
+    "verb": "came",
+    "object": "upon a low curtain Alice had not noticed before",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#6918-7151",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "However, on the second time round, she came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great delight it fitted!"
+     }
+    ],
+    "seq": 42,
     "depends_on": [],
     "evidence": []
    },
@@ -1023,7 +1387,7 @@
     "verb": "opened",
     "object": "the door and found that it led into a small passage",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -1032,7 +1396,7 @@
       "text": "Alice opened the door and found that it led into a small passage, not much larger than a rat-hole: she knelt down and looked along the passage into the loveliest garden you ever saw."
      }
     ],
-    "seq": 31,
+    "seq": 43,
     "depends_on": [],
     "evidence": []
    },
@@ -1052,7 +1416,7 @@
     "verb": "think",
     "object": "I could",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -1061,7 +1425,7 @@
       "text": "I think I could, if I only knew how to begin.”"
      }
     ],
-    "seq": 32,
+    "seq": 44,
     "depends_on": [],
     "evidence": []
    },
@@ -1081,7 +1445,7 @@
     "verb": "had",
     "object": "happened lately",
     "witnesses": [
-     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
     ],
     "spans": [
      {
@@ -1090,12 +1454,70 @@
       "text": "For, you see, so many out-of-the-way things had happened lately, that Alice had begun to think that very few things indeed were really impossible."
      }
     ],
-    "seq": 33,
+    "seq": 45,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "so alice|went|back to the table",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "so Alice went back to the table",
+    "subject": "so Alice",
+    "verb": "went",
+    "object": "back to the table",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#7888-8000",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "There seemed to be no use in waiting by the little door, so she went back to the table, half hoping she might f"
+     }
+    ],
+    "seq": 46,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "hoping alice|might|f",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "hoping Alice might f",
+    "subject": "hoping Alice",
+    "verb": "might",
+    "object": "f",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#7888-8000",
+      "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+      "text": "There seemed to be no use in waiting by the little door, so she went back to the table, half hoping she might f"
+     }
+    ],
+    "seq": 47,
     "depends_on": [],
     "evidence": []
    }
   ],
-  "nextSeq": 34,
+  "nextSeq": 48,
   "admits": [
    "NUL",
    "SEG",
@@ -1115,7 +1537,7 @@
    "verb": "began",
    "object": "talking again",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1126,12 +1548,76 @@
    ]
   },
   {
+   "id": "alice tried to look down and make out what alice|was coming|to",
+   "subject": "Alice tried to look down and make out what Alice",
+   "verb": "was coming",
+   "object": "to",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2516-2789",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs."
+    }
+   ]
+  },
+  {
+   "id": "alice|came|upon a low curtain alice had not noticed before",
+   "subject": "Alice",
+   "verb": "came",
+   "object": "upon a low curtain Alice had not noticed before",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#6918-7151",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "However, on the second time round, she came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great delight it fitted!"
+    }
+   ]
+  },
+  {
+   "id": "alice|felt|that alice was dozing off",
+   "subject": "Alice",
+   "verb": "felt",
+   "object": "that Alice was dozing off",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5450-5651",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "She felt that she was dozing off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very earnestly, “Now, Dinah, tell me the truth: did you ever eat a bat?”"
+    }
+   ]
+  },
+  {
+   "id": "alice|had learnt|several things of this sort in her lessons in the schoolroom",
+   "subject": "Alice",
+   "verb": "had learnt",
+   "object": "several things of this sort in her lessons in the schoolroom",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#3532-3953",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Let me see: that would be four thousand miles down, I think—” (for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a _very_ good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over) “—yes, that’s about the right distance—but then I wonder what Latitude or Longitude I’ve got to?”"
+    }
+   ]
+  },
+  {
    "id": "alice|opened|the door and found that it led into a small passage",
    "subject": "Alice",
    "verb": "opened",
    "object": "the door and found that it led into a small passage",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1147,7 +1633,7 @@
    "verb": "started",
    "object": "to her feet",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1163,7 +1649,7 @@
    "verb": "was",
    "object": "not a bit hurt",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1174,12 +1660,44 @@
    ]
   },
   {
+   "id": "an ignorant little girl she’ll|think|me for asking!",
+   "subject": "an ignorant little girl she’ll",
+   "verb": "think",
+   "object": "me for asking!",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#4588-4685",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Do you think you could manage it?) “And what an ignorant little girl she’ll think me for asking!"
+    }
+   ]
+  },
+  {
+   "id": "and|looked|at it",
+   "subject": "and",
+   "verb": "looked",
+   "object": "at it",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#1432-2007",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "(when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually _took a watch out of its waistcoat-pocket_, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
+    }
+   ]
+  },
+  {
    "id": "and|was|just in time to hear it say",
    "subject": "and",
    "verb": "was",
    "object": "just in time to hear it say",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1190,12 +1708,44 @@
    ]
   },
   {
+   "id": "and|went|on saying to herself",
+   "subject": "and",
+   "verb": "went",
+   "object": "on saying to herself",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5176-5295",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "And here Alice began to get rather sleepy, and went on saying to herself, in a dreamy sort of way, “Do cats eat bats?"
+    }
+   ]
+  },
+  {
+   "id": "another moment down|went|alice after it",
+   "subject": "another moment down",
+   "verb": "went",
+   "object": "Alice after it",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2011-2121",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "In another moment down went Alice after it, never once considering how in the world she was to get out again."
+    }
+   ]
+  },
+  {
    "id": "as there|was|no one to listen to her",
    "subject": "as there",
    "verb": "was",
    "object": "no one to listen to her",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1211,7 +1761,7 @@
    "verb": "was",
    "object": "too dark to see anything",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1227,12 +1777,44 @@
    ]
   },
   {
+   "id": "but then i wonder what latitude or longitude i’ve|got|to?”",
+   "subject": "but then I wonder what Latitude or Longitude I’ve",
+   "verb": "got",
+   "object": "to?”",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#3532-3953",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Let me see: that would be four thousand miles down, I think—” (for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a _very_ good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over) “—yes, that’s about the right distance—but then I wonder what Latitude or Longitude I’ve got to?”"
+    }
+   ]
+  },
+  {
+   "id": "but you|might|catch a bat",
+   "subject": "but you",
+   "verb": "might",
+   "object": "catch a bat",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5032-5142",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "There are no mice in the air, I’m afraid, but you might catch a bat, and that’s very like a mouse, you know."
+    }
+   ]
+  },
+  {
    "id": "dinah|was|the cat",
    "subject": "Dinah",
    "verb": "was",
    "object": "the cat",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1243,12 +1825,49 @@
    ]
   },
   {
+   "id": "down she|came|upon a heap of sticks and dry leaves",
+   "subject": "down she",
+   "verb": "came",
+   "object": "upon a heap of sticks and dry leaves",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5682-5757",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "down she came upon a heap of sticks and dry leaves, and the fall was over."
+    },
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#6586-6810",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Suddenly she came upon a little three-legged table, all made of solid glass; there was nothing on it except a tiny golden key, and Alice’s first thought was that it might belong to one of the doors of the hall; but, alas!"
+    }
+   ]
+  },
+  {
+   "id": "either the well|was|very deep",
+   "subject": "Either the well",
+   "verb": "was",
+   "object": "very deep",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2351-2515",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next."
+    }
+   ]
+  },
+  {
    "id": "first thought|was|that it might belong to one of the doors of the hall",
    "subject": "first thought",
    "verb": "was",
    "object": "that it might belong to one of the doors of the hall",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1259,44 +1878,12 @@
    ]
   },
   {
-   "id": "girl she’ll|think|me for asking!",
-   "subject": "girl she’ll",
-   "verb": "think",
-   "object": "me for asking!",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#4588-4685",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "Do you think you could manage it?) “And what an ignorant little girl she’ll think me for asking!"
-    }
-   ]
-  },
-  {
-   "id": "her sister|was|reading",
-   "subject": "her sister",
-   "verb": "was",
-   "object": "reading",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#651-957",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”"
-    }
-   ]
-  },
-  {
-   "id": "here\nalice|began|to get rather sleepy",
-   "subject": "here\nAlice",
+   "id": "here alice|began|to get rather sleepy",
+   "subject": "here Alice",
    "verb": "began",
    "object": "to get rather sleepy",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1307,12 +1894,60 @@
    ]
   },
   {
-   "id": "i shall|think|nothing of tumbling down stairs!",
-   "subject": "I shall",
-   "verb": "think",
+   "id": "hole|went|straight on like a tunnel for some way",
+   "subject": "hole",
+   "verb": "went",
+   "object": "straight on like a tunnel for some way",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2125-2347",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well."
+    }
+   ]
+  },
+  {
+   "id": "hoping alice|might|f",
+   "subject": "hoping Alice",
+   "verb": "might",
+   "object": "f",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#7888-8000",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "There seemed to be no use in waiting by the little door, so she went back to the table, half hoping she might f"
+    }
+   ]
+  },
+  {
+   "id": "i wonder how many miles i’ve|fallen|by this time?”",
+   "subject": "I wonder how many miles I’ve",
+   "verb": "fallen",
+   "object": "by this time?”",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#3403-3455",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "“I wonder how many miles I’ve fallen by this time?”"
+    }
+   ]
+  },
+  {
+   "id": "i|shall think|nothing of tumbling down stairs!",
+   "subject": "I",
+   "verb": "shall think",
    "object": "nothing of tumbling down stairs!",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1328,7 +1963,7 @@
    "verb": "think",
    "object": "I could",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1344,7 +1979,7 @@
    "verb": "was",
    "object": "labelled “ORANGE MARMALADE”",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1355,161 +1990,12 @@
    ]
   },
   {
-   "id": "longitude i’ve|got|to?”",
-   "subject": "Longitude I’ve",
-   "verb": "got",
-   "object": "to?”",
+   "id": "or alice|fell|very slowly",
+   "subject": "or Alice",
+   "verb": "fell",
+   "object": "very slowly",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#3532-3953",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "Let me see: that would be four thousand miles down, I think—” (for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a _very_ good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over) “—yes, that’s about the right distance—but then I wonder what Latitude or Longitude I’ve got to?”"
-    }
-   ]
-  },
-  {
-   "id": "miles i’ve|fallen|by this time?”",
-   "subject": "miles I’ve",
-   "verb": "fallen",
-   "object": "by this time?”",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#3403-3455",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "“I wonder how many miles I’ve fallen by this time?”"
-    }
-   ]
-  },
-  {
-   "id": "presently she|began|again",
-   "subject": "Presently she",
-   "verb": "began",
-   "object": "again",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#4066-4092",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "Presently she began again."
-    }
-   ]
-  },
-  {
-   "id": "so she|was|considering in her own mind (as well as she could",
-   "subject": "So she",
-   "verb": "was",
-   "object": "considering in her own mind (as well as she could",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#961-1254",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her."
-    }
-   ]
-  },
-  {
-   "id": "that she|had|never before seen a rabbit with either a waistcoat-pocket",
-   "subject": "that she",
-   "verb": "had",
-   "object": "never before seen a rabbit with either a waistcoat-pocket",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#1432-2007",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "(when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually _took a watch out of its waistcoat-pocket_, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
-    },
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#6918-7151",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "However, on the second time round, she came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great delight it fitted!"
-    }
-   ]
-  },
-  {
-   "id": "that she|was|dozing off",
-   "subject": "that she",
-   "verb": "was",
-   "object": "dozing off",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5450-5651",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "She felt that she was dozing off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very earnestly, “Now, Dinah, tell me the truth: did you ever eat a bat?”"
-    }
-   ]
-  },
-  {
-   "id": "that she|was|walking hand in hand with dinah",
-   "subject": "that she",
-   "verb": "was",
-   "object": "walking hand in hand with Dinah",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5450-5651",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "She felt that she was dozing off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very earnestly, “Now, Dinah, tell me the truth: did you ever eat a bat?”"
-    }
-   ]
-  },
-  {
-   "id": "the fall|was|over",
-   "subject": "the fall",
-   "verb": "was",
-   "object": "over",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5682-5757",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "down she came upon a heap of sticks and dry leaves, and the fall was over."
-    }
-   ]
-  },
-  {
-   "id": "the key|was|too small",
-   "subject": "the key",
-   "verb": "was",
-   "object": "too small",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#6811-6917",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "either the locks were too large, or the key was too small, but at any rate it would not open any of them."
-    }
-   ]
-  },
-  {
-   "id": "the well|was|very deep",
-   "subject": "the well",
-   "verb": "was",
-   "object": "very deep",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1520,12 +2006,204 @@
    ]
   },
   {
+   "id": "or the key|was|too small",
+   "subject": "or the key",
+   "verb": "was",
+   "object": "too small",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#6811-6917",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "either the locks were too large, or the key was too small, but at any rate it would not open any of them."
+    }
+   ]
+  },
+  {
+   "id": "presently she|began|again",
+   "subject": "Presently she",
+   "verb": "began",
+   "object": "again",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#4066-4092",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Presently she began again."
+    }
+   ]
+  },
+  {
+   "id": "she|looked|up",
+   "subject": "she",
+   "verb": "looked",
+   "object": "up",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5761-5976",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it."
+    }
+   ]
+  },
+  {
+   "id": "so alice|went|back to the table",
+   "subject": "so Alice",
+   "verb": "went",
+   "object": "back to the table",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#7888-8000",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "There seemed to be no use in waiting by the little door, so she went back to the table, half hoping she might f"
+    }
+   ]
+  },
+  {
+   "id": "so managed to put it into one of the cupboards as she|fell|past it",
+   "subject": "so managed to put it into one of the cupboards as she",
+   "verb": "fell",
+   "object": "past it",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2790-3076",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "She took down a jar from one of the shelves as she passed; it was labelled “ORANGE MARMALADE”, but to her great disappointment it was empty: she did not like to drop the jar for fear of killing somebody underneath, so managed to put it into one of the cupboards as she fell past it."
+    }
+   ]
+  },
+  {
+   "id": "so she|was|considering in her own mind (as well as she could",
+   "subject": "So she",
+   "verb": "was",
+   "object": "considering in her own mind (as well as she could",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#961-1254",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her."
+    }
+   ]
+  },
+  {
+   "id": "that alice|was walking|hand in hand with dinah",
+   "subject": "that Alice",
+   "verb": "was walking",
+   "object": "hand in hand with Dinah",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5450-5651",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "She felt that she was dozing off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very earnestly, “Now, Dinah, tell me the truth: did you ever eat a bat?”"
+    }
+   ]
+  },
+  {
+   "id": "that she|had|never before seen a rabbit with either a waistcoat-pocket",
+   "subject": "that she",
+   "verb": "had",
+   "object": "never before seen a rabbit with either a waistcoat-pocket",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#1432-2007",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "(when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually _took a watch out of its waistcoat-pocket_, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
+    }
+   ]
+  },
+  {
+   "id": "the book her sister|was|reading",
+   "subject": "the book her sister",
+   "verb": "was",
+   "object": "reading",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#651-957",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”"
+    }
+   ]
+  },
+  {
+   "id": "the fall|was|over",
+   "subject": "the fall",
+   "verb": "was",
+   "object": "over",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5682-5757",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "down she came upon a heap of sticks and dry leaves, and the fall was over."
+    }
+   ]
+  },
+  {
+   "id": "the white rabbit|was|still in sight",
+   "subject": "the White Rabbit",
+   "verb": "was",
+   "object": "still in sight",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5761-5976",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it."
+    }
+   ]
+  },
+  {
+   "id": "then alice|looked|at the sides of the well",
+   "subject": "then Alice",
+   "verb": "looked",
+   "object": "at the sides of the well",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2516-2789",
+     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+     "text": "First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs."
+    }
+   ]
+  },
+  {
    "id": "there|was|not a moment to be lost: away went alice like the wind",
    "subject": "There",
    "verb": "was",
    "object": "not a moment to be lost: away went Alice like the wind",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1541,7 +2219,7 @@
    "verb": "was",
    "object": "nothing so _very_ remarkable in that",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1567,7 +2245,7 @@
    "verb": "had",
    "object": "happened lately",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1578,28 +2256,12 @@
    ]
   },
   {
-   "id": "what she|was|coming to",
-   "subject": "what she",
-   "verb": "was",
-   "object": "coming to",
+   "id": "when alice|had been|all the way down one side and up the other",
+   "subject": "when Alice",
+   "verb": "had been",
+   "object": "all the way down one side and up the other",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#2516-2789",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs."
-    }
-   ]
-  },
-  {
-   "id": "when\nalice|had|been all the way down one side and up the other",
-   "subject": "when\nAlice",
-   "verb": "had",
-   "object": "been all the way down one side and up the other",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1615,7 +2277,7 @@
    "verb": "was",
    "object": "very likely true",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1626,28 +2288,12 @@
    ]
   },
   {
-   "id": "white rabbit|was|still in sight",
-   "subject": "White Rabbit",
-   "verb": "was",
-   "object": "still in sight",
-   "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
-   ],
-   "spans": [
-    {
-     "at": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt#5761-5976",
-     "ref": "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
-     "text": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it."
-    }
-   ]
-  },
-  {
    "id": "wonder what|was|going to happen next",
    "subject": "wonder what",
    "verb": "was",
    "object": "going to happen next",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1663,7 +2309,7 @@
    "verb": "was",
    "object": "to get out again",
    "witnesses": [
-    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@aea2233a6055abf1"
+    "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt@d4c696c0ac8e97c6"
    ],
    "spans": [
     {
@@ -1675,7 +2321,7 @@
   }
  ],
  "lastRun": {
-  "recipeId": "aea2233a6055abf1",
-  "at": "2026-08-29T19:42:09.753Z"
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:32.966Z"
  }
 }
