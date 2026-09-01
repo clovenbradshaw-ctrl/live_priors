@@ -697,6 +697,34 @@ hand-adjudicated sidecar already exists here"). Kept here rather than
 quietly folded into a clean final number, because the honest account of
 testing a process is not only what the process got right.
 
+**Addendum, next day — the held-out test this entry's own claims were
+waiting on.** User question, direct: "do you think these are good
+priors?" — followed by the instruction to answer it with an e2e test on
+a net-new corpus rather than an opinion. `scripts/e2e-generalization-
+eval.mjs` + `scripts/e2e-generalization-test-RESULTS.md`: 13 hand-read
+specimens from `06-government-legal/world-factbook` (a family with no
+golden, no sidecar, no frame-table phrase drawn from it), scored live
+against the currently-committed mechanical ladder. Coverage collapsed
+from 32.9% in-family to 15%, as expected for a classifier tuned on
+legal-declarative prose. **What was not assumed and had to be measured:
+zero of the two decisions made on unseen material were wrong** — the
+discipline (never guess; refuse and type the cause rather than decide
+past the evidence) held under the one kind of pressure this whole
+project had not yet put it under. Three genuinely new construction
+classes surfaced this way, each with a nameable cause rather than a
+vague miss: no branch exists for an ordinary transitive verb at all (the
+ladder's real coverage is copula constructions plus a dozen phrases
+lifted from one register); rule 3's definiteness test only recognizes an
+article, so a bare proper-noun predicate ("Algiers" as capital) has no
+path to SIG·Figure at all; and no rule anticipates a bare numeric or
+date predicate ("998 km", "5 July 1962"), which turns out to be the
+single most common predicate shape in a reference-fact register. One
+already-disclosed gap (dispositional/Pattern-promotion) fired again,
+exactly as documented — a confirmation, not a new find. The verdict,
+stated precisely rather than as a rating: the measurement DISCIPLINE is
+good and just proved itself outside the distribution it was built on;
+the COVERAGE is narrow and was previously only argued, now measured.
+
 ## What no entry here decides
 
 - **Whether the whole corpus should be read.** LP4 names the order of work
