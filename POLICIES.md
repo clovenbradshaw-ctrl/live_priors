@@ -1620,3 +1620,72 @@ fixed here, and not silently left unstated either.
 - **Anything about the fetch scripts.** The corpus-integrity finding
   (`digested/CORPUS-INTEGRITY-FINDING.md`) names a systemic problem in one
   subdirectory and explicitly does not diagnose or fix its cause.
+
+## LP15 — an alias is declared by the material, never derived from a name
+
+**Generality:** universal.
+
+A reader eventually has to know that two surfaces name one thing.
+eoreader7's `surfaces.js::namesCorefer` folds a name shortened by DROPPING
+WORDS and, measured 2026-09-04, does not fold one shortened by INITIALS:
+
+    namesCorefer("Nashville Downtown Partnership", "Downtown Partnership") -> true
+    namesCorefer("NDP", "Nashville Downtown Partnership")                  -> false
+    namesCorefer("CBID", "Central Business Improvement District")          -> false
+
+**The obvious patch is refused.** A rule that builds an initialism and
+compares it is a rule that DERIVES a name, and a rule that derives a name
+can invent one. Referent identity has never been safe to decide from the
+shape of a string here (L2's capitalisation veto; the cube refused as a
+content classifier; LP11's own rule that a loosened key is judged on its
+marginal admits).
+
+**What the material does instead.** Prose introduces its own short forms,
+in a small number of recurring SHAPES, at addresses — "Central Business
+Improvement District (CBID)". That is a declaration, not an inference, and
+reading it is the same act as reading any other claim.
+
+`scripts/build-alias-prior.mjs` therefore MEASURES which shapes English
+prose actually uses, over this corpus, and ships the counts:
+`derived-priors/alias-priors/alias-declaration-en.json`
+(`AliasDeclarationPrior@1`). Eight candidate shapes were tested over 900
+files / 20.8MB of `02-encyclopedic`, `06-government-legal`,
+`15-western-canon`, `05-academic-papers`. A shape FIRES when it matches and
+is CONFIRMED when the form it introduced is then used at least `min_uses`
+times in the same document — a gloss the document never uses again is an
+aside, not a name.
+
+| shape | fires | confirmed | rate |
+|---|---|---|---|
+| parenthetical `X (Y)` | 23,375 | 11,163 | 0.478 |
+| also-known-as | 10 | 1 | 0.100 |
+| known-as | 6 | 1 | 0.167 |
+| or `X, or Y,` | 13 | 3 | 0.231 |
+| abbreviated | 1 | 0 | 0.000 |
+| formerly | 3 | 0 | 0.000 |
+| short-for | 0 | 0 | — |
+| d/b/a | 0 | 0 | — |
+
+**One shape does essentially all the work, and the connective phrases a
+person would think to list first are close to absent.** Hand-listing them
+would have shipped seven rules that never fire beside the one that does,
+with nothing to say which was which. The near-zeros stay in the file: a
+consumer that widens its floor should see exactly what it is admitting.
+
+**What a consumer owes it.** `eoreader7/native/organs/aliases.js` receives
+this prior and holds no declaration vocabulary of its own. Both floors are
+the CALLER's (`minConfirmRate`, `minFires`) — this prior measures, it does
+not decide. The consuming organ walls every admitted gloss against the
+material's own use of it and re-reads the declaring sentence's byte span
+before shipping an alias (P5.2). An alias is evidence, and it is citable.
+
+**An acronym needs no rule of its own.** It is one subtype of alias,
+admitted on exactly the same evidence as a nickname, a short form or a case
+caption. Nothing in the prior or its consumer knows what an acronym is.
+
+**Limits, named.** English only — another language needs its own run over
+its own material, not a translation of this file. The corpus skews
+encyclopedic and governmental, which is where glossed abbreviations live;
+the rate here is not a rate for prose in general. And `confirm_rate` is not
+precision: a parenthetical whose words happen to recur is confirmed too, and
+the wall against that belongs to the consumer.
