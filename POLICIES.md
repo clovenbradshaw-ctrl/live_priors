@@ -1629,9 +1629,8 @@ A reader eventually has to know that two surfaces name one thing.
 eoreader7's `surfaces.js::namesCorefer` folds a name shortened by DROPPING
 WORDS and, measured 2026-09-04, does not fold one shortened by INITIALS:
 
-    namesCorefer("Nashville Downtown Partnership", "Downtown Partnership") -> true
-    namesCorefer("NDP", "Nashville Downtown Partnership")                  -> false
-    namesCorefer("CBID", "Central Business Improvement District")          -> false
+    namesCorefer("Regional Transit Authority", "Transit Authority") -> true
+    namesCorefer("RTA", "Regional Transit Authority")                -> false
 
 **The obvious patch is refused.** A rule that builds an initialism and
 compares it is a rule that DERIVES a name, and a rule that derives a name
@@ -1641,8 +1640,8 @@ content classifier; LP11's own rule that a loosened key is judged on its
 marginal admits).
 
 **What the material does instead.** Prose introduces its own short forms,
-in a small number of recurring SHAPES, at addresses — "Central Business
-Improvement District (CBID)". That is a declaration, not an inference, and
+in a small number of recurring SHAPES, at addresses — "the Regional
+Transit Authority (RTA)". That is a declaration, not an inference, and
 reading it is the same act as reading any other claim.
 
 `scripts/build-alias-prior.mjs` therefore MEASURES which shapes English

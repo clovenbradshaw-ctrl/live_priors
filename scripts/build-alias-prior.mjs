@@ -2,9 +2,9 @@
 //
 // WHAT THIS IS FOR. Every reader in this project eventually needs to know
 // that two surfaces name one thing. `surfaces.js::namesCorefer` already
-// folds a name shortened by DROPPING WORDS ("Nashville Downtown
-// Partnership" / "Downtown Partnership"), and measurably does NOT fold one
-// shortened by INITIALS ("NDP", "CBID"). The tempting patch is a rule that
+// folds a name shortened by DROPPING WORDS ("Regional Transit
+// Authority" / "Transit Authority"), and measurably does NOT fold one
+// shortened by INITIALS ("RTA"). The tempting patch is a rule that
 // builds an initialism and compares it — refused, because a rule that
 // DERIVES a name is a rule that can INVENT one, and this project has never
 // let the shape of a string decide referent identity.

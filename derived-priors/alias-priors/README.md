@@ -11,9 +11,8 @@ A reader eventually has to know that two surfaces name one thing.
 eoreader7's `surfaces.js::namesCorefer` already folds a name shortened by
 DROPPING WORDS, and measurably does not fold one shortened by INITIALS:
 
-    namesCorefer("Nashville Downtown Partnership", "Downtown Partnership") -> true
-    namesCorefer("NDP", "Nashville Downtown Partnership")                  -> false
-    namesCorefer("CBID", "Central Business Improvement District")          -> false
+    namesCorefer("Regional Transit Authority", "Transit Authority") -> true
+    namesCorefer("RTA", "Regional Transit Authority")                -> false
 
 The obvious patch — build an initialism and compare it — is refused on this
 project's own grounds: a rule that DERIVES a name is a rule that can INVENT
@@ -23,8 +22,8 @@ string (L2's capitalisation veto; the cube refused as a content classifier).
 Prose does not ask us to guess. It introduces its own short forms, in a
 small number of recurring SHAPES, at addresses:
 
-    "Central Business Improvement District (CBID)"
-    "The Nashville Downtown Partnership (NDP)"
+    "the Regional Transit Authority (RTA)"
+    "the Central Zoning Board (CZB)"
 
 So the shapes are what this prior carries, and an acronym needs no rule of
 its own — it is one subtype of alias, admitted on exactly the same evidence
