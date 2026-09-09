@@ -1,15 +1,15 @@
 # live_priors
 
-A living corpus of source texts, organized by the 17 categories from [`eoPriors/docs/corpus-sources.md`](https://github.com/clovenbradshaw-ctrl/eoPriors/blob/main/docs/corpus-sources.md).
+A living corpus of source texts, organized by the 17 categories from [`eoPriors/docs/corpus-sources.md`](https://github.com/clovenbradshaw-ctrl/eoPriors/blob/main/docs/corpus-sources.md), plus one added category (children's books, `18-`) for bootstrapping LaVar's reading system.
 
 This repo **pulls** the sources — not just catalogs them. Texts are stored as documents with fetch scripts for every API-accessible source.
 
-**Every document carries at least 600 words.** A prior you cannot measure structure against is
-not a prior; see [The 600-word floor](#the-600-word-floor) below.
+**Every document carries at least 600 words**, with one deliberate exception: see
+[The 600-word floor](#the-600-word-floor) below.
 
 ## What's Here
 
-2,078 documents. The largest section is government and legal, which holds official texts
+2,100+ documents. The largest section is government and legal, which holds official texts
 published by institutions in 28 jurisdictions.
 
 | Directory | Content |
@@ -23,6 +23,7 @@ published by institutions in 28 jurisdictions.
 | `09-source-code/` | 31 repos in two tiers: 20 landmark + 11 security-audited at pinned commits, content-vetted (`VETTING.md`) |
 | `14-holy-texts/` | 492 files — whole books of the Tanakh, Greek NT, Qur'an and Pali canon |
 | `15-western-canon/folger-shakespeare/` | Bulk text + XML + 15 individual plays |
+| `18-childrens-books/` | Pilot pull: 38 books across 17 languages (Global Digital Library + StoryWeaver, African Storybook) — see [`18-childrens-books/ATTRIBUTION.md`](18-childrens-books/ATTRIBUTION.md) |
 
 See [`SOURCES.md`](SOURCES.md) for the complete catalog with pull status, and
 [`06-government-legal/ATTRIBUTION.md`](06-government-legal/ATTRIBUTION.md) for the rights notice
@@ -67,6 +68,10 @@ legitimately short per item, was folded into one catalogue document per collecti
 
 Word counting is script-aware, so Chinese, Japanese, Korean and Thai documents are measured by
 codepoint rather than split on spaces. `manifests/min-words-audit.json` records every removal.
+
+**`18-childrens-books/` is exempt.** A picture book can be a complete work at 60 words; the floor
+exists to catch fragments standing in for a whole work, not to reject a genre that is naturally
+short. `enforce-min-words.mjs`'s `EXEMPT_DIR` pattern skips this category entirely.
 
 ## Running the Fetchers
 

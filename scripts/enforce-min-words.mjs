@@ -37,6 +37,12 @@ const CORPUS_DIR = /^\d\d-/;
 // the upstream READMEs inside each repo directory.
 const NOT_A_DOCUMENT = /(^|\/)(ATTRIBUTION\.md|PROVENANCE\.md|VETTING\.md|[a-z0-9-]*manifest\.json)$|^09-source-code\/README\.md$/i;
 
+// Children's books run a few dozen to a few hundred words each — that is the
+// genre, not a fragment. The 600-word floor exists to catch abstracts and
+// stubs standing in for a whole work; a complete picture book is the whole
+// work, so this category is exempt rather than pruned.
+const EXEMPT_DIR = /^18-childrens-books\//;
+
 function corpusFiles() {
   // Freshly fetched documents are not committed yet, so tracked files alone
   // would under-report the corpus. --others adds them; --exclude-standard keeps
@@ -49,7 +55,7 @@ function corpusFiles() {
   return listing
     .split('\n')
     .filter(Boolean)
-    .filter(f => CORPUS_DIR.test(f) && !NOT_A_DOCUMENT.test(f));
+    .filter(f => CORPUS_DIR.test(f) && !NOT_A_DOCUMENT.test(f) && !EXEMPT_DIR.test(f));
 }
 
 function measure(files) {
