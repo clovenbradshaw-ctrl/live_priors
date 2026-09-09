@@ -79,3 +79,28 @@ it actually contains (losing the multi-language claim these particular 20
 files were meant to carry); or remove it. All three are real options and
 none is chosen here — this file's job is to make the choice informed, not
 to make it.
+
+## Addendum (2026-09-09) — a THIRD corrupted directory, found independently, same defect
+
+A separate session (eoreader7's LaVar reading agent, `native/READING-SPEC.md`
+S102/S103) checked `01-literature-books/gutenberg/`'s own language-tagged
+files before reading one, before this document was found via
+`search_session_transcripts`, and hit the identical defect in a directory
+this document does not cover:
+
+| path (what it claims) | what the bytes actually are |
+|---|---|
+| `pg10671_The_Iliad__Greek_.txt` (Homer, Greek) | Erasmus Darwin, *The Botanic Garden. Part II* (English) |
+| `pg17270_The_Aeneid__Latin_.txt` (Virgil, Latin) | Anonymous, *The Interlude of Wealth and Health* (English) |
+| `pg2636_Faust__German_.txt` (Goethe, German) | Rafael Sabatini, *The Historical Nights' Entertainment* (English) |
+| `pg5196_Don_Quixote__Spanish_.txt` (Cervantes, Spanish) | An unrelated "Romance of Santa Catalina" (English) |
+| `pg135_Les_Mis_rables__French_.txt` (Hugo, French) | not independently re-verified this pass; its own header plausibly names Isabel Hapgood, a real historical Hugo translator — worth checking directly before trusting it, not assumed correct on that basis alone |
+
+Not re-diagnosed here either, for the same reason this document already
+gives (no fetch script was read to find a cause). The pattern across three
+directories now (this one, `11-multi-language/gutenberg-non-en/`, and
+`01-literature-books/gutenberg/`'s language-tagged subset) makes a
+systemic cause — not three unrelated accidents — the way to bet, though
+still not confirmed. That reading's own "5 more languages" work used
+`11-multi-language/wikipedia-lang/` instead, per this document's own
+recommendation above, and found it real and usable as claimed.
