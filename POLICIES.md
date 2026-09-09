@@ -1688,3 +1688,406 @@ encyclopedic and governmental, which is where glossed abbreviations live;
 the rate here is not a rate for prose in general. And `confirm_rate` is not
 precision: a parenthetical whose words happen to recur is confirmed too, and
 the wall against that belongs to the consumer.
+
+## LP16 — a POS-vocabulary gate needs treebank-shaped attestation; a paradigm table cannot supply it, however large
+
+**Generality:** universal (the mechanism reasoned about below — what a gate
+can and cannot refuse, and why — not the specific five languages it was
+measured against).
+
+**What was asked.** An assessment of the-fold's current reading apparatus
+against the sidecars in this repo (`priors.js`/`priors-toggles.js`, the
+`digested/` EOT sample, `derived-priors/`), then whether they needed
+realigning to leverage it. The assessment itself (the-fold's grounding
+ladder, referent identity, knowledge-as-fragility, the holograph) is not
+repeated here — this entry is the measurement that followed from "ok do
+it," through to a real, shipped fix and one real, disclosed residual gap.
+
+**Finding 1 — `eot-digest.mjs` was silently broken since 2026-09-02, and
+nothing caught it.** The-fold finished its planned SVO field rename (P76:
+`hypergraph.js`'s edges carry only `end1`/`label`/`end2` now, never
+`subject`/`verb`/`object`) six days before this pass. `eot-digest.mjs`'s
+`admitEdges` construction still read the old field names — all `undefined`
+— so every arrangement across all 14 sample sources was refused
+`incomplete` and `digested/`'s own README table had described a run that
+no longer reproduces. Fixed at the two read sites (`admitEdges`,
+`verifySpans`'s diagnostic label) with a fallback read
+(`e.end1 ?? e.subject`), so a future rename in either direction degrades
+rather than silently zeroing. Nothing catches this class of drift
+automatically — these are re-runnable drivers, not covered by a committed
+regression suite, matching this repo's own established posture for them;
+LP7's own lesson applies a second time, in a new shape: a reading that
+LOOKS like it ran (files written, no error) and admitted nothing is worse
+than a reading that refuses to run at all.
+
+**Finding 2 — once fixed, the corpus's own richer engine defaults produce
+MORE noise on any ungated language, not less.** Read by eye, not trusted
+from counts: Greek (no POS-vocabulary gate existed for it) went from 1
+edge (itself junk — an English caption) to 59, almost all of them bare
+function words as the connector — `—ο→` (the), `—και→` (and), `—είναι→`
+(is) — sitting on clause-length subject/object spans. This is exactly
+LP7's founding failure shape, recurring on a language nobody had built a
+gate for, made LOUDER as `makeRelationReader`'s subject/clause matching
+widened. English (which HAS a treebank gate) simultaneously got cleaner
+on the identical engine change.
+
+**A detour, kept rather than erased, because the reasoning is real even
+though the resource was wrong for this job.** The first response to
+Finding 2 was to build a witness-backed alternative gate —
+`eoreader7/native/organs/connector-witness.js` (+
+`connector-witness.test.mjs`) — asking a small local model (gemma2:2b)
+whether a candidate connector functions as a clause's predicate, generate-
+and-arm protocol (P32's own shape: an unchallenged yes is not a second
+witness; a genuine no needs no arm at all), an exact binomial significance
+computed rather than a hand-picked pass bar. Measured live, three
+languages, real bytes: 13/17 correct, 16/17 settled, P(this good by
+chance) = 0.0245 — real, if asymmetric (100% correct refusing all 8 real
+negative specimens across English/Greek/Turkish; ~56% confirming real
+positives, missing a clean single-word English verb and the flagship
+Greek specimen both). **This was the wrong thing to build first.** This
+repo's own already-measured precedent — "Closing more of the MINE-1 gap —
+a received prior beats induction, tested" (the-fold CLAUDE.md) — had
+already run the identical comparison (a witness/inference-shaped fix vs a
+received lexicon) on a directly analogous problem and a received lexicon
+won outright. That precedent was read and cited in this very pass's own
+reasoning before `connector-witness.js` was written, not after — the
+organ should never have been built before checking whether a receivable
+resource already covered the need. It is kept in the tree, real and
+tested, not deleted (this repo's own succession.js/`digested/`-erasure
+precedent: condemned or superseded work stays present and disclosed,
+never silently removed) — a real fallback for a language neither UniMorph
+nor a UD treebank covers, should one ever come up, and not the production
+mechanism here.
+
+**A second wrong turn, caught before it shipped: UniMorph cannot gate a
+closed class, no matter how large its files are.** The next instinct —
+build `POSPrior@1` from UniMorph's inflectional paradigm tables instead of
+a UD treebank, since UniMorph's per-language files are far larger (Turkish
+alone: 570,420 rows, 31.6MB) than a treebank could ever be — is real and
+was built (`native/scripts/build-pos-prior-from-unimorph.mjs`, a second
+builder for the SAME `POSPrior@1` schema, mapping only bare UniMorph `V`/
+`N`/`ADJ` to UD's `VERB`/`NOUN`/`ADJ` and dropping every non-finite
+subtype — participle, converb, masdar — as a disclosed gap rather than a
+guess). Built for all five ungated languages (Greek/Turkish/Hebrew/
+Korean/Farsi), wired in, re-run — and it barely moved the Greek/Turkish
+noise (Greek 59→53 edges; `και`/`της` still the two most common
+connector labels). **Checked directly, not assumed:** `grep -P
+"\t(και|της)\t" ell.tsv` on the real fetched UniMorph Greek file returns
+nothing — UniMorph does not contain these words AT ALL, because they are
+closed-class function words, and UniMorph is a resource of INFLECTIONAL
+PARADIGMS: it enumerates a lemma's own forms, and a conjunction or article
+does not inflect, so it was never going to be in a paradigm table in the
+first place. `relations.js::discoverRelationVocab`'s own gate logic
+(`native/adapters/text/relations.js:450`) makes this concrete:
+`verbDominant = !attested ? (lexiconKnows !== false) : verbShare > 0.5` —
+a word the prior has NEVER SEEN is admitted BY DEFAULT ("a witness cannot
+refuse what it never saw," the file's own stated design, correct on its
+own terms). UniMorph's structural silence on closed classes means every
+one of them takes that default-admitted branch, regardless of file size.
+A UD treebank does not have this gap, because a treebank annotates every
+token of real running text, closed classes included — checked the same
+way: the real UD_Greek-GDT train file attests `και` as CCONJ 1,098 times.
+**The two resources answer different questions** (UniMorph: does this
+surface form belong to SOME lemma's verb paradigm; a treebank: in real
+sentences, how often is this exact word tagged a verb) and only the
+second one is the question a connector-exclusion gate actually needs.
+
+**What shipped.** Real UD treebank builds for all five languages, via
+`native/scripts/build-pos-prior.mjs` — the EXISTING, unmodified script
+already used for English/Russian/Finnish, needing zero new code because it
+was already "language-general by construction": UD_Greek-GDT (1,662
+sentences), UD_Turkish-IMST (3,435), UD_Hebrew-HTB (5,168),
+UD_Korean-GSD (4,400), UD_Persian-PerDT (26,196) — train splits only, CC
+BY-SA 4.0, provenance recorded in each `native/priors/pos-<iso3>.json`'s
+own header exactly as the three existing ones already are.
+`eot-digest.mjs`'s `LANG_ALIAS` and its hardcoded `["eng","rus","fin"]`
+loop both grew the five new ISO 639-3 codes; the `posPriorGate`/
+`classifyConnector` disclosure strings, which used to hardcode "giver
+Universal Dependencies" unconditionally, now read the giver off each
+prior's own `provenance.giver` — a real bug this pass's own earlier
+UniMorph substitution would otherwise have shipped as a false
+attribution.
+
+**Measured, the full 14-source sample, before (2026-08-31, the committed
+baseline — now unreproducible per Finding 1) and after this pass:**
+
+| slug | before (edges heard) | after (edges heard) |
+|---|---|---|
+| wikipedia-lang/fr/philosophie | 84 | 82 |
+| wikipedia-lang/tr/felsefe | 69 | **36**, gated |
+| wikipedia-lang/el/socrates-related | 1 (junk) | **23**, gated, clean |
+| wikipedia-lang/he/philosophy | 2 | 2 (script-blind, unaffected) |
+| wikipedia-lang/ko/philosophy | 3 | 4 (script-blind, unaffected) |
+| wikipedia-lang/fa/philosophy | 8 | 10 (script-blind, unaffected) |
+| gutenberg-non-en/de-path/pg67098 | 61 | 32 |
+| images-media/nasa-catalog | 22 | 4 |
+| images-media/met-museum-catalog | 18 | 0 |
+| audio-music/grateful-dead-catalog | 2 | 0 |
+| audio-music/classical-music-catalog | 0 | 0 |
+| source-code/rails-readme | 37 | 10 |
+| source-code/flask-quickstart | 44 | 5 |
+| source-code/flask-app-py-RAW | 16 | 0 |
+
+The English-source drops (rails/flask/nasa) were read by eye, not assumed
+from the count: what survives is genuinely clean (*"controller classes
+—are→ derived from ActionController::Base"*, *"Ruby on Rails —is
+released→ under the MIT License"*) — a real precision gain from whatever
+moved upstream in the engine since 2026-08-31, unrelated to this pass's
+own changes. Greek went from one junk edge to 23 real ones, spot-checked
+in full: *"Ο Μπέρτραντ Ράσελ —θεώρησε→ πως η φιλοσοφία βρίσκεται μεταξύ
+της Επιστήμης"* ("Bertrand Russell considered that philosophy lies
+between Science..."), *"Επιστημολογία —ονομάζεται→ ο τομέας που
+ασχολείται με τη φύση και το σκοπό της γνώσης"* ("Epistemology is called
+the field concerned with the nature and purpose of knowledge") — one
+residual junk row out of 23 (`φιλόσοφοιπροσωκρατικός`, a wiki-markup
+concatenation artifact, a different and already-named class of defect).
+Hebrew/Korean/Farsi are genuinely unaffected either way — their own
+already-diagnosed `scriptCoverage` gap (caseless scripts starve the
+SURFACE layer, upstream of the connector question this pass answers) is
+untouched by anything here.
+
+**Turkish is real, better, and NOT closed — disclosed rather than
+rounded up to done.** 80→36 edges, meaningfully cleaner, but still
+carrying real noise on inspection: `felsefesinde`/`felsefesinin`/
+`felsefesini` (locative/genitive/accusative-possessive inflections of
+"felsefe," philosophy — case-marked NOUN forms, not verbs), `savunucusu`
+("proponent"), `rönesansı` ("its renaissance"), `filozoflar`
+("philosophers") all still stand as connector labels. `yaşamış` ("lived")
+and a few genuine participles are real. **The cause is the same gate
+mechanism, at a different failure scale.** Turkish's inflectional paradigm
+space is vast (agglutinative morphology; UniMorph's own Turkish VERB
+paradigm alone is 570,420 rows) and UD_Turkish-IMST's train split — 3,435
+sentences, 12,399 distinct forms — is real but comparatively thin against
+that space: most of the specific case-marked noun inflections causing the
+residual noise were simply never attested in this treebank sample either,
+so `discoverRelationVocab`'s own "cannot refuse what it never saw" default
+admits them, exactly as it admitted UniMorph's unseen function words —
+coverage sparsity, not a wrong resource this time. **Named, not attempted
+here:** a second Turkish UD treebank (BOUN/Kenet/Tourism all exist,
+combinable for wider attestation) or a merged prior — UniMorph's own
+Turkish NOUN paradigm table alongside the treebank's closed-class
+coverage, each covering the other's gap — is the natural next lever,
+unbuilt.
+
+**The rule this pass earned, stated once so the next language does not
+re-derive it by trial:** a POS-vocabulary gate's job is excluding
+closed-class connectors, and that needs TREEBANK-SHAPED attestation (every
+token of real running text, function words included) — a resource sized
+by how much real text it annotates. A PARADIGM-shaped resource (UniMorph)
+is sized by how many lemmas and inflectional slots it enumerates, and is
+structurally silent on anything that does not inflect, however large its
+files are. The two are not substitutes, and reaching for the bigger file
+without checking what it actually contains is exactly the kind of
+un-derived assumption this project's own standing rules already forbid —
+checked here only because it was checked, not because the file size made
+it plausible.
+
+**Files.** `eoreader7`: `native/scripts/build-pos-prior-from-unimorph.mjs`
+(new, kept — a real, working, disclosed-narrow builder, useful for a
+future RECALL-widening pass even though it does not solve THIS problem);
+`native/organs/connector-witness.js` + `connector-witness.test.mjs` (new,
+kept, shelved — see above); `native/priors/pos-{ell,tur,heb,kor,fas}.json`
+(UD-treebank-built, the shipped artifacts; gitignored local build outputs,
+matching `pos-eng.json`/`pos-rus.json`/`pos-fin.json`'s own existing
+convention — not committed here). `live_priors`: `scripts/eot-digest.mjs`
+(the field-name fix; `LANG_ALIAS` and the POS-prior load loop widened to
+eight languages; the giver-disclosure strings de-hardcoded); the 14
+`digested/*.json` + `index.json` regenerated, reflecting this pass's own
+fixes end to end, uncommitted pending review.
+
+**Amended same day — French had the identical defect and was missed the
+first time.** Asked plainly "how are the readings," French's own 82
+propositions were read for the first time rather than trusted from an
+unchanged-looking count: 80 of 82 were bare French function words (`de`,
+`et`, `du`, `dans`, `à`, `comme`, `pour`, `ou`, `au`, `que`, `mais`) — the
+identical failure Finding 2 named for Greek, just never caught, because
+French's edge COUNT happened to look plausible both before and after this
+pass's own fixes and was never opened. **The lesson this cost:** fixing
+the languages whose numbers visibly moved is not the same as checking
+every language actually in the sample — a count that does not change is
+not evidence nothing is wrong with it. Fixed identically:
+UD_French-GSD (14,450 sentences — this pass's largest treebank by
+sentence count), `native/priors/pos-fra.json`, `LANG_ALIAS.fr = "fra"`.
+82 junk edges → 4, of which 2 are real (*"Platon —écrit→ dans le Phèdre
+... que"*, "Plato wrote in the Phaedrus... that"; *"un écho d'Héraclide du
+Pont —révélerait→ que le premier penseur grec..."*) and 2 are a different,
+already-named defect class (`qu'en`, an elided conjunction+preposition
+the tokenizer split wrong; `sapiensêtres`, a wiki-markup word-concatenation
+artifact — the same shape as Greek's own `φιλόσοφοιπροσωκρατικός`).
+**Every language in the 14-source sample has now actually been read, not
+assumed clean.**
+
+**Amended same day — asked directly whether every UniMorph-backed learning
+this project has already built was actually in use, not just the
+POS-vocabulary gate this entry is about.** It was not, checked file by
+file rather than assumed either way:
+
+- **`the-fold/eval/fixtures/unimorph-eng-verb-forms.json`** (the
+  `verbForms` recall-widening fixture, 103,318 forms, measured elsewhere
+  at 319→737 edges on a 10-file sample) **was missing from the main
+  the-fold checkout entirely** — real, valid data, but sitting only in two
+  abandoned `.claude/worktrees/` directories. Recovered by copying it back.
+  Left OFF in the actual recipe, deliberately — it is a recall lever, not
+  a false-binding fix, and shipping it needs its own before/after
+  measurement against this corpus's NOW-gated recipe, not a side effect
+  of recovering the file.
+- **`createLemmatizer`/`morphologyIndex`/`morphologyLanguage`** (sameAct
+  verb-tense equivalence, "underwent"≈"undergoes," MINE-1-measured: bound
+  531→536, zero contradictions) were disclosed OMITTED in this driver's
+  own `UNION_OMITTED` table for a reason that was simply wrong: "no organ
+  produces this shape on any engine path today," checked only against the
+  frozen legacy provider. `native/adapters/text/morphology.js::
+  createLemmatizer` is real and native, and `native/priors/
+  morphology-eng.json` (142KB) is real, populated UniMorph-derived data —
+  both already sitting in this checkout, found by reading their actual
+  bytes rather than trusting the driver's own stale comment. **Wired now**
+  (English only), verified to run clean across the full 14-source sample
+  with zero change to any count — expected, and consistent with MINE-1's
+  own finding that this organ is byte-identical when the material never
+  exercises a tense mismatch within one extraction pass; its value is at
+  claim-checking time, not extraction time, and this driver does not
+  check claims.
+- **`declensionByLang`'s Russian entry** was verified directly rather than
+  assumed working, since no Russian source sits in this sample and it had
+  therefore never actually run this session: `sameStem("Кутузов",
+  "Кутузова")` → true (nominative/genitive fold, correct), `sameStem(
+  "Наполеон", "Пьер")` → false (no false merge across different people,
+  correct). One real, disclosed, narrower-than-hoped edge found the same
+  way: `sameStem("Кутузов", "Кутузову")` (dative) → false — the mined
+  rule set's own `min_count: 100` floor means only sufficiently-recurring
+  suffix transformations are trusted; this is the measured scope LP14
+  already reported (38 correct merges, zero false ones), not a new defect,
+  and dative is simply outside what cleared that floor.
+
+**The lesson this round cost, on top of Finding 2's own version of it:**
+"the organ exists" and "the organ is actually reachable in THIS checkout,
+with real data, and nothing upstream silently blocks it" are three
+different claims, and this driver's own disclosure comments had let the
+second two go stale without anyone re-checking them against the literal
+files on disk. Read the bytes, not the comment describing them.
+
+**Amended same day — 15 net-new documents, one SHARED log, asked whether
+it is rich enough to holograph from.** `scripts/eot-shared-log-eval.mjs`
+(new, re-runnable, this repo's own posture for these drivers): 15 real
+documents outside the SAMPLE (5 Wikipedia articles — Mathematics,
+Neuroscience, Renaissance, Mongol Empire, Thermodynamics; 3 1911
+Britannica entries — Economics, Sociology, Law; 2 academic papers —
+Ioannidis 2005, a d2l chapter; 2 Shakespeare plays — Julius Caesar, Romeo
+and Juliet; one real Koine Greek Gospel excerpt; 2 source-code docs —
+bitcoin, GHC), admitted into ONE hyperlexicon log across all 15 (unlike
+`digestOne`, which opens a fresh log per source) so a real re-sighting
+across documents has a chance to union, per LP2. All 15 read cleanly: 0
+turned away, ~100% span self-verification throughout, 252 propositions,
+106 distinct connector labels — genuinely diverse, not a handful of
+copulas dominating everything (though "is"/"was" are still the two most
+common, honestly, which is unsurprising for encyclopedic/narrative prose).
+**Corroboration: 0 of 252 at ≥2 witnesses** — consistent with this
+project's own already-measured ~2% wall (P83/P86, the-fold), and honestly
+unsurprising here specifically: 15 topically unrelated documents have no
+real reason to restate one proposition, and this run does not contradict
+or move that wall, it just confirms it holds on a third, larger,
+more-diverse specimen.
+
+**One real defect found by running it, diagnosed precisely, and fixed
+with a period-matched resource rather than papered over — user's own
+correction, not a guess this pass reached for on its own.** The Greek NT
+excerpt's top connector labels were `δὲ`/`ὁ`/`ἐν` — the SAME class of
+closed-class junk Finding 2 fixed for Modern Greek. Checked directly: all
+three ARE well-attested in `pos-ell.json`, just under their MODERN
+monotonic spelling (`δε`/`ο`/`εν`, no accent) — the SBLGNT source carries
+POLYTONIC diacritics (breathing marks, accents) modern Greek orthography
+dropped in 1982. Folding the diacritic away was considered and refused:
+Koine and Modern Greek differ in real vocabulary and grammar, not just
+spelling, so a diacritic-fold would paper over the wrong thing (matching
+different words by coincidence of shared root, not because they mean the
+same thing). **The right fix, on direct user steer ("definitely possible
+to get an ancient greek prior"): a real, period-matched treebank.**
+`UD_Ancient_Greek-PROIEL` (15,016 sentences — its own corpus is
+specifically built from the Greek New Testament and adjacent parallel
+texts, the closest genre match this repo's `14-holy-texts/sblgnt-books/`
+material has) attests `δὲ` 5,076 times as ADV, `ὁ` 2,914 times as DET,
+`ἐν` 2,849 times as ADP — with the real diacritics, no folding needed.
+Built via the same unmodified `build-pos-prior.mjs`, shipped as its own
+language code **`grc`** (Ancient/Koine Greek), never merged into `ell`
+(Modern Greek) via `LANG_ALIAS` — the two are deliberately kept as
+separate gates for separate registers of one script, the identical
+"do not paper over a real difference" posture LP16's own Turkish section
+already holds.
+
+**A second, smaller finding on the way, worth naming: this pass first
+picked the wrong Greek NT specimen and caught it before trusting the
+number.** `14-holy-texts/sblgnt/Matt.txt` reads 0 edges under the real
+`grc` gate — not the gate being too strict; the file is a textual-critical
+VARIANT APPARATUS ("1:5 Βόες … Βόες WH NA28 ] Βοὸς … Βοὸς Treg"), not
+running prose, confirmed by reading 1,952 lines of it, not assumed from
+one bad number. `14-holy-texts/sblgnt-books/61-Mt.txt` is the real running
+text and reads 51 clean edges once substituted — dominated by `ἐγέννησεν`
+("begat," 39× — Matthew 1's own genealogy chain, "Abraham begat Isaac,
+Isaac begat Jacob...") and `ἰδὼν` ("having seen"). **The lesson: a
+zero from a gate and a zero from a bad specimen look identical in the
+aggregate count and are not the same fact — read the file before blaming
+the mechanism.**
+
+**One real, disclosed, NOT-fixed limit surfaced by the wider English
+spread (5 encyclopedic genres this pass had not tried together
+before):** `physicist`/`dynasty`/`khanate`/`mathematicsancient` (the last
+a wiki-markup concatenation artifact, the already-named class) still ride
+as connector labels on Mongol Empire and Thermodynamics — real English
+nouns, in an encyclopedic/historical register `UD_English-EWT`'s own
+16,654-form, web/blog-genre treebank apparently under-attests. This is
+the SAME "cannot refuse what it never saw" mechanism as Turkish's own
+residual noise (LP16, above) and Modern Greek's original failure — not a
+small-language problem specifically, a treebank-coverage-sparsity problem
+that can hit ANY language, English included, once the candidate text's
+own vocabulary register drifts far enough from the treebank's. Named,
+not attempted: a larger or genre-matched English treebank, or a merged
+UniMorph+treebank prior (UniMorph's noun paradigms would very likely
+attest "physicist"/"dynasty" as real nouns even where a modest treebank
+never happened to).
+
+**Asked directly whether 51 was actually good, and it is not, evenly.**
+39 of 51 (76%) is one verb, `ἐγέννησεν` ("begat"), from Matthew 1:1-17's
+genealogy — the easiest possible clause shape for a positional extractor,
+repeated ~40 times. The excerpt's remaining ~21 verses (the birth
+narrative, the Magi, the flight to Egypt, John the Baptist) are real,
+eventful, verb-rich prose and produced only 12 edges across 11 distinct
+verbs — with real, present verbs (`ἀποκριθεὶς` "having answered,"
+`βαπτισθεὶς` "having been baptized," `πληρῶσαι` "to fulfill," `ἀφίησιν`
+"permits") checked directly and confirmed ABSENT from the admitted set.
+Aggregate density (51/38 sentences = 134%) hides this skew rather than
+showing it — a sentence-count ratio is the wrong lens when one sentence
+can carry three genealogy clauses and another carries a whole
+participial quotation and yields zero. **Not a Greek-specific defect**:
+this is the SAME clause-shape ceiling this project measured extensively
+on English (READING-POLICY A17: NO_VERB 51.2%, SWALLOWED 39.1% — a
+position-based extractor loses participial constructions, direct
+quotations and non-adjacent subject-verb structure), now visibly the
+identical story on real Koine narrative rather than assumed to transfer.
+Not attempted here: closing it needs the slot-typing/clause-shape work
+A17/A19 already named as real, scoped, unattempted future work for
+English, extended to whatever Koine's own participial morphology needs on
+top.
+
+**The holograph question, answered honestly rather than faked.**
+`eoreader7/native/eval/the-fold/holograph-compression.mjs` — the actual
+runnable holograph driver — refuses (by design, S65) against this run's
+own output: it consumes a *conversation run's* persisted constitutional-
+reader log (`reading-log.js`'s referent/mention book, built by
+`createRecursiveReader` over real asked questions) plus that run's own
+ledger, not an arbitrary hyperlexicon propositions log. This pass's
+15-document shared log is real, rich, and a genuinely different artifact
+from a genuinely different reading pipeline — the two are related, not
+interchangeable, and nothing here silently pretended otherwise by pointing
+one driver at the other's output. **Answering "is the log rich enough to
+holograph from" for real** would mean running these 15 documents (or a
+real conversation over them) through the constitutional reader itself,
+producing the shape `holograph-compression.mjs` actually reads — named as
+the real next step, not attempted in this pass.
+
+**Amended — the-fold's own reading state, not repeated here.** The
+grounding-ladder assessment this pass answers a measurement question for
+(referent identity, corroboration as disclosed fragility, contest typing,
+the void/cut timelines, the holograph) is the-fold's and eoreader7's own
+POLICIES.md/READING-SPEC.md, current through P171/S82 as of this pass —
+see those for what "reading," at its current best, actually means; this
+entry is only the corpus-side half of leveraging it.

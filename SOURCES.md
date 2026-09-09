@@ -33,10 +33,11 @@ are not mistaken for empty documents.
 | 13. Mysticism | 3 | ⬜ | Cloudflare blocks sacred-texts.com |
 | 14. Holy Texts | 10 | ✅ 492 files | Whole books: Tanakh (38), SBLGNT (23), Qur'an by sura (81), Pali suttas (186) + earlier pulls |
 | 15. Western Canon | 8 | ✅ 18 files | Folger Shakespeare bulk + individual plays. CCEL extracts were under the floor and were removed |
-| 16. Organic/Community | 10 | ⬜ | Ganjoor, StoryWeaver, African Storybook not yet scripted |
+| 16. Organic/Community | 10 | ⬜ | Ganjoor not yet scripted. StoryWeaver and African Storybook are pulled, but as children's books, not organic/community text — see category 18 below |
 | 17. Formal Algebraic | 11 | ⬜ | All catalogued, none fetched (PDFs/images/specialized formats) |
+| 18. Children's Books *(added, not in the original 17)* | 3 | ⚠️ 38 documents, pilot | Global Digital Library + StoryWeaver (merged platform) and African Storybook, across 17 languages. Bloom Library not pulled — gated on Hugging Face, needs a human to accept terms and supply a token. Exempt from the 600-word floor — see `18-childrens-books/ATTRIBUTION.md` |
 
-**Total:** 2,078 documents, all at or above the 600-word floor.
+**Total:** 2,078 documents at or above the 600-word floor, plus 38 children's books exempt from it (2,116 total).
 
 ## Fetched Content Details
 

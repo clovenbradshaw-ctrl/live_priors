@@ -173,7 +173,11 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
   // never imported at all, let alone passed.
   const pron = await import(path.join(NATIVE, "adapters/text/pronouns.js"));
   const { makeRelationReader } = await import(path.join(FOLD_ROOT, "hypergraph.js"));
-  const { makeHyperlexicon } = await import(path.join(FOLD_ROOT, "hyperlexicon.js"));
+  // The shim's target renamed 2026-09-08 (eoreader7 organs/hyperlexicon.js
+  // -> organs/notes-text.js, exported member makeHyperlexicon ->
+  // makeNotesText); aliased back to this file's own local name so nothing
+  // below this line needs to change.
+  const { makeNotesText: makeHyperlexicon } = await import(path.join(FOLD_ROOT, "hyperlexicon.js"));
   const { makeReferentIndex } = await import(path.join(FOLD_ROOT, "cast.js"));
   const { stripContainer, declaredIdentity } = await import(path.join(FOLD_ROOT, "source.js"));
   const { makeGrammarLens, mismatchedConnectors } = await import(path.join(FOLD_ROOT, "grammar-lens.js"));
@@ -243,7 +247,15 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
   // and simply finds no entry below, which is the honest, disclosed
   // default for the other ~513 UDHR languages and every other document
   // this corpus holds.
-  const LANG_ALIAS = { en: "eng", ru: "rus", fi: "fin" };
+  // el/tr/he/ko/fa added 2026-09-08: POSPrior@1 built from UniMorph
+  // (build-pos-prior-from-unimorph.mjs) rather than a UD treebank — see
+  // that script's own header for why (UniMorph's paradigm tables are not
+  // bounded by one treebank's own finite sentence sample, which matters
+  // most for exactly the languages a small treebank would otherwise leave
+  // this gate absent for) and for the declared, narrow POS mapping (bare
+  // V/N/ADJ only; every non-finite subtype — participle, converb, masdar —
+  // is dropped, disclosed per-language in each prior's own provenance).
+  const LANG_ALIAS = { en: "eng", ru: "rus", fi: "fin", el: "ell", tr: "tur", he: "heb", ko: "kor", fa: "fas", fr: "fra" };
   const normalizeLangCode = (code) => {
     const c = String(code ?? "").toLowerCase();
     return LANG_ALIAS[c] ?? c;
@@ -252,7 +264,18 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
   const posByLang = {};
   try {
     const wordclass = await import(path.join(NATIVE, "adapters/text/wordclass.js"));
-    for (const lang of ["eng", "rus", "fin"]) {
+    // "grc" (Ancient/Koine Greek, UD_Ancient_Greek-PROIEL — its own corpus
+    // includes the Greek New Testament, the closest genre match to this
+    // repo's 14-holy-texts/sblgnt/ material) is deliberately its OWN
+    // language code, never folded into "ell" (Modern Greek) via LANG_ALIAS
+    // — found necessary by measurement, not assumed: Koine's own bare
+    // particles (δὲ/ὁ/ἐν, real and well-attested here, 2,849–9,237
+    // occurrences each) carry polytonic diacritics modern orthography
+    // dropped in 1982, so a modern-Greek prior lookup misses them
+    // entirely — not a coverage gap folding diacritics would paper over
+    // correctly, a real different register/vocabulary a period-matched
+    // treebank actually answers.
+    for (const lang of ["eng", "rus", "fin", "ell", "tur", "heb", "kor", "fas", "fra", "grc"]) {
       try {
         const posPrior = JSON.parse(fs.readFileSync(path.join(NATIVE, "priors", `pos-${lang}.json`), "utf8"));
         posByLang[lang] = {
@@ -309,13 +332,44 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
   }
   const sameStemFor = (code) => declensionByLang[normalizeLangCode(code)] ?? null;
 
+  // sameAct — verb-tense/lemma equivalence ("underwent"≈"undergoes"), the
+  // MINE-1-measured small safe win (bound 531→536, zero contradictions).
+  // This pass's own earlier disclosure ("no organ produces this shape on
+  // any engine path today") was checking only the frozen legacy provider;
+  // `native/adapters/text/morphology.js::createLemmatizer` is a REAL,
+  // native, already-tested organ, and `native/priors/morphology-eng.json`
+  // (142KB, real UniMorph-derived forms + irregular table, giver recorded
+  // in its own provenance) is real, populated data already sitting in this
+  // checkout — found only by checking the file's actual bytes rather than
+  // trusting a stale disclosure written before the native port landed.
+  // English only, per that prior's own language field; every other
+  // language degrades to exact-string verb matching, unchanged.
+  const morphologyByLang = {};
+  try {
+    const morphology = await import(path.join(NATIVE, "adapters/text/morphology.js"));
+    for (const lang of ["eng"]) {
+      try {
+        const raw = JSON.parse(fs.readFileSync(path.join(NATIVE, "priors", `morphology-${lang}.json`), "utf8"));
+        const prior = morphology.morphologyFromPrior(raw);
+        morphologyByLang[lang] = { createLemmatizer: morphology.createLemmatizer, morphologyIndex: prior.forms, morphologyLanguage: prior.language };
+      } catch {
+        // no morphology prior for this language yet — disclosed via morphologyFor
+      }
+    }
+  } catch {
+    // adapters/text/morphology.js unreachable — every language degrades to
+    // exact-string verb comparison, the pre-existing behaviour.
+  }
+  const morphologyFor = (code) => morphologyByLang[normalizeLangCode(code)] ?? null;
+
   const determiners = new Set([...priors.DEFINITE_DETERMINERS, ...priors.INDEFINITE_DETERMINERS]);
   // Factored out so a per-language relationsFor is the SAME construction
   // as the flat default below, never a second implementation that could
   // drift from it (this repo's own postmortems — P22/P24/P25 in the-fold's
   // CLAUDE.md — are exactly this drift class, caught here before it could
   // recur a fourth time).
-  const buildRelationsFor = (langPosPrior) => makeRelationReader({
+  const buildRelationsFor = (langPosPrior, langMorphology = null) => makeRelationReader({
+    ...(langMorphology ?? {}),
     splitSentences: spans.splitSentences,
     extractSurfaces: surfaces.extractSurfaces,
     discoverReferents: surfaces.discoverReferents,
@@ -367,11 +421,11 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
     resolvePronouns: pron.resolvePronouns,
     thirdPersonSingular: priors.THIRD_PERSON_SINGULAR,
   });
-  const relationsFor = buildRelationsFor(posByLang.eng?.posPrior ?? null); // backward-compatible flat default: English
+  const relationsFor = buildRelationsFor(posByLang.eng?.posPrior ?? null, morphologyByLang.eng ?? null); // backward-compatible flat default: English
   const relationsForLangCache = new Map();
   const relationsForLang = (code) => {
     const lang = normalizeLangCode(code);
-    if (!relationsForLangCache.has(lang)) relationsForLangCache.set(lang, buildRelationsFor(posByLang[lang]?.posPrior ?? null));
+    if (!relationsForLangCache.has(lang)) relationsForLangCache.set(lang, buildRelationsFor(posByLang[lang]?.posPrior ?? null, morphologyByLang[lang] ?? null));
     return relationsForLangCache.get(lang);
   };
   const posGateFor = (code) => {
@@ -409,11 +463,22 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
     // decision from wiring the activation tier: whether the corpus should
     // read with a widened English-only lexical prior is not answered by
     // "the organ exists and works." Left to a deliberate follow-up pass,
-    // not bundled silently into "turn activation on."
+    // not bundled silently into "turn activation on." Its fixture
+    // (the-fold/eval/fixtures/unimorph-eng-verb-forms.json) had gone
+    // missing from this checkout entirely (recovered 2026-09-08 from an
+    // abandoned worktree, LP16) — still withheld pending its own
+    // before/after measurement on this corpus's now-gated recipe, not
+    // wired as a side effect of that recovery.
     verbForms: "available (the-fold/eval/fixtures/unimorph-eng-verb-forms.json, 103,318 forms) and measured (319->737 edges on the 10-file sample) but withheld from THIS pass — widens recall rather than closing a false binding, and shipping it needs its own decision, not a side effect of wiring activation",
-    createLemmatizer: "available (eoreader7/legacy-eoreader6.1 .../morphology.js::createLemmatizer, UniMorph-backed) but not yet paired with a verified lemma index for this corpus's own vocabulary — the-fold's own MINE-1 findings used a lemma pass tuned to that corpus, not this one",
-    morphologyIndex: "no organ produces this shape on any engine path today (checked: legacy-eoreader6.1 exports createLemmatizer and loadMorphology, neither returns a morphologyIndex)",
-    morphologyLanguage: "unused while morphologyIndex is unset — see morphologyIndex above",
+    // createLemmatizer/morphologyIndex/morphologyLanguage are WIRED as of
+    // 2026-09-08 (LP16 amendment) — this repo's own earlier disclosure
+    // here ("no organ produces this shape") was checking only the frozen
+    // legacy provider; native/adapters/text/morphology.js::createLemmatizer
+    // is real and native/priors/morphology-eng.json is real, populated
+    // UniMorph-derived data (both found by reading the actual bytes, not
+    // trusted from an earlier pass's own stale note). English only —
+    // every other language degrades to exact-string verb matching,
+    // unchanged.
     classifyConnector: "grammar-lens.js's disclosure-only lens (P56), already loaded above for classifyConnector's OTHER call site in this file; not the same organ makeRelationReader accepts under this name and not re-wired here without checking that distinction first",
     minShare: "the classifyConnector threshold; moot while classifyConnector is unset above",
     extractLeadingSurfaces: "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass — checked, absent",
@@ -450,7 +515,7 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
     // bag instead of restating a literal that could drift (III.5's own
     // "prose never claims wiring" applied to a recipe field).
     nounPhraseSubjects, phrasalPredicates,
-    relationsFor, relationsForLang, posGateFor, sameStemFor, normalizeLangCode,
+    relationsFor, relationsForLang, posGateFor, sameStemFor, morphologyFor, normalizeLangCode,
     hl, makeHyperlexicon, makeReferentIndex,
     stripContainer, declaredIdentity, repoStates,
     classifyConnector, mismatchedConnectors, posPriorLoaded, GRAMMAR_MIN_SHARE,
@@ -630,17 +695,18 @@ function verifySpans(excerpt, edges) {
     for (const s of e.spans ?? []) {
       checked += 1;
       if (excerpt.slice(s.start, s.end) === s.text) ok += 1;
-      else bad.push({ edge: `${e.subject} —${e.verb}→ ${e.object}`, span: s });
+      else bad.push({ edge: `${e.end1 ?? e.subject} —${e.label ?? e.verb}→ ${e.end2 ?? e.object}`, span: s });
     }
   }
   return { checked, ok, bad };
 }
 
 async function digestOne(organs, spec) {
-  const { relationsForLang, sameStemFor, posGateFor, hl, spans, surfaces, stripContainer, GRAMMAR_MIN_SHARE } = organs;
+  const { relationsForLang, sameStemFor, posGateFor, morphologyFor, hl, spans, surfaces, stripContainer, GRAMMAR_MIN_SHARE } = organs;
   const relationsFor = relationsForLang(spec.language);
   const sameStem = sameStemFor(spec.language);
   const posGate = posGateFor(spec.language);
+  const morphology = morphologyFor(spec.language);
   const rawPath = path.join(LP_ROOT, spec.path);
   const raw = fs.readFileSync(rawPath, "utf8");
   const { excerpt, bodyOffset, catalogDropped, fullChars, bodyChars, excerptChars, truncated } =
@@ -682,8 +748,15 @@ async function digestOne(organs, spec) {
 
   const spanCheck = verifySpans(excerpt, report.edges ?? []);
 
+  // the-fold P76 finished the SVO wipe (2026-09-02): makeRelationReader's
+  // edges now carry ONLY end1/label/end2 (arrangementOf), never
+  // subject/verb/object. hl.admit()'s own public face still speaks
+  // subject/verb/object (native/organs/hyperlexicon.js's deliberate
+  // byte-compatible API), so the read side has to translate here — this
+  // repo's own edges were silently 100% "incomplete" until this line named
+  // the field it should have been reading.
   const admitEdges = (report.edges ?? []).map((e) => ({
-    subject: e.subject, verb: e.verb, object: e.object, spans: e.spans, because: null,
+    subject: e.end1 ?? e.subject, verb: e.label ?? e.verb, object: e.end2 ?? e.object, spans: e.spans, because: null,
   }));
   let log = hl.createHyperlexicon();
   const { log: nextLog, heard, turnedAway } = hl.admit(log, admitEdges, { witness: spec.slug });
@@ -708,14 +781,21 @@ async function digestOne(organs, spec) {
       engine: "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
       determiners: "injected — priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, P41)",
       negationWords: "injected — priors.js NEGATION_WORDS (giver lang/en, P43)",
+      // The giver read off the prior's OWN provenance rather than assumed —
+      // eng/rus/fin are UD treebank builds, ell/tur/heb/kor/fas are
+      // UniMorph paradigm-table builds (build-pos-prior-from-unimorph.mjs);
+      // hardcoding "Universal Dependencies" here would misattribute the
+      // five newer ones the moment they were wired in.
       posPriorGate: posGate.loaded
-        ? `active — native/priors/pos-${organs.normalizeLangCode(spec.language)}.json (giver Universal Dependencies, CC BY-SA 4.0) gates relations.js::discoverRelationVocab's candidate verb vocabulary`
+        ? `active — native/priors/pos-${organs.normalizeLangCode(spec.language)}.json (giver: ${posGate.posPrior?.provenance?.giver ?? "unknown"}) gates relations.js::discoverRelationVocab's candidate verb vocabulary`
         : `omitted — no POSPrior@1 build for language "${spec.language}" (normalized "${organs.normalizeLangCode(spec.language)}") in this environment`,
       classifyConnector: posGate.loaded
-        ? `wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
+        ? `wordclass.js dominantClass (giver: ${posGate.posPrior?.provenance?.giver ?? "unknown"}) — minShare ${GRAMMAR_MIN_SHARE}, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)`
         : "omitted — no POSPrior@1 build for this language in this environment",
       verbForms: "omitted — opt-in only, undecided default per the-fold CLAUDE.md",
-      createLemmatizer: "omitted — opt-in only, undecided default per the-fold CLAUDE.md",
+      createLemmatizer: morphology
+        ? `active — native/priors/morphology-${organs.normalizeLangCode(spec.language)}.json (giver UniMorph), widens verb equality to sameAct (e.g. "underwent"≈"undergoes") — MINE-1 measured: bound 531→536, zero contradictions`
+        : `omitted — no MorphologyPrior@1 build for language "${spec.language}" in this environment`,
       sameStem: sameStem
         ? `injected — declension-${organs.normalizeLangCode(spec.language)}.json (giver UniMorph, CC BY-SA 3.0), widens namesCorefer past exact-token comparison`
         : `omitted — no declension prior for language "${spec.language}" in this environment`,
