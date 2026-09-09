@@ -2123,3 +2123,36 @@ Three things that schema cannot represent at all, each of which is why the repla
 **Status, stated plainly rather than implied.** `eot-sidecar.mjs` has NOT been migrated. Until it is, this repo writes one format and the law describes another; where they disagree, S95 governs and the sidecars are the stale artifact. The reference implementation is `eoreader7/native/eval/lavar/eot-jsonl.mjs`. A corpus-wide rebuild is a separate, larger operation (LAVAR.md §7) and is not performed by this entry — and it now has a second reason to happen, on top of LP17's.
 
 **One rule this repo must not break again, because address-nesting makes it load-bearing:** *"we need to do our best to preserve the exact origin doc."* Earlier the same session, four children's-book source files in `18-childrens-books/` were **edited in place** to strip front and back matter, and `pg11-alice-ch1.txt` was carved out of the full book as a separate file (and silently normalised from CRLF to LF in the process — a second origin, already drifted, every address in it off by one byte per line). Under S95 both moves are wrong: front matter is recorded with a role, never deleted; a chapter is an observation at `[start,end)` on the origin, never a file. Any ledger written against an edited source is a ledger about bytes that no longer exist.
+
+---
+
+## LP19 — What a good EOT sidecar is, now that we have measured what a bad one was (2026-09-09)
+
+**The law lives at `eoreader7/native/READING-SPEC.md` S95–S99.** LP19 records what those mean for this repo, whose 601 `.eot.json` sidecars are all written in the superseded form.
+
+### The measured state, so nothing here reads as preference
+
+Read against 801 hand-authored clause-level propositions across three chapters of one book (Alice, ch1–3, `eoreader7/native/eval/lavar/goldens/`): **recall 11.4%, 454 arrangements emitted against 91 a reader would draw.** The reader is not under-producing; it is producing largely the wrong things. **8.2% of all propositions are intransitive** and cannot be admitted at all while the extractor demands both a subject and an object group (S90).
+
+Every number this repo has published about reading quality predates that reference and was a measurement of the reader against itself.
+
+### Six properties of a sidecar worth keeping
+
+1. **A ledger, not a document.** Append-only JSONL, one observation per line. The log is the artifact; the tree is a projection of it. Storing the projection erases the reading that produced it.
+2. **Nest by address.** Containment computed from byte offsets — no parent pointers, no order dependence. The flat form repeated its source path **741 times, 19% of a 185 KB file describing an 11.5 KB chapter.** The path is written once, on line 0.
+3. **The origin is preserved byte-exact.** A chapter is an observation at `[start,end)`, never a carved-out file. Front matter is recorded with a role, never stripped — deleting it shifts every offset after it. This caught a chapter file silently normalised from the book's CRLF to LF: a second origin, already drifted, every address in it off by one byte per line.
+4. **Structure is INFERRED and carries its basis.** A document has no markup; it has bytes and typographic conventions a reader interprets. Chapters, sections, paragraphs and sentences are the same line shape at different extents, each marked `inferred` with the evidence that licensed it, so each is contestable exactly like a proposition.
+5. **Typed by cube cell, never by an English part of speech.** A preposition in the connector slot is a **Field** (`CON·Ground·Tending`), not a broken Link. Refusing it discards real structure and counts the discard as cleanliness. No line says `subject`, `verb` or `object`; the English reading of each cell is declared once, in the recipe, scoped to the language and reader that assumed it.
+6. **Nothing is silent.** A sentence that yields nothing carries a typed absence naming why (no earned verb / the gate refused). A refusal is a line. A grain that does not settle is a `grain_gap` carried on the record, and the observation is kept in full.
+
+### Reading again is how a sidecar improves, and it records only the delta
+
+A reread legitimately knows later chapters because it has read them — that is rereading, not lookahead, and it is marked as a second pass. It writes **only what moved**: an arrangement already recorded identically is not restated. Where a reread reads the same bytes differently, that is an **ambiguity, not a correction** — both readings stay, emitted as an untyped contest, because `kernel/notes.js`'s own rule is that an untyped disagreement needs typing, not a source.
+
+### Which tier a new source joins
+
+**A lexicon (Wiktionary, UniMorph, a treebank) joins the received priors** — it has a giver, a revision, and a concession path, so it may gate, refuse and type. **A model joins the witnesses** — its testimony lands typed beside the byte and structural tiers, one binary question at a time, and it never becomes a prior and never gates. Confusing the two is the failure S99 exists to prevent.
+
+### Status: this repo has not migrated
+
+`scripts/eot-sidecar.mjs` still writes the flat `EOTReading@1` form and still gates its vocabulary rather than its arrangements. Until it moves, this repo writes one format and the law describes another; **where they disagree, S95–S99 govern and the sidecars are the stale artifact.** The reference implementation is `eoreader7/native/eval/lavar/eot-jsonl.mjs`. A corpus-wide rebuild now has three reasons outstanding (LP17's field rename, LP18's schema, and this entry's typing), and remains a separate, disclosed operation.
