@@ -2091,3 +2091,35 @@ the void/cut timelines, the holograph) is the-fold's and eoreader7's own
 POLICIES.md/READING-SPEC.md, current through P171/S82 as of this pass —
 see those for what "reading," at its current best, actually means; this
 entry is only the corpus-side half of leveraging it.
+
+## LP17 — A field rename in the shared organ silently zeroed every sidecar this script has built for a week; "gate: clean" does not mean "content admitted"
+
+**What happened.** `scripts/eot-sidecar.mjs` built every sidecar's admitted propositions from `makeRelationReader`'s edges by reading `e.subject`/`e.verb`/`e.object`. The-fold's P76 (2026-09-02) renamed those fields to `e.end1`/`e.label`/`e.end2` (`arrangementOf`'s own shape) — a rename this script never picked up, so every edge it has read since has had `subject`, `verb`, and `object` all `undefined`, and every arrangement built from one failed `hl.admit`'s completeness check (`!end1 || !label || !end2`) as `incomplete`, 100% of the time, on every document. `scripts/eot-digest.mjs::digestOne` already carries the fix (`e.end1 ?? e.subject`, with its own comment dated at the discovery) — it was never ported to this sibling script.
+
+**Why it went unnoticed.** `admission.gate` still reported `"clean"` — gate classification only tracks whether an explicit error/refusal fired (`gapped_script`, `gapped_self_verify`), never whether anything was actually admitted. A sidecar with `gate: "clean", heard: 0, folded: []` reads, from the summary line alone, exactly like a working reading of thin material. The only tell was `admission.heard` itself, which nothing printed or gated on.
+
+**Found 2026-09-09**, LaVar (`eoreader7/LAVAR.md`) generating a first sidecar for `18-childrens-books/global-digital-library/en/273_I-Love-My-Mom.txt.eot.json`, user direction verbatim: *"wtf is this, there's no text read."* Confirmed by checking the last sidecar predating the regression: `pg11_Alice_s_Adventures_in_Wonderland.txt.eot.json`'s `lastRun` is `2026-09-01T20:04:32.966Z`, one day before P76 shipped — its real `subject`/`verb`/`object` log entries are genuine, from before the break.
+
+**Fixed** at `scripts/eot-sidecar.mjs`'s two read sites (the admitted-edge builder and the mismatch-disclosure map), same fallback `eot-digest.mjs` already uses. Not yet re-run corpus-wide: **every one of the 601 existing `.eot.json` sidecars generated on or after 2026-09-02 should be treated as suspect** (`heard`/`folded` likely near-zero regardless of what `gate` says) until rebuilt with this fix. The corpus-wide rebuild itself (LAVAR.md §7) is a separate, larger, disclosed-in-advance operation — not performed inside this entry.
+
+**The general lesson, worth carrying past this one bug:** a shared organ's field-shape rename needs the same "sweep every caller, not just the one you're looking at" discipline eoreader7's own CLAUDE.md already names for a rename inside one repo — the discipline does not stop at a repo boundary. `eot-digest.mjs` and `eot-sidecar.mjs` are siblings, in the same directory, importing the same upstream organ, and the fix landed in one and not the other for a full week. And a gate that reports "clean" needs a second field read beside it — `heard`/`admittedSpans`/`coverage` — before "clean" is trusted to mean anything happened.
+
+---
+
+## LP18 — An EOT reading is a JSONL ledger of observations that nest by address, typed by cube cell; the flat `.eot.json` schema is superseded (2026-09-09)
+
+**The law lives at `eoreader7/native/READING-SPEC.md` S95.** This entry records what it means for THIS repo, whose 601 `.eot.json` sidecars are written in the superseded form.
+
+**What changed, and why it is not cosmetic.** `scripts/eot-sidecar.mjs` writes one flat JSON object per source: an array of `folded` arrangements, each carrying `subject`/`verb`/`object` strings, each span carrying a full `ref` path plus an `at` string with that same path repeated inside it. Measured on Chapter 1 of Alice: **185,462 bytes of sidecar for an 11,552-byte chapter — 16x the text it reads — of which the source path alone accounts for 35,568 bytes across 741 repetitions, 19% of the file.** The user's own words on seeing it: *"look how much is redudnacne with the 'at' when you could have just scoped the JSON to be within a certain source."*
+
+Three things that schema cannot represent at all, each of which is why the replacement is a different shape rather than a slimmer version of the same one:
+
+1. **Nesting.** `curious child | was | very fond of pretending to be two people` is not one arrangement; the object carries another inside it. A flat triple discards it and reports the discard as a success. *"this is more than one proposition. and propositions can be nested, that's the whole point of the holograph."*
+2. **Document structure.** Chapters, sections and paragraphs are not in the flat schema in any form. Chapter 1's two scene-break asterisk rows were filed as six `no_relation_extracted` gaps and charged against the reading's own coverage — structure discarded, then counted as failure.
+3. **Revision.** A reading that learns something later cannot record it. The ledger appends a superseding line and keeps both; the flat form can only be overwritten.
+
+**Grain, not error — the correction that matters most for this repo's own numbers.** An arrangement whose connector is a preposition (`burning | with | curiosity`) is a **Field** (`CON · Ground · Tending`), not a broken Link. Any prior sweep of these sidecars that treated preposition-connectored edges as extraction noise was mis-typing a grain difference as a defect. `reading.grammar.mismatched` in the existing schema — which lists edges whose connector settles as a non-verb — is **disclosure of a grain, not a list of errors**, and must not be read as a quality signal.
+
+**Status, stated plainly rather than implied.** `eot-sidecar.mjs` has NOT been migrated. Until it is, this repo writes one format and the law describes another; where they disagree, S95 governs and the sidecars are the stale artifact. The reference implementation is `eoreader7/native/eval/lavar/eot-jsonl.mjs`. A corpus-wide rebuild is a separate, larger operation (LAVAR.md §7) and is not performed by this entry — and it now has a second reason to happen, on top of LP17's.
+
+**One rule this repo must not break again, because address-nesting makes it load-bearing:** *"we need to do our best to preserve the exact origin doc."* Earlier the same session, four children's-book source files in `18-childrens-books/` were **edited in place** to strip front and back matter, and `pg11-alice-ch1.txt` was carved out of the full book as a separate file (and silently normalised from CRLF to LF in the process — a second origin, already drifted, every address in it off by one byte per line). Under S95 both moves are wrong: front matter is recorded with a role, never deleted; a chapter is an observation at `[start,end)` on the origin, never a file. Any ledger written against an edited source is a ledger about bytes that no longer exist.

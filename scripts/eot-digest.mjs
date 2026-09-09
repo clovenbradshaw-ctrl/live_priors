@@ -173,11 +173,12 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
   // never imported at all, let alone passed.
   const pron = await import(path.join(NATIVE, "adapters/text/pronouns.js"));
   const { makeRelationReader } = await import(path.join(FOLD_ROOT, "hypergraph.js"));
-  // The shim's target renamed 2026-09-08 (eoreader7 organs/hyperlexicon.js
-  // -> organs/notes-text.js, exported member makeHyperlexicon ->
-  // makeNotesText); aliased back to this file's own local name so nothing
-  // below this line needs to change.
-  const { makeNotesText: makeHyperlexicon } = await import(path.join(FOLD_ROOT, "hyperlexicon.js"));
+  // A 2026-09-08 rename to organs/notes-text.js / makeNotesText (this
+  // file's own prior comment) did not stick — checked live 2026-09-09:
+  // the-fold/hyperlexicon.js re-exports eoreader7/native/organs/
+  // hyperlexicon.js, whose export is (still/again) `makeHyperlexicon`.
+  // The stale alias below called an undefined function on every run.
+  const { makeHyperlexicon } = await import(path.join(FOLD_ROOT, "hyperlexicon.js"));
   const { makeReferentIndex } = await import(path.join(FOLD_ROOT, "cast.js"));
   const { stripContainer, declaredIdentity } = await import(path.join(FOLD_ROOT, "source.js"));
   const { makeGrammarLens, mismatchedConnectors } = await import(path.join(FOLD_ROOT, "grammar-lens.js"));
@@ -657,7 +658,17 @@ const SPAN_AT_RE = /#(\d+)-(\d+)$/;
  * gap's own `at` resolves in the SAME coordinate space as a real
  * proposition's, not a bare offset nothing else in the file uses.
  */
-function propositionLedger(sentenceSpans, edges, ref) {
+// `scriptBySentence` (optional): `surfaces.js::scriptCoverageBySentence`'s
+// own per-sentence output, same order as `sentenceSpans` — see
+// native/READING-SPEC.md S92. Zipped onto this SAME per-sentence ledger
+// rather than returned as a parallel array: this ledger is already "one
+// entry per sentence, always" (LP10), so a document mixing scripts (English
+// + Mandarin) gets ITS OWN per-sentence language tag on the exact entry a
+// reader would otherwise ask "why is this sentence a gap" about — a caseless
+// (Han) sentence's `no_relation_extracted` gap and its `script.dominant:
+// "caseless"` tag are the same fact, read from two different fields on one
+// row, rather than two documents a caller has to join by hand.
+function propositionLedger(sentenceSpans, edges, ref, scriptBySentence) {
   const bySentence = sentenceSpans.map((s) => ({
     order: s.order,
     start: s.start,
@@ -678,14 +689,19 @@ function propositionLedger(sentenceSpans, edges, ref) {
       if (hit) hit.propositions.push({ at: s.at, subject: e.subject, verb: e.verb, object: e.object });
     }
   }
-  return bySentence.map((sent) => ({
-    order: sent.order,
-    at: `${ref}#${sent.start}-${sent.end}`,
-    ref,
-    kind: sent.propositions.length ? "proposition" : "gap",
-    propositions: sent.propositions.length ? sent.propositions : undefined,
-    reason: sent.propositions.length ? undefined : "no_relation_extracted",
-  }));
+  const scriptByOrder = new Map((scriptBySentence ?? []).map((sc) => [sc.order, sc]));
+  return bySentence.map((sent) => {
+    const sc = scriptByOrder.get(sent.order);
+    return {
+      order: sent.order,
+      at: `${ref}#${sent.start}-${sent.end}`,
+      ref,
+      kind: sent.propositions.length ? "proposition" : "gap",
+      propositions: sent.propositions.length ? sent.propositions : undefined,
+      reason: sent.propositions.length ? undefined : "no_relation_extracted",
+      script: sc ? { dominant: sc.dominant, casedShare: sc.casedShare } : undefined,
+    };
+  });
 }
 
 function verifySpans(excerpt, edges) {
@@ -734,6 +750,8 @@ async function digestOne(organs, spec) {
   // eot-sidecar.mjs's identical fold for the fuller account.
   const evidence = surfaces.accumulateSurfaceEvidence(sentences, surfaces.createSurfaceEvidence());
   const script = surfaces.scriptCoverage(sentences, { evidence });
+  // S92 — see eot-sidecar.mjs's identical fold for the fuller account.
+  const scriptBySentence = surfaces.scriptCoverageBySentence(sentences);
   const surfaceEvidence = surfaces.surfacesFromEvidence(evidence);
   const { events } = surfaces.discoverReferents(surfaceEvidence, { sameStem });
   const referentIds = new Set(events.map((e) => e.referent_id));
@@ -809,6 +827,8 @@ async function digestOne(organs, spec) {
       caselessLetters: script.caselessLetters,
       casedShare: script.casedShare,
       gap: script.gap,
+      // S92 — see eot-sidecar.mjs's identical field for the fuller account.
+      bySentence: scriptBySentence.map((sc) => ({ order: sc.order, dominant: sc.dominant, casedShare: sc.casedShare })),
     },
     reading: {
       sentences: sentences.length,
@@ -838,7 +858,7 @@ async function digestOne(organs, spec) {
     folded,
     // LP10: one entry per sentence, always — a real proposition or a typed
     // gap, never a silent absence. See propositionLedger's own header.
-    propositions: propositionLedger(sentenceSpans, folded, spec.slug),
+    propositions: propositionLedger(sentenceSpans, folded, spec.slug, scriptBySentence),
     excerpt,
   };
 }

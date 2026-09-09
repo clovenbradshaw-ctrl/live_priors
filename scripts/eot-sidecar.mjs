@@ -282,6 +282,12 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     // own header). Two separate calls would walk every sentence twice.
     const evidence = surfaces.accumulateSurfaceEvidence(sentences, surfaces.createSurfaceEvidence());
     const script = surfaces.scriptCoverage(sentences, { evidence });
+    // S92: the SAME per-character cased/caseless test as `script` above,
+    // computed per sentence instead of folded across the whole window —
+    // what a document mixing scripts (English + Mandarin) needs, since
+    // `script` alone would just average the two into one "mostly cased"
+    // share and hide which sentences are Han at all.
+    const scriptBySentence = surfaces.scriptCoverageBySentence(sentences);
     const surfaceEvidence = surfaces.surfacesFromEvidence(evidence);
     const { events } = surfaces.discoverReferents(surfaceEvidence, { sameStem });
     const referentIds = new Set(events.map((e) => e.referent_id));
@@ -307,10 +313,22 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
           rawOk += 1;
           verifiedSpans.push({ ref: relPath, start: rawStart, end: rawEnd, text: s.text });
         } else {
-          badSpans.push({ edge: `${e.subject} —${e.verb}→ ${e.object}`, excerptSpan: s, excerptGood, rawGood: false });
+          badSpans.push({ edge: `${e.end1 ?? e.subject} —${e.label ?? e.verb}→ ${e.end2 ?? e.object}`, excerptSpan: s, excerptGood, rawGood: false });
         }
       }
-      if (verifiedSpans.length) admitEdges.push({ subject: e.subject, verb: e.verb, object: e.object, spans: verifiedSpans });
+      // the-fold P76 (2026-09-02) renamed makeRelationReader's edge fields
+      // subject/verb/object -> end1/label/end2 (arrangementOf); this line
+      // read the old names straight off the new edges and silently built
+      // {subject: undefined, verb: undefined, object: undefined} on every
+      // edge, every document, ever since — 100% "incomplete" at admission,
+      // masked by `admission.gate` still reporting "clean" because nothing
+      // here raised an error. eot-digest.mjs's own digestOne already carries
+      // this exact fallback (see its comment there, dated at the fix); it
+      // was never ported to this sibling script. Found 2026-09-09 because
+      // "I Love My Mom"'s sidecar came back with 0 heard, 0 log entries, 0
+      // folded propositions, and the user asked "wtf is this, there's no
+      // text read" — correctly, since there wasn't.
+      if (verifiedSpans.length) admitEdges.push({ subject: e.end1 ?? e.subject, verb: e.label ?? e.verb, object: e.end2 ?? e.object, spans: verifiedSpans });
     }
 
     // DISCLOSURE ONLY — see loadOrgans's own comment for why this never
@@ -319,12 +337,12 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     // TEXT, independent of whether its span happened to survive the
     // separate byte-address check above.
     const grammar = posGate.classifyConnector
-      ? { checked: rawEdges.length, minShare: GRAMMAR_MIN_SHARE, mismatched: mismatchedConnectors(rawEdges, posGate.classifyConnector, { minShare: GRAMMAR_MIN_SHARE }).map((m) => ({ subject: m.edge.subject, verb: m.edge.verb, object: m.edge.object, thraxClass: m.classification.thraxClass })) }
+      ? { checked: rawEdges.length, minShare: GRAMMAR_MIN_SHARE, mismatched: mismatchedConnectors(rawEdges, posGate.classifyConnector, { minShare: GRAMMAR_MIN_SHARE }).map((m) => ({ subject: m.edge.end1 ?? m.edge.subject, verb: m.edge.label ?? m.edge.verb, object: m.edge.end2 ?? m.edge.object, thraxClass: m.classification.thraxClass })) }
       : null;
 
     return {
       bodyOffset: candidateOffset, body: candidateBody, blankedChars, excerpt, truncated, catalogDominated, grammar,
-      sentences, sentenceSpans, script, surfaceEvidence, events, referentIds, report, rawEdges,
+      sentences, sentenceSpans, script, scriptBySentence, surfaceEvidence, events, referentIds, report, rawEdges,
       excerptChecked, excerptOk, rawChecked, rawOk, badSpans, admitEdges,
     };
   }
@@ -361,7 +379,7 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
 
   const {
     bodyOffset, body, blankedChars, excerpt, truncated, catalogDominated, grammar,
-    sentences, sentenceSpans, script, surfaceEvidence, events, referentIds, report, rawEdges,
+    sentences, sentenceSpans, script, scriptBySentence, surfaceEvidence, events, referentIds, report, rawEdges,
     excerptChecked, excerptOk, rawChecked, rawOk, badSpans, admitEdges,
   } = attempt;
 
@@ -536,7 +554,16 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
       catalogDominated: catalogDominated || undefined,
       excerptChars: excerpt.length, truncated,
     },
-    script: { casedLetters: script.casedLetters, caselessLetters: script.caselessLetters, casedShare: script.casedShare, gap: script.gap },
+    script: {
+      casedLetters: script.casedLetters, caselessLetters: script.caselessLetters, casedShare: script.casedShare, gap: script.gap,
+      // S92: per-sentence cased/caseless dominance — see surfaces.js
+      // ::scriptCoverageBySentence's own header for scope (script
+      // detection, not language identification) and READING-SPEC.md S92
+      // for the mixed-script fixture this is checked against. `null`
+      // casedShare/`dominant` means that one sentence had no letters at
+      // all — never coerced into a bucket it was never evidence for.
+      bySentence: scriptBySentence.map((sc) => ({ order: sc.order, dominant: sc.dominant, casedShare: sc.casedShare })),
+    },
     reading: {
       sentences: sentences.length,
       surfaces: Array.isArray(surfaceEvidence) ? surfaceEvidence.length : null,
@@ -608,7 +635,7 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
     folded,
     // LP10: one entry per sentence, always — a real proposition or a typed
     // gap, never a silent absence. See propositionLedger's own header.
-    propositions: propositionLedger(sentenceSpans, folded, relPath),
+    propositions: propositionLedger(sentenceSpans, folded, relPath, scriptBySentence),
     lastRun: { recipeId: recipeIdValue, at: new Date().toISOString() },
     ...(priorVersions.length ? { priorVersions } : {}),
   };
@@ -659,9 +686,18 @@ export { readSidecar, processFile, walkCorpus, blankCatalogLines, stripUdhrHeade
 // A deliberate, disclosed corpus-wide re-read, for when the RECIPE itself
 // was the defect (a false-admission bug fixed, not new material to layer
 // on top of) — never the routine mode.
+// `--excerpt-chars=N` — override EXCERPT_CHARS for this run only. The flat
+// 8000-char budget exists to keep a corpus-wide `--scan` cheap on
+// novel-length sources, not as a correctness gate — a deliberately short
+// specimen (a single extracted chapter, a fable) built specifically to be
+// read in full is exactly the case this override is for. Left off, nothing
+// about the default behavior changes.
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const args = process.argv.slice(2).filter((a) => a !== "--fresh");
-  const fresh = process.argv.slice(2).includes("--fresh");
+  const rawArgs = process.argv.slice(2);
+  const excerptFlag = rawArgs.find((a) => a.startsWith("--excerpt-chars="));
+  const excerptChars = excerptFlag ? Number(excerptFlag.slice("--excerpt-chars=".length)) : undefined;
+  const args = rawArgs.filter((a) => a !== "--fresh" && !a.startsWith("--excerpt-chars="));
+  const fresh = rawArgs.includes("--fresh");
   const organs = await loadOrgans();
   let targets;
   if (args[0] === "--scan") {
@@ -670,7 +706,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   } else if (args.length) {
     targets = args.map((a) => path.resolve(a));
   } else {
-    console.log("usage: node eot-sidecar.mjs <path> [<path> ...] | --scan [--fresh]");
+    console.log("usage: node eot-sidecar.mjs <path> [<path> ...] | --scan [--fresh] [--excerpt-chars=N]");
     process.exit(1);
   }
   let clean = 0, gappedScript = 0, gappedSelfVerify = 0, empty = 0;
@@ -678,7 +714,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const started = Date.now();
   for (const abs of targets) {
     const t0 = Date.now();
-    const out = await processFile(organs, abs, { fresh });
+    const out = await processFile(organs, abs, { fresh, excerptChars });
     const ms = Date.now() - t0;
     const rel = path.relative(LP_ROOT, abs);
     if (out.admission.gate === "clean") { clean += 1; if (out.admission.coverage != null) cleanCoverages.push(out.admission.coverage); }
