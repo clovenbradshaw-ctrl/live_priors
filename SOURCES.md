@@ -28,7 +28,7 @@ are not mistaken for empty documents.
 | 8. News | 4 | ⚠️ 1 document | Wikinews items were under the floor; wikinews.org is not reachable to refetch |
 | 9. Source Code | 31 | ✅ 89 files across 31 repos | Two tiers: 20 landmark repos + 11 security-audited repos at pinned commits, all vetted (see `09-source-code/VETTING.md`) |
 | 10. Audio/Music | 5 | ✅ 13 collection catalogues | Per-item metadata folded into catalogues; 2 collections were too thin even consolidated |
-| 11. Multi-language | 6 | ✅ 35 texts | Gutenberg non-English + Wikipedia in 16 languages + War and Peace (en/ru/fr), content-verified, at `war-and-peace/` — see POLICIES.md LP7; the `gutenberg-non-en/` row above it is 20/20 mislabeled, see `digested/CORPUS-INTEGRITY-FINDING.md` |
+| 11. Multi-language | 8 | ✅ 96 texts | Gutenberg non-English + Wikipedia in 16 languages + War and Peace (en/ru/fr), content-verified, at `war-and-peace/` — see POLICIES.md LP7; the `gutenberg-non-en/` row above it is 20/20 mislabeled, see `digested/CORPUS-INTEGRITY-FINDING.md`. Added 2026-09-09: `concepticon/` (3 files, the cross-linguistic concept-ID backbone, CC BY 4.0) and `parallel-classics/` (31 texts, 7 public-domain works each independently translated into several languages — every download's own declared header is checked against what it was fetched for before being saved, see `scripts/fetch-parallel-classics.mjs`) |
 | 12. Non-Western Music | 5 | ✅ Great 78 catalogue | Other sources not yet pulled |
 | 13. Mysticism | 3 | ⬜ | Cloudflare blocks sacred-texts.com |
 | 14. Holy Texts | 10 | ✅ 492 files | Whole books: Tanakh (38), SBLGNT (23), Qur'an by sura (81), Pali suttas (186) + earlier pulls |
@@ -117,6 +117,45 @@ generated record in [`09-source-code/VETTING.md`](09-source-code/VETTING.md) and
 in `manifests/source-code-vetting.json`. Findings are adjudicated in the open, never deleted.
 Nothing in this corpus is executed; these files are read as documents.
 
+### 11. Multi-language additions (2026-09-09)
+
+Two additions to `11-multi-language/`, both aimed at cross-lingual concept
+grounding rather than more single-language text — see the proposal that
+motivated them for the full reasoning.
+
+- **`concepticon/`** — not text in any language: a shared concept-ID space
+  (4,165 concept sets, `concepticon.tsv`) that ~160 independent fieldwork
+  concept lists (Swadesh lists, naming tests, elicitation lists) reference,
+  so a concept is comparable across those lists' languages without any one
+  language's word standing in as the reference point. Fetched from
+  [concepticon/concepticon-data](https://github.com/concepticon/concepticon-data).
+  **License CC BY 4.0**, verified directly from that repo's own
+  `.zenodo.json`/`metadata.json` at fetch time, not assumed. The ~160
+  underlying per-language concept lists themselves are not vendored here —
+  see `11-multi-language/concepticon/README.md`.
+- **`parallel-classics/`** — the same public-domain work, independently
+  translated, for direct "Rosetta Stone"-style comparison: 7 works (Alice's
+  Adventures in Wonderland, The Adventures of Pinocchio, Grimms' Fairy
+  Tales, Robinson Crusoe, Gulliver's Travels, Faust Part 1, Perrault's Fairy
+  Tales), 31 editions across 8 languages (en, de, fr, it, nl, fi, hu, es).
+  All via Project Gutenberg, ids resolved live against
+  [Gutendex](https://gutendex.com) rather than typed from memory —
+  `digested/CORPUS-INTEGRITY-FINDING.md` documents that every one of the 20
+  hand-typed ids in the older `gutenberg-non-en/` pull turned out to name
+  the wrong book once the bytes were read. `scripts/fetch-parallel-classics.mjs`
+  checks each download's own declared header against what it was fetched
+  for, and separately checks each edition's word count against its work's
+  median (catching, live, a LibriVox audio edition whose "text/plain"
+  format was a chapter-timing index, not the novel — pg19517, replaced with
+  pg52484). Both checks' rejections are recorded in
+  `manifests/parallel-classics-manifest.json`, not silently dropped.
+
+Deferred from the original proposal (needs per-translation or per-language
+license triage before pulling, same pattern as WikiConv/NCTE): Open
+Multilingual Wordnet, Tatoeba, the Parallel Bible Corpus, and multi-language
+Aesop's Fables. The Little Prince remains excluded — its French original is
+US-public-domain but each translation carries separate copyright.
+
 ## Running the fetchers
 
 ```bash
@@ -124,6 +163,8 @@ node scripts/run-all.mjs                        # everything, then catalogues + 
 node scripts/fetch-world-government.mjs         # legislation, UDHR, Factbook
 node scripts/fetch-world-government.mjs --jurisdictions de,fr,uk
 node scripts/fetch-replacements.mjs --only scripture
+node scripts/fetch-concepticon.mjs              # cross-linguistic concept backbone
+node scripts/fetch-parallel-classics.mjs        # same work, several languages
 node scripts/enforce-min-words.mjs              # audit; add --prune to delete
 ```
 
