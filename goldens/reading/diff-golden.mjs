@@ -49,7 +49,16 @@ for (const g of GOLDENS) {
   let edges = [];
   try {
     const r = organs.relationsFor([passage], { pool: [passage] });
-    edges = r.edges ?? [];
+    // The pipeline emits {end1, label, end2} since the SVO-neutral
+    // "arrangementOf" rename (the-fold POLICIES.md P76); normalize to the
+    // {subject, verb, object} shape this driver's matching logic expects,
+    // the same normalization eot-digest.mjs already applies.
+    edges = (r.edges ?? []).map((e) => ({
+      ...e,
+      subject: e.end1 ?? e.subject,
+      verb: e.label ?? e.verb,
+      object: e.end2 ?? e.object,
+    }));
   } catch (err) {
     console.error(`${g.specimen}: pipeline threw: ${err.message}`);
   }
