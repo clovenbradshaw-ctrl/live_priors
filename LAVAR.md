@@ -4,6 +4,8 @@
 
 *Standing: directive. Written against `eoreader7@cbf97b4` and `the-fold@e3bbd12`, 8 September 2026. Every measurement cited was run in this session. Named for LeVar Burton. Ships incrementally; no phase deletes anything until the phase after it measures better.*
 
+**Constitution:** eo-constitution **II.6** (the book test — LaVar reads the source itself, never a surrogate), **II.2** (every prior LaVar lands names its giver), **II.9** (revision — the autonomy spiral is a witnessed revision of the reader; arrival is never verdict), **II.23** (every null LaVar's canon relies on carries a control built to fail), **III.3** (a missing prior is a typed gap, never a silently wrong number), **IV.4** (every LaVar revision cites the addresses and the entries that produced it). This charter is **agent policy under the constitution**, not an amendment: it changes no constitution text and carries no changed conformance test (IV.1), and per IV.2 it stands proposed for human disposal.
+
 ---
 
 ## 1. The problem it exists to solve
@@ -179,7 +181,7 @@ Where an adapter supplies no boundary, the fallback is backward transitional pro
 
 **Start monolingual.** A level that means different things in two languages is worse than no level. A second language is added only after the English ladder produces stable grades, and it gets its own ladder with its own giver rather than a translation of this one.
 
-Received priors stay as the floor. The UD English EWT POS treebank has a named giver and does real work in `heard-surfaces`. Live priors accrete above received ones; they do not replace them, because the first reading of anything has no live prior to stand on.
+Received priors stay as the floor. The UD English EWT POS treebank has a named giver and does real work in `heard-surfaces`. Live priors accrete above received ones; they do not replace them, because the first reading of anything has no live prior to stand on. **Amended 2026-09-12 (S112): the floor is now IMPLEMENTED as admission, not just typing.** The text reader's verb vocabulary admits every (VERB+AUX)-dominant form the received prior attests (accreting above the earned set, never replacing it); measured, the assembly went from 0 relation edges on AIW ch1's prose to 264, recall 43.6% vs the earned-only 36.3%. The sorting of the earned-vs-received contradiction is READING-SPEC S112.
 
 **Omnimodal is a property of the kernel's vocabulary, never a reason to thin what an adapter uses.** User direction, verbatim: *"the fact is word order and often capitalization DOES contain meaning in english and we should not ignore that"* / *"we just need to have the reader learn to use the relative rules, but we dont want to ignore any meaningful structure to make something omnimodal."* Capitalisation and word order are real, load-bearing signal in English — a mechanism that uses them fully is not thereby less omnimodal; omnimodal describes the KERNEL (medium-blind arrangement/admit/fold, above), not a mandate that every adapter perform identically, or use equally little, across every language. See `READING-POLICY.md` P8 (drilling EO-constitution II.13, "the script earning test," into this repo's own reading law) and P9 (the sibling finding on relation shape: a schema that CAN be n-ary, `EOHyperedge@1`, is not the same as one that IS — checked this session, every text-adapter constructor still only ever hands it exactly two participants, which is the real cause behind a thin extraction, not a missing "universal" fix).
 
@@ -261,6 +263,8 @@ And the part LaVar is most likely to get wrong, because it looks like quality co
 
 **Revisions supersede; they never edit in place (§3, `store.js`'s `supersedes`, `correction.js`).** The discipline is already named: *we don't need a system that's always right, but we do need one that is actively learning to get better.* A LaVar revision that overwrites the original entry destroys the before-and-after the mistake corpus (§10) exists to keep — append, never rewrite, exactly as this session archived rather than deleted the sidecars carrying the Marmeladov specimen.
 
+**A reference implementation is the target its references grade — a scoped composition is a scope, never a defect (added 2026-09-12, the "read correctly" correction).** The incident: a session grading the goldens concluded "we've been grading the wrong reader — eot-jsonl.mjs hand-chains the organs and never imports `createRecursiveReader`, while the fold's app reads with the real assembly." That was a misread, and LaVar's own canon caused it. LAVAR §13's "name the assembly" was satisfied in a comment and then violated in the conclusion: eot-jsonl.mjs IS the reference implementation for the ledger format (this file says so), the goldens were BUILT against its ledgers (`golden-tool.mjs score` reads them), and its ordered stages (structure → sentences → surfaces → referents → pronoun binding → relations → SIG row → expectation lifecycle → surprise → reread) are the S95 reference's own declared composition — its activation runs. `createRecursiveReader`/`createCausalTextPerceiver` (the fold's `reading-worker.mjs`) is a DIFFERENT composition of the same organs, scoped to the app's production reading. **LaVar's default when a reader "isn't the full assembly" is: which assembly do the references actually grade, and is the narrower one a deliberately-scoped composition rather than a missing half?** A reference graded against its own reference is not a wrong reader; calling it one is the P5.5 shape (a theory reached for before the driver was checked) aimed at the grader's own targets.
+
 **A batched update cycle is an engineering compromise, never a model of reading — and a compromise's justification can go stale (`eoreader7/CLAUDE.md`, "added 2026-09-09" — a NATIVE incident, `native/adapters/text/recursive.js`).** `createCausalTextPerceiver`'s `refreshEvery` batched the reader's own vocabulary/cast update because an earlier version of `refresh()` was genuinely O(n²) — true when written, false after a later pass made it incremental, and nobody re-checked. The result: a 14-sentence book read at the stale default produced zero relation edges and zero referent bindings, not because the material was hard but because the reader's update cycle never fired a second time before the text ended. **LaVar should distrust any fixed-size batching, windowing, or refresh-cadence parameter it finds in a reading pipeline exactly as hard as it distrusts a hand-picked threshold (`legacy-eoreader6.1/READING-POLICY.md` P4, the same general lesson stated for the old engine) — both are numbers that can outlive the reason they were chosen, and "the material is too short/hard for this to work" is the wrong conclusion when the real cause is a stale engineering constant.** See `native/READING-SPEC.md` S91 for the full incident this entry is drawn from (originally misfiled into the legacy `READING-POLICY.md` as A26 — moved same session).
 
 ---
@@ -278,3 +282,53 @@ Deferred, by the user's explicit choice, not by default: the self-contradiction 
 **2026-09-09, second pass — sidecar archiving and the reading canon.** The five existing sidecars (`eoreader7/native/eval/the-fold/results/readings/*.jsonl`, recipe `causalTextPerceiver_reviseTextFold_refresh25`) were moved to `readings/archive/` per §7 rather than deleted — the user's instruction was to "wipe" them, but §7 itself requires archiving because one of the five (`022805d79a1d4edf-...jsonl`) carries the actual Marmeladov specimen §1 is written against; deleting it would have destroyed the before-and-after this whole effort measures against. `readings/archive/README.md` records which hash holds the specimen and flags the other four as unreviewed rather than assumed clean. `readings/` itself is now empty and ready for the rebuild.
 
 Section 13, "LaVar's reading canon," was added: a pointer-plus-checklist (not a duplicate) into `READING-POLICY.md`'s P0–P7 and this repo's `CLAUDE.md` incident log, aimed specifically at what makes a sidecar gradable and what makes a LaVar revision trustworthy — assembly discipline, stage-by-stage checking, prior-tier attribution (the Marmeladov bug restated as "which tier decided this"), gaps-as-results, byte-offset self-verification, stated configuration, search-before-flagging-a-miss, never-tune-on-the-score, reachability of a finding, and supersede-never-overwrite. This directly answers the user's "be sure LaVar is an absolute reading expert grounded in everything we've learned about reading" and "I'm most interested in him creating the best quality sidecars" — the canon is the part of LaVar's expertise that has to be read from the project's own record, not invented fresh.
+
+## 2026-09-12 — Omni-lingual check: §8 transfers to Russian, the shape is language-general, and the received floor has one named gap (UniMorph rus full forms)
+
+The Meno/loops/shape experiments threatened to become English-shaped, and were tested before they could. Real Russian War and Peace (`11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt`) through the ledger reader with `--lang=rus` (pronoun set added; `pos-rus.json` already present):
+
+**What held (not English-shaped):**
+- The §8 received floor (S112) transfers: real Russian meaning is read — `Анна Павловна | кашляла | несколько дней`, `Он | говорил | на том изысканном французском`, `грипп | был | тогда новое слово`. The received verb-admission is not English-shaped.
+- The GOLDEN-FREE SHAPE is language-general: recoverability 100% (the address layer, S103 again), void rate, referent purity, signal-over-noise all computed identically in Russian. The ideal-shape loop can be chased in any language **with no golden**.
+
+**What broke (the English-shaped assumptions, disclosed where S40/S103 predicted):**
+- Referent purity 0.111 — capitalisation does not mark Russian proper nouns, so capitalisation-based discovery admits junk.
+- Pronoun binding 0 — Russian pro-drop (and the aristocratic French opening) starve third-person pronouns.
+- Inflected verbs (`кашляла`, `смутясь`) are HEARD by earned recurrence but not TYPED — `pos-rus.json` attests only lemmas, so the grain settles as a gap.
+
+**What needed to happen (the note):**
+1. **Fetch UniMorph `rus` full forms.** The project already has the rus DECLENSION half (`priors/declension-rus.json`, provenance `github.com/unimorph/rus` — 89 suffix rules) but never fetched the full paradigm forms, unlike English (`unimorph-eng-verb-forms.json`, 103k forms). The inflected-verb typing gap closes exactly there — the received floor completed for Russian's rich inflection. Then re-run the Russian shape.
+2. **Music is the honest boundary, named not built.** The reading experiments are text-scoped; the SHAPE and the received/earned loop are reader-agnostic concepts, and the project already shows the golden-free discipline on audio (kind organs, signal.js's noise control), but the Meno/loops harness has not been wired onto the audio reader.
+3. **The shape is the golden-free future instrument** — every language, every medium, no golden required. Chasing it is the point.
+
+## 2026-09-12 — Wilson's standing laws (the swarm, made law)
+
+**Constitution:** eo-constitution **II.2** (the hierarchy is received — Commons's MHC orders are a gift that names its giver; the swarm may descend, never redefine), **II.9** (no final answer — "best" is a revision, never a verdict; convergence is a pause, never a finish), **III.2** (we read in order — the engine has no future; a disclosed reread is a prior, never lookahead), **IV.5** (consequences are revisable — nothing the swarm settles is grandfathered). Agent policy under the constitution, proposed not self-enacted (IV.2); prose with no enforcement test, not an amendment (IV.1).
+
+Wilson is the archon of the swarm (the evolutionary swarm-storm of reading
+variants under the cube and the received MHC hierarchy). Three laws govern
+it, and they are binding on every agent it spawns:
+
+1. **There is no final answer.** The swarm is always asymptotically
+   approaching the limit, never arriving. "Current best, always revisable"
+   replaces "verdict"/"final" everywhere: a reading, a shape, a configuration
+   is the current approach to the referent (the noumena), never the referent
+   itself. Convergence is a pause, never a finish.
+
+2. **We read in order; no agent does otherwise.** Every agent reads
+   CAUSALLY — a sentence is scored only with what came before it (S3, P1).
+   No agent reads the future to score the present. The only exception is a
+   DISCLOSED second pass: a reread that has legitimately read the material
+   may use it as prior, and must say so (EOTReadingPass pass:2) — that is
+   rereading, never lookahead. The correction chase scores first-read
+   (causal) then corrected-read (disclosed reread); the causal shape is the
+   honest one.
+
+3. **The hierarchy is received; the swarm descends it, never reorders it.**
+   Commons owns the MHC orders; Wilson owns the swarm's process. Bad
+   extraction (a below-noise shape) triggers a descent (REC) down the
+   received ladder — Wilson may descend, never redefine.
+
+Every swarm output that says "best" means "best so far"; every shape is a
+point on an asymptotic curve; every agent reads the material in order and
+nothing else.
