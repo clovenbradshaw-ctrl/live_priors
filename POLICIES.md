@@ -2156,3 +2156,45 @@ A reread legitimately knows later chapters because it has read them — that is 
 ### Status: this repo has not migrated
 
 `scripts/eot-sidecar.mjs` still writes the flat `EOTReading@1` form and still gates its vocabulary rather than its arrangements. Until it moves, this repo writes one format and the law describes another; **where they disagree, S95–S99 govern and the sidecars are the stale artifact.** The reference implementation is `eoreader7/native/eval/lavar/eot-jsonl.mjs`. A corpus-wide rebuild now has three reasons outstanding (LP17's field rename, LP18's schema, and this entry's typing), and remains a separate, disclosed operation.
+
+---
+
+## LP20 — A romanized script is a language wearing Latin clothes: it is a typed gap, never a thin clean read (2026-09-13)
+
+**Measured, not argued.** The same day the St. John's canon fetchers landed the Sanskrit originals — Upaniṣads, Bhagavadgītā, the full Mahābhārata, Vālmīki Rāmāyaṇa, the Ṛgveda — seven new-language sidecars were generated against them and their neighbours. Admission gates and coverage:
+
+| source | script | gate | coverage | edges |
+|---|---|---|---|---|
+| Tacitus, *Annales* (Latin) | Latin | clean | 70.0% | 53 |
+| Homer, *Iliad* (Ancient Greek) | Greek polytonic | clean | 68.8% | 51 |
+| Sappho, poems (Ancient Greek) | Greek polytonic | clean | 16.0% | 17 |
+| Kaṭha Upaniṣad (Sanskrit, IAST) | Latin + diacritics | **clean** | **1.7%** | 1 |
+| Bhagavadgītā (Sanskrit, IAST) | Latin + diacritics | **clean** | **6.0%** | 3 |
+| Bashō, *Oku no Hosomichi* (Japanese) | Kana/Kanji | gapped_script | 0.0% | 0 |
+| al-Ghazālī (Arabic) | Arabic | gapped_script | 0.0% | 0 |
+
+Japanese and Arabic are typed honestly — `gapped_script`, the reader cannot see the script, nothing is fabricated. Latin and Greek read meaningfully. **The failure sits in the middle row: the IAST Sanskrit is romanized, so its script is "cased" and the gate fires `clean` — while the reader has no Sanskrit organs, and the read is 1.7–6% of sentences.** It is the same lie LP17 already measured for a field rename, one layer deeper: there, `gate: clean` hid a silent zero because nothing printed `heard`; here, `gate: clean` hides a near-zero because the reader's script check is satisfied by an alphabet the language does not actually speak.
+
+**Why the Latin alphabet is exactly the danger.** A genuinely foreign script is self-disclosing: `gapped_script` means nobody reads it as English and the summary says so. A romanized script is a language wearing Latin clothes — the reader's sentence splitter, surface extractor and POS gate all run on it and all return just enough of *something* (English-shaped tokens, mostly noise) that the admission path completes with `clean`. The reader is not merely silent about the empty read; the alphabet makes the emptiness invisible at the summary line, which is strictly worse than the honest gap.
+
+**The rule.** A text whose script is cased but whose **language** has no reading organs is not a clean thin read; it is a typed gap. Concretely:
+
+- The gate's `script` block must distinguish **script readable** from **language readable**. A Latin-script text in a language the reader has no organs for (Sanskrit IAST, and by the same logic any romanized Arabic, Persian, or Hindi) must be typed `romanized_gap` (or the language's own named gap), with the language named and the coverage reported as the near-zero it is — never passed to the `clean` bucket.
+- A sidecar that reports `gate: clean` on a romanized-script source is mis-typed by construction, per LP17's own standing: a gate that reports "clean" needs `heard`/`coverage` read beside it, and here the gap must travel with the reading (LP4's `MUST`, the gap is part of the reading).
+- The corpus's own fetchers already carry the signal the gate needs: `fetch-sanskrit-canon.mjs` writes `format: IAST transliteration` into every file's frontmatter. That is a declared fact about the source, and the sidecar generator should read it the way it reads `stripContainer`'s offsets — a typed gap cannot be honest if the typing source is ignored.
+
+**What this does not decide.** Whether the fix is a real Sanskrit reading layer (relation + POS organs for IAST, the honest long-term answer) or a gate-level typing correction (the immediate honest one) is the next pass's to measure — the same ordering LP7 states: name the limit first, then build past it. And it does not license treating the near-empty sidecars as useful evidence about the Upaniṣads: LP4's rule holds — these documents are not empty; the reader is blind to their language and now says so.
+
+---
+
+## LP21 — The St. John's canon entered as original text: what the corpus owes a language it cannot yet read (2026-09-13)
+
+This entry records the state of the corpus after the canon fetchers, and the debt LP20 names made concrete. The raw corpus itself is not policy; the policy is what the corpus now promises to do about languages it fetched but cannot read.
+
+**What landed.** `14-holy-texts/upanishads/` (principal Upaniṣads, IAST), `14-holy-texts/bhagavad-gita/`, `11-multi-language/sanskrit-originals/` (Ṛgveda, all 18 parvas of the Mahābhārata, Rāmāyaṇa, Yoga Sūtras, Nyāya/Vaiśeṣika/Sāṃkhya Sūtras, Kālidāsa, Lotus Sūtra), `11-multi-language/greek-originals/` (Homer, Aeschylus, Sophocles, Euripides, Aristophanes, Herodotus, Thucydides, Plato, Aristotle, Sappho, Pindar, Epictetus, Plotinus), `11-multi-language/latin-originals/` (Tacitus, Livy, Augustine, Boethius, Anselm, Aquinas, Spinoza, Bacon, Copernicus, Newton), `11-multi-language/japanese-originals/` (Genji, Pillow Book, Tsurezuregusa, Hōjōki, Bashō), `11-multi-language/arabic-originals/` (al-Ghazālī, Ibn Rushd, Ibn Khaldūn).
+
+**The debt.** For each of those languages the corpus now holds original bytes it cannot read with its current organs: IAST Sanskrit reads at 1.7–6% coverage behind a false `clean` gate (LP20), Japanese and Arabic are `gapped_script`. The debt is not discharged by the fetch having succeeded — a language fetched and gapped is a language still unread, and the LP20 typing is what keeps that honest.
+
+**Known gaps, by source, disclosed rather than forced.** (a) *Heike Monogatari*: neither ja.wikisource nor Aozora carries the classical text — both edition pages on ja.wikisource are redlinks, Aozora has only modern renditions; recorded as unavailable rather than substituted. (b) *Classical Chinese*: ctext.org serves a Cloudflare Turnstile challenge to automated clients and its API is authentication-gated; the Analects, Dao De Jing, Zhuangzi, Mencius, Mozi, Xunzi, Han Feizi, Great Learning and Doctrine of the Mean remain absent — the source is named, the blocker is named, nothing silently substitutes a different text. (c) *Kena and Muṇḍaka Upaniṣads*: GRETIL does not carry them (restricted TITUS only); the ten principal Upaniṣads present are so labeled. (d) *Avicenna's al-Šifāʾ and al-Fārābī's corpus*: not on ar.wikisource in full.
+
+**The promise.** A language fetched into this corpus with no reading organs is not an excuse to stop there; it is an itemized account of what the next reading pass must build. The gap inventory is itself a prior: the corpus now knows, per language, which texts it holds that it cannot yet read.

@@ -78,6 +78,29 @@ Verse- and section-level fragments were replaced with whole books:
 - **quran-suras/** — 81 suras with Arabic text, transliteration and English translation
 - **pali-suttas/** — 186 discourses from the Dīgha and Majjhima Nikāya, Pali with Bhikkhu
   Sujato's English translation (CC0)
+- **upanishads/** + **bhagavad-gita/** — the principal Upaniṣads and the Bhagavadgītā in
+  Sanskrit (IAST) from GRETIL, added 2026-09-13 with the St. John's canon pull.
+
+### 11. Multi-language — original-language canon (added 2026-09-13)
+
+The St. John's College Western and Eastern canons, fetched in original text
+from GRETIL (Sanskrit), Greek/Latin/Japanese/Arabic Wikisource, plus Gutenberg
+for the Latin classics already present. See `digested/STJOHNS-CANON-GAP-ANALYSIS.md`
+for the full canon cross-reference and every documented blocker; POLICIES.md
+LP20–LP21 record the reading-system debt these languages carry.
+
+| subdir | contents |
+|---|---|
+| `sanskrit-originals/` | Ṛgveda, all 18 parvas of the Mahābhārata, Vālmīki Rāmāyaṇa, Yoga/Nyāya/Vaiśeṣika Sūtras, Sāṃkhya Kārikā, Kālidāsa (Śakuntalā, Kumārasambhava, Meghadūta, Raghuvaṃśa), Lotus Sūtra — IAST from GRETIL |
+| `greek-originals/` | Homer, the tragedians, Aristophanes, Herodotus, Thucydides, Plato, Aristotle, Sappho, Pindar, Epictetus, Plotinus — polytonic Greek from el.wikisource |
+| `latin-originals/` | Tacitus, Livy, Augustine, Boethius, Anselm, Aquinas (Summa, Prima Pars), Spinoza, Bacon, Copernicus, Newton — Latin from la.wikisource |
+| `japanese-originals/` | Genji, Pillow Book, Tsurezuregusa, Hōjōki, Bashō — Classical Japanese from ja.wikisource |
+| `arabic-originals/` | al-Ghazālī, Ibn Rushd, Ibn Khaldūn — Arabic from ar.wikisource |
+
+Every fetched source also carries a `*.structure.json` outline
+(`scripts/extract-source-structure.mjs`, `SourceStructure@1`) splitting the
+raw bytes on the source's own delimiters — see
+`digested/STRUCTURE-FROM-BYTES-FINDING.md`.
 
 ### 5. Academic Papers
 

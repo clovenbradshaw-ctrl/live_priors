@@ -21,8 +21,9 @@ published by institutions in 28 jurisdictions.
 | `06-government-legal/un-udhr/` | **516 translations of the Universal Declaration of Human Rights** |
 | `06-government-legal/world-factbook/` | **255 CIA World Factbook country profiles** |
 | `09-source-code/` | 31 repos in two tiers: 20 landmark + 11 security-audited at pinned commits, content-vetted (`VETTING.md`) |
-| `14-holy-texts/` | 492 files — whole books of the Tanakh, Greek NT, Qur'an and Pali canon |
+| `14-holy-texts/` | 492 files — whole books of the Tanakh, Greek NT, Qur'an and Pali canon; plus **upanishads/** and **bhagavad-gita/** in Sanskrit (IAST) added 2026-09-13 |
 | `15-western-canon/folger-shakespeare/` | Bulk text + XML + 15 individual plays |
+| `11-multi-language/` | Gutenberg non-English + Wikipedia in 16 languages + War and Peace (en/ru/fr); **greek-originals/**, **latin-originals/**, **sanskrit-originals/**, **japanese-originals/**, **arabic-originals/** added 2026-09-13 as original-language texts of the St. John's canon (Homer through Ibn Khaldūn) — see `digested/STJOHNS-CANON-GAP-ANALYSIS.md`; every one carries a `*.structure.json` byte-structure outline (see `digested/STRUCTURE-FROM-BYTES-FINDING.md` and POLICIES.md LP20–LP21) |
 | `18-childrens-books/` | Pilot pull: 38 books across 17 languages (Global Digital Library + StoryWeaver, African Storybook) — see [`18-childrens-books/ATTRIBUTION.md`](18-childrens-books/ATTRIBUTION.md) |
 | `11-multi-language/concepticon/` | Cross-linguistic concept backbone: 4,165 concept sets linking ~160 fieldwork concept lists across languages (CC BY 4.0) |
 | `11-multi-language/parallel-classics/` | 7 public-domain works (Alice in Wonderland, Pinocchio, Grimms' Fairy Tales, Robinson Crusoe, Gulliver's Travels, Faust Part 1, Perrault's Fairy Tales), 31 editions across 8 languages, same work independently translated — for direct cross-language comparison, "Rosetta Stone" style |
