@@ -37,3 +37,21 @@ eoreader7 and loads this file via the same cross-repo relative path
 module's own directory). the-fold's own `hypergraph.js::
 makeCaseMarkedRelationReader` (POLICIES.md P73) consumes the organ, never
 this file directly.
+
+## Sanskrit (`case-marking-san.json`, 2026-09-18)
+
+`SanskritCasePrior@1` is the same ladder over Vedic Sanskrit: the one-master
+builder (`eoreader7/native/scripts/build-latin-case-prior.mjs`) run with
+`--lang=san --strip=none` against `UD_Sanskrit-Vedic` TRAIN (21,477
+sentences, 87,149 nominals, 22,763 verbs; CC BY-SA 4.0). Two generalizations
+were required, both proven no-ops for the shipped Latin/Greek artifacts:
+
+- `--strip=none`: IAST diacritics are phonemic (NFD-strip collapses ā→a,
+  ś→s, ṛ→r — measured 10/10 probes destroyed). The Vedic train carries zero
+  combining marks (all non-ASCII is phonemic IAST), so nothing is lost.
+- finite = `VerbForm=Fin` OR bare Mood+Person with no VerbForm: Vedic never
+  annotates VerbForm on finites (22,763/22,763); Latin/Greek always do
+  (0 bare in both), so the disjunct changes nothing shipped.
+
+Consuming seam: `eoreader7/native/eval/lavar/sanskrit.mjs`; competence:
+`sanskrit-competence.test.mjs` (Vedic TEST gated, UFAL Classical reported).
