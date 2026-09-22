@@ -22,7 +22,7 @@ are not mistaken for empty documents.
 | 2. Encyclopedic | 4 | ✅ 54 articles | Wikipedia + 1911 Britannica |
 | 3. OER/Textbooks | 8 | ⬜ | No bulk APIs available |
 | 4. Pre-aggregated | 2 | ⬜ | Common Pile/RedPajama require local HF datasets |
-| 5. Academic papers | 4 | ✅ 94 book chapters | arXiv/PLOS abstracts removed (under the floor); replaced with open-licensed monographs — see below |
+| 5. Academic papers | 4 | ✅ 94 book chapters + **97 NTRS white papers** | arXiv/PLOS abstracts removed (under the floor); replaced with open-licensed monographs + NASA technical reports — see below |
 | 6. Government/Legal | 6 | ✅ **1,220 documents** | 449 statutes from 28 jurisdictions, 516 UDHR translations (all re-read for reading-pipeline blind spots — see POLICIES.md LP8), 255 World Factbook profiles |
 | 7. Images/Media | 4 | ✅ 2 collection catalogues | NASA (185 items) and Met Museum (140 items) folded into catalogue documents |
 | 8. News | 4 | ⚠️ 1 document | Wikinews items were under the floor; wikinews.org is not reachable to refetch |
@@ -110,6 +110,19 @@ carried by open-licensed scholarly books, chapter by chapter:
 
 - **open-access-books/d2l/** — *Dive into Deep Learning* (CC BY-SA 4.0)
 - **open-access-books/paip/** — *Paradigms of Artificial Intelligence Programming*, Norvig (MIT)
+
+**ntrs-white-papers/ — 97 public-domain scientific white papers from NASA's NTRS** (added
+2026-09-22). US federal government works are in the public domain (17 USC §105); every record
+is a NASA-published technical report, memorandum, special publication or conference paper whose
+own NTRS copyright record marks it public-use (no third-party material, public distribution) —
+the per-record determination is carried in each paper's frontmatter and the manifest, never
+assumed. Extracted by `scripts/fetch-ntrs-papers.mjs` through the eoreader7 CV look loop: a
+`pdftotext -layout` fast face, then pages whose own bytes trigger eoreader7's
+`weirdFormattingScore` are rendered and read by the OpenCV box/connector detector
+(`visual-detect.py`) with per-region Tesseract OCR. The CV findings land as a `<slug>.cv.md`
+sidecar beside each paper (LP1: a reading is never the source); each paper also carries a
+`*.structure.json` byte-structure outline like the original-language canon. See the fetcher's
+own header and `manifests/ntrs-papers-manifest.json`.
 
 ### 7 & 10. Images, Media, Audio
 

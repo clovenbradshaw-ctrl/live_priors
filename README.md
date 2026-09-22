@@ -17,6 +17,7 @@ published by institutions in 28 jurisdictions.
 | `01-literature-books/` | 43 complete works (Gutenberg + GITenberg) |
 | `02-encyclopedic/` | 54 articles (Wikipedia, 1911 Britannica) |
 | `05-academic-papers/open-access-books/` | 94 chapters from open-licensed scholarly books |
+| `05-academic-papers/ntrs-white-papers/` | **97 public-domain NASA white papers** (NTRS technical reports), each with an eoreader7 CV look-loop sidecar (`*.cv.md`) and a `*.structure.json` outline |
 | `06-government-legal/world-legislation/` | **449 statutes and codes from 28 jurisdictions** |
 | `06-government-legal/un-udhr/` | **516 translations of the Universal Declaration of Human Rights** |
 | `06-government-legal/world-factbook/` | **255 CIA World Factbook country profiles** |
@@ -91,6 +92,11 @@ node scripts/fetch-world-government.mjs --jurisdictions de,fr,uk
 
 # Whole books, works and chapters that replaced the pruned fragments
 node scripts/fetch-replacements.mjs --only scripture
+
+# NASA public-domain white papers, extracted through the eoreader7 CV look loop
+# (pdftotext fast face + OpenCV/Tesseract on triggered pages). Set
+# VISUAL_DETECT_PYTHON to a python with opencv-python-headless + numpy for the CV leg.
+node scripts/fetch-ntrs-papers.mjs --limit 40
 
 # Download actual media files
 node scripts/download-archive-media.mjs --category classical-music --limit 5
