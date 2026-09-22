@@ -41,6 +41,7 @@ export const REGISTRY = {
     iso: "eng", name: "English",
     ud: { repo: "UD_English-EWT", prefix: "en_ewt" },
     unimorph: { repo: "unimorph/eng", file: "eng" },
+    pronunciation: { prior: "pronunciation-eng.json", voice: "en-us", builder: "scripts/build-pronunciation-prior.mjs eng" },
     vendored: true,
     consumer: "build-reading-priors.mjs::loadPosForms — headOf's head election, every run",
   },
@@ -58,12 +59,14 @@ export const REGISTRY = {
         because: "this corpus is Modern Standard Arabic prose (udhr-arb.txt); only dialectal UniMorph data exists, and a dialect's paradigms substituted for MSA fails silently rather than loudly",
       },
     },
+    pronunciation: { prior: "pronunciation-arb.json", voice: "ar", builder: "scripts/build-pronunciation-prior.mjs arb" },
     vendored: false,
   },
   es: {
     iso: "spa", name: "Spanish",
     ud: { repo: "UD_Spanish-AnCora", prefix: "es_ancora" },
     unimorph: { repo: "unimorph/spa", file: "spa" },
+    pronunciation: { prior: "pronunciation-spa.json", voice: "es", builder: "scripts/build-pronunciation-prior.mjs spa" },
     vendored: false,
   },
   zh: {
@@ -85,6 +88,7 @@ export const REGISTRY = {
         because: "no UniMorph repository exists for any Chinese variety — read as principled rather than an oversight: UniMorph's schema is inflectional paradigms, and Chinese is near-isolating, so there is very little for it to tabulate",
       },
     },
+    pronunciation: { prior: "pronunciation-cmn_hans.json", voice: "cmn", unit: "clause", builder: "scripts/build-pronunciation-prior.mjs cmn_hans" },
     vendored: false,
   },
   sw: {
@@ -107,6 +111,13 @@ export const REGISTRY = {
           { repo: "unimorph/swc", finding: "200 — real, but Congo Swahili, a distinct variety from the Kiswahili standard this corpus reads" },
         ],
         because: "same reasoning as Arabic — a variety exists, the register this corpus reads does not, and the two are not silently interchangeable",
+      },
+    },
+    pronunciation: {
+      gap: {
+        status: "no_udhr_corpus",
+        checked: [{ finding: "the Rosetta reads exactly eng, fra, spa, rus, arb, cmn_hans (udhr-rosetta.mjs LANGUAGES) — Swahili has no UDHR text in that reading and no word list to synthesize, so no PronunciationPrior@1 row exists" }],
+        because: "the pronunciation prior is corpus-driven (a prior with no consumer is not coverage, LP10); there is no Swahili text in the Rosetta to take a word list from",
       },
     },
     vendored: false,
@@ -262,7 +273,7 @@ if (invokedDirectly) {
       const ud = e.ud?.gap ? `UD: ${e.ud.gap.status}` : `UD: ${e.ud.repo}`;
       const um = e.unimorph?.gap ? `UniMorph: ${e.unimorph.gap.status}` : `UniMorph: ${e.unimorph.repo}`;
       const cached = fs.existsSync(posPriorPath(code));
-      console.log(`  ${code} (${e.iso}) — ${ud}; ${um}; POS prior ${e.vendored ? "committed" : cached ? "cached" : "not resolved"}`);
+      console.log(`  ${code} (${e.iso}) — ${ud}; ${um}; POS prior ${e.vendored ? "committed" : cached ? "cached" : "not resolved"}; pronunciation ${e.pronunciation?.prior ?? (e.pronunciation?.gap?.status ?? "none")}`);
     }
     console.log("\nusage: node scripts/lang-registry.mjs <lang>...   (resolves, fetching if needed)");
   } else {

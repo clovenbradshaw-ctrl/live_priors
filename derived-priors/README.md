@@ -33,6 +33,92 @@ re-measures the same read text appends a new dated entry rather than
 overwriting the first one, so the record shows how the verdict moved, not
 just where it currently stands.
 
+## `code-priors/`
+
+Two measurements over the retained source corpus (`09-source-code/`) and the
+running Python engine, both serving eoreader7's code-generation universe:
+
+- **`CodeNamePrior@1`** (`code-name-prior-v1.json`) — for a declared
+  function/method/class name, how many DISTINCT real repositories declare it.
+  Built from `09-source-code/`'s own bytes (26 files across 16 audited +
+  landmark repos, C/Go/Python/TypeScript) by
+  `scripts/build-code-name-prior.mjs`. Its job is genericity: tell a
+  locally-recurring name (`init`, `main`, `run`) from one that recurs across
+  independent real codebases — the same closed-class-from-frequency
+  discipline as the prose function-word set, never a hand-typed stoplist.
+
+- **`LanguageLawPrior@1`** (`python-language-law-prior-v1.json`) — the Python
+  language's OWN laws, introspected from the running engine (CPython 3.12,
+  compiled to WASM as pyodide): keywords, `ast` node kinds (the grammar's
+  structure as data), builtins, `sys.stdlib_module_names`, and
+  `inspect.signature` over 25 core stdlib modules (493 callables). Built by
+  `scripts/build-language-law-prior.mjs`. The engine is the law — this is a
+  DERIVED index over it, not a re-definition. Two received tables are
+  disclosed as such: operator precedence (the PEG grammar is not
+  introspectable data) and the declaration-recipe shapes. Semantics stay in
+  the engine (`compile`/`exec`); idioms stay in `CodeNamePrior@1`.
+  `lexical.unicodeIdentifiers` records that the identifier law is PEP 3131
+  (Unicode XID), not `[A-Za-z_]` — the engine parses Greek/CJK/Arabic/Hangul
+  identifiers, so a Western `[A-Za-z]` recipe is the assumption to drop, not
+  a fact of the language.
+
+- **`LanguageLawPrior@1`** (`wenyan-language-law-prior-v1.json`) — the same
+  schema, for 文言 (Wenyan, classical Chinese), built by
+  `scripts/build-wenyan-language-law-prior.mjs` from the Wenyan compiler's own
+  reserved-word table (`src/keywords.ts`): 91 keywords (若 if, 為是 while,
+  加 +, 書之 print, 術 function), 41 numeral characters, 25 token types,
+  grouped by the cube's three faces. The point of this file beside the Python
+  one: the "engine defines the law" mechanism is script-agnostic — a language
+  whose keywords are Han characters has its laws fetched and indexed exactly
+  like one whose keywords are Latin, so the code-generation universe is not
+  Western-centric by construction.
+
+The language-law mechanism generalizes to any language whose engine (a
+grammar file, a compiler, a runtime) can be fetched or run. Built so far, by
+source of law:
+
+- **Engine-introspected** (`build-language-law-prior.mjs`): `python` — the
+  full law read off the running CPython (keywords, AST kinds, builtins,
+  stdlib signatures, Unicode-identifier law).
+- **Compiler-source fetched** (`build-wenyan-language-law-prior.mjs`):
+  `wenyan` (文言) — 91 Han keywords from the Wenyan compiler's own table.
+- **tree-sitter grammars** (`build-tree-sitter-grammar-prior.mjs`): `c`,
+  `cpp`, `java`, `javascript`, `typescript`, `go`, `rust`, `ruby`, `php`,
+  `c-sharp`, `bash`, `html`, `css`, `json` — node types (the open/close/nest
+  structure) + keywords + operators from each grammar's compiled
+  `node-types.json` (grammar.js heuristic fallback for the generated
+  grammars).
+- **Non-Western script engines** (`build-script-language-law-priors.mjs`):
+  `nadesiko` (なでしこ, 38 keywords), `ezhil` (எழில், 46 Tamil keywords + the
+  58-letter syllabary), `qalb` (قلب, a Lisp — no reserved words, the Arabic
+  alphabet + Arabic-Indic numerals), `aheui` (아희, no keywords — the Hangul
+  syllabary is the law: 9 vowel directions + 49 consonant operations).
+
+Still the same build, a different source, for the rest:
+
+| language | script | where its laws live (the engine) | built |
+|---|---|---|---|
+| 文言 Wenyan | 漢字 | `wenyan-lang/wenyan` `src/keywords.ts` | ✅ |
+| なでしこ Nadesiko | 日本語 | `kujirahand/nadesiko3` `nako_reserved_words.mts` | ✅ |
+| எழில் Ezhil | தமிழ் | `Ezhil-Language-Foundation/Ezhil-Lang` `ezhil_scanner.py` | ✅ |
+| قلب Qalb | العربية | `nasser/---` `peg/qlb.peg` (Lisp) | ✅ |
+| 아희 Aheui | 한글 | `aheui/jsaheui` (the Hangul opcode table) | ✅ |
+| Hindawi | देवनागरी | the Hindawi Programming System (Indic BASIC) | — |
+| Python/Java/JS/Go/Rust/C++/… | Latin + Unicode | own specs/type-checkers; identifier law is Unicode XID, keywords Latin | ✅ (tree-sitter) |
+
+- **`SovereigntyPrior@1`** (`data-sovereignty-prior-v1.json`) — the
+  *constructive* face of the ethos: the architectural shapes that protect
+  stored/communicated data (end-to-end encryption, local-first, zero-knowledge,
+  minimization, consent, deletion/portability, federation), grounded in the
+  human-rights instruments that license them — UDHR Art. 12, EU Charter Art. 8,
+  Council of Europe Convention 108+, and the CARE/OCAP Indigenous data
+  governance principles. A curated index over the named instruments (prose,
+  not parseable data — disclosed as received, like the operator-precedence
+  table), plus the protocol/crypto/architecture/domain signals the proxy uses
+  to recognize a data-sovereignty-relevant task and bias the generative ground
+  toward Matrix/E2EE/local-first shapes. The positive twin of the harm-shape
+  detection: attract sovereignty, don't just repel robbery.
+
 ## `lavar-priors/`
 
 `LaVarPrior@1` — for one text, composition affordances, kind parameters, and
@@ -62,3 +148,25 @@ stands.
 This directory holds worked examples ahead of the children's-book corpus
 LaVar's ladder (rungs 4 in the directive) is meant to run against; entries
 here should not be read as a completed pass over any book.
+
+## `pronunciation-priors/`
+
+`PronunciationPrior@1` — a SOUND-FIRST pronunciation dictionary for the six
+Rosetta languages (eng, fra, spa, rus, arb, cmn_hans), wired on user
+direction 2026-09-22 to store the WAV of the sound rather than a
+transcription (the repo's own surface-is-bytes law applied to sound). Each
+manifest is committed — per surface word, the espeak-ng IPA (a DERIVED
+annotation), the sha256 pin, and the recipe (voice + word) — while the WAV
+BYTES resolve on demand into the gitignored `cache/` via the lookup API
+(`scripts/pronunciation.mjs`), re-synthesized deterministically from the
+manifest's own recipe and verified against the pin. The comparative layer
+(`scripts/pronunciation-compare.mjs`) projects each pronunciation into a
+shared articulatory-feature space and measures distance there — the same
+surface/meaning split `eot-rich.js` holds for syntax, applied to sound.
+
+Word lists are the distinct forms of the six UDHR texts the Rosetta
+(`eoreader7/native/eval/lavar/udhr-rosetta.mjs`) actually reads — a prior
+with no consumer is not coverage (LP10). cmn_hans has no whitespace
+segmentation, so its unit is the clause (disclosed per entry). Builder,
+full design, the lookup API contract, and the comparative measurements:
+`scripts/pronunciation-RESULTS.md`.
