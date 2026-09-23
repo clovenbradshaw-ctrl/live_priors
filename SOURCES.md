@@ -19,7 +19,7 @@ are not mistaken for empty documents.
 | Category | Sources | Pulled | Notes |
 |---|---|---|---|
 | 1. Literature | 6 | ✅ 43 complete works | 23 via Gutenberg + 20 via GITenberg (War and Peace, Ulysses, Jane Eyre, Crime and Punishment, Federalist Papers, Wealth of Nations …) |
-| 2. Encyclopedic | 4 | ✅ 54 articles | Wikipedia + 1911 Britannica |
+| 2. Encyclopedic | 4 | ✅ 63 articles | Wikipedia + 1911 Britannica; +9 Koestler articles added 2026-09-23, see below |
 | 3. OER/Textbooks | 8 | ⬜ | No bulk APIs available |
 | 4. Pre-aggregated | 2 | ⬜ | Common Pile/RedPajama require local HF datasets |
 | 5. Academic papers | 4 | ✅ 94 book chapters | arXiv/PLOS abstracts removed (under the floor); replaced with open-licensed monographs — see below |
@@ -37,7 +37,7 @@ are not mistaken for empty documents.
 | 17. Formal Algebraic | 11 | ⬜ | All catalogued, none fetched (PDFs/images/specialized formats) |
 | 18. Children's Books *(added, not in the original 17)* | 3 | ⚠️ 38 documents, pilot | Global Digital Library + StoryWeaver (merged platform) and African Storybook, across 17 languages. Bloom Library not pulled — gated on Hugging Face, needs a human to accept terms and supply a token. Exempt from the 600-word floor — see `18-childrens-books/ATTRIBUTION.md` |
 
-**Total:** 2,078 documents at or above the 600-word floor, plus 38 children's books exempt from it (2,116 total).
+**Total:** 2,087 documents at or above the 600-word floor, plus 38 children's books exempt from it (2,125 total).
 
 ## Fetched Content Details
 
@@ -101,6 +101,31 @@ Every fetched source also carries a `*.structure.json` outline
 (`scripts/extract-source-structure.mjs`, `SourceStructure@1`) splitting the
 raw bytes on the source's own delimiters — see
 `digested/STRUCTURE-FROM-BYTES-FINDING.md`.
+
+### 2. Encyclopedic — Arthur Koestler (added 2026-09-23)
+
+Requested as "as much Arthur Koestler as is public domain." Checked rather
+than assumed: **none of his own writing is** — his UK/EU copyright (life+70)
+runs through 2053, and his US-renewed *Darkness at Noon* runs through 2036;
+Project Gutenberg lists zero Koestler works and Standard Ebooks' own
+placeholder page for *Darkness at Noon* names the same 2036 date. Full
+research, every source checked, and every title considered and left out:
+[`KOESTLER-PUBLIC-DOMAIN-FINDING.md`](KOESTLER-PUBLIC-DOMAIN-FINDING.md).
+
+What was added instead is real, substantive, CC BY-SA 4.0 Wikipedia
+coverage — 9 articles, 19,213 words, into `02-encyclopedic/wikipedia/`
+alongside its existing author-biography entries (Wittgenstein, Nietzsche,
+Shakespeare, …): his biography, 5 of his major works (*Darkness at Noon*,
+*The Gladiators*, *Spanish Testament*, *The Ghost in the Machine*, *The Act
+of Creation*), *The Thirteenth Tribe*, the *Holon* concept he coined, and
+Koestler Arts, the prison-arts charity his 1968 bequest founded. A dozen
+more titles were checked and left out — either too short to clear the
+600-word floor, or (in one case, *The Age of Longing*) a same-titled but
+unrelated Wikipedia article about a different book entirely, caught by the
+fetch script's own post-fetch "does this page actually mention Koestler"
+check before it could enter the corpus mislabeled. Reproduce with
+`node scripts/fetch-koestler-wikipedia.mjs`; manifest at
+`manifests/koestler-wikipedia-manifest.json`.
 
 ### 5. Academic Papers
 

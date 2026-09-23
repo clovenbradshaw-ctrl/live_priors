@@ -15,7 +15,7 @@ published by institutions in 28 jurisdictions.
 | Directory | Content |
 |---|---|
 | `01-literature-books/` | 43 complete works (Gutenberg + GITenberg) |
-| `02-encyclopedic/` | 54 articles (Wikipedia, 1911 Britannica) |
+| `02-encyclopedic/` | 63 articles (Wikipedia, 1911 Britannica) |
 | `05-academic-papers/open-access-books/` | 94 chapters from open-licensed scholarly books |
 | `06-government-legal/world-legislation/` | **449 statutes and codes from 28 jurisdictions** |
 | `06-government-legal/un-udhr/` | **516 translations of the Universal Declaration of Human Rights** |
@@ -31,6 +31,14 @@ published by institutions in 28 jurisdictions.
 See [`SOURCES.md`](SOURCES.md) for the complete catalog with pull status, and
 [`06-government-legal/ATTRIBUTION.md`](06-government-legal/ATTRIBUTION.md) for the rights notice
 each publishing institution requires.
+
+**Arthur Koestler (added 2026-09-23):** requested as "as much Koestler as is public domain" —
+the honest answer, checked rather than assumed, is none of his own writing (his UK/EU copyright
+runs to 2054; his US-renewed *Darkness at Noon* runs to 2036). Nine CC BY-SA 4.0 Wikipedia
+articles about him, his major works, and terms he coined (`holon`, `bisociation`) were added to
+`02-encyclopedic/wikipedia/` instead — see
+[`KOESTLER-PUBLIC-DOMAIN-FINDING.md`](KOESTLER-PUBLIC-DOMAIN-FINDING.md) for the full copyright
+research and `scripts/fetch-koestler-wikipedia.mjs` to reproduce or extend it.
 
 ## Government & Legal
 
