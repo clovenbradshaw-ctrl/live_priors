@@ -22,6 +22,7 @@ file, not editing an organ.
 |---|---|
 | `name-parts-en.json` | 53 titles (honorific, noble, royal, military) |
 | `name-parts-mul.json` | 20 nobiliary/linking particles |
+| `name-parts-es.json` | 14 Spanish honorifics (don/doña, señor/señora/señorita, abbreviations, fray/sor) — E6: added as one file, the organ untouched |
 | `name-parts-ru.json` | patronymic endings, transliterated and Cyrillic, as a CANDIDATE class with a floor — the organ decides by position or by an established father's given name, never by the ending (Aldrich began as a patronymic too) |
 
 The code-side defaults in eoreader7 remain byte-identical for callers that
