@@ -22,7 +22,7 @@ file, not editing an organ.
 |---|---|
 | `name-parts-en.json` | 53 titles (honorific, noble, royal, military) |
 | `name-parts-mul.json` | 20 nobiliary/linking particles |
-| `name-parts-ru.json` | patronymic suffixes, transliterated and Cyrillic, with the length floor |
+| `name-parts-ru.json` | patronymic suffixes, transliterated and Cyrillic, with the length floor; the bare `-ich` is deliberately omitted from the transliterated list (it collides with Aldrich/Goodrich at any floor — Kuzmich is a disclosed loss) |
 
 The code-side defaults in eoreader7 remain byte-identical for callers that
 pass nothing; they are the same lists, kept so an organ loads with no file
