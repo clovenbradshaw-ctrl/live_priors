@@ -3,7 +3,7 @@
 // 325 class XML files, Levin-numbered) into ActPrior@1: every member verb
 // FORM mapped to which of the NINE ACTS (the engine's own operators, cube.js)
 // its VerbNet class's semantics perform — DR1 of live_priors/goldens/reading/
-// DERIVED-RULES.md, built the same one-fetch-one-script way eoreader6.1's
+// DERIVED-RULES.md, built the same one-fetch-one-script way the legacy engine.1's
 // build-pos-prior.mjs already proved for POS.
 //
 // MOVED HERE FROM the-fold (2026-08-29) — this is a received-lexicon build
@@ -16,7 +16,7 @@
 // vs. received content), not by convenience.
 //
 // THE MAPPING IS A DECLARED TRANSLATION, NOT A DISCOVERY — THRAX_MAP's own
-// precedent (eoreader6.1 wordclass.js: UD tags → Thrax's eight, every entry
+// precedent (the legacy engine.1 wordclass.js: UD tags → Thrax's eight, every entry
 // naming where the schemes agree and where they do not). Here: Levin/VerbNet
 // class semantics → RULE.md Part II's mode×domain question ("what does the
 // act do to its object, and where does it operate"). Each row carries a

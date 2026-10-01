@@ -227,7 +227,7 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
   // eoreader7's own native/scripts/build-pos-prior.mjs from a real UD
   // treebank (see that file's own header — one script, zero per-language
   // code, English/Russian/Finnish today). The path used to name the empty
-  // `legacy-eoreader6.1` submodule, so this gate has never actually loaded
+  // `legacy-legacy-engine.1` submodule, so this gate has never actually loaded
   // for any of this corpus's languages, English included — the elaborate
   // measured numbers in this function's own header comment (Shakespeare
   // 90→22, the Iliad 65→25, Alice 97→34) describe a real prior run, but

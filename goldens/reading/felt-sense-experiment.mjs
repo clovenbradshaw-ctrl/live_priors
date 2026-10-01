@@ -7,7 +7,7 @@
 // we need to build towards a true felt sense of meaning."
 //
 // SEARCH-FIRST: the organ for exactly this already exists —
-// eoreader6.1 roles.js::resolveSpanRole ("given a span of unknown role and
+// the legacy engine.1 roles.js::resolveSpanRole ("given a span of unknown role and
 // other spans already known to fill declared roles, resolves which role
 // THIS occurrence's own local vocabulary resembles, by the same causal
 // one-hop activation.js recall pronouns.js already trusts"). Role is a
@@ -16,7 +16,7 @@
 // evidence. The gap verb is the unknown. Nothing new is built; the
 // engine's own felt-sense machinery is pointed at a new question.
 //
-// THE KNOWN CONSTRAINT, on record before running (eoreader6.1's own
+// THE KNOWN CONSTRAINT, on record before running (the legacy engine.1's own
 // CLAUDE.md, measured): "the mechanism needs same-role vocabulary to
 // actually recur within the material, which book-length text has and a
 // single short passage often does not." The golden windows are ~2 KB.
@@ -36,7 +36,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const LP_ROOT = path.join(HERE, "..", "..");
 const FOLD = path.join(LP_ROOT, "..", "the-fold");
 const EOREADER7 = path.join(LP_ROOT, "..", "eoreader7");
-const LEGACY = path.join(EOREADER7, "legacy-eoreader6.1", "packages", "engine", "perceiver", "text");
+const LEGACY = path.join(EOREADER7, "legacy-legacy-engine.1", "packages", "engine", "perceiver", "text");
 
 const { resolveSpanRole } = await import(path.join(LEGACY, "roles.js"));
 const spans = await import(path.join(EOREADER7, "native/adapters/text/spans.js"));

@@ -113,7 +113,7 @@ transformation it is by the shape and its similarity to other things — we
 need to build towards a true felt sense of meaning."*
 
 Search-first found the organ already built for the similarity half:
-`roles.js::resolveSpanRole` (eoreader6.1) — role as a caller-declared
+`roles.js::resolveSpanRole` (the legacy engine.1) — role as a caller-declared
 label, resolved by the same one-hop activation recall pronoun binding
 already trusts. The nine acts were declared as the roles; every
 unanimously-attested verb in the material stood as evidence; the gap verb
@@ -125,7 +125,7 @@ operating point (`felt-sense-experiment.mjs`, re-runnable):
 bound the gap to the act DOMINATING ITS SENTENCE'S TOPIC (Alice's "ran"
 → NUL amid the "nothing so very remarkable" paragraph; Kant's "born" →
 SYN amid the works-and-influence company) — which is exactly the failure
-eoreader6.1's own CLAUDE.md already recorded for this mechanism at
+the legacy engine.1's own CLAUDE.md already recorded for this mechanism at
 sentence frames, confirmed here on a third independent question:
 **one-hop company-similarity measures TOPIC, not ACT.** A verb's
 neighbours say what the sentence is about; they do not say what kind of

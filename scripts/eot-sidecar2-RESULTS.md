@@ -16,7 +16,7 @@ live sources, regenerated never edited:
 1. **`derived-priors/pos-priors/pos-prior-en.json`** (POSPrior@1) —
    UD_English-EWT (CC BY-SA 4.0) counted per surface form: 19,341 forms,
    254,820 tokens, 16,622 sentences, ambiguity preserved. Built here
-   because the canonical eoreader6.1 build is unreachable in this
+   because the canonical the legacy engine.1 build is unreachable in this
    checkout (uninitialized submodule, output gitignored there); committed
    with giver and per-file shas, matching act-prior-en.json's precedent.
 2. **`derived-priors/reading-priors/reading-priors-v1.json`**

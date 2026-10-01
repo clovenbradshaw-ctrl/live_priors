@@ -1487,8 +1487,8 @@ work, not silently claimed done.
 **(3) The POS-vocabulary gate — closed here.** LP13 found `loadOrgans`'s
 own header comment describing a measured, working gate (Shakespeare
 90→22 edges, the Iliad 65→25, Alice 97→34) that was true of some past
-build, while the CODE imported `legacy-eoreader6.1/scripts/corpus/
-pos-eng.json` and `legacy-eoreader6.1/packages/engine/perceiver/text/
+build, while the CODE imported `legacy-legacy-engine.1/scripts/corpus/
+pos-eng.json` and `legacy-legacy-engine.1/packages/engine/perceiver/text/
 wordclass.js` — both paths into a submodule confirmed empty in this
 checkout — so the gate had been silently loading for NEITHER English nor
 any of the other 515 languages, ever, in this environment. Fixed at the

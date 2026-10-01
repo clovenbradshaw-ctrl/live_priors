@@ -110,7 +110,7 @@ This sweep does not touch the SECOND failure mode P56 already names
 slot `extractRelations`'s own SVO matcher guessed at still survives,
 whatever language it is in. Closing that further would need a larger POS
 resource, per-occurrence resolution (`roles.js::resolveSpanRole`, this
-repo's own sibling `eoreader7/legacy-eoreader6.1/CLAUDE.md` names the
+repo's own sibling `eoreader7/legacy-legacy-engine.1/CLAUDE.md` names the
 mechanism and its own measured limit: it needs same-role vocabulary to
 recur, which a short passage often does not have), or both — real, scoped,
 unattempted future work, not silently promised here.

@@ -31,7 +31,7 @@ const EOREADER7 = path.join(LP_ROOT, "..", "eoreader7");
 const { makePhasepost } = await import(path.join(FOLD, "phasepost.js"));
 const { cellOf } = await import(path.join(EOREADER7, "native/kernel/cube.js"));
 const priors = await import(path.join(EOREADER7, "native/adapters/text/priors.js"));
-const morph = await import(path.join(EOREADER7, "legacy-eoreader6.1/packages/engine/perceiver/text/morphology.js"));
+const morph = await import(path.join(EOREADER7, "legacy-legacy-engine.1/packages/engine/perceiver/text/morphology.js"));
 
 const actPrior = JSON.parse(fs.readFileSync(path.join(FOLD, "eval/fixtures/act-prior-en.json"), "utf8"));
 const morphPrior = JSON.parse(fs.readFileSync(path.join(FOLD, "eval/fixtures/unimorph-morphology-prior.json"), "utf8"));

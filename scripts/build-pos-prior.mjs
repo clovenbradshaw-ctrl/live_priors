@@ -7,15 +7,15 @@
 // consumer contract) collapses only at a CALLER-DECLARED share floor.
 //
 // Why this script exists in live_priors: the canonical build
-// (eoreader6.1's scripts/build-pos-prior.mjs, run for the first time by
+// (the legacy engine.1's scripts/build-pos-prior.mjs, run for the first time by
 // the grammar-lens pass) is unreachable in this checkout —
-// `legacy-eoreader6.1` is the standing uninitialized submodule and its
+// `legacy-legacy-engine.1` is the standing uninitialized submodule and its
 // gitignored local output (`pos-eng.json`) exists nowhere on this
 // machine, verified 2026-08-31. This is the same one-fetch-one-script
 // move this repo's own build-act-prior.mjs already reproduces for
 // VerbNet, and the output is COMMITTED (derived-priors/, with giver and
 // license) matching act-prior-en.json's own precedent rather than
-// eoreader6.1's gitignored-local convention — a reading recipe that
+// the legacy engine.1's gitignored-local convention — a reading recipe that
 // depends on this prior must be reproducible from the repo alone.
 //
 // The consumer this was built for, named so the next reader knows what

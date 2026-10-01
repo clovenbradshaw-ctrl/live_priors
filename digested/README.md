@@ -49,7 +49,7 @@ batch now verifies at 100%, or 0/0 where a source yielded no edges at all.
 This digest reaches into two sibling checkouts: `../the-fold`
 (`hyperlexicon.js`, `hypergraph.js::makeRelationReader`, `source.js`'s
 `stripContainer`/`declaredIdentity`) and `../eoreader7/native` — never
-`eoreader7`'s `legacy-eoreader6.1` submodule. eoreader7's own root README
+`eoreader7`'s `legacy-legacy-engine.1` submodule. eoreader7's own root README
 states the law this follows: *"The native implementation lives in
 native/kernel/. It has no implementation dependency on EOReader 6.1"* — the
 historical layout is pinned "solely for compatibility... while consumers
@@ -251,5 +251,5 @@ node scripts/eot-digest.mjs
 
 Requires `../the-fold` and `../eoreader7` as sibling checkouts (no
 submodule population needed — `eoreader7/native` has no dependency on
-`legacy-eoreader6.1`). Writes one `<slug>.json` per source plus
+`legacy-legacy-engine.1`). Writes one `<slug>.json` per source plus
 `index.json` to this directory, overwriting what is there.

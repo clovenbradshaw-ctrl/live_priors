@@ -17,7 +17,7 @@ pull status) — so a reader can tell a measured number from an asserted one.
 `FoldReadingPrior@1` — for one "read" text, how relevant each candidate
 prior in this corpus is to predicting what comes next in it, measured two
 independent ways (an order-4 interpolated Witten-Bell mixture-of-experts
-share via `eoreader6.1/packages/engine/generation/belief.js`, and gzip
+share via `the legacy engine.1/packages/engine/generation/belief.js`, and gzip
 Normalized Compression Distance) that do not always agree — both are kept,
 disagreement included, rather than collapsed to one number.
 
