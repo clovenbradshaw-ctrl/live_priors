@@ -2198,3 +2198,65 @@ This entry records the state of the corpus after the canon fetchers, and the deb
 **Known gaps, by source, disclosed rather than forced.** (a) *Heike Monogatari*: neither ja.wikisource nor Aozora carries the classical text — both edition pages on ja.wikisource are redlinks, Aozora has only modern renditions; recorded as unavailable rather than substituted. (b) *Classical Chinese*: ctext.org serves a Cloudflare Turnstile challenge to automated clients and its API is authentication-gated; the Analects, Dao De Jing, Zhuangzi, Mencius, Mozi, Xunzi, Han Feizi, Great Learning and Doctrine of the Mean remain absent — the source is named, the blocker is named, nothing silently substitutes a different text. (c) *Kena and Muṇḍaka Upaniṣads*: GRETIL does not carry them (restricted TITUS only); the ten principal Upaniṣads present are so labeled. (d) *Avicenna's al-Šifāʾ and al-Fārābī's corpus*: not on ar.wikisource in full.
 
 **The promise.** A language fetched into this corpus with no reading organs is not an excuse to stop there; it is an itemized account of what the next reading pass must build. The gap inventory is itself a prior: the corpus now knows, per language, which texts it holds that it cannot yet read.
+
+---
+
+## LP22 — When a requested author has no public domain text, the corpus records the negative result instead of manufacturing a positive one (2026-09-23)
+
+**The ask, verbatim: pull in as much Arthur Koestler as is public domain,
+and add it to this corpus.** The honest answer, checked rather than
+assumed: **none of his own writing is.** Koestler died in 1983, so his
+UK/EU copyright (life+70) runs through 2053; his flagship US work,
+*Darkness at Noon*, had its copyright renewed in 1968 and runs through
+2036 in the US; Project Gutenberg lists zero Koestler works; Standard
+Ebooks' own placeholder page for *Darkness at Noon* names the same 2036
+date rather than offering the text; and the actual 1977 US Catalog of
+Copyright Entries (found via a Wikisource-hosted OCR scan of the volume,
+not a secondary summary) shows both *The Thirteenth Tribe* (1976) and his
+contribution to *The God That Failed* (1949) under active copyright
+claims within a few years of his death. Wikisource — a public-domain-only
+site — carries no Koestler primary text at all, only short quotations of
+him embedded in other public-domain documents (US Supreme Court opinions
+quoting *Reflections on Hanging*).
+
+**This is LP1's rule, aimed at a request rather than at a fetched file.**
+LP1 already governs what happens when a source disagrees with what it
+claims to be; this is the same discipline run one step earlier, before any
+file exists — *"as much Koestler as is public domain" claims there is a
+body of public-domain Koestler text to pull, and that claim itself needed
+checking before a single byte was fetched.* Fetching his copyrighted work
+under a public-domain label would not just violate this corpus's own
+provenance discipline — it would be a real copyright infringement, done in
+the corpus's name.
+
+**What shipped instead, and why it is not a consolation substitute.** Nine
+Wikipedia articles (CC BY-SA 4.0 — openly licensed, explicitly and
+repeatedly **not** described as public domain anywhere this ships) went
+into `02-encyclopedic/wikipedia/`, the same category and the same license
+this corpus already uses for other copyrighted-in-their-own-right authors'
+biographical coverage (Wittgenstein, Nietzsche, Shakespeare already sit
+there). 19,213 words: his biography, five of his major works, the concept
+he coined (*holon*), and the prison-arts charity his own bequest founded.
+Full research, every source checked, every title considered and the
+reason it was or was not included: `KOESTLER-PUBLIC-DOMAIN-FINDING.md`
+(repo root — a root-level finding document, `POS-VOCABULARY-GATE-
+VALIDATION.md`'s own precedent, not `digested/`'s EOT-reading-specific
+convention, since this finding needs no sibling-repo organ to reproduce).
+
+**One true finding the fetch's own sanity check produced, the same class
+LP1 already names at scale.** The fetch script rejects any fetched page
+whose body never mentions "Koestler," even on an exact title match — and
+it fired once, for real: Wikipedia's article titled *"The Age of
+Longing"* is a same-titled but entirely unrelated 1995 novel by the
+Canadian author Richard B. Wright, not Koestler's 1951 novel of the same
+name (which has no standalone article). Caught before the file was
+written, the same way `declaredIdentity` exists to catch a Gutenberg
+file's path lying about its own contents — **a title match is not a
+content match**, confirmed here on a live fetch rather than only on
+`gutenberg-non-en/`'s already-committed 20-for-20 mismatch.
+
+**The general rule this entry is for:** when a request presupposes a body
+of material that turns out, on checking, not to exist under the
+constraint asked for, the corpus's job is to say so — with the sources
+checked and the dates that would change the answer — never to quietly
+relax the constraint and ship something else labeled as if it met it.
